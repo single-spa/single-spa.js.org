@@ -1,11 +1,11 @@
 # If you only one circle to run on direct commits to master, you can uncomment this out
 # and uncomment the filters: *filter-only-master down below too
 #
-aliases:
-  - &filter-only-master
-    branches:
-      only:
-        - master
+# aliases:
+#   - &filter-only-master
+#     branches:
+#       only:
+#         - master
 
 version: 2
 jobs:
@@ -30,4 +30,6 @@ workflows:
     jobs:
       - deploy-website:
         filters:
-          *filter-only-master
+          branches:
+            only:
+              - master
