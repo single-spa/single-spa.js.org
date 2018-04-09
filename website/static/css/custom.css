@@ -1,0 +1,37 @@
+/* your custom css */
+
+.headerWrapper .navigationWrapper .nav-site a {
+  color: #fff;
+  font-weight: 700;
+  line-height: 3;
+}
+
+.index-main-features {
+  background-image: linear-gradient(to top left, #000FE0 50%, #0011FF 50%);
+  color: #fff;
+}
+
+.index-main-features .container .wrapper h2 {
+  color: #fff;
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 736px) {
+  .nav-site a {
+    font-weight: 700;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
