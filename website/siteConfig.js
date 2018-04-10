@@ -77,6 +77,7 @@ const siteConfig = {
   stylesheets: [],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
+  editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/'
 };
 
 module.exports = siteConfig;

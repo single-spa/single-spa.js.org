@@ -51,11 +51,11 @@ class Footer extends React.Component {
               User Showcase
             </a>
             <a
-              href="http://stackoverflow.com/questions/tagged/"
+              href="http://stackoverflow.com/questions/tagged/single-spa"
               target="_blank">
               Stack Overflow
             </a>
-            <a href="https://discordapp.com/">Project Chat</a>
+            <a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk">Chat in Slack</a>
             <a href="https://twitter.com/" target="_blank">
               Twitter
             </a>
@@ -63,12 +63,12 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             <a href={this.props.config.baseUrl + 'blog'}>Blog</a>
-            <a href="https://github.com/">GitHub</a>
+            <a href={this.props.config.repoUrl}>GitHub</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
-              data-count-href="/facebook/docusaurus/stargazers"
+              data-count-href="/CanopyTax/single-spa/stargazers"
               data-show-count={true}
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub">
@@ -78,18 +78,17 @@ class Footer extends React.Component {
         </section>
 
         <a
-          href="https://code.facebook.com/projects/"
+          href="https://www.canopytax.com/"
           target="_blank"
           className="fbOpenSource">
           <img
-            src={this.props.config.baseUrl + 'img/oss_logo.png'}
-            alt="Facebook Open Source"
-            width="170"
+            src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png"
+            alt="CanopyTax Open Source"
             height="45"
           />
         </a>
         <section className="copyright">
-          Copyright &copy; {currentYear} Facebook Inc.
+          Copyright &copy; {currentYear} CanopyTax
         </section>
       </footer>
     );
