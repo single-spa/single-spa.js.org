@@ -9,25 +9,25 @@
 const users = [
   {
     caption: 'CanopyTax',
-    image: '/img/logo-white-bgblue.svg',
+    image: '/static/img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
     caption: 'CanopyTax',
-    image: '/img/logo-white-bgblue.svg',
+    image: '/static/img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
     caption: 'CanopyTax',
-    image: '/img/logo-white-bgblue.svg',
+    image: '/static/img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
     caption: 'CanopyTax',
-    image: '/img/logo-white-bgblue.svg',
+    image: '/static/img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
@@ -40,8 +40,8 @@ const siteConfig = {
   baseUrl: '/single-spa.js.org/' /* base url for your project */,
   projectName: 'single-spa',
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
+    {doc: 'building-applications', label: 'Docs'},
+    {doc: 'api', label: 'API'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
   ],
