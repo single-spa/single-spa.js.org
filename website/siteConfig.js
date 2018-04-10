@@ -9,25 +9,25 @@
 const users = [
   {
     caption: 'CanopyTax',
-    image: '/static/img/logo-white-bgblue.svg',
+    image: 'img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
     caption: 'CanopyTax',
-    image: '/static/img/logo-white-bgblue.svg',
+    image: 'img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
     caption: 'CanopyTax',
-    image: '/static/img/logo-white-bgblue.svg',
+    image: 'img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
     caption: 'CanopyTax',
-    image: '/static/img/logo-white-bgblue.svg',
+    image: 'img/logo-white-bgblue.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
