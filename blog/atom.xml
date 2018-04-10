@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://single-spa.js.org/blog</id>
+    <id>https://canopytax.github.io/single-spa.js.org/blog</id>
     <title>single-spa Blog</title>
     <updated>2017-09-26T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
-    <link rel="alternate" href="https://single-spa.js.org/blog"/>
+    <link rel="alternate" href="https://canopytax.github.io/single-spa.js.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest single-spa news and events.</subtitle>
-    <logo>https://single-spa.js.org/img/logo-white-bgblue.svg</logo>
+    <logo>https://canopytax.github.io/single-spa.js.org/img/logo-white-bgblue.svg</logo>
     <rights>Copyright © 2018 CanopyTax</rights>
     <entry>
         <title type="html"><![CDATA[Adding RSS Support]]></title>
-        <id>https://single-spa.js.org/blog/2017/09/26/adding-rss.html</id>
-        <link href="https://single-spa.js.org/blog/2017/09/26/adding-rss.html">
+        <id>https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html</id>
+        <link href="https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html">
         </link>
         <updated>2017-09-26T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>This is a test post.</p>
