@@ -1907,6 +1907,11 @@ footer .copyright {
   color: #fff;
 }
 
+footer .fbOpenSource {
+  margin: 0 auto 1em;
+  width: 38px;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
