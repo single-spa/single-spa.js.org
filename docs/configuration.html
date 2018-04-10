@@ -1,0 +1,100 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Using single-spa-config · single-spa</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Using single-spa-config · single-spa"/><meta property="og:type" content="website"/><meta property="og:url" content="https://canopytax.github.io/single-spa.js.org/single-spa.js.org/index.html"/><meta property="og:description" content="The single spa config consists of all code that is not part of a"/><link rel="shortcut icon" href="/single-spa.js.org/img/logo-white-bgblue.svg"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://canopytax.github.io/single-spa.js.org/blog/atom.xml" title="single-spa Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://canopytax.github.io/single-spa.js.org/blog/feed.xml" title="single-spa Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/single-spa.js.org/css/main.css"/></head><body class="sideNavVisible doc"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/single-spa.js.org/"><img class="logo" src="/single-spa.js.org/img/logo-white-bgblue.svg" alt="single-spa"/><h2 class="headerTitle">single-spa</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/single-spa.js.org/docs/building-applications.html" target="_self">Docs</a></li><li class=""><a href="/single-spa.js.org/docs/api.html" target="_self">API</a></li><li class=""><a href="/single-spa.js.org/en/help.html" target="_self">Help</a></li><li class=""><a href="/single-spa.js.org/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>single-spa applications</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>single-spa applications</h3><ul><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/building-applications.html">Building</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/single-spa.js.org/docs/configuration.html">Configuration</a></li><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/separating-applications.html">Separating</a></li><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/migrating-existing-spas.html">Migrating</a></li></ul></div><div class="navGroup navGroupActive"><h3>Examples</h3><ul><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>Ecosystem</h3><ul><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/ecosystem.html">Ecosystem</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/single-spa-config.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Using single-spa-config</h1></header><article><div><span><p>The single spa config consists of all code that is not part of a
+<a href="#registeringapplications">registered application</a>. Ideally, this only includes an html file
+and a javascript file that registers single-spa applications. It is best practice to keep your
+single spa config as small as possible and to simply defer to single-spa to manage
+all of the applications. The single spa config should not be doing client-side html
+rendering nor should it be responding to routing events such as <code>hashchange</code> or <code>popstate</code>.
+Instead, all of that functionality should be taken care of either by single-spa itself or by
+a single-spa application.</p>
+<h2><a class="anchor" aria-hidden="true" id="indexhtml-file"></a><a href="#indexhtml-file" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index.html file</h2>
+<p>The main thing that you should be doing in your html file is executing your single spa config. For your
+use case, this could mean something like <code>&lt;script src=&quot;/single-spa-config.js&quot;&gt;&lt;/script&gt;</code>.
+Example:</p>
+<pre><code class="hljs css js">&lt;html&gt;
+  &lt;body&gt;
+    &lt;script src="/single-spa-config.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="registering-applications"></a><a href="#registering-applications" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Registering applications</h2>
+<p>You must register <a href="/single-spa.js.org/docs/building-applications.html">applications</a> with single-spa so it knows how and when to
+initiate, load, mount, and unmount. Registration most commonly occurs inside of the single spa config, but
+does not have to. Note that if an application is registered from within another application, that no hierarchy
+will be maintained between the applications. Instead, the applications will be siblings and will be mounted
+and unmounted according to their own activity functions.</p>
+<p>In order to register an application, call the <code>registerApplication(name, howToLoad, activityFunction)</code> api. Example:</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+<span class="hljs-keyword">import</span> { registerApplication, start } <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+
+registerApplication(<span class="hljs-string">"applicationName"</span>, loadingFunction, activityFunction);
+start();
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadingFunction</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"src/app1/main.js"</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">activityFunction</span>(<span class="hljs-params">location</span>) </span>{
+  <span class="hljs-keyword">return</span> location.pathname.indexOf(<span class="hljs-string">"/app1/"</span>) === <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="application-name"></a><a href="#application-name" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application name</h3>
+<p>The first argument to <code>registerApplication</code> must be a string name.</p>
+<h3><a class="anchor" aria-hidden="true" id="loading-function-or-application"></a><a href="#loading-function-or-application" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading Function or Application</h3>
+<p>The second argument to <code>registerApplication</code> must be either a function that returns a promise <a href="/single-spa.js.org/docs/configuration.html#loading-function">loading function</a> or the resolved Application.</p>
+<h4><a class="anchor" aria-hidden="true" id="application-as-second-argument"></a><a href="#application-as-second-argument" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application as second argument</h4>
+<p>Optionally for the second argument you can use the resolved Application, consisting of an object with the lifecycle methods.
+This allows you import the Application from another file or define applications inline in your single-spa-config</p>
+<pre><code class="hljs css js"><span class="hljs-keyword">const</span> application = {
+  <span class="hljs-attr">bootstrap</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Promise</span>.resolve(), <span class="hljs-comment">//bootstrap function</span>
+  mount: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Promise</span>.resolve(), <span class="hljs-comment">//mount function</span>
+  unmount: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Promise</span>.resolve(), <span class="hljs-comment">//unmount function</span>
+}
+registerApplication(<span class="hljs-string">'applicatonName'</span>, application, activityFunction)
+
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="loading-function"></a><a href="#loading-function" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading function</h4>
+<p>The second argument to <code>registerApplication</code> must be a function that returns a promise (or an <a href="https://ponyfoo.com/articles/understanding-javascript-async-await">&quot;async function&quot;</a>).
+The function will be called with no arguments when it's time to load the application for the first time. The returned
+promise must be resolved with the application. The most common implementation of a loading function is an import call:
+<code>() =&gt; import('/path/to/application.js')</code></p>
+<h3><a class="anchor" aria-hidden="true" id="activity-function"></a><a href="#activity-function" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Activity function</h3>
+<p>The third argument to <code>registerApplication</code> must be a pure function, the function is provided <code>window.location</code> as the first argument, and returns a truthy
+value whenever the application should be active. Most commonly, the activity function determines if an application
+is active by looking at <code>window.location</code>/the first param.</p>
+<p>Another way of looking at this is that single-spa is a top-level router that has a lot of applications that have their own sub-router.</p>
+<p>single-spa will call each application's activity function under the following scenarios:</p>
+<ul>
+<li><code>hashchange</code> or <code>popstate</code> event</li>
+<li><code>pushState</code> or <code>replaceState</code> is called</li>
+<li><a href="/single-spa.js.org/docs/api.html#triggerappchange"><code>triggerAppChange</code></a> api is called on single-spa</li>
+<li>Whenever the <code>checkActivityFunctions</code> method is called</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="calling-singlespastart"></a><a href="#calling-singlespastart" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Calling singleSpa.start()</h2>
+<p>The <a href="/single-spa.js.org/docs/api.html#start"><code>start()</code> api</a> <strong>must</strong> be called by your single spa config in order for
+applications to actually be mounted. Before <code>start</code> is called, applications will be loaded, but not bootstrapped/mounted/unmounted.
+The reason for <code>start</code> is to give you control over performance. For example, you may want to register applications
+immediately (to start downloading the code for the active ones), but not actually mount the applications
+until an initial AJAX request (maybe to get information about the logged in user) has been completed. In that case,
+the best performance is achieved by calling <code>registerApplication</code> immediately, but calling <code>start</code> after
+the AJAX request is completed.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">//single-spa-config.js</span>
+<span class="hljs-keyword">import</span> { start } <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+
+<span class="hljs-comment">/* Calling start before registering apps means that single-spa can immediately mount apps, without
+ * waiting for any initial setup of the single page app.
+ */</span>
+start();
+
+<span class="hljs-comment">// Register applications....</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="two-registered-applications-simultaneously"></a><a href="#two-registered-applications-simultaneously" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Two registered applications simultaneously??</h2>
+<p>Yep, it's possible. And it's actually not that scary if you do it right. And once you do,
+it's really really powerful. One approach to do this is to create a <code>&lt;div id=&quot;app-name&quot;&gt;&lt;/div&gt;</code> for each app,
+so that they never try to modify the same DOM at the same time.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="building-applications.html">← Building single-spa applications</a><a class="docs-next button" href="separating-applications.html">Separating applications →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/single-spa.js.org/" class="nav-home"><img src="/single-spa.js.org/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/single-spa.js.org/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/single-spa.js.org/docs/en/doc2.html">Guides (or other categories)</a><a href="/single-spa.js.org/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/single-spa.js.org/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk">Chat in Slack</a><a href="https://twitter.com/" target="_blank">Twitter</a></div><div><h5>More</h5><a href="/single-spa.js.org/blog">Blog</a><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://www.canopytax.com/" target="_blank" class="fbOpenSource"><img src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">Copyright © 2018 CanopyTax</section></footer></div></body></html>

@@ -1,0 +1,70 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Separating applications · single-spa</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Separating applications · single-spa"/><meta property="og:type" content="website"/><meta property="og:url" content="https://canopytax.github.io/single-spa.js.org/single-spa.js.org/index.html"/><meta property="og:description" content="In a large, microserviced system, your root single-spa configuration and each of the applications"/><link rel="shortcut icon" href="/single-spa.js.org/img/logo-white-bgblue.svg"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://canopytax.github.io/single-spa.js.org/blog/atom.xml" title="single-spa Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://canopytax.github.io/single-spa.js.org/blog/feed.xml" title="single-spa Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/single-spa.js.org/css/main.css"/></head><body class="sideNavVisible doc"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/single-spa.js.org/"><img class="logo" src="/single-spa.js.org/img/logo-white-bgblue.svg" alt="single-spa"/><h2 class="headerTitle">single-spa</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/single-spa.js.org/docs/building-applications.html" target="_self">Docs</a></li><li class=""><a href="/single-spa.js.org/docs/api.html" target="_self">API</a></li><li class=""><a href="/single-spa.js.org/en/help.html" target="_self">Help</a></li><li class=""><a href="/single-spa.js.org/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>single-spa applications</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>single-spa applications</h3><ul><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/building-applications.html">Building</a></li><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/configuration.html">Configuration</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/single-spa.js.org/docs/separating-applications.html">Separating</a></li><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/migrating-existing-spas.html">Migrating</a></li></ul></div><div class="navGroup navGroupActive"><h3>Examples</h3><ul><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>Ecosystem</h3><ul><li class="navListItem"><a class="navItem" href="/single-spa.js.org/docs/ecosystem.html">Ecosystem</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/separating-applications.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Separating applications</h1></header><article><div><span><p>In a large, microserviced system, your root single-spa configuration and each of the applications
+should probably have its own git repository. How to do that in a javascript project isn't necessarily clear,
+so some options are listed below.</p>
+<p>Since single-spa is a framework that helps with organizational scaling, it is
+important to figure out how to split out and separate applications from each other
+so that developers and teams can work on the applications without stepping on each others' toes.</p>
+<p>Most interpretations of microservice architecture encourage separate code repositories, builds, and
+deployments. Although <strong>single-spa does not solve how code is hosted, built, or deployed</strong>,
+these are relevant to many users of single-spa, so some strategies for doing so are discussed here.</p>
+<h4><a class="anchor" aria-hidden="true" id="option-1-one-code-repo-one-build"></a><a href="#option-1-one-code-repo-one-build" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Option 1: One code repo, one build</h4>
+<p>The simplest approach for using single-spa is to have one code repository with everything in it.
+Typically, you would have a single package.json with a single webpack config that produces a bundle
+that can be included in an html file with a <code>&lt;script&gt;</code> tag.</p>
+<p>Advantages:</p>
+<ul>
+<li>Simplest to set up</li>
+<li><a href="https://danluu.com/monorepo/">monolithic version control has some advantages</a></li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>One master webpack config and package.json means less flexibility / freedom for individual projects</li>
+<li>Slow build times once your project gets large</li>
+<li>Builds and deployments are all tied together, which can necessitate fixed release schedules instead of ad hoc releases.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="option-2-npm-packages"></a><a href="#option-2-npm-packages" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Option 2: NPM packages</h4>
+<p>Create a root application that npm installs each of the single-spa applications. Each child application
+is in a separate code repository and is responsible for publishing a new version everytime that it updates.
+The root application should reinstall, rebuild, and redeploy whenever a single-spa application changes.</p>
+<p>Typically, the single-spa applications compile themselves separately with babel and/or webpack.</p>
+<p>Note that you can also use the <a href="https://medium.com/netscape/the-case-for-monorepos-907c1361708a">monorepo methodology</a> which
+allows for separate builds without having separate code repositories.</p>
+<p>Advantages:</p>
+<ul>
+<li>npm install is familiar and easy to set up</li>
+<li>Separate npm packages means each application can build itself separately before publishing to npm</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>The root application must reinstall the child applications in order to rebuild/redeploy</li>
+<li>Medium difficulty to set up</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="option-3-dynamic-module-loading"></a><a href="#option-3-dynamic-module-loading" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Option 3: Dynamic Module Loading</h4>
+<p>Create a root application which can allow single-spa applications to deploy themselves separately. To do so,
+create a manifest file that the single-spa applications update during their deployment process, which controls
+which versions of the single-spa applications are &quot;live&quot;. Then change which javascript file is loaded based on the manifest.</p>
+<p>Changing which javascript file is loaded for each child application can be done in many ways.</p>
+<ol>
+<li>Web server: have your webserver create a dynamic script tag for the &quot;live&quot; version of each single-spa application.</li>
+<li>Use a <a href="https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/">module loader</a>
+such as <a href="https://github.com/systemjs/systemjs">SystemJS</a> that can download and execute javascript code in the browser
+from dynamic urls.</li>
+</ol>
+<h4><a class="anchor" aria-hidden="true" id="comparison"></a><a href="#comparison" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Comparison</h4>
+<table>
+<thead>
+<tr><th></th><th>Separate code repositories</th><th>Separate builds</th><th>Separate deployments</th><th>Difficulty to set up</th><th>Example repo</th></tr>
+</thead>
+<tbody>
+<tr><td>One code repo</td><td></td><td></td><td></td><td>Easy</td><td><a href="https://github.com/joeldenning/simple-single-spa-webpack-example">simple-webpack-example</a> and <a href="https://github.com/CanopyTax/single-spa-examples">single-spa-examples</a></td></tr>
+<tr><td>NPM modules</td><td>[x]</td><td>[x]</td><td></td><td>Medium</td><td>(No example repo, yet -- contributions accepted!)</td></tr>
+<tr><td>Module loading</td><td>[x]</td><td>[x]</td><td>[x]</td><td>Hard</td><td><a href="https://github.com/me-12/single-spa-portal-example">single-spa-portal-example</a></td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="configuration.html">← Using single-spa-config</a><a class="docs-next button" href="migrating-existing-spas.html">Migrating existing SPAs →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/single-spa.js.org/" class="nav-home"><img src="/single-spa.js.org/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/single-spa.js.org/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/single-spa.js.org/docs/en/doc2.html">Guides (or other categories)</a><a href="/single-spa.js.org/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/single-spa.js.org/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk">Chat in Slack</a><a href="https://twitter.com/" target="_blank">Twitter</a></div><div><h5>More</h5><a href="/single-spa.js.org/blog">Blog</a><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://www.canopytax.com/" target="_blank" class="fbOpenSource"><img src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">Copyright © 2018 CanopyTax</section></footer></div></body></html>
