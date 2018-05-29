@@ -130,7 +130,7 @@ const VideoAndText = props => (
   <Block>
     {[
       {
-        content: `<iframe src="https://www.youtube-nocookie.com/embed/L4jqow7NTVg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
+        content: `<iframe width='100%' height='85%' src="https://www.youtube-nocookie.com/embed/L4jqow7NTVg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
         title: ""
       }
     ]}
