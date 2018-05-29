@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Easy front-end microservices",
+    "tagline": "a javascript meta-framework for simplistic front-end microservices",
     "api": "API",
     "building-applications": "Building single-spa applications",
     "Building": "Building",
@@ -21,6 +21,7 @@
     "API": "API",
     "Help": "Help",
     "Blog": "Blog",
+    "GitHub": "GitHub",
     "single-spa applications": "single-spa applications"
   },
   "pages-strings": {

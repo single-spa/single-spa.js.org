@@ -1,9 +1,32 @@
 /* your custom css */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Roboto:100,400');
 
 .headerWrapper .navigationWrapper .nav-site a {
   color: #fff;
   font-weight: 700;
   line-height: 3;
+}
+
+.homeContainer{
+  background: url('../img/splash.svg');
+  background-repeat: no-repeat;
+  background-position: 85% 100%; 
+}
+
+.projectTitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100 !important;
+  font-size: 500%;
+  letter-spacing: .9rem;
+}
+
+.subHeader {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100 !important;
+  font-size: 110%;
+  letter-spacing: .2rem;
+  color: #889aaa;
+  margin-bottom: 35px;
 }
 
 .index-main-features {
@@ -39,4 +62,14 @@ footer .fbOpenSource {
 }
 
 @media only screen and (min-width: 1500px) {
+}
+
+.button {
+  background: #0011FF;
+  color: #fff;
+}
+
+.button:hover {
+  background: #fff;
+  color: #0011FF;
 }

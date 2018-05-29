@@ -6,12 +6,10 @@
  */
 
 const React = require('react');
-
 const CompLibrary = require('../../core/CompLibrary.js');
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
-
 const siteConfig = require(process.cwd() + '/siteConfig.js');
 
 function imgUrl(img) {
@@ -59,9 +57,14 @@ const Logo = props => (
 const ProjectTitle = props => (
   <h2 className="projectTitle">
     {siteConfig.title}
-    <small>{siteConfig.tagline}</small>
   </h2>
 );
+
+const SubHeading = props => (
+  <h3 className="subHeader">
+    {siteConfig.tagline}
+  </h3>
+)
 
 const PromoSection = props => (
   <div className="section promoSection">
@@ -76,13 +79,12 @@ class HomeSplash extends React.Component {
     let language = this.props.language || '';
     return (
       <SplashContainer>
-        <Logo img_src={imgUrl('logo-white-bgblue.svg')} />
         <div className="inner">
           <ProjectTitle />
+          <SubHeading />
           <PromoSection>
+            <Button href={docUrl("building-applications.html")}>Get Started</Button>
             <Button href="https://single-spa.surge.sh" target="_blank">See a live example</Button>
-            {/* <Button href={docUrl('doc1.html', language)}>Example Link</Button> */}
-            {/* <Button href={docUrl('doc2.html', language)}>Example Link 2</Button> */}
           </PromoSection>
         </div>
       </SplashContainer>
@@ -125,14 +127,10 @@ const Features = props => (
 );
 
 const VideoAndText = props => (
-  <Block layout="twoColumn">
+  <Block>
     {[
       {
-        content: "This 2-minute video will help you understand the basics of what single-spa does and how it works.",
-        title: "single-spa Overview Video"
-      },
-      {
-        content: `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/L4jqow7NTVg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
+        content: `<iframe src="https://www.youtube-nocookie.com/embed/L4jqow7NTVg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
         title: ""
       }
     ]}
