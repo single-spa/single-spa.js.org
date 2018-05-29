@@ -48,7 +48,9 @@ const siteConfig = {
   /* colors for website */
   colors: {
     primaryColor: '#0011FF',
-    secondaryColor: '#464646',
+    secondaryColor: '#f9f9f9',
+    subText: '#889aaa',
+    accentWhite: '#fff'
   },
   /* custom fonts for website */
   fonts: {
@@ -56,8 +58,12 @@ const siteConfig = {
       'Roboto',
       'sans-serif'
     ],
-    accentFont: [
+    secondaryFont: [
       'Montserrat',
+      'sans-serif'
+    ],
+    accentFont: [
+      'Oswald',
       '-apple-system',
       'system-ui',
     ],
@@ -74,7 +80,7 @@ const siteConfig = {
     theme: 'default',
   },
   scripts: ['https://buttons.github.io/buttons.js'],
-  stylesheets: [],
+  stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
   editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/'

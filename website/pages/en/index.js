@@ -102,7 +102,7 @@ const Block = props => (
 );
 
 const Features = props => (
-  <Block layout="threeColumn">
+  <Block layout="threeColumn" id="features">
     {[
       {
         content: 'Use multiple frameworks in a single-page application, allowing you to split code by functionality and have Angular, React, Vue.js, etc. apps all living in harmony.',
