@@ -982,7 +982,7 @@ pre code {
   margin-top: 50px;
   width: 100%;
   padding: 0;
-  background: #464646;
+  background: #f9f9f9;
   color: #fff;
 }
 .navigationSlider .slidingNav.slidingNavActive ul {
@@ -1891,29 +1891,56 @@ footer .copyright {
 }
 
 /* your custom css */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400|Roboto:100,400');
+.fixedHeaderContainer {
+    background-color: #f9f9f9;
+    border-bottom: solid #0011FF 0.5px;
+}
 
 .headerWrapper .navigationWrapper .nav-site a {
-  color: #fff;
-  font-weight: 700;
+  color: #0011FF;
+  font-family: "Oswald", "-apple-system", "system-ui";
+  font-weight: 100;
   line-height: 3;
+  transition: all .2s ease-in-out;
+}
+
+.navigationSlider .slidingNav ul li.siteNavItemActive a {
+  background-color: #f9f9f9;
+  color: #0011FF;
+  font-weight: 300;
+  font-size: 110%;
+  border-bottom: solid 0.5px #0011ff;
+}
+.navigationSlider .slidingNav ul li a:hover{
+  background-color: #f9f9f9;
+  color: #0011FF;
+  font-weight: 300;
+  transform: scale(1.08);
+}
+
+.headerTitle {
+  color: #0011FF;
+  font-family: "Roboto", "sans-serif";
+  font-weight: 200 !important;
+  line-height: 4 !important;
 }
 
 .homeContainer{
   background: url('../img/splash.svg');
+  background-color: #fff;
   background-repeat: no-repeat;
-  background-position: 85% 100%; 
+  background-position: 90% 100%;
 }
 
 .projectTitle {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100 !important;
-  font-size: 500%;
+  font-family: "Roboto", "sans-serif";
+  font-weight: 100;
+  font-size: 600%;
   letter-spacing: .9rem;
 }
 
 .subHeader {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", "sans-serif";
   font-weight: 100 !important;
   font-size: 110%;
   letter-spacing: .2rem;
@@ -1957,11 +1984,12 @@ footer .fbOpenSource {
 }
 
 .button {
-  background: #0011FF;
-  color: #fff;
+  background: #fff;
+  color: #0011FF;
+  border: solid 0.5px #0011FF;
 }
 
 .button:hover {
-  background: #fff;
-  color: #0011FF;
+  background: #0011FF;
+  color: #fff;
 }
