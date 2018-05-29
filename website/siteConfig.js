@@ -9,33 +9,27 @@
 const users = [
   {
     caption: 'CanopyTax',
-    image: 'img/logo-white-bgblue.svg',
+    image: 'img/canopy-logo-icon.svg',
     infoLink: 'https://www.canopytax.com',
     pinned: true,
   },
   {
-    caption: 'CanopyTax',
-    image: 'img/logo-white-bgblue.svg',
-    infoLink: 'https://www.canopytax.com',
+    caption: 'DealerSocket',
+    image: 'img/dealersocket.png',
+    infoLink: 'https://dealersocket.com/',
     pinned: true,
   },
   {
-    caption: 'CanopyTax',
-    image: 'img/logo-white-bgblue.svg',
-    infoLink: 'https://www.canopytax.com',
-    pinned: true,
-  },
-  {
-    caption: 'CanopyTax',
-    image: 'img/logo-white-bgblue.svg',
-    infoLink: 'https://www.canopytax.com',
+    caption: 'Beamery',
+    image: 'img/beamery.svg',
+    infoLink: 'https://beamery.com/',
     pinned: true,
   },
 ];
 
 const siteConfig = {
   title: 'single-spa' /* title for your website */,
-  tagline: 'Easy front-end microservices',
+  tagline: 'a javascript meta-framework for simplistic front-end microservices',
   url: 'https://canopytax.github.io/single-spa.js.org' /* your website url */,
   baseUrl: '/single-spa.js.org/' /* base url for your project */,
   projectName: 'single-spa',
@@ -44,24 +38,36 @@ const siteConfig = {
     {doc: 'api', label: 'API'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    { href: "https://github.com/CanopyTax/single-spa", label: "GitHub" },
   ],
   users,
   /* path to images for header/footer */
   headerIcon: 'img/logo-white-bgblue.svg',
   footerIcon: 'img/logo-white-bgblue.svg',
-  favicon: 'img/logo-white-bgblue.svg',
+  favicon: 'img/logo-blue-favicon.ico',
   /* colors for website */
   colors: {
     primaryColor: '#0011FF',
-    secondaryColor: '#464646',
+    secondaryColor: '#f9f9f9',
+    subText: '#889aaa',
+    accentWhite: '#fff'
   },
   /* custom fonts for website */
-  // fonts: {
-  //   mainFont: [
-  //     "Khula",
-  //     "sans-serif"
-  //   ],
-  // },
+  fonts: {
+    mainFont: [
+      'Roboto',
+      'sans-serif'
+    ],
+    secondaryFont: [
+      'Montserrat',
+      'sans-serif'
+    ],
+    accentFont: [
+      'Oswald',
+      '-apple-system',
+      'system-ui',
+    ],
+  },
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
     'Copyright © ' +
@@ -74,7 +80,7 @@ const siteConfig = {
     theme: 'default',
   },
   scripts: ['https://buttons.github.io/buttons.js'],
-  stylesheets: [],
+  stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
   editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/'

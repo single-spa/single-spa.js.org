@@ -1,18 +1,68 @@
 /* your custom css */
+.fixedHeaderContainer {
+    background-color: $secondaryColor;
+    border-bottom: solid $primaryColor 0.5px;
+}
 
 .headerWrapper .navigationWrapper .nav-site a {
-  color: #fff;
-  font-weight: 700;
+  color: $primaryColor;
+  font-family: $accentFont;
+  font-weight: 100;
   line-height: 3;
+  transition: all .2s ease-in-out;
+}
+
+.navigationSlider .slidingNav ul li.siteNavItemActive a {
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  font-weight: 300;
+  font-size: 110%;
+  border-bottom: solid 0.5px #0011ff;
+}
+.navigationSlider .slidingNav ul li a:hover{
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  font-weight: 300;
+  transform: scale(1.08);
+}
+
+.headerTitle {
+  color: $primaryColor;
+  font-family: $mainFont;
+  font-weight: 200 !important;
+  line-height: 4 !important;
+}
+
+.homeContainer{
+  background: url('../img/splash.svg');
+  background-color: $accentWhite;
+  background-repeat: no-repeat;
+  background-position: 90% 100%;
+}
+
+.projectTitle {
+  font-family: $mainFont;
+  font-weight: 100;
+  font-size: 600%;
+  letter-spacing: .9rem;
+}
+
+.subHeader {
+  font-family: $secondaryFont;
+  font-weight: 100 !important;
+  font-size: 110%;
+  letter-spacing: .2rem;
+  color: $subText;
+  margin-bottom: 35px;
 }
 
 .index-main-features {
-  background-image: linear-gradient(to top left, #000FE0 50%, #0011FF 50%);
-  color: #fff;
+  background-image: linear-gradient(to top left, #000FE0 50%, $primaryColor 50%);
+  color: $accentWhite;
 }
 
 .index-main-features .container .wrapper h2 {
-  color: #fff;
+  color: $accentWhite;
 }
 
 footer .fbOpenSource {
@@ -39,4 +89,15 @@ footer .fbOpenSource {
 }
 
 @media only screen and (min-width: 1500px) {
+}
+
+.button {
+  background: #fff;
+  color: $primaryColor;
+  border: solid 0.5px $primaryColor;
+}
+
+.button:hover {
+  background: $primaryColor;
+  color: $accentWhite;
 }
