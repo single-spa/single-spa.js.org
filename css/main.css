@@ -1904,13 +1904,17 @@ footer .copyright {
   transition: all .2s ease-in-out;
 }
 
-.navigationSlider .slidingNav ul li.siteNavItemActive a {
+ 
+.navigationSlider .slidingNav ul li.siteNavItemActive a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
   background-color: #f9f9f9;
   color: #0011FF;
   font-weight: 300;
   font-size: 110%;
   border-bottom: solid 0.5px #0011ff;
 }
+
+.navigationSlider .slidingNav ul li a:focus,
 .navigationSlider .slidingNav ul li a:hover{
   background-color: #f9f9f9;
   color: #0011FF;
@@ -1987,6 +1991,7 @@ footer .fbOpenSource {
   background: #fff;
   color: #0011FF;
   border: solid 0.5px #0011FF;
+  transition: all .3s ease-in-out;
 }
 
 .button:hover {
