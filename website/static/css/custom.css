@@ -12,13 +12,17 @@
   transition: all .2s ease-in-out;
 }
 
-.navigationSlider .slidingNav ul li.siteNavItemActive a {
+ 
+.navigationSlider .slidingNav ul li.siteNavItemActive a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a {
   background-color: $secondaryColor;
   color: $primaryColor;
   font-weight: 300;
   font-size: 110%;
   border-bottom: solid 0.5px #0011ff;
 }
+
+.navigationSlider .slidingNav ul li a:focus,
 .navigationSlider .slidingNav ul li a:hover{
   background-color: $secondaryColor;
   color: $primaryColor;
@@ -95,6 +99,7 @@ footer .fbOpenSource {
   background: #fff;
   color: $primaryColor;
   border: solid 0.5px $primaryColor;
+  transition: all .3s ease-in-out;
 }
 
 .button:hover {

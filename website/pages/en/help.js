@@ -13,21 +13,29 @@ const GridBlock = CompLibrary.GridBlock;
 
 const siteConfig = require(process.cwd() + '/siteConfig.js');
 
+function docUrl(doc, language) {
+  return siteConfig.baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
+}
+
 class Help extends React.Component {
   render() {
     const supportLinks = [
       {
         content:
-          'Learn more using the [documentation on this site.](/test-site/docs/en/doc1.html)',
+          `Learn more about [single-spa] using the [official documentation](${docUrl('building-applications.html')}).`,
         title: 'Browse Docs',
       },
       {
-        content: 'Ask questions about the documentation and project',
-        title: 'Join the community',
+        content: 'You can join the conversation on [Slack](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk) on one of our channels: [#general]() for user help and [#maintainers]() for contributing help .',
+        title: 'Slack',
       },
       {
-        content: "Find out what's new with this project",
-        title: 'Stay up to date',
+        content: "You can follow and contact us on [Twitter](https://twitter.com/SpaSingle).",
+        title: 'Twitter',
+      },
+      {
+        content: "At our [GitHub repo](https://github.com/CanopyTax/single-spa) Browse and [submit issues](https://github.com/CanopyTax/single-spa/issues) or [pull requests](https://github.com/CanopyTax/single-spa/pulls) for bugs you find or any new features you may want implemented. Be sure to also check out our [contributing information]().",
+        title: 'Github'
       },
     ];
 
@@ -39,7 +47,7 @@ class Help extends React.Component {
               <h2>Need help?</h2>
             </header>
             <p>This project is maintained by a dedicated group of people.</p>
-            <GridBlock contents={supportLinks} layout="threeColumn" />
+            <GridBlock contents={supportLinks} layout="fourColumn" />
           </div>
         </Container>
       </div>
