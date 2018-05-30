@@ -22,7 +22,7 @@ class Help extends React.Component {
     const supportLinks = [
       {
         content:
-          `Learn more about [single-spa] using the [official documentation](${docUrl('building-applications.html')}).`,
+          `Learn more about [single-spa](${siteConfig.baseUrl}) using the [official docs](${docUrl('building-applications.html')}).`,
         title: 'Browse Docs',
       },
       {
