@@ -30,7 +30,7 @@ class Help extends React.Component {
         title: 'Slack',
       },
       {
-        content: "You can follow and contact us on [Twitter](https://twitter.com/SpaSingle).",
+        content: "You can follow and contact us on [Twitter](https://twitter.com/Single_spa).",
         title: 'Twitter',
       },
       {
