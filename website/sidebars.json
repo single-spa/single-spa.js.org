@@ -1,9 +1,10 @@
 {
   "docs": {
     "Getting Started": [
-      "quick-start-tutorial"
+      "starting-from-scratch",
+      "migrating-tutorial"
     ],
-    "single-spa applications": [
+    "single-spa Applications": [
       "building-applications",
       "configuration",
       "separating-applications",

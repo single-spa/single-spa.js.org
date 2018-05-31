@@ -1,7 +1,7 @@
 ---
-id: quick-start-tutorial
-title: Quick Start Tutorial
-sidebar_label: Quick Start Tutorial
+id: starting-from-scratch
+title: Getting Started From Scratch
+sidebar_label: Starting from scratch
 ---
 
 A simple example of how to use webpack with [single-spa](https://github.com/joeldenning/simple-single-spa-webpack-example/blob/master/README.md). Check out the docs to learn more about single-spa itself.
