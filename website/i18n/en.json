@@ -13,6 +13,8 @@
     "Examples": "Examples",
     "migrating-existing-spas": "Migrating existing SPAs",
     "Migrating": "Migrating",
+    "quick-start-tutorial": "Quick Start Tutorial",
+    "Quick Start Tutorial": "Quick Start Tutorial",
     "separating-applications": "Separating applications",
     "Separating": "Separating",
     "configuration": "Using single-spa-config",
@@ -22,6 +24,7 @@
     "Help": "Help",
     "Blog": "Blog",
     "GitHub": "GitHub",
+    "Getting Started": "Getting Started",
     "single-spa applications": "single-spa applications"
   },
   "pages-strings": {

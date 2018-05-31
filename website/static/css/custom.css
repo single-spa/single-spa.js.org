@@ -30,6 +30,11 @@
   transform: scale(1.08);
 }
 
+input#search_input_react {
+  background-color: $accentWhite;
+  color: $primaryColor !important;
+}
+
 .headerTitle {
   color: $primaryColor;
   font-family: $mainFont;

@@ -1,5 +1,8 @@
 {
   "docs": {
+    "Getting Started": [
+      "quick-start-tutorial"
+    ],
     "single-spa applications": [
       "building-applications",
       "configuration",

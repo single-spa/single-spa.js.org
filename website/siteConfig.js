@@ -39,6 +39,7 @@ const siteConfig = {
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
     { href: "https://github.com/CanopyTax/single-spa", label: "GitHub" },
+    {search: true}
   ],
   users,
   /* path to images for header/footer */
@@ -83,7 +84,12 @@ const siteConfig = {
   stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
-  editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/'
+  editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/',
+  algolia: {
+    apiKey: 'my-api-key',
+    indexName: 'my-index-name',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
 };
 
 module.exports = siteConfig;
