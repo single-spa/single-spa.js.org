@@ -1922,6 +1922,11 @@ footer .copyright {
   transform: scale(1.08);
 }
 
+input#search_input_react {
+  background-color: #fff;
+  color: #0011FF !important;
+}
+
 .headerTitle {
   color: #0011FF;
   font-family: "Roboto", "sans-serif";
