@@ -22,5 +22,13 @@
 <p>A whole bunch of other information.</p>
 ]]></description>
         </item>
+        <item>
+            <title><![CDATA[A Case for SOA in the Browser]]></title>
+            <link>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</link>
+            <guid>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</guid>
+            <pubDate>Fri, 26 Feb 2016 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti</p>
+]]></description>
+        </item>
     </channel>
 </rss>
