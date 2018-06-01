@@ -8,10 +8,14 @@
         contributorsEl.innerHTML = `
           ${data.map(item => (
             `
-              <h2 class='contributorLogin'>
-                ${item.login}
-              </h2>
+            <div class='contributor'>
+              <a href='${item.html_url}' target='_blank' ref='noopener noreferrer'>
+                <h2 class='contributorLogin'>
+                  ${item.login}
+                </h2>
+              </a>
               <img class='contributorImg' src=${item.avatar_url} alt='${item.login} avatar' />
+            </div>  
             `
           )).join('')}      
         `
