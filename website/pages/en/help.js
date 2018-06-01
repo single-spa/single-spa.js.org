@@ -47,6 +47,7 @@ class Help extends React.Component {
               <h2>Need help?</h2>
             </header>
             <p>This project is maintained by a dedicated group of people.</p>
+            <a href="contributors.html">Link</a> 
             <GridBlock contents={supportLinks} layout="fourColumn" />
           </div>
         </Container>
