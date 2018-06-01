@@ -1,6 +1,7 @@
 const React = require('react')
 const CompLibrary = require('../../core/CompLibrary.js'); 
 const Container = CompLibrary.Container;
+const GridBlock = CompLibrary.GridBlock;
 
 class Contributors extends React.Component{
 
@@ -8,14 +9,12 @@ class Contributors extends React.Component{
     return(
       <div className="mainContainer">
         <Container padding={['bottom']}>
-          <div className="showcaseSection">
-            <div className="prose">
+            <div className="contributorWrapper">
               <h1>Contributors</h1>
               <div id="contributors"></div>
             </div>
-          </div>
         </Container>
-        </div>
+      </div>
     )
   }
 }
