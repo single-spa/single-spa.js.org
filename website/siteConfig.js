@@ -32,6 +32,7 @@ const siteConfig = {
   tagline: 'a javascript meta-framework for simplistic front-end microservices',
   url: 'https://canopytax.github.io/single-spa.js.org' /* your website url */,
   baseUrl: '/single-spa.js.org/' /* base url for your project */,
+  cname: 'single-spa.js.org',
   projectName: 'single-spa',
   headerLinks: [
     {doc: 'building-applications', label: 'Docs'},
