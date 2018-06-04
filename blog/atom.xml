@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog</id>
+    <id>https://canopytax.github.io/single-spa.js.org/blog</id>
     <title>single-spa Blog</title>
     <updated>2017-09-26T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
-    <link rel="alternate" href="https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog"/>
+    <link rel="alternate" href="https://canopytax.github.io/single-spa.js.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest single-spa news and events.</subtitle>
-    <logo>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/img/logo-white-bgblue.svg</logo>
+    <logo>https://canopytax.github.io/single-spa.js.org/img/logo-white-bgblue.svg</logo>
     <rights>Copyright © 2018 CanopyTax</rights>
     <entry>
         <title type="html"><![CDATA[Adding RSS Support]]></title>
-        <id>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2017/09/26/adding-rss.html</id>
-        <link href="https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2017/09/26/adding-rss.html">
+        <id>https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html</id>
+        <link href="https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html">
         </link>
         <updated>2017-09-26T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>This is a test post.</p>
@@ -24,8 +24,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[A step-by-step guide to single-spa]]></title>
-        <id>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</id>
-        <link href="https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html">
+        <id>https://canopytax.github.io/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</id>
+        <link href="https://canopytax.github.io/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html">
         </link>
         <updated>2016-12-16T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.</p>
@@ -38,8 +38,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[A Case for SOA in the Browser]]></title>
-        <id>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</id>
-        <link href="https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html">
+        <id>https://canopytax.github.io/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</id>
+        <link href="https://canopytax.github.io/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html">
         </link>
         <updated>2016-02-26T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti</p>
