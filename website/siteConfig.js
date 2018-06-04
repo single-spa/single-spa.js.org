@@ -30,15 +30,15 @@ const users = [
 const siteConfig = {
   title: 'single-spa' /* title for your website */,
   tagline: 'a javascript meta-framework for simplistic front-end microservices',
-  url: 'https://single-spa.js.org' /* your website url */,
-  baseUrl: '/' /* base url for your project */,
+  url: 'https://canopytax.github.io/single-spa.js.org' /* your website url */,
+  baseUrl: '/single-spa.js.org/' /* base url for your project */,
   projectName: 'single-spa',
   headerLinks: [
     {doc: 'building-applications', label: 'Docs'},
     {doc: 'api', label: 'API'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
-    {href: "https://github.com/CanopyTax/single-spa", label: "GitHub"},
+    { href: "https://github.com/CanopyTax/single-spa", label: "GitHub" },
     {search: true}
   ],
   users,
