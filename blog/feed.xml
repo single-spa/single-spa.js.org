@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>single-spa Blog</title>
-        <link>https://single-spa.js.org/blog</link>
+        <link>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog</link>
         <description>The best place to stay up-to-date with the latest single-spa news and events.</description>
         <lastBuildDate>Tue, 26 Sep 2017 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
             <title>single-spa Blog</title>
-            <url>https://single-spa.js.org/img/logo-white-bgblue.svg</url>
-            <link>https://single-spa.js.org/blog</link>
+            <url>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/img/logo-white-bgblue.svg</url>
+            <link>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog</link>
         </image>
         <copyright>Copyright © 2018 CanopyTax</copyright>
         <item>
             <title><![CDATA[Adding RSS Support]]></title>
-            <link>https://single-spa.js.org/blog/2017/09/26/adding-rss.html</link>
-            <guid>https://single-spa.js.org/blog/2017/09/26/adding-rss.html</guid>
+            <link>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2017/09/26/adding-rss.html</link>
+            <guid>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2017/09/26/adding-rss.html</guid>
             <pubDate>Tue, 26 Sep 2017 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>This is a test post.</p>
 <p>A whole bunch of other information.</p>
@@ -24,8 +24,8 @@
         </item>
         <item>
             <title><![CDATA[A step-by-step guide to single-spa]]></title>
-            <link>https://single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</link>
-            <guid>https://single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</guid>
+            <link>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</link>
+            <guid>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</guid>
             <pubDate>Fri, 16 Dec 2016 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.</p>
 <p>But using <a href="/">single-spa</a> for the first time can be tricky because</p>
@@ -33,8 +33,8 @@
         </item>
         <item>
             <title><![CDATA[A Case for SOA in the Browser]]></title>
-            <link>https://single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</link>
-            <guid>https://single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</guid>
+            <link>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</link>
+            <guid>https://canopytax.github.io/single-spa.js.org/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</guid>
             <pubDate>Fri, 26 Feb 2016 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti</p>
 ]]></description>
