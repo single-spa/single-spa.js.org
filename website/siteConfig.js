@@ -80,14 +80,14 @@ const siteConfig = {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: 'default',
   },
-  scripts: ['https://buttons.github.io/buttons.js'],
-  stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"],
+  scripts: ['https://buttons.github.io/buttons.js', 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js'],
+  stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400", "https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
   editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/',
   algolia: {
-    apiKey: 'my-api-key',
-    indexName: 'my-index-name',
+    apiKey: '113e711177d63ab1ff28ef858cbcffa5',
+    indexName: 'single_spa',
     algoliaOptions: {} // Optional, if provided by Algolia
   },
 };
