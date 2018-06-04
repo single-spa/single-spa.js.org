@@ -111,3 +111,19 @@ footer .fbOpenSource {
   background: $primaryColor;
   color: $accentWhite;
 }
+
+.contributorWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contributorWrapper h1 {
+  text-align: center !important;
+}
+
+.contributor {
+  display: inline-block;
+  margin: 0 0 0 2%;
+  width: calc(100% * (1/5) - 1px);
+}

@@ -52,11 +52,13 @@ class Footer extends React.Component {
             </a>
             <a
               href="http://stackoverflow.com/questions/tagged/single-spa"
-              target="_blank">
+              target="_blank"
+              rel='noopener'
+            >
               Stack Overflow
             </a>
-            <a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk">Chat in Slack</a>
-            <a href="https://twitter.com/" target="_blank">
+            <a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target='_blank' rel='noopener'>Chat in Slack</a>
+            <a href="https://twitter.com/" target="_blank" rel='noopener'>
               Twitter
             </a>
           </div>
@@ -67,6 +69,8 @@ class Footer extends React.Component {
             <a
               className="github-button"
               href={this.props.config.repoUrl}
+              target="_blank"
+              rel='noopener'
               data-icon="octicon-star"
               data-count-href="/CanopyTax/single-spa/stargazers"
               data-show-count={true}
@@ -80,6 +84,7 @@ class Footer extends React.Component {
         <a
           href="https://www.canopytax.com/"
           target="_blank"
+          rel='noopener'
           className="fbOpenSource">
           <img
             src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png"

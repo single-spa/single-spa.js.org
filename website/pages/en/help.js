@@ -17,6 +17,10 @@ function docUrl(doc, language) {
   return siteConfig.baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
 }
 
+function pageUrl(page, language) {
+  return siteConfig.baseUrl + (language ? language + '/' : '') + page;
+}
+
 class Help extends React.Component {
   render() {
     const supportLinks = [
@@ -39,14 +43,27 @@ class Help extends React.Component {
       },
     ];
 
+    const Contributors = props => {
+      return(
+        <div className="paddingBottom">
+          <h2>Need help?</h2>
+          <p>This project is maintained by a dedicated group of people.</p>
+          <div>
+            <a className="button" href={pageUrl('contributors.html', props.language)}>
+              {siteConfig.title} Contributors
+            </a>
+          </div>
+        </div>
+      )
+    };
+
+    let language = this.props.language || '';
+
     return (
-      <div className="docMainWrapper wrapper">
+      <div className="docMainWrapper">
         <Container className="mainContainer documentContainer postContainer">
           <div className="post">
-            <header className="postHeader">
-              <h2>Need help?</h2>
-            </header>
-            <p>This project is maintained by a dedicated group of people.</p>
+            <Contributors language={language} />
             <GridBlock contents={supportLinks} layout="fourColumn" />
           </div>
         </Container>
