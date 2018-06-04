@@ -81,6 +81,8 @@ const siteConfig = {
     // Highlight.js theme to use for syntax highlighting in code blocks
     theme: 'default',
   },
+  // Adds secondary on-page navigation for doc sub-topics
+  onPageNav: 'separate',
   scripts: ['https://buttons.github.io/buttons.js', 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js'],
   stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400", "https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"],
   // You may provide arbitrary config keys to be used as needed by your template.
