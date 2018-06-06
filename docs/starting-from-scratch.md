@@ -11,15 +11,14 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 2) Write code using a new framework, without rewriting your existing application
 3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time
 
-For this tutorial, we will be focused on creating a one code repo, one build single-spa application from scratch using React and Angular1(AngularJS) with Webpack. 
+Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](https://single-spa.js.org/docs/separating-applications.html#option-3-dynamic-module-loading) for each of your applications.
 
-It is important to note that you do not need to use webpack to use single-spa. 
-<!-- Would love some guidance here -->
-It is simply an option that ...........? 
+<!-- NOTE the links to additional tutorials will be updated as they are written -->
+If you'd like to learn how to use single-spa with Angular 2+, Vue, or other frameworks, [try these tutorials](https://github.com/CanopyTax/single-spa-examples). And if you'd rather use a different build system instead of webpack, check out [this tutorial](https://github.com/me-12/single-spa-portal-example)
 
-You can find the completed [project repo here](). Read more about [seperating applications](https://single-spa.js.org/docs/separating-applications.html) using single-spa. 
+You can find the [code for this tutorial](https://github.com/alocke12992/Single_spa_test). Read more about [separating applications](https://single-spa.js.org/docs/separating-applications.html) using single-spa. 
 
-Be sure to read through the [singe-spa docs](https://single-spa.js.org/), check out the other tutorials and the [single-spa github](https://github.com/CanopyTax/single-spa) for more info.
+Be sure to read through the [single-spa docs](https://single-spa.js.org/), check the [single-spa github](https://github.com/CanopyTax/single-spa) and the [help section](https://single-spa.js.org/help.html) for more support.
 
 ## Step One: Project Set up 
 
@@ -33,17 +32,13 @@ mkdir src
 In the root of our new project, initialize the package manager of your choice and install single-spa. For this tutorial, we will be using [yarn](https://yarnpkg.com/en/). 
 
 ```bash
-yarn init
-yarn add single-spa
+yarn init              # or npm init
+yarn add single-spa    # or npm install --save single-spa
 ```
 
 
 ### a) Set up Babel 
-In order to take advantage of the latest verion of Javascript, regardless of current browser compatability, we will use [Babel](https://babeljs.io/).
-
-Start by adding the following with your package manager: 
-
-<!-- SHOULD I Explain each of the following babel packages I am adding or just link to the docs? -->
+We will be using [Babel](https://babeljs.io/) to compile our code. Run the following command to install the necessary dependencies:
 
 ```bash
 yarn add babel-core babel-plugin-syntax-dynamic-import babel-preset-env babel-preset-latest babel-preset-react --dev
@@ -71,7 +66,7 @@ If you would like to learn more about what each of these things are doing, check
 
 ### b) Set up webpack
 
-  *Once again, it is important to note that you do not have to use webpack in order to get up an running with single-spa. Checkout the documention on [Separating application](https://single-spa.js.org/docs/separating-applications.html) to learn more about the different ways you can use single-spa for your specific build.*
+  *Once again, it is important to note that you do not have to use webpack in order to get up an running with single-spa. Checkout the documention on [Separating Applications](https://single-spa.js.org/docs/separating-applications.html) to learn more about the different ways you can use single-spa for your specific build.*
 
   Start by adding webpack, webpack plugins and loaders. 
 
@@ -90,8 +85,7 @@ yarn add clean-webpack-plugin --dev
 yarn add style-loader css-loader html-loader --dev
 ```
 
-  <!-- Should I walk through the purpose for each of the webpack plugins I am using? Or just link to the docs? -->
-  In the root directory create your `webpack.config.js` file. 
+In the root directory create your `webpack.config.js` file. 
   
 ```bash
 touch webpack.config.js
