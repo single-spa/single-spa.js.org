@@ -12,7 +12,7 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 2) Write code using a new framework, without rewriting your existing application
 3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time
 
-Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](https://single-spa.js.org/docs/separating-applications.html#option-3-dynamic-module-loading) for each of your applications.
+Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS/Angular1](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](https://single-spa.js.org/docs/separating-applications.html#option-3-dynamic-module-loading) for each of your applications.
 
 <!-- NOTE the links to additional tutorials will be updated as they are written -->
 If you'd like to learn how to use single-spa with Angular 2+, Vue, or other frameworks, [try these tutorials](https://github.com/CanopyTax/single-spa-examples). And if you'd rather use a different build system instead of webpack, check out [this tutorial](https://github.com/me-12/single-spa-portal-example)
@@ -195,7 +195,7 @@ For this project we will be creating the following micro-applications:
 
 2. Home - *This will be a React app*
 
-3. Gifs - *This will be an Angular1 app*
+3. Angular1 - *This will be an AngularJS app*
 
 In `index.html` add the following:
 
@@ -226,7 +226,7 @@ Additionally, to get single-spa connected, we will need to include a script tag 
     <!-- single-spa apps -->
     <div id="navBar"></div>
     <div id="home"></div>
-    <div id="gifs"></div>
+    <div id="angular1"></div>
 
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -459,12 +459,12 @@ Creating and registering our NavBar applicaiton will be very similar to the proc
 Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa-config.js` file:
 
 ```js
-// root-application/single-spa-config.js
+// src/root-application/single-spa-config.js
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 registerApplication('navBar', () => import ('../navBar/navBar.app.js'), activityFunction);
+registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 
 start();
 ```
@@ -477,8 +477,8 @@ Since we want our navBar to persist regardless of any other mounted SPAs, we wil
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 registerApplication('navBar', () => import ('../navBar/navBar.app.js'), () => true);
+registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 
 start();
 ```
@@ -547,8 +547,8 @@ class NavBar extends React.Component{
         <div className="nav-wrapper">
           <a className="brand-logo">single-spa</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><a>React</a></li>
-            <li><a>AngularJS</a></li>
+            <li><a>Home</a></li>
+            <li><a>Gifs</a></li>
           </ul>
         </div>
       </nav>
@@ -567,6 +567,8 @@ utility function for convenience.
 To use the function, we simply need to import it and call it with a click event, passing in each Application's url (as designated by the activityFunction set in `single-spa.config.js`) as a string.
 
 ```js
+// src/navBar/root.component.js
+
 import React from 'react'
 import {navigateToUrl} from 'single-spa'
 
@@ -575,9 +577,9 @@ const NavBar = () => (
     <div className="nav-wrapper">
       <a onClick={() => navigateToUrl('/')} className="brand-logo">single-spa</a>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a onClick={() => navigateToUrl('/')}>React</a></li>
-        {/* Note that we still need to build our Angular App before this link will work */}
-        <li><a onClick={() => navigateToUrl('/angularJs')}>AngularJs</a></li>
+        <li><a onClick={() => navigateToUrl('/')}>Home</a></li>
+        {/* Note that we still need to build our AngularJS App before this link will work */}
+        <li><a onClick={() => navigateToUrl('/angular1')}>Angular1</a></li>
       </ul>
     </div>
   </nav>
@@ -587,3 +589,243 @@ export default NavBar
 ```
 
 ## Step Six: Create an AngularJS app
+
+### a) Install Dependencies
+
+To demonstrate routing within a specific SPA, our AngularJS application will make use of `angular-ui-router`.
+
+Using your package manager, add `angular`, `angular-ui-router`, and the sinlge-spa AngularJS helper [single-spa-angular1](https://single-spa.js.org/docs/ecosystem.html).
+
+Run the following command to install the necessary dependencies:
+
+```bash
+yarn add angular angular-ui-router single-spa-angular1
+```
+
+### b) Register the Application
+
+Just as we did for the Home and NavBar applications, we start by registering the Angular SPA in `src/root-application/single-spa.config.js`
+
+```js
+// src/root-application/single-spa.config.js
+
+import {registerApplication, start} from 'single-spa';
+
+registerApplication('navBar', () => import ('../navBar/navBar.app.js'), () => true);
+registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('angular1', () => import ('../angular1/angular1.app.js'), activityFunction);
+
+start();
+```
+
+Instead of hard coding the activityFunction, we will create a function that will allow us to dynamically add new SPAs in the future. To do this, write a function that takes a path prefix as string and returns a location whose path name starts with the provided prefix.
+
+```js
+// src/root-application/single-spa.config.js
+
+import {registerApplication, start} from 'single-spa';
+
+registerApplication('navBar', () => import ('../navBar/navBar.app.js'), () => true);
+registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('angular1', () => import ('../angular1/angular1.app.js'), pathPrefix('/angular1'));
+
+start();
+
+function pathPrefix(prefix) {
+    return function(location) {
+        return location.pathname.startsWith(`${prefix}`);
+    }
+}
+```
+
+Don't forget to include the new application in our root html by adding the following:
+
+```html
+<!-- index.html -->
+<div id='angular1'></div>
+```
+
+With the application registed, we can create a new folder in the src directory to contain the Angular1 application files.
+
+From the root directory:
+
+```bash
+mkdir src/angular1
+cd src/angular1
+touch angular1.app.js root.component.js routes.js app.module.js gifs.component.js gifs.template.html
+```
+
+### c) Set up the Application Lifecycles
+
+Within the single-spa ecosystem there is a growing number of projects that help you bootstrap, mount, and unmount your applications that are written with popular frameworks. In this case we will use single-spa-angular1 to take advantage of the generic lifecycle hooks. Learn more about the various [options](https://github.com/CanopyTax/single-spa-angular1#options) single-spa-angular1 offers.
+
+Just as we did for our home and navBar components, set up the lifecycle hooks for the AngularJS SPA in the `angular1.app.js` file.
+
+```js
+// src/angular1/angular1.app.js
+
+import singleSpaAngular1 from 'single-spa-angular1';
+import angular from 'angular';
+import './app.module.js'
+import './routes.js';
+
+
+const angularLifecycles = singleSpaAngular1({
+  angular,
+  domElementGetter,
+  mainAngularModule: 'angularJS-app',
+  uiRouter: true,
+  preserveGlobal: false,
+})
+
+export const bootstrap = [
+  angularLifecycles.bootstrap,
+];
+
+export const mount = [
+  angularLifecycles.mount,
+];
+
+export const unmount = [
+  angularLifecycles.unmount,
+];
+
+const domElementGetter = () => document.getElementById('angular1');
+```
+
+### d) Set up the AngularJS Application
+
+Now that we have registered our application and set up the lifecycle methods pointing to our main angular module, we can begin to build the application. 
+
+To start, we will build the root.component.js which will set the root of our application using a template html file.
+
+*root.component.js*
+
+```js
+// src/angular1/root.component.js
+import angular from 'angular';
+import template from './root.template.html';
+
+angular
+.module('angularJS-app')
+.component('root', {
+  template,
+})
+```
+
+*root.template.html*
+
+```html
+<!-- src/angular1/root.component.html -->
+<div ng-style='vm.styles'>
+  <div class="container">
+    <div class="row">
+      <h4 class="light">
+        Angular 1 example
+      </h4>
+      <p class="caption">
+        This is a sample application written with Angular 1.5 and angular-ui-router.
+      </p>
+    </div>
+    <div>
+    <!-- These Routes will be set up in the routes.js file -->
+      <a class="waves-effect waves-light btn-large" href="/angular1/gifs" style="margin-right: 10px">
+        Show me cat gifs
+      </a>
+      <a class="waves-effect waves-light btn-large" href="/angular1" style="margin-right: 10px">
+        Take me home
+      </a>
+    </div>
+    <div class="row">
+      <ui-view />
+    </div>
+  </div>
+</div>
+```
+
+Next we will build the Gif Component, which can be access from the AngularJS root component.
+
+*gif.component.js*
+
+```js
+// src/angular1/gifs.component.js
+import angular from 'angular';
+import template from './gifs.template.html';
+
+angular
+  .module('cat-gif-app')
+  .component('gifs', {
+    template,
+    controllerAs: 'vm',
+    controller($http) {
+      const vm = this;
+
+      $http
+        .get('https://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC')
+        .then(response => {
+          vm.gifs = response.data.data;
+        })
+        .catch(err => {
+          setTimeout(() => {
+            throw err;
+          }, 0)
+        });
+    },
+  });
+```
+
+*gif.component.html*
+
+```html
+<!-- src/angular1/gifs.component.html -->
+
+<div style="padding-top: 20px">
+  <h4 class="light">
+    Cat Gifs gifs
+  </h4>
+  <p>
+  </p>
+  <div ng-repeat="gif in vm.gifs" style="margin: 5px;">
+    <img ng-src="{{gif.images.downsized_medium.url}}" class="col l3">
+  </div>
+</div>
+```
+
+### e) Set up in app routing
+
+Now that we have each of our components built out, all we have left to do is connect them. We will do this by importing both into the `routes.js` file.
+
+```js
+// src/angular1/routes.js
+
+import angular from 'angular';
+import './root.component.js';
+import './gifs.component.js';
+
+angular
+.module('cat-gif-app')
+.config(($stateProvider, $locationProvider) => {
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false,
+  });
+
+  $stateProvider
+  .state('root', {
+    url: '/angular1',
+    template: '<root />',
+  })
+
+  .state('root.gifs', {
+    url: '/gifs',
+    template: '<gifs />',
+  })
+});
+```
+
+# And That’s It
+
+In your root directiory run `yarn watch` to check out your new single-spa project.
+
+Hopefully, this gives you a solid idea of how to build and implement micro frontends using single-spa. If you still have questions about how to use single-spa with your specific build, start with the [migrating existing application](https://single-spa.js.org/docs/migrating-tutorial.html) tutorial.
