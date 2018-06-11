@@ -10,14 +10,14 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 
 1) Use multiple frameworks on the same page. [see the single-spa ecosystem for more info](https://single-spa.js.org/docs/ecosystem.html#docsNav)
 2) Write code using a new framework, without rewriting your existing application
-3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time
+3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time.
 
 Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS/Angular1](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](https://single-spa.js.org/docs/separating-applications.html#option-3-dynamic-module-loading) for each of your applications.
 
 <!-- NOTE the links to additional tutorials will be updated as they are written -->
 If you'd like to learn how to use single-spa with Angular 2+, Vue, or other frameworks, [try these tutorials](https://github.com/CanopyTax/single-spa-examples). And if you'd rather use a different build system instead of webpack, check out [this tutorial](https://github.com/me-12/single-spa-portal-example)
 
-You can find the [code for this tutorial](https://github.com/alocke12992/Single_spa_test). Read more about [separating applications](https://single-spa.js.org/docs/separating-applications.html) using single-spa.
+You can find the [code for this tutorial](https://github.com/alocke12992/single-spa-simple-example). Read more about [separating applications](https://single-spa.js.org/docs/separating-applications.html) using single-spa.
 
 Be sure to read through the [single-spa docs](https://single-spa.js.org/), check the [single-spa github](https://github.com/CanopyTax/single-spa) and the [help section](https://single-spa.js.org/help.html) for more support.
 
@@ -37,7 +37,7 @@ yarn init              # or npm init
 yarn add single-spa    # or npm install --save single-spa
 ```
 
-### a) Set up Babel
+### a) Setup Babel
 
 We will be using [Babel](https://babeljs.io/) to compile our code. Run the following command to install the necessary dependencies:
 
@@ -66,9 +66,9 @@ Then, in your root directory create a `.babelrc` file and include the following:
 
 If you would like to learn more about what each of these things are doing, check out the [Babel docs](https://babeljs.io/docs/setup/).
 
-### b) Set up webpack
+### b) Setup webpack
 
-*Once again, it is important to note that you do not have to use webpack in order to get up an running with single-spa. Checkout the documention on [Separating Applications](https://single-spa.js.org/docs/separating-applications.html) to learn more about the different ways you can use single-spa for your specific build.*
+*Once again, it is important to note that you do not have to use webpack in order to get up and running with single-spa. Checkout the documention on [Separating Applications](https://single-spa.js.org/docs/separating-applications.html) to learn more about the different ways you can use single-spa for your specific build.*
 
 Start by adding webpack, webpack plugins and loaders.
 
@@ -90,7 +90,7 @@ yarn add clean-webpack-plugin --dev
 *Webpack Loaders*
 
 ```bash
-yarn add style-loader css-loader html-loader --dev
+yarn add style-loader css-loader html-loader babel-loader --dev
 ```
 
 * [html-Loader](https://webpack.js.org/loaders/html-loader/)
@@ -174,6 +174,18 @@ module.exports = {
 };
 ```
 
+### c) Modify the package.json
+
+The last step in our project set up is to include a couple scrips in our package.json so we can take advantage of the webpack-dev-server. Add the following to your package.json:
+
+```js
+//package.json
+"scripts": {
+  "start": "webpack-dev-server --open",
+  "build": "webpack --config webpack.config.js -p"
+},
+```
+
 ## Step Two: Create the master html file
 
 The next step is to create what single-spa calls your “root application.” Really your root application is just the stuff that initializes single-spa, and it starts with an html file.
@@ -204,13 +216,13 @@ In `index.html` add the following:
 <body>
   <div id="navBar"></div>
   <div id="home"></div>
-  <div id="gifs"></div>
+  <div id="angular1"></div>
 </body>
 ```
 
 ### b) include scripts and stylesheets
 
-For styling, we will be using the [Materialize-css](https://materializecss.com/) framework. To use Materialize we need to include styles and scripts in the root `index.html` file. This will allow all of our seperate applications to access the Materialize library.
+For styling, we will be using the [Materialize-css](https://materializecss.com/) framework. To use Materialize we need to include styles and scripts in the root `index.html` file. This will allow all of our separate applications to access the Materialize library.
 
 Additionally, to get single-spa connected, we will need to include a script tag connecting the html file to the [root-application](https://single-spa.js.org/docs/configuration.html#indexhtml-file) via `single-spa.config.js` file (we will be building this in the next step).
 
@@ -244,12 +256,12 @@ Additionally, to get single-spa connected, we will need to include a script tag 
   
   As you saw earlier, we have already set up webpack and our master html file to look for registration inside of the single spa config. This will allow hierarchy to be maintained between the applications.
 
-  From the root directory, create a new folder called `root-application` then create your `single-spa-config.js` file.
+  Inside of the `src` folder, create a new folder called `root-application` then create your `single-spa-config.js` file.
 
   ```bash
   # from the root directory
-  mkdir root-application
-  touch root-application/single-spa-config.js
+  mkdir src/root-application
+  touch src/root-application/single-spa-config.js
   ```
 
   Now that we have our single-spa-config.js file, we can begin to register applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
@@ -263,7 +275,7 @@ Additionally, to get single-spa connected, we will need to include a script tag 
 
   The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the [start()](https://single-spa.js.org/docs/configuration.html#calling-singlespastart) api here.
 
-With our functions imported, we can now register an application with single-spa and call `start()`. Lets start by creating a 'home' application.
+With our functions imported, we can now register an application with single-spa and call `start()`. Let's start by creating a 'home' application.
 
 ```js
 // single-spa-config.js
@@ -271,7 +283,7 @@ import {registerApplication, start} from 'single-spa'
 
 registerApplication(
   // Name of our single-spa application
-  'home', 
+  'home',
   // Our loading function
   loadingFunction,
   // Our activity function
@@ -281,7 +293,8 @@ registerApplication(
   start()
 ```
 
-The third argument to registerApplication, `activityFunction`, must be a pure function. The function is provided window.location as the first argument, and returns a truthy value whenever the application should be active. Most commonly, the activity function determines if an application is active by looking at window.location/the first param.
+The third argument to `registerApplication()`, `activityFunction`, must be a pure function. The function is provided window.location as the first argument, and returns a truthy value whenever the application should be active. Most commonly, the activity function determines if an application is active by looking at window.location/the first param.
+
 Since `home` will be our root component, we can set the `activityFunction` to be our root path.
 
 ```js
@@ -304,13 +317,13 @@ registerApplication(
 
 ### a) Folder setup
 
-We will be using React to create the home component. Using your package manager, add `react`, `react-dom`, and the sinlge-spa React helper [single-spa-react](https://single-spa.js.org/docs/ecosystem.html).
+We will be using React to create the home component. Using your package manager, add `react`, `react-dom`, and the single-spa React helper [single-spa-react](https://single-spa.js.org/docs/ecosystem.html).
 
 ```bash
 yarn add react react-dom single-spa-react
 ```
 
-At the beginning of the tutorial we created a `src` folder to house all of our applications. It is this folder that we will house each of our seperate applications. These app folders will each contain an application file to control the bootstrap, mount and unmount functions and a `root` component. Read more about the [registered application lifecycle](https://single-spa.js.org/docs/building-applications.html#registered-application-lifecycle).
+At the beginning of the tutorial we created a `src` folder to house all of our applications. It is this folder that will house each of our separate applications. These app folders will each contain an application file to control the bootstrap, mount and unmount functions and a `root` component. Read more about the [registered application lifecycle](https://single-spa.js.org/docs/building-applications.html#registered-application-lifecycle).
 
 Start by adding a `home` folder inside of our `src` directory to house our home application. Then inside of `home` we will create two files: `home.app.js` and `root.component.js`.
 
@@ -340,7 +353,7 @@ Your file tree should look like this:
 
 ### b) Application lifecycles
 
-Since we have registered our applicaiton, single-spa will be listening for the `home` app to bootstrap and mount. We will set this up in `home.app.js`.
+Since we have registered our application, single-spa will be listening for the `home` app to bootstrap and mount. We will set this up in `home.app.js`.
 
 We start by importing our dependencies and, using [single-spa-react](https://github.com/CanopyTax/single-spa-react), we can use the generic React lifecycle hooks.
 
@@ -363,7 +376,7 @@ const reactLifecycles = singleSpaReact({
 })
 ```
 
-With our imports estaplished, we can create the required lifecycle functions: 
+With our imports established, we can create the required lifecycle functions:
 
 ```js
 // home.app.js
@@ -422,7 +435,7 @@ export default Home
 
 ### d) Connect to the root application
 
-Head back to the root-application folder and in single-spa-config.js we need to add a [loading function](https://single-spa.js.org/docs/configuration.html#loading-function) for our new home app.
+Head back to the root-application folder and in single-spa-config.js add a [loading function](https://single-spa.js.org/docs/configuration.html#loading-function) for our new home app.
 With [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed.
 
 ```js
@@ -433,10 +446,10 @@ import {registerApplication, start} from 'single-spa'
 registerApplication(
   // Name of our single-spa application
   'home',
-  // Our loading function 
+  // Our loading function
   () => import('../home/home.app.js'),
   // Our activity function
-  () => location.pathname === "" || location.pathname === "/")
+  () => location.pathname === "" || location.pathname === "/"
 );
 
 start()
@@ -447,14 +460,14 @@ We are now ready to test out our first application.
 From the root directory, start the project by running the following:
 
 ```bash
-yarn watch
+yarn start
 ```
 
 ## Step Five: Create a NavBar
 
 ### a) Register the Application
 
-Creating and registering our NavBar applicaiton will be very similar to the process we used to create our `home` app. Refer back to [Step Three](https://single-spa.js.org/docs/starting-from-scratch.html#step-three-registering-an-app) for a more detailed explination on how to register an application.
+Creating and registering our NavBar application will be very similar to the process we used to create our `home` app. Refer back to [Step Three](https://single-spa.js.org/docs/starting-from-scratch.html#step-three-registering-an-app) for a more detailed explanation on how to register an application.
 
 Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa-config.js` file:
 
@@ -496,7 +509,7 @@ touch src/navBar/navBar.app.js src/navBar/root.component.js
 
 ### b) Set up the NavBar lifecycles
 
-In `navbar.app.js` add the following application lifecycles. Refer back to [Step Four](https://single-spa.js.org/docs/starting-from-scratch.html#b-application-lifecycles) for a more detailed explination.
+In `navbar.app.js` add the following application lifecycles. Refer back to [Step Four](https://single-spa.js.org/docs/starting-from-scratch.html#b-application-lifecycles) for a more detailed explanation.
 
 ```js
 // src/navBar/navBar.app.js
@@ -526,7 +539,7 @@ export const unmount = [
 ];
 
 function domElementGetter() {
-  return document.getElementById("navbar")
+  return document.getElementById("navBar")
 }
 ```
 
@@ -548,7 +561,7 @@ class NavBar extends React.Component{
           <a className="brand-logo">single-spa</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><a>Home</a></li>
-            <li><a>Gifs</a></li>
+            <li><a>Angular1</a></li>
           </ul>
         </div>
       </nav>
@@ -561,7 +574,7 @@ export default NavBar
 
 ### d) Set up navigation
 
-With single-spa, there are a number of options that will allow us to navigate between our seperate SPAs. One method would be to include a `pushState()` function which will call the specified application's [activity function](https://single-spa.js.org/docs/configuration.html#activity-function). Alternatively, we can use the single-spa [navigateToUrl()](https://single-spa.js.org/docs/api.html#navigatetourl)
+With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. One method would be to include a `pushState()` function which will call the specified application's [activity function](https://single-spa.js.org/docs/configuration.html#activity-function). Alternatively, we can use the single-spa [navigateToUrl()](https://single-spa.js.org/docs/api.html#navigatetourl)
 utility function for convenience.
 
 To use the function, we simply need to import it and call it with a click event, passing in each Application's url (as designated by the activityFunction set in `single-spa.config.js`) as a string.
@@ -594,7 +607,7 @@ export default NavBar
 
 To demonstrate routing within a specific SPA, our AngularJS application will make use of `angular-ui-router`.
 
-Using your package manager, add `angular`, `angular-ui-router`, and the sinlge-spa AngularJS helper [single-spa-angular1](https://single-spa.js.org/docs/ecosystem.html).
+Using your package manager, add `angular`, `angular-ui-router`, and the single-spa AngularJS helper [single-spa-angular1](https://single-spa.js.org/docs/ecosystem.html).
 
 Run the following command to install the necessary dependencies:
 
@@ -645,14 +658,14 @@ Don't forget to include the new application in our root html by adding the follo
 <div id='angular1'></div>
 ```
 
-With the application registed, we can create a new folder in the src directory to contain the Angular1 application files.
+With the application registered, we can create a new folder in the src directory to contain the Angular1 application files.
 
 From the root directory:
 
 ```bash
 mkdir src/angular1
 cd src/angular1
-touch angular1.app.js root.component.js routes.js app.module.js gifs.component.js gifs.template.html
+touch angular1.app.js root.component.js root.template.html routes.js app.module.js gifs.component.js gifs.template.html
 ```
 
 ### c) Set up the Application Lifecycles
@@ -669,6 +682,8 @@ import angular from 'angular';
 import './app.module.js'
 import './routes.js';
 
+// domElementGetter is required by single-spa-angular1
+const domElementGetter = () => document.getElementById('angular1');
 
 const angularLifecycles = singleSpaAngular1({
   angular,
@@ -689,15 +704,23 @@ export const mount = [
 export const unmount = [
   angularLifecycles.unmount,
 ];
-
-const domElementGetter = () => document.getElementById('angular1');
 ```
 
 ### d) Set up the AngularJS Application
 
-Now that we have registered our application and set up the lifecycle methods pointing to our main angular module, we can begin to build the application. 
+Now that we have registered our application and set up the lifecycle methods pointing to our main angular module, we can begin to build the application.
 
-To start, we will build the root.component.js which will set the root of our application using a template html file.
+To start, we will build the app module followed by root.component.js which will set the root of our application using a template html file.
+
+*app.module.js*
+```js
+// src/angular1/app.module.js
+import angular from 'angular';
+import 'angular-ui-router';
+
+angular
+.module('angularJS-app', ['ui.router']);
+```
 
 *root.component.js*
 
@@ -716,7 +739,7 @@ angular
 *root.template.html*
 
 ```html
-<!-- src/angular1/root.component.html -->
+<!-- src/angular1/root.template.html -->
 <div ng-style='vm.styles'>
   <div class="container">
     <div class="row">
@@ -753,7 +776,7 @@ import angular from 'angular';
 import template from './gifs.template.html';
 
 angular
-  .module('cat-gif-app')
+  .module('angularJS-app')
   .component('gifs', {
     template,
     controllerAs: 'vm',
@@ -774,10 +797,10 @@ angular
   });
 ```
 
-*gif.component.html*
+*gif.template.html*
 
 ```html
-<!-- src/angular1/gifs.component.html -->
+<!-- src/angular1/gifs.template.html -->
 
 <div style="padding-top: 20px">
   <h4 class="light">
@@ -791,7 +814,7 @@ angular
 </div>
 ```
 
-### e) Set up in app routing
+### e) Set up in-app routing
 
 Now that we have each of our components built out, all we have left to do is connect them. We will do this by importing both into the `routes.js` file.
 
@@ -803,7 +826,7 @@ import './root.component.js';
 import './gifs.component.js';
 
 angular
-.module('cat-gif-app')
+.module('angularJS-app')
 .config(($stateProvider, $locationProvider) => {
 
   $locationProvider.html5Mode({
@@ -826,6 +849,6 @@ angular
 
 # And That’s It
 
-In your root directiory run `yarn watch` to check out your new single-spa project.
+In your root directory run `yarn start` to check out your new single-spa project.
 
 Hopefully, this gives you a solid idea of how to build and implement micro frontends using single-spa. If you still have questions about how to use single-spa with your specific build, start with the [migrating existing application](https://single-spa.js.org/docs/migrating-tutorial.html) tutorial.
