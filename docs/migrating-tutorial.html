@@ -1,10 +1,395 @@
-<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Migrating an Existing Project · single-spa</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Migrating an Existing Project · single-spa"/><meta property="og:type" content="website"/><meta property="og:url" content="https://canopytax.github.io/single-spa.js.org/index.html"/><meta property="og:description" content="a javascript meta-framework for simplistic front-end microservices"/><link rel="shortcut icon" href="/img/logo-blue-favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://canopytax.github.io/single-spa.js.org/blog/atom.xml" title="single-spa Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://canopytax.github.io/single-spa.js.org/blog/feed.xml" title="single-spa Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script type="text/javascript" src="/js/index.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-white-bgblue.svg" alt="single-spa"/><h2 class="headerTitle">single-spa</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/building-applications.html" target="_self">Docs</a></li><li class=""><a href="/docs/api.html" target="_self">API</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><li class=""><a href="https://github.com/CanopyTax/single-spa" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting Started</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/starting-from-scratch.html">Starting from scratch</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/migrating-tutorial.html">Migrating an Existing Project</a></li></ul></div><div class="navGroup navGroupActive"><h3>single-spa Applications</h3><ul><li class="navListItem"><a class="navItem" href="/docs/building-applications.html">Building</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration.html">Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/separating-applications.html">Separating</a></li><li class="navListItem"><a class="navItem" href="/docs/migrating-existing-spas.html">Migrating</a></li></ul></div><div class="navGroup navGroupActive"><h3>Examples</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>Ecosystem</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ecosystem.html">Ecosystem</a></li></ul></div></div></section></div><script>
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Migrating an Existing Project · single-spa</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Migrating an Existing Project · single-spa"/><meta property="og:type" content="website"/><meta property="og:url" content="https://canopytax.github.io/single-spa.js.org/index.html"/><meta property="og:description" content="# Project Overview"/><link rel="shortcut icon" href="/img/logo-blue-favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://canopytax.github.io/single-spa.js.org/blog/atom.xml" title="single-spa Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://canopytax.github.io/single-spa.js.org/blog/feed.xml" title="single-spa Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script type="text/javascript" src="/js/index.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-white-bgblue.svg" alt="single-spa"/><h2 class="headerTitle">single-spa</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/building-applications.html" target="_self">Docs</a></li><li class=""><a href="/docs/api.html" target="_self">API</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><li class=""><a href="https://github.com/CanopyTax/single-spa" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting Started</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/starting-from-scratch.html">Starting from scratch</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/migrating-tutorial.html">Migrating an Existing Project</a></li></ul></div><div class="navGroup navGroupActive"><h3>single-spa Applications</h3><ul><li class="navListItem"><a class="navItem" href="/docs/building-applications.html">Building</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration.html">Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/separating-applications.html">Separating</a></li><li class="navListItem"><a class="navItem" href="/docs/migrating-existing-spas.html">Migrating</a></li></ul></div><div class="navGroup navGroupActive"><h3>Examples</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>Ecosystem</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ecosystem.html">Ecosystem</a></li></ul></div></div></section></div><script>
           var toggler = document.getElementById('navToggler');
           var nav = document.getElementById('docsNav');
           toggler.onclick = function() {
             nav.classList.toggle('docsSliderActive');
           };
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/migrating-tutorial.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Migrating an Existing Project</h1></header><article><div><span></span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="starting-from-scratch.html">← Starting From Scratch</a><a class="docs-next button" href="building-applications.html">Building single-spa applications →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/building-applications.html">Getting Started</a><a href="/docs/en/examples.html">Examples</a><a href="/docs/en/api.html">API Reference</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank" rel="noopener">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target="_blank" rel="noopener">Chat in Slack</a><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" target="_blank" rel="noopener" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://www.canopytax.com/" target="_blank" rel="noopener" class="fbOpenSource"><img src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">Copyright © 2018 CanopyTax</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/migrating-tutorial.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Migrating an Existing Project</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="project-overview"></a><a href="#project-overview" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Project Overview</h1>
+<p>single-spa allows you to build micro frontends that coexist and can each be written with their own framework. This will allow you and your team to:</p>
+<ol>
+<li><p>Use multiple frameworks on the same page. see the single-spa ecosystem for more info</p></li>
+<li><p>Write code using a new framework, without rewriting your existing application</p></li>
+<li><p>Lazy load code for improved initial load time.</p></li>
+</ol>
+<p>Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on taking existing applications and converting them into a single-spa web application using a single code repository. It is also possible to have <a href="https://single-spa.js.org/docs/separating-applications.html#option-3-dynamic-module-loading">separate code repositories</a> for each of your applications.</p>
+<p>If you'd like to learn how to build a single-spa web application from scratch, check out <a href="https://single-spa.js.org/docs/starting-from-scratch.html">this tutorial</a>. If you'd like to learn how to use single-spa with Angular 2+, Vue, or other frameworks, <a href="https://github.com/CanopyTax/single-spa-examples">try these tutorials</a>.</p>
+<p>Since this tutorial will be covering how to migrate existing applications, we have created a repository containing the applications we will be converting. You can find the code needed to follow along <a href="https://github.com/alocke12992/migrating-to-single-spa-starter">here</a>. You can find the completed <a href="https://github.com/alocke12992/single-spa-migration-tutorial">code for this tutorial here</a>. Read more about <a href="https://single-spa.js.org/docs/separating-applications.html">separating applications</a> using single-spa.</p>
+<p>Be sure to read through the <a href="https://single-spa.js.org/">single-spa docs</a>, check the <a href="https://github.com/CanopyTax/single-spa">single-spa github</a> and the <a href="https://single-spa.js.org/help.html">help section</a> for more support.</p>
+<h2><a class="anchor" aria-hidden="true" id="project-setup"></a><a href="#project-setup" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Project Setup</h2>
+<p>Get started by typing the following command into your terminal:</p>
+<pre><code class="hljs css bash">git <span class="hljs-built_in">clone</span> git@github.com:alocke12992/migrating-to-single-spa-starter.git
+<span class="hljs-built_in">cd</span> migrating-to-single-spa-starter
+yarn
+</code></pre>
+<p>Regardless of how your current project is set up, we recommend having a root folder that will contain each of your existing applications. You will find we already have Four React applications ready for us to use all housed in our main folder.</p>
+<ol>
+<li>NavBar - An app that controls routing between our SPAs using the single-spa <a href="https://single-spa.js.org/docs/api.html#navigatetourl">navigateToUrl()</a> api.</li>
+<li>Home - A simple React application we will use as our landing page.</li>
+<li><a href="https://github.com/alik0211/pokedex">Pokedex</a> - A list of Pokemon you can live search using React, ReactDOM, Redux and Redux-Thunk.</li>
+<li><a href="https://github.com/ReactTraining/react-router/tree/master/examples/huge-apps">Huge Apps</a> - This is the react-router <code>huge-apps</code> example application.</li>
+</ol>
+<p>If you would like to read more about how we built the <code>NavBar</code> app, check out the <a href="https://single-spa.js.org/docs/starting-from-scratch.html#step-five-create-a-navbar">getting started from scratch</a> tutorial. It is important to note that this tutorial will not cover building the <code>NavBar</code> or <code>Home</code> apps, since we covered the build for both in the <a href="https://single-spa.js.org/docs/starting-from-scratch.html">Getting Started From Scratch</a> tutorial. Check out the <a href="https://single-spa.js.org/docs/starting-from-scratch.html#step-five-create-a-navbar">NavBar build here</a> and the <a href="https://single-spa.js.org/docs/starting-from-scratch.html#step-four-create-the-home-application">Home build here</a>.</p>
+<p>Notice we have also included a <code>.babelrc</code> and a <code>webpack.config.js</code> file. This is not required to migrate to a single-spa web applicaiton.</p>
+<h2><a class="anchor" aria-hidden="true" id="step-one-create-the-root-application"></a><a href="#step-one-create-the-root-application" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step One: Create the Root Application</h2>
+<p>The first step is to create what single-spa calls your “root application.” Really your root application is just the stuff that initializes single-spa, and it starts with an html file.</p>
+<p>You’ll want to keep your root application as small as possible, since it’s sort of the master controller of everything and could become a bottleneck. You don’t want to be constantly changing both the root application and the child applications.</p>
+<h3><a class="anchor" aria-hidden="true" id="a-create-a-master-html"></a><a href="#a-create-a-master-html" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a) Create a master html</h3>
+<p>In your root directory, create a master html file.</p>
+<pre><code class="hljs css bash">touch index.html
+</code></pre>
+<p>In order to register two or more applications simultaneously, we need to create a <code>&lt;div id=&quot;app-name&quot;&gt;&lt;/div&gt;</code> for each application. This ensures that they never try to modify the same DOM at the same time. For this project we will be creating a <code>&lt;div&gt;</code> for the four SPAs we will be migrating in this tutorial.</p>
+<p>In <code>index.html</code> add the following:</p>
+<pre><code class="hljs css html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"navbar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"home"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pokedex"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"huge_apps"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="b-include-global-scripts-and-stylesheets"></a><a href="#b-include-global-scripts-and-stylesheets" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>b) Include global scripts and stylesheets</h3>
+<p>For this tutorial we will be using the <a href="https://materializecss.com/">Materialize-css</a> framework. To use Materialize across all of our SPAs we need to include styles and scripts in the root <code>index.html</code> file. This will allow all of our separate applications to access the Materialize library.</p>
+<p>Additionally, to get single-spa connected, we will need to include a script tag connecting the html file to the <a href="https://single-spa.js.org/docs/configuration.html#indexhtml-file">root-application</a> via a <code>single-spa.config.js</code> file (we will be building this in the next step).</p>
+<pre><code class="hljs css html"><span class="hljs-comment">&lt;!-- index.html --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Materialize CSS --&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://fonts.googleapis.com/icon?family=Material+Icons"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- single-spa apps --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"navbar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"home"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pokedex"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"huge_apps"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Jquery --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Materialize --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- connect to the single-spa config file --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/dist/single-spa.config.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="step-two-register-the-applications"></a><a href="#step-two-register-the-applications" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step Two: Register the Applications</h2>
+<p>It is required to register your applications with single-spa. This enables single-spa to know how and when to initiate, load, mount and unmount an application.</p>
+<h3><a class="anchor" aria-hidden="true" id="a-create-a-config-file"></a><a href="#a-create-a-config-file" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a) Create a config file</h3>
+<p>If you take a look at the <code>webpack.config.js</code> file, you will notice we have already set up webpack to look for registration inside of a single spa config. This will allow hierarchy to be maintained between the applications.</p>
+<p>Inside of the root directory create a <code>single-spa-config.js</code> file.</p>
+<pre><code class="hljs css bash"><span class="hljs-comment"># from the root directory</span>
+touch single-spa-config.js
+</code></pre>
+<p>Now that we have our single-spa-config.js file, we can begin to register applications. In order to register an application with single-spa we call the <code>registerApplication()</code> api and include the application <code>name</code>, a <code>loadingFunction</code> and an <code>activityFunction</code>.</p>
+<p>In <code>single-spa-config.js</code>, start by importing the <code>registerApplication</code> and <code>start</code> functions.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+</code></pre>
+<p>The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the <a href="https://single-spa.js.org/docs/configuration.html#calling-singlespastart">start()</a> api here.</p>
+<h3><a class="anchor" aria-hidden="true" id="b-register-the-root-application"></a><a href="#b-register-the-root-application" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>b) Register the root application</h3>
+<p>With our functions imported, we can now register an application with single-spa and call <code>start()</code>. Let's start by creating adding the 'Home' application.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
+
+registerApplication(
+  <span class="hljs-comment">// Name of our single-spa application</span>
+  <span class="hljs-string">'home'</span>,
+  <span class="hljs-comment">// Our loading function</span>
+  loadingFunction,
+  <span class="hljs-comment">// Our activity function</span>
+  activityFunction
+  );
+
+  start()
+</code></pre>
+<p>The second argument to <code>registerApplication()</code>, the <a href="https://single-spa.js.org/docs/configuration.html#loading-function">loading function</a>, must be a function that returns a promise (or an <a href="https://ponyfoo.com/articles/understanding-javascript-async-await">&quot;async function&quot;</a>). The function will be called with no arguments when it's time to load the application for the first time. The returned promise must be resolved with the application. The most common implementation of a loading function is an import call: <code>() =&gt; import('/path/to/application.js')</code></p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
+
+registerApplication(
+  <span class="hljs-comment">// Name of our single-spa application</span>
+  <span class="hljs-string">'home'</span>,
+  <span class="hljs-comment">// Our loading function which is an import call using the path to the application</span>
+  () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./home/home.app.js'</span>),
+  <span class="hljs-comment">// Our activity function</span>
+  activityFunction
+);
+
+start()
+</code></pre>
+<p>The third argument to <code>registerApplication()</code>, <code>activityFunction</code>, must be a pure function. The function is provided <code>window.location</code> as the first argument, and returns a truthy value whenever the application should be active. Most commonly, the activity function determines if an application is active by looking at <code>window.location</code>/the first param.</p>
+<p>Since <code>Home</code> will be our root component, we can set the <code>activityFunction</code> to be our root path.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
+
+registerApplication(
+  <span class="hljs-comment">// Name of our single-spa application</span>
+  <span class="hljs-string">'home'</span>,
+  <span class="hljs-comment">// Our loading function which is an import call using the path to the application</span>
+  () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./home/home.app.js'</span>),
+  <span class="hljs-comment">// Our activity function</span>
+  () =&gt; location.pathname === <span class="hljs-string">""</span> || location.pathname === <span class="hljs-string">"/"</span>)
+  );
+
+  start()
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="c-register-the-navbar"></a><a href="#c-register-the-navbar" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>c) Register the NavBar</h3>
+<p>Creating and registering our NavBar application will be very similar to the process we used to create our <code>Home</code> app. Learn more about <a href="https://single-spa.js.org/docs/starting-from-scratch.html#d-set-up-navigation">setting up inter-app navigation</a> from the <code>Getting Started from Scratch</code> tutorial.</p>
+<p>Just as we did before, we need to register our navBar using the <code>registerApplication()</code> api in our <code>single-spa-config.js</code> file:</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+
+registerApplication(<span class="hljs-string">'navBar'</span>, () =&gt; <span class="hljs-keyword">import</span> (<span class="hljs-string">'./navBar/navBar.app.js'</span>), activityFunction);
+registerApplication(<span class="hljs-string">'home'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./home/home.app.js'</span>), () =&gt; location.pathname === <span class="hljs-string">""</span> || location.pathname === <span class="hljs-string">"/"</span>);
+
+start();
+</code></pre>
+<p>Recall that the activityFunction is provided <code>window.location</code> as the first argument, and returns a truthy value whenever the application should be active.
+Since we want our navBar to persist regardless of any other mounted SPAs, we will set the <code>activityFunction</code> to return a value of <code>true</code>.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa-config.js</span>
+
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+
+registerApplication(<span class="hljs-string">'navBar'</span>, () =&gt; <span class="hljs-keyword">import</span> (<span class="hljs-string">'./navBar/navBar.app.js'</span>), () =&gt; <span class="hljs-literal">true</span>);
+registerApplication(<span class="hljs-string">'home'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./home/home.app.js'</span>), () =&gt; location.pathname === <span class="hljs-string">""</span> || location.pathname === <span class="hljs-string">"/"</span>);
+
+start();
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="d-register-the-final-two-apps"></a><a href="#d-register-the-final-two-apps" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>d) Register the final two apps</h3>
+<p>Just as we did for the Home and NavBar applications, we start by registering the final two SPAs in <code>single-spa.config.js</code></p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa.config.js</span>
+
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+
+registerApplication(<span class="hljs-string">'navBar'</span>, () =&gt; <span class="hljs-keyword">import</span> (<span class="hljs-string">'./navBar/navBar.app.js'</span>), () =&gt; <span class="hljs-literal">true</span>);
+registerApplication(<span class="hljs-string">'home'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./home/home.app.js'</span>), () =&gt; location.pathname === <span class="hljs-string">""</span> || location.pathname === <span class="hljs-string">"/"</span>);
+registerApplication(<span class="hljs-string">'pokedex'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./pokedex/pokedex.app.js'</span>), activityFunction);
+registerApplication(<span class="hljs-string">'huge_apps'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./huge_apps/huge_apps.app.js'</span>), activityFunction);
+
+start();
+</code></pre>
+<p>You might notice that our 'Pokedex' and 'Huge_apps' SPAs do not yet contain the <code>pokedex.app.js</code> or <code>huge_apps.app.js</code> files. These will be the files that will contain the lifecycle functions needed to <code>bootstrap</code>, <code>mount</code> and <code>unmount</code> the application. We will create these in <a href="https://single-spa.js.org/docs/migrating-tutorial.html#step-two">Step Three</a></p>
+<p>Instead of hard coding the activityFunction, we will create a function that will allow us to dynamically add new SPAs in the future. To do this, write a function that takes a path prefix as string and returns a location whose path name starts with the provided prefix.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// single-spa.config.js</span>
+
+<span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
+
+registerApplication(<span class="hljs-string">'navBar'</span>, () =&gt; <span class="hljs-keyword">import</span> (<span class="hljs-string">'./navBar/navBar.app.js'</span>), () =&gt; <span class="hljs-literal">true</span>);
+registerApplication(<span class="hljs-string">'home'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./home/home.app.js'</span>), () =&gt; location.pathname === <span class="hljs-string">""</span> || location.pathname === <span class="hljs-string">"/"</span>);
+registerApplication(<span class="hljs-string">'pokedex'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./pokedex/pokedex.app.js'</span>), pathPrefix(<span class="hljs-string">'/pokedex'</span>));
+registerApplication(<span class="hljs-string">'huge_apps'</span>, () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./huge_apps/huge_apps.app.js'</span>), pathPrefix(<span class="hljs-string">'/huge_apps'</span>));
+
+start();
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pathPrefix</span>(<span class="hljs-params">prefix</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">location</span>) </span>{
+        <span class="hljs-keyword">return</span> location.pathname.startsWith(<span class="hljs-string">`<span class="hljs-subst">${prefix}</span>`</span>);
+    }
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="step-three-convert-spas-into-registered-applications"></a><a href="#step-three-convert-spas-into-registered-applications" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step Three: Convert SPAs into registered Applications</h2>
+<p>Now that we have all of our applications registered, we need to make some minor adjustments that will allow us to implement the single-spa <code>lifecycle functions</code>.</p>
+<p>Your existing SPAs, whether they be Angular, React, or something else, probably are not used to unmounting themselves from the DOM. Also, they probably have had the luxury of controlling the entire html page themselves, instead of being purely javascript applications that don't have sole control over <code>&lt;script&gt;</code> tags and <code>&lt;link&gt;</code> tags. So in order to convert them into single-spa registered applications, they will need to overcome those obstacles while implementing lifecycle functions.</p>
+<p>As noted earlier, we have already set up the <code>NavBar</code> and <code>Home</code> applications so we will be skipping this step for them. Check out the <a href="https://single-spa.js.org/docs/starting-from-scratch.html">Starting From Scratch</a> tutorial to learn more.</p>
+<p>To make this tutorial easier to navigate, we will use the following to separate the two applications we need to convert:</p>
+<ol>
+<li>a - refers to the Pokedex SPA</li>
+<li>b - refers to the Huge_Apps SPA</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="installing-dependencies"></a><a href="#installing-dependencies" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing Dependencies</h3>
+<p>Since we are migrating existing applications, we have to take a moment to think about how we are going to handle any dependancies each application might rely on. It is also possible for your SPAs to share dependencies. There are a couple of ways to handle this. The first would be to extract dependancies from each application and install them in the master</p>
+<!-- NOTE - This is going to be a very short tutorial -->
+package.json which contains each of your SPAs. Read more about [handling dependencies]().
+<p>Alternatively, to get up and running quickly you could simply move into each of your SPAs and install dependencies separately. For this tutorial we will be doing the later of the two options.</p>
+<p>From the root directory run the following code:</p>
+<pre><code class="hljs css bash"><span class="hljs-built_in">cd</span> pokemon/
+yarn
+<span class="hljs-built_in">cd</span> ../huge_apps
+yarn
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a1-implement-lifecycle-functions"></a><a href="#a1-implement-lifecycle-functions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a.1) Implement Lifecycle Functions</h3>
+<p>See the <a href="https://single-spa.js.org/docs/building-applications.html#registered-application-lifecycle">registered application lifecycle</a> docs to learn more about each lifecycle function. The hardest part will almost certainly be the <code>unmount</code> lifecycle, since most SPAs aren't accustomed to going dormant and unmounting themselves from the DOM. When implementing your lifecycle functions, first check out the <a href="https://single-spa.js.org/docs/ecosystem.html">ecosystem</a> docs before reinventing the wheel yourself. If that doesn't have everything you need, you'll have to make sure that your SPA can clean up its DOM, DOM event listeners (all of them, but especially hashchange and popstate), and memory.</p>
+<p>For this tutorial, we will be implenting the required lifecycle functions in a new <code>appName.app.js</code> file within each of our existing applications. From the root directory, run the following code to create these files</p>
+<pre><code class="hljs css bash">touch huge_apps/huge_apps.app.js pokedex/pokedex.app.js
+</code></pre>
+<p>Lets start with the Pokedex app. In <code>pokedex.app.js</code> we start by importing our dependencies and, using <a href="https://github.com/CanopyTax/single-spa-react">single-spa-react</a>, we can use the generic React lifecycle hooks. During this process, we need to establish a <code>rootComponent</code>, which is the top level React component to be rendered. In the case of our Pokedex app, this is the <code>index.js</code> file found in <code>pokedex/src/</code>.</p>
+<p>Finally, we will use the <code>domElementGetter()</code> function to return a DOM Element where the application will be bootstrapped, mounted, and unmounted. Recall that we already created our master <code>index.html</code> file and included an id for each of the applicaitons we planned to migrate back in <a href="https://single-spa.js.org/docs/migrating-tutorial.html#step-one">Step One</a>.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// pokedex/pokedex.app.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> singleSpaReact <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa-react'</span>;
+<span class="hljs-keyword">import</span> Root <span class="hljs-keyword">from</span> <span class="hljs-string">'./src/index.js'</span>;
+
+<span class="hljs-keyword">const</span> reactLifecycles = singleSpaReact({
+  React,
+  ReactDOM,
+  <span class="hljs-attr">rootComponent</span>: Root,
+  domElementGetter,
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> bootstrap = [
+  reactLifecycles.bootstrap,
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mount = [
+  reactLifecycles.mount,
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> unmount = [
+  reactLifecycles.unmount,
+];
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">domElementGetter</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"pokedex"</span>)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a2-converting-the-root-component"></a><a href="#a2-converting-the-root-component" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a.2) Converting the root component</h3>
+<p>To get the Pokedex app converted, we will need to make some minor changes to the current root component. Currently, the root component found in <code>pokedex/src/index.js</code> uses the <code>render</code> method from <code>react-dom</code> to render the applicaiton in its local <code>index.html</code>. All we need to do is convert the file to export a function rather than render a DOM element.</p>
+<p>Refactor <code>pokedex/src/index.js</code>:</p>
+<pre><code class="hljs css js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-comment">// We no longer need to import 'render' from react-dom so we will remove this line:</span>
+<span class="hljs-comment">// import { render } from 'react-dom'</span>
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> Page <span class="hljs-keyword">from</span> <span class="hljs-string">'./containers/Page'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./style/main.css'</span>
+<span class="hljs-keyword">import</span> configureStore <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/configureStore'</span>
+
+<span class="hljs-keyword">const</span> store = configureStore()
+
+<span class="hljs-comment">// Convert the render() into a function we can export</span>
+<span class="hljs-keyword">const</span> Index = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Page</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Index
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="b1-implement-lifecycle-functions"></a><a href="#b1-implement-lifecycle-functions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>b.1) Implement Lifecycle Functions</h3>
+<p>Migrating the second application will be very similar to the process used in the previous step. Refer back to step <a href="">a.1</a> for more details.</p>
+<p>Start by setting up the lifecycle functions in <code>huge_apps/huge_apps.app.js</code> to include the application's index.js as the <code>Root</code> component:</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// huge_apps/huge_apps.apps.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> singleSpaReact <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa-react'</span>;
+<span class="hljs-comment">// We will need to refactor our root component just like we did for our previous SPA</span>
+<span class="hljs-keyword">import</span> Root <span class="hljs-keyword">from</span> <span class="hljs-string">'./index.js'</span>;
+
+<span class="hljs-keyword">const</span> reactLifecycles = singleSpaReact({
+  React,
+  ReactDOM,
+  <span class="hljs-attr">rootComponent</span>: Root,
+  domElementGetter
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> bootstrap = [
+  reactLifecycles.bootstrap,
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mount = [
+  reactLifecycles.mount,
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> unmount = [
+  reactLifecycles.unmount,
+];
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">domElementGetter</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"huge_apps"</span>)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="b2-converting-the-root-component"></a><a href="#b2-converting-the-root-component" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>b.2) Converting the root component</h3>
+<p>Just like we did in step <a href="">a.2</a> we need to refactor the root component of the <code>Huge_Apps</code> SPA to export a function instead of rendering a DOM element. Since this application uses react-router, we will also need to modify the 'Root' path by changing it the path we set up in our <code>single-spa.congif.js</code>.</p>
+<pre><code class="hljs css js"><span class="hljs-comment">// huge_apps/index.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-comment">// remove this import since we no longer need it</span>
+<span class="hljs-comment">// import { render } from 'react-dom';</span>
+<span class="hljs-keyword">import</span> { Router, browserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./stubs/COURSES'</span>;
+
+<span class="hljs-keyword">const</span> rootRoute = {
+  <span class="hljs-attr">childRoutes</span>: [{
+    <span class="hljs-comment">// path: '/',</span>
+    path: <span class="hljs-string">'/huge_apps'</span>,
+    <span class="hljs-attr">component</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./components/App'</span>),
+    <span class="hljs-attr">childRoutes</span>: [
+      <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/Calendar'</span>),
+      <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/Course'</span>),
+      <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/Grades'</span>),
+      <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/Messages'</span>),
+      <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/Profile'</span>)
+    ]
+  }]
+};
+
+<span class="hljs-comment">// // Convert the render() into a function we can export</span>
+<span class="hljs-keyword">const</span> Root = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span>
+    <span class="hljs-attr">history</span>=<span class="hljs-string">{browserHistory}</span>
+    <span class="hljs-attr">routes</span>=<span class="hljs-string">{rootRoute}</span>
+  /&gt;</span>
+)
+
+export default Root
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="b3-refactor-routes"></a><a href="#b3-refactor-routes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>b.3) Refactor Routes</h3>
+<p>Now that we are using single-spa, the routes in our <code>Huge_apps</code> SPA need to be refactored to include the <code>/huge_apps</code> route prefix we established in our <code>single-spa.config.js</code> file. Add the new prefix in the following files:</p>
+<pre><code class="hljs css js">// huge_apps/components/Dashboard.js
+// Line 20
+&lt;Link to={`/huge_apps/course/${course.id}`}&gt;{course.name}&lt;/Link&gt;
+</code></pre>
+<pre><code class="hljs css js"><span class="hljs-comment">// huge_apps/components/GlobalNav.js</span>
+<span class="hljs-comment">// Starting at line 41</span>
+<span class="hljs-keyword">return</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.wrapper}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">float:</span> '<span class="hljs-attr">left</span>' }}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/huge_apps"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.link}</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>{' '}
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/huge_apps/calendar"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.link}</span> <span class="hljs-attr">activeStyle</span>=<span class="hljs-string">{styles.activeLink}</span>&gt;</span>Calendar<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>{' '}
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/huge_apps/grades"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.link}</span> <span class="hljs-attr">activeStyle</span>=<span class="hljs-string">{styles.activeLink}</span>&gt;</span>Grades<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>{' '}
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/huge_apps/messages"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.link}</span> <span class="hljs-attr">activeStyle</span>=<span class="hljs-string">{styles.activeLink}</span>&gt;</span>Messages<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>{' '}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">float:</span> '<span class="hljs-attr">right</span>' }}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.link}</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/huge_apps/profile"</span>&gt;</span>{user.name}<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.logOut}</span>&gt;</span>log out<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+</code></pre>
+<pre><code class="hljs css js"><span class="hljs-comment">// huge_apps/routes/Course/components/Nav.js</span>
+<span class="hljs-comment">// Starting at line 30</span>
+<span class="hljs-keyword">return</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{styles.nav}</span>&gt;</span>
+    {pages.map((page, index) =&gt; (
+      <span class="hljs-tag">&lt;<span class="hljs-name">Link</span>
+        <span class="hljs-attr">key</span>=<span class="hljs-string">{page[0]}</span>
+        <span class="hljs-attr">activeStyle</span>=<span class="hljs-string">{index</span> === <span class="hljs-string">0</span> ? { <span class="hljs-attr">...styles.activeLink</span>, <span class="hljs-attr">paddingLeft:</span> <span class="hljs-attr">0</span> } <span class="hljs-attr">:</span> <span class="hljs-attr">styles.activeLink</span>}
+        <span class="hljs-attr">style</span>=<span class="hljs-string">{index</span> === <span class="hljs-string">0</span> ? { <span class="hljs-attr">...styles.link</span>, <span class="hljs-attr">paddingLeft:</span> <span class="hljs-attr">0</span> } <span class="hljs-attr">:</span> <span class="hljs-attr">styles.link</span>}
+        <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>`/<span class="hljs-attr">huge_apps</span>/<span class="hljs-attr">course</span>/${<span class="hljs-attr">course.id</span>}/${<span class="hljs-attr">page</span>[<span class="hljs-attr">0</span>]}`}
+      &gt;</span>{page[1]}<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+    ))}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+</code></pre>
+<pre><code class="hljs css js">// huge_apps/routes/Course/routes/Announcements/components/Sidebar.js
+// Line 15
+&lt;Link to={`/huge_apps/course/${this.props.params.courseId}/announcements/${announcement.id}`}&gt;
+  {announcement.title}
+&lt;/Link&gt;
+</code></pre>
+<pre><code class="hljs css js">// huge_apps/routes/Course/routes/Assignments/components/Sidebar.js
+// Line 15
+&lt;Link to={`/huge_apps/course/${this.props.params.courseId}/assignments/${assignment.id}`}&gt;
+  {assignment.title}
+&lt;/Link&gt;
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="step-three-adjust-your-html"></a><a href="#step-three-adjust-your-html" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step Three: Adjust your HTML</h2>
+<p>The final step before we</p>
+<h3><a class="anchor" aria-hidden="true" id="a-create-a-master-html"></a><a href="#a-create-a-master-html" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a) Create a Master html</h3>
+<h3><a class="anchor" aria-hidden="true" id="b-global-styles"></a><a href="#b-global-styles" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>b) Global Styles</h3>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="starting-from-scratch.html">← Starting From Scratch</a><a class="docs-next button" href="building-applications.html">Building single-spa applications →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#project-setup">Project Setup</a></li><li><a href="#step-one-create-the-root-application">Step One: Create the Root Application</a><ul class="toc-headings"><li><a href="#a-create-a-master-html">a) Create a master html</a></li><li><a href="#b-include-global-scripts-and-stylesheets">b) Include global scripts and stylesheets</a></li></ul></li><li><a href="#step-two-register-the-applications">Step Two: Register the Applications</a><ul class="toc-headings"><li><a href="#a-create-a-config-file">a) Create a config file</a></li><li><a href="#b-register-the-root-application">b) Register the root application</a></li><li><a href="#c-register-the-navbar">c) Register the NavBar</a></li><li><a href="#d-register-the-final-two-apps">d) Register the final two apps</a></li></ul></li><li><a href="#step-three-convert-spas-into-registered-applications">Step Three: Convert SPAs into registered Applications</a><ul class="toc-headings"><li><a href="#installing-dependencies">Installing Dependencies</a></li><li><a href="#a1-implement-lifecycle-functions">a.1) Implement Lifecycle Functions</a></li><li><a href="#a2-converting-the-root-component">a.2) Converting the root component</a></li><li><a href="#b1-implement-lifecycle-functions">b.1) Implement Lifecycle Functions</a></li><li><a href="#b2-converting-the-root-component">b.2) Converting the root component</a></li><li><a href="#b3-refactor-routes">b.3) Refactor Routes</a></li></ul></li><li><a href="#step-three-adjust-your-html">Step Three: Adjust your HTML</a><ul class="toc-headings"><li><a href="#a-create-a-master-html">a) Create a Master html</a></li><li><a href="#b-global-styles">b) Global Styles</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/building-applications.html">Getting Started</a><a href="/docs/en/examples.html">Examples</a><a href="/docs/en/api.html">API Reference</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank" rel="noopener">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target="_blank" rel="noopener">Chat in Slack</a><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" target="_blank" rel="noopener" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://www.canopytax.com/" target="_blank" rel="noopener" class="fbOpenSource"><img src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">Copyright © 2018 CanopyTax</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
                 
                 apiKey: '113e711177d63ab1ff28ef858cbcffa5',
