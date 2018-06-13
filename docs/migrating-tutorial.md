@@ -499,10 +499,4 @@ return (
 
 ## Step Three: Adjust your HTML
 
-The final step before we
-
-### a) Create a Master html
-
-### b) Global Styles
-
-
+Since existing SPAs are used to having an index.html file for their css, fonts, third party script-tags, etc., it's likely that you'll have to do some work to make sure all of those keep on working when your SPA becomes an html-less [application](https://single-spa.js.org/docs/building-applications.html). It is best to try to put all that you can into the javascript bundle, but your escape hatch is to put the things you need into your [single spa config](https://single-spa.js.org/docs/configuration.html).
