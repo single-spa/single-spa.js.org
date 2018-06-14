@@ -1,7 +1,7 @@
 ---
-id: migrating-tutorial
-title: Migrating an Existing Project
-sidebar_label: Migrating an Existing Project
+id: migrating-react-tutorial
+title: Migrating an Existing React Project
+sidebar_label: React - Migrating an Existing Project
 ---
 
 # Project Overview
