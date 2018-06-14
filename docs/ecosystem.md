@@ -11,16 +11,16 @@ There is a growing number of projects that help you bootstrap, mount,
 and unmount your applications that are written with popular frameworks. Feel free
 to contribute to this list with your own project:
 
-- [single-spa-angular1](https://github.com/CanopyTax/single-spa-angular1)
-- [single-spa-react](https://github.com/CanopyTax/single-spa-react)
-- [single-spa-angular-cli](https://github.com/PlaceMe-SAS/single-spa-angular-cli) (useful for angular-cli applications)
-- [single-spa-angular2](https://github.com/CanopyTax/single-spa-angular2) (works for angular 2, 3, 4, 5+, useful if you don't use angular-cli)
-- [single-spa-vue](https://github.com/CanopyTax/single-spa-vue)
-- [single-spa-ember](https://github.com/CanopyTax/single-spa-ember)
-- [single-spa-preact](https://github.com/CanopyTax/single-spa-preact)
-- [single-spa-inferno](https://github.com/CanopyTax/single-spa-inferno)
-- [single-spa-svelte](https://github.com/CanopyTax/single-spa-svelte)
-- [single-spa-cycle](https://github.com/pcmnac/single-spa-cycle)
+- [single-spa-angular1](./ecosystem-angular1.md)
+- [single-spa-angular2](./ecosystem-angular2.md) (works for angular 2, 3, 4, 5+, useful if you don't use angular-cli)
+- [single-spa-angular-cli](./ecosystem-angular-cli.md) (useful for angular-cli applications)
+- [single-spa-cycle](./ecosystem-cycle.md)
+- [single-spa-ember](./ecosystem-ember.md)
+- [single-spa-inferno](./ecosystem-inferno.md)
+- [single-spa-preact](./ecosystem-preact.md)
+- [single-spa-react](./ecosystem-react.md)
+- [single-spa-svelte](./ecosystem-svelte.md)
+- [single-spa-vue](./ecosystem-vue.md)
 
 ## Webpack 2+
 With webpack 2+, we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import)
