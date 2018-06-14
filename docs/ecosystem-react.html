@@ -1,0 +1,126 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>single-spa-react · single-spa</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="single-spa-react · single-spa"/><meta property="og:type" content="website"/><meta property="og:url" content="https://canopytax.github.io/single-spa.js.org/index.html"/><meta property="og:description" content="[![Build Status](https://travis-ci.org/CanopyTax/single-spa-react.svg?branch=master)](https://travis-ci.org/CanopyTax/single-spa-react)"/><link rel="shortcut icon" href="/img/logo-blue-favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://canopytax.github.io/single-spa.js.org/blog/atom.xml" title="single-spa Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://canopytax.github.io/single-spa.js.org/blog/feed.xml" title="single-spa Blog RSS Feed"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script type="text/javascript" src="/js/index.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-white-bgblue.svg" alt="single-spa"/><h2 class="headerTitle">single-spa</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/building-applications.html" target="_self">Docs</a></li><li class=""><a href="/docs/api.html" target="_self">API</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><li class=""><a href="https://github.com/CanopyTax/single-spa" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Ecosystem</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/starting-from-scratch.html">Starting from scratch</a></li><li class="navListItem"><a class="navItem" href="/docs/migrating-react-tutorial.html">React - Migrating an Existing Project</a></li><li class="navListItem"><a class="navItem" href="/docs/migrating-angular-tutorial.html">Angular - Migrating an Existing Project</a></li></ul></div><div class="navGroup navGroupActive"><h3>single-spa Applications</h3><ul><li class="navListItem"><a class="navItem" href="/docs/building-applications.html">Building</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration.html">Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/separating-applications.html">Separating</a></li><li class="navListItem"><a class="navItem" href="/docs/migrating-existing-spas.html">Migrating</a></li></ul></div><div class="navGroup navGroupActive"><h3>Examples</h3><ul><li class="navListItem"><a class="navItem" href="/docs/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>Ecosystem</h3><ul><li class="navListItem"><a class="navItem" href="/docs/ecosystem.html">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-angular1.html">AngularJS</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-angular2.html">Angular 2+</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-angular-cli.html">Angular-Cli</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-cycle.html">Cycle</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-ember.html">Ember</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-inferno.html">Inferno</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-preact.html">Preact</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/ecosystem-react.html">React</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-svelte.html">svelte</a></li><li class="navListItem"><a class="navItem" href="/docs/ecosystem-vue.html">Vue</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/ecosystem-react.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>single-spa-react</h1></header><article><div><span><p><a href="https://travis-ci.org/CanopyTax/single-spa-react"><img src="https://travis-ci.org/CanopyTax/single-spa-react.svg?branch=master" alt="Build Status"></a></p>
+<p>Generic lifecycle hooks for React applications that are registered as either <a href="https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications">single-spa applications</a> or <a href="https://github.com/CanopyTax/single-spa">single-spa</a> parcels.</p>
+<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
+<p>In addition to this Readme, example usage of single-spa-react can be found in the <a href="https://github.com/CanopyTax/single-spa-examples/blob/master/src/react/react.app.js">single-spa-examples</a> project.</p>
+<h2><a class="anchor" aria-hidden="true" id="quickstart"></a><a href="#quickstart" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quickstart</h2>
+<p>First, in the <a href="https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications">single-spa application</a>, run <code>npm install --save single-spa-react</code>. Then, create an entry file for the application:</p>
+<pre><code class="hljs css js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> rootComponent <span class="hljs-keyword">from</span> <span class="hljs-string">'./path-to-root-component.js'</span>;
+<span class="hljs-comment">// Note that SingleSpaContext is a react@16.3 (if available) context that provides the singleSpa props</span>
+<span class="hljs-keyword">import</span> singleSpaReact, {SingleSpaContext} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa-react'</span>;
+
+<span class="hljs-keyword">const</span> reactLifecycles = singleSpaReact({
+  React,
+  ReactDOM,
+  rootComponent,
+  <span class="hljs-attr">domElementGetter</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'main-content'</span>),
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> bootstrap = [
+  reactLifecycles.bootstrap,
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mount = [
+  reactLifecycles.mount,
+];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> unmount = [
+  reactLifecycles.unmount,
+];
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="options"></a><a href="#options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Options</h2>
+<p>All options are passed to single-spa-react via the <code>opts</code> parameter when calling <code>singleSpaReact(opts)</code>. The following options are available:</p>
+<ul>
+<li><code>React</code>: (required) The main React object, which is generally either exposed onto the window or is available via <code>require('react')</code> <code>import React from 'react'</code>.</li>
+<li><code>ReactDOM</code>: (required) The main ReactDOMbject, which is available via <code>require('react-dom')</code> <code>import ReactDOM from 'react-dom'</code>.</li>
+<li><code>rootComponent</code>: (required) The top level React component which will be rendered. Can be omitted only if <code>loadRootComponent</code> is provided.</li>
+<li><code>loadRootComponent</code>: (optional) A loading function that returns a promise that resolves with the parcel. This takes the place of the <code>rootComponent</code> opt, when provided. It is intended to help people
+who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.</li>
+<li><code>suppressComponentDidCatchWarning</code>: (optional) A boolean that indicates if single-spa-react should warn when the rootComponent does not implement componentDidCatch. Defaults to false.</li>
+<li><code>domElementGetter</code>: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the React application will be bootstrapped, mounted, and unmounted.
+Note that this opt can only be omitted when domElementGetter is passed in as a <a href="https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#custom-props">custom prop</a> or if <code>domElement</code>
+is passed as prop. So you must either do <code>singleSpaReact({..., domElementGetter: function() {return ...}})</code>, <code>singleSpa.registerApplication(name, app, activityFn, {domElementGetter: function() {...}})</code>,
+or <code>singleSpaReact({..., domElement})</code>.</li>
+<li><code>parcelCanUpdate</code>: (optional) A boolean that controls whether an update lifecycle will be created for the returned parcel. Note that option does not impact single-spa applications, but only parcels.
+It is true by default.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="notes"></a><a href="#notes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Notes</h2>
+<p>For react@&gt;=16, it is best practice to have each single-spa application's root application implement componentDidCatch in order to avoid
+the entire application unmounting unexpectedly when an error occurs. single-spa-react will warn to the console if componentDidCatch is not
+implemented. See <a href="https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html">https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html</a> for more details.</p>
+<h2><a class="anchor" aria-hidden="true" id="singlespacontext"></a><a href="#singlespacontext" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SingleSpaContext</h2>
+<h2><a class="anchor" aria-hidden="true" id="parcels"></a><a href="#parcels" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parcels</h2>
+<p>single-spa-react can also be used to create a single-spa parcel (instead of a single-spa application). To do so, simply call singleSpaReact() the same as for an application, except without a
+domElementGetter (since those are provided by the code that will mount the parcel).</p>
+<p>Additionally, single-spa-react provides a <code>&lt;Parcel&gt;</code> component to make using framework agnostic single-spa parcels easier. This allows you to put the parcel into your render method's jsx, instead of having to implement componentDidMount and componentWillUnmount.</p>
+<h3><a class="anchor" aria-hidden="true" id="parcel-props"></a><a href="#parcel-props" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parcel props</h3>
+<ul>
+<li><code>config</code> (required): Either a single-spa parcel config object, or a &quot;loading function&quot; that returns a Promise that resolves with the parcel config.</li>
+<li><code>wrapWith</code> (optional): A string <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName">tagName</a>.<code>&lt;Parcel&gt;</code> will create a dom node of that type for the parcel to be mounted into. Defaults to <code>div</code></li>
+<li><code>appendTo</code> (optional): A dom element to append the parcel to. By default, this is not needed because the parcel will be mounted in the DOM that the <code>&lt;Parcel&gt;</code> component was rendered into. Useful for appending parcels to document.body or other separate parts of the dom.</li>
+<li><code>mountParcel</code> (sometimes required, sometimes not): The <code>mountParcel</code> function provided by single-spa. In general, it is preferred to use an application's mountParcel function instead of the
+single-spa's root mountParcel function, so that single-spa can keep track of the parent-child relationship and automatically unmount the application's parcels when the application unmounts.
+Note that if the <code>&lt;Parcel&gt;</code> component is being rendered by a single-spa application that uses single-spa-react, it is <strong>unnecessary</strong> to pass in the prop, since <code>&lt;Parcel&gt;</code> can get the prop
+from <a href="#singlespacontext">SingleSpaContext</a></li>
+<li><code>handleError</code> (optional): A function that will be called with errors thrown by the parcel. If not provided, errors will be thrown on the window, by default.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h3>
+<pre><code class="hljs css jsx"><span class="hljs-keyword">import</span> Parcel <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa-react/parcel'</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> parcelConfig <span class="hljs-keyword">from</span> <span class="hljs-string">'./my-parcel.js'</span>
+
+<span class="hljs-comment">// config and wrapWith are required. The parcel will be mounted inside of the</span>
+<span class="hljs-comment">// of a div inside of the react component tree</span>
+&lt;Parcel
+  config={parcelConfig}
+  wrapWith=<span class="hljs-string">"div"</span>
+
+  singleRender={<span class="hljs-literal">false</span>}
+  handleError={err =&gt; <span class="hljs-built_in">console</span>.error(err)}
+
+  customProp1=<span class="hljs-string">"customPropValue2"</span>
+  customProp2=<span class="hljs-string">"customPropValue2"</span>
+/&gt;
+
+<span class="hljs-comment">// If you pass in an appendTo prop, the parcel will be mounted there instead of</span>
+<span class="hljs-comment">// to a dom node inside of the current react component tree</span>
+&lt;Parcel&gt;
+  config={parcelConfig}
+  wrapWith=<span class="hljs-string">"div"</span>
+  appendTo={<span class="hljs-built_in">document</span>.body}
+/&gt;
+
+<span class="hljs-comment">// You can also pass in a "loading function" as the config.</span>
+<span class="hljs-comment">// The loading function must return a promise that resolves with the parcel config.</span>
+<span class="hljs-comment">// The parcel will be mounted once the promise resolves.</span>
+&lt;Parcel
+  config={() =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./my-parcel.js'</span>)}
+  wrapWith=<span class="hljs-string">"div"</span>
+/&gt;
+
+<span class="hljs-comment">// If you are rendering the Parcel component from a single-spa application, you do not need to pass a mountParcel prop.</span>
+<span class="hljs-comment">// But if you have a separate react component tree that is not rendered by single-spa-react, you **must** pass in a mountParcel prop</span>
+<span class="hljs-comment">// In general, it is preferred to use an application's mountParcel function instead of the single-spa's root mountParcel function,</span>
+<span class="hljs-comment">// so that single-spa can keep track of the parent-child relationship and automatically unmount the application's parcels when the application</span>
+<span class="hljs-comment">// unmounts</span>
+&lt;Parcel
+  mountParcel={singleSpa.mountParcel}
+  config={parcelConfig}
+  wrapWith=<span class="hljs-string">"div"</span>
+/&gt;
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="ecosystem-preact.html">← single-spa-preact</a><a class="docs-next button" href="ecosystem-svelte.html">single-spa-svelte →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#example">Example</a></li><li><a href="#quickstart">Quickstart</a></li><li><a href="#options">Options</a></li><li><a href="#notes">Notes</a></li><li><a href="#singlespacontext">SingleSpaContext</a></li><li><a href="#parcels">Parcels</a><ul class="toc-headings"><li><a href="#parcel-props">Parcel props</a></li><li><a href="#examples">Examples</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/building-applications.html">Getting Started</a><a href="/docs/en/examples.html">Examples</a><a href="/docs/en/api.html">API Reference</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank" rel="noopener">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target="_blank" rel="noopener">Chat in Slack</a><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" target="_blank" rel="noopener" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://www.canopytax.com/" target="_blank" rel="noopener" class="fbOpenSource"><img src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">Copyright © 2018 CanopyTax</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+              var search = docsearch({
+                
+                apiKey: '113e711177d63ab1ff28ef858cbcffa5',
+                indexName: 'single_spa',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>
