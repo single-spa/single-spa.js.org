@@ -118,7 +118,7 @@ module.exports = {
     mode: 'development',
     entry: {
       // Set the single-spa config as the project entry point
-        'single-spa.config': 'src/root-application/single-spa.config.js',
+        'single-spa.config': 'single-spa.config.js',
     },
     output: {
         publicPath: '/dist/',
@@ -187,9 +187,9 @@ The last step in our project set up is to include a couple scrips in our package
 
 ## Step Two: Create the master html file
 
-The next step is to create what single-spa calls your “root application.” Really your root application is just the stuff that initializes single-spa, and it starts with an html file.
+The next step is to create what single-spa calls your “single-spa config”. Really the single-spa config file is just the stuff that initializes single-spa, but it will require us to start with an html file.
 
-You’ll want to keep your root application as small as possible, since it’s sort of the master controller of everything and could become a bottleneck. You don’t want to be constantly changing both the root application and the child applications.
+You’ll want to keep your single-spa config as small as possible, since it’s sort of the master controller of everything and could become a bottleneck. You don’t want to be constantly changing both the root application and the child applications.
 
 ### a) Create a master html
 
@@ -223,7 +223,7 @@ In `index.html` add the following:
 
 For styling, we will be using the [Materialize-css](https://materializecss.com/) framework. To use Materialize we need to include styles and scripts in the root `index.html` file. This will allow all of our separate applications to access the Materialize library.
 
-Additionally, to get single-spa connected, we will need to include a script tag connecting the html file to the [root-application](single-spa-config.md#indexhtml-file) via `single-spa.config.js` file (we will be building this in the next step).
+Additionally, to get single-spa connected, we will need to include a script tag connecting the html file to the [single-spa.config.js file](single-spa-config.md#indexhtml-file) (we will be building this in the next step). Since we are using webpack, we use the `/dist/` folder as our entry to the single-spa config.
 
 ```html
 <!-- index.html -->
@@ -255,12 +255,11 @@ Additionally, to get single-spa connected, we will need to include a script tag 
   
   As you saw earlier, we have already set up webpack and our master html file to look for registration inside of the single spa config. This will allow hierarchy to be maintained between the applications.
 
-  Inside of the `src` folder, create a new folder called `root-application` then create your `single-spa-config.js` file.
+  From the root directory, create the `single-spa-config.js` file.
 
   ```bash
   # from the root directory
-  mkdir src/root-application
-  touch src/root-application/single-spa-config.js
+  touch single-spa-config.js
   ```
 
   Now that we have our single-spa-config.js file, we can begin to register applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
@@ -432,13 +431,13 @@ class Home extends React.Component{
 export default Home
 ```
 
-### d) Connect to the root application
+### d) Connect to single-spa config
 
-Head back to the root-application folder and in single-spa-config.js add a [loading function](single-spa-config.md#loading-function) for our new home app.
+Head back to single-spa-config.js add a [loading function](single-spa-config.md#loading-function) for our new home app.
 With [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed.
 
 ```js
-// root-application/single-spa-config.js
+// single-spa-config.js
 
 import {registerApplication, start} from 'single-spa'
 
@@ -446,7 +445,7 @@ registerApplication(
   // Name of our single-spa application
   'home',
   // Our loading function
-  () => import('../home/home.app.js'),
+  () => import('./src/home/home.app.js'),
   // Our activity function
   () => location.pathname === "" || location.pathname === "/"
 );
@@ -471,12 +470,12 @@ Creating and registering our NavBar application will be very similar to the proc
 Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa-config.js` file:
 
 ```js
-// src/root-application/single-spa-config.js
+// single-spa-config.js
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('../navBar/navBar.app.js'), activityFunction);
-registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), activityFunction);
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 
 start();
 ```
@@ -489,8 +488,8 @@ Since we want our navBar to persist regardless of any other mounted SPAs, we wil
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('../navBar/navBar.app.js'), () => true);
-registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), () => true);
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 
 start();
 ```
@@ -619,13 +618,13 @@ yarn add angular angular-ui-router single-spa-angular1
 Just as we did for the Home and NavBar applications, we start by registering the Angular SPA in `src/root-application/single-spa.config.js`
 
 ```js
-// src/root-application/single-spa.config.js
+// single-spa.config.js
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('../navBar/navBar.app.js'), () => true);
-registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
-registerApplication('angular1', () => import ('../angular1/angular1.app.js'), activityFunction);
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), () => true);
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('angular1', () => import ('./src/angular1/angular1.app.js'), activityFunction);
 
 start();
 ```
@@ -633,13 +632,13 @@ start();
 Instead of hard coding the activityFunction, we will create a function that will allow us to dynamically add new SPAs in the future. To do this, write a function that takes a path prefix as string and returns a location whose path name starts with the provided prefix.
 
 ```js
-// src/root-application/single-spa.config.js
+// single-spa.config.js
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('../navBar/navBar.app.js'), () => true);
-registerApplication('home', () => import('../home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
-registerApplication('angular1', () => import ('../angular1/angular1.app.js'), pathPrefix('/angular1'));
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), () => true);
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('angular1', () => import ('./src/angular1/angular1.app.js'), pathPrefix('/angular1'));
 
 start();
 
@@ -712,6 +711,7 @@ Now that we have registered our application and set up the lifecycle methods poi
 To start, we will build the app module followed by root.component.js which will set the root of our application using a template html file.
 
 *app.module.js*
+
 ```js
 // src/angular1/app.module.js
 import angular from 'angular';
