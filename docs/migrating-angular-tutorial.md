@@ -1,7 +1,7 @@
 ---
 id: migrating-angular-tutorial
 title: Migrating an Existing Angular Project
-sidebar_label: Angular - Migrating an Existing Project
+sidebar_label: Angular - Migrating to single-spa
 ---
 
 # Project Overview
