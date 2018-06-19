@@ -433,7 +433,7 @@ export default Home
 
 ### d) Connect to single-spa config
 
-Head back to single-spa-config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
+Head back to single-spa-config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take. 
 
 ```js
 // single-spa-config.js
