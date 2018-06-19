@@ -2,24 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://canopytax.github.io/single-spa.js.org/blog</id>
     <title>single-spa Blog</title>
-    <updated>2017-09-26T06:00:00Z</updated>
+    <updated>2018-06-19T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://canopytax.github.io/single-spa.js.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest single-spa news and events.</subtitle>
     <logo>https://canopytax.github.io/single-spa.js.org/img/logo-white-bgblue.svg</logo>
     <rights>Copyright © 2018 CanopyTax</rights>
     <entry>
-        <title type="html"><![CDATA[Adding RSS Support]]></title>
-        <id>https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html</id>
-        <link href="https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html">
+        <title type="html"><![CDATA[single-spa parcels, explained]]></title>
+        <id>https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html</id>
+        <link href="https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html">
         </link>
-        <updated>2017-09-26T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>This is a test post.</p>
-<p>A whole bunch of other information.</p>
+        <updated>2018-06-19T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.</p>
+<p>And with the r</p>
 ]]></summary>
         <author>
-            <name>Eric Nakagawa</name>
-            <uri>http://twitter.com/ericnakagawa</uri>
+            <name>Joel Denning</name>
+            <uri>https://twitter.com/joelbdenning</uri>
         </author>
     </entry>
     <entry>

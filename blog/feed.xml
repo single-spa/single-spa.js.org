@@ -4,7 +4,7 @@
         <title>single-spa Blog</title>
         <link>https://canopytax.github.io/single-spa.js.org/blog</link>
         <description>The best place to stay up-to-date with the latest single-spa news and events.</description>
-        <lastBuildDate>Tue, 26 Sep 2017 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 19 Jun 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -14,12 +14,12 @@
         </image>
         <copyright>Copyright © 2018 CanopyTax</copyright>
         <item>
-            <title><![CDATA[Adding RSS Support]]></title>
-            <link>https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html</link>
-            <guid>https://canopytax.github.io/single-spa.js.org/blog/2017/09/26/adding-rss.html</guid>
-            <pubDate>Tue, 26 Sep 2017 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>This is a test post.</p>
-<p>A whole bunch of other information.</p>
+            <title><![CDATA[single-spa parcels, explained]]></title>
+            <link>https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html</link>
+            <guid>https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html</guid>
+            <pubDate>Tue, 19 Jun 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.</p>
+<p>And with the r</p>
 ]]></description>
         </item>
         <item>
