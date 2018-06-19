@@ -10,7 +10,11 @@
       "configuration",
       "separating-applications",
       "migrating-existing-spas",
-      "parcels"
+      "api"
+    ],
+    "single-spa Parcels": [
+      "parcels-overview",
+      "parcels-api"
     ],
     "Examples": ["examples"],
     "Ecosystem": [
