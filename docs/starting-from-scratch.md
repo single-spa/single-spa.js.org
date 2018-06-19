@@ -433,8 +433,7 @@ export default Home
 
 ### d) Connect to single-spa config
 
-Head back to single-spa-config.js add a [loading function](single-spa-config.md#loading-function) for our new home app.
-With [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed.
+Head back to single-spa-config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
 
 ```js
 // single-spa-config.js
@@ -463,18 +462,18 @@ yarn start
 
 ## Step Five: Create a NavBar
 
+Creating and registering our NavBar application will be very similar to the process we used to create our `home` app. Refer back to [Step Three](starting-from-scratch.md#step-three-registering-an-app) for a more detailed explanation on how to register an application. However, in this case we are going to demonstrate how you can export your SPA as an object with lifecycle methods, then use the code splitting feature Webpack2+ offers to obtain the application object from the returned promise.
+
 ### a) Register the Application
 
-Creating and registering our NavBar application will be very similar to the process we used to create our `home` app. Refer back to [Step Three](starting-from-scratch.md#step-three-registering-an-app) for a more detailed explanation on how to register an application.
-
-Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa-config.js` file:
+Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa-config.js` file. This time we will use `.then()` to obtain the application:
 
 ```js
 // single-spa-config.js
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), activityFunction);
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then( module => module.navBar), activityFunction);
 registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 
 start();
@@ -507,7 +506,7 @@ touch src/navBar/navBar.app.js src/navBar/root.component.js
 
 ### b) Set up the NavBar lifecycles
 
-In `navbar.app.js` add the following application lifecycles. Refer back to [Step Four](starting-from-scratch.md#b-application-lifecycles) for a more detailed explanation.
+In `navbar.app.js` add the following application lifecycles. Although we could do the same thing we did back in [Step Four](starting-from-scratch.md#b-application-lifecycles), for this application we are going to demonstrate how you can export it as an object with lifecycle methods include, then using the code split promise we can get the object on the import (as we showed in the previous step).
 
 ```js
 // src/navBar/navBar.app.js
@@ -517,24 +516,12 @@ import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
 import NavBar from './root.component.js';
 
-const reactLifecycles = singleSpaReact({
+export const navBar = singleSpaReact({
   React,
   ReactDOM,
   rootComponent: NavBar,
   domElementGetter,
 })
-
-export const bootstrap = [
-  reactLifecycles.bootstrap,
-];
-
-export const mount = [
-  reactLifecycles.mount,
-];
-
-export const unmount = [
-  reactLifecycles.unmount,
-];
 
 function domElementGetter() {
   return document.getElementById("navBar")
@@ -622,7 +609,7 @@ Just as we did for the Home and NavBar applications, we start by registering the
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), () => true);
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then(mod => mod.navBar), () => true);
 registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 registerApplication('angular1', () => import ('./src/angular1/angular1.app.js'), activityFunction);
 
@@ -636,7 +623,7 @@ Instead of hard coding the activityFunction, we will create a function that will
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), () => true);
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then(mod => mod.navBar), () => true);
 registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 registerApplication('angular1', () => import ('./src/angular1/angular1.app.js'), pathPrefix('/angular1'));
 
