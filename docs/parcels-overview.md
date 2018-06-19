@@ -1,7 +1,7 @@
 ---
-id: parcels
+id: parcels-overview
 title: Parcels
-sidebar_label: Parcels
+sidebar_label: Overview
 ---
 
 A single-spa parcel is a bundle of functionality (like an application or component) meant to be mounted manually 
