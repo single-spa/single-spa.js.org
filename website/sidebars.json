@@ -9,7 +9,8 @@
       "building-applications",
       "configuration",
       "separating-applications",
-      "migrating-existing-spas"
+      "migrating-existing-spas",
+      "parcels"
     ],
     "Examples": ["examples"],
     "Ecosystem": [
