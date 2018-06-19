@@ -1,7 +1,7 @@
 ---
 id: migrating-react-tutorial
 title: Migrating an Existing React Project
-sidebar_label: React - Migrating an Existing Project
+sidebar_label: React - Migrating to single-spa
 ---
 
 # Project Overview
