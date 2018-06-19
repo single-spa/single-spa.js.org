@@ -487,7 +487,7 @@ Since we want our navBar to persist regardless of any other mounted SPAs, we wil
 
 import {registerApplication, start} from 'single-spa';
 
-registerApplication('navBar', () => import ('./src/navBar/navBar.app.js'), () => true);
+registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then( module => module.navBar), () => true);
 registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
 
 start();
