@@ -35,7 +35,7 @@ input#search_input_react {
   color: $primaryColor !important;
 }
 
-.headerTitle {
+.headerTitleWithLogo {
   color: $primaryColor;
   font-family: $mainFont;
   font-weight: 200 !important;
@@ -73,6 +73,7 @@ input#search_input_react {
 .index-main-features .container .wrapper h2 {
   color: $accentWhite;
 }
+
 
 footer .fbOpenSource {
   margin: 0 auto 1em;
