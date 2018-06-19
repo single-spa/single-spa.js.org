@@ -1,6 +1,7 @@
 ---
 id: api
-title: API
+title: single-spa API
+sidebar_label: API
 ---
 
 The single-spa library does not `export default`, but instead exports named functions and variables.
@@ -14,13 +15,13 @@ import {registerApplication, start} from 'single-spa';
 
 ## registerApplication
 `registerApplication(name, whereToGetApplication, activeWhen)` is the most important api your single spa config will use.
-It is described in detail inside of the [single-spa-config.md docs](single-spa-config.md#registering-applications)
+It is described in detail inside of the [single-spa-config.md docs](/docs/single-spa-config.md#registering-applications)
 
 ## declareChildApplication
 `declareChildApplication` is deprecated use `registerApplication` instead
 
 ## start
-`start()` is a function that must be called by your single spa config. Before `start` is called,
+`start()` is a function that must be called by your single spa config. Before `start` is called, 
 applications will be loaded, but will never be bootstrapped, mounted or unmounted. The reason for `start`
 is to give you control over the performance of your single page application. For example, you may want to declare registered applications
 immediately (to start downloading the code for the active ones), but not actually mount the registered applications
@@ -86,7 +87,8 @@ the hot-reloading of entire registered applications, but `unload` can be useful 
 your application.
 
 Single-spa performs the following steps when unloadApplication is called.
-1. Call the [unload lifecyle](building-applications.md#unload) on the registered application that is being unloaded.
+
+1. Call the [unload lifecyle](/docs/applications.md#unload) on the registered application that is being unloaded.
 2. Set the app status to NOT_LOADED
 3. Trigger a reroute, during which single-spa will potentially mount the application that was just unloaded.
 
@@ -111,6 +113,11 @@ The `fn` must be a function. It will be called with one argument, `err`, which i
 
 ## removeErrorHandler
 `removeErrorHandler(fn)` removes an error handler. Returns true if the error handler was removed, and false if it was not.
+
+## mountRootParcel
+`mountRootParcel(parcelConfig, parcelProps)` will create and mount a parcel. 
+This function takes a [parcelConfig](/docs/parcels.md#parcel-configuration) and [parcelProps](/docs/parcel-api.md#parcel-props).
+The mounted parcel will not be automatically unmounted and unmounting will need to be triggered manually.
 
 ## before routing event
 single-spa fires an event `single-spa:before-routing-event` on the window every time before a routing event occurs.
@@ -199,7 +206,7 @@ See dieOnTimeout section below for details.
 `dieOnTimeout` refers to configuration of what should happen when registered applications take longer than expected
 to load, bootstrap, mount, or unmount. There is both a global configuration applicable to all registered applications, and also
 the ability for each registered application to override this behavior for itself. See [registered application configuration
-for timeouts](building-applications.md#timeouts) for details on registered application overrides of the global
+for timeouts](/docs/applications.md#timeouts) for details on registered application overrides of the global
 behavior.
 
 If `dieOnTimeout` is false (which is the default), registered applications that are slowing things down will cause
@@ -207,11 +214,3 @@ nothing more than some warnings in the console up until `millis` is reached.
 
 If `dieOnTimeout` is true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN
 status where they will never again be given the chance to break everything.
-
-## setLoader (deprecated)
-`setLoader(Loader)` sets the javascript [loader](https://whatwg.github.io/loader/) that will be used by single-spa.
-A loader must implement `Loader.import(...).then(...).catch(...)`, and the most commonly used loader is
-[SystemJS](https://github.com/systemjs/systemjs). This API should be called **before** any `registerApplication`
-calls are made. Once called, you may omit the [loading function](single-spa-config.md#loading-function) argument when
-calling `registerApplication` and single-spa will assume that a registered application may be loaded with
-`Loader.import(appName).then(app => ...)`
