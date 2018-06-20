@@ -92,6 +92,7 @@ const siteConfig = {
     indexName: 'single_spa',
     algoliaOptions: {} // Optional, if provided by Algolia
   },
+  scrollToTop: true
 };
 
 module.exports = siteConfig;
