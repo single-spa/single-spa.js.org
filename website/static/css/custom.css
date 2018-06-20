@@ -128,3 +128,15 @@ footer .fbOpenSource {
   margin: 0 0 0 2%;
   width: calc(100% * (1/5) - 1px);
 }
+
+#back-to-top {
+  background: none; 
+  color: $primaryColor;
+  border: solid 0.5px $primaryColor;
+  transition: all .3s ease-in-out;
+}
+
+#back-to-top:hover {
+  background: $primaryColor;
+  color: $accentWhite;
+}
