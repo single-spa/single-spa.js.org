@@ -92,7 +92,8 @@ const siteConfig = {
     indexName: 'single_spa',
     algoliaOptions: {} // Optional, if provided by Algolia
   },
-  scrollToTop: true
+  scrollToTop: true,
+  gaTrackingId: 'UA-121119786-1'
 };
 
 module.exports = siteConfig;
