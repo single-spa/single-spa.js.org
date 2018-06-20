@@ -65,7 +65,7 @@ If you would like to learn more about what each of these things are doing, check
 
 ### b) Setup webpack
 
-*Once again, it is important to note that you do not have to use webpack in order to get up and running with single-spa. Checkout the documention on [Separating Applications](separating-applications.md) to learn more about the different ways you can use single-spa for your specific build.*
+*Once again, it is important to note that you do not have to use webpack in order to get up and running with single-spa. Checkout the documentation on [Separating Applications](separating-applications.md) to learn more about the different ways you can use single-spa for your specific build.*
 
 Start by adding webpack, webpack plugins and loaders.
 

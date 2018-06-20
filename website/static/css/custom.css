@@ -132,7 +132,7 @@ footer .fbOpenSource {
 #back-to-top {
   background: none; 
   color: $primaryColor;
-  border: solid 0.5px $primaryColor;
+  border: solid 0.1px $primaryColor;
   transition: all .3s ease-in-out;
 }
 
