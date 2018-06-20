@@ -83,7 +83,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <SubHeading />
           <PromoSection>
-            <Button href={docUrl("building-applications.html")}>Get Started</Button>
+            <Button href={docUrl("starting-from-scratch.html")}>Get Started</Button>
             <Button href="https://single-spa.surge.sh" target="_blank">See a live example</Button>
           </PromoSection>
         </div>
