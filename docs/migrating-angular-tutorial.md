@@ -162,7 +162,7 @@ window.singleSpa.start();
 
 ## Step Four: Adjust your html file
 
-Since most existing SPAs are used to having an index.html file for their css, fonts, third party script-tags, etc., it's likely that you'll have to do some work to make sure all of those keep on working when your SPA becomes an html-less application. 
+Since most existing SPAs are used to having an index.html file for their css, fonts, third party script-tags, etc., it's likely that you'll have to do some work to make sure all of those keep on working when your SPA becomes an html-less application.
 
 In this case, we are going to have to make a few adjustments to the current index.html to make sure that the SPA is not mounted until single-spa tells it to.
 
