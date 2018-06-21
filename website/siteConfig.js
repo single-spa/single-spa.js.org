@@ -29,7 +29,7 @@ const users = [
 
 const siteConfig = {
   title: 'single-spa' /* title for your website */,
-  tagline: 'a javascript meta-framework for simplistic front-end microservices',
+  tagline: 'a javascript framework for front-end microservices',
   url: 'https://canopytax.github.io/single-spa.js.org' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   cname: 'single-spa.js.org',
