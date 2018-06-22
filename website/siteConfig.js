@@ -35,7 +35,7 @@ const siteConfig = {
   cname: 'single-spa.js.org',
   projectName: 'single-spa',
   headerLinks: [
-    {doc: 'building-applications', label: 'Docs'},
+    {doc: 'getting-started-overview', label: 'Docs'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
     { href: "https://github.com/CanopyTax/single-spa", label: "GitHub" },
