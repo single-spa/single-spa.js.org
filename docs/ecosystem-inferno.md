@@ -4,7 +4,7 @@ title: single-spa-inferno
 sidebar_label: Inferno
 ---
 
-Generic lifecycle hooks for Inferno applications that are registered as [applications](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md) of [single-spa](https://github.com/CanopyTax/single-spa).
+single-spa-inferno is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Inferno](https://infernojs.org/). Check out the [single-spa-inferno github](https://github.com/CanopyTax/single-spa-inferno).
 
 ## Quickstart
 

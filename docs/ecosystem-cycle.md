@@ -4,9 +4,7 @@ title: single-spa-cycle
 sidebar_label: Cycle
 ---
 
-A single-spa plugin for cycle.js applications (adapted from [CanopyTax/single-spa-react](https://github.com/CanopyTax/single-spa-react))
-
-Generic lifecycle hooks for Cycle.js applications that are registered as [child applications](https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md) of [single-spa](https://github.com/CanopyTax/single-spa).
+single-spa-cycle is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Cycle.js](https://cycle.js.org/). Check out the [single-spa-cycle github](https://github.com/pcmnac/single-spa-cycle).
 
 ## Quickstart
 

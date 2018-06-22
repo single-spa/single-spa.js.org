@@ -4,15 +4,15 @@ title: single-spa-angular1
 sidebar_label: AngularJS
 ---
 
-Generic lifecycle hooks for angular 1 applications that are registered as [single-spa applications](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications) of [single-spa](https://github.com/CanopyTax/single-spa).
+single-spa-angularjs is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [AngularJS](https://angularjs.org/). Check out the [single-spa-angularjs github](https://github.com/CanopyTax/single-spa-angular1).
 
 ## Examples
 
-In addition to this Readme, example usage of single-spa-angular1 can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/angular1/angular1.app.js) project.
+In addition to this Readme, example usage of single-spa-angularjs can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/angular1/angular1.app.js) project.
 
 ## Quickstart
 
-First, in the [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save single-spa-angular1`. Then, create an entry file for the application:
+First, in the [single-spa application](building-applications.md#registered-applications), run `npm install --save single-spa-angularjs`. Then, create an entry file for the application:
 
 ```js
 import singleSpaAngular1 from 'single-spa-angular1';
@@ -45,7 +45,7 @@ Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angu
 
 ## Options
 
-All options are passed to single-spa-angular1 via the `opts` parameter when calling `singleSpaAngular1(opts)`. The following options are available:
+All options are passed to single-spa-angularjs via the `opts` parameter when calling `singleSpaAngular1(opts)`. The following options are available:
 
 - `angular`: (required) The main angular object, which is generally either exposed onto the window or is available via `require('angular')` or `import angular from 'angular'`.
 - `domElementGetter`: (required) A function that takes in no arguments and returns a DOMElement. This dom element is where the angular application will be bootstrapped, mounted, and unmounted.

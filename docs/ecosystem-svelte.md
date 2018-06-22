@@ -4,7 +4,8 @@ title: single-spa-svelte
 sidebar_label: svelte
 ---
 
-Generic lifecycle hooks for Svelte applications that are registered as [applications](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications) of [single-spa](https://github.com/CanopyTax/single-spa).
+single-spa-svelte is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [svelte](https://svelte.technology/). Check out the [single-spa-svelte github](https://github.com/CanopyTax/single-spa-svelte).
+
 
 ## Example
 In addition to this Readme, example usage of single-spa-svelte can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/svelte/svelte.app.js) project.

@@ -79,7 +79,7 @@ Note that when no customProps are provided during registration, `props.customPro
 
 ### Lifecycle helpers
 Helper libraries that helps implement lifecycle functions for specific frameworks, libraries, and applications
-is available for many popular technologies. See [the ecosystem docs](ecosystem.md) for details.
+is available for many popular technologies. See [the ecosystem docs](ecosystem-angular1.md) for details.
 
 ### Load
 When registered applications are being lazily loaded, this refers to when the code for a registered application

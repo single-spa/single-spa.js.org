@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "a javascript meta-framework for simplistic front-end microservices",
+    "tagline": "a javascript framework for front-end microservices",
     "api": "single-spa API",
     "API": "API",
     "building-applications": "Building single-spa applications",
@@ -13,7 +13,7 @@
     "ecosystem-angular1": "single-spa-angular1",
     "AngularJS": "AngularJS",
     "ecosystem-angular2": "single-spa-angular2",
-    "Angular 2+": "Angular 2+",
+    "Angular": "Angular",
     "ecosystem-cycle": "single-spa-cycle",
     "Cycle": "Cycle",
     "ecosystem-ember": "single-spa-ember",
@@ -29,11 +29,10 @@
     "ecosystem-vue": "single-spa-vue",
     "Vue": "Vue",
     "ecosystem": "The single-spa ecosystem",
-    "Ecosystem": "Ecosystem",
-    "examples": "Single-spa Examples",
-    "Examples": "Examples",
-    "getting-started-overview": "Getting Started with single-spa",
     "Overview": "Overview",
+    "examples": "Single-spa Examples",
+    "Resources": "Resources",
+    "getting-started-overview": "Getting Started with single-spa",
     "migrating-angular-tutorial": "Migrating an Existing Angular Project",
     "Angular - Migrating to single-spa": "Angular - Migrating to single-spa",
     "migrating-existing-spas": "Migrating existing SPAs",
@@ -54,7 +53,9 @@
     "GitHub": "GitHub",
     "Getting Started": "Getting Started",
     "single-spa Applications": "single-spa Applications",
-    "single-spa Parcels": "single-spa Parcels"
+    "single-spa Parcels": "single-spa Parcels",
+    "Examples": "Examples",
+    "Ecosystem": "Ecosystem"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

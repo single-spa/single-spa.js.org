@@ -1,7 +1,7 @@
 ---
 id: examples
 title: Single-spa Examples
-sidebar_label: Examples
+sidebar_label: Resources
 ---
 
 There are a variety of single-spa example repositories, each for different use cases:
