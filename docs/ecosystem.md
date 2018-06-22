@@ -1,7 +1,7 @@
 ---
 id: ecosystem
 title: The single-spa ecosystem
-sidebar_label: Ecosystem
+sidebar_label: Overview
 ---
 
 The single-spa ecosystem is quickly growing to support as many frameworks and build tools as possible.

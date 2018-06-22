@@ -4,7 +4,7 @@ title: single-spa-preact
 sidebar_label: Preact
 ---
 
-Generic lifecycle hooks for Preact applications that are registered as [applications](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications) of [single-spa](https://github.com/CanopyTax/single-spa).
+single-spa-preact is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Preact](https://preactjs.com/). Check out the [single-spa-preact github](https://github.com/CanopyTax/single-spa-preact).
 
 ## Quickstart
 
