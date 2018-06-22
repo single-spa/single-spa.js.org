@@ -1,6 +1,7 @@
 {
   "docs": {
     "Getting Started": [
+      "getting-started-overview",
       "starting-from-scratch",
       "migrating-react-tutorial",
       "migrating-angular-tutorial"
