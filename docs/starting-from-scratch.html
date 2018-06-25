@@ -37,7 +37,7 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/starting-from-scratch.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Starting From Scratch</h1></header><article><div><span><p>single-spa allows you to build micro frontends that coexist and can each be written with their own framework. This will allow you and your team to:</p>
 <ol>
-<li>Use multiple frameworks on the same page. <a href="/docs/ecosystem.html#docsNav">see the single-spa ecosystem for more info</a></li>
+<li>Use multiple frameworks on the same page. <a href="/docs/ecosystem.html#docsNav">See the single-spa ecosystem for more info</a></li>
 <li>Write code using a new framework, without rewriting your existing application</li>
 <li><a href="https://en.wikipedia.org/wiki/Lazy_loading">Lazy load</a> code for improved initial load time.</li>
 </ol>
@@ -86,7 +86,6 @@ yarn add single-spa    <span class="hljs-comment"># or npm install --save single
 </code></pre>
 <ul>
 <li><a href="https://www.npmjs.com/package/clean-webpack-plugin">CleanWebpackPlugin</a></li>
-<li><a href="https://webpack.js.org/plugins/context-replacement-plugin/">ContextReplacementPlugin</a></li>
 </ul>
 <p><em>Webpack Loaders</em></p>
 <pre><code class="hljs css languages- bash">yarn add style-loader css-loader html-loader babel-loader --dev
@@ -106,7 +105,6 @@ yarn add single-spa    <span class="hljs-comment"># or npm install --save single
 <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
 <span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack'</span>);
 <span class="hljs-keyword">const</span> CleanWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'clean-webpack-plugin'</span>);
-<span class="hljs-keyword">const</span> ContextReplacementPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack/lib/ContextReplacementPlugin'</span>);
 
 <span class="hljs-built_in">module</span>.exports = {
     <span class="hljs-attr">mode</span>: <span class="hljs-string">'development'</span>,
@@ -151,12 +149,6 @@ yarn add single-spa    <span class="hljs-comment"># or npm install --save single
     <span class="hljs-attr">plugins</span>: [
       <span class="hljs-comment">// A webpack plugin to remove/clean the build folder(s) before building</span>
         <span class="hljs-keyword">new</span> CleanWebpackPlugin([<span class="hljs-string">'dist'</span>]),
-        <span class="hljs-comment">// Webpack plugin that allows you to override the inferred information</span>
-        <span class="hljs-comment">// the angular core context is restricted to files within the src directory</span>
-        <span class="hljs-keyword">new</span> ContextReplacementPlugin(
-            <span class="hljs-regexp">/(.+)?angular(\\|\/)core(.+)?/</span>,
-            path.resolve(__dirname, <span class="hljs-string">'../src'</span>)
-        )
     ],
     <span class="hljs-attr">devtool</span>: <span class="hljs-string">'source-map'</span>,
     <span class="hljs-attr">externals</span>: [],
