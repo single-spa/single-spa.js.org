@@ -320,20 +320,22 @@ touch home.app.js root.component.js
 Your file tree should look like this:
 
 ```bash
-|--single-spa-simple-example
-    |--node_modules
-    |--src
-        |--root-application
-            |--single-spa-config.js
-        |--home
-            |--home.app.js
-            |--root.component.js
-  |--babelrc
-  |--index.html
-  |--package.json
-  |--webpack.config.js
-  |--yarn-error.log
-  |--yarn.lock
+single-spa-simple-example
+
+├── node_modules
+├── package.json
+├── .gitignore
+└── src
+    ├── home
+        ├── home.app.js
+        ├── root.component.js
+├── .babelrc
+├── index.html
+├── single-spa.config.js
+├── webpack.config.js
+├── yarn-error.log
+├── yarn.lock
+└── README.md
 ```
 
 ### b) Application lifecycles
