@@ -1,4 +1,7 @@
 version: 2
+test:
+  override:
+    - "true"
 jobs:
   deploy-website:
     docker:
