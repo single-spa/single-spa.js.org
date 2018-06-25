@@ -497,7 +497,7 @@ touch src/navBar/navBar.app.js src/navBar/root.component.js
 
 ### b) Set up the NavBar lifecycles
 
-In `navbar.app.js` add the following application lifecycles. Although we could do the same thing we did back in [Step 4.b](starting-from-scratch.md#b-application-lifecycles), for this application we are going to demonstrate how you can export an object which contains the required lifecycle methods thanks to `single-spa-react`. Then we can use code splitting to resolve the promise and get the object on the import (as we showed in the [previous step](starting-from-scratch.md#a-register-the-application)).
+In `navbar.app.js` add the following application lifecycles. Although we could do the same thing we did back in [Step 4.b](starting-from-scratch.md#b-application-lifecycles), for this application we are going to demonstrate how you can export an object which contains the required lifecycle methods thanks to `single-spa-react`. Then we can use the object by importing the file as we built in the [previous step](starting-from-scratch.md#a-register-the-application)).
 
 ```js
 // src/navBar/navBar.app.js
@@ -550,10 +550,9 @@ export default NavBar
 
 ### d) Set up navigation
 
-With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. One method would be to include a `pushState()` function which will call the specified application's [activity function](single-spa-config.md#activity-function). Alternatively, we can use the single-spa [navigateToUrl()](api.md#navigatetourl)
-utility function for convenience.
+With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. One method would be to call `pushState()`. Alternatively, we can call [single-spa.navigateToUrl](api.md#navigatetourl).
 
-To use the function, we simply need to import it and call it with a click event, passing in each Application's url (as designated by the activityFunction set in `single-spa.config.js`) as a string.
+To use the function, we simply need to import it and call it with a click event, passing in each Application's url (as designated by the activityFunction set in `single-spa.config.js`) as a string to the anchor tag's `href`.
 
 ```js
 // src/navBar/root.component.js
@@ -564,11 +563,11 @@ import {navigateToUrl} from 'single-spa'
 const NavBar = () => (
   <nav>
     <div className="nav-wrapper">
-      <a onClick={() => navigateToUrl('/')} className="brand-logo">single-spa</a>
+      <a href="/" onClick={navigateToUrl} className="brand-logo">single-spa</a>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a onClick={() => navigateToUrl('/')}>Home</a></li>
+        <li><a href="/" onClick={navigateToUrl}>Home</a></li>
         {/* Note that we still need to build our AngularJS App before this link will work */}
-        <li><a onClick={() => navigateToUrl('/angular1')}>Angular1</a></li>
+        <li><a href="/angular1" onClick={navigateToUrl}>Angular1</a></li>
       </ul>
     </div>
   </nav>
