@@ -6,7 +6,7 @@ sidebar_label: Starting from scratch
 
 single-spa allows you to build micro frontends that coexist and can each be written with their own framework. This will allow you and your team to:
 
-1) Use multiple frameworks on the same page. [see the single-spa ecosystem for more info](ecosystem.md#docsNav)
+1) Use multiple frameworks on the same page. [See the single-spa ecosystem for more info](ecosystem.md#docsNav)
 2) Write code using a new framework, without rewriting your existing application
 3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time.
 
@@ -82,7 +82,6 @@ yarn add clean-webpack-plugin --dev
 ```
 
 * [CleanWebpackPlugin](https://www.npmjs.com/package/clean-webpack-plugin)
-* [ContextReplacementPlugin](https://webpack.js.org/plugins/context-replacement-plugin/)
 
 *Webpack Loaders*
 
@@ -110,7 +109,6 @@ See the following example of how to set up your config file:
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 module.exports = {
     mode: 'development',
@@ -155,12 +153,6 @@ module.exports = {
     plugins: [
       // A webpack plugin to remove/clean the build folder(s) before building
         new CleanWebpackPlugin(['dist']),
-        // Webpack plugin that allows you to override the inferred information
-        // the angular core context is restricted to files within the src directory
-        new ContextReplacementPlugin(
-            /(.+)?angular(\\|\/)core(.+)?/,
-            path.resolve(__dirname, '../src')
-        )
     ],
     devtool: 'source-map',
     externals: [],
