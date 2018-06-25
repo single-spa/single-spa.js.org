@@ -14,8 +14,9 @@
 
  
 .navigationSlider .slidingNav ul li.siteNavItemActive a,
+.navigationSlider .slidingNav ul li.siteNavGroupActive a,
 .navigationSlider .slidingNav ul li.siteNavItemActive a:hover,
-.navigationSlider .slidingNav ul li.siteNavItemActive a:focus{
+.navigationSlider .slidingNav ul li.siteNavGroupActive a:focus{
   background-color: $secondaryColor;
   color: $primaryColor;
   font-weight: 300;
@@ -42,7 +43,7 @@ input#search_input_react {
 .headerTitleWithLogo {
   color: $primaryColor;
   font-family: $mainFont;
-  font-weight: 300 !important;
+  font-weight: 200 !important;
   line-height: 4 !important;
 }
 
