@@ -4,7 +4,7 @@ title: single-spa-angular2
 sidebar_label: Angular
 ---
 
-single-spa-angular is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#) (bootstrap, mount and unmount) for for use with [Angular](https://angular.io/). Check out the [single-spa-angular github](https://github.com/CanopyTax/single-spa-angular).
+single-spa-angular is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Angular](https://angular.io/). Check out the [single-spa-angular github](https://github.com/CanopyTax/single-spa-angular).
 
 *Note that this project works with Angular 2, 3, 4, 5+.*
 

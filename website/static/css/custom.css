@@ -117,16 +117,38 @@ footer .fbOpenSource {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.contributorWrapper h1 {
-  text-align: center !important;
+.container .wrapper .contributorWrapper h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+.container .wrapper .contributorHeader {
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .contributor {
   display: inline-block;
-  margin: 0 0 0 2%;
   width: calc(100% * (1/5) - 1px);
+}
+
+.contributorImg {
+  height: 75px;
+  border-radius: 50%;
+}
+
+.repoLink {
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  line-height: 1em;
+  font-weight: 300;
+  text-decoration: none;
 }
 
 #back-to-top {

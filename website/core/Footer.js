@@ -50,6 +50,9 @@ class Footer extends React.Component {
             <a href={this.pageUrl('users.html', this.props.language)}>
               User Showcase
             </a>
+            <a href={this.pageUrl('contributors.html', this.props.language)}>
+              Contributors
+            </a>
             <a
               href="http://stackoverflow.com/questions/tagged/single-spa"
               target="_blank"
