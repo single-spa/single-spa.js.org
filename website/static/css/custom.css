@@ -14,13 +14,16 @@
 
  
 .navigationSlider .slidingNav ul li.siteNavItemActive a,
-.navigationSlider .slidingNav ul li.siteNavGroupActive a {
+.navigationSlider .slidingNav ul li.siteNavItemActive a:hover,
+.navigationSlider .slidingNav ul li.siteNavItemActive a:focus{
   background-color: $secondaryColor;
   color: $primaryColor;
   font-weight: 300;
   font-size: 110%;
   border-bottom: solid 0.5px #0011ff;
+  transform: none;
 }
+
 
 .navigationSlider .slidingNav ul li a:focus,
 .navigationSlider .slidingNav ul li a:hover{
@@ -30,6 +33,7 @@
   transform: scale(1.08);
 }
 
+
 input#search_input_react {
   background-color: $accentWhite;
   color: $primaryColor !important;
@@ -38,7 +42,7 @@ input#search_input_react {
 .headerTitleWithLogo {
   color: $primaryColor;
   font-family: $mainFont;
-  font-weight: 200 !important;
+  font-weight: 300 !important;
   line-height: 4 !important;
 }
 
