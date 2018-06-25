@@ -16,13 +16,13 @@ class Contributors extends React.Component{
       { user: "CanopyTax", repo: "single-spa-angularJS", divId: "angularJS" },
       { user: "CanopyTax", repo: "single-spa-angular", divId: "angular" },
       { user: "PlaceMe-SAS", repo: "single-spa-angular-cli", divId: "angularCli" },
-      { user: "CanopyTax", repo: "single-spa-cycle", divId: "cycle" },
+      { user: "pcmnac", repo: "single-spa-cycle", divId: "cycle" },
       { user: "CanopyTax", repo: "single-spa-ember", divId: "ember" },
       { user: "CanopyTax", repo: "single-spa-inferno", divId: "inferno" },
       { user: "CanopyTax", repo: "single-spa-preact", divId: "preact" },
       { user: "CanopyTax", repo: "single-spa-react", divId: "react" },
       { user: "CanopyTax", repo: "single-spa-svelte", divId: "svelte" },
-      { user: "pcmnac", repo: "single-spa-vue", divId: "vue" },
+      { user: "CanopyTax", repo: "single-spa-vue", divId: "vue" },
 
     ]
     return(
