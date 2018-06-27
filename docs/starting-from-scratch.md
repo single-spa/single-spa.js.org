@@ -20,16 +20,11 @@ Be sure to read through the [single-spa docs](https://single-spa.js.org/), check
 
 ## Step One: Project Set up
 
-Create a new directory to house our project, followed by a `src` folder to hold all of our micro-service applications.
+Create a new directory to house our project, followed by a `src` folder to hold all of our micro-service applications. Then, the root of our new project, initialize the package manager of your choice and install single-spa. For this tutorial, we will be using [yarn](https://yarnpkg.com/en/).
 
 ```bash
 mkdir single-spa-simple-example && cd single-spa-simple-example
 mkdir src
-```
-
-In the root of our new project, initialize the package manager of your choice and install single-spa. For this tutorial, we will be using [yarn](https://yarnpkg.com/en/).
-
-```bash
 yarn init              # or npm init
 yarn add single-spa    # or npm install --save single-spa
 ```
@@ -39,7 +34,7 @@ yarn add single-spa    # or npm install --save single-spa
 We will be using [Babel](https://babeljs.io/) to compile our code. Run the following command to install the necessary dependencies:
 
 ```bash
-yarn add babel-core babel-plugin-syntax-dynamic-import babel-preset-env babel-preset-latest babel-preset-react --dev
+yarn add babel-core babel-plugin-syntax-dynamic-import babel-plugin-transform-object-rest-spread babel-preset-env babel-preset-latest babel-preset-react --dev
 ```
 
 Then, in your root directory create a `.babelrc` file and include the following:
@@ -56,7 +51,8 @@ Then, in your root directory create a `.babelrc` file and include the following:
       ["react"]
     ],
     "plugins": [
-      "syntax-dynamic-import"
+      "syntax-dynamic-import",
+      "transform-object-rest-spread"
     ]
   }
 ```
@@ -96,13 +92,7 @@ yarn add style-loader css-loader html-loader babel-loader --dev
 
 *Webpack.config.js*
 
-In the root directory create your `webpack.config.js` file.
-
-```bash
-touch webpack.config.js
-```
-
-See the following example of how to set up your config file:
+In the root directory create your `webpack.config.js` file. Then add the following code to set up your webpack config:
 
 ```js
 // webpack.config.js
@@ -182,23 +172,17 @@ You’ll want to keep your single-spa config as small as possible, since it’s 
 
 ### a) Create a master html
 
-In your root directory, create a master html file.
-
-```bash
-touch index.html
-```
-
-In order to register two applications simultaneously, we will create a `<div id="app-name"></div>` for each app so that they never try to modify the same DOM at the same time.
+In order to register two applications simultaneously with single-spa, we will create a `<div id="app-name"></div>` for each app so that they never try to modify the same DOM at the same time.
 
 For this project we will be creating the following micro-applications:
 
-1. Home - *This will be a React app*
+1. Home - *This will be a React app using [React Router](https://reacttraining.com/react-router/)*
 
 2. NavBar - *This will be a React app*
 
-3. Angular1 - *This will be an AngularJS app*
+3. Angular1 - *This will be an AngularJS app using [angular-ui-router](https://ui-router.github.io/ng1/)*
 
-In `index.html` add the following:
+ In your root directory create a master html file called `index.js` then add the following:
 
 ```html
 <!-- index.html -->
@@ -245,13 +229,7 @@ Additionally, to get single-spa connected, we will need to include a script tag 
   
   As you saw earlier, we have already set up webpack and our master html file to look for registration inside of the single spa config. This will allow hierarchy to be maintained between the applications.
 
-   Create a new file called `single-spa-config.js` in the root directory:
-
-  ```bash
-  touch single-spa-config.js
-  ```
-
-  Now that we have our single-spa-config.js file, we can begin to register applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
+  Create a new file called `single-spa-config.js` in the root directory so we can begin to register our applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
 
   In `single-spa-config.js`, start by importing the `registerApplication` and `start` functions. The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the [start()](single-spa-config.md#calling-singlespastart) api here.
 
@@ -278,6 +256,8 @@ registerApplication(
   start()
 ```
 
+The second argument in `registerApplication`, `loadingFunction`, must be a function that returns a promise (or an ["async function"](https://ponyfoo.com/articles/understanding-javascript-async-await)). The function will be called with no arguments when it's time to load the application for the first time. The returned promise must be resolved with the application. We will come back to this in [Step 4.d](starting-from-scratch.md#d-connect-to-single-spa-config) after creating the `Home` application.
+
 The third argument to `registerApplication()`, `activityFunction`, must be a pure function. The function is provided window.location as the first argument, and returns a truthy value whenever the application should be active. Most commonly, the activity function determines if an application is active by looking at window.location/the first param.
 
 Since `home` will be our root component, we can set the `activityFunction` to be our root path.
@@ -298,14 +278,32 @@ registerApplication(
   start()
 ```
 
+In the next step we will be using `react-router-dom` to implement routing within our `Home` app. To handle this we need to tell the `activityFunction` to also look for the path prefix `/home`. Add the following to `single-spa.config.js`:
+
+```js
+// single-spa-config.js
+import {registerApplication, start} from 'single-spa'
+
+registerApplication(
+  // Name of our single-spa application
+  'home',
+  // Our loading function
+  loadingFunction,
+  // Our activity function
+  () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'))
+  );
+
+  start()
+```
+
 ## Step Four: Create the Home application
 
 ### a) Folder setup
 
-We will be using React to create the `Home` SPA. Using your package manager, add `react`, `react-dom`, and the single-spa React helper [single-spa-react](ecosystem-react.md).
+We will be using React with [this React Router example](https://reacttraining.com/react-router/web/example/animated-transitions) project to create the `Home` SPA. Using your package manager, add `react`, `react-dom`, `react-router-dom` and the single-spa React helper [single-spa-react](ecosystem-react.md).
 
 ```bash
-yarn add react react-dom single-spa-react
+yarn add react react-dom single-spa-react react-router-dom
 ```
 
 At the beginning of the tutorial we created a `src` folder to house all of our applications. It is this folder that will house each of our separate applications. These app folders will each contain an application file to control the bootstrap, mount and unmount functions and a `root` component. Read more about the [registered application lifecycle](building-applications.md#registered-application-lifecycle).
@@ -401,28 +399,157 @@ function domElementGetter() {
 
 ### c) Build the React app
 
-Now that we have our application registered, and hooked up to single-spa with lifecycle methods, we can build our React app.
-
-Open `home/root.component.js` and add the following:
+Now that we have our application registered, and hooked up to single-spa with lifecycle methods, we can build our React app. Head to React Router and grab the code from the [Animated Transitions](https://reacttraining.com/react-router/web/example/animated-transitions) example project. To handle routing, we will need to add the path prefix `/home` we set up in our activity function in [Step 3](starting-from-scratch.md#step-three-registering-an-app). After pasting the code into `home/root.component.js`, add the path prefix `/home`:
 
 ```js
-import React from 'react'
+import React from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
-class Home extends React.Component{
-  render(){
-    return(
-      <div style={{ marginTop: '100px' }}>
-        <h1>Home Component</h1>
-      </div>
-    )
-  }
+/* you'll need this CSS somewhere
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
 }
-export default Home
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+*/
+
+const AnimationExample = () => (
+  <Router>
+    <Route
+      render={({ location }) => (
+        <div style={styles.fill}>
+          <Route
+            exact
+            path="/"
+            render={() => <Redirect to="/home/hsl/10/90/50" />}
+          />
+
+          <ul style={styles.nav}>
+            <NavLink to="/home/hsl/10/90/50">Red</NavLink>
+            <NavLink to="/home/hsl/120/100/40">Green</NavLink>
+            <NavLink to="/home/rgb/33/150/243">Blue</NavLink>
+            <NavLink to="/home/rgb/240/98/146">Pink</NavLink>
+          </ul>
+
+          <div style={styles.content}>
+            <TransitionGroup>
+              {/* no different than other usage of
+                CSSTransition, just make sure to pass
+                `location` to `Switch` so it can match
+                the old location as it animates out
+            */}
+              <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                <Switch location={location}>
+                  <Route exact path="/home/hsl/:h/:s/:l" component={HSL} />
+                  <Route exact path="/home/rgb/:r/:g/:b" component={RGB} />
+                  {/* Without this `Route`, we would get errors during
+                    the initial transition from `/` to `/hsl/10/90/50`
+                */}
+                  <Route render={() => <div>Not Found</div>} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          </div>
+        </div>
+      )}
+    />
+  </Router>
+);
+
+const NavLink = props => (
+  <li style={styles.navItem}>
+    <Link {...props} style={{ color: "inherit" }} />
+  </li>
+);
+
+const HSL = ({ match: { params } }) => (
+  <div
+    style={{
+      ...styles.fill,
+      ...styles.hsl,
+      background: `hsl(${params.h}, ${params.s}%, ${params.l}%)`
+    }}
+  >
+    hsl({params.h}, {params.s}%, {params.l}%)
+  </div>
+);
+
+const RGB = ({ match: { params } }) => (
+  <div
+    style={{
+      ...styles.fill,
+      ...styles.rgb,
+      background: `rgb(${params.r}, ${params.g}, ${params.b})`
+    }}
+  >
+    rgb({params.r}, {params.g}, {params.b})
+  </div>
+);
+
+const styles = {};
+
+styles.fill = {
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0
+};
+
+styles.content = {
+  ...styles.fill,
+  top: "40px",
+  textAlign: "center"
+};
+
+styles.nav = {
+  padding: 0,
+  margin: 0,
+  position: "absolute",
+  top: 0,
+  height: "40px",
+  width: "100%",
+  display: "flex"
+};
+
+styles.navItem = {
+  textAlign: "center",
+  flex: 1,
+  listStyleType: "none",
+  padding: "10px"
+};
+
+styles.hsl = {
+  ...styles.fill,
+  color: "white",
+  paddingTop: "20px",
+  fontSize: "30px"
+};
+
+styles.rgb = {
+  ...styles.fill,
+  color: "white",
+  paddingTop: "20px",
+  fontSize: "30px"
+};
+
+export default AnimationExample;
 ```
 
 ### d) Connect to single-spa config
 
-Head back to single-spa-config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take. 
+Head back to single-spa-config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
 
 ```js
 // single-spa-config.js
@@ -435,7 +562,7 @@ registerApplication(
   // Our loading function
   () => import('./src/home/home.app.js'),
   // Our activity function
-  () => location.pathname === "" || location.pathname === "/"
+  () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'));
 );
 
 start()
@@ -443,11 +570,7 @@ start()
 
 We are now ready to test out our first application.
 
-From the root directory, start the project by running the following:
-
-```bash
-yarn start
-```
+Run `yarn start` in the root directory to start up the `webpack-dev-server`.
 
 ## Step Five: Create a NavBar
 
@@ -465,7 +588,7 @@ Just as we did before, we need to register our navBar using the `registerApplica
 import {registerApplication, start} from 'single-spa';
 
 registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then( module => module.navBar), activityFunction);
-registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'));
 
 start();
 ```
@@ -479,7 +602,7 @@ Since we want our navBar to persist regardless of any other mounted SPAs, we wil
 import {registerApplication, start} from 'single-spa';
 
 registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then( module => module.navBar), () => true);
-registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'));
 
 start();
 ```
@@ -600,7 +723,7 @@ Just as we did for the Home and NavBar applications, we start by registering the
 import {registerApplication, start} from 'single-spa';
 
 registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then(mod => mod.navBar), () => true);
-registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'));
 registerApplication('angular1', () => import ('./src/angular1/angular1.app.js'), activityFunction);
 
 start();
@@ -614,7 +737,7 @@ Instead of hard coding the activityFunction, we will create a function that will
 import {registerApplication, start} from 'single-spa';
 
 registerApplication('navBar', () => import ('./src/navBar/navBar.app.js').then(mod => mod.navBar), () => true);
-registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/");
+registerApplication('home', () => import('./src/home/home.app.js'), () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'));
 registerApplication('angular1', () => import ('./src/angular1/angular1.app.js'), pathPrefix('/angular1'));
 
 start();
