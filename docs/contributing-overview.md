@@ -51,6 +51,7 @@ single-spa follows the [Airbnb JavaScript style gudie](https://github.com/airbnb
 ## Setting up your environment
 
 <!-- THIS NEEDS TO BE UPDATED -->
+
 single-spa requires a working version of [Node](https://nodejs.org/en/) with either [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/lang/en/) as a package manager.
 
 ## Community
