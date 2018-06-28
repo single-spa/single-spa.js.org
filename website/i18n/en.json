@@ -8,6 +8,10 @@
     "API": "API",
     "building-applications": "Building single-spa applications",
     "Building": "Building",
+    "code-of-conduct": "Code of Conduct",
+    "Code of Conduct": "Code of Conduct",
+    "contributing-overview": "Contributing to Single-spa",
+    "Overview": "Overview",
     "ecosystem-angular-cli": "single-spa-angular-cli",
     "Angular-Cli": "Angular-Cli",
     "ecosystem-angular1": "single-spa-angular1",
@@ -29,7 +33,6 @@
     "ecosystem-vue": "single-spa-vue",
     "Vue": "Vue",
     "ecosystem": "The single-spa ecosystem",
-    "Overview": "Overview",
     "examples": "Single-spa Examples",
     "Resources": "Resources",
     "getting-started-overview": "Getting Started with single-spa",
@@ -55,7 +58,8 @@
     "single-spa Applications": "single-spa Applications",
     "single-spa Parcels": "single-spa Parcels",
     "Examples": "Examples",
-    "Ecosystem": "Ecosystem"
+    "Ecosystem": "Ecosystem",
+    "Contributing": "Contributing"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

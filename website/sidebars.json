@@ -30,6 +30,10 @@
       "ecosystem-react",
       "ecosystem-svelte",
       "ecosystem-vue"
+    ],
+    "Contributing": [
+      "contributing-overview",
+      "code-of-conduct"
     ]
   }
 }
