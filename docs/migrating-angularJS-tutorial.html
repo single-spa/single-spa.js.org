@@ -111,7 +111,7 @@ bower install
 <p>Now that our application has access to the <code>single-spa-angularjs</code> library, we can set up the <a href="/docs/building-applications.html#registered-application-lifecycle">application lifecycle</a>.</p>
 <p>Add the following to <code>public/single-spa.config.js</code></p>
 <pre><code class="hljs css languages- js"><span class="hljs-comment">// public/single-spa.config.js</span>
-<span class="hljs-keyword">var</span> drumMachineApp = <span class="hljs-built_in">window</span>.singleSpaAngularJS.default({
+<span class="hljs-keyword">var</span> drumMachineApp = <span class="hljs-built_in">window</span>.singleSpaAngularjs.default({
   <span class="hljs-attr">angular</span>: <span class="hljs-built_in">window</span>.angular,
   <span class="hljs-attr">domElementGetter</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// Note that we will need to add a div with this id to our index.html, we will do this in step four</span>
