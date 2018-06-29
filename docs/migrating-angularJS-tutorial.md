@@ -128,7 +128,7 @@ Add the following to `public/single-spa.config.js`
 
 ```js
 // public/single-spa.config.js
-var drumMachineApp = window.singleSpaAngularJS.default({
+var drumMachineApp = window.singleSpaAngularjs.default({
   angular: window.angular,
   domElementGetter: function () {
     // Note that we will need to add a div with this id to our index.html, we will do this in step four
