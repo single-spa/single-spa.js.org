@@ -14,7 +14,7 @@ Single-spa can be used with just about any build system or javascript framework,
 
 You can find the [code for this tutorial here](https://github.com/alocke12992/single-spa-simple-example).
 
-If you'd like to learn how to use single-spa with Angular 2+, Vue, or other frameworks, [checkout this example](https://github.com/CanopyTax/single-spa-examples). And if you'd rather use a different build system instead of webpack, check out [this example](https://github.com/me-12/single-spa-portal-example) Read more about [separating applications](separating-applications.md) using single-spa.
+If you'd like to learn how to use single-spa with Angular, Vue, or other frameworks, [checkout this example](https://github.com/CanopyTax/single-spa-examples). And if you'd rather use a different build system instead of webpack, check out [this example](https://github.com/me-12/single-spa-portal-example) Read more about [separating applications](separating-applications.md) using single-spa.
 
 Be sure to read through the [single-spa docs](https://single-spa.js.org/), check the [single-spa github](https://github.com/CanopyTax/single-spa) and the [help section](https://single-spa.js.org/help.html) for more support.
 

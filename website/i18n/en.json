@@ -14,7 +14,7 @@
     "Overview": "Overview",
     "ecosystem-angular-cli": "single-spa-angular-cli",
     "Angular-Cli": "Angular-Cli",
-    "ecosystem-angular2": "single-spa-angular2",
+    "ecosystem-angular": "single-spa-angular",
     "Angular": "Angular",
     "ecosystem-angularjs": "single-spa-angularjs",
     "AngularJS": "AngularJS",

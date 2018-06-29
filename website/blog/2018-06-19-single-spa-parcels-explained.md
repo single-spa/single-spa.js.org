@@ -34,7 +34,7 @@ We’ve glossed over a few things that I want to touch on real quick:
 
 * **How do you implement the lifecycle functions on the parcel config?**
 
-		Use a helper library for your framework of choice. [single-spa-react](https://github.com/CanopyTax/single-spa-react), [single-spa-angular2](https://github.com/CanopyTax/single-spa-angular2) (for angular@2+), [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs), [single-spa-vue](https://github.com/CanopyTax/single-spa-vue), and [others](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md) will implement the entire parcel config for you.
+		Use a helper library for your framework of choice. [single-spa-react](https://github.com/CanopyTax/single-spa-react), [single-spa-angular](https://github.com/CanopyTax/single-spa-angular) (for angular@2+), [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs), [single-spa-vue](https://github.com/CanopyTax/single-spa-vue), and [others](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md) will implement the entire parcel config for you.
 
 * **What are the props you pass to mountRootParcel()?**
 
