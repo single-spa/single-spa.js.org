@@ -1,10 +1,10 @@
 ---
-id: ecosystem-angular1
-title: single-spa-angular1
+id: ecosystem-angularjs
+title: single-spa-angularjs
 sidebar_label: AngularJS
 ---
 
-single-spa-angularjs is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [AngularJS](https://angularjs.org/). Check out the [single-spa-angularjs github](https://github.com/CanopyTax/single-spa-angular1).
+single-spa-angularjs is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [AngularJS](https://angularjs.org/). Check out the [single-spa-angularjs github](https://github.com/CanopyTax/single-spa-angularjs).
 
 ## Examples
 
@@ -15,10 +15,10 @@ In addition to this Readme, example usage of single-spa-angularjs can be found i
 First, in the [single-spa application](building-applications.md#registered-applications), run `npm install --save single-spa-angularjs`. Then, create an entry file for the application:
 
 ```js
-import singleSpaAngular1 from 'single-spa-angular1';
+import singleSpaangularJS from 'single-spa-angularjs';
 import angular from 'angular';
 
-const ng1Lifecycles = singleSpaAngular1({
+const ng1Lifecycles = singleSpaangularJS({
   angular: angular,
   domElementGetter: () => document.getElementById('main-content'),
   mainAngularModule: 'app',
@@ -41,11 +41,11 @@ export const unmount = [
 ```
 
 ## Looking for an ES5 version?
-Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angularjs)
+Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angular1)
 
 ## Options
 
-All options are passed to single-spa-angularjs via the `opts` parameter when calling `singleSpaAngular1(opts)`. The following options are available:
+All options are passed to single-spa-angularjs via the `opts` parameter when calling `singleSpaangularJS(opts)`. The following options are available:
 
 - `angular`: (required) The main angular object, which is generally either exposed onto the window or is available via `require('angular')` or `import angular from 'angular'`.
 - `domElementGetter`: (required) A function that takes in no arguments and returns a DOMElement. This dom element is where the angular application will be bootstrapped, mounted, and unmounted.

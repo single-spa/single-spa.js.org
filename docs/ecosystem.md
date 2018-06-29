@@ -11,7 +11,7 @@ There is a growing number of projects that help you bootstrap, mount,
 and unmount your applications that are written with popular frameworks. Feel free
 to contribute to this list with your own project:
 
-- [single-spa-angular1](./ecosystem-angular1.md)
+- [single-spa-angularjs](./ecosystem-angularJS.md)
 - [single-spa-angular2](./ecosystem-angular2.md) (works for angular 2, 3, 4, 5+, useful if you don't use angular-cli)
 - [single-spa-angular-cli](./ecosystem-angular-cli.md) (useful for angular-cli applications)
 - [single-spa-cycle](./ecosystem-cycle.md)

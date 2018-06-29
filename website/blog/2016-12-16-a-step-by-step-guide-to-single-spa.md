@@ -155,14 +155,14 @@ Each child application can be written in any framework, so long as it implements
 So going back to our previous example, we could choose to write our “cool.app.js” as an Angular 1 app, and choose something else for future apps:
 
 ```js
-import singleSpaAngular1 from 'single-spa-angular1';
+import singleSpaAngularJS from 'single-spa-angularjs';
 import angular from 'angular';
 import './app.module.js';
 import './routes.js';
 
 const domElementGetter = () => document.getElementById('cool-app');
 
-const angularLifecycles = singleSpaAngular1({
+const angularLifecycles = singleSpaAngularJS({
   angular,
   domElementGetter,
   mainAngularModule: 'single-spa-app',
@@ -187,9 +187,9 @@ function doneBootstrap() {
 }
 ```
 
-In this example, we use a helper library called [single-spa-angular1](https://github.com/CanopyTax/single-spa-angular1) which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the ```app.module.js``` or ```routes.js``` files, but you can see an example implementation [here](https://github.com/CanopyTax/single-spa-examples/tree/master/src/angular1).
+In this example, we use a helper library called [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs) which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the ```app.module.js``` or ```routes.js``` files, but you can see an example implementation [here](https://github.com/CanopyTax/single-spa-examples/tree/master/src/angularJS).
 
-The pattern is to call ```singleSpaAngular1``` at the very beginning, which returns ```bootstrap```, ```mount```, and ```unmount``` lifecycle functions for you.
+The pattern is to call ```singleSpaAngularJS``` at the very beginning, which returns ```bootstrap```, ```mount```, and ```unmount``` lifecycle functions for you.
 
 You might notice that this time the lifecycles are exported as arrays of functions instead of just functions — you can choose whichever works best for you.
 
@@ -198,7 +198,7 @@ The advantage of exporting an array of functions is that you can add in your own
 To learn more about single-spa helper libraries, check out these github projects:
 
 <ul>
-  <li><a href="https://github.com/CanopyTax/single-spa-angular1" target="_blank" rel="noopener noreferrer">single-spa-angular1</a></li>
+  <li><a href="https://github.com/CanopyTax/single-spa-angularjs" target="_blank" rel="noopener noreferrer">single-spa-angularjs</a></li>
   <li><a href="https://github.com/CanopyTax/single-spa-angular2" target="_blank" rel="noopener noreferrer">single-spa-angular2</a></li>
   <li><a href="https://github.com/CanopyTax/single-spa-react" target="_blank" rel="noopener noreferrer">single-spa-react</a></li>
   <li><a href="https://github.com/CanopyTax/single-spa-vue" target="_blank" rel="noopener noreferrer">single-spa-vue</a></li>
