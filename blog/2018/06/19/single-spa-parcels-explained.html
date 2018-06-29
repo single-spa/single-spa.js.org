@@ -51,7 +51,7 @@
 <p>We’ve glossed over a few things that I want to touch on real quick:</p>
 <ul>
 <li><p><strong>How do you implement the lifecycle functions on the parcel config?</strong></p>
-<pre><code class="hljs">  Use a helper library for your framework of choice. [single-spa-react](https://github.com/CanopyTax/single-spa-react), [single-spa-angular2](https://github.com/CanopyTax/single-spa-angular2) (for angular@2+), [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs), [single-spa-vue](https://github.com/CanopyTax/single-spa-vue), and [others](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md) will implement the entire parcel config for you.
+<pre><code class="hljs">  Use a helper library for your framework of choice. [single-spa-react](https://github.com/CanopyTax/single-spa-react), [single-spa-angular](https://github.com/CanopyTax/single-spa-angular) (for angular@2+), [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs), [single-spa-vue](https://github.com/CanopyTax/single-spa-vue), and [others](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md) will implement the entire parcel config for you.
 </code></pre></li>
 <li><p><strong>What are the props you pass to mountRootParcel()?</strong></p>
 <pre><code class="hljs">  The props passed as the second argument to singleSpa.mountRootParcel(parcelConfig, parcelProps) are an object with one required prop and as many custom props as you’d like. The required prop is domElement, which tells the parcel where to mount. And the custom props get passed through to the parcel config lifecycle functions.
