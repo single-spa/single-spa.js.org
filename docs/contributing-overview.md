@@ -22,7 +22,11 @@ We've put together the following guidelines to help you figure out where you can
 
 There are many ways you can directly contribute to the guides (in descending order of need):
 
-* NEED TO ADD
+* Examples
+* Helper Libraries (like single-spa-react) for missing frameworks
+* Bug fixes
+* Answering questions in the slack channel
+* Entirely new helper projects like [single-spa-angular-cli](https://github.com/PlaceMe-SAS/single-spa-angular-cli)
 
 Interested in making a contribution? Read on!
 
@@ -50,9 +54,18 @@ single-spa follows the [Airbnb JavaScript style gudie](https://github.com/airbnb
 
 ## Setting up your environment
 
-<!-- THIS NEEDS TO BE UPDATED -->
-
 single-spa requires a working version of [Node](https://nodejs.org/en/) with either [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/lang/en/) as a package manager.
+
+steps to install and run single-spa locally
+
+* clone the [single-spa repo](https://github.com/CanopyTax/single-spa)
+* navigate to the newly created single spa directory
+* use `yarn` or `npm i` and wait for dependencies to install
+* run `yarn watch` or `npm run watch` to start the local build in watch mode
+* Single spa is up and running locally.
+
+To run the tests run `yarn test` or `npm run test`
+
 
 ## Community
 
