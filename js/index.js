@@ -1,7 +1,7 @@
 (function getContributors() {
   var repos = [
     { user: 'CanopyTax', repo: 'single-spa', id: 'contributors' },
-    { user: 'CanopyTax', repo: 'single-spa-angular1', id: 'angularJS' },
+    { user: 'CanopyTax', repo: 'single-spa-angularjs', id: 'angularJS' },
     { user: 'CanopyTax', repo: 'single-spa-angular2', id: 'angular' },
     { user: 'PlaceMe-SAS', repo: 'single-spa-angular-cli', id: 'angularCli' },
     { user: 'CanopyTax', repo: 'single-spa-react', id: 'react' },

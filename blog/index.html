@@ -51,7 +51,7 @@
 <p>We’ve glossed over a few things that I want to touch on real quick:</p>
 <ul>
 <li><p><strong>How do you implement the lifecycle functions on the parcel config?</strong></p>
-<pre><code class="hljs">  Use a helper library for your framework of choice. [single-spa-react](https://github.com/CanopyTax/single-spa-react), [single-spa-angular2](https://github.com/CanopyTax/single-spa-angular2) (for angular@2+), [single-spa-angular1](https://github.com/CanopyTax/single-spa-angular1), [single-spa-vue](https://github.com/CanopyTax/single-spa-vue), and [others](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md) will implement the entire parcel config for you.
+<pre><code class="hljs">  Use a helper library for your framework of choice. [single-spa-react](https://github.com/CanopyTax/single-spa-react), [single-spa-angular2](https://github.com/CanopyTax/single-spa-angular2) (for angular@2+), [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs), [single-spa-vue](https://github.com/CanopyTax/single-spa-vue), and [others](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md) will implement the entire parcel config for you.
 </code></pre></li>
 <li><p><strong>What are the props you pass to mountRootParcel()?</strong></p>
 <pre><code class="hljs">  The props passed as the second argument to singleSpa.mountRootParcel(parcelConfig, parcelProps) are an object with one required prop and as many custom props as you’d like. The required prop is domElement, which tells the parcel where to mount. And the custom props get passed through to the parcel config lifecycle functions.
@@ -183,14 +183,14 @@ start();
 <p><em>Using multiple frameworks</em> is where single-spa really shines. It is not a ui framework itself, but a framework for using other frameworks.</p>
 <p>Each child application can be written in any framework, so long as it implements application lifecycle functions. Then the mini-apps cooperate to form the entire single page application.</p>
 <p>So going back to our previous example, we could choose to write our “cool.app.js” as an Angular 1 app, and choose something else for future apps:</p>
-<pre><code class="hljs css languages- js"><span class="hljs-keyword">import</span> singleSpaAngular1 <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa-angular1'</span>;
+<pre><code class="hljs css languages- js"><span class="hljs-keyword">import</span> singleSpaAngularJS <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa-angularjs'</span>;
 <span class="hljs-keyword">import</span> angular <span class="hljs-keyword">from</span> <span class="hljs-string">'angular'</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">'./app.module.js'</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">'./routes.js'</span>;
 
 <span class="hljs-keyword">const</span> domElementGetter = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'cool-app'</span>);
 
-<span class="hljs-keyword">const</span> angularLifecycles = singleSpaAngular1({
+<span class="hljs-keyword">const</span> angularLifecycles = singleSpaAngularJS({
   angular,
   domElementGetter,
   <span class="hljs-attr">mainAngularModule</span>: <span class="hljs-string">'single-spa-app'</span>,
@@ -214,13 +214,13 @@ start();
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve();
 }
 </code></pre>
-<p>In this example, we use a helper library called <a href="https://github.com/CanopyTax/single-spa-angular1">single-spa-angular1</a> which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the <code>app.module.js</code> or <code>routes.js</code> files, but you can see an example implementation <a href="https://github.com/CanopyTax/single-spa-examples/tree/master/src/angular1">here</a>.</p>
-<p>The pattern is to call <code>singleSpaAngular1</code> at the very beginning, which returns <code>bootstrap</code>, <code>mount</code>, and <code>unmount</code> lifecycle functions for you.</p>
+<p>In this example, we use a helper library called <a href="https://github.com/CanopyTax/single-spa-angularjs">single-spa-angularjs</a> which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the <code>app.module.js</code> or <code>routes.js</code> files, but you can see an example implementation <a href="https://github.com/CanopyTax/single-spa-examples/tree/master/src/angularJS">here</a>.</p>
+<p>The pattern is to call <code>singleSpaAngularJS</code> at the very beginning, which returns <code>bootstrap</code>, <code>mount</code>, and <code>unmount</code> lifecycle functions for you.</p>
 <p>You might notice that this time the lifecycles are exported as arrays of functions instead of just functions — you can choose whichever works best for you.</p>
 <p>The advantage of exporting an array of functions is that you can add in your own custom behavior (like <code>aboutToBootstrap</code> and <code>doneBootstrap</code>) that will run before or after the Angular 1 lifecycles. When you export an array, each item in the array must be a function that returns a promise. Single-spa will wait for each promise to resolve, in order, before calling the next function in the array.</p>
 <p>To learn more about single-spa helper libraries, check out these github projects:</p>
 <ul>
-  <li><a href="https://github.com/CanopyTax/single-spa-angular1" target="_blank" rel="noopener noreferrer">single-spa-angular1</a></li>
+  <li><a href="https://github.com/CanopyTax/single-spa-angularjs" target="_blank" rel="noopener noreferrer">single-spa-angularjs</a></li>
   <li><a href="https://github.com/CanopyTax/single-spa-angular2" target="_blank" rel="noopener noreferrer">single-spa-angular2</a></li>
   <li><a href="https://github.com/CanopyTax/single-spa-react" target="_blank" rel="noopener noreferrer">single-spa-react</a></li>
   <li><a href="https://github.com/CanopyTax/single-spa-vue" target="_blank" rel="noopener noreferrer">single-spa-vue</a></li>
