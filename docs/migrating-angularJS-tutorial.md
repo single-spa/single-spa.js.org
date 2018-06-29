@@ -1,7 +1,7 @@
 ---
-id: migrating-angular-tutorial
-title: Migrating an Existing Angular Project
-sidebar_label: Angular - Migrating to single-spa
+id: migrating-angularJS-tutorial
+title: Migrating an Existing AngularJS Project
+sidebar_label: AngularJS - Migrating to single-spa
 ---
 
 single-spa allows you to build micro frontends that coexist and can each be written with their own framework. This will allow you and your team to:
@@ -10,7 +10,7 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 2) Write code using a new framework, without rewriting your existing application
 3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time.
 
-Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on migrating an existing legacy [AngularJS/Angular1](https://angularjs.org/) into a single-spa registered application. Once completed, you'll be able to take advantage of the flexibility and freedom that single-spa can offer by adding new SPAs in whatever build system or Javascript framework you'd like.
+Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on migrating an existing legacy [AngularJS](https://angularjs.org/) into a single-spa registered application. Once completed, you'll be able to take advantage of the flexibility and freedom that single-spa can offer by adding new SPAs in whatever build system or Javascript framework you'd like.
 
 If you'd like to learn how to build a single-spa web application from scratch, check out [this tutorial](starting-from-scratch.md).
 
@@ -106,9 +106,9 @@ The third argument, `activityFunction`, must be a pure function. The function is
 
 ## Step Three: Setup Lifecycle Functions
 
-Since we have registered our application, single-spa will be listening for the application to `bootstrap` and `mount`. We can use the [single-spa-angular1](ecosystem-angular1.md) helper library which will handle generic lifecycle hooks (bootstrap, mount and unmount) for registered angular1 applications.
+Since we have registered our application, single-spa will be listening for the application to `bootstrap` and `mount`. We can use the [single-spa-angularjs](ecosystem-angularjs.md) helper library which will handle generic lifecycle hooks (bootstrap, mount and unmount) for registered angularjs applications.
 
-To gain access to the `single-spa-angular1` library, we will need to include another `<script>` tag in our html file.
+To gain access to the `single-spa-angularjs` library, we will need to include another `<script>` tag in our html file.
 
 Add the following in `public/index.html` at the very bottom of the `<head>`.
 
@@ -116,19 +116,19 @@ Add the following in `public/index.html` at the very bottom of the `<head>`.
 <head>
   ...
   <script src="https://unpkg.com/single-spa"></script>
-  <script src="https://unpkg.com/single-spa-angular1"></script>
+  <script src="https://unpkg.com/single-spa-angularjs"></script>
 </head>
 ```
 
 *[Read more](https://eager.io/blog/everything-I-know-about-the-script-tag/) about the importance of `<script>` tag order.*
 
-Now that our application has access to the `single-spa-angular1` library, we can set up the [application lifecycle](building-applications.md#registered-application-lifecycle).
+Now that our application has access to the `single-spa-angularjs` library, we can set up the [application lifecycle](building-applications.md#registered-application-lifecycle).
 
 Add the following to `public/single-spa.config.js`
 
 ```js
 // public/single-spa.config.js
-var drumMachineApp = window.singleSpaAngular1.default({
+var drumMachineApp = window.singleSpaAngularJS.default({
   angular: window.angular,
   domElementGetter: function () {
     // Note that we will need to add a div with this id to our index.html, we will do this in step four
@@ -168,7 +168,7 @@ In this case, we are going to have to make a few adjustments to the current inde
 
 ### a) Prevent auto bootstrapping
 
-Currently, our index.html contains two hurdles we will need to overcome to allow single-spa to control the DOM. The first is the auto-bootstrap directive [ng-app](https://docs.angularjs.org/api/ng/directive/ngApp) at the top of the html file. If left in the html file, `ng-app` will force the entire application to automatically bootstrap and render, overriding the single-spa lifecycle functions. To fix this, we simply need to remove `ng-app` from the html file and then allow `single-spa-angular1` to call the `bootstrap` function instead (recall that we set this up in [Step Three](migrating-angular-tutorial.md#step-three-setup-lifecycle-functions)).
+Currently, our index.html contains two hurdles we will need to overcome to allow single-spa to control the DOM. The first is the auto-bootstrap directive [ng-app](https://docs.angularjs.org/api/ng/directive/ngApp) at the top of the html file. If left in the html file, `ng-app` will force the entire application to automatically bootstrap and render, overriding the single-spa lifecycle functions. To fix this, we simply need to remove `ng-app` from the html file and then allow `single-spa-angularjs` to call the `bootstrap` function instead (recall that we set this up in [Step Three](migrating-angularJS-tutorial.md#step-three-setup-lifecycle-functions)).
 
 In `index.html` remove `ng-app="AngularDrumMachine`.
 
@@ -182,7 +182,7 @@ In `index.html` remove `ng-app="AngularDrumMachine`.
 
 ### b) Create a Template
 
-The second challenge is that the `index.html` currently holds the entire application template. Since html will automatically render anything in the file, we will need to pull all of the SPAs logic out of the html file and replace it with a new `<div />` containing the `id` single-spa will use to mount the application. To do this, we will create a new template that we can then provide to the `single-spa-angular1` lifecycle function.
+The second challenge is that the `index.html` currently holds the entire application template. Since html will automatically render anything in the file, we will need to pull all of the SPAs logic out of the html file and replace it with a new `<div />` containing the `id` single-spa will use to mount the application. To do this, we will create a new template that we can then provide to the `single-spa-angularjs` lifecycle function.
 
 Create a new directory inside of `public/assets` called `templates`. Then create a new template called `display-machine.template.html`.
 
@@ -277,7 +277,7 @@ The new template `display-machine.template.html` should look like this:
 
 ### c) Create a Directive
 
-Per the [angularJS conventions](https://docs.angularjs.org/guide/directive), we will need to create a directive in order to "compile" our new html template. Let's start by creating a new `directives` folder inside `public/app` to house a new `display-machine.directive.js`
+Per the [AngularJS conventions](https://docs.angularjs.org/guide/directive), we will need to create a directive in order to "compile" our new html template. Let's start by creating a new `directives` folder inside `public/app` to house a new `display-machine.directive.js`
 
 ```bash
 mkdir public/app/directives

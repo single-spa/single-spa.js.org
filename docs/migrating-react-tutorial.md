@@ -12,7 +12,7 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 
 Single-spa can be used with just about any build system or javascript framework, but this tutorial will focus on taking existing React application and converting it into a single-spa web application.
 
-If you'd like to learn how to build a single-spa web application from scratch, check out [this tutorial](starting-from-scratch.md). 
+If you'd like to learn how to build a single-spa web application from scratch, check out [this tutorial](starting-from-scratch.md).
 
 If you'd like to learn how to use single-spa with Angular 2+, Vue, or other frameworks, [checkout these examples](examples.md).
 
