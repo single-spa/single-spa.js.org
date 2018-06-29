@@ -13,7 +13,6 @@ We've put together the following guidelines to help you figure out where you can
 0. [Types of contributions we're looking for](#types-of-contributions-were-looking-for)
 0. [Ground rules & expectations](#ground-rules-expectations)
 0. [How to contribute](#how-to-contribute)
-0. [Style Guide](#style-guide)
 0. [Setting up your environment](#setting-up-your-environment)
 0. [Contribution review process](#contribution-review-process)
 0. [Community](#community)
@@ -47,10 +46,6 @@ If you don't see your idea listed, and you think it fits into the goals of this 
 
 * **If your contribution is minor,** such as a small typo or bug fix, open a pull request.
 * **If your contribution is major,** such as a new feature, start by opening an issue first. That way, other people can weigh in on the discussion before you do any work.
-
-## Style guide
-
-single-spa follows the [Airbnb JavaScript style gudie](https://github.com/airbnb/javascript) If you would like to contribute, please read through the guide to make sure you are following the correct style.
 
 ## Setting up your environment
 
