@@ -14,7 +14,6 @@ We've put together the following guidelines to help you figure out where you can
 0. [Ground rules & expectations](#ground-rules-expectations)
 0. [How to contribute](#how-to-contribute)
 0. [Setting up your environment](#setting-up-your-environment)
-0. [Contribution review process](#contribution-review-process)
 0. [Community](#community)
 
 ## Types of contributions we're looking for
@@ -49,18 +48,35 @@ If you don't see your idea listed, and you think it fits into the goals of this 
 
 ## Setting up your environment
 
-single-spa requires a working version of [Node](https://nodejs.org/en/) with either [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/lang/en/) as a package manager.
+### Prerequisites
 
-steps to install and run single-spa locally
+1. Git
+1. Node: install version 8.4 or greater
+1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the [single-spa repo](https://github.com/CanopyTax/single-spa)
+1. A clone of the repo on your local machine
 
-* clone the [single-spa repo](https://github.com/CanopyTax/single-spa)
-* navigate to the newly created single spa directory
-* use `yarn` or `npm i` and wait for dependencies to install
-* run `yarn watch` or `npm run watch` to start the local build in watch mode
-* Single spa is up and running locally.
+### Installation
 
-To run the tests run `yarn test` or `npm run test`
+1. `cd single-spa` to go into the project root
+1. `yarn` to install single-spa's dependencies
 
+### Create a branch
+
+1. `git checkout master` from any folder in your local `single-spa` repository
+1. `git pull origin master` to ensure you have the latest main code
+1. `git checkout -b the-name-of-my-branch` (replacing `the-name-of-my-branch` with a suitable name) to create a branch
+
+### Test the change
+
+1. Run `yarn test` from the project root.
+
+### Push it
+
+1. `git add . && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fixed application lifecycles`) to stage and commit your changes
+1. `git push my-fork-name the-name-of-my-branch`
+1. Go to the [single-spa repo](https://github.com/CanopyTax/single-spa) and you should see recently pushed branches.
+1. Follow GitHub's instructions to submit a new Pull Request.
 
 ## Community
 
