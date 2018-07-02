@@ -13,7 +13,6 @@ We've put together the following guidelines to help you figure out where you can
 0. [Types of contributions we're looking for](#types-of-contributions-were-looking-for)
 0. [Ground rules & expectations](#ground-rules-expectations)
 0. [How to contribute](#how-to-contribute)
-0. [Style Guide](#style-guide)
 0. [Setting up your environment](#setting-up-your-environment)
 0. [Contribution review process](#contribution-review-process)
 0. [Community](#community)
@@ -22,7 +21,11 @@ We've put together the following guidelines to help you figure out where you can
 
 There are many ways you can directly contribute to the guides (in descending order of need):
 
-* NEED TO ADD
+* Examples
+* Helper Libraries (like single-spa-react) for missing frameworks
+* Bug fixes
+* Answering questions in the slack channel
+* Entirely new helper projects like [single-spa-angular-cli](https://github.com/PlaceMe-SAS/single-spa-angular-cli)
 
 Interested in making a contribution? Read on!
 
@@ -41,17 +44,23 @@ If you'd like to contribute, start by searching through the [issues](https://git
 
 If you don't see your idea listed, and you think it fits into the goals of this guide, do one of the following:
 
-* **If your contribution is minor,** such as a typo fix, open a pull request.
-* **If your contribution is major,** such as a new guide, start by opening an issue first. That way, other people can weigh in on the discussion before you do any work.
-
-## Style guide
-
-single-spa follows the [Airbnb JavaScript style gudie](https://github.com/airbnb/javascript) If you would like to contribute, please read through the guide to make sure you are following the correct style.
+* **If your contribution is minor,** such as a small typo or bug fix, open a pull request.
+* **If your contribution is major,** such as a new feature, start by opening an issue first. That way, other people can weigh in on the discussion before you do any work.
 
 ## Setting up your environment
 
-<!-- THIS NEEDS TO BE UPDATED -->
 single-spa requires a working version of [Node](https://nodejs.org/en/) with either [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/lang/en/) as a package manager.
+
+steps to install and run single-spa locally
+
+* clone the [single-spa repo](https://github.com/CanopyTax/single-spa)
+* navigate to the newly created single spa directory
+* use `yarn` or `npm i` and wait for dependencies to install
+* run `yarn watch` or `npm run watch` to start the local build in watch mode
+* Single spa is up and running locally.
+
+To run the tests run `yarn test` or `npm run test`
+
 
 ## Community
 

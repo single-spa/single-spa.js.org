@@ -34,7 +34,7 @@ Although this list cannot be exhaustive, we explicitly honor diversity in age, g
 
 ## Reporting Issues
 
-If you experience or witness unacceptable behavior—or have any other concerns—please report it by contacting Joel Denning as a direct message via the [single-spa slack community](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk). All reports will be handled with discretion. In your report please include:
+If you experience or witness unacceptable behavior—or have any other concerns—please report it by sending an email to [singlespa.info@gmail.com](mailto:singlespa.info@gmail.com). All reports will be handled with discretion. In your report please include:
 
 * Your contact information.
 * Names (real, nicknames, or pseudonyms) of any individuals involved. If there are additional witnesses, please include them as well. Your account of what occurred, and if you believe the incident is ongoing. If there is a publicly available record (e.g. a mailing list archive or a public IRC logger), please include a link.

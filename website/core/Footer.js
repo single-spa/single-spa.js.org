@@ -44,6 +44,9 @@ class Footer extends React.Component {
             <a href={this.docUrl('api.html', this.props.language)}>
               API Reference
             </a>
+            <a href={this.docUrl('contributing-overview.html', this.props.language)}>
+              Contribution Guide
+            </a>
           </div>
           <div>
             <h5>Community</h5>
