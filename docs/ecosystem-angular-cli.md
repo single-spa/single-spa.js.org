@@ -44,7 +44,7 @@ export const unload = [
 
 ## Options
 
-All options are passed to single-spa-angular2 via the `opts` parameter when calling `singleSpaAngularCli(opts)`. The following options are available:
+All options are passed to single-spa-angular via the `opts` parameter when calling `singleSpaAngularCli(opts)`. The following options are available:
 
 - `name`: (required) The name of the single spa application, ex : app.
 - `selector`: (required) The angular application root tag, ex : app-root.
