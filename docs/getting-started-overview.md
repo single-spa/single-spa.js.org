@@ -37,8 +37,8 @@ Apps built with single-spa are made up of the following pieces:
 
 single-spa works with es5, es6+, typescript, webpack, systemjs, gulp, grunt, bower, ember-cli, or really any build system you can think of. You can npm install it, jspm install it, or even just use a `<script>` tag if you prefer. If you're not starting your application from scratch, you'll have to [migrate your SPA](migrating-existing-spas.md) to become a single-spa application.
 
-* [React - Migrating to single-spa](https://single-spa.js.org/docs/migrating-react-tutorial.html)
-* [AngularJS - Migrating to single-spa](https://single-spa.js.org/docs/migrating-angularJS-tutorial.html)
+* [React - Migrating to single-spa](migrating-react-tutorial.md)
+* [AngularJS - Migrating to single-spa](migrating-angularJS-tutorial.md)
 
 single-spa works in Chrome, Firefox, Safari, IE11, and Edge.
 
@@ -48,25 +48,22 @@ Yep
 
 ## Documentation
 
-You can find the single-spa documentation [on the website](https://single-spa.js.org/).  
-
-Check out the [Getting Started](https://single-spa.js.org/docs/getting-started-overview.html) page for a quick overview.
-
 The documentation is divided into several sections:
 
-* [Getting Started](https://single-spa.js.org/docs/getting-started-overview.html)
-* [Single-spa Applications](https://single-spa.js.org/docs/building-applications.html)
-* [Single-spa Parcels](https://single-spa.js.org/docs/parcels-overview.html)
-* [Examples](https://single-spa.js.org/docs/examples.html)
-* [Ecosystem](https://single-spa.js.org/docs/ecosystem.html)
+* [Getting Started](getting-started-overview.md)
+* [Single-spa Applications](building-applications.md)
+* [Single-spa Parcels](parcels-overview.md)
+* [Examples](examples.md)
+* [Ecosystem](ecosystem.md)
+* [Contributing Guide](contributing-overview.md)
+* [Blog](https://single-spa.js.org/blog/)
 * [Where to Get Support](https://single-spa.js.org/en/help.html)
-* [Contributing Guide](https://single-spa.js.org/docs/contributing-overview.html)
 
 You can help improve the single-spa website by sending pull requests to [this repository](https://github.com/CanopyTax/single-spa.js.org).
 
 ## Simple Usage
 
-For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [this starting from scratch tutorial](https://single-spa.js.org/docs/starting-from-scratch.html).
+For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [this starting from scratch tutorial](starting-from-scratch.md).
 
 To create a single-spa application, you will need to do three things:
 
@@ -124,7 +121,7 @@ export function mount(props) {
 	return Promise
 		.resolve()
 		.then(() => {
-			// This is where you would normally use a framework to mount some ui to the dom. See https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md.
+			// This is where you would normally use a framework to mount some ui to the dom. See https://single-spa.js.org/docs/ecosystem.html.
 			domEl.textContent = 'App 1 is mounted!'
 		});
 }
@@ -133,7 +130,7 @@ export function unmount(props) {
 	return Promise
 		.resolve()
 		.then(() => {
-			// This is normally where you would tell the framework to unmount the ui from the dom. See https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-ecosystem.md
+			// This is normally where you would tell the framework to unmount the ui from the dom. See https://single-spa.js.org/docs/ecosystem.html
 			domEl.textContent = '';
 		})
 }
@@ -147,9 +144,21 @@ We're trying out github's Projects feature ([here](https://github.com/CanopyTax/
 
 See [single-spa api](api.md) and [application api](building-applications.md#application-lifecycle).
 
+## Contributing
+
+The main purpose of this repository is to continue to evolve single-spa, making it better and easier to use. Development of single-spa, and the [single-spa ecosystem](ecosystem.md) happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving single-spa.
+
+### [Code of Conduct](CODE_OF_CONDUCT.md)
+
+Single-spa has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+
+### [Contributing Guide](contributing-overview.md)
+
+Read our [contributing guide](https://reactjs.org/contributing/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to single-spa.
+
 ## Who's Using This?
 
-Please submit a P.R. to [this section](https://github.com/CanopyTax/single-spa/blob/master/README.md#whos-using-this) if you start using single-spa.
+Please submit a P.R. to [this section](https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/getting-started-overview.md) if you start using single-spa.
 
 - [CanopyTax](https://www.canopytax.com)
 - [Dealer Socket](https://dealersocket.com/)
