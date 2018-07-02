@@ -37,6 +37,9 @@ Apps built with single-spa are made up of the following pieces:
 
 single-spa works with es5, es6+, typescript, webpack, systemjs, gulp, grunt, bower, ember-cli, or really any build system you can think of. You can npm install it, jspm install it, or even just use a `<script>` tag if you prefer. If you're not starting your application from scratch, you'll have to [migrate your SPA](migrating-existing-spas.md) to become a single-spa application.
 
+* [React - Migrating to single-spa](https://single-spa.js.org/docs/migrating-react-tutorial.html)
+* [AngularJS - Migrating to single-spa](https://single-spa.js.org/docs/migrating-angularJS-tutorial.html)
+
 single-spa works in Chrome, Firefox, Safari, IE11, and Edge.
 
 ## Isn't single-spa sort of a redundant name?
@@ -45,13 +48,25 @@ Yep
 
 ## Documentation
 
-If you're looking for help with specific frameworks or build systems (React, Angular, Webpack, Ember, etc), check out the [ecosystem wiki](ecosystem.md)
+You can find the single-spa documentation [on the website](https://single-spa.js.org/).  
 
-Also, check out [this step by step guide](https://medium.com/@joeldenning/a-step-by-step-guide-to-single-spa-abbbcb1bedc6) and this [Starting from Scratch](starting-from-scratch.md) tutorial.
+Check out the [Getting Started](https://single-spa.js.org/docs/getting-started-overview.html) page for a quick overview.
+
+The documentation is divided into several sections:
+
+* [Getting Started](https://single-spa.js.org/docs/getting-started-overview.html)
+* [Single-spa Applications](https://single-spa.js.org/docs/building-applications.html)
+* [Single-spa Parcels](https://single-spa.js.org/docs/parcels-overview.html)
+* [Examples](https://single-spa.js.org/docs/examples.html)
+* [Ecosystem](https://single-spa.js.org/docs/ecosystem.html)
+* [Where to Get Support](https://single-spa.js.org/en/help.html)
+* [Contributing Guide](https://single-spa.js.org/docs/contributing-overview.html)
+
+You can help improve the single-spa website by sending pull requests to [this repository](https://github.com/CanopyTax/single-spa.js.org).
 
 ## Simple Usage
 
-For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example).
+For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [this starting from scratch tutorial](https://single-spa.js.org/docs/starting-from-scratch.html).
 
 To create a single-spa application, you will need to do three things:
 

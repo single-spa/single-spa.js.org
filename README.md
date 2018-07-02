@@ -24,6 +24,8 @@ This repo contains the source code and documentation powering [single-spa.js.org
 
 ## Contributing
 
+Want to help improve the `single-spa.js.org` website? Checkout the steps below to learn how.
+
 ### Create a branch
 
 1. `git checkout master` from any folder in your local `single-spa.js.org` repository
