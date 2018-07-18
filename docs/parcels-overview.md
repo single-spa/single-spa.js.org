@@ -6,7 +6,7 @@ sidebar_label: Overview
 
 A single-spa parcel is a bundle of functionality (like an application or component) meant to be mounted manually 
 by an application. Parcels use similar methodology as applications but are mounted by a manual function call rather than the activity function.
-A parcel can be as large as an application or as small as an component and written in 
+A parcel can be as large as an application or as small as a component and written in 
 any language as long as it exports the correct lifecycle events. In a single-spa world, your SPA contains 
 many registered applications and potentially many parcels. Typically we recommend you mount a parcel within 
 the context of an application because the parcel will be unmounted with the application.
@@ -37,10 +37,10 @@ const parcel = singleSpa.mountRootParcel(parcelConfig, parcelProps)
 
 // The parcel is being mounted. We can wait for it to finish with the mountPromise.
 parcel.mountPromise.then(() => {
-    console.log('finished mounting parcel!')
-    // If we want to re-render the parcel, we can call the update lifecycle method, which returns a promise
-    parcelProps.customProp1 = 'bar'
-    return parcel.update(parcelProps)
+  console.log('finished mounting parcel!')
+  // If we want to re-render the parcel, we can call the update lifecycle method, which returns a promise
+  parcelProps.customProp1 = 'bar'
+  return parcel.update(parcelProps)
 })
 .then(() => {
   // Call the unmount lifecycle when we need the parcel to unmount. This function also returns a promise
@@ -50,7 +50,7 @@ parcel.mountPromise.then(() => {
 
 ## Parcel configuration
 
-A parcel is just an object with 3 or 4 functions on it. When mounting a parcel, you can provided either the object itself or a loading function that asynchronously downloads the parcel object.
+A parcel is just an object with 3 or 4 functions on it. When mounting a parcel, you can provide either the object itself or a loading function that asynchronously downloads the parcel object.
 Each function on a parcel object is a lifecycle method, which is a function that returns a promise. Parcels have three required lifecycle methods (bootstrap, mount, and unmount) and one optional lifecycle method (update).
 When implementing a parcel, it's strongly recommended that you use the [lifecycle helper methods](ecosystem.md#help-for-frameworks).
 An example of a parcel written in React would look like this:
@@ -77,15 +77,15 @@ import { Parcel } from 'single-spa-react'
 import MyParcel from './myparcel.js'
 
 export class myComponent extends React.Component {
-    render () {
-      return (
-        <Parcel
-          config={MyParcel}
-          { /* optional props */ }
-          { /* and any extra props you want here */ }
-        />
-      )
-    }
+  render () {
+    return (
+      <Parcel
+        config={MyParcel}
+        { /* optional props */ }
+        { /* and any extra props you want here */ }
+      />
+    )
+  }
 }
 ```
 
@@ -105,9 +105,9 @@ function bootstrap(props) {
   return Promise
     .resolve()
     .then(() => {
-        // This is where you do one-time initialization
-        console.log('bootstrapped!')
-        });
+      // This is where you do one-time initialization
+      console.log('bootstrapped!')
+    });
 }
 ```
 
@@ -121,9 +121,9 @@ function mount(props) {
   return Promise
     .resolve()
     .then(() => {
-        // This is where you tell a framework (e.g., React) to render some ui to the dom
-        console.log('mounted!')
-        });
+      // This is where you tell a framework (e.g., React) to render some ui to the dom
+      console.log('mounted!')
+    });
 }
 ```
 
@@ -142,9 +142,9 @@ function unmount(props) {
   return Promise
     .resolve()
     .then(() => {
-        // This is where you tell a framework (e.g., React) to unrender some ui from the dom
-        console.log('unmounted!');
-        });
+      // This is where you tell a framework (e.g., React) to unrender some ui from the dom
+      console.log('unmounted!');
+    });
 }
 ```
 
