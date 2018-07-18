@@ -37,7 +37,7 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/parcels-overview.md" target="_blank" rel="noreferrer noopener">Edit</a><h1>Parcels</h1></header><article><div><span><p>A single-spa parcel is a bundle of functionality (like an application or component) meant to be mounted manually
 by an application. Parcels use similar methodology as applications but are mounted by a manual function call rather than the activity function.
-A parcel can be as large as an application or as small as an component and written in
+A parcel can be as large as an application or as small as a component and written in
 any language as long as it exports the correct lifecycle events. In a single-spa world, your SPA contains
 many registered applications and potentially many parcels. Typically we recommend you mount a parcel within
 the context of an application because the parcel will be unmounted with the application.</p>
@@ -65,10 +65,10 @@ the context of an application because the parcel will be unmounted with the appl
 
 <span class="hljs-comment">// The parcel is being mounted. We can wait for it to finish with the mountPromise.</span>
 parcel.mountPromise.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished mounting parcel!'</span>)
-    <span class="hljs-comment">// If we want to re-render the parcel, we can call the update lifecycle method, which returns a promise</span>
-    parcelProps.customProp1 = <span class="hljs-string">'bar'</span>
-    <span class="hljs-keyword">return</span> parcel.update(parcelProps)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished mounting parcel!'</span>)
+  <span class="hljs-comment">// If we want to re-render the parcel, we can call the update lifecycle method, which returns a promise</span>
+  parcelProps.customProp1 = <span class="hljs-string">'bar'</span>
+  <span class="hljs-keyword">return</span> parcel.update(parcelProps)
 })
 .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
   <span class="hljs-comment">// Call the unmount lifecycle when we need the parcel to unmount. This function also returns a promise</span>
@@ -76,7 +76,7 @@ parcel.mountPromise.then(<span class="hljs-function"><span class="hljs-params">(
 })
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="parcel-configuration"></a><a href="#parcel-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parcel configuration</h2>
-<p>A parcel is just an object with 3 or 4 functions on it. When mounting a parcel, you can provided either the object itself or a loading function that asynchronously downloads the parcel object.
+<p>A parcel is just an object with 3 or 4 functions on it. When mounting a parcel, you can provide either the object itself or a loading function that asynchronously downloads the parcel object.
 Each function on a parcel object is a lifecycle method, which is a function that returns a promise. Parcels have three required lifecycle methods (bootstrap, mount, and unmount) and one optional lifecycle method (update).
 When implementing a parcel, it's strongly recommended that you use the <a href="/docs/ecosystem.html#help-for-frameworks">lifecycle helper methods</a>.
 An example of a parcel written in React would look like this:</p>
@@ -99,15 +99,15 @@ An example of a parcel written in React would look like this:</p>
 <span class="hljs-keyword">import</span> MyParcel <span class="hljs-keyword">from</span> <span class="hljs-string">'./myparcel.js'</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-    render () {
-      <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Parcel</span>
-          <span class="hljs-attr">config</span>=<span class="hljs-string">{MyParcel}</span>
-          { /* <span class="hljs-attr">optional</span> <span class="hljs-attr">props</span> */ }
-          { /* <span class="hljs-attr">and</span> <span class="hljs-attr">any</span> <span class="hljs-attr">extra</span> <span class="hljs-attr">props</span> <span class="hljs-attr">you</span> <span class="hljs-attr">want</span> <span class="hljs-attr">here</span> */ }
-        /&gt;</span>
-      )
-    }
+  render () {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Parcel</span>
+        <span class="hljs-attr">config</span>=<span class="hljs-string">{MyParcel}</span>
+        { /* <span class="hljs-attr">optional</span> <span class="hljs-attr">props</span> */ }
+        { /* <span class="hljs-attr">and</span> <span class="hljs-attr">any</span> <span class="hljs-attr">extra</span> <span class="hljs-attr">props</span> <span class="hljs-attr">you</span> <span class="hljs-attr">want</span> <span class="hljs-attr">here</span> */ }
+      /&gt;</span>
+    )
+  }
 }
 </span></code></pre>
 <p>Note that in some cases the optional props are required <a href="single-spa-react.md#examples">(see additional examples)</a>.</p>
@@ -120,9 +120,9 @@ mounted for the first time.</p>
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>
     .resolve()
     .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// This is where you do one-time initialization</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'bootstrapped!'</span>)
-        });
+      <span class="hljs-comment">// This is where you do one-time initialization</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'bootstrapped!'</span>)
+    });
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="mount"></a><a href="#mount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mount</h3>
@@ -132,9 +132,9 @@ called, this function should create DOM elements, DOM event listeners, etc. to r
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>
     .resolve()
     .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// This is where you tell a framework (e.g., React) to render some ui to the dom</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'mounted!'</span>)
-        });
+      <span class="hljs-comment">// This is where you tell a framework (e.g., React) to render some ui to the dom</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'mounted!'</span>)
+    });
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="unmount"></a><a href="#unmount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unmount</h3>
@@ -149,9 +149,9 @@ observable subscriptions, etc. that were created at any point when the parcel wa
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>
     .resolve()
     .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// This is where you tell a framework (e.g., React) to unrender some ui from the dom</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'unmounted!'</span>);
-        });
+      <span class="hljs-comment">// This is where you tell a framework (e.g., React) to unrender some ui from the dom</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'unmounted!'</span>);
+    });
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="update-optional"></a><a href="#update-optional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Update (optional)</h3>
