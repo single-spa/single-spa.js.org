@@ -133,7 +133,7 @@ module.exports = {
     },
     node: {
         fs: 'empty'
-    }, 
+    },
     resolve: {
         modules: [
             __dirname,
@@ -182,7 +182,7 @@ For this project we will be creating the following micro-applications:
 
 3. AngularJS - *This will be an AngularJS app using [angular-ui-router](https://ui-router.github.io/ng1/)*
 
- In your root directory create a master html file called `index.js` then add the following:
+ In your root directory create a master html file called `index.html` then add the following:
 
 ```html
 <!-- index.html -->
@@ -203,7 +203,7 @@ Additionally, to get single-spa connected, we will need to include a script tag 
 <!-- index.html -->
 <html>
   <head>
-    <!-- Materialize CSS --> 
+    <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
@@ -226,7 +226,7 @@ Additionally, to get single-spa connected, we will need to include a script tag 
 ## Step Three: Registering an App
 
   It is required to [register applications](single-spa-config.md#registering-applications) with single-spa. This enables single-spa to know how and when to `bootstrap`, `mount` and `unmount` an application.
-  
+
   As you saw earlier, we have already set up webpack and our master html file to look for registration inside of the single spa config. This will allow hierarchy to be maintained between the applications.
 
   Create a new file called `single-spa-config.js` in the root directory so we can begin to register our applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
