@@ -208,13 +208,13 @@ yarn add single-spa    <span class="hljs-comment"># or npm install --save single
 <h2><a class="anchor" aria-hidden="true" id="step-three-registering-an-app"></a><a href="#step-three-registering-an-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step Three: Registering an App</h2>
 <p>It is required to <a href="/docs/configuration.html#registering-applications">register applications</a> with single-spa. This enables single-spa to know how and when to <code>bootstrap</code>, <code>mount</code> and <code>unmount</code> an application.</p>
 <p>As you saw earlier, we have already set up webpack and our master html file to look for registration inside of the single spa config. This will allow hierarchy to be maintained between the applications.</p>
-<p>Create a new file called <code>single-spa-config.js</code> in the root directory so we can begin to register our applications. In order to register an application with single-spa we call the <code>registerApplication()</code> api and include the application <code>name</code>, a <code>loadingFunction</code> and an <code>activityFunction</code>.</p>
-<p>In <code>single-spa-config.js</code>, start by importing the <code>registerApplication</code> and <code>start</code> functions. The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the <a href="/docs/configuration.html#calling-singlespastart">start()</a> api here.</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa-config.js</span>
+<p>Create a new file called <code>single-spa.config.js</code> in the root directory so we can begin to register our applications. In order to register an application with single-spa we call the <code>registerApplication()</code> api and include the application <code>name</code>, a <code>loadingFunction</code> and an <code>activityFunction</code>.</p>
+<p>In <code>single-spa.config.js</code>, start by importing the <code>registerApplication</code> and <code>start</code> functions. The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the <a href="/docs/configuration.html#calling-singlespastart">start()</a> api here.</p>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa.config.js</span>
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
 </code></pre>
 <p>With our functions imported, we can now register an application with single-spa and call <code>start()</code>. Let's start by registering the <code>Home</code> application.</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa-config.js</span>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa.config.js</span>
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
 
 registerApplication(
@@ -231,7 +231,7 @@ registerApplication(
 <p>The second argument in <code>registerApplication</code>, <code>loadingFunction</code>, must be a function that returns a promise (or an <a href="https://ponyfoo.com/articles/understanding-javascript-async-await">&quot;async function&quot;</a>). The function will be called with no arguments when it's time to load the application for the first time. The returned promise must be resolved with the application. We will come back to this in <a href="/docs/starting-from-scratch.html#d-connect-to-single-spa-config">Step 4.d</a> after creating the <code>Home</code> application.</p>
 <p>The third argument to <code>registerApplication()</code>, <code>activityFunction</code>, must be a pure function. The function is provided window.location as the first argument, and returns a truthy value whenever the application should be active. Most commonly, the activity function determines if an application is active by looking at window.location/the first param.</p>
 <p>Since <code>home</code> will be our root component, we can set the <code>activityFunction</code> to be our root path.</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa-config.js</span>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa.config.js</span>
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
 
 registerApplication(
@@ -246,7 +246,7 @@ registerApplication(
   start()
 </code></pre>
 <p>In the next step we will be using <code>react-router-dom</code> to implement routing within our <code>Home</code> app. To handle this we need to tell the <code>activityFunction</code> to also look for the path prefix <code>/home</code>. Add the following to <code>single-spa.config.js</code>:</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa-config.js</span>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa.config.js</span>
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
 
 registerApplication(
@@ -263,7 +263,7 @@ registerApplication(
 <h2><a class="anchor" aria-hidden="true" id="step-four-create-the-home-application"></a><a href="#step-four-create-the-home-application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step Four: Create the Home application</h2>
 <h3><a class="anchor" aria-hidden="true" id="a-folder-setup"></a><a href="#a-folder-setup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a) Folder setup</h3>
 <p>We will be using React with <a href="https://reacttraining.com/react-router/web/example/animated-transitions">this React Router example</a> project to create the <code>Home</code> SPA. Using your package manager, add <code>react</code>, <code>react-dom</code>, <code>react-router-dom</code> and the single-spa React helper <a href="/docs/ecosystem-react.html">single-spa-react</a>.</p>
-<pre><code class="hljs css languages- bash">yarn add react react-dom single-spa-react react-router-dom
+<pre><code class="hljs css languages- bash">yarn add react react-dom single-spa-react react-router-dom react-transition-group
 </code></pre>
 <p>At the beginning of the tutorial we created a <code>src</code> folder to house all of our applications. It is this folder that will house each of our separate applications. These app folders will each contain an application file to control the bootstrap, mount and unmount functions and a <code>root</code> component. Read more about the <a href="/docs/building-applications.html#registered-application-lifecycle">registered application lifecycle</a>.</p>
 <p>Start by adding a <code>home</code> folder inside of our <code>src</code> directory to house our home application. Then inside of <code>home</code> we will create two files: <code>home.app.js</code> and <code>root.component.js</code>.</p>
@@ -487,8 +487,8 @@ styles.rgb = {
 export default AnimationExample;
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="d-connect-to-single-spa-config"></a><a href="#d-connect-to-single-spa-config" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>d) Connect to single-spa config</h3>
-<p>Head back to single-spa-config.js we need to add a <a href="/docs/configuration.html#loading-function">loading function</a> for our new home app. It is important to note that you do not have to use a <code>loading function</code> and instead can simply pass in the application config object (the lifecycle functions we built in <a href="/docs/starting-from-scratch.html#b-application-lifecycles">Step 4.b</a>) directly to the <code>registerApplication</code> function. However, with <a href="https://webpack.js.org/">webpack 2+</a>, we can take advantage of its support for <a href="https://webpack.js.org/guides/code-splitting/">code splitting</a> with <a href="https://webpack.js.org/api/module-methods/#import">import()</a> in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa-config.js</span>
+<p>Head back to single-spa.config.js we need to add a <a href="/docs/configuration.html#loading-function">loading function</a> for our new home app. It is important to note that you do not have to use a <code>loading function</code> and instead can simply pass in the application config object (the lifecycle functions we built in <a href="/docs/starting-from-scratch.html#b-application-lifecycles">Step 4.b</a>) directly to the <code>registerApplication</code> function. However, with <a href="https://webpack.js.org/">webpack 2+</a>, we can take advantage of its support for <a href="https://webpack.js.org/guides/code-splitting/">code splitting</a> with <a href="https://webpack.js.org/api/module-methods/#import">import()</a> in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.</p>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa.config.js</span>
 
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>
 
@@ -509,8 +509,8 @@ start()
 <p>Creating and registering our NavBar application will be very similar to the process we used to create our <code>home</code> app. However, in this case we are going to demonstrate how you can export your SPA as an object with lifecycle methods, then use the code splitting feature Webpack2+ offers to obtain the application object from the returned promise.</p>
 <p>Refer back to <a href="/docs/starting-from-scratch.html#step-three-registering-an-app">Step Three</a> for a more detailed explanation on how to register an application.</p>
 <h3><a class="anchor" aria-hidden="true" id="a-register-the-application"></a><a href="#a-register-the-application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>a) Register the Application</h3>
-<p>Just as we did before, we need to register our navBar using the <code>registerApplication()</code> api in our <code>single-spa-config.js</code> file. This time we will use <code>.then()</code> to obtain the application:</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa-config.js</span>
+<p>Just as we did before, we need to register our navBar using the <code>registerApplication()</code> api in our <code>single-spa.config.js</code> file. This time we will use <code>.then()</code> to obtain the application:</p>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// single-spa.config.js</span>
 
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
 
@@ -521,7 +521,7 @@ start();
 </code></pre>
 <p>Recall that the <code>activityFunction</code> is provided <code>window.location</code> as the first argument, and returns a truthy value whenever the application should be active.
 Since we want our navBar to persist regardless of any other mounted SPAs, we will set the <code>activityFunction</code> to return a value of <code>true</code>.</p>
-<pre><code class="hljs css languages- js"><span class="hljs-comment">// root-application/single-spa-config.js</span>
+<pre><code class="hljs css languages- js"><span class="hljs-comment">// root-application/single-spa.config.js</span>
 
 <span class="hljs-keyword">import</span> {registerApplication, start} <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
 
