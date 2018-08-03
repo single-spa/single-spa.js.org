@@ -133,7 +133,7 @@ module.exports = {
     },
     node: {
         fs: 'empty'
-    }, 
+    },
     resolve: {
         modules: [
             __dirname,
@@ -203,7 +203,7 @@ Additionally, to get single-spa connected, we will need to include a script tag 
 <!-- index.html -->
 <html>
   <head>
-    <!-- Materialize CSS --> 
+    <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
@@ -226,22 +226,22 @@ Additionally, to get single-spa connected, we will need to include a script tag 
 ## Step Three: Registering an App
 
   It is required to [register applications](single-spa-config.md#registering-applications) with single-spa. This enables single-spa to know how and when to `bootstrap`, `mount` and `unmount` an application.
-  
+
   As you saw earlier, we have already set up webpack and our master html file to look for registration inside of the single spa config. This will allow hierarchy to be maintained between the applications.
 
-  Create a new file called `single-spa-config.js` in the root directory so we can begin to register our applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
+  Create a new file called `single-spa.config.js` in the root directory so we can begin to register our applications. In order to register an application with single-spa we call the `registerApplication()` api and include the application `name`, a `loadingFunction` and an `activityFunction`.
 
-  In `single-spa-config.js`, start by importing the `registerApplication` and `start` functions. The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the [start()](single-spa-config.md#calling-singlespastart) api here.
+  In `single-spa.config.js`, start by importing the `registerApplication` and `start` functions. The start() api must be called by your single spa config in order for applications to actually be mounted. Before start is called, applications will be loaded, but not bootstrapped/mounted/unmounted. Learn more about the [start()](single-spa-config.md#calling-singlespastart) api here.
 
   ```js
-  // single-spa-config.js
+  // single-spa.config.js
   import {registerApplication, start} from 'single-spa';
 ```
 
 With our functions imported, we can now register an application with single-spa and call `start()`. Let's start by registering the `Home` application.
 
 ```js
-// single-spa-config.js
+// single-spa.config.js
 import {registerApplication, start} from 'single-spa'
 
 registerApplication(
@@ -263,7 +263,7 @@ The third argument to `registerApplication()`, `activityFunction`, must be a pur
 Since `home` will be our root component, we can set the `activityFunction` to be our root path.
 
 ```js
-// single-spa-config.js
+// single-spa.config.js
 import {registerApplication, start} from 'single-spa'
 
 registerApplication(
@@ -281,7 +281,7 @@ registerApplication(
 In the next step we will be using `react-router-dom` to implement routing within our `Home` app. To handle this we need to tell the `activityFunction` to also look for the path prefix `/home`. Add the following to `single-spa.config.js`:
 
 ```js
-// single-spa-config.js
+// single-spa.config.js
 import {registerApplication, start} from 'single-spa'
 
 registerApplication(
@@ -303,7 +303,7 @@ registerApplication(
 We will be using React with [this React Router example](https://reacttraining.com/react-router/web/example/animated-transitions) project to create the `Home` SPA. Using your package manager, add `react`, `react-dom`, `react-router-dom` and the single-spa React helper [single-spa-react](ecosystem-react.md).
 
 ```bash
-yarn add react react-dom single-spa-react react-router-dom
+yarn add react react-dom single-spa-react react-router-dom react-transition-group
 ```
 
 At the beginning of the tutorial we created a `src` folder to house all of our applications. It is this folder that will house each of our separate applications. These app folders will each contain an application file to control the bootstrap, mount and unmount functions and a `root` component. Read more about the [registered application lifecycle](building-applications.md#registered-application-lifecycle).
@@ -549,10 +549,10 @@ export default AnimationExample;
 
 ### d) Connect to single-spa config
 
-Head back to single-spa-config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
+Head back to single-spa.config.js we need to add a [loading function](single-spa-config.md#loading-function) for our new home app. It is important to note that you do not have to use a `loading function` and instead can simply pass in the application config object (the lifecycle functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles)) directly to the `registerApplication` function. However, with [webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
 
 ```js
-// single-spa-config.js
+// single-spa.config.js
 
 import {registerApplication, start} from 'single-spa'
 
@@ -580,10 +580,10 @@ Refer back to [Step Three](starting-from-scratch.md#step-three-registering-an-ap
 
 ### a) Register the Application
 
-Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa-config.js` file. This time we will use `.then()` to obtain the application:
+Just as we did before, we need to register our navBar using the `registerApplication()` api in our `single-spa.config.js` file. This time we will use `.then()` to obtain the application:
 
 ```js
-// single-spa-config.js
+// single-spa.config.js
 
 import {registerApplication, start} from 'single-spa';
 
@@ -597,7 +597,7 @@ Recall that the `activityFunction` is provided `window.location` as the first ar
 Since we want our navBar to persist regardless of any other mounted SPAs, we will set the `activityFunction` to return a value of `true`.
 
 ```js
-// root-application/single-spa-config.js
+// root-application/single-spa.config.js
 
 import {registerApplication, start} from 'single-spa';
 
