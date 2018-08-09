@@ -39,6 +39,15 @@ export const unmount = [
 ];
 ```
 
+## Routing
+In order for Vue router to work with Single-Spa's routing, it needs to be in `history` mode, not in `#` hash mode which is the default.  
+```
+const router = new Router({
+  mode: 'history',
+  routes,
+});
+```
+
 ## Options
 
 All options are passed to single-spa-vue via the `opts` parameter when calling `singleSpaVue(opts)`. The following options are available:
