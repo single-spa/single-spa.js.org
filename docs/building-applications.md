@@ -6,7 +6,7 @@ sidebar_label: Building
 
 A single-spa registered application is everything that a normal SPA is, except that it doesn't have an HTML page.
 In a single-spa world, your SPA contains many registered applications, where each has its own framework.
-registered applications have their own client-side routing and their own frameworks/libraries.
+Registered applications have their own client-side routing and their own frameworks/libraries.
 They render their own html and have full freedom to do whatever they want, whenever they are *mounted*.
 The concept of being *mounted* refers to whether a registered application is putting content on the DOM or not.
 What determines if a registered application is mounted is its [activity function](single-spa-config.md#activity-function).
