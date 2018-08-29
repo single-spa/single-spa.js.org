@@ -272,7 +272,7 @@ registerApplication(
   // Our loading function
   loadingFunction,
   // Our activity function
-  () => location.pathname === "" || location.pathname === "/")
+  () => location.pathname === "" || location.pathname === "/"
   );
 
   start()
@@ -290,7 +290,7 @@ registerApplication(
   // Our loading function
   loadingFunction,
   // Our activity function
-  () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'))
+  () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home')
   );
 
   start()
@@ -562,7 +562,7 @@ registerApplication(
   // Our loading function
   () => import('./src/home/home.app.js'),
   // Our activity function
-  () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home'));
+  () => location.pathname === "" || location.pathname === "/" || location.pathname.startsWith('/home')
 );
 
 start()
