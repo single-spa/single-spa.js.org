@@ -224,7 +224,7 @@ While you are verifying that everything is working, keep in mind that each appli
 <img src="https://cdn-images-1.medium.com/max/1600/1*utKlcxBkDXfQAQR52B0hAA.png" alt="an applications's lifecycle" />
 
 Conclusion
-As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on [Github](https://github.com/CanopyTax/single-spa) and here in the [docs](https://single-spa.js.org/docs/building-applications.html).
+As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on [Github](https://github.com/CanopyTax/single-spa) and here in the [docs](docs/building-applications.html).
 
 Single-spa is still a relatively new thing, and we’d love to hear your feedback and questions. We welcome contributions from everyone.
 
