@@ -43,7 +43,7 @@ What this means is you can use the api in two ways:</p>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="registerapplication"></a><a href="#registerapplication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>registerApplication</h2>
 <p><code>registerApplication(name, whereToGetApplication, activeWhen)</code> is the most important api your single spa config will use.
-It is described in detail inside of the <a href="/docs/single-spa-config.md#registering-applications">single-spa-config.md docs</a></p>
+It is described in detail inside of the <a href="/docs/configuration.html#registering-applications">single-spa-config.md docs</a></p>
 <h2><a class="anchor" aria-hidden="true" id="declarechildapplication"></a><a href="#declarechildapplication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>declareChildApplication</h2>
 <p><code>declareChildApplication</code> is deprecated use <code>registerApplication</code> instead</p>
 <h2><a class="anchor" aria-hidden="true" id="start"></a><a href="#start" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>start</h2>
@@ -107,7 +107,7 @@ the hot-reloading of entire registered applications, but <code>unload</code> can
 your application.</p>
 <p>Single-spa performs the following steps when unloadApplication is called.</p>
 <ol>
-<li>Call the <a href="/docs/applications.md#unload">unload lifecyle</a> on the registered application that is being unloaded.</li>
+<li>Call the <a href="/docs/api.html#unload">unload lifecyle</a> on the registered application that is being unloaded.</li>
 <li>Set the app status to NOT_LOADED</li>
 <li>Trigger a reroute, during which single-spa will potentially mount the application that was just unloaded.</li>
 </ol>
@@ -129,7 +129,7 @@ errors will no longer be thrown on the window.</p>
 <p><code>removeErrorHandler(fn)</code> removes an error handler. Returns true if the error handler was removed, and false if it was not.</p>
 <h2><a class="anchor" aria-hidden="true" id="mountrootparcel"></a><a href="#mountrootparcel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>mountRootParcel</h2>
 <p><code>mountRootParcel(parcelConfig, parcelProps)</code> will create and mount a parcel.
-This function takes a <a href="/docs/parcels.md#parcel-configuration">parcelConfig</a> and <a href="/docs/parcel-api.md#parcel-props">parcelProps</a>.
+This function takes a <a href="/docs/parcels-api.html#parcel-configuration">parcelConfig</a> and <a href="/docs/parcels-api.html#parcel-props">parcelProps</a>.
 The mounted parcel will not be automatically unmounted and unmounting will need to be triggered manually.</p>
 <h2><a class="anchor" aria-hidden="true" id="before-routing-event"></a><a href="#before-routing-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>before routing event</h2>
 <p>single-spa fires an event <code>single-spa:before-routing-event</code> on the window every time before a routing event occurs.
@@ -201,9 +201,7 @@ See dieOnTimeout section below for details.</p>
 <h2><a class="anchor" aria-hidden="true" id="dieontimeout"></a><a href="#dieontimeout" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dieOnTimeout</h2>
 <p><code>dieOnTimeout</code> refers to configuration of what should happen when registered applications take longer than expected
 to load, bootstrap, mount, or unmount. There is both a global configuration applicable to all registered applications, and also
-the ability for each registered application to override this behavior for itself. See <a href="/docs/applications.md#timeouts">registered application configuration
-for timeouts</a> for details on registered application overrides of the global
-behavior.</p>
+the ability for each registered application to override this behavior for itself.</p>
 <p>If <code>dieOnTimeout</code> is false (which is the default), registered applications that are slowing things down will cause
 nothing more than some warnings in the console up until <code>millis</code> is reached.</p>
 <p>If <code>dieOnTimeout</code> is true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN
