@@ -4,11 +4,11 @@ title: Parcels
 sidebar_label: Overview
 ---
 
-A single-spa parcel is a bundle of functionality (like an application or component) meant to be mounted manually 
+A single-spa parcel is a bundle of functionality (like an application or component) meant to be mounted manually
 by an application. Parcels use similar methodology as applications but are mounted by a manual function call rather than the activity function.
-A parcel can be as large as an application or as small as a component and written in 
-any language as long as it exports the correct lifecycle events. In a single-spa world, your SPA contains 
-many registered applications and potentially many parcels. Typically we recommend you mount a parcel within 
+A parcel can be as large as an application or as small as a component and written in
+any language as long as it exports the correct lifecycle events. In a single-spa world, your SPA contains
+many registered applications and potentially many parcels. Typically we recommend you mount a parcel within
 the context of an application because the parcel will be unmounted with the application.
 
 ## Quick Example
@@ -93,7 +93,7 @@ Note that in some cases the optional props are required [(see additional example
 
 ## Parcel Lifecycles
 
-Start with [applications](/docs/applications.md#registered-application-lifecycle) to learn more about the functionality of single-spa's lifecycle methods.
+Start with [applications](api.md#registered-application-lifecycle) to learn more about the functionality of single-spa's lifecycle methods.
 
 ### Bootstrap
 
@@ -113,7 +113,7 @@ function bootstrap(props) {
 
 ### Mount
 
-If the parcel is not mounted this lifecycle function is called when ever `mountParcel` is called. When 
+If the parcel is not mounted this lifecycle function is called when ever `mountParcel` is called. When
 called, this function should create DOM elements, DOM event listeners, etc. to render content to the user.
 
 ```js
@@ -134,7 +134,7 @@ This lifecycle function will be called whenever the parcel is mounted and one of
 - `unmount()` is called
 - The parent parcel or application is unmounted
 
-When called, this function should clean up all DOM elements, DOM event listeners, leaked memory, globals, 
+When called, this function should clean up all DOM elements, DOM event listeners, leaked memory, globals,
 observable subscriptions, etc. that were created at any point when the parcel was mounted.
 
 ```js
@@ -158,7 +158,7 @@ Single this lifecycle is optional, the user of a parcel needs to check whether t
 ### Modals
 
 `App1` handles everything related to contacts (highly cohesive) but somewhere in `App2` we need to create a contact.
-We could do any number of things to share the functionality between application 1 and 2: 
+We could do any number of things to share the functionality between application 1 and 2:
 
 - If both are written in the same framework we could export/import components.
 - We could reimplement creating a contact (loss of cohesion)

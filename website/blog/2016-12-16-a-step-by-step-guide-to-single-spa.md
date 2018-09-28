@@ -42,8 +42,8 @@ Since Webpack is probably the more common use case, my code examples from here o
     <title>A single-spa application</title>
   </head>
   <body>
-     <div id="cool-app"></div>
-     <script src="root-application.js"></script>
+    <div id="cool-app"></div>
+    <script src="root-application.js"></script>
   </body>
 </html>
 ```
@@ -215,20 +215,16 @@ Try navigating to a url that your child app is active for (`#/cool`) and then na
 
 If you run into problems, try to narrow down whether the problem is in the root application or in the child application. Is your root application being executed? Are the declareChildApplication calls being made? Have you called ```start()```? Is there a network request to download the code for your child application? Is your child application's ```bootstrap``` lifecycle being called? What about ```mount```?
 
-<img src="https://cdn-images-1.medium.com/max/1600/1*WMFuo-hz-Q31UVbTHAx4lw.png"
-     alt="cdn-images-1"
-/>
+<img src="https://cdn-images-1.medium.com/max/1600/1*WMFuo-hz-Q31UVbTHAx4lw.png" alt="cdn-images-1" />
 
 It may be helpful to add a navigation menu, so you can verify everything mounts and unmounts to the DOM correctly. If you want to level up your single-spa skills even more, make the navigation menu an entire child application whose activity function is ```() => true```. An example that does just that is found [here](https://github.com/CanopyTax/single-spa-examples/blob/master/src/single-spa-examples.js#L3) and [here](https://github.com/CanopyTax/single-spa-examples/blob/master/src/navbar/navbar.app.js).
 
 While you are verifying that everything is working, keep in mind that each application goes through five phases:
 
-<img src="https://cdn-images-1.medium.com/max/1600/1*utKlcxBkDXfQAQR52B0hAA.png"
-     alt="an applications's lifecycle"
-/>
+<img src="https://cdn-images-1.medium.com/max/1600/1*utKlcxBkDXfQAQR52B0hAA.png" alt="an applications's lifecycle" />
 
 Conclusion
-As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on [Github](https://github.com/CanopyTax/single-spa) and here in the [docs](/docs/building-applications.html).
+As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on [Github](https://github.com/CanopyTax/single-spa) and here in the [docs](https://single-spa.js.org/docs/building-applications.html).
 
 Single-spa is still a relatively new thing, and we’d love to hear your feedback and questions. We welcome contributions from everyone.
 

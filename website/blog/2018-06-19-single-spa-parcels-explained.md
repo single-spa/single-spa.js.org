@@ -64,7 +64,7 @@ And if you are already a user of [single-spa applications](https://github.com/Ca
 
 We’d love to get your feedback on parcels. What do you think of this new way of framework interop? Is the implementation easy to understand? Are parcels useful for you or do they not quite fit into what you’re trying to accomplish?How hard was it for you to try out?
 
-Check out the [official docs](https://github.com/CanopyTax/single-spa/blob/master/docs/parcels.md) for more examples, explanations, and [api documentation](https://github.com/CanopyTax/single-spa/blob/master/docs/parcel-api.md).
+Check out the [official docs](https://github.com/CanopyTax/single-spa/blob/master/docs/parcels.md) for more examples, explanations, and [api documentation](https://github.com/CanopyTax/single-spa/blob/master/docs/parcels-api.md).
 
 And let us know your thoughts in the [single-spa Slack channel](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk), a [Github issue](https://github.com/CanopyTax/single-spa/issues), or [on Twitter](https://twitter.com/Single_spa)!
 
