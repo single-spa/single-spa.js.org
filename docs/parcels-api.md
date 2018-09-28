@@ -8,8 +8,8 @@ Most parcel methods will be called on the parcel itself, with the exception bein
 
 ## mounting
 
-Both mount methods take a [parcelConfig](parcels-overview.md#parcel-configuration) and [additional props](parcel-api.md#parcel-props).
-They both return a [parcel object](parcel-api.md#parcel-object). The parcel object contains all additional exposed methods.
+Both mount methods take a [parcelConfig](parcels-overview.md#parcel-configuration) and [additional props](parcels-api.md#parcel-props).
+They both return a [parcel object](parcels-api.md#parcel-object). The parcel object contains all additional exposed methods.
 
 ### Parcel Props
 
@@ -26,7 +26,7 @@ const parcelProps = {
 ### mountParcel
 
 `applicationProps.mountParcel(parcelConfig, parcelProps)`. Each application is provided a mountParcel function.
-The main advantage to using an applications `mountParcel` function is that parcels mounted via an 
+The main advantage to using an applications `mountParcel` function is that parcels mounted via an
 applications `mountParcel` will be automatically unmounted when the application is unmounted.
 
 ### mountRootParcel
@@ -37,13 +37,13 @@ The [mountRootParcel](api.md#mountrootparcel) method will mount the parcel but `
 
 The parcel object contains the following functions and methods:
 
-- [mount](parcel-api.md#mount)
-- [unmount](parcel-api.md#unmount)
-- [getStatus](parcel-api.md#getstatus)
-- [loadPromise](parcel-api.md#loadpromise)
-- [bootstrapPromise](parcel-api.md#bootstrappromise)
-- [mountPromise](parcel-api.md#mountpromise)
-- [unmountPromise](parcel-api.md#unmountpromise)
+- [mount](parcels-api.md#mount)
+- [unmount](parcels-api.md#unmount)
+- [getStatus](parcels-api.md#getstatus)
+- [loadPromise](parcels-api.md#loadpromise)
+- [bootstrapPromise](parcels-api.md#bootstrappromise)
+- [mountPromise](parcels-api.md#mountpromise)
+- [unmountPromise](parcels-api.md#unmountpromise)
 
 ### unmount
 

@@ -15,13 +15,13 @@ import {registerApplication, start} from 'single-spa';
 
 ## registerApplication
 `registerApplication(name, whereToGetApplication, activeWhen)` is the most important api your single spa config will use.
-It is described in detail inside of the [single-spa-config.md docs](/docs/single-spa-config.md#registering-applications)
+It is described in detail inside of the [single-spa-config.md docs](single-spa-config.md#registering-applications)
 
 ## declareChildApplication
 `declareChildApplication` is deprecated use `registerApplication` instead
 
 ## start
-`start()` is a function that must be called by your single spa config. Before `start` is called, 
+`start()` is a function that must be called by your single spa config. Before `start` is called,
 applications will be loaded, but will never be bootstrapped, mounted or unmounted. The reason for `start`
 is to give you control over the performance of your single page application. For example, you may want to declare registered applications
 immediately (to start downloading the code for the active ones), but not actually mount the registered applications
@@ -65,7 +65,7 @@ or `null` (when the app doesn't exist). The string status is one of the followin
 - `UNMOUNTING`: the app is currently being unmounted, but has not yet finished.
 - `UNLOADING`: the app is currently being unloaded, but has not yet finished.
 - `SKIP_BECAUSE_BROKEN`: the app threw an error during load, bootstrap, mount, or unmount and has been
-   siloed because it is misbehaving. Other apps may continue on normally, but this one will be skipped.
+  siloed because it is misbehaving. Other apps may continue on normally, but this one will be skipped.
 
 ## unloadApplication
 `unloadApplication(appName, opts)` takes in a string parameter `appName` and (optionally) an `opts` object. It returns
@@ -88,7 +88,7 @@ your application.
 
 Single-spa performs the following steps when unloadApplication is called.
 
-1. Call the [unload lifecyle](/docs/applications.md#unload) on the registered application that is being unloaded.
+1. Call the [unload lifecyle](api.md#unload) on the registered application that is being unloaded.
 2. Set the app status to NOT_LOADED
 3. Trigger a reroute, during which single-spa will potentially mount the application that was just unloaded.
 
@@ -115,8 +115,8 @@ The `fn` must be a function. It will be called with one argument, `err`, which i
 `removeErrorHandler(fn)` removes an error handler. Returns true if the error handler was removed, and false if it was not.
 
 ## mountRootParcel
-`mountRootParcel(parcelConfig, parcelProps)` will create and mount a parcel. 
-This function takes a [parcelConfig](/docs/parcels.md#parcel-configuration) and [parcelProps](/docs/parcel-api.md#parcel-props).
+`mountRootParcel(parcelConfig, parcelProps)` will create and mount a parcel.
+This function takes a [parcelConfig](parcels-api.md#parcel-configuration) and [parcelProps](parcels-api.md#parcel-props).
 The mounted parcel will not be automatically unmounted and unmounting will need to be triggered manually.
 
 ## before routing event
@@ -205,9 +205,7 @@ See dieOnTimeout section below for details.
 ## dieOnTimeout
 `dieOnTimeout` refers to configuration of what should happen when registered applications take longer than expected
 to load, bootstrap, mount, or unmount. There is both a global configuration applicable to all registered applications, and also
-the ability for each registered application to override this behavior for itself. See [registered application configuration
-for timeouts](/docs/applications.md#timeouts) for details on registered application overrides of the global
-behavior.
+the ability for each registered application to override this behavior for itself.
 
 If `dieOnTimeout` is false (which is the default), registered applications that are slowing things down will cause
 nothing more than some warnings in the console up until `millis` is reached.
