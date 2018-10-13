@@ -82,7 +82,7 @@ yarn add clean-webpack-plugin --dev
 *Webpack Loaders*
 
 ```bash
-yarn add style-loader css-loader html-loader babel-loader --dev
+yarn add style-loader css-loader html-loader babel-loader@7 --dev
 ```
 
 * [html-Loader](https://webpack.js.org/loaders/html-loader/)
