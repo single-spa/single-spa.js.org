@@ -68,7 +68,7 @@ For the most part, you can get applications that use [ember cli](https://ember-c
 First, since the ember cli only supports dependencies from bower, you'll need to do:
 
 - `bower init`
-- `bower install single-spa-examples --save`
+- `bower install single-spa-ember --save`
 
 Add the following options to your ember-cli-build.js file:
 ```js
