@@ -40,11 +40,9 @@ input#search_input_react {
   color: $primaryColor !important;
 }
 
-.headerTitleWithLogo {
+.fixedHeaderContainer header h2 {
   color: $primaryColor;
-  font-family: $mainFont;
-  font-weight: 200 !important;
-  line-height: 4 !important;
+  font-weight: 300;
 }
 
 .homeContainer{
