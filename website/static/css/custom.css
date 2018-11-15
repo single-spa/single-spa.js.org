@@ -82,10 +82,23 @@ input#search_input_react {
   color: $accentWhite;
 }
 
-
-footer .fbOpenSource {
-  margin: 0 auto 1em;
+.cpOpenSource {
+  background: #fff;
+  border-radius: 3px;
+  display: block;
+  margin: 0 auto 1rem;
+  opacity: .7;
+  transition: opacity 0.15s ease-in-out;
   width: 38px;
+}
+.cpOpenSource:hover {
+  opacity: 1;
+}
+
+.cpOpenSource img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
@@ -160,7 +173,7 @@ footer .fbOpenSource {
 }
 
 #back-to-top {
-  background: none; 
+  background: $accentWhite; 
   color: $primaryColor;
   border: solid 0.1px $primaryColor;
   transition: all .3s ease-in-out;

@@ -91,9 +91,9 @@ class Footer extends React.Component {
           href="https://www.canopytax.com/"
           target="_blank"
           rel='noopener'
-          className="fbOpenSource">
+          className="cpOpenSource">
           <img
-            src="https://www.canopytax.com/files/themes/canopy/images/menu-head--ico-mobile.png"
+            src="/img/canopy-logo-icon.svg"
             alt="CanopyTax Open Source"
             height="45"
           />
