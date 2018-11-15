@@ -1,4 +1,9 @@
 /* your custom css */
+code {
+  background: #F0F0F0;
+  box-shadow: 2px 0 #F0F0F0, -2px 0 #F0F0F0;
+}
+
 .fixedHeaderContainer {
     background-color: $secondaryColor;
     border-bottom: solid $primaryColor 0.5px;
