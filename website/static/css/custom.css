@@ -39,10 +39,21 @@ code {
   transform: scale(1.08);
 }
 
-
-input#search_input_react {
+input#search_input_react#search_input_react {
   background-color: $accentWhite;
-  color: $primaryColor !important;
+  color: $primaryColor;
+}
+
+.navSearchWrapper::before {
+  border-color: darkgrey;
+}
+
+.navSearchWrapper::after {
+  background: darkgrey;
+}
+
+input#search_input_react::placeholder {
+  color: darkgrey;
 }
 
 .fixedHeaderContainer header h2 {
