@@ -92,6 +92,9 @@ const siteConfig = {
     algoliaOptions: {} // Optional, if provided by Algolia
   },
   scrollToTop: true,
+  markdownPlugins: [
+    require('remarkable-highlight-lines')
+  ],
   gaTrackingId: 'UA-121119786-1'
 };
 
