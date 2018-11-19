@@ -4,7 +4,8 @@
       "getting-started-overview",
       "starting-from-scratch",
       "migrating-react-tutorial",
-      "migrating-angularJS-tutorial"
+      "migrating-angularJS-tutorial",
+      "glossary"
     ],
     "single-spa Applications": [
       "building-applications",
