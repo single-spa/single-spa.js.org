@@ -1,7 +1,11 @@
 /* your custom css */
-code {
-  background: #F0F0F0;
-  box-shadow: 2px 0 #F0F0F0, -2px 0 #F0F0F0;
+code, code.hljs {
+  background: rgba(27, 31, 35, .05);
+}
+
+blockquote {
+  background-color: rgba(0,17,255, .05);
+  border-left: 5px solid rgba(0,17,255, .15);
 }
 
 .fixedHeaderContainer {
@@ -193,4 +197,21 @@ input#search_input_react::placeholder {
 #back-to-top:hover {
   background: $primaryColor;
   color: $accentWhite;
+}
+
+.navSearchWrapper .aa-dropdown-menu {
+  border: 1px solid $primaryColor;
+  overflow: hidden;
+  padding: 0;
+}
+
+.algolia-docsearch-footer {
+  display: none;
+}
+
+.highlighted-line {
+  background-color: rgba(0,17,255, .1);
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
 }
