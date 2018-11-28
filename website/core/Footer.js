@@ -64,7 +64,7 @@ class Footer extends React.Component {
               Stack Overflow
             </a>
             <a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target='_blank' rel='noopener'>Chat in Slack</a>
-            <a href="https://twitter.com/" target="_blank" rel='noopener'>
+            <a href="https://twitter.com/Single_spa/" target="_blank" rel='noopener'>
               Twitter
             </a>
           </div>
