@@ -1,0 +1,33 @@
+/* "Copy" code block button */
+pre {
+  position: relative;
+}
+
+.cpBtn {
+  align-items: center;
+  background-color: #333;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 11px;  
+  opacity: 0;
+  padding: 3px 5px 5px;
+  position: absolute;
+  right: 5px;
+  text-decoration: none;
+  top: 5px;
+  transform: translateY(-2px);
+  transition: all .3s ease-out;
+}
+
+pre:hover .cpBtn,
+pre .cpBtn:focus {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cpBtn svg {
+  fill: currentColor;
+  margin-right: .4em;
+}

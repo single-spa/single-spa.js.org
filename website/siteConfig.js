@@ -81,7 +81,13 @@ const siteConfig = {
   },
   // Adds secondary on-page navigation for doc sub-topics
   onPageNav: 'separate',
-  scripts: ['https://buttons.github.io/buttons.js', 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js', '/js/index.js'],
+  scripts: [
+    'https://buttons.github.io/buttons.js',
+    'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    '/js/index.js',
+    '/js/code-copy-to-clipboard.js',
+],
   stylesheets: ["https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
