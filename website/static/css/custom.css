@@ -150,10 +150,7 @@ input#search_input_react::placeholder {
 }
 
 .contributorWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 30px;
+  margin: 40px 0;
   text-align: center;
 }
 
@@ -167,17 +164,32 @@ input#search_input_react::placeholder {
   padding-bottom: 15px;
 }
 
+.contributorsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .contributor {
   display: inline-block;
-  width: calc(100% * (1/5) - 1px);
+  width: 20%;
+  min-width: 140px;
 }
 
 .contributorImg {
-  height: 75px;
   border-radius: 50%;
+  box-shadow: inset 0 0 8px rgba(0,0,0,.15);
+  display: block;
+  width: 75px;
+  padding-bottom: 75px;
+  margin: 0 auto;
+  background-size: contain;
 }
 
 .repoLink {
+  display: inline-block;
   text-align: center;
   font-size: 45px;
   margin-bottom: 50px;
