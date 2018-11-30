@@ -13,7 +13,8 @@ const projects = [
   { user: "CanopyTax", repo: "single-spa-preact" },
   { user: "CanopyTax", repo: "single-spa-react" },
   { user: "CanopyTax", repo: "single-spa-svelte" },
-  { user: "CanopyTax", repo: "single-spa-vue" }
+  { user: "CanopyTax", repo: "single-spa-vue" },
+  { user: "CanopyTax", repo: "single-spa.js.org" }
 ]
 
 const getContributors = () => (
