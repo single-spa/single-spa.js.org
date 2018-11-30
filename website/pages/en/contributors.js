@@ -27,7 +27,7 @@ const getContributors = () => (
             <h3 class="contributorLogin">
               \${login}
             </h3>
-            <img class="contributorImg" src=\${avatar_url} alt="\${login}"s Github avatar" />
+            <span class="contributorImg" style="background-image: url('\${avatar_url}')"></span>
           </a>  
         \`)).join("")
         document.getElementById(\`\${repo}-contributors\`).innerHTML = contributerElems;
@@ -42,7 +42,7 @@ class Contributors extends React.Component{
       <div className="mainContainer">
         <Container padding={['bottom']}>
           <h1 className="contributorHeader">Contributors</h1>
-          {projects.map(({user, repo, contributors}) => (
+          {projects.map(({user, repo}) => (
             <div className="contributorWrapper" key={repo}>
               <a 
                 href={`https://github.com/${user}/${repo}`} 
@@ -50,7 +50,7 @@ class Contributors extends React.Component{
                 target="_blank"
                 rel="noopener noreferrer"
               >{repo}</a>
-              <div id={`${repo}-contributors`}></div>
+              <div id={`${repo}-contributors`} className="contributorsList"></div>
             </div>
           ))}
         </Container>
