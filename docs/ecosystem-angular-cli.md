@@ -4,7 +4,7 @@ title: single-spa-angular-cli
 sidebar_label: Angular-Cli
 ---
 
-single-spa-angular-cli is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Angular CLI](https://cli.angular.io/). Check out the [single-spa-angular-cli github](https://github.com/PlaceMe-SAS/single-spa-angular-cli).
+single-spa-angular-cli is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [Angular CLI](https://cli.angular.io/). Check out the [single-spa-angular-cli github](https://github.com/PlaceMe-SAS/single-spa-angular-cli).
 
 ## Example
 
