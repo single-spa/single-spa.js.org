@@ -1,6 +1,14 @@
 /* your custom css */
-code, code.hljs {
+pre {
+  display: block;
+  overflow-x: scroll;
   background: rgba(27, 31, 35, .05);
+}
+
+pre code, code.hljs {
+  background: none;
+  display: inline-block;
+  min-width: 100%;
 }
 
 blockquote {
