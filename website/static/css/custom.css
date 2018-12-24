@@ -1,4 +1,8 @@
 /* your custom css */
+.wrapper {
+  max-width: 1400px;
+}
+
 pre {
   display: block;
   overflow-x: scroll;
