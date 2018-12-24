@@ -12,6 +12,12 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 
 **Single-spa can be used with just about any build system or javascript framework**, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](separating-applications.md#option-3-dynamic-module-loading) for each of your applications.
 
+For this tutorial we will be creating the following applications to showcase the power and usefulness of single-spa:
+
+1. home: a React app using [React Router](https://reacttraining.com/react-router/)
+2. navBar: a React app that always displays top-level navigation
+3. angularJS: an AngularJS app using [angular-ui-router](https://ui-router.github.io/ng1/)
+
 The complete code for this example is in the [`single-spa-simple-example`](https://github.com/alocke12992/single-spa-simple-example) repository.
 
 > __Note__
@@ -157,23 +163,17 @@ The last step in our project set up is to include a couple scrips in our package
 },
 ```
 
-## 2. Create the master html file
+## 2. Create the html file
 
-The next step is to create what we'll refer to as your __single-spa config__. The single-spa config file is where your applications are initialized, and an html is required for this config.
+Our goal in this step will be to create a __single-spa config__. The single-spa config file is where your applications are initialized, and an html page will request this config.
 
 You’ll want to keep your single-spa config as small as possible since it is the master controller and could easily become a maintenance bottleneck. You don’t want to be constantly changing both the single-spa config and the child applications.
 
 ### 2.a Create *index.html*
 
-For this project we will be creating the following applications:
+Create an *index.html* file the root directory. Inside this file, we'll be adding a `div` element for each application, each with a unique ID. Mounting each application to a different point allows us to maintain them completely separated and so that they never try to modify the same DOM.
 
-1. home: a React app using [React Router](https://reacttraining.com/react-router/)
-2. navBar: a React app that always displays top-level navigation
-3. angularJS: an AngularJS app using [angular-ui-router](https://ui-router.github.io/ng1/)
-
-We will need to create a `div` element for each application to be mounted to. This will allow us maintain them separate and so that they never try to modify the same DOM.
-
-In your root directory create an *index.html* file and then add the following:
+Paste in the following HTML markup:
 
 <p class="filename">index.html</p>
 
@@ -245,7 +245,7 @@ start();
 
 The above code needs explanation. In order to register an application with single-spa, import and call the `registerApplication` function; and include the application `name`, a `loadingFunction`, and an `activityFunction` as parameters.
 
-`loadingFunction` must be a function that returns a Promise (or an [`async` function](https://ponyfoo.com/articles/understanding-javascript-async-await)). The function will be called with no arguments when loading the application for the first time. The returned promise must resolve with the application code. We will come back to this in [Step 4.d](starting-from-scratch.md#4d-connect-to-single-spa-config) after creating the `home` application.
+`loadingFunction` must be a function that returns a Promise (or an [`async` function](https://ponyfoo.com/articles/understanding-javascript-async-await)). The function will be called with no arguments when loading the application for the first time. The returned promise must resolve with the application code. We will come back to this in [Step 4.d](starting-from-scratch.md#4d-connect-to-single-spa-config) after creating the __home__ application.
 
 `activityFunction` must be a function that returns a truthy value that represents whether the application should be active, and must be a pure function. The function is provided `window.location` as the first argument. The most common scenario is to determine if an application is active by looking at window.location, but not always. In this case, `home` will be our root application so it will be shown at the root url paths as well as and url pathname that begins with `/home`.
 
@@ -255,7 +255,7 @@ Lastly, we also import the `start` function from the single-spa package and call
 
 ### 4.a Setup home
 
-Start by adding a *home* folder inside of the *src* directory. Then inside of *home/* we will create two files: *home.app.js* and *root.component.js*.
+Start by adding a *home/* folder inside of the *src/* directory. Then inside of *home/* we will create two files: *home.app.js* and *root.component.js*.
 
 ```sh
 mkdir src/home && cd src/home
@@ -488,7 +488,7 @@ We will now define the [loading function](single-spa-config.md#loading-function)
 
 One way of doing this is by simply passing in an _application config object_ (the `reactLifecycles` functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles) are an example of this) directly to the `registerApplication` function. 
 
-However, to encourage best practices, we will leverage [code splitting](https://webpack.js.org/guides/code-splitting/) using Webpack to easily lazy-load registered applications on-demand. Think about your project's needs when deciding which route to take.
+However, to encourage best practices, we will leverage [code splitting using Webpack](https://webpack.js.org/guides/code-splitting/) to easily lazy-load registered applications on-demand. Think about your project's needs when deciding which route to take.
 
 <p class="filename">single-spa.config.js</p>
 
@@ -546,7 +546,7 @@ registerApplication(
 
 ### 5.b Setup NavBar
 
-Now that we have registered our application, let's create a new *navBar/* folder in the *src* directory to contain *navBar.app.js* and *root.component.js* files.
+Now that we have registered our application, let's create a new *navBar/* folder in the *src/* directory to contain *navBar.app.js* and *root.component.js* files.
 
 From the root directory:
 
@@ -605,7 +605,7 @@ export default NavBar
 
 ### 5.e Set up navigation
 
-With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. single-spa provides a [`navigateToUrl`](api.md#navigatetourl), a utility function that allows for easy url navigation between registered applications.
+With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. single-spa provides [`navigateToUrl`](api.md#navigatetourl), a utility function that allows for easy url navigation between registered applications.
 
 > An alternative method would be to call `pushState()`, which `navigateToUrl` does internally. This method could be used in conjunction with other client-side libraries but there are some [additional considerations when using `pushState`](https://github.com/CanopyTax/single-spa-examples/issues/54#issuecomment-424384123).
 
@@ -681,7 +681,7 @@ Hard-coding the activityFunction begins to get tedious so let us add a function 
 
 function pathPrefix(prefix) {
     return function(location) {
-        return location.pathname.startsWith(`${prefix}`);
+        return location.pathname.startsWith(prefix);
     }
 }
 
@@ -694,21 +694,11 @@ registerApplication(
 start();
 ```
 
-Don't forget to include the new application in our root html by adding the following:
-
-<p class="filename">index.html</p>
-
-```html
-...
-<div id='angularJS'></div>
-...
-```
-
 ### 6.c Set up Application Lifecycles
 
-single-spa-angularjs implements single-spa lifecycles hooks, which simplifies the configuration. Learn more about the [single-spa-angularjs options](ecosystem-angularjs.md#options).
+single-spa-angularjs another helper library that implements the necessary lifecycle hooks, which simplifies the configuration. Learn more about the [single-spa-angularjs options](ecosystem-angularjs.md#options).
 
-Just as we did for our home and navBar SPAs, set up the lifecycle hooks for the __angularJS__ in the *angularJS.app.js* file.
+Just as we did for our __home__ and __navBar__ applications, set up the lifecycle hooks for the __angularJS__ in the *angularJS.app.js* file.
 
 <p class="filename">angularJS.app.js</p>
 
@@ -799,7 +789,7 @@ angular
 </div>
 ```
 
-Next we will add a simple Gif Component and import it in the root component.
+Next we will add a basic Gif Component and import it in the root component.
 
 <p class="filename">gifs.component.js</p>
 
