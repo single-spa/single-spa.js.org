@@ -17,38 +17,31 @@ blockquote {
 }
 
 .fixedHeaderContainer {
-    background-color: $secondaryColor;
-    border-bottom: solid $primaryColor 0.5px;
+  background-color: $secondaryColor;
+  border-bottom: solid $primaryColor 0.5px;
 }
 
-.headerWrapper .navigationWrapper .nav-site a {
+.navigationSlider .slidingNav ul li a {
+  border-bottom: solid 1px transparent;
   color: $primaryColor;
   font-family: $accentFont;
-  font-weight: 100;
-  line-height: 3;
   transition: all .2s ease-in-out;
 }
 
- 
+.navigationSlider .slidingNav ul li a:focus,
+.navigationSlider .slidingNav ul li a:hover{
+  background-color: inherit;
+  border-bottom-color: darkgrey;
+  color: $primaryColor;
+}
+
 .navigationSlider .slidingNav ul li.siteNavItemActive a,
 .navigationSlider .slidingNav ul li.siteNavGroupActive a,
 .navigationSlider .slidingNav ul li.siteNavItemActive a:hover,
 .navigationSlider .slidingNav ul li.siteNavGroupActive a:focus{
   background-color: $secondaryColor;
+  border-bottom-color: $primaryColor;
   color: $primaryColor;
-  font-weight: 300;
-  font-size: 110%;
-  border-bottom: solid 0.5px #0011ff;
-  transform: none;
-}
-
-
-.navigationSlider .slidingNav ul li a:focus,
-.navigationSlider .slidingNav ul li a:hover{
-  background-color: $secondaryColor;
-  color: $primaryColor;
-  font-weight: 300;
-  transform: scale(1.08);
 }
 
 input#search_input_react#search_input_react {
@@ -234,4 +227,18 @@ input#search_input_react::placeholder {
   display: block;
   margin: 0 -1.5rem;
   padding: 0 1.5rem;
+}
+
+.filename {
+  background: rgba(27, 31, 35, .05);
+  border-top: 5px solid rgba(0,17,255, .15);
+  display: inline-block;
+  font-size: .8rem;
+  font-style: italic;
+  margin-bottom: 0;
+  padding: 1px 8px;
+}
+
+.filename + pre > code {
+  border-top-left-radius: 0;
 }
