@@ -67,4 +67,4 @@ Changing which javascript file is loaded for each child application can be done 
 | -------------- | -------------------------- | --------------- | -------------------- | -------------------- | ------------ |
 | One code repo  |                            |                 |                      |        Easy          | [simple-webpack-example](https://github.com/joeldenning/simple-single-spa-webpack-example) and [single-spa-examples](https://github.com/CanopyTax/single-spa-examples) |
 | NPM modules    |            [x]             |       [x]       |                      |       Medium         | (No example repo, yet -- contributions accepted!) |
-| Module loading |            [x]             |       [x]       |          [x]         |        Hard          | [single-spa-portal-example](https://github.com/me-12/single-spa-portal-example) |
+| Module loading |            [x]             |       [x]       |          [x]         |        Hard          | [Parcels and SystemJS example](https://gitlab.com/TheMcMurder/single-spa-portal-example) & [single-spa-portal-example](https://github.com/me-12/single-spa-portal-example) |
