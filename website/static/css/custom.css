@@ -34,6 +34,7 @@ blockquote {
   border-bottom: solid 1px transparent;
   color: $primaryColor;
   font-weight: 100;
+  padding: 18px 10px;
   transition: all .2s ease-in-out;
 }
 
