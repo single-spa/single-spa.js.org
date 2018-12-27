@@ -12,6 +12,11 @@ body {
   font-weight: 100;
 }
 
+.nav-footer .sitemap a {
+  margin: 2px 0px;
+  padding: 3px 0px;
+}
+
 pre {
   display: block;
   overflow-x: scroll;
