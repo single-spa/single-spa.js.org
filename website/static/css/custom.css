@@ -8,6 +8,10 @@ body {
   max-width: 1400px;
 }
 
+.fixedHeaderContainer header .headerTitleWithLogo {
+  font-weight: 100;
+}
+
 pre {
   display: block;
   overflow-x: scroll;
