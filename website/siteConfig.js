@@ -53,21 +53,6 @@ const siteConfig = {
     subText: '#889aaa',
     accentWhite: '#fff'
   },
-  /* custom fonts for website */
-  fonts: {
-    mainFont: [
-      '-apple-system',
-      'system-ui',
-      'sans-serif'
-    ],
-    secondaryFont: [
-      'sans-serif'
-    ],
-    accentFont: [
-      '-apple-system',
-      'system-ui',
-    ],
-  },
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
     'Copyright © ' +

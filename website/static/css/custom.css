@@ -1,4 +1,9 @@
 /* your custom css */
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  font-size: 16px;
+}
+
 .wrapper {
   max-width: 1400px;
 }
@@ -28,7 +33,7 @@ blockquote {
 .navigationSlider .slidingNav ul li a {
   border-bottom: solid 1px transparent;
   color: $primaryColor;
-  font-family: $accentFont;
+  font-weight: 100;
   transition: all .2s ease-in-out;
 }
 
@@ -78,16 +83,14 @@ input#search_input_react::placeholder {
 }
 
 .projectTitle {
-  font-family: $mainFont;
   font-weight: 100;
-  font-size: 600%;
+  font-size: 6rem;
   letter-spacing: .9rem;
 }
 
 .subHeader {
-  font-family: $secondaryFont;
-  font-weight: 100 !important;
-  font-size: 110%;
+  font-weight: 100;
+  font-size: 1.1rem;
   letter-spacing: .2rem;
   color: $subText;
   margin-bottom: 35px;
@@ -161,7 +164,7 @@ input#search_input_react::placeholder {
 
 .container .wrapper .contributorWrapper h2 {
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-bottom: 25px;
 }
 .container .wrapper .contributorHeader {
@@ -196,7 +199,7 @@ input#search_input_react::placeholder {
 .repoLink {
   display: inline-block;
   text-align: center;
-  font-size: 45px;
+  font-size: 2.75rem;
   margin-bottom: 50px;
   margin-top: 50px;
   line-height: 1em;
