@@ -99,7 +99,7 @@ class Footer extends React.Component {
           />
         </a>
         <section className="copyright">
-          Copyright &copy; {currentYear} CanopyTax
+          &copy; {currentYear} CanopyTax
         </section>
       </footer>
     );
