@@ -332,11 +332,11 @@ export const unmount = [
 
 ### 4.c Build the React app
 
-Now that we have the home application registered, let us build the React app. We've reproduced the code from [react-router's Animated Transitions](https://reacttraining.com/react-router/web/example/animated-transitions) below with one modification, which is highlighted. Recall that in [Step 3](starting-from-scratch.md#step-three-registering-an-app) we configured this application to handle routing at the `/home` path. That means that we also need to add `/home` as the basename prop for Router.
+Now that we have the __home__ application registered, let us build the React app. We've reproduced the code from [react-router's Animated Transitions](https://reacttraining.com/react-router/web/example/animated-transitions) below with two modifications, which are highlighted below. The first change is to add `/home` as the basename prop for `Router`, since in [Step 3](starting-from-scratch.md#step-three-registering-an-app) we had configured this application to handle routing at the `/home` path. The second change is to the top-most div's styles so that __home__ appears beneath the __navBar__ that we'll create later.
 
 <p class="filename">root.component.js</p>
 
-```js {24}
+```js {24,27}
 import React from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import {
@@ -363,7 +363,7 @@ const AnimationExample = () => (
   <Router basename="/home">
     <Route
       render={({ location }) => (
-        <div style={styles.fill}>
+        <div style={{position: 'relative', height: '100%'}}>
           <Route
             exact
             path="/"
