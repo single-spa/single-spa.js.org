@@ -30,7 +30,7 @@ The complete code for this example is in the [`single-spa-simple-example`](https
 >
 > For this tutorial, we will be using [yarn](https://yarnpkg.com/en/) but npm has its own equivalent commands and can be used almost interchangibly.
 
-Create a new folder for this project and navigate into it. Initialize a new project using your package manager, and then install single-spa as a dependency. Then create a *src* folder to hold all of our micro-service applications, with each in their own folder.
+Create a new folder for this project and navigate into it. Initialize a new project using your package manager, and then install single-spa as a dependency. Then create a *src/* folder to hold all of our micro-service applications, with each in their own folder.
 
 ```sh
 mkdir single-spa-simple-example && cd single-spa-simple-example
@@ -152,7 +152,7 @@ module.exports = {
 
 ### 1.c Add npm scripts
 
-The last step in our project set up is to include a couple scrips in our package.json to run webpack-dev-server and to create a production build. Add the following to your *package.json*:
+The last step in our project set up is to include a couple scripts in our package.json to run webpack-dev-server and to create a production build. Add the following to your *package.json*:
 
 <p class="filename">package.json</p>
 
