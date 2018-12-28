@@ -22,7 +22,7 @@ Also, you can check out a [simple webpack starter project](https://github.com/jo
 ## Architectural Overview
 
 single-spa takes inspiration from modern framework component lifecycles by applying lifecycles to entire applications.
-It was born out of Canopy's desire to use React + react-router instead of being forever stuck with our AngularJS + ui-router application, and now single-spa supports almost any framework. Since Javascript is notorious for the short-life of its many frameworks, we decided to make it easy to use whichever frameworks you want.
+It was born out of Canopy's desire to use React + react-router instead of being forever stuck with our AngularJS + ui-router application, and now single-spa supports almost any framework. Since JavaScript is notorious for the short-life of its many frameworks, we decided to make it easy to use whichever frameworks you want.
 
 single-spa apps consist of the following:
 
@@ -38,7 +38,7 @@ single-spa apps consist of the following:
 
 single-spa works with ES5, ES6+, TypeScript, Webpack, SystemJS, Gulp, Grunt, Bower, ember-cli, or really any build system available. You can npm install it, jspm install it, or even just use a `<script>` tag if you prefer.
 
-Our objective is to make using single-spa as easy as possible. But we should also point out that this is an advanced architecture that is different from how front-end developers are typically done. This may mean thinking about front-end applications differently and making corresponding changes. 
+Our objective is to make using single-spa as easy as possible. But we should also point out that this is an advanced architecture that is different from how front-end applications are typically done.
 
 If you're not starting your application from scratch, you'll have to [migrate your SPA](migrating-existing-spas.md) to become a single-spa application.
 
@@ -142,7 +142,7 @@ export function unmount(props) {
 
 ## Project roadmap
 
-We're experimenting using [Github Projects](https://github.com/CanopyTax/single-spa/projects) and will attempt to keep it up-to-date with the planned future work for Single-spa.
+We're experimenting using [Github Projects](https://github.com/CanopyTax/single-spa/projects) and will attempt to keep it up-to-date with the planned future work for single-spa.
 
 ## API
 

@@ -10,7 +10,7 @@ single-spa allows you to build micro frontends that coexist and can each be writ
 2) Write code using a new framework, without rewriting your existing application
 3) [Lazy load](https://en.wikipedia.org/wiki/Lazy_loading) code for improved initial load time.
 
-**Single-spa can be used with just about any build system or javascript framework**, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](separating-applications.md#option-3-dynamic-module-loading) for each of your applications.
+**Single-spa can be used with just about any build system or JavaScript framework**, but this tutorial will focus on creating a web app with [Webpack](https://webpack.js.org/), [React](https://reactjs.org/), and [AngularJS](https://angularjs.org/). Our tutorial puts everything into a single code repository, but it is also possible to have [separate code repositories](separating-applications.md#option-3-dynamic-module-loading) for each of your applications.
 
 For this tutorial we will be creating the following applications to showcase the power and usefulness of single-spa:
 
@@ -22,7 +22,7 @@ The complete code for this example is in the [`single-spa-simple-example`](https
 
 > __Note__
 >
-> We encourage you to read through all the [single-spa docs](/) to become familiar with the entire Single-spa setup. Visit the [single-spa Github](https://github.com/CanopyTax/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk) channel for more support.
+> We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/CanopyTax/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk) channel for more support.
 
 ## 1. Initial setup
 
