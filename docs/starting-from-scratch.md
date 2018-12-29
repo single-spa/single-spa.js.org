@@ -34,7 +34,7 @@ yarn add single-spa    # or npm install --save single-spa
 We will be using [Babel](https://babeljs.io/) to compile our code. Run the following command to install the necessary dependencies:
 
 ```bash
-yarn add babel-core babel-plugin-syntax-dynamic-import babel-plugin-transform-object-rest-spread babel-preset-env babel-preset-latest babel-preset-react --dev
+yarn add --dev @babel/core @babel/preset-env @babel/preset-react @babel/plugin-syntax-dynamic-import @babel/plugin-proposal-object-rest-spread
 ```
 
 Then, in your root directory create a `.babelrc` file and include the following:
@@ -42,19 +42,19 @@ Then, in your root directory create a `.babelrc` file and include the following:
 ```js
 // .babelrc
 {
-    "presets": [
-      ["env", {
-        "targets": {
-          "browsers": ["last 2 versions"]
-        }
-      }],
-      ["react"]
-    ],
-    "plugins": [
-      "syntax-dynamic-import",
-      "transform-object-rest-spread"
-    ]
-  }
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      }
+    }],
+    ["@babel/preset-react"]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
+}
 ```
 
 If you would like to learn more about what each of these things are doing, check out the [Babel docs](https://babeljs.io/docs/setup/).
@@ -75,6 +75,8 @@ yarn add webpack webpack-dev-server webpack-cli --dev
 
 ```bash
 yarn add clean-webpack-plugin --dev
+# Webpack loaders
+yarn add style-loader css-loader html-loader babel-loader --dev
 ```
 
 * [CleanWebpackPlugin](https://www.npmjs.com/package/clean-webpack-plugin)
