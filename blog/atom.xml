@@ -14,9 +14,7 @@
         <link href="https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html">
         </link>
         <updated>2018-06-19T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.</p>
-<p>And with the r</p>
-]]></summary>
+        <summary type="html"><![CDATA[<p>Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.</p> <p>And with the re...</p>]]></summary>
         <author>
             <name>Joel Denning</name>
             <uri>https://twitter.com/joelbdenning</uri>
@@ -28,9 +26,7 @@
         <link href="https://canopytax.github.io/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html">
         </link>
         <updated>2016-12-16T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.</p>
-<p>But using <a href="/">single-spa</a> for the first time can be tricky because</p>
-]]></summary>
+        <summary type="html"><![CDATA[<p>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.</p> <p>But using <a href="/">single-spa</a> for the first time can be tricky because you’l...</p>]]></summary>
         <author>
             <name>Joel Denning</name>
             <uri>https://twitter.com/Joelbdenning</uri>
@@ -42,8 +38,7 @@
         <link href="https://canopytax.github.io/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html">
         </link>
         <updated>2016-02-26T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti</p>
-]]></summary>
+        <summary type="html"><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti...</p>]]></summary>
         <author>
             <name>Bret Little</name>
             <uri>https://twitter.com/little_bret</uri>

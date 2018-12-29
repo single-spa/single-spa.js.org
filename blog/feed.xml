@@ -18,26 +18,21 @@
             <link>https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html</link>
             <guid>https://canopytax.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained.html</guid>
             <pubDate>Tue, 19 Jun 2018 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.</p>
-<p>And with the r</p>
-]]></description>
+            <description><![CDATA[<p>Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.</p> <p>And with the re...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[A step-by-step guide to single-spa]]></title>
             <link>https://canopytax.github.io/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</link>
             <guid>https://canopytax.github.io/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html</guid>
             <pubDate>Fri, 16 Dec 2016 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.</p>
-<p>But using <a href="/">single-spa</a> for the first time can be tricky because</p>
-]]></description>
+            <description><![CDATA[<p>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.</p> <p>But using <a href="/">single-spa</a> for the first time can be tricky because you’l...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[A Case for SOA in the Browser]]></title>
             <link>https://canopytax.github.io/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</link>
             <guid>https://canopytax.github.io/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser.html</guid>
             <pubDate>Fri, 26 Feb 2016 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti</p>
-]]></description>
+            <description><![CDATA[<p>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one porti...</p>]]></description>
         </item>
     </channel>
 </rss>
