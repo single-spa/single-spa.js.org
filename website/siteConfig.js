@@ -53,22 +53,6 @@ const siteConfig = {
     subText: '#889aaa',
     accentWhite: '#fff'
   },
-  /* custom fonts for website */
-  fonts: {
-    mainFont: [
-      'Roboto',
-      'sans-serif'
-    ],
-    secondaryFont: [
-      'Montserrat',
-      'sans-serif'
-    ],
-    accentFont: [
-      'Oswald',
-      '-apple-system',
-      'system-ui',
-    ],
-  },
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
     'Copyright © ' +
@@ -82,8 +66,14 @@ const siteConfig = {
   },
   // Adds secondary on-page navigation for doc sub-topics
   onPageNav: 'separate',
-  scripts: ['https://buttons.github.io/buttons.js', 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js', '/js/index.js'],
-  stylesheets: ["https://fonts.googleapis.com/css?family=Montserrat:300|Oswald:300, 400|Roboto:100, 400", "https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"],
+  scripts: [
+    'https://buttons.github.io/buttons.js',
+    'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+    '/js/index.js',
+    '/js/code-copy-to-clipboard.js',
+],
+  stylesheets: ["https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"],
   // You may provide arbitrary config keys to be used as needed by your template.
   repoUrl: 'https://github.com/CanopyTax/single-spa',
   editUrl: 'https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/',
@@ -93,6 +83,9 @@ const siteConfig = {
     algoliaOptions: {} // Optional, if provided by Algolia
   },
   scrollToTop: true,
+  markdownPlugins: [
+    require('remarkable-highlight-lines')
+  ],
   gaTrackingId: 'UA-121119786-1'
 };
 

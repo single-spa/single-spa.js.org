@@ -1,50 +1,88 @@
 /* your custom css */
-.fixedHeaderContainer {
-    background-color: $secondaryColor;
-    border-bottom: solid $primaryColor 0.5px;
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  font-size: 16px;
 }
 
-.headerWrapper .navigationWrapper .nav-site a {
-  color: $primaryColor;
-  font-family: $accentFont;
+.wrapper {
+  max-width: 1400px;
+}
+
+.fixedHeaderContainer header .headerTitleWithLogo {
   font-weight: 100;
-  line-height: 3;
+}
+
+.nav-footer .sitemap a {
+  margin: 2px 0px;
+  padding: 3px 0px;
+}
+
+pre {
+  display: block;
+  overflow-x: scroll;
+  background: rgba(27, 31, 35, .05);
+}
+
+pre code, code.hljs {
+  background: none;
+  display: inline-block;
+  min-width: 100%;
+}
+
+blockquote {
+  background-color: rgba(0,17,255, .05);
+  border-left: 5px solid rgba(0,17,255, .15);
+}
+
+.fixedHeaderContainer {
+  background-color: $secondaryColor;
+  border-bottom: solid $primaryColor 0.5px;
+}
+
+.navigationSlider .slidingNav ul li a {
+  border-bottom: solid 1px transparent;
+  color: $primaryColor;
+  font-weight: 100;
+  padding: 18px 10px;
   transition: all .2s ease-in-out;
 }
 
- 
+.navigationSlider .slidingNav ul li a:focus,
+.navigationSlider .slidingNav ul li a:hover{
+  background-color: inherit;
+  border-bottom-color: darkgrey;
+  color: $primaryColor;
+}
+
 .navigationSlider .slidingNav ul li.siteNavItemActive a,
 .navigationSlider .slidingNav ul li.siteNavGroupActive a,
 .navigationSlider .slidingNav ul li.siteNavItemActive a:hover,
 .navigationSlider .slidingNav ul li.siteNavGroupActive a:focus{
   background-color: $secondaryColor;
+  border-bottom-color: $primaryColor;
   color: $primaryColor;
-  font-weight: 300;
-  font-size: 110%;
-  border-bottom: solid 0.5px #0011ff;
-  transform: none;
 }
 
-
-.navigationSlider .slidingNav ul li a:focus,
-.navigationSlider .slidingNav ul li a:hover{
-  background-color: $secondaryColor;
-  color: $primaryColor;
-  font-weight: 300;
-  transform: scale(1.08);
-}
-
-
-input#search_input_react {
+input#search_input_react#search_input_react {
   background-color: $accentWhite;
-  color: $primaryColor !important;
+  color: $primaryColor;
 }
 
-.headerTitleWithLogo {
+.navSearchWrapper::before {
+  border-color: darkgrey;
+}
+
+.navSearchWrapper::after {
+  background: darkgrey;
+}
+
+input#search_input_react::placeholder {
+  color: darkgrey;
+}
+
+.fixedHeaderContainer header h2 {
   color: $primaryColor;
-  font-family: $mainFont;
-  font-weight: 200 !important;
-  line-height: 4 !important;
+  font-weight: 300;
 }
 
 .homeContainer{
@@ -55,16 +93,14 @@ input#search_input_react {
 }
 
 .projectTitle {
-  font-family: $mainFont;
   font-weight: 100;
-  font-size: 600%;
+  font-size: 6rem;
   letter-spacing: .9rem;
 }
 
 .subHeader {
-  font-family: $secondaryFont;
-  font-weight: 100 !important;
-  font-size: 110%;
+  font-weight: 100;
+  font-size: 1.1rem;
   letter-spacing: .2rem;
   color: $subText;
   margin-bottom: 35px;
@@ -79,10 +115,23 @@ input#search_input_react {
   color: $accentWhite;
 }
 
-
-footer .fbOpenSource {
-  margin: 0 auto 1em;
+.cpOpenSource {
+  background: #fff;
+  border-radius: 3px;
+  display: block;
+  margin: 0 auto 1rem;
+  opacity: .7;
+  transition: opacity 0.15s ease-in-out;
   width: 38px;
+}
+.cpOpenSource:hover {
+  opacity: 1;
+}
+
+.cpOpenSource img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
@@ -119,16 +168,13 @@ footer .fbOpenSource {
 }
 
 .contributorWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 30px;
+  margin: 40px 0;
   text-align: center;
 }
 
 .container .wrapper .contributorWrapper h2 {
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-bottom: 25px;
 }
 .container .wrapper .contributorHeader {
@@ -136,19 +182,34 @@ footer .fbOpenSource {
   padding-bottom: 15px;
 }
 
+.contributorsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .contributor {
   display: inline-block;
-  width: calc(100% * (1/5) - 1px);
+  width: 20%;
+  min-width: 140px;
 }
 
 .contributorImg {
-  height: 75px;
   border-radius: 50%;
+  box-shadow: inset 0 0 8px rgba(0,0,0,.15);
+  display: block;
+  width: 75px;
+  padding-bottom: 75px;
+  margin: 0 auto;
+  background-size: contain;
 }
 
 .repoLink {
+  display: inline-block;
   text-align: center;
-  font-size: 45px;
+  font-size: 2.75rem;
   margin-bottom: 50px;
   margin-top: 50px;
   line-height: 1em;
@@ -157,7 +218,7 @@ footer .fbOpenSource {
 }
 
 #back-to-top {
-  background: none; 
+  background: $accentWhite; 
   color: $primaryColor;
   border: solid 0.1px $primaryColor;
   transition: all .3s ease-in-out;
@@ -166,4 +227,35 @@ footer .fbOpenSource {
 #back-to-top:hover {
   background: $primaryColor;
   color: $accentWhite;
+}
+
+.navSearchWrapper .aa-dropdown-menu {
+  border: 1px solid $primaryColor;
+  overflow: hidden;
+  padding: 0;
+}
+
+.algolia-docsearch-footer {
+  display: none;
+}
+
+.highlighted-line {
+  background-color: rgba(0,17,255, .1);
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+.filename {
+  background: rgba(27, 31, 35, .05);
+  border-top: 5px solid rgba(0,17,255, .15);
+  display: inline-block;
+  font-size: .8rem;
+  font-style: italic;
+  margin-bottom: 0;
+  padding: 1px 8px;
+}
+
+.filename + pre > code {
+  border-top-left-radius: 0;
 }

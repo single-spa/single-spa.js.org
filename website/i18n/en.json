@@ -4,62 +4,126 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "a javascript framework for front-end microservices",
-    "api": "single-spa API",
-    "API": "API",
-    "building-applications": "Building single-spa applications",
-    "Building": "Building",
-    "code-of-conduct": "Code of Conduct",
-    "Code of Conduct": "Code of Conduct",
-    "contributing-overview": "Contributing to Single-spa",
-    "Overview": "Overview",
-    "ecosystem-angular-cli": "single-spa-angular-cli",
-    "Angular-Cli": "Angular-Cli",
-    "ecosystem-angular": "single-spa-angular",
-    "Angular": "Angular",
-    "ecosystem-angularjs": "single-spa-angularjs",
-    "AngularJS": "AngularJS",
-    "ecosystem-cycle": "single-spa-cycle",
-    "Cycle": "Cycle",
-    "ecosystem-ember": "single-spa-ember",
-    "Ember": "Ember",
-    "ecosystem-inferno": "single-spa-inferno",
-    "Inferno": "Inferno",
-    "ecosystem-preact": "single-spa-preact",
-    "Preact": "Preact",
-    "ecosystem-react": "single-spa-react",
-    "React": "React",
-    "ecosystem-svelte": "single-spa-svelte",
-    "svelte": "svelte",
-    "ecosystem-vue": "single-spa-vue",
-    "Vue": "Vue",
-    "ecosystem": "The single-spa ecosystem",
-    "examples": "Single-spa Examples",
-    "Resources": "Resources",
-    "getting-started-overview": "Getting Started with single-spa",
-    "migrating-angularJS-tutorial": "Migrating an Existing AngularJS Project",
-    "AngularJS - Migrating to single-spa": "AngularJS - Migrating to single-spa",
-    "migrating-existing-spas": "Migrating existing SPAs",
-    "Migrating": "Migrating",
-    "migrating-react-tutorial": "Migrating an Existing React Project",
-    "React - Migrating to single-spa": "React - Migrating to single-spa",
-    "parcels-api": "Parcels API",
-    "parcels-overview": "Parcels",
-    "separating-applications": "Separating applications",
-    "Separating": "Separating",
-    "configuration": "Using single-spa-config",
-    "Configuration": "Configuration",
-    "starting-from-scratch": "Starting From Scratch",
-    "Starting from scratch": "Starting from scratch",
-    "Docs": "Docs",
-    "Help": "Help",
-    "Blog": "Blog",
-    "GitHub": "GitHub",
-    "Getting Started": "Getting Started",
-    "single-spa Applications": "single-spa Applications",
-    "single-spa Parcels": "single-spa Parcels",
-    "Examples": "Examples",
-    "Ecosystem": "Ecosystem",
-    "Contributing": "Contributing"
+    "docs": {
+      "api": {
+        "title": "single-spa API",
+        "sidebar_label": "API"
+      },
+      "building-applications": {
+        "title": "Building single-spa applications",
+        "sidebar_label": "Building"
+      },
+      "code-of-conduct": {
+        "title": "Code of Conduct",
+        "sidebar_label": "Code of Conduct"
+      },
+      "contributing-overview": {
+        "title": "Contributing to Single-spa",
+        "sidebar_label": "Overview"
+      },
+      "ecosystem-angular-cli": {
+        "title": "single-spa-angular-cli",
+        "sidebar_label": "Angular-Cli"
+      },
+      "ecosystem-angular": {
+        "title": "single-spa-angular",
+        "sidebar_label": "Angular"
+      },
+      "ecosystem-angularjs": {
+        "title": "single-spa-angularjs",
+        "sidebar_label": "AngularJS"
+      },
+      "ecosystem-cycle": {
+        "title": "single-spa-cycle",
+        "sidebar_label": "Cycle"
+      },
+      "ecosystem-ember": {
+        "title": "single-spa-ember",
+        "sidebar_label": "Ember"
+      },
+      "ecosystem-inferno": {
+        "title": "single-spa-inferno",
+        "sidebar_label": "Inferno"
+      },
+      "ecosystem-preact": {
+        "title": "single-spa-preact",
+        "sidebar_label": "Preact"
+      },
+      "ecosystem-react": {
+        "title": "single-spa-react",
+        "sidebar_label": "React"
+      },
+      "ecosystem-svelte": {
+        "title": "single-spa-svelte",
+        "sidebar_label": "svelte"
+      },
+      "ecosystem-vue": {
+        "title": "single-spa-vue",
+        "sidebar_label": "Vue"
+      },
+      "ecosystem": {
+        "title": "The single-spa ecosystem",
+        "sidebar_label": "Overview"
+      },
+      "examples": {
+        "title": "Single-spa Examples",
+        "sidebar_label": "Resources"
+      },
+      "getting-started-overview": {
+        "title": "Getting Started with single-spa",
+        "sidebar_label": "Overview"
+      },
+      "glossary": {
+        "title": "Glossary",
+        "sidebar_label": "Glossary"
+      },
+      "migrating-angularJS-tutorial": {
+        "title": "Migrating an Existing AngularJS Project",
+        "sidebar_label": "AngularJS - Migrating to single-spa"
+      },
+      "migrating-existing-spas": {
+        "title": "Migrating existing SPAs",
+        "sidebar_label": "Migrating"
+      },
+      "migrating-react-tutorial": {
+        "title": "Migrating an Existing React Project",
+        "sidebar_label": "React - Migrating to single-spa"
+      },
+      "parcels-api": {
+        "title": "Parcels API",
+        "sidebar_label": "API"
+      },
+      "parcels-overview": {
+        "title": "Parcels",
+        "sidebar_label": "Overview"
+      },
+      "separating-applications": {
+        "title": "Separating applications",
+        "sidebar_label": "Separating"
+      },
+      "configuration": {
+        "title": "Using single-spa-config",
+        "sidebar_label": "Configuration"
+      },
+      "starting-from-scratch": {
+        "title": "Starting From Scratch",
+        "sidebar_label": "Starting from scratch"
+      }
+    },
+    "links": {
+      "Docs": "Docs",
+      "Help": "Help",
+      "Blog": "Blog",
+      "GitHub": "GitHub"
+    },
+    "categories": {
+      "Getting Started": "Getting Started",
+      "single-spa Applications": "single-spa Applications",
+      "single-spa Parcels": "single-spa Parcels",
+      "Examples": "Examples",
+      "Ecosystem": "Ecosystem",
+      "Contributing": "Contributing"
+    }
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",
