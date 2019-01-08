@@ -669,7 +669,7 @@ registerApplication(
   'angularJS', 
   () => import ('./src/angularJS/angularJS.app.js'), 
   () => {}
-));
+);
 ```
 
 Hard-coding the activityFunction begins to get tedious so let us add a function that will simplify the matching logic for our application configuration. To do this, we've created a function that takes a string that represents the path prefix and returns a function that accepts `location` and matches whether the `location` starts with the path prefix.
