@@ -43,8 +43,8 @@ mkdir src
 
 We will be using [Babel](https://babeljs.io/) to compile our code. Install it and some additional dependencies using:
 
-```sh
-yarn add babel-core babel-preset-env babel-preset-latest babel-preset-react babel-plugin-syntax-dynamic-import babel-plugin-transform-object-rest-spread --dev
+```bash
+yarn add --dev @babel/core @babel/preset-env @babel/preset-react @babel/plugin-syntax-dynamic-import @babel/plugin-proposal-object-rest-spread
 ```
 
 Next create a *.babelrc* file and paste in the following:
@@ -54,16 +54,16 @@ Next create a *.babelrc* file and paste in the following:
 ```js
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "browsers": ["last 2 versions"]
       }
     }],
-    ["react"]
+    ["@babel/preset-react"]
   ],
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-object-rest-spread"
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread"
   ]
 }
 ```
@@ -84,7 +84,7 @@ yarn add webpack webpack-dev-server webpack-cli --dev
 # Webpack plugins
 yarn add clean-webpack-plugin --dev
 # Webpack loaders
-yarn add style-loader css-loader html-loader babel-loader@7 --dev
+yarn add style-loader css-loader html-loader babel-loader --dev
 ```
 
 Learn more about these Webpack plugins and loaders at their respective documentation pages.
