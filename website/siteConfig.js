@@ -25,6 +25,12 @@ const users = [
     infoLink: 'https://beamery.com/',
     pinned: true,
   },
+  {
+    caption: 'Jump',
+    image: 'img/jump.png',
+    infoLink: 'https://getjump.com',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
