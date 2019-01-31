@@ -4,9 +4,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11.1
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - run:
@@ -20,4 +17,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - deploy-website
+      - deploy-website:
+        filters:
+          branches:
+            only: master
