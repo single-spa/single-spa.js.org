@@ -122,10 +122,13 @@ The mounted parcel will not be automatically unmounted and unmounting will need 
 ## before routing event
 single-spa fires an event `single-spa:before-routing-event` on the window every time before a routing event occurs.
 This event will get fired after each hashchange, popstate, or triggerAppChange, even if no changes
-to registered applications were necessary. Sample usage of this event might look like this:
+to registered applications were necessary. The `event.detail` for the event is the native DOM event that triggered the reroute
+(such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent)).
+Sample usage of this event might look like this:
 ```js
-window.addEventListener('single-spa:before-routing-event', () => {
-	console.log('before routing event occurred!');
+window.addEventListener('single-spa:before-routing-event', evt => {
+  const originalEvent = evt.detail
+  console.log('before routing event occurred!', originalEvent);
 })
 ```
 
@@ -133,10 +136,13 @@ window.addEventListener('single-spa:before-routing-event', () => {
 single-spa fires an event `single-spa:routing-event` on the window every time that a routing event has occurred in which
 single-spa verified that all apps were correctly loaded, bootstrapped, mounted, and unmounted.
 This event will get fired after each hashchange, popstate, or triggerAppChange, even if no changes
-to registered applications were necessary. Sample usage of this event might look like this:
+to registered applications were necessary. The `event.detail` for the event is the native DOM event that triggered the reroute
+(such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent)).
+Sample usage of this event might look like this:
 ```js
-window.addEventListener('single-spa:routing-event', () => {
-	console.log('routing event occurred!');
+window.addEventListener('single-spa:routing-event', evt => {
+  const originalEvent = evt.detail
+  console.log('routing event occurred!', originalEvent);
 })
 ```
 
@@ -144,20 +150,24 @@ window.addEventListener('single-spa:routing-event', () => {
 single-spa fires an event `single-spa:app-change` on the window every time that one or more apps were loaded, bootstrapped,
 mounted, unmounted, or unloaded. It is similar to `single-spa:routing-event` except that it will not fire unless
 one or more apps were actually loaded, bootstrapped, mounted, or unmounted. A hashchange, popstate, or triggerAppChange
-that does not result in one of those changes will not cause the event to be fired.
+that does not result in one of those changes will not cause the event to be fired. The `event.detail` for the event is the native DOM event that triggered the reroute
+(such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent)).
 Sample usage of this event might look like this:
 ```js
-window.addEventListener('single-spa:app-change', () => {
-	console.log(singleSpa.getMountedApps())
+window.addEventListener('single-spa:app-change', evt => {
+  const originalEvent = evt.detail
+  console.log(singleSpa.getMountedApps(), originalEvent)
 })
 ```
 
 ## no-app-change event
 When no apps were loaded, bootstrapped, mounted, unmounted, or unloaded, single-spa fires a `single-spa:no-app-change` event.
-This is the converse of the `single-spa:app-change` event -- only one will be fired for each routing event.
+This is the converse of the `single-spa:app-change` event -- only one will be fired for each routing event. The `event.detail` for the event is the native DOM event that triggered the reroute
+(such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent)).
 ```js
-window.addEventListener('single-spa:no-app-change', () => {
-	console.log(singleSpa.getMountedApps())
+window.addEventListener('single-spa:no-app-change', evt => {
+  const originalEvent = evt.detail
+  console.log(singleSpa.getMountedApps(), originalEvent)
 })
 ```
 
@@ -167,7 +177,7 @@ after the app is already loaded, but before it is mounted. This event will only 
 app's first mount, but rather for the first time that any of the apps is mounted.
 ```js
 window.addEventListener('single-spa:before-first-mount', () => {
-	console.log('Suggested use case: remove a loader bar that the user is seeing right before the first app will be mounted');
+  console.log('Suggested use case: remove a loader bar that the user is seeing right before the first app will be mounted');
 });
 ```
 
@@ -176,7 +186,7 @@ Right after the first time that any app is mounted, single-spa fires a `single-s
 It does *not* get fired for each app's first mount, but rather for the first time that any of the apps is mounted.
 ```js
 window.addEventListener('single-spa:first-mount', () => {
-	console.log('Suggested use case: log the time it took before the user sees any of the apps mounted');
+  console.log('Suggested use case: log the time it took before the user sees any of the apps mounted');
 });
 ```
 
