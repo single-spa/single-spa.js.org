@@ -31,6 +31,12 @@ const users = [
     infoLink: 'https://getjump.com',
     pinned: true,
   },
+  {
+    caption: 'Innovaccer',
+    image: 'img/innovaccer-logo-black.svg',
+    infoLink: 'https://innovaccer.com',
+    pinned: true,
+  }
 ];
 
 const siteConfig = {
