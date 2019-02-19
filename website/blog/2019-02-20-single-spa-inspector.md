@@ -22,7 +22,7 @@ With that in mind, I'm proud to announce an initial release for **[single-spa In
 **The single-spa Inspector will only work with single-spa versions 4.1 and higher**, since we had to expose and add some functionality to the single-spa library itself in order to implement these features.
 
 ## single-spa 4.1
-single-spa 4.1 was released, which includes two key features:
+single-spa 4.1 was released, which includes a couple of key updates:
 1) Support for single-spa Inspector
 1) ESM bundle output
 1) Simpmlified test configuration for developers/contributors to single-spa
