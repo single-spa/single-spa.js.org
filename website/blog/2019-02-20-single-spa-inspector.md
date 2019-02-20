@@ -6,7 +6,7 @@ authorImageURL: https://pbs.twimg.com/profile_images/1037162092963348480/1XLEV4M
 ---
 
 ## Background
-For a long time, Canopy has had the benefit of using a tool called [sofe inspector](https://github.com/CanopyTax/sofe-inspector) (note that this is a really old version of it) to help visualize some things around single-spa. There has always been a desire to [figure out how to share this in a way that works for most people](https://github.com/CanopyTax/single-spa/issues/151).
+For a long time, Canopy has had the benefit of using a tool called [sofe inspector](https://github.com/CanopyTax/sofe-inspector) (note that this is a really old version) to help do some things single-spa applications. There has always been a desire to [figure out how to share this tool so others can benefit as well](https://github.com/CanopyTax/single-spa/issues/151).
 
 With that in mind, I'm proud to announce an initial release for **[single-spa Inspector](https://github.com/CanopyTax/single-spa-inspector)**! The inspector is a Firefox and Chrome extension, much like React/Vue devtools, that allows you see and interact with your single-spa applications and configuration.
 
@@ -17,7 +17,7 @@ With that in mind, I'm proud to announce an initial release for **[single-spa In
 * Force an app to mount or unmount
 * Hover over an app name to have an "inspect element" like view of your apps
 
-(Note: overlays/hovering require a small update to your code, but should hopefully be simple!)
+(Note: overlays/hovering require a small update to your code, but should hopefully be simple! See [how to configure app overlays](https://github.com/CanopyTax/single-spa-inspector#configuring-app-overlays))
 
 **The single-spa Inspector will only work with single-spa versions 4.1 and higher**, since we had to expose and add some functionality to the single-spa library itself in order to implement these features.
 
@@ -33,3 +33,7 @@ We also changed our test suite to purely use Jest instead of Saucelabs, and hope
 
 ## Help Wanted!
 If you would like to suggest a new feature for the inspector, report a bug, improve our (admittibly horrible and hopefully temporary) UI/UX, or add features, please see the [github repo for the inspector](https://github.com/CanopyTax/single-spa-inspector) and hack away!
+
+We also hope to update some of our example repos to the lastest single-spa so that anyone with the extension installed can test out the features and see how to implement overlays.  But this process will go faster if someone wants to help out. :)
+
+Thank you!
