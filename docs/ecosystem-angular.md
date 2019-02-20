@@ -14,7 +14,7 @@ This project is great for people who use Angular without angular-cli. But if tha
 
 ## Example
 
-An example can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/angular2/angular2.app.js) repository.
+An example can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/tree/master/src/angular) repository.
 
 ## Quickstart
 
