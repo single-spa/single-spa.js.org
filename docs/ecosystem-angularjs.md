@@ -41,7 +41,7 @@ export const unmount = [
 ```
 
 ## Looking for an ES5 version?
-Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angular1)
+Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angularjs)
 
 ## Options
 
