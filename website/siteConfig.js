@@ -36,6 +36,12 @@ const users = [
     image: 'img/innovaccer-logo-black.svg',
     infoLink: 'https://innovaccer.com',
     pinned: true,
+  },
+  {
+    caption: 'Dstillery',
+    image: 'img/dstillery.png',
+    infoLink: 'https://dstillery.com',
+    pinned: true,
   }
 ];
 
