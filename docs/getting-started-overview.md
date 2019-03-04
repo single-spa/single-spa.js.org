@@ -168,5 +168,6 @@ Read our [contributing guide](https://reactjs.org/contributing/how-to-contribute
 - [Jump](https://getjump.com/)
 - [Innovaccer](https://innovaccer.com/)
 - [Dstillery](https://www.dstillery.com)
+- [Scania](https://www.scania.com)
 
 Is your company or project using single-spa? Let us know by submitting a PR to [this section](https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/getting-started-overview.md)!
