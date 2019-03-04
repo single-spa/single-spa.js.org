@@ -42,7 +42,13 @@ const users = [
     image: 'img/dstillery.png',
     infoLink: 'https://dstillery.com',
     pinned: true,
-  }
+  },
+  {
+    caption: 'Scania',
+    image: 'img/scania-logo.png',
+    infoLink: 'https://scania.com',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
