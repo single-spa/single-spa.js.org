@@ -259,3 +259,13 @@ input#search_input_react::placeholder {
 .filename + pre > code {
   border-top-left-radius: 0;
 }
+
+.deprecated {
+  background: rgb(255,225,225);
+  border-radius: 3px;
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  text-transform: uppercase;
+}
