@@ -269,3 +269,32 @@ input#search_input_react::placeholder {
   padding: 2px 10px;
   text-transform: uppercase;
 }
+
+.args-list {
+  list-style: none;
+  padding-left: .75rem;
+}
+
+.args-list > dt {
+  font-family: monospace;
+  color: #0011FF;
+}
+.args-list > dd {
+  margin: 0 0 .75rem .75rem;
+}
+
+.dl-inline {
+  padding-left: .75rem;
+}
+
+.dl-inline dt, .dl-inline dd {
+  display: inline;
+}
+
+.dl-inline dt {
+  font-family: monospace;
+}
+
+.dl-inline dt::after {
+  content: ": ";
+}
