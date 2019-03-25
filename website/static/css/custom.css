@@ -242,8 +242,8 @@ input#search_input_react::placeholder {
 .highlighted-line {
   background-color: rgba(0,17,255, .1);
   display: block;
-  margin: 0 -1.5rem;
-  padding: 0 1.5rem;
+  margin: 0 -1rem;
+  padding: 0 1rem;
 }
 
 .filename {
