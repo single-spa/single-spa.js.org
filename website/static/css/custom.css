@@ -298,3 +298,12 @@ input#search_input_react::placeholder {
 .dl-inline dt::after {
   content: ": ";
 }
+
+.sr-text {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
