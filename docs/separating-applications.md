@@ -136,10 +136,7 @@ Changing which javascript file is loaded for each child application can be done 
       <td>
         <ul>
           <li>
-            <a href="https://gitlab.com/TheMcMurder/single-spa-portal-example">Parcels and SystemJS example</a>
-          </li>
-          <li>
-            <a href="https://github.com/me-12/single-spa-portal-example">single-spa-portal-example</a>
+            <a href="https://gitlab.com/TheMcMurder/single-spa-portal-example">SystemJS example</a>
           </li>
         </ul>
       </td>

@@ -375,13 +375,14 @@ Sets the global configuration for unmount timeouts.
 
 # Events
 
-All of the following are [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) fired by single-spa on the window. They can be listened for using [`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), like so:
+All of the following are [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) fired by single-spa on the window. The event `detail` property contains the native DOM event that triggered the reroute, such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent). These events can be handled by using [`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), like so:
 
 <!-- TODO: are these events augmented like the addErrorHandler Error is? -->
 
 ```js
-window.addEventListener('single-spa:before-routing-event', () => {
-  console.log('single-spa event');
+window.addEventListener('single-spa:before-routing-event', evt => {
+  const originalEvent = evt.detail;
+  console.log('single-spa event', originalEvent);
 })
 ```
 
