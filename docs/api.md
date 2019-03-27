@@ -15,15 +15,6 @@ import * as singleSpa from 'single-spa';
 
 ## registerApplication
 
-<!-- ```ts
-registerApplication: void (
-	appName: string,
-	applicationOrLoadingFn: () => Promise | Function,
-	activityFn: (location) => boolean,
-	customProps?: Object = {}
-) 
-``` -->
-
 `registerApplication` is the most important api your single spa config will use. Use this function to register any application within single-spa.
 
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
