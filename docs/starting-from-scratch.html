@@ -146,7 +146,7 @@ yarn add style-loader css-loader html-loader babel-loader --dev
   <span class="hljs-attr">mode</span>: <span class="hljs-string">'development'</span>,
   <span class="hljs-attr">entry</span>: {
     <span class="hljs-comment">// Set the single-spa config as the project entry point</span>
-    <span class="hljs-string">'single-spa.config'</span>: <span class="hljs-string">'single-spa.config.js'</span>,
+    <span class="hljs-string">'single-spa.config'</span>: <span class="hljs-string">'./single-spa.config.js'</span>,
   },
   <span class="hljs-attr">output</span>: {
     <span class="hljs-attr">publicPath</span>: <span class="hljs-string">'/dist/'</span>,
@@ -179,7 +179,7 @@ yarn add style-loader css-loader html-loader babel-loader --dev
   },
   <span class="hljs-attr">plugins</span>: [
     <span class="hljs-comment">// A webpack plugin to remove/clean the output folder before building</span>
-    <span class="hljs-keyword">new</span> CleanWebpackPlugin([<span class="hljs-string">'dist'</span>]),
+    <span class="hljs-keyword">new</span> CleanWebpackPlugin(),
   ],
   <span class="hljs-attr">devtool</span>: <span class="hljs-string">'source-map'</span>,
   <span class="hljs-attr">externals</span>: [],
