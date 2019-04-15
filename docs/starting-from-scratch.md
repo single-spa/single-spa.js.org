@@ -107,7 +107,7 @@ module.exports = {
   mode: 'development',
   entry: {
     // Set the single-spa config as the project entry point
-    'single-spa.config': 'single-spa.config.js',
+    'single-spa.config': './single-spa.config.js',
   },
   output: {
     publicPath: '/dist/',
@@ -140,7 +140,7 @@ module.exports = {
   },
   plugins: [
     // A webpack plugin to remove/clean the output folder before building
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
   ],
   devtool: 'source-map',
   externals: [],
