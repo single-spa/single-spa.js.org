@@ -110,7 +110,7 @@ const siteConfig = {
   markdownPlugins: [
     require('remarkable-highlight-lines')
   ],
-  gaTrackingId: 'UA-121119786-1'
+  gaTrackingId: 'UA-138683004-1'
 };
 
 module.exports = siteConfig;
