@@ -140,10 +140,6 @@ export function unmount(props) {
 }
 ```
 
-## Project roadmap
-
-We're experimenting using [Github Projects](https://github.com/CanopyTax/single-spa/projects) and will attempt to keep it up-to-date with the planned future work for single-spa.
-
 ## API
 
 Read more at [single-spa API](api.md) and [application api](building-applications.md#application-lifecycle).
