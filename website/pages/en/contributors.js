@@ -4,9 +4,8 @@ const Container = CompLibrary.Container;
 
 const projects = [
   { user: "CanopyTax", repo: "single-spa" },
-  { user: "CanopyTax", repo: "single-spa-angularJS" },
+  { user: "CanopyTax", repo: "single-spa-angularjs" },
   { user: "CanopyTax", repo: "single-spa-angular" },
-  { user: "PlaceMe-SAS", repo: "single-spa-angular-cli" },
   { user: "pcmnac", repo: "single-spa-cycle" },
   { user: "CanopyTax", repo: "single-spa-ember" },
   { user: "CanopyTax", repo: "single-spa-inferno" },
@@ -42,9 +41,18 @@ class Contributors extends React.Component{
     return(
       <div className="mainContainer">
         <Container padding={['bottom']}>
+          <h1 className="contributorHeader">Core Team Members</h1>
+            <div className="contributorWrapper first" style={{paddingBottom: '40px'}}>
+              <div className="contributorsList">
+                {this.coreTeamMember("Joel Denning", "joeldenning", "https://avatars1.githubusercontent.com/u/5524384")}
+                {this.coreTeamMember("Justin McMurdie", "TheMcMurder", "https://avatars2.githubusercontent.com/u/3059715")}
+                {this.coreTeamMember("Anthony Frehner", "frehner", "https://avatars3.githubusercontent.com/u/3054066")}
+                {this.coreTeamMember("Bret Little", "blittle", "https://avatars1.githubusercontent.com/u/1566869")}
+              </div>
+            </div>
           <h1 className="contributorHeader">Contributors</h1>
-          {projects.map(({user, repo}) => (
-            <div className="contributorWrapper" key={repo}>
+          {projects.map(({user, repo}, index) => (
+            <div className={`contributorWrapper ${index === 0 ? 'first': ''}`} key={repo}>
               <a 
                 href={`https://github.com/${user}/${repo}`} 
                 className="repoLink" 
@@ -57,6 +65,17 @@ class Contributors extends React.Component{
         </Container>
         <script dangerouslySetInnerHTML={{__html: getContributors()}}></script>
       </div>
+    )
+  }
+
+  coreTeamMember(name, github, avatarUrl) {
+    return (
+      <a href={`https://github.com/${github}`} target="_blank" ref="noopener noreferrer" className="contributor">
+        <h3 className="contributorLogin">
+          {name}
+        </h3>
+        <span className="contributorImg" style={{backgroundImage: `url(${avatarUrl})`}}></span>
+      </a>  
     )
   }
 }

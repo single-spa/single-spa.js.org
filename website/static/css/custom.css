@@ -167,6 +167,10 @@ input#search_input_react::placeholder {
   color: $accentWhite;
 }
 
+.contributorWrapper.first {
+  margin: 16px 0;
+}
+
 .contributorWrapper {
   margin: 40px 0;
   text-align: center;
