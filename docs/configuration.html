@@ -67,15 +67,14 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/CanopyTax/single-spa.js.org/blob/master/docs/single-spa-config.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Using single-spa-config</h1></header><article><div><span><p>The single spa root config consists of the following:</p>
 <ol>
 <li>The root HTML file that is shared by all single-spa applications.</li>
-<li>the javascript that calls <a href="http://localhost:3000/docs/api.html#registerapplication"><code>singleSpa.registerApplication()</code></a>.</li>
+<li>the javascript that calls <a href="/docs/api.html#registerapplication"><code>singleSpa.registerApplication()</code></a>.</li>
 </ol>
-<p>Your root config exists only to start up the single-spa applications. It does not render UI of its own and your
-HTML file should only</p>
+<p>Your root config exists only to start up the single-spa applications.</p>
 <h2><a class="anchor" aria-hidden="true" id="indexhtml-file"></a><a href="#indexhtml-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index.html file</h2>
 <p>See <a href="http://single-spa-playground.org/playground/html-file">this example root config</a> for what a root HTML file looks like.
 Notice how it does not have any divs or buttons, but just calls <code>registerApplication()</code>.</p>
 <p><strong>You do not have to use SystemJS when using single-spa</strong>, but many examples and tutorials will encourage you to do so because
-it allows you to <a href="http://localhost:3000/docs/separating-applications.html">independently deploy</a> your applications.</p>
+it allows you to <a href="/docs/separating-applications.html">independently deploy</a> your applications.</p>
 <h2><a class="anchor" aria-hidden="true" id="registering-applications"></a><a href="#registering-applications" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Registering applications</h2>
 <p>You must register <a href="/docs/building-applications.html">applications</a> with single-spa so it knows how and when to
 initiate, load, mount, and unmount. Registration most commonly occurs inside of the single spa config, but
