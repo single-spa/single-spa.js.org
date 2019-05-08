@@ -1,29 +1,22 @@
 ---
 id: configuration
 title: Using single-spa-config
-sidebar_label: Configuration
+sidebar_label: single-spa config
 ---
 
-The single spa config consists of all code that is not part of a
-[registered application](#registeringapplications). Ideally, this only includes an html file
-and a javascript file that registers single-spa applications. It is best practice to keep your
-single spa config as small as possible and to simply defer to single-spa to manage
-all of the applications. The single spa config should not be doing client-side html
-rendering nor should it be responding to routing events such as `hashchange` or `popstate`.
-Instead, all of that functionality should be taken care of either by single-spa itself or by
-a single-spa application.
+The single spa root config consists of the following:
+1. The root HTML file that is shared by all single-spa applications.
+2. the javascript that calls [`singleSpa.registerApplication()`](http://localhost:3000/docs/api.html#registerapplication).
+
+Your root config exists only to start up the single-spa applications. It does not render UI of its own and your
+HTML file should only 
 
 ## Index.html file
-The main thing that you should be doing in your html file is executing your single spa config. For your
-use case, this could mean something like `<script src="/single-spa-config.js"></script>`.
-Example:
-```js
-<html>
-  <body>
-    <script src="/single-spa-config.js"></script>
-  </body>
-</html>
-```
+See [this example root config](http://single-spa-playground.org/playground/html-file) for what a root HTML file looks like.
+Notice how it does not have any divs or buttons, but just calls `registerApplication()`.
+
+**You do not have to use SystemJS when using single-spa**, but many examples and tutorials will encourage you to do so because
+it allows you to [independently deploy](http://localhost:3000/docs/separating-applications.html) your applications.
 
 ## Registering applications
 

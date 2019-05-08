@@ -1,7 +1,7 @@
 ---
 id: api
-title: single-spa API
-sidebar_label: API
+title: Applications API
+sidebar_label: Applications API
 ---
 
 single-spa exports named functions and variables rather than a single default export.

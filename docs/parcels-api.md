@@ -1,7 +1,7 @@
 ---
 id: parcels-api
 title: Parcels API
-sidebar_label: API
+sidebar_label: Parcels API
 ---
 
 Most parcel methods will be called on the parcel itself, with the exception being around mounting.

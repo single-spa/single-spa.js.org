@@ -24,7 +24,7 @@ There are many ways you can directly contribute to the guides (in descending ord
 * Helper Libraries (like single-spa-react) for missing frameworks
 * Bug fixes
 * Answering questions in the slack channel
-* Entirely new helper projects like [single-spa-angular-cli](https://github.com/PlaceMe-SAS/single-spa-angular-cli)
+* new helper packages for frameworks
 
 Interested in making a contribution? Read on!
 

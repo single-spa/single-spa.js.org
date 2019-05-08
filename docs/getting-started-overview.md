@@ -1,15 +1,16 @@
 ---
 id: getting-started-overview
 title: Getting Started with single-spa
-sidebar_label: Overview
+sidebar_label: Overview of single-spa
 ---
 
-## A JavaScript metaframework
+## JavaScript microfrontends
 
-single-spa is a 'metaframework', a framework for bringing together multiple other frameworks/libraries/JavaScript builds under one system. Architecting your frontend using single-spa enables many benefits, such as:
+single-spa a framework for bringing together multiple other frameworks within your frontend application. Architecting your frontend using single-spa enables many benefits, such as:
 
 - [Use multiple frameworks](ecosystem.md#help-for-frameworks) on the same page [without page refreshing](building-applications.md)
   ([React](ecosystem-react.md), [AngularJS](ecosystem-angularjs.md), [Angular](ecosystem-angular.md), [Ember](ecosystem-ember.md), or whatever you're using)
+- Deploy your microfrontends independently.
 - Write code using a new framework, without rewriting your existing app
 - Lazy load code for improved initial load time.
 

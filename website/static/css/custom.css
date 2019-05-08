@@ -311,3 +311,17 @@ input#search_input_react::placeholder {
   top: auto;
   width: 1px;
 }
+
+.docs-landing-grid .blockImage {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.docs-landing-grid img {
+  height: 75%;
+  max-height: 115px !important;
+}
+
+.docs-landing-grid p {
+  text-align: center;
+}
