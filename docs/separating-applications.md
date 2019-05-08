@@ -1,7 +1,7 @@
 ---
 id: separating-applications
-title: Separating applications
-sidebar_label: Separating
+title: Splitting up applications
+sidebar_label: Splitting applications
 ---
 
 In a large, microserviced system, your root single-spa configuration and each of the applications should probably have its own git repository. How to do that in a javascript project isn't necessarily clear, so some options are listed below.

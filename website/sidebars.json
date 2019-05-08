@@ -1,23 +1,31 @@
 {
   "docs": {
-    "Getting Started": [
-      "getting-started-overview",
+    "Overview": [
+      "getting-started-overview"
+    ],
+    "Tutorials": [
       "starting-from-scratch",
       "migrating-react-tutorial",
       "migrating-angularJS-tutorial"
     ],
-    "single-spa Applications": [
-      "building-applications",
-      "configuration",
-      "separating-applications",
-      "migrating-existing-spas",
-      "api"
+    "Examples": [
+      "examples"
     ],
-    "single-spa Parcels": [
-      "parcels-overview",
+    "Concept: Root Config": [
+      "configuration"
+    ],
+    "Concept: Application": [
+      "building-applications",
+      "separating-applications",
+      "migrating-existing-spas"
+    ],
+    "Concept: Parcel": [
+      "parcels-overview"
+    ],
+    "API": [
+      "api",
       "parcels-api"
     ],
-    "Examples": ["examples"],
     "Ecosystem": [
       "ecosystem",
       "ecosystem-angularjs",

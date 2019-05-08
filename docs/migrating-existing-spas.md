@@ -1,7 +1,7 @@
 ---
 id: migrating-existing-spas
 title: Migrating existing SPAs
-sidebar_label: Migrating
+sidebar_label: Migrating existing code
 ---
 
 If you're interested in migrating existing SPAs into a single-spa, you'll

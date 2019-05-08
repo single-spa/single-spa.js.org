@@ -6,12 +6,12 @@
     "tagline": "a javascript framework for front-end microservices",
     "docs": {
       "api": {
-        "title": "single-spa API",
-        "sidebar_label": "API"
+        "title": "Applications API",
+        "sidebar_label": "Applications API"
       },
       "building-applications": {
         "title": "Building single-spa applications",
-        "sidebar_label": "Building"
+        "sidebar_label": "single-spa applications"
       },
       "code-of-conduct": {
         "title": "Code of Conduct",
@@ -71,7 +71,7 @@
       },
       "getting-started-overview": {
         "title": "Getting Started with single-spa",
-        "sidebar_label": "Overview"
+        "sidebar_label": "Overview of single-spa"
       },
       "glossary": {
         "title": "Glossary",
@@ -83,7 +83,7 @@
       },
       "migrating-existing-spas": {
         "title": "Migrating existing SPAs",
-        "sidebar_label": "Migrating"
+        "sidebar_label": "Migrating existing code"
       },
       "migrating-react-tutorial": {
         "title": "Migrating an Existing React Project",
@@ -91,19 +91,19 @@
       },
       "parcels-api": {
         "title": "Parcels API",
-        "sidebar_label": "API"
+        "sidebar_label": "Parcels API"
       },
       "parcels-overview": {
         "title": "Parcels",
         "sidebar_label": "Overview"
       },
       "separating-applications": {
-        "title": "Separating applications",
-        "sidebar_label": "Separating"
+        "title": "Splitting up applications",
+        "sidebar_label": "Splitting applications"
       },
       "configuration": {
         "title": "Using single-spa-config",
-        "sidebar_label": "Configuration"
+        "sidebar_label": "single-spa config"
       },
       "starting-from-scratch": {
         "title": "Starting From Scratch",
@@ -117,10 +117,13 @@
       "GitHub": "GitHub"
     },
     "categories": {
-      "Getting Started": "Getting Started",
-      "single-spa Applications": "single-spa Applications",
-      "single-spa Parcels": "single-spa Parcels",
+      "Overview": "Overview",
+      "Tutorials": "Tutorials",
       "Examples": "Examples",
+      "Concept: Root Config": "Concept: Root Config",
+      "Concept: Application": "Concept: Application",
+      "Concept: Parcel": "Concept: Parcel",
+      "API": "API",
       "Ecosystem": "Ecosystem",
       "Contributing": "Contributing"
     }

@@ -84,6 +84,7 @@ class Footer extends React.Component {
               aria-label="Star this project on GitHub">
               Star
             </a>
+            <a href={this.props.config.baseUrl + 'img/icons/148705-essential-collection/license/license.html'}>License for icons</a>
           </div>
         </section>
 
