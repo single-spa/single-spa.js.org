@@ -6,17 +6,16 @@ sidebar_label: single-spa config
 
 The single spa root config consists of the following:
 1. The root HTML file that is shared by all single-spa applications.
-2. the javascript that calls [`singleSpa.registerApplication()`](http://localhost:3000/docs/api.html#registerapplication).
+2. the javascript that calls [`singleSpa.registerApplication()`](/docs/api.html#registerapplication).
 
-Your root config exists only to start up the single-spa applications. It does not render UI of its own and your
-HTML file should only 
+Your root config exists only to start up the single-spa applications.
 
 ## Index.html file
 See [this example root config](http://single-spa-playground.org/playground/html-file) for what a root HTML file looks like.
 Notice how it does not have any divs or buttons, but just calls `registerApplication()`.
 
 **You do not have to use SystemJS when using single-spa**, but many examples and tutorials will encourage you to do so because
-it allows you to [independently deploy](http://localhost:3000/docs/separating-applications.html) your applications.
+it allows you to [independently deploy](/docs/separating-applications.html) your applications.
 
 ## Registering applications
 
