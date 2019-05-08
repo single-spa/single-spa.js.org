@@ -21,10 +21,6 @@
         "title": "Contributing to Single-spa",
         "sidebar_label": "Overview"
       },
-      "ecosystem-angular-cli": {
-        "title": "single-spa-angular-cli",
-        "sidebar_label": "Angular-Cli"
-      },
       "ecosystem-angular": {
         "title": "single-spa-angular",
         "sidebar_label": "Angular"

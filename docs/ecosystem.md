@@ -12,8 +12,7 @@ and unmount your applications that are written with popular frameworks. Feel fre
 to contribute to this list with your own project:
 
 - [single-spa-angularjs](./ecosystem-angularjs.md)
-- [single-spa-angular](./ecosystem-angular.md) (works for angular 2, 3, 4, 5+, useful if you don't use angular-cli)
-- [single-spa-angular-cli](./ecosystem-angular-cli.md) (useful for angular-cli applications)
+- [single-spa-angular](./ecosystem-angular.md)
 - [single-spa-cycle](./ecosystem-cycle.md)
 - [single-spa-ember](./ecosystem-ember.md)
 - [single-spa-inferno](./ecosystem-inferno.md)
