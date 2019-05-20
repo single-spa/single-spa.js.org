@@ -6,7 +6,7 @@ sidebar_label: React
 
 [![Build Status](https://travis-ci.org/CanopyTax/single-spa-react.svg?branch=master)](https://travis-ci.org/CanopyTax/single-spa-react)
 
-single-spa-react is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/CanopyTax/single-spa-react).
+single-spa-react is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/CanopyTax/single-spa-react).
 
 ## Example
 In addition to this Readme, example usage of single-spa-react can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/react/react.app.js) project.
