@@ -49,6 +49,12 @@ const users = [
     infoLink: 'https://scania.com',
     pinned: true,
   },
+  {
+    caption: 'Wavecell',
+    image: 'img/wavecell.svg',
+    infoLink: 'https://wavecell.com',
+    pinned: true,
+  },
 ];
 
 const siteConfig = {
