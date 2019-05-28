@@ -68,6 +68,7 @@ const siteConfig = {
     {page: 'docs', label: 'Docs'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
+    {href: "https://opencollective.com/single-spa", label: "Donate"},
     {href: "https://github.com/CanopyTax/single-spa", label: "GitHub"},
     {search: true}
   ],
