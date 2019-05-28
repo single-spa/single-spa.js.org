@@ -106,19 +106,19 @@ const Features = props => (
     {[
       {
         content: 'Use multiple frameworks in a single-page application, allowing you to split code by functionality and have Angular, React, Vue.js, etc. apps all living in harmony.',
-        image: imgUrl('logo-white.svg'),
+        image: imgUrl('icons/148705-essential-collection/svg/paper-plane.svg'),
         imageAlign: 'top',
         title: 'Framework freedom',
       },
       {
         content: `Stand up new apps next to the old one. You write the applications, single-spa makes them work together and won't load them until they're needed.`,
-        image: imgUrl('logo-white.svg'),
+        image: imgUrl('icons/148705-essential-collection/svg/download.svg'),
         imageAlign: 'top',
         title: 'Lazy load applications',
       },
       {
         content: 'Combine many small apps, empowering teams to choose their technology. Stay nimble as your team, product, and tech stack grows and changes over time.',
-        image: imgUrl('logo-white.svg'),
+        image: imgUrl('icons/148705-essential-collection/svg/settings-1.svg'),
         imageAlign: 'top',
         title: 'Front-end microservices',
       },
@@ -156,7 +156,7 @@ const Showcase = props => {
   return (
     <div className="productShowcaseSection paddingBottom">
       <h2>Who's Using This?</h2>
-      <p>This project is used by all these people</p>
+      <p>This project is used by all these organizations</p>
       <div className="logos">{showcase}</div>
       <div className="more-users">
         <a className="button" href={pageUrl('users.html', props.language)}>
