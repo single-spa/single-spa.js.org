@@ -180,8 +180,6 @@ class Index extends React.Component {
           <div className="index-main-features">
             <Features />
           </div>
-          <div>
-          </div>
           <Showcase language={language} />
         </div>
       </div>
