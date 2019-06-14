@@ -13,7 +13,7 @@ We recommend a setup that uses ES modules + [import maps](https://github.com/WIC
 5. Working on one area of an app doesn’t require you to download the entire frontend codebase — you just run your microservice locally and the other ones are automatically pulled from what’s on your dev/stage/prod environment
 
 ## Is there a performance hit to doing microservices this way?
-When setup in the [recommended way](#what-is-the-recommended-single-spa-setup), your code performance and bundle size will be the
+When setup in the [recommended way](#what-is-the-recommended-single-spa-setup), your code performance and bundle size will be nearly identical to a single application that has been code-split. The major differences will be the addition of the single-spa library (and SystemJS if you chose to use it). Other differences mainly just come down to the difference between one (webpack / rollup / etc.) code bundle and ES modules.
 
 ## I don’t quite understand what single-spa does?
 Another way to think of single-spa is that it is just a top level router. When one route is active, it downloads and executes the code for that route.
@@ -24,7 +24,7 @@ Using the recommended setup, you setup your import map to download that once. Th
 You do have the option of _not_ excluding those libraries (for example if you want to experiment with a newer version of a different library alltogether) but be aware of the effect that will have on user's bundle sizes and application speed.
 
 ## What are import maps?
-[Import maps](https://github.com/WICG/import-maps) improve the developer experience of ES modules by allowing you to write something like `import React from "react"` instead of needing to use an absolute or relative URL for your import statement. The same is also true of importing from other single-spa applications, e.g. `import {MyButton} from "styleguide"`
+[Import maps](https://github.com/WICG/import-maps) improve the developer experience of ES modules by allowing you to write something like `import React from "react"` instead of needing to use an absolute or relative URL for your import statement. The same is also true of importing from other single-spa applications, e.g. `import {MyButton} from "styleguide"`. The import-map spec is currently in the process of being accepted as a web standard and at the time of writing has been implemented in Chrome.
 
 ## How can I share application state between two or more applications?
 In general, we recommend trying to avoid this — it couples those apps together. If you find yourself doing this frequently between apps, you may want to consider that those separate apps should actually just be one app.
