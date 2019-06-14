@@ -9,7 +9,7 @@ We recommend a setup that uses in-browser ES modules + [import maps](https://git
 1. Common libraries are easy to manage, and are only downloaded once. You can also preload these for a small speed boost as well using the standard preload spec.
 1. Sharing code / functions / variables is as easy as `import/export`, just like in a monolithic setup
 1. Lazy loading applications is easy, which enables you to speed up initial load times
-1. Each application (AKA microservice, AKA ES module) can be independently developed and deployed. Teams are enabled to work at their own speed, experiment (within reason as defined by the organization), QA, and deploy on thier own schedules
+1. Each application (AKA microservice, AKA ES module) can be independently developed and deployed. Teams are enabled to work at their own speed, experiment (within reason as defined by the organization), QA, and deploy on thier own schedules. This usually also means that release cycles can be decreased to days instead of weeks or months
 1. A great developer experience (DX): go to your dev environment and add an import map that points the application's url to your localhost. See "[What is the DX like?](#what-is-the-developer-experience-dx-like)" for more details.
 
 ## What is the impact to performance?
