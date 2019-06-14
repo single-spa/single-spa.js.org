@@ -5,7 +5,7 @@ sidebar_label: FAQ - Questions
 ---
 
 ## What is the recommended single-spa setup?
-We recommend a setup that uses ES modules + [import maps](https://github.com/WICG/import-maps) + [dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
+We recommend a setup that uses ES modules + [import maps](https://github.com/WICG/import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
 1. Common libraries are easy to manage, and are only downloaded once. You can also preload these for a small speed boost as well using the standard preload spec.
 2. Sharing code / functions / variables is as easy as an import statement, just like in a monothlithic setup
 3. Lazy loading applications is easy, which enables you to speed up initial load times
@@ -24,7 +24,7 @@ Using the recommended setup, you setup your import map to download that once. Th
 You do have the option of _not_ excluding those libraries (for example if you want to experiment with a newer version of a different library alltogether) but be aware of the effect that will have on user's bundle sizes and application speed.
 
 ## What are import maps?
-[Import maps](https://github.com/WICG/import-maps) improve the developer experience of ES modules by allowing you to write something like `import React from "react"` instead of needing to use an absolute or relative URL for your import statement.
+[Import maps](https://github.com/WICG/import-maps) improve the developer experience of ES modules by allowing you to write something like `import React from "react"` instead of needing to use an absolute or relative URL for your import statement. The same is also true of importing from other single-spa applications, e.g. `import {MyButton} from "styleguide"`
 
 ## How can I share application state between two or more applications?
 In general, we recommend trying to avoid this — it couples those apps together. If you find yourself doing this frequently between apps, you may want to consider that those separate apps should actually just be one app.
