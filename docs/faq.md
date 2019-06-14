@@ -5,7 +5,7 @@ sidebar_label: FAQ
 ---
 
 ## Is there a recommended setup?
-We recommend a setup that uses in-browser ES modules + [import maps](https://github.com/WICG/import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
+We recommend a setup that uses in-browser ES modules + [import maps](#what-are-import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
 1. Common libraries are easy to manage, and are only downloaded once. You can also preload these for a small speed boost as well using the standard preload spec.
 1. Sharing code / functions / variables is as easy as `import/export`, just like in a monolithic setup
 1. Lazy loading applications is easy, which enables you to speed up initial load times
