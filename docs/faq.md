@@ -4,6 +4,12 @@ title: Frequently Asked Questions
 sidebar_label: FAQ
 ---
 
+## What does single-spa do?
+single-spa is a top level router. When a route is active, it downloads and executes the code for that route.
+
+The code for a route is called an "application", and each can (optionally) be in its own git repository, have its own CI process, and be separately deployed.
+The applications can all be written in the same framework, or they can be implemented in different frameworks.
+
 ## Is there a recommended setup?
 We recommend a setup that uses in-browser ES modules + [import maps](#what-are-import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
 1. Common libraries are easy to manage, and are only downloaded once. You can also preload these for a small speed boost as well using the standard preload spec.
@@ -14,9 +20,6 @@ We recommend a setup that uses in-browser ES modules + [import maps](#what-are-i
 
 ## What is the impact to performance?
 When setup in the [recommended way](#is-there-a-recommended-setup), your code performance and bundle size will be nearly identical to a single application that has been code-split. The major differences will be the addition of the single-spa library (and SystemJS if you chose to use it). Other differences mainly come down to the difference between one (webpack / rollup / etc.) code bundle and in-browser ES modules.
-
-## Help me understand what single-spa does?
-Another way to think of single-spa is that it is just a top level router. When one route is active, it downloads and executes the code for that route.
 
 ## Can I have only one version of (React, Vue, Angular, etc.) loaded?
 Using the recommended setup, you setup your import map to download that once. Then, tell each application to _not_ bundle that application code; instead, it will given to you at runtime in the browser. See [webpack’s externals](https://webpack.js.org/configuration/externals/) (other bundlers have similar options) for how to do this.
@@ -64,6 +67,9 @@ We're also looking at providing this functionality as part of the [Chrome/Firefo
 Finally, this setup also enables you to do overrides _in your production environment_. It obviously should be used with caution, but it does enable a powerful way of debugging problems and validating solutions.
 
 As a point of reference, nearly all developers we've worked with **prefer the developer experience of microservices + single-spa** over a monolithic setup.
+
+## Can each single-spa application have its own git repo?
+Yes! You can even give them their own package.json, webpack config, and CI/CD process, using SystemJS to bring them all together in the browser.
 
 ## Can single-spa applications be deployed independently?
 Yes! See next section about CI/CD.
