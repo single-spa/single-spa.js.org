@@ -65,6 +65,7 @@ const siteConfig = {
   cname: 'single-spa.js.org',
   projectName: 'single-spa',
   headerLinks: [
+    {page: 'docs/faq', label: 'FAQ'},
     {page: 'docs', label: 'Docs'},
     {page: 'help', label: 'Help'},
     {blog: true, label: 'Blog'},
