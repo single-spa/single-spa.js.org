@@ -65,14 +65,16 @@ Finally, this setup also enables you to do overrides _in your production environ
 
 As a point of reference, nearly all developers we've worked with **prefer the developer experience of microservices + single-spa** over a monolithic setup.
 
+## Can single-spa applications be deployed independently?
+Yes! See next section about CI/CD.
+
 ## What does the CI/CD process look like?
-In other words, how do I deploy a single-spa application?
+In other words, how do I build and deploy a single-spa application?
 
 With the [recommended setup](#is-there-a-recommended-setup), the process generally flows like this:
-1. Bundle your code and upload it to a CDN
+1. Bundle your code and upload it to a CDN.
 1. Update your dev environment's import map to point to the that new URL. In other words, your import map used to say `"styleguide": "cdn.com/styleguide/v1.js"` and now it should say `"styleguide": "cdn.com/styleguide/v2.js"`
-1. When you're ready, do the same thing to your prod environment's import map
 
 Some options on _how_ to update your import map include:
-* Server render your `index.html` with the import map inlined. Provide an API that either updates a database table or a file local to the server
-* Have your import map itself on a CDN, and provide an API updates that file. This method has a small impact on performance, but is generally easier to setup if you don't have a server-rendered setup already. (You can also preload the import map file to help provide a small speed boost)
+* Server render your `index.html` with the import map inlined. This does not mean that your DOM elements need to all be server rendered, but just the `<script type="systemjs-importmap>` element. Provide an API that either updates a database table or a file local to the server.
+* Have your import map itself on a CDN, and use [import-map-deployer](https://github.com/CanopyTax/import-map-deployer) or similar to update the import map during your CI process. This method has a small impact on performance, but is generally easier to setup if you don't have a server-rendered setup already. (You can also [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) the import map file to help provide a small speed boost). See [example travis.yml](https://github.com/openmrs/openmrs-esm-root-config/blob/master/.travis.yml). Other CI tools work, too.
