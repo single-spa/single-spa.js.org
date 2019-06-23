@@ -48,10 +48,11 @@ function bootstrap(props) {
 
 Each lifecycle function is guranteed to be called with the following props:
 
-- `appName`: The string name that was registered to single-spa.
+- `name`: The string name that was registered to single-spa.
 - `singleSpa`: A reference to the singleSpa instance, itself. This is intended to allow applications and helper libraries to call singleSpa
   APIs without having to import it. This is useful in situations where there are multiple webpack configs that are not set up to ensure
   that only one instance of singleSpa is loaded.
+- `mountParcel`: The [mountParcel function](/docs/parcels-api.html#mountparcel).
 
 #### Custom props
 
