@@ -237,7 +237,7 @@ Adds a handler that will be called every time an application throws an error dur
 
 <dl class="args-list">
 	<dt>errorHandler: Function(error: Error)</dt>
-	<dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <code>message</code> and <code>name</code> property.</dd>
+	<dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <code>message</code> and <code>appOrParcelName</code> property.</dd>
 </dl>
 
 <h3>returns</h3>
