@@ -289,8 +289,6 @@ The following options are available:
   a container div.
 
 ## Concepts
-- Note that you should only have one version of ZoneJS, even if you have multiple versions of Angular.
-- Make sure that the root component selectors for each of your angular applications are unique so that angular can differentiate them. The default selector for an angular cli application is `app-root`. You will need to update these selectors to be unique in your child application's `app.component.ts`, as well as in the singleSpaAngular template option found in `main.single-spa.ts`. To catch other references (such as in test files) try a project wide find and replace for `app-root`.  
 
 ### ZoneJS
 [ZoneJS](https://github.com/angular/zone.js/) is the library that Angular uses for change detection. You absolutely must have exactly
