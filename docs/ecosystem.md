@@ -11,15 +11,15 @@ There is a growing number of projects that help you bootstrap, mount,
 and unmount your applications that are written with popular frameworks. Feel free
 to contribute to this list with your own project:
 
-- [single-spa-angularjs](./ecosystem-angularjs.md)
+- [single-spa-react](./ecosystem-react.md)
+- [single-spa-vue](./ecosystem-vue.md)
 - [single-spa-angular](./ecosystem-angular.md)
+- [single-spa-angularjs](./ecosystem-angularjs.md)
 - [single-spa-cycle](./ecosystem-cycle.md)
 - [single-spa-ember](./ecosystem-ember.md)
 - [single-spa-inferno](./ecosystem-inferno.md)
 - [single-spa-preact](./ecosystem-preact.md)
-- [single-spa-react](./ecosystem-react.md)
 - [single-spa-svelte](./ecosystem-svelte.md)
-- [single-spa-vue](./ecosystem-vue.md)
 
 ## Webpack 2+
 With webpack 2+, we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import)

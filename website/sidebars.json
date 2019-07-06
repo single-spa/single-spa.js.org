@@ -28,15 +28,15 @@
     ],
     "Ecosystem": [
       "ecosystem",
-      "ecosystem-angularjs",
+      "ecosystem-react",
+      "ecosystem-vue",
       "ecosystem-angular",
+      "ecosystem-angularjs",
       "ecosystem-cycle",
       "ecosystem-ember",
       "ecosystem-inferno",
       "ecosystem-preact",
-      "ecosystem-react",
-      "ecosystem-svelte",
-      "ecosystem-vue"
+      "ecosystem-svelte"
     ],
     "Contributing": [
       "contributing-overview",
