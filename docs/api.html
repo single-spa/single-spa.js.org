@@ -240,7 +240,7 @@ This means importing must happen in one of two ways:</p>
 <p>Adds a handler that will be called every time an application throws an error during a lifecycle function or activity function. When there are no error handlers, single-spa throws the error to the window.</p>
 <dl class="args-list">
     <dt>errorHandler: Function(error: Error)</dt>
-    <dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <code>message</code> and <code>name</code> property.</dd>
+    <dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <code>message</code> and <code>appOrParcelName</code> property.</dd>
 </dl>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
