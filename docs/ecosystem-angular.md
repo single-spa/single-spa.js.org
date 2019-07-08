@@ -325,7 +325,7 @@ See [issue thread](https://github.com/CanopyTax/single-spa-angular/issues/2#issu
 
 ### Custom Props
 [Custom props](https://single-spa.js.org/docs/building-applications.html#custom-props) are a way of passing auth or other data to your single-spa
-applications. The custom props are available inside of the [bootstrapFunction](#option) passed to singleSpaAngular(). Additionally, if you use the
+applications. The custom props are available inside of the [bootstrapFunction](#options) passed to singleSpaAngular(). Additionally, if you use the
 angular cli schematic, you may subscribe to the singleSpaPropsSubject in your component, as shown below:
 
 ```ts
