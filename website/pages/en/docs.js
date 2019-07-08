@@ -34,7 +34,7 @@ module.exports = function Docs() {
           },
           {
             title: 'API Documentaion',
-            content: `Documentation of concepts, exported functions, and interop with frameworks.<br><br> [Go to API Documentation](/docs/api.html)`,
+            content: `Documentation of concepts, exported functions, and interop with frameworks.<br><br> [Go to API Documentation](/docs/getting-started-overview.html)`,
             image: siteConfig.baseUrl + 'img/icons/148705-essential-collection/svg/more-2.svg',
             imageAlt: 'code documentation',
             imageLink: siteConfig.baseUrl + 'docs/getting-started-overview.html',
