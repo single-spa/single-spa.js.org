@@ -48,6 +48,7 @@ class Contributors extends React.Component{
                 {this.coreTeamMember("Justin McMurdie", "TheMcMurder", "https://avatars2.githubusercontent.com/u/3059715")}
                 {this.coreTeamMember("Anthony Frehner", "frehner", "https://avatars3.githubusercontent.com/u/3054066")}
                 {this.coreTeamMember("Bret Little", "blittle", "https://avatars1.githubusercontent.com/u/1566869")}
+                {this.coreTeamMember("Carlos Filoteo", "filoxo", "https://avatars1.githubusercontent.com/u/4202993?v=4")}
               </div>
             </div>
           <h1 className="contributorHeader">Contributors</h1>
