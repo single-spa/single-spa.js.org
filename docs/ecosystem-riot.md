@@ -4,7 +4,7 @@ title: single-spa-riot
 sidebar_label: riot
 ---
 
-single-spa-riot is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [riot](https://riot.js.org/). Check out the [single-spa-svelte github](https://github.com/ariesjia/single-spa-riot).
+single-spa-riot is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [riot](https://riot.js.org/). Check out the [single-spa-riot github](https://github.com/ariesjia/single-spa-riot).
 
 
 ## Quickstart
