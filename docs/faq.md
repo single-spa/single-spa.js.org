@@ -96,3 +96,6 @@ When you use the [recommended setup](#is-there-a-recommended-setup) the followin
 1. Change [`output.libraryTarget`](https://webpack.js.org/configuration/output/#outputlibrarytarget) to `System`, `UMD`, or `AMD`. 
 
 CRA does not allow you to change those items without ejecting or using another tool. 
+
+## Code splits
+Single spa supports code splits. There are so many ways to code split we won't be able to cover them all. In the [recommended setup](#is-there-a-recommended-setup) with webpack you'll need to set the `__webpack_public_path__` variable so webpack knows where to fetch your code splits (webpack assumes they are located at the root of the server and that isn't always true in a single-spa application). An [Example implementation](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3) would work as long as the variable is set prior to loading a code split.
