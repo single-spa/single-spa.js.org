@@ -20,6 +20,7 @@ to contribute to this list with your own project:
 - [single-spa-inferno](./ecosystem-inferno.md)
 - [single-spa-preact](./ecosystem-preact.md)
 - [single-spa-svelte](./ecosystem-svelte.md)
+- [single-spa-riot](./ecosystem-riot.md)
 
 ## Webpack 2+
 With webpack 2+, we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import)
