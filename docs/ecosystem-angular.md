@@ -472,7 +472,7 @@ be loaded by single-spa-angular's webpack config, without you having to configur
 Your component styles will also be loaded like normal without you having to configure anything.
 
 ### Polyfills
-[Polyfills in your angular.json](https://angular.io/guide/browser-support) are javascript code that make your project to work in older browsers,
+[Polyfills in your angular.json](https://angular.io/guide/browser-support) are javascript code that make your project work in older browsers,
 such as IE11.
 
 **The polyfills that you specify in your angular.json file will not be loaded automatically**. This is because we should only load
