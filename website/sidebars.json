@@ -36,7 +36,8 @@
       "ecosystem-ember",
       "ecosystem-inferno",
       "ecosystem-preact",
-      "ecosystem-svelte"
+      "ecosystem-svelte",
+      "ecosystem-riot"
     ],
     "Contributing": [
       "contributing-overview",
