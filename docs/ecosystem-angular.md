@@ -95,11 +95,11 @@ cd my-app
 
 In the root of your Angular CLI application run the following:
 ```sh
-ng add single-spa-angular@beta
+ng add single-spa-angular
 ```
 
 ### Schematics
-[Angular schematics](https://angular.io/guide/schematics) are processed when you run `ng add single-spa-angular@beta`.
+[Angular schematics](https://angular.io/guide/schematics) are processed when you run `ng add single-spa-angular`.
 
 The single-spa-angular schematics perform the following tasks:
 * Install single-spa-angular.
