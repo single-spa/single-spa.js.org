@@ -22,17 +22,9 @@ const infernoLifecycles = singleSpaInferno({
   domElementGetter: () => document.getElementById('main-content'),
 });
 
-export const bootstrap = [
-  infernoLifecycles.bootstrap,
-];
-
-export const mount = [
-  infernoLifecycles.mount,
-];
-
-export const unmount = [
-  infernoLifecycles.unmount,
-];
+export const bootstrap = infernoLifecyles.bootstrap;
+export const mount = infernoLifecyles.mount;
+export const unmount = infernoLifecyles.unmount;
 ```
 
 ## Options
