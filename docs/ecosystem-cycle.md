@@ -6,9 +6,13 @@ sidebar_label: Cycle
 
 single-spa-cycle is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Cycle.js](https://cycle.js.org/). Check out the [single-spa-cycle github](https://github.com/pcmnac/single-spa-cycle).
 
-## Quickstart
+## Installation
+```sh
+npm install --save @pcmnac/single-spa-cycle
+```
 
-First, in the child application, run `npm install --save @pcmnac/single-spa-cycle`. Then, in your [child app's entry file](https://github.com/CanopyTax/single-spa/blob/docs-1/docs/configuring-child-applications.md#the-entry-file), do the following:
+## Quickstart
+In your project's entry file, add the following:
 
 ```js
 
@@ -18,22 +22,14 @@ import singleSpaCycle from '@pcmnac/single-spa-cycle';
 import rootComponent from './root.component.js';
 
 const cycleLifecycles = singleSpaCycle({
-	run,
-	rootComponent,
-	drivers: { DOM: makeDOMDriver(document.getElementById('main-content'))}, // or { DOM: makeDOMDriver('#main-content')}
+  run,
+  rootComponent,
+  drivers: { DOM: makeDOMDriver(document.getElementById('main-content'))}, // or { DOM: makeDOMDriver('#main-content')}
 });
 
-export const bootstrap = [
-	cycleLifecycles.bootstrap
-];
-
-export const mount = [
-	cycleLifecycles.mount
-];
-
-export const unmount = [
-	cycleLifecycles.unmount
-];
+export const bootstrap = cycleLifecycles.bootstrap;
+export const mount = cycleLifecycles.mount;
+export const unmount = cycleLifecycles.unmount;
 ```
 
 ## Options
