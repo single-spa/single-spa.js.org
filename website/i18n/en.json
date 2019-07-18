@@ -49,9 +49,13 @@
         "title": "single-spa-react",
         "sidebar_label": "React"
       },
+      "ecosystem-riot": {
+        "title": "single-spa-riot",
+        "sidebar_label": "Riot"
+      },
       "ecosystem-svelte": {
         "title": "single-spa-svelte",
-        "sidebar_label": "svelte"
+        "sidebar_label": "Svelte"
       },
       "ecosystem-vue": {
         "title": "single-spa-vue",

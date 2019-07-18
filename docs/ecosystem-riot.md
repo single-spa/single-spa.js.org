@@ -1,15 +1,23 @@
 ---
 id: ecosystem-riot
 title: single-spa-riot
-sidebar_label: riot
+sidebar_label: Riot
 ---
 
 single-spa-riot is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [riot](https://riot.js.org/). Check out the [single-spa-riot github](https://github.com/ariesjia/single-spa-riot).
 
+[![NPM](https://img.shields.io/npm/v/single-spa-riot.svg)](https://www.npmjs.com/package/single-spa-riot)
 
-## Quickstart
+[![Build Status](https://travis-ci.org/ariesjia/single-spa-riot.svg?branch=master)](https://travis-ci.org/ariesjia/single-spa-riot)
 
-First, in the [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save single-spa-riot`. Then, create an entry file with the following.
+[![minified](https://badgen.net/bundlephobia/minzip/single-spa-riot)](https://bundlephobia.com/result?p=single-spa-riot)
+
+## Installation
+```sh
+npm install --save single-spa-riot
+```
+
+## Usage
 
 ```js
 import * as Riot from 'riot';
@@ -18,20 +26,14 @@ import App from './App.riot'
 
 const riotLifecycles = singleSpaRiot({
   rootComponent: Riot.component(App),
-  domElementGetter: () => document.getElementById('#main-content')
+  domElementGetter: () => document.getElementById('#app')
 });
 
-export const bootstrap = [
-  riotLifecycles.bootstrap
-];
+export const bootstrap = riotLifecycles.bootstrap;
 
-export const mount = [
-  riotLifecycles.mount
-];
+export const mount = riotLifecycles.mount;
 
-export const unmount = [
-  riotLifecycles.unmount
-];
+export const unmount = riotLifecycles.unmount;
 ```
 
 ## Options
