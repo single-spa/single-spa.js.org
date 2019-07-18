@@ -6,32 +6,28 @@ sidebar_label: Preact
 
 single-spa-preact is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Preact](https://preactjs.com/). Check out the [single-spa-preact github](https://github.com/CanopyTax/single-spa-preact).
 
-## Quickstart
+## Installation
+```sh
+npm install --save preact
+```
 
-First, in the [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save single-spa-preact`. Then, in the application's entry file, add the following.
+## Quickstart
+In your project's entry file, add the following:
 
 ```js
 import preact from 'preact';
 import rootComponent from './path-to-root-component.js';
 import singleSpaPreact from 'single-spa-preact';
 
-const reactLifecycles = singleSpaPreact({
+const preactLifecycles = singleSpaPreact({
   preact,
   rootComponent,
   domElementGetter: () => document.getElementById('main-content'),
 });
 
-export const bootstrap = [
-  preactLifecycles.bootstrap,
-];
-
-export const mount = [
-  preactLifecycles.mount,
-];
-
-export const unmount = [
-  preactLifecycles.unmount,
-];
+export const bootstrap = preactLifecycles.bootstrap;
+export const mount = preactLifecycles.mount;
+export const unmount = preactLifecycles.unmount;
 ```
 
 ## Options
