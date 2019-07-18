@@ -470,3 +470,28 @@ function loadScript(url) {
 be loaded by single-spa-angular's webpack config, without you having to configure anything.
 
 Your component styles will also be loaded like normal without you having to configure anything.
+
+### Polyfills
+[Polyfills in your angular.json](https://angular.io/guide/browser-support) are javascript code that make your project to work in older browsers,
+such as IE11.
+
+**The polyfills that you specify in your angular.json file will not be loaded automatically**. This is because we should only load
+polyfills once in the root html file, instead of once per application.
+
+To load polyfills, you'll need to follow the instructions in the [Angular documentation for non-CLI users](https://angular.io/guide/browser-support#polyfills-for-non-cli-users).
+Even if you are using Angular CLI, you will need to follow those instructions, since your [single-spa root html file](https://single-spa-playground.org/playground/html-file)
+is not using Angular CLI and that's where the polyfills need to go.
+
+If you're looking for a quick one-liner, try adding this line near the top of your index.html.
+
+```html
+<script src='https://unpkg.com/core-js-bundle/minified.js'></script>
+```
+
+### Internet Explorer
+If you need to support IE11 or older, do the following:
+- [Add core-js polyfill](#polyfills)
+- Remove arrow functions from index.html ([example](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32#diff-07a3141209aa56f89a0f47490866f94eR34))
+- Change angular.json `target` to `es5` ([example](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32#diff-acbfc718bf309f27dd3699a4ad80a2d1R13))
+
+[Full example commit to get IE11 support](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32)
