@@ -8,12 +8,18 @@ sidebar_label: React
 
 single-spa-react is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/CanopyTax/single-spa-react).
 
-## Example
-In addition to this Readme, example usage of single-spa-react can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/react/react.app.js) project.
+## Installation
+```sh
+npm install --save single-spa-react
+
+# Or
+yarn add single-spa-react
+```
+
+Alternatively, you can use single-spa-react by adding `<script src="https://unpkg.com/single-spa-react"></script>` and accessing the singleSpaReact global variable.
 
 ## Quickstart
-
-First, in the [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save single-spa-react`. Then, create an entry file for the application:
+Your bundler's "entry file" should look like this, which allows your application to be downloaded as an in-browser ES module.
 
 ```js
 import React from 'react';
@@ -26,20 +32,11 @@ const reactLifecycles = singleSpaReact({
   React,
   ReactDOM,
   rootComponent,
-  domElementGetter: () => document.getElementById('main-content'),
 });
 
-export const bootstrap = [
-  reactLifecycles.bootstrap,
-];
-
-export const mount = [
-  reactLifecycles.mount,
-];
-
-export const unmount = [
-  reactLifecycles.unmount,
-];
+export const bootstrap = reactLifecycles.bootstrap;
+export const mount = reactLifecycles.mount;
+export const unmount = reactLifecycles.unmount;
 ```
 
 ## Options
@@ -52,12 +49,15 @@ All options are passed to single-spa-react via the `opts` parameter when calling
 - `loadRootComponent`: (optional) A loading function that returns a promise that resolves with the parcel. This takes the place of the `rootComponent` opt, when provided. It is intended to help people
    who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.
 - `suppressComponentDidCatchWarning`: (optional) A boolean that indicates if single-spa-react should warn when the rootComponent does not implement componentDidCatch. Defaults to false.
-- `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the React application will be bootstrapped, mounted, and unmounted.
-  Note that this opt can only be omitted when domElementGetter is passed in as a [custom prop](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#custom-props) or if `domElement`
-  is passed as prop. So you must either do `singleSpaReact({..., domElementGetter: function() {return ...}})`, `singleSpa.registerApplication(name, app, activityFn, {domElementGetter: function() {...}})`,
-  or `singleSpaReact({..., domElement})`.
+- `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the
+  React application will be bootstrapped, mounted, and unmounted. Note that this opt can be omitted. When omitted, the `domElementGetter` or `domElement`
+  [custom single-spa props](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#custom-props) are used.
+  To use those, do `singleSpa.registerApplication(name, app, activityFn, {domElementGetter: function() {...}})` or
+  `singleSpa.registerApplication(name, app, activityFn, {domElement: document.getElementById(...)})`. If no dom element can be found through any
+  of those methods, then a container div will be created and appended to document.body, by default.
 - `parcelCanUpdate`: (optional) A boolean that controls whether an update lifecycle will be created for the returned parcel. Note that option does not impact single-spa applications, but only parcels.
   It is true by default.
+- `renderType`: (optional) ENUM of one of the following: [ 'render', 'hydrate', 'createRoot' ]. Defaults to `'render'`. Allows you to choose which ReactDOM render method you want to use for your application.
 
 ## Notes
 
@@ -72,8 +72,9 @@ single-spa-react can also be used to create a single-spa parcel (instead of a si
 domElementGetter (since those are provided by the code that will mount the parcel).
 
 Additionally, single-spa-react provides a `<Parcel>` component to make using framework agnostic single-spa parcels easier. This allows you to put the parcel into your render method's jsx, instead of having to implement componentDidMount and componentWillUnmount.
+You can use the Parcel component either by npm installing the library and importing `single-spa-react/parcel` or by adding `<script src="https://unpkg.com/single-spa-react/parcel"></script>` and then accessing the Parcel component with `window.Parcel.default`.
 
-### Parcel props
+#### Parcel props
 - `config` (required): Either a single-spa parcel config object, or a "loading function" that returns a Promise that resolves with the parcel config.
 - `wrapWith` (optional): A string [tagName](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName).`<Parcel>` will create a dom node of that type for the parcel to be mounted into. Defaults to `div`
 - `appendTo` (optional): A dom element to append the parcel to. By default, this is not needed because the parcel will be mounted in the DOM that the `<Parcel>` component was rendered into. Useful for appending parcels to document.body or other separate parts of the dom.
@@ -82,19 +83,19 @@ Additionally, single-spa-react provides a `<Parcel>` component to make using fra
    Note that if the `<Parcel>` component is being rendered by a single-spa application that uses single-spa-react, it is **unnecessary** to pass in the prop, since `<Parcel>` can get the prop
    from [SingleSpaContext](#singlespacontext)
 - `handleError` (optional): A function that will be called with errors thrown by the parcel. If not provided, errors will be thrown on the window, by default.
+- `parcelDidMount` (optional): A function that will be called when the parcel finishes loading and mounting.
 
-### Examples
+#### Examples
 ```jsx
 import Parcel from 'single-spa-react/parcel'
 import * as parcelConfig from './my-parcel.js'
 
-// config and wrapWith are required. The parcel will be mounted inside of the
+// config is required. The parcel will be mounted inside of the
 // of a div inside of the react component tree
 <Parcel
   config={parcelConfig}
-  wrapWith="div"
 
-  singleRender={false}
+  wrapWith="div"
   handleError={err => console.error(err)}
 
   customProp1="customPropValue2"
@@ -128,3 +129,6 @@ import * as parcelConfig from './my-parcel.js'
   wrapWith="div"
 />
 ```
+
+## Create React App
+See [FAQ for CRA](https://single-spa.js.org/docs/faq.html#create-react-app)
