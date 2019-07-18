@@ -6,19 +6,23 @@ sidebar_label: AngularJS
 
 single-spa-angularjs is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [AngularJS](https://angularjs.org/). Check out the [single-spa-angularjs github](https://github.com/CanopyTax/single-spa-angularjs).
 
-## Examples
+## Installation
+```sh
+npm install --save single-spa-angularjs
+```
 
-In addition to this Readme, example usage of single-spa-angularjs can be found in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples/blob/master/src/angular1/angular1.app.js) project.
+Note that you can alternatively `<script src="https://unpkg.com/single-spa-angularjs"></script>` and access the library
+via the `singleSpaAngularjs` global variable if that is easier for you.
 
-## Quickstart
+## With a bundler
 
-First, in the [single-spa application](building-applications.md#registered-applications), run `npm install --save single-spa-angularjs`. Then, create an entry file for the application:
+If you're using a bundler such as webpack, add the following to your entry file:
 
 ```js
-import singleSpaangularJS from 'single-spa-angularjs';
+import singleSpaAngularJS from 'single-spa-angularjs';
 import angular from 'angular';
 
-const ng1Lifecycles = singleSpaangularJS({
+const ngLifecycles = singleSpaAngularJS({
   angular: angular,
   domElementGetter: () => document.getElementById('main-content'),
   mainAngularModule: 'app',
@@ -27,25 +31,60 @@ const ng1Lifecycles = singleSpaangularJS({
   template: '<my-component />',
 });
 
-export const bootstrap = [
-  ng1Lifecycles.bootstrap,
-];
-
-export const mount = [
-  ng1Lifecycles.mount,
-];
-
-export const unmount = [
-  ng1Lifecycles.unmount,
-];
+export const bootstrap = ngLifecycles.bootstrap;
+export const mount = ngLifecycles.mount;
+export const unmount = ngLifecycles.unmount;
 ```
 
-## Looking for an ES5 version?
-Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angularjs)
+## Without a bundler
+If you're not using a bundler, you'll need to make your angularjs application a SystemJS module or a global variable. The SystemJS
+module is preferred, and you can read about it more in the [recommended single-spa setup](/docs/faq.html#is-there-a-recommended-setup).
+
+### As a SystemJS module
+Add the following to your AngularJS application. If you're using gulp/grunt to concatenate files together, just create a new file called
+`single-spa-application.js` and make sure it's included in your final build file.
+
+```js
+System.register([], function(_export) {
+  return {
+    execute: function() {
+      _export(singleSpaAngularJS({
+        angular: angular,
+        domElementGetter: () => document.getElementById('main-content'),
+        mainAngularModule: 'app',
+        uiRouter: true,
+        preserveGlobal: false,
+        template: '<my-component />',
+      }))
+    }
+  }
+})
+```
+
+Once you do this, you can `System.import()` the bundle file and SystemJS + single-spa will know what to do with your module. Your
+[loading function](/docs/configuration.html#loading-function-or-application) should be `System.import('name-of-app')`. Make sure to
+add `name-of-app` to your [import map](https://single-spa-playground.org/playground/import-map).
+
+### As a global variable
+```js
+window.myAngularApp = singleSpaAngularJS({
+  angular: angular,
+  domElementGetter: () => document.getElementById('main-content'),
+  mainAngularModule: 'app',
+  uiRouter: true,
+  preserveGlobal: false,
+  template: '<my-component />',
+})
+```
+
+Your [loading function](/docs/configuration.html#loading-function-or-application) should just be the global variable itself. For example:
+```js
+singleSpa.registerApplication('my-angular-app', myAngularApp, () => true);
+```
 
 ## Options
 
-All options are passed to single-spa-angularjs via the `opts` parameter when calling `singleSpaangularJS(opts)`. The following options are available:
+All options are passed to single-spa-angularjs via the `opts` parameter when calling `singleSpaAngularJS(opts)`. The following options are available:
 
 - `angular`: (required) The main angular object, which is generally either exposed onto the window or is available via `require('angular')` or `import angular from 'angular'`.
 - `domElementGetter`: (required) A function that takes in no arguments and returns a DOMElement. This dom element is where the angular application will be bootstrapped, mounted, and unmounted.
@@ -55,3 +94,6 @@ All options are passed to single-spa-angularjs via the `opts` parameter when cal
 - `elementId`: (optional) A string which will be used to identify the element appended to the DOM and bootstrapped by Angular.
 - `strictDi`: (optional - part of the bootstrap [config object](https://docs.angularjs.org/api/ng/function/angular.bootstrap#usage)) A boolean that defaults to false. Set if you want to enable StrictDi mode
 - `template`: (optional) An html string that will be inserted into the DOM when the app is mounted. The template goes inside of the element returned by domElementGetter. If not provided, no template will be inserted. When using angular-ui-router, you often do not need to use this since ui-router will be putting a template onto the dom for you.
+
+## ES5 Example
+Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angularjs)
