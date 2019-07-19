@@ -83,7 +83,6 @@ via the <code>singleSpaAngularjs</code> global variable if that is easier for yo
 
 <span class="hljs-keyword">const</span> ngLifecycles = singleSpaAngularJS({
   <span class="hljs-attr">angular</span>: angular,
-  <span class="hljs-attr">domElementGetter</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'main-content'</span>),
   <span class="hljs-attr">mainAngularModule</span>: <span class="hljs-string">'app'</span>,
   <span class="hljs-attr">uiRouter</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">preserveGlobal</span>: <span class="hljs-literal">false</span>,
@@ -105,7 +104,6 @@ module is preferred, and you can read about it more in the <a href="/docs/faq.ht
     <span class="hljs-attr">execute</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
       _export(singleSpaAngularJS({
         <span class="hljs-attr">angular</span>: angular,
-        <span class="hljs-attr">domElementGetter</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'main-content'</span>),
         <span class="hljs-attr">mainAngularModule</span>: <span class="hljs-string">'app'</span>,
         <span class="hljs-attr">uiRouter</span>: <span class="hljs-literal">true</span>,
         <span class="hljs-attr">preserveGlobal</span>: <span class="hljs-literal">false</span>,
@@ -121,7 +119,6 @@ add <code>name-of-app</code> to your <a href="https://single-spa-playground.org/
 <h3><a class="anchor" aria-hidden="true" id="as-a-global-variable"></a><a href="#as-a-global-variable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>As a global variable</h3>
 <pre><code class="hljs css language-js"><span class="hljs-built_in">window</span>.myAngularApp = singleSpaAngularJS({
   <span class="hljs-attr">angular</span>: angular,
-  <span class="hljs-attr">domElementGetter</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'main-content'</span>),
   <span class="hljs-attr">mainAngularModule</span>: <span class="hljs-string">'app'</span>,
   <span class="hljs-attr">uiRouter</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">preserveGlobal</span>: <span class="hljs-literal">false</span>,
@@ -135,7 +132,8 @@ add <code>name-of-app</code> to your <a href="https://single-spa-playground.org/
 <p>All options are passed to single-spa-angularjs via the <code>opts</code> parameter when calling <code>singleSpaAngularJS(opts)</code>. The following options are available:</p>
 <ul>
 <li><code>angular</code>: (required) The main angular object, which is generally either exposed onto the window or is available via <code>require('angular')</code> or <code>import angular from 'angular'</code>.</li>
-<li><code>domElementGetter</code>: (required) A function that takes in no arguments and returns a DOMElement. This dom element is where the angular application will be bootstrapped, mounted, and unmounted.</li>
+<li><code>domElementGetter</code>: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the angular
+application will be bootstrapped, mounted, and unmounted. If not provided, the default is to create a div and append it to <code>document.body</code>.</li>
 <li><code>mainAngularModule</code>: (required) A string that is the name of the angular module that will be bootstrapped by angular. See <a href="https://docs.angularjs.org/api/ng/function/angular.bootstrap">angular docs</a> for <code>angular.bootstrap()</code>.</li>
 <li><code>uiRouter</code>: (optional) If you are using angular-ui-router, set this option to either <code>true</code> or to a string value. The string value will be the value of the ui-view html attribute. For example, <code>uiRouter: 'core'</code> will be <code>&lt;div ui-view=&quot;core&quot; /&gt;</code> whereas <code>uiRouter: true</code> turns into <code>&lt;div ui-view /&gt;</code>.</li>
 <li><code>preserveGlobal</code>: (optional) A boolean that defaults to false. Set if you want to keep angular on the global even after an app unmounts.</li>
