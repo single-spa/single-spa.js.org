@@ -48,7 +48,7 @@ export const unmount = vueLifecycles.unmount;
 
 ```
 
-Note that if you are using the Vue CLI Plugin, this will be done automatically for you.
+Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically.
 
 ## Options
 
