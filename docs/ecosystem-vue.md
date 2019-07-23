@@ -33,7 +33,7 @@ Change your application's entry file to be the following.
 ```js
 import Vue from 'vue';
 import singleSpaVue from 'single-spa-vue';
-import App from ./App.vue
+import App from './App.vue';
 
 const vueLifecycles = singleSpaVue({
   Vue,
