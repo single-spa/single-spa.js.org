@@ -9,6 +9,9 @@ single-spa-vue is a helper library that helps implement [single-spa registered a
 ## Starter repo
 For a full example, see [coexisting-vue-microfrontends](https://github.com/joeldenning/coexisting-vue-microfrontends).
 
+## Live demo
+https://coexisting-vue-microfrontends.surge.sh
+
 ## Installation
 ### Vue CLI
 The [vue-cli-plugin-single-spa](https://github.com/CanopyTax/vue-cli-plugin-single-spa) will get everything set up.
