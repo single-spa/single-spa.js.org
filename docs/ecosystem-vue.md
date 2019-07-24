@@ -6,6 +6,9 @@ sidebar_label: Vue
 
 single-spa-vue is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/CanopyTax/single-spa-vue).
 
+## Starter repo
+For a full example, see [coexisting-vue-microfrontends](https://github.com/joeldenning/coexisting-vue-microfrontends).
+
 ## Installation
 ### Vue CLI
 The [vue-cli-plugin-single-spa](https://github.com/CanopyTax/vue-cli-plugin-single-spa) will get everything set up.
@@ -51,6 +54,36 @@ export const unmount = vueLifecycles.unmount;
 ```
 
 Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically.
+
+## Shared dependencies
+For performance, it is best to share a single version and instance of Vue, Vue Router, and other large libraries.
+
+To do this, add your shared dependencies as [webpack externals](https://webpack.js.org/configuration/externals). Then you use
+an in-browser module loader such as [systemjs](https://github.com/systemjs/systemjs) to provide those shared dependencies
+to each of the single-spa applications. Adding `vue` and other libraries to your
+[import map](http://single-spa-playground.org/playground/import-map). For an example import map that is doing this,
+checkout [coexisting-vue-microfrontends' index.html file](https://github.com/joeldenning/coexisting-vue-microfrontends/blob/master/root-html-file/index.html).
+
+Sharing a single instance of Vue and other common libraries is highly recommended. See the
+[recommended setup for single-spa](https://single-spa.js.org/docs/faq.html#is-there-a-recommended-setup) for more details on why.
+
+### Shared deps with Vue CLI
+```js
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config.externals(['vue', 'vue-router'])
+  }
+}
+```
+
+### Shared deps without Vue CLI
+```js
+// webpack.config.js
+module.exports = {
+  externals: ['vue', 'vue-router'],
+}
+```
 
 ## Options
 
