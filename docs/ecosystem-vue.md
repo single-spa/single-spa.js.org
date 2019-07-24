@@ -32,14 +32,16 @@ Change your application's entry file to be the following.
 
 ```js
 import Vue from 'vue';
-import singleSpaVue from 'single-spa-vue';
 import App from './App.vue';
+import router from './router';
+import singleSpaVue from 'single-spa-vue';
 
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     render: h => h(App),
-  }
+    router,
+  },
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
