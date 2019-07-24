@@ -7,6 +7,19 @@ sidebar_label: Vue
 single-spa-vue is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/CanopyTax/single-spa-vue).
 
 ## Installation
+### Vue CLI
+The [vue-cli-plugin-single-spa](https://github.com/CanopyTax/vue-cli-plugin-single-spa) will get everything set up.
+
+```sh
+vue add single-spa
+```
+
+The CLI Plugin does the following for you:
+1) Modify your webpack config so that your project works as a single-spa application or parcel.
+2) Install [single-spa-vue](https://github.com/CanopyTax/single-spa-vue).
+3) Modify your `main.js` or `main.ts` file so that your project works as a single-spa application or parcel.
+
+### Without Vue CLI
 ```sh
 npm install --save single-spa-vue
 ```
@@ -14,27 +27,30 @@ npm install --save single-spa-vue
 Alternatively, you can use  single-spa-vue by adding `<script src="https://unpkg.com/single-spa-vue"></script>` to your html file and
 accessing the `singleSpaVue` global variable.
 
-## Quickstart
-Add the following to your application's entry file
+## Usage
+Change your application's entry file to be the following.
 
 ```js
 import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
 import singleSpaVue from 'single-spa-vue';
-import App from ./App.vue
 
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     render: h => h(App),
-  }
+    router,
+  },
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
-
 export const mount = vueLifecycles.mount;
-
 export const unmount = vueLifecycles.unmount;
+
 ```
+
+Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically.
 
 ## Options
 
