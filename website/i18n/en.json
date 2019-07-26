@@ -29,6 +29,10 @@
         "title": "single-spa-angularjs",
         "sidebar_label": "AngularJS"
       },
+      "ecosystem-backbone": {
+        "title": "single-spa-bone",
+        "sidebar_label": "Backbone"
+      },
       "ecosystem-cycle": {
         "title": "single-spa-cycle",
         "sidebar_label": "Cycle"
