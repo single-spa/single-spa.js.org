@@ -9,10 +9,10 @@ single-spa applications or parcels.
 
 ## Installation
 ```sh
-npm install --save-dev single-spa-html
+npm install --save single-spa-html
 
 # or
-yarn add --dev single-spa-html
+yarn add single-spa-html
 ```
 
 Alternatively, you can use single-spa-html from a CDN as a global variable:
