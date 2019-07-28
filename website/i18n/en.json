@@ -41,9 +41,16 @@
         "title": "single-spa-ember",
         "sidebar_label": "Ember"
       },
+      "ecosystem-html-web-components": {
+        "title": "single-spa-html",
+        "sidebar_label": "HTML / Web Components"
+      },
       "ecosystem-inferno": {
         "title": "single-spa-inferno",
         "sidebar_label": "Inferno"
+      },
+      "ecosystem-leaked-globals": {
+        "title": "ecosystem-leaked-globals"
       },
       "ecosystem-preact": {
         "title": "single-spa-preact",

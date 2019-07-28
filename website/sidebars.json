@@ -38,7 +38,8 @@
       "ecosystem-preact",
       "ecosystem-svelte",
       "ecosystem-riot",
-      "ecosystem-backbone"
+      "ecosystem-backbone",
+      "ecosystem-html-web-components"
     ],
     "Contributing": [
       "contributing-overview",
