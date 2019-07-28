@@ -38,7 +38,8 @@
       "ecosystem-preact",
       "ecosystem-svelte",
       "ecosystem-riot",
-      "ecosystem-backbone"
+      "ecosystem-backbone",
+      "ecosystem-leaked-globals"
     ],
     "Contributing": [
       "contributing-overview",

@@ -45,6 +45,10 @@
         "title": "single-spa-inferno",
         "sidebar_label": "Inferno"
       },
+      "ecosystem-leaked-globals": {
+        "title": "single-spa-leaked-globals",
+        "sidebar_label": "Leaked globals"
+      },
       "ecosystem-preact": {
         "title": "single-spa-preact",
         "sidebar_label": "Preact"
