@@ -23,7 +23,7 @@ module.exports = function Docs() {
             content: `Github repos ready to clone. For all major frameworks and build systems.<br><br> [Go to Examples](/docs/examples.html)`,
             image: siteConfig.baseUrl + 'img/icons/148705-essential-collection/svg/blueprint.svg',
             imageAlt: 'house blueprint',
-            imageLink: siteConfig.baseUrl + 'docs/getting-started-overview.html',
+            imageLink: siteConfig.baseUrl + 'docs/examples.html',
           },
           {
             title: 'Tutorials',
