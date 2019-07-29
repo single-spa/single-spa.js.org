@@ -1,6 +1,6 @@
 ---
 id: ecosystem-backbone
-title: single-spa-bone
+title: single-spa-backbone
 sidebar_label: Backbone
 ---
 
