@@ -39,6 +39,7 @@
       "ecosystem-svelte",
       "ecosystem-riot",
       "ecosystem-backbone",
+      "ecosystem-html-web-components",
       "ecosystem-leaked-globals"
     ],
     "Contributing": [
