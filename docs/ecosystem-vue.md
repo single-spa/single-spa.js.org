@@ -99,3 +99,8 @@ All options are passed to single-spa-vue via the `opts` parameter when calling `
 ## As a single-spa parcel
 To create a single-spa parcel, simply omit the `el` option from your appOptions, since the dom element will be specified by the user of the Parcel. Every other
 option should be provided exactly the same as in the example above.
+
+## Custom Props
+[single-spa custom props](/docs/building-applications.html#custom-props) are added to your App component as
+`appOptions.data`, and are accessible via `vm.$data`. See [this Vue documentation](https://vuejs.org/v2/api/#data)
+for more information on `appOptions.data`.
