@@ -12,7 +12,7 @@ The applications can all be written in the same framework, or they can be implem
 
 ## Is there a recommended setup?
 We recommend a setup that uses in-browser ES modules + [import maps](#what-are-import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
-1. Common libraries are easy to manage, and are only downloaded once. You can also preload these for a small speed boost as well using the standard preload spec.
+1. Common libraries are easy to manage, and are only downloaded once. If you're using SystemJS, you can also [preload them](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) for a speed boost as well. 
 1. Sharing code / functions / variables is as easy as `import/export`, just like in a monolithic setup
 1. Lazy loading applications is easy, which enables you to speed up initial load times
 1. Each application (AKA microservice, AKA ES module) can be independently developed and deployed. Teams are enabled to work at their own speed, experiment (within reason as defined by the organization), QA, and deploy on thier own schedules. This usually also means that release cycles can be decreased to days instead of weeks or months
@@ -22,7 +22,7 @@ We recommend a setup that uses in-browser ES modules + [import maps](#what-are-i
 When setup in the [recommended way](#is-there-a-recommended-setup), your code performance and bundle size will be nearly identical to a single application that has been code-split. The major differences will be the addition of the single-spa library (and SystemJS if you chose to use it). Other differences mainly come down to the difference between one (webpack / rollup / etc.) code bundle and in-browser ES modules.
 
 ## Can I have only one version of (React, Vue, Angular, etc.) loaded?
-Using the recommended setup, you setup your import map to download that once. Then, tell each application to _not_ bundle that application code; instead, it will given to you at runtime in the browser. See [webpack’s externals](https://webpack.js.org/configuration/externals/) (other bundlers have similar options) for how to do this.
+Yes, and it's highly recommended you do so! Using [the recommended setup](#is-there-a-recommended-setup), you configure your [import map](#what-are-import-maps) so that your library is defined only once. Then, tell each application to _not_ bundle that library; instead, the library will given to you at runtime in the browser. See [webpack’s externals](https://webpack.js.org/configuration/externals/) (and other bundlers have similar options) for how to do this.
 
 You do have the option of _not_ excluding those libraries (for example if you want to experiment with a newer version or a different library) but be aware of the effect that will have on user's bundle sizes and application speed.
 
@@ -32,7 +32,7 @@ You do have the option of _not_ excluding those libraries (for example if you wa
 ## How can I share application state between applications?
 In general, we recommend trying to avoid this — it couples those apps together. If you find yourself doing this frequently between apps, you may want to consider that those separate apps should actually just be one app.
 
-Generally, it’s better to just make an API request for the data that each app needs, even if parts of it have been requested by other apps. In practice, if you’ve designed your application boundaries correctly, there will end up being very little application state that is truly shared — your friends list has different data requirements than your social feed.
+Generally, it’s better to just make an API request for the data that each app needs, even if parts of it have been requested by other apps. In practice, if you’ve designed your application boundaries correctly, there will end up being very little application state that is truly shared — for example, your friends list has different data requirements than your social feed.
 
 However, that doesn’t mean it can’t be done. Here are several ways:
 1. Create a shared API request library that can cache requests and their responses. If somone hits an API, and then that API is hit again by another application, it just uses the cache
@@ -40,7 +40,7 @@ However, that doesn’t mean it can’t be done. Here are several ways:
 1. Use [custom browser events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events) to communicate
 1. Use [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies), [local/session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), or other similar methods for storing and reading that state. These methods work best with things that don't change often, e.g. logged-in user info.
 
-Please note that this is just talking about sharing application state: sharing functions, components, etc. is as easy as an `export` in one project and an `import` in the other.
+**Please note that this is just talking about sharing application state: sharing functions, components, etc. is as easy as an `export` in one project and an `import` in the other. See [import map](#what-are-import-maps) documentation for more details**
 
 ## Should I use frontend microservices?
 If you’ve ran into some of the headaches a monolithic repo has, then you should really consider it.
