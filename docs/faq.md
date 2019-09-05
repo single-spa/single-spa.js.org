@@ -12,7 +12,7 @@ The applications can all be written in the same framework, or they can be implem
 
 ## Is there a recommended setup?
 We recommend a setup that uses in-browser ES modules + [import maps](#what-are-import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
-1. Common libraries are easy to manage, and are only downloaded once. If you're using SystemJS, you can also [preload them](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) for a speed boost as well. 
+1. Common libraries are easy to manage, and are only downloaded once. If you're using SystemJS, you can also [preload them](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) for a speed boost as well.
 1. Sharing code / functions / variables is as easy as `import/export`, just like in a monolithic setup
 1. Lazy loading applications is easy, which enables you to speed up initial load times
 1. Each application (AKA microservice, AKA ES module) can be independently developed and deployed. Teams are enabled to work at their own speed, experiment (within reason as defined by the organization), QA, and deploy on thier own schedules. This usually also means that release cycles can be decreased to days instead of weeks or months
@@ -93,12 +93,19 @@ When you use the [recommended setup](#is-there-a-recommended-setup) the followin
 
 1. Remove Webpack optimizations block, because they add multiple webpack chunks that don't load each other
 1. Remove html-webpack plugin
-1. Change [`output.libraryTarget`](https://webpack.js.org/configuration/output/#outputlibrarytarget) to `System`, `UMD`, or `AMD`. 
+1. Change [`output.libraryTarget`](https://webpack.js.org/configuration/output/#outputlibrarytarget) to `System`, `UMD`, or `AMD`.
 
-CRA does not allow you to change those items without ejecting or using another tool. 
+CRA does not allow you to change those items without ejecting or using another tool.
 
 ## Code splits
 Single spa supports code splits. There are so many ways to code split we won't be able to cover them all, but if you're using the [recommended setup](#is-there-a-recommended-setup) with webpack you'll need to do at least two things:
 
-1. Set the [`__webpack_public_path__`](https://webpack.js.org/guides/public-path/#on-the-fly) dynamically so webpack knows where to fetch your code splits (webpack assumes they are located at the root of the server and that isn't always true in a single-spa application). An [example implementation](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3) would work as long as the variable is set prior to loading a code split, and you can also track [this SystemJS issue](https://github.com/systemjs/systemjs/issues/1939) for progress on making this easier.
+1. Set the [`__webpack_public_path__`](https://webpack.js.org/guides/public-path/#on-the-fly) dynamically so webpack knows where to fetch your code splits (webpack assumes they are located at the root of the server and that isn't always true in a single-spa application). Both solutions below should be the very first import of your application in order to work.
+    * For SystemJS >= 6:
+      ```js
+        const url = System.resolve("module-name");
+        __webpack_public_path__ = url.slice(0, url.lastIndexOf("/") + 1);
+      ```
+
+    * For SystemJS 2-5: Find a code example [here](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3)
 1. Set either [`output.jsonpFunction`](https://webpack.js.org/configuration/output/#outputjsonpfunction) or [`output.library`](https://webpack.js.org/configuration/output/#outputlibrary) to ensure that each app's webpack doesn't collide with other apps' webpack. `jsonpFunction` is preferred.
