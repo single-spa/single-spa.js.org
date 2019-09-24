@@ -39,6 +39,7 @@ The parcel object contains the following functions and methods:
 
 - [mount](parcels-api.md#mount)
 - [unmount](parcels-api.md#unmount)
+- [update](parcels-api.md#update)
 - [getStatus](parcels-api.md#getstatus)
 - [loadPromise](parcels-api.md#loadpromise)
 - [bootstrapPromise](parcels-api.md#bootstrappromise)
@@ -52,6 +53,15 @@ The parcel object contains the following functions and methods:
 ### mount
 
 `parcel.mount()` returns a promise that resolves once the parcel is successfully mounted. The promise can throw an error which needs to be handled.
+
+### update
+
+`parcel.update(props)` allows you to change the props passed into a parcel. Note that not all parcels support being updated. The `update` function returns a promise that resolves when the parcel is finished updating. See [other documentation](parcels-overview.html#update-optional) and [example](https://single-spa.js.org/docs/parcels-overview.html#quick-example) for more information.
+
+```js
+const parcel = singleSpa.mountRootParcel(parcelConfig, parcelProps);
+parcel.update(newParcelProps);
+```
 
 ### getStatus
 
