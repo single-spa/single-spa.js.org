@@ -75,6 +75,8 @@ This means importing must happen in one of two ways:</p>
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> singleSpa <span class="hljs-keyword">from</span> <span class="hljs-string">'single-spa'</span>;
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="registerapplication"></a><a href="#registerapplication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>registerApplication</h2>
+<pre><code class="hljs css language-js">singleSpa.registerApplication(<span class="hljs-string">'appName'</span>, () =&gt; System.import(<span class="hljs-string">'appName'</span>), location =&gt; location.pathname.startsWith(<span class="hljs-string">'appName'</span>))
+</code></pre>
 <p><code>registerApplication</code> is the most important api your single spa config will use. Use this function to register any application within single-spa.</p>
 <p>Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.</p>
 <blockquote>
@@ -93,17 +95,19 @@ This means importing must happen in one of two ways:</p>
 </dl>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
-<h2><a class="anchor" aria-hidden="true" id="declarechildapplication"></a><a href="#declarechildapplication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>declareChildApplication</h2>
-<p class="deprecated">Deprecated</p>
-<p>Use <a href="#registerapplication"><code>registerApplication</code></a> instead.</p>
 <h2><a class="anchor" aria-hidden="true" id="start"></a><a href="#start" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>start</h2>
+<pre><code class="hljs css language-js">singleSpa.start();
+</code></pre>
 <p>Must be called by your single spa config. Before <code>start</code> is called, applications will be loaded, but will never be bootstrapped, mounted or unmounted. The reason for <code>start</code> is to give you control over the performance of your single page application. For example, you may want to declare registered applications immediately (to start downloading the code for the active ones), but not actually mount the registered applications until an initial AJAX request (maybe to get information about the logged in user) has been completed. In that case, the best performance is achieved by calling <code>registerApplication</code> immediately, but calling <code>start</code> after the AJAX request is completed.</p>
 <p><h3>arguments</h3></p>
 <p>none</p>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
 <h2><a class="anchor" aria-hidden="true" id="triggerappchange"></a><a href="#triggerappchange" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>triggerAppChange</h2>
-<p>Returns a Promise that will resolve/reject when all apps have mounted.</p>
+<pre><code class="hljs css language-js">singleSpa.triggerAppChange();
+</code></pre>
+<p>Returns a Promise that will resolve/reject when all apps have mounted/unmounted. This was built for testing single-spa and is likely not
+needed in a production application.</p>
 <p><h3>arguments</h3></p>
 <p>none</p>
 <p><h3>returns</h3></p>
@@ -112,6 +116,14 @@ This means importing must happen in one of two ways:</p>
     <dd>Returns a Promise that will resolve/reject when all apps have mounted.</dd>
 </dl>
 <h2><a class="anchor" aria-hidden="true" id="navigatetourl"></a><a href="#navigatetourl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>navigateToUrl</h2>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// Three ways of using navigateToUrl</span>
+singleSpa.navigateToUrl(<span class="hljs-string">"/new-url"</span>);
+singleSpa.navigateToUrl(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'a'</span>));
+<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'a'</span>).addEventListener(singleSpa.navigateToUrl);
+</code></pre>
+<pre><code class="hljs css language-html"><span class="hljs-comment">&lt;!-- A fourth way to use navigateToUrl, this one inside of your HTML --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/new-url"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"singleSpaNavigate()"</span>&gt;</span>My link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</code></pre>
 <p>Use this utility function to easily perform url navigation between registered applications without needing to deal with <code>event.preventDefault()</code>, <code>pushState</code>, <code>triggerAppChange()</code>, etc.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -128,6 +140,9 @@ This means importing must happen in one of two ways:</p>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
 <h2><a class="anchor" aria-hidden="true" id="getmountedapps"></a><a href="#getmountedapps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getMountedApps</h2>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> mountedAppNames = singleSpa.getMountedApps();
+<span class="hljs-built_in">console</span>.log(mountedAppNames); <span class="hljs-comment">// ['app1', 'app2', 'navbar']</span>
+</code></pre>
 <p><h3>arguments</h3></p>
 <p>none</p>
 <p><h3>returns</h3></p>
@@ -136,6 +151,9 @@ This means importing must happen in one of two ways:</p>
     <dd>Each string is the name of a registered application that is currently <code>MOUNTED</code>.</dd>
 </dl>
 <h2><a class="anchor" aria-hidden="true" id="getappnames"></a><a href="#getappnames" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAppNames</h2>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> appNames = singleSpa.getAppNames();
+<span class="hljs-built_in">console</span>.log(appNames); <span class="hljs-comment">// ['app1', 'app2', 'app3', 'navbar']</span>
+</code></pre>
 <p><h3>arguments</h3></p>
 <p>none</p>
 <p><h3>returns</h3></p>
@@ -144,6 +162,9 @@ This means importing must happen in one of two ways:</p>
     <dd>Each string is the name of a registered application regardless of app status.</dd>
 </dl>
 <h2><a class="anchor" aria-hidden="true" id="getappstatus"></a><a href="#getappstatus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAppStatus</h2>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> status = singleSpa.getAppStatus(<span class="hljs-string">'app1'</span>);
+<span class="hljs-built_in">console</span>.log(status); <span class="hljs-comment">// one of many statuses (see list below). e.g. MOUNTED</span>
+</code></pre>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
     <dt>appName: string</dt>
@@ -195,10 +216,31 @@ This means importing must happen in one of two ways:</p>
                 <dt>SKIP_BECAUSE_BROKEN</dt>
                 <dd>app threw an error during load, bootstrap, mount, or unmount and has been siloed because it is misbehaving and has been skipped. Other apps will continue on normally.</dd>
             </div>
+            <div>
+                <dt>LOAD_ERROR</dt>
+                <dd>
+                    The app's loading function returned a promise that rejected. This is often due to a network error attempting to download the javascript bundle for the application. Single-spa will retry loading the application after the user navigates away from the current route and then comes back to it.
+                </dd>
+            </div>
         </dl>
     </dd>
 </dl>
+<p><strong>Note about LOAD_ERROR status</strong></p>
+<p>Note that if you're using SystemJS to load your bundles, you need to add the following code to get SystemJS to re-attempt the network request
+when your loading function calls <code>System.import()</code> on an application in <code>LOAD_ERROR</code> status.</p>
+<pre><code class="hljs css language-js">singleSpa.addErrorHandler(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
+        System.delete(System.resolve(err.appOrParcelName));
+    }
+})
+</code></pre>
 <h2><a class="anchor" aria-hidden="true" id="unloadapplication"></a><a href="#unloadapplication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>unloadApplication</h2>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// Unload the application right now, without waiting for it to naturally unmount.</span>
+singleSpa.unloadApplication(<span class="hljs-string">'app1'</span>);
+
+<span class="hljs-comment">// Unload the application only after it naturally unmounts due to a route change.</span>
+singleSpa.unloadApplication(<span class="hljs-string">'app1'</span>, {<span class="hljs-attr">waitForUnmount</span>: <span class="hljs-literal">true</span>});
+</code></pre>
 <p>The purpose of unloading a registered application is to set it back to to a NOT_LOADED status, which means that it will be re-bootstrapped the next time it needs to mount. The main use-case for this was to allow for the hot-reloading of entire registered applications, but <code>unloadApplication</code> can be useful whenever you want to re-bootstrap your application.</p>
 <p>Single-spa performs the following steps when unloadApplication is called.</p>
 <ol>
@@ -212,17 +254,20 @@ This means importing must happen in one of two ways:</p>
     <dt>appName: string</dt>
     <dd>Registered application name.</dd>
     <dt>options?: {waitForUnmount: boolean = false}</dt>
-    <dd>The options must be an object that has a <code>waitForUnmount</code> property. This property, if <code>false</code>, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <code>true</code>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <code>MOUNTED</code>).</dd>
+    <dd>The options must be an object that has a <code>waitForUnmount</code> property. When `waitForUnmount` is `false`, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <code>true</code>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <code>MOUNTED</code>).</dd>
 </dl>
 <p><h3>returns</h3></p>
 <dl class="args-list">
     <dt>Promise</dt>
     <dd>This promise will be resolved when the registered application has been successfully removed.</dd>
 </dl>
-<h2><a class="anchor" aria-hidden="true" id="unloadchildapplication"></a><a href="#unloadchildapplication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>unloadChildApplication</h2>
-<p class="deprecated">Deprecated</p>
-<p>Use <a href="#unloadapplication"><code>unloadApplication</code></a> instead.</p>
 <h2><a class="anchor" aria-hidden="true" id="checkactivityfunctions"></a><a href="#checkactivityfunctions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>checkActivityFunctions</h2>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> appsThatShouldBeActive = singleSpa.checkActivityFunctions();
+<span class="hljs-built_in">console</span>.log(appsThatShouldBeActive); <span class="hljs-comment">// ['app1']</span>
+
+<span class="hljs-keyword">const</span> appsForACertainRoute = singleSpa.checkActivityFunctions({<span class="hljs-attr">pathname</span>: <span class="hljs-string">'/app2'</span>});
+<span class="hljs-built_in">console</span>.log(appsForACertainRoute); <span class="hljs-comment">// ['app2']</span>
+</code></pre>
 <p>Will call every app's activity function with the <code>mockWindowLocation</code> and give you list of which applications should be mounted with that location.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -235,6 +280,12 @@ This means importing must happen in one of two ways:</p>
     <dd>Each string is the name of a registered application that matches the provided <code>mockWindowLocation</code>.</dd>
 </dl>
 <h2><a class="anchor" aria-hidden="true" id="adderrorhandler"></a><a href="#adderrorhandler" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>addErrorHandler</h2>
+<pre><code class="hljs css language-js">singleSpa.addErrorHandler(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(err);
+    <span class="hljs-built_in">console</span>.log(err.appOrParcelName);
+    <span class="hljs-built_in">console</span>.log(singleSpa.getAppStatus(err.appOrParcelName));
+});
+</code></pre>
 <p>Adds a handler that will be called every time an application throws an error during a lifecycle function or activity function. When there are no error handlers, single-spa throws the error to the window.</p>
 <dl class="args-list">
     <dt>errorHandler: Function(error: Error)</dt>
@@ -243,6 +294,13 @@ This means importing must happen in one of two ways:</p>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
 <h2><a class="anchor" aria-hidden="true" id="removeerrorhandler"></a><a href="#removeerrorhandler" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>removeErrorHandler</h2>
+<pre><code class="hljs css language-js">singleSpa.addErrorHandler(handleErr)
+singleSpa.removeErrorHandler(handleErr)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleErr</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(err)
+}
+</code></pre>
 <p>Removes the given error handler function.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -255,6 +313,11 @@ This means importing must happen in one of two ways:</p>
     <dd><code>true</code> if the error handler was removed, and <code>false</code> if it was not.</dd>
 </dl>
 <h2><a class="anchor" aria-hidden="true" id="mountrootparcel"></a><a href="#mountrootparcel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>mountRootParcel</h2>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">const</span> parcel = singleSpa.mountRootParcel(parcelConfig, {<span class="hljs-attr">prop1</span>: <span class="hljs-string">'value1'</span>, <span class="hljs-attr">domElement</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'a-div'</span>)});
+parcel.mountPromise.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished mounting the parcel!'</span>)
+})
+</code></pre>
 <p>Will create and mount a <a href="/docs/parcels-overview.html">single-spa parcel</a>.</p>
 <blockquote>
 <p>Note: parcels do not automatically unmount. Unmounting will need to be triggered manually.</p>
@@ -268,10 +331,12 @@ This means importing must happen in one of two ways:</p>
 </dl>
 <p><h3>returns</h3></p>
 <dl class="args-list">
-    <dt>boolean</dt>
-    <dd>true if the error handler was removed, and false if it was not.</dd>
+    <dt>Parcel object</dt>
+    <dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
 </dl>
 <h2><a class="anchor" aria-hidden="true" id="ensurejquerysupport"></a><a href="#ensurejquerysupport" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ensureJQuerySupport</h2>
+<pre><code class="hljs css language-js">singleSpa.ensureJQuerySupport(jQuery);
+</code></pre>
 <p>jQuery uses <a href="https://learn.jquery.com/events/event-delegation/">event delegation</a> so single-spa must monkey-patch each version of jQuery on the page<!-- TODO: in order to properly support... (I'm guessing navigation/routing ) -->. single-spa will attempt to do this automatically by looking for <code>window.jQuery</code> or <code>window.$</code>. Use this explicit method if multiple versions are included on your page or if jQuery is bound to a different global variable.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -281,6 +346,12 @@ This means importing must happen in one of two ways:</p>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
 <h2><a class="anchor" aria-hidden="true" id="setbootstrapmaxtime"></a><a href="#setbootstrapmaxtime" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setBootstrapMaxTime</h2>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// After three seconds, show a console warning while continuing to wait.</span>
+singleSpa.setBootstrapMaxTime(<span class="hljs-number">3000</span>);
+
+<span class="hljs-comment">// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.</span>
+singleSpa.setBootstrapMaxTime(<span class="hljs-number">3000</span>, <span class="hljs-literal">true</span>);
+</code></pre>
 <p>Sets the global configuration for bootstrap timeouts.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -296,6 +367,12 @@ This means importing must happen in one of two ways:</p>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
 <h2><a class="anchor" aria-hidden="true" id="setmountmaxtime"></a><a href="#setmountmaxtime" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setMountMaxTime</h2>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// After three seconds, show a console warning while continuing to wait.</span>
+singleSpa.setMountMaxTime(<span class="hljs-number">3000</span>);
+
+<span class="hljs-comment">// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.</span>
+singleSpa.setMountMaxTime(<span class="hljs-number">3000</span>, <span class="hljs-literal">true</span>);
+</code></pre>
 <p>Sets the global configuration for mount timeouts.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -311,6 +388,12 @@ This means importing must happen in one of two ways:</p>
 <p><h3>returns</h3></p>
 <p><code>undefined</code></p>
 <h2><a class="anchor" aria-hidden="true" id="setunmountmaxtime"></a><a href="#setunmountmaxtime" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setUnmountMaxTime</h2>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// After three seconds, show a console warning while continuing to wait.</span>
+singleSpa.setUnmountMaxTime(<span class="hljs-number">3000</span>);
+
+<span class="hljs-comment">// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.</span>
+singleSpa.setUnmountMaxTime(<span class="hljs-number">3000</span>, <span class="hljs-literal">true</span>);
+</code></pre>
 <p>Sets the global configuration for unmount timeouts.</p>
 <p><h3>arguments</h3></p>
 <dl class="args-list">
@@ -335,24 +418,48 @@ This means importing must happen in one of two ways:</p>
 })
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="before-routing-event"></a><a href="#before-routing-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>before routing event</h2>
+<pre><code class="hljs css language-js">singleSpa.addEventListener(<span class="hljs-string">'single-spa:before-routing-event'</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'single-spa is about to mount/unmount applications!'</span>);
+});
+</code></pre>
 <p>A <code>single-spa:before-routing-event</code> event is fired before every routing event occurs, which is after each hashchange, popstate, or triggerAppChange, even if no changes to registered applications were necessary.</p>
 <h2><a class="anchor" aria-hidden="true" id="routing-event"></a><a href="#routing-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>routing event</h2>
+<pre><code class="hljs css language-js">singleSpa.addEventListener(<span class="hljs-string">'single-spa:routing-event'</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'single-spa finished mounting/unmounting applications!'</span>);
+});
+</code></pre>
 <p>A <code>single-spa:routing-event</code> event is fired every time that a routing event has occurred, which is after each hashchange, popstate, or triggerAppChange, even if no changes to registered applications were necessary; and after single-spa verified that all apps were correctly loaded, bootstrapped, mounted, and unmounted.</p>
 <h2><a class="anchor" aria-hidden="true" id="app-change-event"></a><a href="#app-change-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>app-change event</h2>
+<pre><code class="hljs css language-js">singleSpa.addEventListener(<span class="hljs-string">'single-spa:app-change'</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'A routing event occurred where at least one application was mounted/unmounted'</span>);
+});
+</code></pre>
 <p>A <code>single-spa:app-change</code> event is fired every time that one or more apps were loaded, bootstrapped, mounted, unmounted, or unloaded. It is similar to <code>single-spa:routing-event</code> except that it will not fire unless one or more apps were actually loaded, bootstrapped, mounted, or unmounted. A hashchange, popstate, or triggerAppChange that does not result in one of those changes will not cause the event to be fired.</p>
 <h2><a class="anchor" aria-hidden="true" id="no-app-change-event"></a><a href="#no-app-change-event" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>no-app-change event</h2>
+<pre><code class="hljs css language-js">singleSpa.addEventListener(<span class="hljs-string">'single-spa:before-routing-event'</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'A routing event occurred where zero applications were mounted/unmounted'</span>);
+});
+</code></pre>
 <p>When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded, single-spa fires a <code>single-spa:no-app-change</code> event. This is the inverse of the <code>single-spa:app-change</code> event. Only one will be fired for each routing event.</p>
 <h2><a class="anchor" aria-hidden="true" id="before-first-mount"></a><a href="#before-first-mount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>before-first-mount</h2>
+<pre><code class="hljs css language-js">singleSpa.addEventListener(<span class="hljs-string">'single-spa:before-first-mount'</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'single-spa is about to mount the very first application for the first time'</span>);
+});
+</code></pre>
 <p>Before the first of any single-spa applications is mounted, single-spa fires a <code>single-spa:before-first-mount</code> event; therefore it will only be fired once ever. More specifically, it fires after the application is already loaded but before mounting.</p>
 <blockquote>
 <p><strong>Suggested use case:</strong> remove a loader bar that the user is seeing right before the first app will be mounted.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="first-mount"></a><a href="#first-mount" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>first-mount</h2>
+<pre><code class="hljs css language-js">singleSpa.addEventListener(<span class="hljs-string">'single-spa:first-mount'</span>, () =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'single-spa just mounted the very first application'</span>);
+});
+</code></pre>
 <p>After the first of any single-spa applications is mounted, single-spa fires a <code>single-spa:first-mount</code> event; therefore it will only be fired once ever.</p>
 <blockquote>
 <p><strong>Suggested use case:</strong> log the time it took before the user sees any of the apps mounted.</p>
 </blockquote>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/parcels-overview.html"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/parcels-api.html"><span>Parcels API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#registerapplication">registerApplication</a></li><li><a href="#declarechildapplication">declareChildApplication</a></li><li><a href="#start">start</a></li><li><a href="#triggerappchange">triggerAppChange</a></li><li><a href="#navigatetourl">navigateToUrl</a></li><li><a href="#getmountedapps">getMountedApps</a></li><li><a href="#getappnames">getAppNames</a></li><li><a href="#getappstatus">getAppStatus</a></li><li><a href="#unloadapplication">unloadApplication</a></li><li><a href="#unloadchildapplication">unloadChildApplication</a></li><li><a href="#checkactivityfunctions">checkActivityFunctions</a></li><li><a href="#adderrorhandler">addErrorHandler</a></li><li><a href="#removeerrorhandler">removeErrorHandler</a></li><li><a href="#mountrootparcel">mountRootParcel</a></li><li><a href="#ensurejquerysupport">ensureJQuerySupport</a></li><li><a href="#setbootstrapmaxtime">setBootstrapMaxTime</a></li><li><a href="#setmountmaxtime">setMountMaxTime</a></li><li><a href="#setunmountmaxtime">setUnmountMaxTime</a></li><li><a href="#before-routing-event">before routing event</a></li><li><a href="#routing-event">routing event</a></li><li><a href="#app-change-event">app-change event</a></li><li><a href="#no-app-change-event">no-app-change event</a></li><li><a href="#before-first-mount">before-first-mount</a></li><li><a href="#first-mount">first-mount</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/faq.html">FAQ</a><a href="/docs/en/getting-started-overview.html">Getting Started</a><a href="/docs/en/examples.html">Examples</a><a href="/docs/en/api.html">API Reference</a><a href="/docs/en/contributing-overview.html">Contribution Guide</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/en/contributors.html">Contributors</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank" rel="noopener">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target="_blank" rel="noopener">Chat in Slack</a><a href="https://twitter.com/Single_spa/" target="_blank" rel="noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a href="https://opencollective.com/single-spa">Donate</a><a href="/blog">Blog</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" target="_blank" rel="noopener" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="/img/icons/148705-essential-collection/license/license.html">License for icons</a></div></section><a href="https://www.canopytax.com/" target="_blank" rel="noopener" class="cpOpenSource"><img src="/img/canopy-logo-icon.svg" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">© 2019 CanopyTax</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/parcels-overview.html"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/parcels-api.html"><span>Parcels API</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#registerapplication">registerApplication</a></li><li><a href="#start">start</a></li><li><a href="#triggerappchange">triggerAppChange</a></li><li><a href="#navigatetourl">navigateToUrl</a></li><li><a href="#getmountedapps">getMountedApps</a></li><li><a href="#getappnames">getAppNames</a></li><li><a href="#getappstatus">getAppStatus</a></li><li><a href="#unloadapplication">unloadApplication</a></li><li><a href="#checkactivityfunctions">checkActivityFunctions</a></li><li><a href="#adderrorhandler">addErrorHandler</a></li><li><a href="#removeerrorhandler">removeErrorHandler</a></li><li><a href="#mountrootparcel">mountRootParcel</a></li><li><a href="#ensurejquerysupport">ensureJQuerySupport</a></li><li><a href="#setbootstrapmaxtime">setBootstrapMaxTime</a></li><li><a href="#setmountmaxtime">setMountMaxTime</a></li><li><a href="#setunmountmaxtime">setUnmountMaxTime</a></li><li><a href="#before-routing-event">before routing event</a></li><li><a href="#routing-event">routing event</a></li><li><a href="#app-change-event">app-change event</a></li><li><a href="#no-app-change-event">no-app-change event</a></li><li><a href="#before-first-mount">before-first-mount</a></li><li><a href="#first-mount">first-mount</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/faq.html">FAQ</a><a href="/docs/en/getting-started-overview.html">Getting Started</a><a href="/docs/en/examples.html">Examples</a><a href="/docs/en/api.html">API Reference</a><a href="/docs/en/contributing-overview.html">Contribution Guide</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/en/contributors.html">Contributors</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank" rel="noopener">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk" target="_blank" rel="noopener">Chat in Slack</a><a href="https://twitter.com/Single_spa/" target="_blank" rel="noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a href="https://opencollective.com/single-spa">Donate</a><a href="/blog">Blog</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" target="_blank" rel="noopener" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="/img/icons/148705-essential-collection/license/license.html">License for icons</a></div></section><a href="https://www.canopytax.com/" target="_blank" rel="noopener" class="cpOpenSource"><img src="/img/canopy-logo-icon.svg" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">© 2019 CanopyTax</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
