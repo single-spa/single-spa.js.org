@@ -15,6 +15,10 @@ import * as singleSpa from 'single-spa';
 
 ## registerApplication
 
+```js
+singleSpa.registerApplication('appName', () => System.import('appName'), location => location.pathname.startsWith('appName'))
+```
+
 `registerApplication` is the most important api your single spa config will use. Use this function to register any application within single-spa.
 
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
@@ -38,13 +42,10 @@ Note that if an application is registered from within another application, that 
 
 `undefined`
 
-## declareChildApplication
-
-<p class="deprecated">Deprecated</p>
-
-Use [`registerApplication`](#registerapplication) instead.
-
 ## start
+```js
+singleSpa.start();
+```
 
 Must be called by your single spa config. Before `start` is called, applications will be loaded, but will never be bootstrapped, mounted or unmounted. The reason for `start` is to give you control over the performance of your single page application. For example, you may want to declare registered applications immediately (to start downloading the code for the active ones), but not actually mount the registered applications until an initial AJAX request (maybe to get information about the logged in user) has been completed. In that case, the best performance is achieved by calling `registerApplication` immediately, but calling `start` after the AJAX request is completed.
 
@@ -58,7 +59,12 @@ none
 
 ## triggerAppChange
 
-Returns a Promise that will resolve/reject when all apps have mounted.
+```js
+singleSpa.triggerAppChange();
+```
+
+Returns a Promise that will resolve/reject when all apps have mounted/unmounted. This was built for testing single-spa and is likely not
+needed in a production application.
 
 <h3>arguments</h3>
 
@@ -72,6 +78,18 @@ none
 </dl>
 
 ## navigateToUrl
+
+```js
+// Three ways of using navigateToUrl
+singleSpa.navigateToUrl("/new-url");
+singleSpa.navigateToUrl(document.querySelector('a'));
+document.querySelector('a').addEventListener(singleSpa.navigateToUrl);
+```
+
+```html
+<!-- A fourth way to use navigateToUrl, this one inside of your HTML -->
+<a href="/new-url" onclick="singleSpaNavigate()">My link</a>
+```
 
 Use this utility function to easily perform url navigation between registered applications without needing to deal with `event.preventDefault()`, `pushState`, `triggerAppChange()`, etc.
 
@@ -95,6 +113,11 @@ Use this utility function to easily perform url navigation between registered ap
 
 ## getMountedApps
 
+```js
+const mountedAppNames = singleSpa.getMountedApps();
+console.log(mountedAppNames); // ['app1', 'app2', 'navbar']
+```
+
 <h3>arguments</h3>
 
 none
@@ -108,6 +131,11 @@ none
 
 ## getAppNames
 
+```js
+const appNames = singleSpa.getAppNames();
+console.log(appNames); // ['app1', 'app2', 'app3', 'navbar']
+```
+
 <h3>arguments</h3>
 
 none
@@ -120,6 +148,11 @@ none
 </dl>
 
 ## getAppStatus
+
+```js
+const status = singleSpa.getAppStatus('app1');
+console.log(status); // one of many statuses (see list below). e.g. MOUNTED
+```
 
 <h3>arguments</h3>
 
@@ -175,11 +208,37 @@ none
 				<dt>SKIP_BECAUSE_BROKEN</dt>
 				<dd>app threw an error during load, bootstrap, mount, or unmount and has been siloed because it is misbehaving and has been skipped. Other apps will continue on normally.</dd>
 			</div>
+			<div>
+				<dt>LOAD_ERROR</dt>
+				<dd>
+					The app's loading function returned a promise that rejected. This is often due to a network error attempting to download the javascript bundle for the application. Single-spa will retry loading the application after the user navigates away from the current route and then comes back to it.
+				</dd>
+			</div>
 		</dl>
 	</dd>
 </dl>
 
+**Note about LOAD_ERROR status**
+
+Note that if you're using SystemJS to load your bundles, you need to add the following code to get SystemJS to re-attempt the network request
+when your loading function calls `System.import()` on an application in `LOAD_ERROR` status.
+```js
+singleSpa.addErrorHandler(err => {
+	if (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
+		System.delete(System.resolve(err.appOrParcelName));
+	}
+})
+```
+
 ## unloadApplication
+
+```js
+// Unload the application right now, without waiting for it to naturally unmount.
+singleSpa.unloadApplication('app1');
+
+// Unload the application only after it naturally unmounts due to a route change.
+singleSpa.unloadApplication('app1', {waitForUnmount: true});
+```
 
 The purpose of unloading a registered application is to set it back to to a NOT_LOADED status, which means that it will be re-bootstrapped the next time it needs to mount. The main use-case for this was to allow for the hot-reloading of entire registered applications, but `unloadApplication` can be useful whenever you want to re-bootstrap your application.
 
@@ -197,7 +256,7 @@ Because a registered application might be mounted when `unloadApplication` is ca
 	<dt>appName: string</dt>
 	<dd>Registered application name.</dd>
 	<dt>options?: {waitForUnmount: boolean = false}</dt>
-	<dd>The options must be an object that has a <code>waitForUnmount</code> property. This property, if <code>false</code>, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <code>true</code>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <code>MOUNTED</code>).</dd>
+	<dd>The options must be an object that has a <code>waitForUnmount</code> property. When `waitForUnmount` is `false`, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <code>true</code>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <code>MOUNTED</code>).</dd>
 </dl>
 
 <h3>returns</h3>
@@ -207,13 +266,15 @@ Because a registered application might be mounted when `unloadApplication` is ca
 	<dd>This promise will be resolved when the registered application has been successfully removed.</dd>
 </dl>
 
-## unloadChildApplication
-
-<p class="deprecated">Deprecated</p>
-
-Use [`unloadApplication`](#unloadapplication) instead.
-
 ## checkActivityFunctions
+
+```js
+const appsThatShouldBeActive = singleSpa.checkActivityFunctions();
+console.log(appsThatShouldBeActive); // ['app1']
+
+const appsForACertainRoute = singleSpa.checkActivityFunctions({pathname: '/app2'});
+console.log(appsForACertainRoute); // ['app2']
+```
 
 Will call every app's activity function with the `mockWindowLocation` and give you list of which applications should be mounted with that location.
 
@@ -233,6 +294,14 @@ Will call every app's activity function with the `mockWindowLocation` and give y
 
 ## addErrorHandler
 
+```js
+singleSpa.addErrorHandler(err => {
+	console.log(err);
+	console.log(err.appOrParcelName);
+	console.log(singleSpa.getAppStatus(err.appOrParcelName));
+});
+```
+
 Adds a handler that will be called every time an application throws an error during a lifecycle function or activity function. When there are no error handlers, single-spa throws the error to the window.
 
 <dl class="args-list">
@@ -245,6 +314,15 @@ Adds a handler that will be called every time an application throws an error dur
 `undefined`
 
 ## removeErrorHandler
+
+```js
+singleSpa.addErrorHandler(handleErr)
+singleSpa.removeErrorHandler(handleErr)
+
+function handleErr(err) {
+	console.log(err)
+}
+```
 
 Removes the given error handler function. 
 
@@ -264,6 +342,13 @@ Removes the given error handler function.
 
 ## mountRootParcel
 
+```js
+const parcel = singleSpa.mountRootParcel(parcelConfig, {prop1: 'value1', domElement: document.getElementById('a-div')});
+parcel.mountPromise.then(() => {
+	console.log('finished mounting the parcel!')
+})
+```
+
 Will create and mount a [single-spa parcel](parcels-overview.md).
 
 > Note: parcels do not automatically unmount. Unmounting will need to be triggered manually.
@@ -280,11 +365,15 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 <h3>returns</h3>
 
 <dl class="args-list">
-	<dt>boolean</dt>
-	<dd>true if the error handler was removed, and false if it was not.</dd>
+	<dt>Parcel object</dt>
+	<dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
 </dl>
 
 ## ensureJQuerySupport
+
+```js
+singleSpa.ensureJQuerySupport(jQuery);
+```
 
 jQuery uses [event delegation](https://learn.jquery.com/events/event-delegation/) so single-spa must monkey-patch each version of jQuery on the page<!-- TODO: in order to properly support... (I'm guessing navigation/routing ) -->. single-spa will attempt to do this automatically by looking for `window.jQuery` or `window.$`. Use this explicit method if multiple versions are included on your page or if jQuery is bound to a different global variable.
 
@@ -300,6 +389,14 @@ jQuery uses [event delegation](https://learn.jquery.com/events/event-delegation/
 `undefined`
 
 ## setBootstrapMaxTime
+
+```js
+// After three seconds, show a console warning while continuing to wait.
+singleSpa.setBootstrapMaxTime(3000);
+
+// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
+singleSpa.setBootstrapMaxTime(3000, true);
+```
 
 Sets the global configuration for bootstrap timeouts.
 
@@ -322,6 +419,14 @@ Sets the global configuration for bootstrap timeouts.
 
 ## setMountMaxTime
 
+```js
+// After three seconds, show a console warning while continuing to wait.
+singleSpa.setMountMaxTime(3000);
+
+// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
+singleSpa.setMountMaxTime(3000, true);
+```
+
 Sets the global configuration for mount timeouts.
 
 <h3>arguments</h3>
@@ -342,6 +447,14 @@ Sets the global configuration for mount timeouts.
 `undefined`
 
 ## setUnmountMaxTime
+
+```js
+// After three seconds, show a console warning while continuing to wait.
+singleSpa.setUnmountMaxTime(3000);
+
+// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
+singleSpa.setUnmountMaxTime(3000, true);
+```
 
 Sets the global configuration for unmount timeouts.
 
@@ -379,27 +492,63 @@ window.addEventListener('single-spa:before-routing-event', evt => {
 
 ## before routing event
 
+```js
+singleSpa.addEventListener('single-spa:before-routing-event', () => {
+	console.log('single-spa is about to mount/unmount applications!');
+});
+```
+
 A `single-spa:before-routing-event` event is fired before every routing event occurs, which is after each hashchange, popstate, or triggerAppChange, even if no changes to registered applications were necessary.
 
 ## routing event
+
+```js
+singleSpa.addEventListener('single-spa:routing-event', () => {
+	console.log('single-spa finished mounting/unmounting applications!');
+});
+```
 
 A `single-spa:routing-event` event is fired every time that a routing event has occurred, which is after each hashchange, popstate, or triggerAppChange, even if no changes to registered applications were necessary; and after single-spa verified that all apps were correctly loaded, bootstrapped, mounted, and unmounted.
 
 ## app-change event
 
+```js
+singleSpa.addEventListener('single-spa:app-change', () => {
+	console.log('A routing event occurred where at least one application was mounted/unmounted');
+});
+```
+
 A `single-spa:app-change` event is fired every time that one or more apps were loaded, bootstrapped, mounted, unmounted, or unloaded. It is similar to `single-spa:routing-event` except that it will not fire unless one or more apps were actually loaded, bootstrapped, mounted, or unmounted. A hashchange, popstate, or triggerAppChange that does not result in one of those changes will not cause the event to be fired.
 
 ## no-app-change event
 
+```js
+singleSpa.addEventListener('single-spa:before-routing-event', () => {
+	console.log('A routing event occurred where zero applications were mounted/unmounted');
+});
+```
+
 When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded, single-spa fires a `single-spa:no-app-change` event. This is the inverse of the `single-spa:app-change` event. Only one will be fired for each routing event.
 
 ## before-first-mount	
+
+```js
+singleSpa.addEventListener('single-spa:before-first-mount', () => {
+	console.log('single-spa is about to mount the very first application for the first time');
+});
+```
 
 Before the first of any single-spa applications is mounted, single-spa fires a `single-spa:before-first-mount` event; therefore it will only be fired once ever. More specifically, it fires after the application is already loaded but before mounting.
 
 > **Suggested use case:** remove a loader bar that the user is seeing right before the first app will be mounted.
 
 ## first-mount
+
+```js
+singleSpa.addEventListener('single-spa:first-mount', () => {
+	console.log('single-spa just mounted the very first application');
+});
+```
 
 After the first of any single-spa applications is mounted, single-spa fires a `single-spa:first-mount` event; therefore it will only be fired once ever.
 
