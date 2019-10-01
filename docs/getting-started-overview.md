@@ -18,7 +18,7 @@ single-spa is a framework for bringing together multiple javascript microfronten
 
 Visit the [live demo](https://single-spa.surge.sh) for an example that highlights single-spa usage. The source code is available in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples) repository.
 
-Also, you can check out a [simple webpack starter project](https://github.com/joeldenning/simple-single-spa-webpack-example) which is simpler, and may be easier to undestand and get started with.
+Also, you can check out a [simple webpack starter project](https://github.com/joeldenning/simple-single-spa-webpack-example) which is simpler, and may be easier to understand and get started with.
 
 ## Architectural Overview
 
