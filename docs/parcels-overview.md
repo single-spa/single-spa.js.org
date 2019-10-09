@@ -3,7 +3,7 @@ id: parcels-overview
 title: Parcels
 sidebar_label: Overview
 ---
-A single-spa parcel can best be thought of as a single-spa style custom element. It is a bundle of functionality (like a component) meant to be mounted manually by an application. Parcels use similar methodology as registered applications but are mounted by a manual function call rather than the activity function.
+A single-spa parcel is a framework agnostic component. It is a chunk of functionality meant to be mounted manually by an application, without having to worry about which framework was used to implement the parcel or application. Parcels use similar methodology as registered applications but are mounted by a manual function call rather than the activity function.
 A parcel can be as large as an application or as small as a component and written in
 any language as long as it exports the correct lifecycle events. In a single-spa world, your SPA contains
 many registered applications and potentially many parcels. Typically we recommend you mount a parcel within
