@@ -873,6 +873,4 @@ From the root directory run `yarn start` to check out your new single-spa projec
 
 We hope this tutorial gives you experience building and implementing micro frontends using single-spa. Review this guide periodically and use it as a reference in your projects. If you still have questions about how to use single-spa with your specific build, check out the migration tutorials: for [AngularJS](migrating-angularJS-tutorial.md) and [React](migrating-react-tutorial.md).
 
-As always, there is more to be learned. If you want to learn how to use single-spa with Angular, Vue, or other frameworks, checkout the [`single-spa-examples`](https://github.com/CanopyTax/single-spa-examples) repo. 
-If you prefer a different build system other than Webpack, check out the [`single-spa-portal-example`](https://github.com/me-12/single-spa-portal-example)  repo.
-Lastly, you may also want to study how to [separate applications](separating-applications.md) using single-spa.
+As always, there is more to be learned. If you want to learn how to use single-spa with Angular, Vue, or other frameworks/build systems, checkout the [`single-spa-examples`](https://github.com/CanopyTax/single-spa-examples) repo. Lastly, you may also want to study how to [separate applications](separating-applications.md) using single-spa.
