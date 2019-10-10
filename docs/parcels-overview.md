@@ -185,3 +185,33 @@ componentDidMount() {
 }
 ...
 ```
+## `mountRootParcel` vs `mountParcel`
+
+Single spa exposes two APIs for working with parcels. These API's are differentiated primarily by the context in which the parcel is created and how to access the API's
+
+|                   | mountRootParcel        | mountParcel                  |
+| ----------------- | ---------------------- | ---------------------------- |
+| context           | singleSpa              | application                  |
+| unmount condition | manual only            | manual + application unmount |
+| api location      | singleSpa named export | provided in lifecycle prop   |
+
+### Which should I use?
+In general we suggest using the application-aware `mountParcel` API. `mountParcel` allows you to treat the parcel just like a component inside your application without considering what framework it was written in and being forced to remember to call unmount.
+
+### How do I get the `mountParcel` API?
+In order to keep the function contextually bound to an application it is provided to the application as a [lifecycle prop](building-applications.md#lifecyle-props). You will need to store and manage that function yourself in your application. 
+
+Example of storing the application specific `mountParcel` API:
+```js
+// App1
+let mountParcel
+export const bootstrap = [
+  (props) => {
+    mountParcel = props.mountParcel
+    return Promise.resolve()
+  },
+  // more bootstrap lifecycles if necessary
+]
+...
+```
+note: some libraries (such as react) support a framework specific context that makes it easy to store/manage. In those cases we've written some helper methods to abstract away the need to manage and store the `mountParcel` method.
