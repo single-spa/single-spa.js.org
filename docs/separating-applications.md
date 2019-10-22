@@ -55,7 +55,7 @@ Changing which javascript file is loaded for each child application can be done 
 
 #### Comparison
 
-<style>
+<style dangerouslySetInnerHTML={{__html: `
   .comparisonTable td {
     width: 25%;
   }
@@ -66,57 +66,57 @@ Changing which javascript file is loaded for each child application can be done 
   .comparisonTable ul {
     padding-left: 1em;
   }
-</style>
-<table class="comparisonTable">
+`}}/>
+<table className="comparisonTable">
   <caption>Comparison of front-end system architectures</caption>
   <thead>
     <tr>
       <th></th>
-      <th scope="col" class="middle">Monorepo</th>
-      <th scope="col" class="middle">NPM modules</th>
-      <th scope="col" class="middle">Module loading</th>
+      <th scope="col" className="middle">Monorepo</th>
+      <th scope="col" className="middle">NPM modules</th>
+      <th scope="col" className="middle">Module loading</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">Difficulty to set up</th>
-      <td class="middle">Easy</td>
-      <td class="middle">Medium</td>
-      <td class="middle">Hard</td>
+      <td className="middle">Easy</td>
+      <td className="middle">Medium</td>
+      <td className="middle">Hard</td>
     </tr>
     <tr>
       <th scope="row">Separate code repositories</th>
-      <td class="middle">
-        <span class="sr-text">No</span>
+      <td className="middle">
+        <span className="sr-text">No</span>
       </td>
-      <td class="middle">
-        <span class="sr-text">No</span>  
+      <td className="middle">
+        <span className="sr-text">No</span>  
       </td>
-      <td class="middle">
+      <td className="middle">
         <span role="img" aria-label="Yes">✅</span>
       </td>
     </tr>
     <tr>
       <th scope="row">Separate builds</th>
-      <td class="middle">
-        <span class="sr-text">No</span>
+      <td className="middle">
+        <span className="sr-text">No</span>
       </td>
-      <td class="middle">
+      <td className="middle">
         <span role="img" aria-label="Yes">✅</span>
       </td>
-      <td class="middle">
+      <td className="middle">
         <span role="img" aria-label="Yes">✅</span>
       </td>
     </tr>
     <tr>
       <th scope="row">Separate deployments</th>
-      <td class="middle">
-        <span class="sr-text">No</span>
+      <td className="middle">
+        <span className="sr-text">No</span>
       </td>
-      <td class="middle">
+      <td className="middle">
         <span role="img" aria-label="Yes">✅</span>
       </td>
-      <td class="middle">
+      <td className="middle">
         <span role="img" aria-label="Yes">✅</span>
       </td>
     </tr>
