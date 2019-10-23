@@ -57,18 +57,10 @@ function Footer() {
                             <li
                               key="gh-star"
                               className="footer__item footer__item--gh">
-                              <a
-                                className="github-button"
-                                href={siteConfig.customFields.libRepoUrl}
-                                target="_blank"
-                                rel="noopener"
-                                data-icon="octicon-star"
-                                data-count-href={`${siteConfig.customFields.libRepoUrl}/stargazers`}
-                                data-show-count={true}
-                                data-count-aria-label="# stargazers on GitHub"
-                                aria-label="Star this project on GitHub">
-                                Star
-                              </a>
+                              <iframe
+                                title="github"
+                                src={`https://ghbtns.com/github-btn.html?user=${siteConfig.organizationName}&repo=${siteConfig.projectName}&type=star&count=true&size=small`}
+                              />
                             </li>
                             <li key="license" className="footer__item">
                               <a

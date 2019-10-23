@@ -98,6 +98,11 @@ blockquote p:nth-child(2n) {
   font-size: 0;
 }
 
+.footer__item--gh iframe {
+  height: 20px;
+  border: none;
+}
+
 input#search_input_react::placeholder {
   color: darkgrey;
 }

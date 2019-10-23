@@ -17,7 +17,6 @@ module.exports = {
     githubTokenAccess: '57317aeaa31d4221296b9252c61b355bb2a98f6c',
   },
   scripts: [
-    // 'https://buttons.github.io/buttons.js',
     'https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js',
     '/js/index.js',
   ],
