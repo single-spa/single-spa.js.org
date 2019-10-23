@@ -17,13 +17,12 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.27",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.27",
+    "@docusaurus/core": "^2.0.0-alpha.30",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.30",
     "classnames": "^2.2.6",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
     "markdown-to-jsx": "^6.10.3",
-    "parse-numeric-range": "^0.0.2"
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "browserslist": {
     "production": [

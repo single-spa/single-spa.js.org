@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import withBaseUrl from '@docusaurus/withBaseUrl';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import users from '@site/src/data/users';
 import styles from './styles.module.css';
 
@@ -48,7 +48,7 @@ export const Showcase = ({ showAll }) => {
         </>
       ) : (
         <div className="more-users">
-          <a className="button" href={withBaseUrl('users')}>
+          <a className="button" href={useBaseUrl('users')}>
             More {siteConfig.title} Users
           </a>
         </div>

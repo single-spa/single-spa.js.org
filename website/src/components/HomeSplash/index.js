@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import withBaseUrl from '@docusaurus/withBaseUrl';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export const HomeSplash = () => {
   const context = useDocusaurusContext();
@@ -16,7 +16,7 @@ export const HomeSplash = () => {
         <h1 className={styles.heroProjectTitle}>{siteConfig.title}</h1>
         <p className={styles.heroProjectTagline}>{siteConfig.tagline}</p>
         <div className={styles.heroButtons}>
-          <Link className="button" to={withBaseUrl('docs/getting-started')}>
+          <Link className="button" to={useBaseUrl('docs/getting-started')}>
             Get Started
           </Link>
 

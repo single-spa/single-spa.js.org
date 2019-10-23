@@ -1,7 +1,7 @@
 import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import classnames from 'classnames';
-import withBaseUrl from '@docusaurus/withBaseUrl';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import items from '@site/src/data/docs';
 import styles from './styles.module.css';
@@ -21,7 +21,7 @@ function Docs() {
                 className={classnames('col col--3 text--center', styles.doc)}>
                 <div className={styles.docImage}>
                   <a href={imageLink}>
-                    <img src={withBaseUrl(imageUrl)} alt={imageAlt} />
+                    <img src={useBaseUrl(imageUrl)} alt={imageAlt} />
                   </a>
                 </div>
                 <h2 className="margin-top--lg">{title}</h2>

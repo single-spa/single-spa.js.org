@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import withBaseUrl from '@docusaurus/withBaseUrl';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function Footer() {
   const context = useDocusaurusContext();
@@ -47,7 +47,7 @@ function Footer() {
                                   href: item.href,
                                 }
                               : {
-                                  to: withBaseUrl(item.to),
+                                  to: useBaseUrl(item.to),
                                 })}>
                             {item.label}
                           </Link>
@@ -64,7 +64,7 @@ function Footer() {
                             </li>
                             <li key="license" className="footer__item">
                               <a
-                                href={withBaseUrl(
+                                href={useBaseUrl(
                                   'img/icons/148705-essential-collection/license/license.html',
                                 )}>
                                 License for icons
@@ -88,7 +88,7 @@ function Footer() {
                 href="https://www.canopytax.com/"
                 target="_blank"
                 rel="noopener noreferrer">
-                <img alt={logo.alt} src={withBaseUrl(logo.src)} />
+                <img alt={logo.alt} src={useBaseUrl(logo.src)} />
               </a>
             )}
             {copyright}
