@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import withBaseUrl from '@docusaurus/withBaseUrl';
@@ -32,7 +33,7 @@ export const Showcase = ({ showAll }) => {
         className={classnames('showcaseHeading', {
           [styles.showcaseHeadingColored]: !showAll,
         })}>
-        Who's Using This?
+        Who&apos;s Using This?
       </h2>
       <p>This project is used by all these organizations</p>
       <div className={styles.showcaseLogos}>{showcase}</div>
@@ -55,5 +56,7 @@ export const Showcase = ({ showAll }) => {
     </section>
   );
 };
+
+Showcase.propTypes = { showAll: PropTypes.bool };
 
 Showcase.defaultProps = { showAll: false };

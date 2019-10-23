@@ -9,7 +9,7 @@ import withBaseUrl from '@docusaurus/withBaseUrl';
 
 export const HomeSplash = () => {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
     <header className={classnames('hero hero--light', styles.heroBanner)}>
       <div className="container">

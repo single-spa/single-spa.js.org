@@ -28,7 +28,7 @@ export const Features = () => {
     <section className={styles.features}>
       <div className="container text--center">
         <div className="row">
-          {data.map(({title, content, imageUrl}, idx) => (
+          {data.map(({ title, content, imageUrl }, idx) => (
             <div key={idx} className={classnames('col col--4', styles.feature)}>
               {imageUrl && (
                 <div className="margin-bottom--lg">

@@ -87,7 +87,7 @@ function Footer() {
                 className="footer__logo margin-bottom--sm"
                 href="https://www.canopytax.com/"
                 target="_blank"
-                rel="noopener">
+                rel="noopener noreferrer">
                 <img alt={logo.alt} src={withBaseUrl(logo.src)} />
               </a>
             )}

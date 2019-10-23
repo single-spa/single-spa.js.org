@@ -1,6 +1,5 @@
 import React from 'react';
 import Markdown from 'markdown-to-jsx';
-import withBaseUrl from '@docusaurus/withBaseUrl';
 import Layout from '@theme/Layout';
 import supportLinks from '@site/src/data/help';
 
