@@ -1,0 +1,28 @@
+.showcase {
+  padding: 0 20px 80px 20px;
+}
+
+.showcaseHeading {
+  font-size: 30px;
+  line-height: 1em;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.showcaseHeadingColored {
+  color: var(--ifm-color-primary);
+}
+
+.showcaseLogos {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.showcaseLogo {
+  max-height: 110px;
+  padding: 20px;
+  width: 110px;
+}

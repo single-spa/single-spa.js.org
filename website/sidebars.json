@@ -1,31 +1,20 @@
 {
   "docs": {
-    "Overview": [
-      "getting-started-overview"
-    ],
+    "Overview": ["getting-started-overview"],
     "Tutorials": [
       "starting-from-scratch",
       "migrating-react-tutorial",
       "migrating-angularJS-tutorial"
     ],
-    "Examples": [
-      "examples"
-    ],
-    "Concept: Root Config": [
-      "configuration"
-    ],
+    "Examples": ["examples"],
+    "Concept: Root Config": ["configuration"],
     "Concept: Application": [
       "building-applications",
       "separating-applications",
       "migrating-existing-spas"
     ],
-    "Concept: Parcel": [
-      "parcels-overview"
-    ],
-    "API": [
-      "api",
-      "parcels-api"
-    ],
+    "Concept: Parcel": ["parcels-overview"],
+    "API": ["api", "parcels-api"],
     "Ecosystem": [
       "ecosystem",
       "ecosystem-react",
@@ -42,9 +31,6 @@
       "ecosystem-html-web-components",
       "ecosystem-leaked-globals"
     ],
-    "Contributing": [
-      "contributing-overview",
-      "code-of-conduct"
-    ]
+    "Contributing": ["contributing-overview", "code-of-conduct"]
   }
 }
