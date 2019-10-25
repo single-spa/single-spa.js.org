@@ -1,5 +1,5 @@
 :root {
-  --ifm-color-primary: #01f;
+  --ifm-color-primary: #0011ff;
   --ifm-color-primary-dark: #000dcc;
   --ifm-color-primary-darker: #000a99;
   --ifm-color-primary-darkest: #000666;
@@ -11,13 +11,11 @@
 }
 
 html[data-theme='dark'] {
+  --ifm-color-primary: var(--ifm-color-primary-lightest);
   --ifm-link-color: var(--ifm-color-primary-lightest);
+  --ifm-link-hover-color: var(--ifm-color-primary-lighter);
   --ifm-menu-color-active: var(--ifm-color-primary-lightest);
-}
-
-html[data-theme='dark'] .navbar__link:hover,
-html[data-theme='dark'] .navbar__link--active {
-  color: var(--ifm-color-primary-lightest) !important;
+  --ifm-contents-link-color: var(--ifm-color-primary-lighter);
 }
 
 body {
@@ -161,7 +159,7 @@ input#search_input_react::placeholder {
 
 .args-list > dt {
   font-family: monospace;
-  color: #0011ff;
+  color: var(--ifm-color-primary);
 }
 .args-list > dd {
   margin: 0 0 0.75rem 0.75rem;

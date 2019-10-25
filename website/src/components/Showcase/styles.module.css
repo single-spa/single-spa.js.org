@@ -13,6 +13,10 @@
   color: var(--ifm-color-primary);
 }
 
+html[data-theme='dark'] .showcaseHeadingColored {
+  color: var(--ifm-color-primary-lightest);
+}
+
 .showcaseLogos {
   align-items: center;
   display: flex;
@@ -22,7 +26,13 @@
 }
 
 .showcaseLogo {
-  max-height: 110px;
-  padding: 20px;
-  width: 110px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  background: white;
+  margin: 15px;
+  border-radius: 8px;
+  padding: 5px;
+  justify-content: center;
 }

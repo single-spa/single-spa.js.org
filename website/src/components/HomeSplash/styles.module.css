@@ -1,9 +1,13 @@
 .heroBanner {
-  background: url(/static/img/splash.svg);
+  background: url(/img/splash.svg);
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: 90% 100%;
   text-align: center;
+}
+
+html[data-theme='dark'] .heroBanner {
+  background-color: var(--ifm-color-primary-darkest);
 }
 
 .heroButtons a:first-child {
@@ -17,6 +21,10 @@
   margin: 0.3em 0;
   line-height: 1em;
   color: var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .heroProjectTitle {
+  color: var(--ifm-color-primary-lightest);
 }
 
 .heroProjectTagline {

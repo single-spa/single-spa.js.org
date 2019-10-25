@@ -16,12 +16,8 @@ export const Showcase = ({ showAll }) => {
       })
   ).map((user, i) => {
     return (
-      <a href={user.infoLink} key={i}>
-        <img
-          className={styles.showcaseLogo}
-          src={user.image}
-          title={user.caption}
-        />
+      <a key={i} className={styles.showcaseLogo} href={user.infoLink}>
+        <img src={user.image} title={user.caption} />
       </a>
     );
   });
