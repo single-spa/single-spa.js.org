@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import classnames from 'classnames';
 
 import Link from '@docusaurus/Link';
@@ -37,20 +37,28 @@ function Footer() {
                     {linkItem.items.map((item, idx, arr) => (
                       <Fragment key={idx}>
                         <li key={item.href || item.to} className="footer__item">
-                          <Link
-                            className="footer__link-item"
-                            {...item}
-                            {...(item.href
-                              ? {
-                                  target: '_blank',
-                                  rel: 'noopener noreferrer',
-                                  href: item.href,
-                                }
-                              : {
-                                  to: useBaseUrl(item.to),
-                                })}>
-                            {item.label}
-                          </Link>
+                          {item.label && (
+                            <Link
+                              className="footer__link-item"
+                              {...item}
+                              {...(item.href
+                                ? {
+                                    target: '_blank',
+                                    rel: 'noopener noreferrer',
+                                    href: item.href,
+                                  }
+                                : {
+                                    to: useBaseUrl(item.to),
+                                  })}>
+                              {item.label}
+                            </Link>
+                          )}
+
+                          {item.html && (
+                            <div
+                              dangerouslySetInnerHTML={{ __html: item.html }}
+                            />
+                          )}
                         </li>
                         {arr.length - 1 === idx && i === 2 && (
                           <>

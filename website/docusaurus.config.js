@@ -51,6 +51,7 @@ module.exports = {
             },
             {
               label: 'Contribution Guide',
+              html: '<a href="#">123</a>',
               to: 'docs/contributing-overview',
             },
           ],
@@ -133,12 +134,10 @@ module.exports = {
           path: '../docs',
           sidebarPath: require.resolve('./sidebars.json'),
           editUrl: `${repoUrl}/blob/master/docs/`,
-          remarkPlugins: [],
-          sidebarCollapsible: false,
+          // sidebarCollapsible: false,
         },
         theme: {
           customCss: require.resolve('./static/css/custom.css'),
-          customJs: require.resolve('./static/js/index.js'),
         },
       },
     ],
