@@ -1,0 +1,9 @@
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[build]
+  base    = "website"
+  publish = "website/build"
+  command = "yarn build"
