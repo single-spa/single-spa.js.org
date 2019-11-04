@@ -80,6 +80,6 @@ If you don't see your idea listed, and you think it fits into the goals of this 
 
 ## Community
 
-Discussions about single-spa take place on the single-spa repository's [Issues](https://github.com/CanopyTax/single-spa/issues) and [Pull Requests](https://github.com/CanopyTax/single-spa/pulls) sections. Anybody is welcome to join these conversations. There is also a [slack community](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk) for regular updates.
+Discussions about single-spa take place on the single-spa repository's [Issues](https://github.com/CanopyTax/single-spa/issues) and [Pull Requests](https://github.com/CanopyTax/single-spa/pulls) sections. Anybody is welcome to join these conversations. There is also a [slack community](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ) for regular updates.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.
