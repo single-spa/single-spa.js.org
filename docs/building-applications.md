@@ -58,7 +58,7 @@ Each lifecycle function is guranteed to be called with the following props:
 
 In addition to the built-in props that are provided by single-spa, you may optionally specify custom props to be passed to an application by providing a fourth argument to `registerApplication`. These *customProps* will be passed into each lifecycle method.
 
-<p class="filename">root.application.js</p>
+<p className="filename">root.application.js</p>
 
 ```js
 singleSpa.registerApplication(
@@ -69,7 +69,7 @@ singleSpa.registerApplication(
 );
 ```
 
-<p class="filename">app1.js</p>
+<p className="filename">app1.js</p>
 
 ```js
 export function mount(props) {
@@ -170,7 +170,7 @@ export function unload(props) {
 
 By default, registered applications obey the global dieOnTimeout configuration, but can override that behavior for their specific application. This is done by exporting a `timeouts` object from the main entry point of the registered application. Example:
 
-<p class="filename">app-1.main-entry.js</p>
+<p className="filename">app-1.main-entry.js</p>
 
 ```js
 export function bootstrap(props) {...}

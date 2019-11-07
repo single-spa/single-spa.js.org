@@ -1,0 +1,57 @@
+.contributorWrapper {
+  margin: 40px 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.contributorWrapperFirst {
+  margin: 16px 0;
+}
+
+.contributorHeader {
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: var(--ifm-heading-font-weight);
+}
+
+.contributorsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contributorItem {
+  display: inline-block;
+  width: 20%;
+  min-width: 140px;
+}
+
+.contributorImg {
+  border-radius: 50%;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15);
+  display: block;
+  width: 75px;
+  padding-bottom: 75px;
+  margin: 0 auto;
+  background-size: contain;
+}
+
+.contributorLogin {
+  margin-bottom: 1.5em;
+  margin-top: 16px;
+}
+
+.repoLink {
+  display: inline-block;
+  text-align: center;
+  font-size: 2.75rem;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  line-height: 1em;
+  font-weight: 300;
+  text-decoration: none;
+}

@@ -77,7 +77,7 @@ Finally, the [start()](api.md#start) api **must** be called by your single spa c
 
 Start by stubbing out the registration function by adding the following in `public/single-spa.config.js`:
 
-<p class="filename">public/single-spa.config.js</p>
+<p className="filename">public/single-spa.config.js</p>
 
 ```js
 window.singleSpa.registerApplication(
@@ -115,7 +115,7 @@ Add the following in `public/index.html` at the very bottom of the `<head>`.
 
 Now that our application has access to the `single-spa-angularjs` library, we can set up the [application lifecycle](building-applications.md#registered-application-lifecycle). Add the following code:
 
-<p class="filename">public/single-spa.config.js</p>
+<p className="filename">public/single-spa.config.js</p>
 
 ```js
 var drumMachineApp = window.singleSpaAngularjs.default({
@@ -135,7 +135,7 @@ var drumMachineApp = window.singleSpaAngularjs.default({
 
 With our app's lifecycle function defined, we can now include it in our `registerApplication` function.
 
-<p class="filename">public/single-spa.config.js</p>
+<p className="filename">public/single-spa.config.js</p>
 
 ```js {4}
 ...

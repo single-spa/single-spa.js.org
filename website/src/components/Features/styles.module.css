@@ -1,0 +1,13 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  width: 100%;
+  background-image: linear-gradient(to top left, #000fe0 50%, #01f 0);
+  color: #fff;
+}
+
+.featureImage {
+  margin: 0 auto;
+  max-width: 80px;
+}

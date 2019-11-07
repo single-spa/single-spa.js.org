@@ -1,0 +1,42 @@
+.heroBanner {
+  background: url(/img/splash.svg);
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 90% 100%;
+  text-align: center;
+}
+
+html[data-theme='dark'] .heroBanner {
+  background-color: var(--ifm-color-primary-darkest);
+}
+
+.heroButtons a:first-child {
+  margin-right: 4px;
+}
+
+.heroProjectTitle {
+  font-weight: 100;
+  font-size: 6rem;
+  letter-spacing: 0.9rem;
+  margin: 0.3em 0;
+  line-height: 1em;
+  color: var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .heroProjectTitle {
+  color: var(--ifm-color-primary-lightest);
+}
+
+.heroProjectTagline {
+  font-weight: 100;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;
+  color: #889aaa;
+  margin-bottom: 35px;
+}
+
+@media screen and (max-width: 966px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}

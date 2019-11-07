@@ -27,13 +27,13 @@ Note that if an application is registered from within another application, that 
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appName: string</dt>
 	<dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
 	<dt>applicationOrLoadingFn: () => &lt;Function | Promise&gt;</dt>
 	<dd>Must be a loading function that either returns the resolved application or a promise.</dd>
 	<dt>activityFn: (location) => boolean</dt>
-	<dd>Must be a pure function. The function is called with <code>window.location</code> as the first argument <!-- TODO: any only? --> and should return a truthy value whenever the application should be active.</dd>
+	<dd>Must be a pure function. The function is called with <code>window.location</code> as the first argument !-- TODO: any only? --> and should return a truthy value whenever the application should be active.</dd>
 	<dt>customProps?: Object = {}</dt>
 	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
@@ -72,7 +72,7 @@ none
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>Promise</dt>
 	<dd>Returns a Promise that will resolve/reject when all apps have mounted.</dd>
 </dl>
@@ -95,14 +95,14 @@ Use this utility function to easily perform url navigation between registered ap
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>navigationObj: string | context | DOMEvent</dt>
 	<dd>
 		navigationObj must be one of the following types:
 		<ul>
 			<li>a url string.</li>
 			<li>a context / thisArg that has an <code>href</code> property; useful for calling <code>singleSpaNavigate.call(anchorElement)</code> with a reference to the anchor element or other context.</li>
-			<li>a DOMEvent object for a click event on a DOMElement that has an <code>href</code> attribute; ideal for the <code>&lt;a onclick="singleSpaNavigate"></a></code> use case.</li>
+			<li>a DOMEvent object for a click event on a DOMElement that has an <code>href</code> attribute; ideal for the <code>&lt;a onclick="singleSpaNavigate">&lt;/a></code> use case.</li>
 		</ul>
 	</dd>
 </dl>
@@ -124,7 +124,7 @@ none
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appNames: string[]</dt>
 	<dd>Each string is the name of a registered application that is currently <code>MOUNTED</code>.</dd>
 </dl>
@@ -142,7 +142,7 @@ none
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appNames: string[]</dt>
 	<dd>Each string is the name of a registered application regardless of app status.</dd>
 </dl>
@@ -156,18 +156,18 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appName: string</dt>
 	<dd>Registered application name.</dd>
 </dl>
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appStatus: &lt;string | null&gt;</dt>
 	<dd>
 		Will be one of the following string constants, or <code>null</code> if the app does not exist.
-		<dl class="dl-inline">
+		<dl className="dl-inline">
 			<div>
 				<dt>NOT_LOADED</dt>
 				<dd>app has been registered with single-spa but has not yet been loaded.</dd>
@@ -252,16 +252,16 @@ Because a registered application might be mounted when `unloadApplication` is ca
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appName: string</dt>
 	<dd>Registered application name.</dd>
-	<dt>options?: {waitForUnmount: boolean = false}</dt>
+	<dt>options?: &#123;waitForUnmount: boolean = false}</dt>
 	<dd>The options must be an object that has a <code>waitForUnmount</code> property. When `waitForUnmount` is `false`, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <code>true</code>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <code>MOUNTED</code>).</dd>
 </dl>
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>Promise</dt>
 	<dd>This promise will be resolved when the registered application has been successfully removed.</dd>
 </dl>
@@ -280,14 +280,14 @@ Will call every app's activity function with the `mockWindowLocation` and give y
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>mockWindowLocation: string</dt>
 	<dd>A string representing a window.location that will be used when calling every application's activity function to test if they return true.</dd>
 </dl>
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>appNames: string[]</dt>
 	<dd>Each string is the name of a registered application that matches the provided <code>mockWindowLocation</code>.</dd>
 </dl>
@@ -304,7 +304,7 @@ singleSpa.addErrorHandler(err => {
 
 Adds a handler that will be called every time an application throws an error during a lifecycle function or activity function. When there are no error handlers, single-spa throws the error to the window.
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>errorHandler: Function(error: Error)</dt>
 	<dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <code>message</code> and <code>appOrParcelName</code> property.</dd>
 </dl>
@@ -328,14 +328,14 @@ Removes the given error handler function.
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>errorHandler: Function</dt>
 	<dd>Reference to the error handling function.</dd>
 </dl>
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>boolean</dt>
 	<dd><code>true</code> if the error handler was removed, and <code>false</code> if it was not.</dd>
 </dl>
@@ -355,7 +355,7 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>parcelConfig: ???</dt>
 	<dd>[parcelConfig](parcels-api.md#parcel-configuration)</dd>
 	<dt>parcelProps: ???</dt>
@@ -364,7 +364,7 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 
 <h3>returns</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>Parcel object</dt>
 	<dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
 </dl>
@@ -379,7 +379,7 @@ jQuery uses [event delegation](https://learn.jquery.com/events/event-delegation/
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>jQuery?: JQueryFn = window.jQuery</dt>
 	<dd>A reference to the global variable that jQuery has been bound to.</dd>
 </dl>
@@ -402,7 +402,7 @@ Sets the global configuration for bootstrap timeouts.
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>millis: number</dt>
 	<dd>Number of milliseconds to wait for bootstrap to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
@@ -431,7 +431,7 @@ Sets the global configuration for mount timeouts.
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>millis: number</dt>
 	<dd>Number of milliseconds to wait for mount to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
@@ -460,7 +460,7 @@ Sets the global configuration for unmount timeouts.
 
 <h3>arguments</h3>
 
-<dl class="args-list">
+<dl className="args-list">
 	<dt>millis: number</dt>
 	<dd>Number of milliseconds to wait for unmount to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
