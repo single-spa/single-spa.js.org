@@ -67,4 +67,5 @@ We’d love to get your feedback on parcels. What do you think of this new way o
 
 Check out the [official docs](https://github.com/CanopyTax/single-spa/blob/master/docs/parcels.md) for more examples, explanations, and [api documentation](https://github.com/CanopyTax/single-spa/blob/master/docs/parcels-api.md).
 
-And let us know your thoughts in the [single-spa Slack channel](https://join.slack.com/t/single-spa/shared_invite/enQtMzIwMTcxNTU3ODQyLTM1Y2U1OWMzNTNjOWYyZDBlMDJhN2VkYzk3MDI2NzQ2Nzg0MzMzNjVhNWE2YjVhMTcxNjFkOWYzMjllMmUxMjk), a [Github issue](https://github.com/CanopyTax/single-spa/issues), or [on Twitter](https://twitter.com/Single_spa)!
+And let us know your thoughts in the [single-spa Slack channel](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ), a [Github issue](https://github.com/CanopyTax/single-spa/issues), or [on Twitter](https://twitter.com/Single_spa)!
+
