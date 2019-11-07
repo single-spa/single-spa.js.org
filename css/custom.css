@@ -1,0 +1,211 @@
+:root {
+  --ifm-color-primary: #0011ff;
+  --ifm-color-primary-dark: #000dcc;
+  --ifm-color-primary-darker: #000a99;
+  --ifm-color-primary-darkest: #000666;
+  --ifm-color-primary-light: #3240ff;
+  --ifm-color-primary-lighter: #6670ff;
+  --ifm-color-primary-lightest: #999fff;
+  --ifm-link-hover-decoration: none;
+  --ifm-code-font-size: 90%;
+}
+
+html[data-theme='dark'] {
+  --ifm-link-color: var(--ifm-color-primary-lightest);
+  --ifm-link-hover-color: var(--ifm-color-primary-lighter);
+  --ifm-menu-color-active: var(--ifm-color-primary-lightest);
+  --ifm-contents-link-color: var(--ifm-color-primary-lightest);
+}
+
+html[data-theme='dark'] .navbar__link:hover,
+html[data-theme='dark'] .navbar__link--active {
+  color: var(--ifm-color-primary-lightest) !important;
+}
+
+html[data-theme='dark'] .contents .contents__link:hover,
+html[data-theme='dark'] .contents .contents__link.contents__link--active {
+  color: var(--ifm-link-hover-color) !important;
+}
+
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  font-size: 16px;
+}
+
+.button {
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2em;
+  padding: 10px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  background: var(--ifm-color-white);
+  color: var(--ifm-color-primary);
+  border: 0.5px solid var(--ifm-color-primary);
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-white);
+}
+
+pre {
+  display: block;
+  overflow-x: scroll;
+  background: rgba(27, 31, 35, 0.05);
+}
+
+blockquote {
+  background-color: rgba(0, 17, 255, 0.05);
+  border-left: 5px solid rgba(0, 17, 255, 0.15);
+  padding: 15px 30px 15px 15px;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote p:nth-child(2n) {
+  margin: 10px 0 0 0;
+}
+
+.footer a {
+  color: hsla(0, 0%, 100%, 0.6) !important;
+}
+
+.footer a:hover {
+  color: var(--ifm-color-white) !important;
+}
+
+.footer__logo {
+  background: var(--ifm-color-white);
+  border-radius: 3px;
+  display: block;
+  margin: 0 auto 1rem;
+  opacity: 0.7;
+  transition: opacity 0.15s ease-in-out;
+  width: 38px;
+}
+
+.footer__logo:hover {
+  opacity: 1;
+}
+
+.footer__logo img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.footer__item--gh {
+  display: block;
+  font-size: 0;
+}
+
+.footer__item--gh iframe {
+  height: 20px;
+  border: none;
+}
+
+input#search_input_react::placeholder {
+  color: darkgrey;
+}
+
+#back-to-top {
+  background: var(--ifm-color-white);
+  color: var(--ifm-color-primary);
+  border: solid 0.1px var(--ifm-color-primary);
+  transition: all 0.3s ease-in-out;
+}
+
+#back-to-top:hover {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-white);
+}
+
+@media (max-width: 996px) {
+  #back-to-top {
+    bottom: 5.5rem;
+    right: 0.6rem;
+  }
+}
+
+.algolia-docsearch-footer {
+  display: none;
+}
+
+.highlighted-line {
+  background-color: rgba(0, 17, 255, 0.1);
+  display: block;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
+
+.filename {
+  background: rgb(30, 30, 30);
+  color: var(--ifm-color-white);
+  display: inline-block;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 0 !important;
+  padding: 5px;
+}
+
+.filename + pre {
+  border-top-left-radius: 0;
+}
+
+.deprecated {
+  background: rgb(255, 225, 225);
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  text-transform: uppercase;
+}
+
+.args-list {
+  list-style: none;
+  padding-left: 0.75rem;
+}
+
+.args-list > dt {
+  font-family: monospace;
+  color: var(--ifm-color-primary);
+}
+html[data-theme='dark'] .args-list > dt {
+  color: var(--ifm-color-primary-lightest);
+}
+.args-list > dd {
+  margin: 0 0 0.75rem 0.75rem;
+}
+
+.dl-inline {
+  padding-left: 0.75rem;
+}
+
+.dl-inline dt,
+.dl-inline dd {
+  display: inline;
+}
+
+.dl-inline dt {
+  font-family: monospace;
+}
+
+.dl-inline dt::after {
+  content: ': ';
+}
+
+.sr-text {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}

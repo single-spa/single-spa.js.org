@@ -1,0 +1,1182 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "0": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      88,
+      0
+    ],
+    "1": [
+      0,
+      7,
+      8,
+      10,
+      1
+    ],
+    "@site/src/pages/contributors/index.js": [
+      0,
+      2
+    ],
+    "@site/src/pages/docs/index.js": [
+      0,
+      3
+    ],
+    "@site/src/pages/help/index.js": [
+      0,
+      4
+    ],
+    "@site/src/pages/index.js": [
+      0,
+      5
+    ],
+    "@site/src/pages/users/index.js": [
+      0,
+      6
+    ],
+    "@theme/BlogListPage": [
+      0,
+      1,
+      7
+    ],
+    "@theme/BlogPostPage": [
+      0,
+      1,
+      8
+    ],
+    "@theme/DocItem": [
+      9
+    ],
+    "@theme/DocPage": [
+      0,
+      1,
+      10
+    ],
+    "@site/blog/2016-02-26-a-case-for-soa-in-the-browser.md": [
+      11
+    ],
+    "@site/blog/2016-12-16-a-step-by-step-guide-to-single-spa.md": [
+      12
+    ],
+    "@site/blog/2018-06-19-single-spa-parcels-explained.md": [
+      13
+    ],
+    "@site/blog/2019-02-20-single-spa-inspector.md": [
+      14
+    ],
+    "@site/blog/2016-12-16-a-step-by-step-guide-to-single-spa.md?truncated=true": [
+      15
+    ],
+    "@site/blog/2019-02-20-single-spa-inspector.md?truncated=true": [
+      16
+    ],
+    "@site/blog/2018-06-19-single-spa-parcels-explained.md?truncated=true": [
+      17
+    ],
+    "@site/blog/2016-02-26-a-case-for-soa-in-the-browser.md?truncated=true": [
+      18
+    ],
+    "@site/../docs/api.md": [
+      19
+    ],
+    "@site/../docs/building-applications.md": [
+      20
+    ],
+    "@site/../docs/CODE_OF_CONDUCT.md": [
+      21
+    ],
+    "@site/../docs/single-spa-config.md": [
+      22
+    ],
+    "@site/../docs/contributing-overview.md": [
+      23
+    ],
+    "@site/../docs/ecosystem.md": [
+      24
+    ],
+    "@site/../docs/ecosystem-angular.md": [
+      25
+    ],
+    "@site/../docs/ecosystem-angularjs.md": [
+      26
+    ],
+    "@site/../docs/ecosystem-backbone.md": [
+      27
+    ],
+    "@site/../docs/ecosystem-cycle.md": [
+      28
+    ],
+    "@site/../docs/ecosystem-ember.md": [
+      29
+    ],
+    "@site/../docs/ecosystem-html-web-components.md": [
+      30
+    ],
+    "@site/../docs/ecosystem-inferno.md": [
+      31
+    ],
+    "@site/../docs/ecosystem-leaked-globals.md": [
+      32
+    ],
+    "@site/../docs/ecosystem-preact.md": [
+      33
+    ],
+    "@site/../docs/ecosystem-react.md": [
+      34
+    ],
+    "@site/../docs/ecosystem-riot.md": [
+      35
+    ],
+    "@site/../docs/ecosystem-svelte.md": [
+      36
+    ],
+    "@site/../docs/ecosystem-vue.md": [
+      37
+    ],
+    "@site/../docs/examples.md": [
+      38
+    ],
+    "@site/../docs/faq.md": [
+      39
+    ],
+    "@site/../docs/getting-started-overview.md": [
+      40
+    ],
+    "@site/../docs/glossary.md": [
+      41
+    ],
+    "@site/../docs/migrating-angularJS-tutorial.md": [
+      42
+    ],
+    "@site/../docs/migrating-existing-spas.md": [
+      43
+    ],
+    "@site/../docs/migrating-react-tutorial.md": [
+      44
+    ],
+    "@site/../docs/parcels-api.md": [
+      45
+    ],
+    "@site/../docs/parcels-overview.md": [
+      46
+    ],
+    "@site/../docs/separating-applications.md": [
+      47
+    ],
+    "@site/../docs/starting-from-scratch.md": [
+      48
+    ],
+    "@docusaurus-plugin-content-docs/docs-b5f.json": [
+      49
+    ],
+    "main": [
+      86,
+      50
+    ],
+    "@docusaurus-plugin-content-blog/blog-c06.json": [
+      51
+    ],
+    "@docusaurus-plugin-content-blog/blog-2019-02-20-single-spa-inspector-140.json": [
+      52
+    ],
+    "@docusaurus-plugin-content-docs/docs-api-428.json": [
+      53
+    ],
+    "@docusaurus-plugin-content-docs/docs-building-applications-257.json": [
+      54
+    ],
+    "@docusaurus-plugin-content-docs/docs-code-of-conduct-306.json": [
+      55
+    ],
+    "@docusaurus-plugin-content-docs/docs-configuration-8b1.json": [
+      56
+    ],
+    "@docusaurus-plugin-content-docs/docs-contributing-overview-029.json": [
+      57
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-0a3.json": [
+      58
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-angular-137.json": [
+      59
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-angularjs-c17.json": [
+      60
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-backbone-e81.json": [
+      61
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-cycle-fd3.json": [
+      62
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-ember-e7b.json": [
+      63
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-html-web-components-61a.json": [
+      64
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-inferno-77a.json": [
+      65
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-leaked-globals-801.json": [
+      66
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-preact-093.json": [
+      67
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-react-6d7.json": [
+      68
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-riot-bf4.json": [
+      69
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-svelte-bb8.json": [
+      70
+    ],
+    "@docusaurus-plugin-content-docs/docs-ecosystem-vue-3f6.json": [
+      71
+    ],
+    "@docusaurus-plugin-content-docs/docs-examples-e46.json": [
+      72
+    ],
+    "@docusaurus-plugin-content-docs/docs-faq-019.json": [
+      73
+    ],
+    "@docusaurus-plugin-content-docs/docs-getting-started-overview-8fd.json": [
+      74
+    ],
+    "@docusaurus-plugin-content-docs/docs-glossary-ec3.json": [
+      75
+    ],
+    "@docusaurus-plugin-content-docs/docs-migrating-angular-js-tutorial-5e6.json": [
+      76
+    ],
+    "@docusaurus-plugin-content-docs/docs-migrating-existing-spas-422.json": [
+      77
+    ],
+    "@docusaurus-plugin-content-docs/docs-migrating-react-tutorial-d2a.json": [
+      78
+    ],
+    "@docusaurus-plugin-content-docs/docs-parcels-api-e9b.json": [
+      79
+    ],
+    "@docusaurus-plugin-content-docs/docs-parcels-overview-08e.json": [
+      80
+    ],
+    "@docusaurus-plugin-content-docs/docs-separating-applications-b17.json": [
+      81
+    ],
+    "@docusaurus-plugin-content-docs/docs-starting-from-scratch-0ac.json": [
+      82
+    ],
+    "@docusaurus-plugin-content-blog/blog-2016-02-26-a-case-for-soa-in-the-browser-ae7.json": [
+      83
+    ],
+    "@docusaurus-plugin-content-blog/blog-2016-12-16-a-step-by-step-guide-to-single-spa-65c.json": [
+      84
+    ],
+    "@docusaurus-plugin-content-blog/blog-2018-06-19-single-spa-parcels-explained-84d.json": [
+      85
+    ],
+    "runtime~main": [
+      50,
+      86
+    ],
+    "docsearch.js": [
+      87
+    ],
+    "@theme/NotFound": [
+      0,
+      88
+    ]
+  },
+  "assets": {
+    "0": {
+      "css": [
+        {
+          "file": "0.b5b499b378a76417e9fb.css",
+          "hash": "e9ddd5b44b42ef968cbe",
+          "publicPath": "/0.b5b499b378a76417e9fb.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "0.753a21d26614433144a0.js",
+          "hash": "e9ddd5b44b42ef968cbe",
+          "publicPath": "/0.753a21d26614433144a0.js"
+        }
+      ]
+    },
+    "1": {
+      "css": [
+        {
+          "file": "1.2d0cefca6f8bbc3f601c.css",
+          "hash": "20e4e7f7aea5dca4d684",
+          "publicPath": "/1.2d0cefca6f8bbc3f601c.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "1.c76261c6f0bd393b9d85.js",
+          "hash": "20e4e7f7aea5dca4d684",
+          "publicPath": "/1.c76261c6f0bd393b9d85.js"
+        }
+      ]
+    },
+    "2": {
+      "css": [
+        {
+          "file": "component---site-src-pages-contributors-index-js-2-e-5-f9f.207a11e095e656084bc4.css",
+          "hash": "6818ec371b5f4cabb817",
+          "publicPath": "/component---site-src-pages-contributors-index-js-2-e-5-f9f.207a11e095e656084bc4.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---site-src-pages-contributors-index-js-2-e-5-f9f.4be12578d7feec87ff1a.js",
+          "hash": "6818ec371b5f4cabb817",
+          "publicPath": "/component---site-src-pages-contributors-index-js-2-e-5-f9f.4be12578d7feec87ff1a.js"
+        }
+      ]
+    },
+    "3": {
+      "css": [
+        {
+          "file": "component---site-src-pages-docs-index-jsa-58-886.67918ac33c99516fde03.css",
+          "hash": "b006a1f4efe65a6ade89",
+          "publicPath": "/component---site-src-pages-docs-index-jsa-58-886.67918ac33c99516fde03.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---site-src-pages-docs-index-jsa-58-886.75a17c6bc20c2eb82eb9.js",
+          "hash": "b006a1f4efe65a6ade89",
+          "publicPath": "/component---site-src-pages-docs-index-jsa-58-886.75a17c6bc20c2eb82eb9.js"
+        }
+      ]
+    },
+    "4": {
+      "js": [
+        {
+          "file": "component---site-src-pages-help-index-js-78-e-dbe.d770656a9f7c1a9bfd03.js",
+          "hash": "93a6c30a64da1b6e9f22",
+          "publicPath": "/component---site-src-pages-help-index-js-78-e-dbe.d770656a9f7c1a9bfd03.js"
+        }
+      ]
+    },
+    "5": {
+      "css": [
+        {
+          "file": "component---site-src-pages-index-jsc-4-f-f99.416288ee7f3b354f9a2e.css",
+          "hash": "c266c0c632a5b9ddda58",
+          "publicPath": "/component---site-src-pages-index-jsc-4-f-f99.416288ee7f3b354f9a2e.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---site-src-pages-index-jsc-4-f-f99.8fbee1221aa7312637e4.js",
+          "hash": "c266c0c632a5b9ddda58",
+          "publicPath": "/component---site-src-pages-index-jsc-4-f-f99.8fbee1221aa7312637e4.js"
+        }
+      ]
+    },
+    "6": {
+      "css": [
+        {
+          "file": "component---site-src-pages-users-index-jse-74-883.d34aa0b70e14f52aaafb.css",
+          "hash": "f1421fc7213db626a0ff",
+          "publicPath": "/component---site-src-pages-users-index-jse-74-883.d34aa0b70e14f52aaafb.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---site-src-pages-users-index-jse-74-883.74804ff3ce9f21d3d9dc.js",
+          "hash": "f1421fc7213db626a0ff",
+          "publicPath": "/component---site-src-pages-users-index-jse-74-883.74804ff3ce9f21d3d9dc.js"
+        }
+      ]
+    },
+    "7": {
+      "css": [
+        {
+          "file": "component---theme-blog-list-pagea-6-a-7ba.42d18faa279882580cbb.css",
+          "hash": "4bbfc859d34d1d81e693",
+          "publicPath": "/component---theme-blog-list-pagea-6-a-7ba.42d18faa279882580cbb.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---theme-blog-list-pagea-6-a-7ba.02a15922b1123ec5f7c9.js",
+          "hash": "4bbfc859d34d1d81e693",
+          "publicPath": "/component---theme-blog-list-pagea-6-a-7ba.02a15922b1123ec5f7c9.js"
+        }
+      ]
+    },
+    "8": {
+      "css": [
+        {
+          "file": "component---theme-blog-post-pageccc-cab.42d18faa279882580cbb.css",
+          "hash": "3b64332243d807d78a0d",
+          "publicPath": "/component---theme-blog-post-pageccc-cab.42d18faa279882580cbb.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---theme-blog-post-pageccc-cab.4ddffb04ad9dfaf5d643.js",
+          "hash": "3b64332243d807d78a0d",
+          "publicPath": "/component---theme-blog-post-pageccc-cab.4ddffb04ad9dfaf5d643.js"
+        }
+      ]
+    },
+    "9": {
+      "css": [
+        {
+          "file": "component---theme-doc-item-178-a40.de2648345892298aff25.css",
+          "hash": "114b720ffbf8cde44173",
+          "publicPath": "/component---theme-doc-item-178-a40.de2648345892298aff25.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---theme-doc-item-178-a40.9bdefc7ea85bc296c543.js",
+          "hash": "114b720ffbf8cde44173",
+          "publicPath": "/component---theme-doc-item-178-a40.9bdefc7ea85bc296c543.js"
+        }
+      ]
+    },
+    "10": {
+      "css": [
+        {
+          "file": "component---theme-doc-page-1-be-9be.a7dc664af81736e8f518.css",
+          "hash": "25d50bec9ad6e67b5c15",
+          "publicPath": "/component---theme-doc-page-1-be-9be.a7dc664af81736e8f518.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "component---theme-doc-page-1-be-9be.fe5f1a5f9d8e30930b27.js",
+          "hash": "25d50bec9ad6e67b5c15",
+          "publicPath": "/component---theme-doc-page-1-be-9be.fe5f1a5f9d8e30930b27.js"
+        }
+      ]
+    },
+    "11": {
+      "js": [
+        {
+          "file": "content---blog-2016-02-26-a-case-for-soa-in-the-browserd-3-d-4d9.586602935c9206d66c7e.js",
+          "hash": "c0ec29476b3514c8e91d",
+          "publicPath": "/content---blog-2016-02-26-a-case-for-soa-in-the-browserd-3-d-4d9.586602935c9206d66c7e.js"
+        }
+      ]
+    },
+    "12": {
+      "js": [
+        {
+          "file": "content---blog-2016-12-16-a-step-by-step-guide-to-single-spa-5-b-8-884.022758102368697666d1.js",
+          "hash": "9755cd4a323ffb840212",
+          "publicPath": "/content---blog-2016-12-16-a-step-by-step-guide-to-single-spa-5-b-8-884.022758102368697666d1.js"
+        }
+      ]
+    },
+    "13": {
+      "js": [
+        {
+          "file": "content---blog-2018-06-19-single-spa-parcels-explained-98-f-d8e.1fcde62ed7e4ac01bb90.js",
+          "hash": "0522df3fe650206f1bc6",
+          "publicPath": "/content---blog-2018-06-19-single-spa-parcels-explained-98-f-d8e.1fcde62ed7e4ac01bb90.js"
+        }
+      ]
+    },
+    "14": {
+      "js": [
+        {
+          "file": "content---blog-2019-02-20-single-spa-inspector-075-d82.e04842df42947ac3abfb.js",
+          "hash": "8029bc0582bd0bf686d0",
+          "publicPath": "/content---blog-2019-02-20-single-spa-inspector-075-d82.e04842df42947ac3abfb.js"
+        }
+      ]
+    },
+    "15": {
+      "js": [
+        {
+          "file": "content---blog-6-c-1-592.cfed8ce79c637d62d6ff.js",
+          "hash": "b946d499d0ee27c31d5e",
+          "publicPath": "/content---blog-6-c-1-592.cfed8ce79c637d62d6ff.js"
+        }
+      ]
+    },
+    "16": {
+      "js": [
+        {
+          "file": "content---blog-6-cb-21e.bfa77f620929756d0bd9.js",
+          "hash": "464cab3a033dd6f589ed",
+          "publicPath": "/content---blog-6-cb-21e.bfa77f620929756d0bd9.js"
+        }
+      ]
+    },
+    "17": {
+      "js": [
+        {
+          "file": "content---blog-674-370.b58674a82aeef5d48b36.js",
+          "hash": "f1314df43faf67293175",
+          "publicPath": "/content---blog-674-370.b58674a82aeef5d48b36.js"
+        }
+      ]
+    },
+    "18": {
+      "js": [
+        {
+          "file": "content---blog-88-a-52e.f0a00ddcf0f8e90e9bec.js",
+          "hash": "7c8c4be7df354c760f28",
+          "publicPath": "/content---blog-88-a-52e.f0a00ddcf0f8e90e9bec.js"
+        }
+      ]
+    },
+    "19": {
+      "js": [
+        {
+          "file": "content---docs-apie-11-7be.996172ff40a310b2dacb.js",
+          "hash": "da464ca837423dc9357f",
+          "publicPath": "/content---docs-apie-11-7be.996172ff40a310b2dacb.js"
+        }
+      ]
+    },
+    "20": {
+      "js": [
+        {
+          "file": "content---docs-building-applications-97-b-9f1.b29bb194d6ab9ff11b9b.js",
+          "hash": "bfeeeda1e454284b9b02",
+          "publicPath": "/content---docs-building-applications-97-b-9f1.b29bb194d6ab9ff11b9b.js"
+        }
+      ]
+    },
+    "21": {
+      "js": [
+        {
+          "file": "content---docs-code-of-conduct-185-4d2.f058f528a015f98d0b27.js",
+          "hash": "cce0da762cd5008d506a",
+          "publicPath": "/content---docs-code-of-conduct-185-4d2.f058f528a015f98d0b27.js"
+        }
+      ]
+    },
+    "22": {
+      "js": [
+        {
+          "file": "content---docs-configuration-87-e-768.f4af8b7673135604194b.js",
+          "hash": "10fe6a70dc6e70af506c",
+          "publicPath": "/content---docs-configuration-87-e-768.f4af8b7673135604194b.js"
+        }
+      ]
+    },
+    "23": {
+      "js": [
+        {
+          "file": "content---docs-contributing-overviewe-1-a-aa0.635481e0b0d2fbdaee49.js",
+          "hash": "43972296abd9ced301c4",
+          "publicPath": "/content---docs-contributing-overviewe-1-a-aa0.635481e0b0d2fbdaee49.js"
+        }
+      ]
+    },
+    "24": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-3-dc-485.d39d7558478734b98146.js",
+          "hash": "2d05093f151c361222f0",
+          "publicPath": "/content---docs-ecosystem-3-dc-485.d39d7558478734b98146.js"
+        }
+      ]
+    },
+    "25": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-angular-3-b-8-9f5.08e420a05ebb74f628b0.js",
+          "hash": "4dc6999d4da4180039e9",
+          "publicPath": "/content---docs-ecosystem-angular-3-b-8-9f5.08e420a05ebb74f628b0.js"
+        }
+      ]
+    },
+    "26": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-angularjseb-3-600.af40066a2756d1e02dc5.js",
+          "hash": "3cbd7e08e72845fdf9a4",
+          "publicPath": "/content---docs-ecosystem-angularjseb-3-600.af40066a2756d1e02dc5.js"
+        }
+      ]
+    },
+    "27": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-backbonec-1-a-596.9a7a23f5c645fb79a227.js",
+          "hash": "f13e067b3d79156f1ad1",
+          "publicPath": "/content---docs-ecosystem-backbonec-1-a-596.9a7a23f5c645fb79a227.js"
+        }
+      ]
+    },
+    "28": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-cycle-1-f-0-4d9.455bcec902b0e6afc0ec.js",
+          "hash": "620bf00754e3475b4a51",
+          "publicPath": "/content---docs-ecosystem-cycle-1-f-0-4d9.455bcec902b0e6afc0ec.js"
+        }
+      ]
+    },
+    "29": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-ember-324-f31.578a4265ea183d7dec7b.js",
+          "hash": "f61b6b0bad05bcc8d61f",
+          "publicPath": "/content---docs-ecosystem-ember-324-f31.578a4265ea183d7dec7b.js"
+        }
+      ]
+    },
+    "30": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-html-web-components-335-80c.e9e5f48dce2fa0676dad.js",
+          "hash": "8ba24bdb498e77c2586b",
+          "publicPath": "/content---docs-ecosystem-html-web-components-335-80c.e9e5f48dce2fa0676dad.js"
+        }
+      ]
+    },
+    "31": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-inferno-514-6d6.d695a79eaa56e05c32ee.js",
+          "hash": "830f9c04f1094ee1f67e",
+          "publicPath": "/content---docs-ecosystem-inferno-514-6d6.d695a79eaa56e05c32ee.js"
+        }
+      ]
+    },
+    "32": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-leaked-globals-440-618.cb61a7ee5900e8f469f7.js",
+          "hash": "e17f5acdf4f3a1cf3b09",
+          "publicPath": "/content---docs-ecosystem-leaked-globals-440-618.cb61a7ee5900e8f469f7.js"
+        }
+      ]
+    },
+    "33": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-preact-6-cf-f25.1a5783d8a138be623af4.js",
+          "hash": "c475405606a50a85c406",
+          "publicPath": "/content---docs-ecosystem-preact-6-cf-f25.1a5783d8a138be623af4.js"
+        }
+      ]
+    },
+    "34": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-reacte-0-e-e70.624805faa772fb15dd01.js",
+          "hash": "0f3d564a3ff1bb03ab78",
+          "publicPath": "/content---docs-ecosystem-reacte-0-e-e70.624805faa772fb15dd01.js"
+        }
+      ]
+    },
+    "35": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-riotf-49-42d.d4e9ee5bcde35d1f6958.js",
+          "hash": "f3f9062c2a253ba2aade",
+          "publicPath": "/content---docs-ecosystem-riotf-49-42d.d4e9ee5bcde35d1f6958.js"
+        }
+      ]
+    },
+    "36": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-svelte-482-bd1.aa9e9b545e620d086320.js",
+          "hash": "4f18109acf34a34544d0",
+          "publicPath": "/content---docs-ecosystem-svelte-482-bd1.aa9e9b545e620d086320.js"
+        }
+      ]
+    },
+    "37": {
+      "js": [
+        {
+          "file": "content---docs-ecosystem-vue-62-d-39f.eb926bb504fd81f61cee.js",
+          "hash": "b01fc563c47394598157",
+          "publicPath": "/content---docs-ecosystem-vue-62-d-39f.eb926bb504fd81f61cee.js"
+        }
+      ]
+    },
+    "38": {
+      "js": [
+        {
+          "file": "content---docs-examplesd-66-9e6.733a0c94c097ae86f937.js",
+          "hash": "f11b8cb60a7399743883",
+          "publicPath": "/content---docs-examplesd-66-9e6.733a0c94c097ae86f937.js"
+        }
+      ]
+    },
+    "39": {
+      "js": [
+        {
+          "file": "content---docs-faq-3-d-7-e27.c42b2a1d800d3ff4962c.js",
+          "hash": "8311a87bc5db741a6950",
+          "publicPath": "/content---docs-faq-3-d-7-e27.c42b2a1d800d3ff4962c.js"
+        }
+      ]
+    },
+    "40": {
+      "js": [
+        {
+          "file": "content---docs-getting-started-overview-15-e-62d.5965d8c24925b5e90969.js",
+          "hash": "cef885d6ede9ede592b4",
+          "publicPath": "/content---docs-getting-started-overview-15-e-62d.5965d8c24925b5e90969.js"
+        }
+      ]
+    },
+    "41": {
+      "js": [
+        {
+          "file": "content---docs-glossary-317-1b9.bfd61c0d7d9c0b008aaf.js",
+          "hash": "d02bb1b23ffbf68eb886",
+          "publicPath": "/content---docs-glossary-317-1b9.bfd61c0d7d9c0b008aaf.js"
+        }
+      ]
+    },
+    "42": {
+      "js": [
+        {
+          "file": "content---docs-migrating-angular-js-tutorial-232-183.489ad352c57a3da8f379.js",
+          "hash": "cf3b7732da94ebe3adcd",
+          "publicPath": "/content---docs-migrating-angular-js-tutorial-232-183.489ad352c57a3da8f379.js"
+        }
+      ]
+    },
+    "43": {
+      "js": [
+        {
+          "file": "content---docs-migrating-existing-spasf-9-e-6de.346f53fbbccbfb94e34c.js",
+          "hash": "6fa68e2731f9376b01d1",
+          "publicPath": "/content---docs-migrating-existing-spasf-9-e-6de.346f53fbbccbfb94e34c.js"
+        }
+      ]
+    },
+    "44": {
+      "js": [
+        {
+          "file": "content---docs-migrating-react-tutorialf-77-88c.9d8ea4f626cabd118c33.js",
+          "hash": "530460efcd2f30772232",
+          "publicPath": "/content---docs-migrating-react-tutorialf-77-88c.9d8ea4f626cabd118c33.js"
+        }
+      ]
+    },
+    "45": {
+      "js": [
+        {
+          "file": "content---docs-parcels-api-6-c-0-1a0.15342bd1cbc762e901c3.js",
+          "hash": "d79d82b23600d45b1fc2",
+          "publicPath": "/content---docs-parcels-api-6-c-0-1a0.15342bd1cbc762e901c3.js"
+        }
+      ]
+    },
+    "46": {
+      "js": [
+        {
+          "file": "content---docs-parcels-overviewe-6-e-e48.19873ecbccaeae7a51c1.js",
+          "hash": "ac735e353da48a94cf3d",
+          "publicPath": "/content---docs-parcels-overviewe-6-e-e48.19873ecbccaeae7a51c1.js"
+        }
+      ]
+    },
+    "47": {
+      "js": [
+        {
+          "file": "content---docs-separating-applications-311-636.4a56e154a7f554f9974f.js",
+          "hash": "1ce34f933f3d41cbd01b",
+          "publicPath": "/content---docs-separating-applications-311-636.4a56e154a7f554f9974f.js"
+        }
+      ]
+    },
+    "48": {
+      "js": [
+        {
+          "file": "content---docs-starting-from-scratchf-9-c-9e7.f93c1ecc796789049275.js",
+          "hash": "82dfb79a23262067fced",
+          "publicPath": "/content---docs-starting-from-scratchf-9-c-9e7.f93c1ecc796789049275.js"
+        }
+      ]
+    },
+    "49": {
+      "js": [
+        {
+          "file": "docsMetadata---docs-1-da-721.25a26f2760d93166acfc.js",
+          "hash": "30bcf95ef21508765912",
+          "publicPath": "/docsMetadata---docs-1-da-721.25a26f2760d93166acfc.js"
+        }
+      ]
+    },
+    "50": {
+      "css": [
+        {
+          "file": "main.e444e50fd8efc1bf8bed.css",
+          "hash": "f911c05454239eeadc07",
+          "publicPath": "/main.e444e50fd8efc1bf8bed.css"
+        }
+      ],
+      "js": [
+        {
+          "file": "main.cc1aec8ce7515425e27a.js",
+          "hash": "f911c05454239eeadc07",
+          "publicPath": "/main.cc1aec8ce7515425e27a.js"
+        }
+      ]
+    },
+    "51": {
+      "js": [
+        {
+          "file": "metadata---blog-1-a-9-d63.9afba5377ea7d5ee988e.js",
+          "hash": "799b11199d37b36446b3",
+          "publicPath": "/metadata---blog-1-a-9-d63.9afba5377ea7d5ee988e.js"
+        }
+      ]
+    },
+    "52": {
+      "js": [
+        {
+          "file": "metadata---blog-2019-02-20-single-spa-inspectore-6-b-064.f38bdbe7b0e121e931f8.js",
+          "hash": "458088ff8578ab8862ed",
+          "publicPath": "/metadata---blog-2019-02-20-single-spa-inspectore-6-b-064.f38bdbe7b0e121e931f8.js"
+        }
+      ]
+    },
+    "53": {
+      "js": [
+        {
+          "file": "metadata---docs-apicaf-9e4.b671de325a80ffc38fe7.js",
+          "hash": "8e4b7bde52aa06511291",
+          "publicPath": "/metadata---docs-apicaf-9e4.b671de325a80ffc38fe7.js"
+        }
+      ]
+    },
+    "54": {
+      "js": [
+        {
+          "file": "metadata---docs-building-applications-157-489.8ba3fb0cf77b9f89898d.js",
+          "hash": "f23842153ea9faf2f711",
+          "publicPath": "/metadata---docs-building-applications-157-489.8ba3fb0cf77b9f89898d.js"
+        }
+      ]
+    },
+    "55": {
+      "js": [
+        {
+          "file": "metadata---docs-code-of-conduct-840-c7d.ad3c90b3c13f4ba7823a.js",
+          "hash": "ed8c1a40f4feb957c43a",
+          "publicPath": "/metadata---docs-code-of-conduct-840-c7d.ad3c90b3c13f4ba7823a.js"
+        }
+      ]
+    },
+    "56": {
+      "js": [
+        {
+          "file": "metadata---docs-configuration-72-d-a84.73ea980b34c5ad07983d.js",
+          "hash": "87249104a57fd8197870",
+          "publicPath": "/metadata---docs-configuration-72-d-a84.73ea980b34c5ad07983d.js"
+        }
+      ]
+    },
+    "57": {
+      "js": [
+        {
+          "file": "metadata---docs-contributing-overviewe-26-1a2.55f81f85211ffd71a807.js",
+          "hash": "5ecb7edba56919607fc5",
+          "publicPath": "/metadata---docs-contributing-overviewe-26-1a2.55f81f85211ffd71a807.js"
+        }
+      ]
+    },
+    "58": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-0-bd-b26.21ed155b95f7f1e4e58c.js",
+          "hash": "9fd09e161f2a1e731be2",
+          "publicPath": "/metadata---docs-ecosystem-0-bd-b26.21ed155b95f7f1e4e58c.js"
+        }
+      ]
+    },
+    "59": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-angularee-8-e87.f05e9b1a2940432c9cfb.js",
+          "hash": "5e547214ce9f7647cbfd",
+          "publicPath": "/metadata---docs-ecosystem-angularee-8-e87.f05e9b1a2940432c9cfb.js"
+        }
+      ]
+    },
+    "60": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-angularjsda-0-5d2.6c47b731d09aad83bb17.js",
+          "hash": "53e5d643a50a4920e705",
+          "publicPath": "/metadata---docs-ecosystem-angularjsda-0-5d2.6c47b731d09aad83bb17.js"
+        }
+      ]
+    },
+    "61": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-backbonedaf-445.ebd0f28553b8e79fda08.js",
+          "hash": "49396b80538499746a95",
+          "publicPath": "/metadata---docs-ecosystem-backbonedaf-445.ebd0f28553b8e79fda08.js"
+        }
+      ]
+    },
+    "62": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-cycle-5-cd-b7c.3a3f812896891b73bf62.js",
+          "hash": "2438ce8f95134dd1a99e",
+          "publicPath": "/metadata---docs-ecosystem-cycle-5-cd-b7c.3a3f812896891b73bf62.js"
+        }
+      ]
+    },
+    "63": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-ember-65-c-95e.cf77cd3bf00082ef5b16.js",
+          "hash": "dc6961ec8ac43fe41d89",
+          "publicPath": "/metadata---docs-ecosystem-ember-65-c-95e.cf77cd3bf00082ef5b16.js"
+        }
+      ]
+    },
+    "64": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-html-web-components-935-ac5.4fddce68d6c1398db8dd.js",
+          "hash": "675b53e6e05008b729ca",
+          "publicPath": "/metadata---docs-ecosystem-html-web-components-935-ac5.4fddce68d6c1398db8dd.js"
+        }
+      ]
+    },
+    "65": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-infernoec-3-dc0.5844f66b9b0fcad68a68.js",
+          "hash": "b1eb228b1a4a8dfc1a1e",
+          "publicPath": "/metadata---docs-ecosystem-infernoec-3-dc0.5844f66b9b0fcad68a68.js"
+        }
+      ]
+    },
+    "66": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-leaked-globals-6-c-1-add.950f9ef5a3b1d4d5faf1.js",
+          "hash": "b539374932554453c602",
+          "publicPath": "/metadata---docs-ecosystem-leaked-globals-6-c-1-add.950f9ef5a3b1d4d5faf1.js"
+        }
+      ]
+    },
+    "67": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-preact-0-f-7-d0f.f44a4ec8d8083a59f086.js",
+          "hash": "c7a45a7d0b6af9a2718c",
+          "publicPath": "/metadata---docs-ecosystem-preact-0-f-7-d0f.f44a4ec8d8083a59f086.js"
+        }
+      ]
+    },
+    "68": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-react-158-cae.3104593bea7943526ca2.js",
+          "hash": "b6cc7e9e44b6fccca5ae",
+          "publicPath": "/metadata---docs-ecosystem-react-158-cae.3104593bea7943526ca2.js"
+        }
+      ]
+    },
+    "69": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-riotbba-3fc.f617cfd19a3bd6c280b4.js",
+          "hash": "6fefc471d60a439625d7",
+          "publicPath": "/metadata---docs-ecosystem-riotbba-3fc.f617cfd19a3bd6c280b4.js"
+        }
+      ]
+    },
+    "70": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-sveltea-41-709.cf96b755c89215516df8.js",
+          "hash": "e704d7bd59dd43fb585c",
+          "publicPath": "/metadata---docs-ecosystem-sveltea-41-709.cf96b755c89215516df8.js"
+        }
+      ]
+    },
+    "71": {
+      "js": [
+        {
+          "file": "metadata---docs-ecosystem-vue-5-c-4-551.4545f2d643d8e64f8770.js",
+          "hash": "4019766e193286616481",
+          "publicPath": "/metadata---docs-ecosystem-vue-5-c-4-551.4545f2d643d8e64f8770.js"
+        }
+      ]
+    },
+    "72": {
+      "js": [
+        {
+          "file": "metadata---docs-examples-2-d-5-8e0.c55a4cbe647840c7736b.js",
+          "hash": "702f04cfa583ad269f46",
+          "publicPath": "/metadata---docs-examples-2-d-5-8e0.c55a4cbe647840c7736b.js"
+        }
+      ]
+    },
+    "73": {
+      "js": [
+        {
+          "file": "metadata---docs-faq-431-8a6.622d18a4e261053b93aa.js",
+          "hash": "489219174d4c0619baef",
+          "publicPath": "/metadata---docs-faq-431-8a6.622d18a4e261053b93aa.js"
+        }
+      ]
+    },
+    "74": {
+      "js": [
+        {
+          "file": "metadata---docs-getting-started-overview-327-b6b.0295598bb4864b12214d.js",
+          "hash": "f533ca794a792a55942c",
+          "publicPath": "/metadata---docs-getting-started-overview-327-b6b.0295598bb4864b12214d.js"
+        }
+      ]
+    },
+    "75": {
+      "js": [
+        {
+          "file": "metadata---docs-glossarya-80-727.180ee0433c6074c0aca7.js",
+          "hash": "06f61a73487f714fe4ab",
+          "publicPath": "/metadata---docs-glossarya-80-727.180ee0433c6074c0aca7.js"
+        }
+      ]
+    },
+    "76": {
+      "js": [
+        {
+          "file": "metadata---docs-migrating-angular-js-tutorial-4-bc-b7f.b7b630bd8fc676d05a51.js",
+          "hash": "4aece762a10b2a3c1477",
+          "publicPath": "/metadata---docs-migrating-angular-js-tutorial-4-bc-b7f.b7b630bd8fc676d05a51.js"
+        }
+      ]
+    },
+    "77": {
+      "js": [
+        {
+          "file": "metadata---docs-migrating-existing-spas-7-b-1-012.6923f1c9a094bdcf359b.js",
+          "hash": "cc90519be598105a1490",
+          "publicPath": "/metadata---docs-migrating-existing-spas-7-b-1-012.6923f1c9a094bdcf359b.js"
+        }
+      ]
+    },
+    "78": {
+      "js": [
+        {
+          "file": "metadata---docs-migrating-react-tutorial-439-9f4.bc350991c0d864171c0e.js",
+          "hash": "f195b6be0b21a52df48a",
+          "publicPath": "/metadata---docs-migrating-react-tutorial-439-9f4.bc350991c0d864171c0e.js"
+        }
+      ]
+    },
+    "79": {
+      "js": [
+        {
+          "file": "metadata---docs-parcels-api-8-ae-c2a.e2688542c46699f9a7cf.js",
+          "hash": "40284607b76ff4d13928",
+          "publicPath": "/metadata---docs-parcels-api-8-ae-c2a.e2688542c46699f9a7cf.js"
+        }
+      ]
+    },
+    "80": {
+      "js": [
+        {
+          "file": "metadata---docs-parcels-overview-3-f-9-79c.09e21277845311f0760a.js",
+          "hash": "27290322c3947700d35d",
+          "publicPath": "/metadata---docs-parcels-overview-3-f-9-79c.09e21277845311f0760a.js"
+        }
+      ]
+    },
+    "81": {
+      "js": [
+        {
+          "file": "metadata---docs-separating-applicationseaf-a7e.2cb847e7cee296fd0da2.js",
+          "hash": "74e4bcfe4994c5c70549",
+          "publicPath": "/metadata---docs-separating-applicationseaf-a7e.2cb847e7cee296fd0da2.js"
+        }
+      ]
+    },
+    "82": {
+      "js": [
+        {
+          "file": "metadata---docs-starting-from-scratchc-35-fcd.69a7691c7a04984fca0f.js",
+          "hash": "be375750c5013d72740f",
+          "publicPath": "/metadata---docs-starting-from-scratchc-35-fcd.69a7691c7a04984fca0f.js"
+        }
+      ]
+    },
+    "83": {
+      "js": [
+        {
+          "file": "nextItem---blog-2016-12-16-a-step-by-step-guide-to-single-spac-0-c-2b6.a62b2daed9ea39c335d9.js",
+          "hash": "641bc121dea0f47be9f5",
+          "publicPath": "/nextItem---blog-2016-12-16-a-step-by-step-guide-to-single-spac-0-c-2b6.a62b2daed9ea39c335d9.js"
+        }
+      ]
+    },
+    "84": {
+      "js": [
+        {
+          "file": "nextItem---blog-2018-06-19-single-spa-parcels-explained-565-3ae.bd032d5a9054ea94a36d.js",
+          "hash": "f2adea93fae76da04396",
+          "publicPath": "/nextItem---blog-2018-06-19-single-spa-parcels-explained-565-3ae.bd032d5a9054ea94a36d.js"
+        }
+      ]
+    },
+    "85": {
+      "js": [
+        {
+          "file": "nextItem---blog-2019-02-20-single-spa-inspector-87-c-df8.694b7fa5e04d29961558.js",
+          "hash": "d222ac5dfb32ca37581b",
+          "publicPath": "/nextItem---blog-2019-02-20-single-spa-inspector-87-c-df8.694b7fa5e04d29961558.js"
+        }
+      ]
+    },
+    "86": {
+      "js": [
+        {
+          "file": "runtime~main.1e20730e41f53f3ea3d3.js",
+          "hash": "456d7b9573f3ac846386",
+          "publicPath": "/runtime~main.1e20730e41f53f3ea3d3.js"
+        }
+      ]
+    },
+    "87": {
+      "js": [
+        {
+          "file": "87.32361a27b5050ff28ebd.js",
+          "hash": "1e5c2a520de3720c310e",
+          "publicPath": "/87.32361a27b5050ff28ebd.js"
+        }
+      ]
+    },
+    "88": {
+      "js": [
+        {
+          "file": "88.9d48dbc9813be9145850.js",
+          "hash": "cc3ee4b58b65707aec19",
+          "publicPath": "/88.9d48dbc9813be9145850.js"
+        }
+      ]
+    }
+  }
+}

@@ -1,115 +1,14 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>single-spa Inspector and 4.1 · single-spa</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Background"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="single-spa Inspector and 4.1 · single-spa"/><meta property="og:type" content="website"/><meta property="og:url" content="https://canopytax.github.io/single-spa.js.org/blog/2019/02/20/single-spa-inspector.html"/><meta property="og:description" content="## Background"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/logo-blue-favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://canopytax.github.io/single-spa.js.org/blog/atom.xml" title="single-spa Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://canopytax.github.io/single-spa.js.org/blog/feed.xml" title="single-spa Blog RSS Feed"/><script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-              ga('create', 'UA-138683004-1', 'auto');
-              ga('send', 'pageview');
-            </script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/index.js"></script><script type="text/javascript" src="/js/code-copy-to-clipboard.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-          addBackToTop(
-            {"zIndex":100}
-          )
-        });
-        </script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-white-bgblue.svg" alt="single-spa"/><h2 class="headerTitleWithLogo">single-spa</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/faq.html" target="_self">FAQ</a></li><li class=""><a href="/docs.html" target="_self">Docs</a></li><li class=""><a href="/help.html" target="_self">Help</a></li><li class="siteNavGroupActive"><a href="/blog/" target="_self">Blog</a></li><li class=""><a href="https://opencollective.com/single-spa" target="_self">Donate</a></li><li class=""><a href="https://github.com/CanopyTax/single-spa" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2019/02/20/single-spa-inspector.html">single-spa Inspector and 4.1</a></li><li class="navListItem"><a class="navItem" href="/blog/2018/06/19/single-spa-parcels-explained.html">single-spa parcels, explained</a></li><li class="navListItem"><a class="navItem" href="/blog/2016/12/16/a-step-by-step-guide-to-single-spa.html">A step-by-step guide to single-spa</a></li><li class="navListItem"><a class="navItem" href="/blog/2016/02/26/a-case-for-soa-in-the-browser.html">A Case for SOA in the Browser</a></li></ul></div></div></section></div><script>
-            var coll = document.getElementsByClassName('collapsible');
-            var checkActiveCategory = true;
-            for (var i = 0; i < coll.length; i++) {
-              var links = coll[i].nextElementSibling.getElementsByTagName('*');
-              if (checkActiveCategory){
-                for (var j = 0; j < links.length; j++) {
-                  if (links[j].classList.contains('navListItemActive')){
-                    coll[i].nextElementSibling.classList.toggle('hide');
-                    coll[i].childNodes[1].classList.toggle('rotate');
-                    checkActiveCategory = false;
-                    break;
-                  }
-                }
-              }
-
-              coll[i].addEventListener('click', function() {
-                var arrow = this.childNodes[1];
-                arrow.classList.toggle('rotate');
-                var content = this.nextElementSibling;
-                content.classList.toggle('hide');
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
-              createToggler('#tocToggler', 'body', 'tocActive');
-
-              var headings = document.querySelector('.toc-headings');
-              headings && headings.addEventListener('click', function(event) {
-                var el = event.target;
-                while(el !== headings){
-                  if (el.tagName === 'A') {
-                    document.body.classList.remove('tocActive');
-                    break;
-                  } else{
-                    el = el.parentNode;
-                  }
-                }
-              }, false);
-
-              function createToggler(togglerSelector, targetSelector, className) {
-                var toggler = document.querySelector(togglerSelector);
-                var target = document.querySelector(targetSelector);
-
-                if (!toggler) {
-                  return;
-                }
-
-                toggler.onclick = function(event) {
-                  event.preventDefault();
-
-                  target.classList.toggle(className);
-                };
-              }
-            });
-        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2019/02/20/single-spa-inspector.html">single-spa Inspector and 4.1</a></h1><p class="post-meta">February 20, 2019</p><div class="authorBlock"><p class="post-authorName"><a href="https://twitter.com/aahfrena" target="_blank" rel="noreferrer noopener">Anthony Frehner</a></p><div class="authorPhoto"><a href="https://twitter.com/aahfrena" target="_blank" rel="noreferrer noopener"><img src="https://pbs.twimg.com/profile_images/1037162092963348480/1XLEV4MK_400x400.jpg" alt="Anthony Frehner"/></a></div></div></header><div><span><h2><a class="anchor" aria-hidden="true" id="background"></a><a href="#background" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Background</h2>
-<p>For a long time, Canopy has had the benefit of using a tool called <a href="https://github.com/CanopyTax/sofe-inspector">sofe inspector</a> (note: this is an out-of-date version of it) to list, override, and interact with single-spa applications. There has always been a desire to <a href="https://github.com/CanopyTax/single-spa/issues/151">figure out how to share this tool so others can benefit as well</a>.</p>
-<p>With that in mind, I'm proud to announce an initial release for <strong><a href="https://github.com/CanopyTax/single-spa-inspector">single-spa Inspector</a></strong>! single-spa Inspector is a Firefox and Chrome extension, much like React/Vue devtools, that allows you see and interact with your single-spa applications and configuration.</p>
-<h2><a class="anchor" aria-hidden="true" id="current-inspector-features"></a><a href="#current-inspector-features" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Current Inspector Features</h2>
-<ul>
-<li>List registered applications</li>
-<li>Show application status</li>
-<li>Force an app to mount or unmount</li>
-<li>Hover over an app name to have an &quot;inspect element&quot;-like view of your apps (Overlays)</li>
-</ul>
-<p>(Note: Overlays require a small update to your code, but should hopefully be simple! See <a href="https://github.com/CanopyTax/single-spa-inspector#configuring-app-overlays">how to configure app overlays</a>)</p>
-<p><strong>The single-spa Inspector will only work with single-spa versions 4.1 and higher</strong>, since we had to expose and add some functionality to the single-spa library itself in order to implement these features.</p>
-<h2><a class="anchor" aria-hidden="true" id="single-spa-41"></a><a href="#single-spa-41" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>single-spa 4.1</h2>
-<p>single-spa 4.1 was released, which includes a couple of key updates:</p>
-<ol>
-<li>Support for single-spa Inspector</li>
-<li>ESM bundle output</li>
-<li>Simpmlified test configuration for developers/contributors to single-spa</li>
-</ol>
-<p>For most people, ESM (EcmaScript Module) support shouldn't affect how you use single-spa, but for those looking to play around with modules or other advanced Javascript things, it's a welcome addition.</p>
-<p>We also changed our test suite to purely use Jest instead of Saucelabs, and hopefully false positive &quot;failing&quot; tests on pull requests will be a thing of the past.</p>
-<h2><a class="anchor" aria-hidden="true" id="help-wanted"></a><a href="#help-wanted" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Help Wanted!</h2>
-<p>If you would like to suggest a new feature for single-spa Inspector, report a bug, improve our (admittedly horrible and hopefully temporary) UI/UX, or add features, please see the <a href="https://github.com/CanopyTax/single-spa-inspector">github repo</a> and hack away!</p>
-<p>We also hope to update some of our example repos to the lastest single-spa so that anyone with the extension installed can test out the features and see how to implement overlays.  But this process will go faster if someone wants to help out. :)</p>
-<p>Thank you!</p>
-</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#background">Background</a></li><li><a href="#current-inspector-features">Current Inspector Features</a></li><li><a href="#single-spa-41">single-spa 4.1</a></li><li><a href="#help-wanted">Help Wanted!</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/logo-white-bgblue.svg" alt="single-spa" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/faq.html">FAQ</a><a href="/docs/en/getting-started-overview.html">Getting Started</a><a href="/docs/en/examples.html">Examples</a><a href="/docs/en/api.html">API Reference</a><a href="/docs/en/contributing-overview.html">Contribution Guide</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="/en/contributors.html">Contributors</a><a href="http://stackoverflow.com/questions/tagged/single-spa" target="_blank" rel="noopener">Stack Overflow</a><a href="https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ" target="_blank" rel="noopener">Chat in Slack</a><a href="https://twitter.com/Single_spa/" target="_blank" rel="noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/CanopyTax/single-spa">GitHub</a><a href="https://opencollective.com/single-spa">Donate</a><a href="/blog">Blog</a><a class="github-button" href="https://github.com/CanopyTax/single-spa" target="_blank" rel="noopener" data-icon="octicon-star" data-count-href="/CanopyTax/single-spa/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="/img/icons/148705-essential-collection/license/license.html">License for icons</a></div></section><a href="https://www.canopytax.com/" target="_blank" rel="noopener" class="cpOpenSource"><img src="/img/canopy-logo-icon.svg" alt="CanopyTax Open Source" height="45"/></a><section class="copyright">© 2019 CanopyTax</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '113e711177d63ab1ff28ef858cbcffa5',
-                indexName: 'single_spa',
-                inputSelector: '#search_input_react',
-                algoliaOptions: {}
-              });
-            </script></body></html>
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=https://canopytax.github.io/single-spa.js.org/blog/2019/02/20/single-spa-inspector">
+    <link rel="canonical" href="https://canopytax.github.io/single-spa.js.org/blog/2019/02/20/single-spa-inspector">
+    <title>Redirecting to https://canopytax.github.io/single-spa.js.org/blog/2019/02/20/single-spa-inspector</title>
+  </head>
+  <body>
+    If you are not redirected automatically, follow this <a href="https://canopytax.github.io/single-spa.js.org/blog/2019/02/20/single-spa-inspector">link</a>.
+  </body>
+</html>
+        

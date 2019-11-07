@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[52],{144:function(s){s.exports=JSON.parse('{"permalink":"/blog/2019/02/20/single-spa-inspector","source":"@site/blog/2019-02-20-single-spa-inspector.md","description":"## Background","date":"2019-02-20T00:00:00.000Z","tags":[],"title":"single-spa Inspector and 4.1"}')}}]);
