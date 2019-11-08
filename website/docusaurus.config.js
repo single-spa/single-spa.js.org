@@ -5,7 +5,7 @@ const libRepoUrl = 'https://github.com/CanopyTax/single-spa';
 module.exports = {
   title: 'single-spa',
   tagline: 'a javascript framework for front-end microservices',
-  url: 'https://single-spa.js.org',
+  url: 'https://canopytax.github.io/single-spa.js.org',
   baseUrl: '/',
   projectName: 'single-spa',
   favicon: 'img/logo-blue-favicon.ico',
