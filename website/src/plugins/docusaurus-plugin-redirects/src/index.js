@@ -21,7 +21,9 @@ module.exports = function(context, opts) {
           return;
         }
 
-        const newLink = siteConfig.url + routesPath + '/';
+        const newLink = `${siteConfig.url}${routesPath}${
+          routesPath.endsWith('/') ? '' : '/'
+        }`;
         const fileName = path.basename(routesPath);
         const filePath = path.dirname(routesPath);
         const htmlContent = `
