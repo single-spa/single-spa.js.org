@@ -1,7 +1,7 @@
 {
   "main": [
     "/main.e444e50fd8efc1bf8bed.css",
-    "/main.5a6a147f5ee89b6349c2.js"
+    "/main.a8bd94f48ee0adf96b34.js"
   ],
   "component---site-src-pages-index-jsc-4-f-f99": [
     "/component---site-src-pages-index-jsc-4-f-f99.416288ee7f3b354f9a2e.css",
@@ -11,12 +11,12 @@
     "/component---site-src-pages-contributors-index-js-2-e-5-f9f.207a11e095e656084bc4.css",
     "/component---site-src-pages-contributors-index-js-2-e-5-f9f.4be12578d7feec87ff1a.js"
   ],
-  "component---site-src-pages-help-index-js-78-e-dbe": [
-    "/component---site-src-pages-help-index-js-78-e-dbe.d770656a9f7c1a9bfd03.js"
-  ],
   "component---site-src-pages-docs-index-jsa-58-886": [
     "/component---site-src-pages-docs-index-jsa-58-886.67918ac33c99516fde03.css",
-    "/component---site-src-pages-docs-index-jsa-58-886.75a17c6bc20c2eb82eb9.js"
+    "/component---site-src-pages-docs-index-jsa-58-886.58c69010120e2241847b.js"
+  ],
+  "component---site-src-pages-help-index-js-78-e-dbe": [
+    "/component---site-src-pages-help-index-js-78-e-dbe.7e18afa512dc465245c3.js"
   ],
   "component---site-src-pages-users-index-jse-74-883": [
     "/component---site-src-pages-users-index-jse-74-883.d34aa0b70e14f52aaafb.css",
@@ -74,7 +74,7 @@
     "/component---theme-doc-page-1-be-9be.dd6b405bb7c5109dcff8.js"
   ],
   "docsMetadata---docs-1-da-721": [
-    "/docsMetadata---docs-1-da-721.79bdca52d356b908d100.js"
+    "/docsMetadata---docs-1-da-721.ac17ebabaec9bef8a7dc.js"
   ],
   "component---theme-doc-item-178-a40": [
     "/component---theme-doc-item-178-a40.de2648345892298aff25.css",
@@ -128,17 +128,17 @@
   "metadata---docs-ecosystem-cycle-5-cd-b7c": [
     "/metadata---docs-ecosystem-cycle-5-cd-b7c.5b0c887939915e9e714b.js"
   ],
-  "content---docs-ecosystem-ember-324-f31": [
-    "/content---docs-ecosystem-ember-324-f31.77d5f2e439c7322ec2e9.js"
-  ],
-  "metadata---docs-ecosystem-ember-65-c-95e": [
-    "/metadata---docs-ecosystem-ember-65-c-95e.f4709a8547cd9b841f15.js"
-  ],
   "content---docs-ecosystem-html-web-components-335-80c": [
-    "/content---docs-ecosystem-html-web-components-335-80c.33108ec70ec2538a424d.js"
+    "/content---docs-ecosystem-html-web-components-335-80c.ab0f80e91729a13c3600.js"
   ],
   "metadata---docs-ecosystem-html-web-components-935-ac5": [
-    "/metadata---docs-ecosystem-html-web-components-935-ac5.19662b4592f3b49e37c7.js"
+    "/metadata---docs-ecosystem-html-web-components-935-ac5.9598ce3d344e0a2cba78.js"
+  ],
+  "content---docs-ecosystem-ember-324-f31": [
+    "/content---docs-ecosystem-ember-324-f31.6b0c889c11dbc903f5e8.js"
+  ],
+  "metadata---docs-ecosystem-ember-65-c-95e": [
+    "/metadata---docs-ecosystem-ember-65-c-95e.718e6c88b8a031f0cce8.js"
   ],
   "content---docs-ecosystem-inferno-514-6d6": [
     "/content---docs-ecosystem-inferno-514-6d6.d27a34e712fbe5a089c6.js"
@@ -146,29 +146,29 @@
   "metadata---docs-ecosystem-infernoec-3-dc0": [
     "/metadata---docs-ecosystem-infernoec-3-dc0.14494e0c5108cae04d75.js"
   ],
-  "content---docs-ecosystem-preact-6-cf-f25": [
-    "/content---docs-ecosystem-preact-6-cf-f25.e940c7242779f1fe7145.js"
-  ],
-  "metadata---docs-ecosystem-preact-0-f-7-d0f": [
-    "/metadata---docs-ecosystem-preact-0-f-7-d0f.a3c05522f9d72f52e6e8.js"
-  ],
   "content---docs-ecosystem-leaked-globals-440-618": [
-    "/content---docs-ecosystem-leaked-globals-440-618.87fff0b66ca7ec9249ab.js"
+    "/content---docs-ecosystem-leaked-globals-440-618.1e985c581489c2b96d16.js"
   ],
   "metadata---docs-ecosystem-leaked-globals-6-c-1-add": [
-    "/metadata---docs-ecosystem-leaked-globals-6-c-1-add.a4642ea9afdcb0f0b798.js"
+    "/metadata---docs-ecosystem-leaked-globals-6-c-1-add.8004fb16b7e8ae259ea8.js"
   ],
-  "content---docs-ecosystem-riotf-49-42d": [
-    "/content---docs-ecosystem-riotf-49-42d.8709aa352e6b62d1d636.js"
+  "content---docs-ecosystem-preact-6-cf-f25": [
+    "/content---docs-ecosystem-preact-6-cf-f25.06f4108a59798f30c37f.js"
   ],
-  "metadata---docs-ecosystem-riotbba-3fc": [
-    "/metadata---docs-ecosystem-riotbba-3fc.2f027af5ee318f901caa.js"
+  "metadata---docs-ecosystem-preact-0-f-7-d0f": [
+    "/metadata---docs-ecosystem-preact-0-f-7-d0f.521c1a3fc4c5ab3b495e.js"
   ],
   "content---docs-ecosystem-reacte-0-e-e70": [
-    "/content---docs-ecosystem-reacte-0-e-e70.6f767f11c8c742e31f4c.js"
+    "/content---docs-ecosystem-reacte-0-e-e70.2068c21e402c50903305.js"
   ],
   "metadata---docs-ecosystem-react-158-cae": [
-    "/metadata---docs-ecosystem-react-158-cae.b710f891f83d4251de51.js"
+    "/metadata---docs-ecosystem-react-158-cae.c124fa25eea608823899.js"
+  ],
+  "content---docs-ecosystem-riotf-49-42d": [
+    "/content---docs-ecosystem-riotf-49-42d.34974c0026f80489510c.js"
+  ],
+  "metadata---docs-ecosystem-riotbba-3fc": [
+    "/metadata---docs-ecosystem-riotbba-3fc.04b75ca28db2552f994d.js"
   ],
   "content---docs-ecosystem-svelte-482-bd1": [
     "/content---docs-ecosystem-svelte-482-bd1.8367b0ac9687adee5733.js"
@@ -194,17 +194,17 @@
   "metadata---docs-examples-2-d-5-8e0": [
     "/metadata---docs-examples-2-d-5-8e0.06314d24a61d85f70f98.js"
   ],
-  "content---docs-getting-started-overview-15-e-62d": [
-    "/content---docs-getting-started-overview-15-e-62d.3bd5cb4420b265e03b73.js"
-  ],
-  "metadata---docs-getting-started-overview-327-b6b": [
-    "/metadata---docs-getting-started-overview-327-b6b.575dfe6c970feba88b9e.js"
-  ],
   "content---docs-faq-3-d-7-e27": [
-    "/content---docs-faq-3-d-7-e27.cc91d06ad0637026d631.js"
+    "/content---docs-faq-3-d-7-e27.d1ba892c7141ea342a07.js"
   ],
   "metadata---docs-faq-431-8a6": [
-    "/metadata---docs-faq-431-8a6.15237ddc852111670933.js"
+    "/metadata---docs-faq-431-8a6.2b37e911e61e2ef14f51.js"
+  ],
+  "content---docs-getting-started-overview-15-e-62d": [
+    "/content---docs-getting-started-overview-15-e-62d.b4d9a1e3b13d03292534.js"
+  ],
+  "metadata---docs-getting-started-overview-327-b6b": [
+    "/metadata---docs-getting-started-overview-327-b6b.f07c2e853a9905c4feff.js"
   ],
   "content---docs-glossary-317-1b9": [
     "/content---docs-glossary-317-1b9.fcae0180b43ed6ee7309.js"
@@ -212,35 +212,35 @@
   "metadata---docs-glossarya-80-727": [
     "/metadata---docs-glossarya-80-727.b06a89a2f257484ef64c.js"
   ],
-  "content---docs-migrating-angular-js-tutorial-232-183": [
-    "/content---docs-migrating-angular-js-tutorial-232-183.05f092c3043866e09ce5.js"
-  ],
-  "metadata---docs-migrating-angular-js-tutorial-4-bc-b7f": [
-    "/metadata---docs-migrating-angular-js-tutorial-4-bc-b7f.5468e5b03ae55bbdb505.js"
-  ],
-  "content---docs-migrating-existing-spasf-9-e-6de": [
-    "/content---docs-migrating-existing-spasf-9-e-6de.ecdaa0b9f372707446fd.js"
-  ],
-  "metadata---docs-migrating-existing-spas-7-b-1-012": [
-    "/metadata---docs-migrating-existing-spas-7-b-1-012.44b7defbff351146c60c.js"
-  ],
   "content---docs-migrating-react-tutorialf-77-88c": [
-    "/content---docs-migrating-react-tutorialf-77-88c.8a4f8482882b752d620e.js"
+    "/content---docs-migrating-react-tutorialf-77-88c.133ba6d3ee90154467f8.js"
   ],
   "metadata---docs-migrating-react-tutorial-439-9f4": [
-    "/metadata---docs-migrating-react-tutorial-439-9f4.a5ccb83703ca6f15ad98.js"
+    "/metadata---docs-migrating-react-tutorial-439-9f4.db30ce0b6d7b7bde2887.js"
   ],
-  "content---docs-parcels-api-6-c-0-1a0": [
-    "/content---docs-parcels-api-6-c-0-1a0.8dd886b11a24238f0a56.js"
+  "content---docs-migrating-angular-js-tutorial-232-183": [
+    "/content---docs-migrating-angular-js-tutorial-232-183.cd472d8ff8d6e33e8965.js"
   ],
-  "metadata---docs-parcels-api-8-ae-c2a": [
-    "/metadata---docs-parcels-api-8-ae-c2a.5d15d65dd76ff8ca5cac.js"
+  "metadata---docs-migrating-angular-js-tutorial-4-bc-b7f": [
+    "/metadata---docs-migrating-angular-js-tutorial-4-bc-b7f.540278ac99eb300e6311.js"
+  ],
+  "content---docs-migrating-existing-spasf-9-e-6de": [
+    "/content---docs-migrating-existing-spasf-9-e-6de.310dd12dc6c2a297db0e.js"
+  ],
+  "metadata---docs-migrating-existing-spas-7-b-1-012": [
+    "/metadata---docs-migrating-existing-spas-7-b-1-012.677931d09eb9c44e9b7f.js"
   ],
   "content---docs-parcels-overviewe-6-e-e48": [
-    "/content---docs-parcels-overviewe-6-e-e48.3b859ac7252066bf7ce1.js"
+    "/content---docs-parcels-overviewe-6-e-e48.6701c74b18880b280162.js"
   ],
   "metadata---docs-parcels-overview-3-f-9-79c": [
-    "/metadata---docs-parcels-overview-3-f-9-79c.385ebfdb8817cf67c93e.js"
+    "/metadata---docs-parcels-overview-3-f-9-79c.947ab9150458cb4e34d4.js"
+  ],
+  "content---docs-parcels-api-6-c-0-1a0": [
+    "/content---docs-parcels-api-6-c-0-1a0.c0b81d800cae502fc4fb.js"
+  ],
+  "metadata---docs-parcels-api-8-ae-c2a": [
+    "/metadata---docs-parcels-api-8-ae-c2a.6f7ac27f0751c6a3f587.js"
   ],
   "content---docs-separating-applications-311-636": [
     "/content---docs-separating-applications-311-636.0624a5c89dfe6c1ca1a5.js"
