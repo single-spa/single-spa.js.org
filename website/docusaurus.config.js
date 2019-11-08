@@ -49,11 +49,6 @@ module.exports = {
               label: 'API Reference',
               to: 'docs/api',
             },
-            {
-              label: 'Contribution Guide',
-              html: '<a href="#">123</a>',
-              to: 'docs/contributing-overview',
-            },
           ],
         },
         {
