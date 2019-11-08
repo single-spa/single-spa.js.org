@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const normalizeUrl = require('@docusaurus/utils').normalizeUrl;
 
 const DEFAULT_OPTIONS = {
   excludedPaths: [],
@@ -21,7 +22,7 @@ module.exports = function(context, opts) {
           return;
         }
 
-        const newLink = siteConfig.url + routesPath + '/';
+        const newLink = normalizeUrl([siteConfig.url, routesPath]);
         const fileName = path.basename(routesPath);
         const filePath = path.dirname(routesPath);
         const htmlContent = `
