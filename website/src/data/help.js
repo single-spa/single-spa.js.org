@@ -1,7 +1,7 @@
 const supportLinks = [
   {
     content:
-      'Learn more about single-spa using the [official docs](docs/building-applications/)',
+      'Learn more about single-spa using the [official docs](/docs/building-applications/)',
     title: 'Browse Docs',
   },
   {
