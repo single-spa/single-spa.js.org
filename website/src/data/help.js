@@ -1,7 +1,7 @@
 const supportLinks = [
   {
     content:
-      'Learn more about single-spa using the [official docs](docs/building-applications)',
+      'Learn more about single-spa using the [official docs](docs/building-applications/)',
     title: 'Browse Docs',
   },
   {
@@ -16,7 +16,7 @@ const supportLinks = [
   },
   {
     content:
-      "Paid, hands-on consulting with a single-spa core team member is available. Our [core team members](/contributors.html) have done this before and can help you set up single-spa. Services range from a one hour debugging session to an ongoing relationship while you're seeing your project to completion. Inquire at singlespa.info@gmail.com.",
+      "Paid, hands-on consulting with a single-spa core team member is available. Our [core team members](/contributors/) have done this before and can help you set up single-spa. Services range from a one hour debugging session to an ongoing relationship while you're seeing your project to completion. Inquire at singlespa.info@gmail.com.",
     title: 'Phone call / Consulting',
   },
   {

@@ -17,7 +17,7 @@ export const Showcase = ({ showAll }) => {
   ).map((user, i) => {
     return (
       <a key={i} className={styles.showcaseLogo} href={user.infoLink}>
-        <img src={user.image} title={user.caption} />
+        <img src={useBaseUrl(user.image)} title={user.caption} />
       </a>
     );
   });

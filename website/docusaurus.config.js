@@ -39,15 +39,15 @@ module.exports = {
           items: [
             {
               label: 'FAQ',
-              to: 'docs/faq',
+              to: 'docs/faq/',
             },
             {
               label: 'Getting Started',
-              to: 'docs/getting-started-overview',
+              to: 'docs/getting-started-overview/',
             },
             {
               label: 'API Reference',
-              to: 'docs/api',
+              to: 'docs/api/',
             },
           ],
         },
@@ -56,11 +56,11 @@ module.exports = {
           items: [
             {
               label: 'User Showcase',
-              to: 'users',
+              to: 'users/',
             },
             {
               label: 'Contributors',
-              to: 'contributors',
+              to: 'contributors/',
             },
             {
               label: 'Chat in Slack',
@@ -86,7 +86,7 @@ module.exports = {
             },
             {
               label: 'Blog',
-              to: 'blog',
+              to: 'blog/',
             },
           ],
         },
@@ -100,10 +100,10 @@ module.exports = {
         src: 'img/logo-white-bgblue.svg',
       },
       links: [
-        { to: 'docs/faq', label: 'FAQ' },
-        { to: 'docs', label: 'Docs' },
-        { to: 'help', label: 'Help' },
-        { to: 'blog', label: 'Blog' },
+        { to: 'docs/faq/', label: 'FAQ' },
+        { to: 'docs/', label: 'Docs' },
+        { to: 'help/', label: 'Help' },
+        { to: 'blog/', label: 'Blog' },
         { href: 'https://opencollective.com/single-spa', label: 'Donate' },
         { href: 'https://github.com/CanopyTax/single-spa', label: 'GitHub' },
       ],
