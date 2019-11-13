@@ -101,11 +101,12 @@ CRA does not allow you to change those items without ejecting or using another t
 Single spa supports code splits. There are so many ways to code split we won't be able to cover them all, but if you're using the [recommended setup](#is-there-a-recommended-setup) with webpack you'll need to do at least two things:
 
 1. Set the [`__webpack_public_path__`](https://webpack.js.org/guides/public-path/#on-the-fly) dynamically so webpack knows where to fetch your code splits (webpack assumes they are located at the root of the server and that isn't always true in a single-spa application). Both solutions below should be the very first import of your application in order to work.
-    * For SystemJS >= 6:
-      ```js
-        const url = System.resolve("module-name");
-        __webpack_public_path__ = url.slice(0, url.lastIndexOf("/") + 1);
-      ```
+    * For SystemJS >= 6, use [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop):
+    ```js
+    import { setPublicPath } from 'systemjs-webpack-interop';
+    
+    setPublicPath('name-of-module-in-import-map');
+    ```
 
     * For SystemJS 2-5: Find a code example [here](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3)
 1. Set either [`output.jsonpFunction`](https://webpack.js.org/configuration/output/#outputjsonpfunction) or [`output.library`](https://webpack.js.org/configuration/output/#outputlibrary) to ensure that each app's webpack doesn't collide with other apps' webpack. `jsonpFunction` is preferred.
