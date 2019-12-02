@@ -110,3 +110,18 @@ Single spa supports code splits. There are so many ways to code split we won't b
 
     * For SystemJS 2-5: Find a code example [here](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3)
 1. Set either [`output.jsonpFunction`](https://webpack.js.org/configuration/output/#outputjsonpfunction) or [`output.library`](https://webpack.js.org/configuration/output/#outputlibrary) to ensure that each app's webpack doesn't collide with other apps' webpack. `jsonpFunction` is preferred.
+
+## Does single-spa require additional security considerations?
+
+No. single-spa does not add, deviate, or attempt to bypass any browser JavaScript security measures. The security needs of your applications are the same as if you did not use single-spa.
+
+Outside of that, web applications may use the following resources that have their own security considerations that you may need to become familiar with.
+
+- [ES6 module dynamic imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+  - Webpack-based applications use [Webpack's implementation of dynamic imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports)
+- [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+  - module imports specifically relate to [CSP `script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)
+- Import-maps are also governed by CSP
+  - See also ["Supplying out-of-band metadata for each module"](https://github.com/WICG/import-maps/blob/master/README.md#supplying-out-of-band-metadata-for-each-module)
+  - See also [import-maps script “integrity” attribute](https://github.com/WICG/import-maps/issues/174)
