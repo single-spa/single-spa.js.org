@@ -43,7 +43,7 @@ Example usage when installed via CDN:
 
 ```js
 const webComponentApp = window.singleSpaHtml.default({
-  template: '<x-my-web-component></x-my-web-component>',
+  template: props => `<x-my-web-component attr="${props.attr}"></x-my-web-component>`,
 })
 
 singleSpa.registerApplication('name', webComponentApp, () => true)
@@ -51,6 +51,6 @@ singleSpa.registerApplication('name', webComponentApp, () => true)
 
 ## API / Options
 single-spa-html is called with an object that has the following properties:
-- `template` (required): An HTML string that will be injected into the DOM during the single-spa mount lifecycle.
+- `template` (required): An HTML string or a function that returns a string. The function will be called with the single-spa custom props. The returned string is injected into the DOM during the single-spa mount lifecycle.
 - `domElementGetter` (optional): A function that returns the dom element container into which the HTML will be injected. If omitted,
   a default implementation is provided that wraps the template in a `<div>` that is appended to `document.body`.
