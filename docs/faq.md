@@ -115,13 +115,14 @@ Single spa supports code splits. There are so many ways to code split we won't b
 
 No. single-spa does not add, deviate, or attempt to bypass any browser JavaScript security measures. The security needs of your applications are the same as if you did not use single-spa.
 
-Outside of that, web applications may use the following resources that have their own security considerations that you may need to become familiar with.
+Outside of that, web applications may use the following resources that have their own security considerations that you may need to become familiar with:
 
 - [ES6 module dynamic imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
   - Webpack-based applications use [Webpack's implementation of dynamic imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports)
 - [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
-- [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+- [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#Threats)
   - module imports specifically relate to [CSP `script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)
-- Import-maps are also governed by CSP
-  - See also ["Supplying out-of-band metadata for each module"](https://github.com/WICG/import-maps/blob/master/README.md#supplying-out-of-band-metadata-for-each-module)
+- [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity#How_Subresource_Integrity_helps)
   - See also [import-maps script “integrity” attribute](https://github.com/WICG/import-maps/issues/174)
+- Import-maps are also governed by CSP
+  - See also ["Supplying out-of-band metadata for each module"](https://github.com/WICG/import-maps/blb/master/README.md#supplying-out-of-band-metadata-for-each-module)
