@@ -1,7 +1,7 @@
 {
   "main": [
     "/main.e444e50fd8efc1bf8bed.css",
-    "/main.f8a80ace6ae023d38f11.js"
+    "/main.37a0c0978b1558cfe3df.js"
   ],
   "component---site-src-pages-index-jsc-4-f-f99": [
     "/component---site-src-pages-index-jsc-4-f-f99.416288ee7f3b354f9a2e.css",
@@ -13,10 +13,10 @@
   ],
   "component---site-src-pages-docs-index-jsa-58-886": [
     "/component---site-src-pages-docs-index-jsa-58-886.67918ac33c99516fde03.css",
-    "/component---site-src-pages-docs-index-jsa-58-886.1583f5016ebe582a7b61.js"
+    "/component---site-src-pages-docs-index-jsa-58-886.c81bcb3cee3b06885d42.js"
   ],
   "component---site-src-pages-help-index-js-78-e-dbe": [
-    "/component---site-src-pages-help-index-js-78-e-dbe.6ae4d498a56b20c169f0.js"
+    "/component---site-src-pages-help-index-js-78-e-dbe.5461894779ff446a2bbf.js"
   ],
   "component---site-src-pages-users-index-jse-74-883": [
     "/component---site-src-pages-users-index-jse-74-883.d34aa0b70e14f52aaafb.css",
@@ -50,214 +50,214 @@
   "content---blog-2016-02-26-a-case-for-soa-in-the-browserd-3-d-4d9": [
     "/content---blog-2016-02-26-a-case-for-soa-in-the-browserd-3-d-4d9.586602935c9206d66c7e.js"
   ],
+  "component---theme-blog-list-pagea-6-a-7ba": [
+    "/component---theme-blog-list-pagea-6-a-7ba.42d18faa279882580cbb.css",
+    "/component---theme-blog-list-pagea-6-a-7ba.d6b4937bc689f3ab91ba.js"
+  ],
+  "content---blog-6-cb-21e": [
+    "/content---blog-6-cb-21e.45b8012224f24d45fe19.js"
+  ],
+  "content---blog-674-370": [
+    "/content---blog-674-370.3123602acf3ca22c4659.js"
+  ],
+  "content---blog-6-c-1-592": [
+    "/content---blog-6-c-1-592.80c9565fef6aa923fa63.js"
+  ],
+  "content---blog-88-a-52e": [
+    "/content---blog-88-a-52e.2bae33a8953c094bbe51.js"
+  ],
+  "metadata---blog-1-a-9-d63": [
+    "/metadata---blog-1-a-9-d63.20fa9cefc16afabf903b.js"
+  ],
   "component---theme-doc-page-1-be-9be": [
     "/component---theme-doc-page-1-be-9be.a7dc664af81736e8f518.css",
-    "/component---theme-doc-page-1-be-9be.fe5f1a5f9d8e30930b27.js"
+    "/component---theme-doc-page-1-be-9be.dd6b405bb7c5109dcff8.js"
   ],
   "docsMetadata---docs-1-da-721": [
-    "/docsMetadata---docs-1-da-721.555349d574c9e3fef455.js"
+    "/docsMetadata---docs-1-da-721.c79808c4bdb0a66fc285.js"
   ],
   "component---theme-doc-item-178-a40": [
     "/component---theme-doc-item-178-a40.de2648345892298aff25.css",
-    "/component---theme-doc-item-178-a40.9bdefc7ea85bc296c543.js"
+    "/component---theme-doc-item-178-a40.a9f896d8c9ea79821f8d.js"
   ],
   "content---docs-code-of-conduct-185-4d2": [
-    "/content---docs-code-of-conduct-185-4d2.f058f528a015f98d0b27.js"
+    "/content---docs-code-of-conduct-185-4d2.21258d66ec30445ce534.js"
   ],
   "metadata---docs-code-of-conduct-840-c7d": [
-    "/metadata---docs-code-of-conduct-840-c7d.ad3c90b3c13f4ba7823a.js"
-  ],
-  "content---docs-building-applications-97-b-9f1": [
-    "/content---docs-building-applications-97-b-9f1.dc6c3b6132c172c12a94.js"
-  ],
-  "metadata---docs-building-applications-157-489": [
-    "/metadata---docs-building-applications-157-489.0e84392bb401da2c2947.js"
-  ],
-  "content---docs-contributing-overviewe-1-a-aa0": [
-    "/content---docs-contributing-overviewe-1-a-aa0.5635921cb82f8ea06053.js"
-  ],
-  "metadata---docs-contributing-overviewe-26-1a2": [
-    "/metadata---docs-contributing-overviewe-26-1a2.842d2eb117c1fa4fedb8.js"
+    "/metadata---docs-code-of-conduct-840-c7d.4a96b8fa219b59ff4bf9.js"
   ],
   "content---docs-apie-11-7be": [
-    "/content---docs-apie-11-7be.144448f88ac2f0afbf3a.js"
+    "/content---docs-apie-11-7be.d3db63050c294fc330c6.js"
   ],
   "metadata---docs-apicaf-9e4": [
-    "/metadata---docs-apicaf-9e4.957e8cdeb5f8eeefb1e9.js"
+    "/metadata---docs-apicaf-9e4.5cc81d7d618e9fa02c57.js"
   ],
-  "content---docs-ecosystem-angular-3-b-8-9f5": [
-    "/content---docs-ecosystem-angular-3-b-8-9f5.bfc01e930fac2e449fdb.js"
+  "content---docs-contributing-overviewe-1-a-aa0": [
+    "/content---docs-contributing-overviewe-1-a-aa0.c479833c98500b3ada2b.js"
   ],
-  "metadata---docs-ecosystem-angularee-8-e87": [
-    "/metadata---docs-ecosystem-angularee-8-e87.9b1dc1a95f8a2a911f11.js"
+  "metadata---docs-contributing-overviewe-26-1a2": [
+    "/metadata---docs-contributing-overviewe-26-1a2.7ea4c72467986db7a062.js"
   ],
-  "content---docs-ecosystem-cycle-1-f-0-4d9": [
-    "/content---docs-ecosystem-cycle-1-f-0-4d9.23cc835ebe2cae08af68.js"
+  "content---docs-building-applications-97-b-9f1": [
+    "/content---docs-building-applications-97-b-9f1.d1202ffb75cc3712c578.js"
   ],
-  "metadata---docs-ecosystem-cycle-5-cd-b7c": [
-    "/metadata---docs-ecosystem-cycle-5-cd-b7c.b1826e1be48c65a0e7d4.js"
-  ],
-  "content---docs-ecosystem-backbonec-1-a-596": [
-    "/content---docs-ecosystem-backbonec-1-a-596.9a7a23f5c645fb79a227.js"
-  ],
-  "metadata---docs-ecosystem-backbonedaf-445": [
-    "/metadata---docs-ecosystem-backbonedaf-445.ebd0f28553b8e79fda08.js"
+  "metadata---docs-building-applications-157-489": [
+    "/metadata---docs-building-applications-157-489.c0d954da179fac6ef86d.js"
   ],
   "content---docs-ecosystem-angularjseb-3-600": [
-    "/content---docs-ecosystem-angularjseb-3-600.cc89909c2e3c6c97b623.js"
+    "/content---docs-ecosystem-angularjseb-3-600.cd39a3caad0c98a37e4d.js"
   ],
   "metadata---docs-ecosystem-angularjsda-0-5d2": [
-    "/metadata---docs-ecosystem-angularjsda-0-5d2.5e0689ff13c2bf8d982e.js"
+    "/metadata---docs-ecosystem-angularjsda-0-5d2.d2e75d30601221320ea4.js"
+  ],
+  "content---docs-ecosystem-backbonec-1-a-596": [
+    "/content---docs-ecosystem-backbonec-1-a-596.10e910602bf5ff7c5913.js"
+  ],
+  "metadata---docs-ecosystem-backbonedaf-445": [
+    "/metadata---docs-ecosystem-backbonedaf-445.a677b42962c2641a50ae.js"
+  ],
+  "content---docs-ecosystem-angular-3-b-8-9f5": [
+    "/content---docs-ecosystem-angular-3-b-8-9f5.e4fe540ed9ce54a71233.js"
+  ],
+  "metadata---docs-ecosystem-angularee-8-e87": [
+    "/metadata---docs-ecosystem-angularee-8-e87.32e7aceb748e3a569eef.js"
+  ],
+  "content---docs-ecosystem-cycle-1-f-0-4d9": [
+    "/content---docs-ecosystem-cycle-1-f-0-4d9.801e15c2dda3b4f5aa2c.js"
+  ],
+  "metadata---docs-ecosystem-cycle-5-cd-b7c": [
+    "/metadata---docs-ecosystem-cycle-5-cd-b7c.5b0c887939915e9e714b.js"
   ],
   "content---docs-ecosystem-ember-324-f31": [
-    "/content---docs-ecosystem-ember-324-f31.26dd76dd50ff950f2893.js"
+    "/content---docs-ecosystem-ember-324-f31.77d5f2e439c7322ec2e9.js"
   ],
   "metadata---docs-ecosystem-ember-65-c-95e": [
-    "/metadata---docs-ecosystem-ember-65-c-95e.e3a16bffd87919bbd93d.js"
+    "/metadata---docs-ecosystem-ember-65-c-95e.f4709a8547cd9b841f15.js"
   ],
   "content---docs-ecosystem-html-web-components-335-80c": [
-    "/content---docs-ecosystem-html-web-components-335-80c.9648e6f21fdf16184f96.js"
+    "/content---docs-ecosystem-html-web-components-335-80c.0117bb6cd6bb143ae637.js"
   ],
   "metadata---docs-ecosystem-html-web-components-935-ac5": [
-    "/metadata---docs-ecosystem-html-web-components-935-ac5.4fddce68d6c1398db8dd.js"
-  ],
-  "content---docs-ecosystem-inferno-514-6d6": [
-    "/content---docs-ecosystem-inferno-514-6d6.97a54be289c62e5c377d.js"
-  ],
-  "metadata---docs-ecosystem-infernoec-3-dc0": [
-    "/metadata---docs-ecosystem-infernoec-3-dc0.5be6a67617b94383535a.js"
+    "/metadata---docs-ecosystem-html-web-components-935-ac5.19662b4592f3b49e37c7.js"
   ],
   "content---docs-ecosystem-leaked-globals-440-618": [
-    "/content---docs-ecosystem-leaked-globals-440-618.cb61a7ee5900e8f469f7.js"
+    "/content---docs-ecosystem-leaked-globals-440-618.f55301a22707653fc46a.js"
   ],
   "metadata---docs-ecosystem-leaked-globals-6-c-1-add": [
-    "/metadata---docs-ecosystem-leaked-globals-6-c-1-add.950f9ef5a3b1d4d5faf1.js"
+    "/metadata---docs-ecosystem-leaked-globals-6-c-1-add.5a3ab9a2090724078d1a.js"
   ],
-  "content---docs-ecosystem-preact-6-cf-f25": [
-    "/content---docs-ecosystem-preact-6-cf-f25.1a5783d8a138be623af4.js"
+  "content---docs-ecosystem-inferno-514-6d6": [
+    "/content---docs-ecosystem-inferno-514-6d6.0b54da5c5855f0429448.js"
   ],
-  "metadata---docs-ecosystem-preact-0-f-7-d0f": [
-    "/metadata---docs-ecosystem-preact-0-f-7-d0f.f44a4ec8d8083a59f086.js"
+  "metadata---docs-ecosystem-infernoec-3-dc0": [
+    "/metadata---docs-ecosystem-infernoec-3-dc0.c97b8f494d456dbe856a.js"
   ],
   "content---docs-ecosystem-reacte-0-e-e70": [
-    "/content---docs-ecosystem-reacte-0-e-e70.60eec6b835240726ccde.js"
+    "/content---docs-ecosystem-reacte-0-e-e70.d5aca0bd1f3107fe5183.js"
   ],
   "metadata---docs-ecosystem-react-158-cae": [
-    "/metadata---docs-ecosystem-react-158-cae.900960302ff79057d880.js"
+    "/metadata---docs-ecosystem-react-158-cae.aff5b9d9ee54bf37b0e4.js"
+  ],
+  "content---docs-ecosystem-preact-6-cf-f25": [
+    "/content---docs-ecosystem-preact-6-cf-f25.d5668fc78c94760de756.js"
+  ],
+  "metadata---docs-ecosystem-preact-0-f-7-d0f": [
+    "/metadata---docs-ecosystem-preact-0-f-7-d0f.c2c8b33bdd4476f285fc.js"
   ],
   "content---docs-ecosystem-riotf-49-42d": [
-    "/content---docs-ecosystem-riotf-49-42d.a2c8825f51637b58f0cf.js"
+    "/content---docs-ecosystem-riotf-49-42d.34974c0026f80489510c.js"
   ],
   "metadata---docs-ecosystem-riotbba-3fc": [
-    "/metadata---docs-ecosystem-riotbba-3fc.63faf87a611cc38f125f.js"
-  ],
-  "content---docs-ecosystem-svelte-482-bd1": [
-    "/content---docs-ecosystem-svelte-482-bd1.f0559fe89a05500cd3a2.js"
-  ],
-  "metadata---docs-ecosystem-sveltea-41-709": [
-    "/metadata---docs-ecosystem-sveltea-41-709.5cec4edde783052b2496.js"
+    "/metadata---docs-ecosystem-riotbba-3fc.04b75ca28db2552f994d.js"
   ],
   "content---docs-ecosystem-vue-62-d-39f": [
-    "/content---docs-ecosystem-vue-62-d-39f.eb926bb504fd81f61cee.js"
+    "/content---docs-ecosystem-vue-62-d-39f.92b742f562534de64b63.js"
   ],
   "metadata---docs-ecosystem-vue-5-c-4-551": [
-    "/metadata---docs-ecosystem-vue-5-c-4-551.4545f2d643d8e64f8770.js"
+    "/metadata---docs-ecosystem-vue-5-c-4-551.f484e7cf9018a0b1c435.js"
+  ],
+  "content---docs-ecosystem-svelte-482-bd1": [
+    "/content---docs-ecosystem-svelte-482-bd1.653b252daa8414ad84a0.js"
+  ],
+  "metadata---docs-ecosystem-sveltea-41-709": [
+    "/metadata---docs-ecosystem-sveltea-41-709.48734f26941872b1e9bb.js"
   ],
   "content---docs-ecosystem-3-dc-485": [
-    "/content---docs-ecosystem-3-dc-485.d39d7558478734b98146.js"
+    "/content---docs-ecosystem-3-dc-485.5d7b06face505332d8f3.js"
   ],
   "metadata---docs-ecosystem-0-bd-b26": [
-    "/metadata---docs-ecosystem-0-bd-b26.21ed155b95f7f1e4e58c.js"
-  ],
-  "content---docs-faq-3-d-7-e27": [
-    "/content---docs-faq-3-d-7-e27.c06c24bca8135f2b3329.js"
-  ],
-  "metadata---docs-faq-431-8a6": [
-    "/metadata---docs-faq-431-8a6.135feead6cf4344f2ca0.js"
+    "/metadata---docs-ecosystem-0-bd-b26.59f928d42e4ccd56a7e5.js"
   ],
   "content---docs-examplesd-66-9e6": [
-    "/content---docs-examplesd-66-9e6.19ba2da039c1eefe544f.js"
+    "/content---docs-examplesd-66-9e6.c30f3e17459c8cb2eec0.js"
   ],
   "metadata---docs-examples-2-d-5-8e0": [
-    "/metadata---docs-examples-2-d-5-8e0.c4d88de058449020d2ba.js"
+    "/metadata---docs-examples-2-d-5-8e0.06314d24a61d85f70f98.js"
   ],
   "content---docs-getting-started-overview-15-e-62d": [
-    "/content---docs-getting-started-overview-15-e-62d.5965d8c24925b5e90969.js"
+    "/content---docs-getting-started-overview-15-e-62d.3bd5cb4420b265e03b73.js"
   ],
   "metadata---docs-getting-started-overview-327-b6b": [
-    "/metadata---docs-getting-started-overview-327-b6b.0295598bb4864b12214d.js"
+    "/metadata---docs-getting-started-overview-327-b6b.575dfe6c970feba88b9e.js"
+  ],
+  "content---docs-faq-3-d-7-e27": [
+    "/content---docs-faq-3-d-7-e27.6412b1ae8a9d26857b55.js"
+  ],
+  "metadata---docs-faq-431-8a6": [
+    "/metadata---docs-faq-431-8a6.15237ddc852111670933.js"
   ],
   "content---docs-glossary-317-1b9": [
-    "/content---docs-glossary-317-1b9.bfd61c0d7d9c0b008aaf.js"
+    "/content---docs-glossary-317-1b9.fcae0180b43ed6ee7309.js"
   ],
   "metadata---docs-glossarya-80-727": [
-    "/metadata---docs-glossarya-80-727.180ee0433c6074c0aca7.js"
+    "/metadata---docs-glossarya-80-727.b06a89a2f257484ef64c.js"
   ],
   "content---docs-migrating-angular-js-tutorial-232-183": [
-    "/content---docs-migrating-angular-js-tutorial-232-183.489ad352c57a3da8f379.js"
+    "/content---docs-migrating-angular-js-tutorial-232-183.05f092c3043866e09ce5.js"
   ],
   "metadata---docs-migrating-angular-js-tutorial-4-bc-b7f": [
-    "/metadata---docs-migrating-angular-js-tutorial-4-bc-b7f.b7b630bd8fc676d05a51.js"
+    "/metadata---docs-migrating-angular-js-tutorial-4-bc-b7f.5468e5b03ae55bbdb505.js"
   ],
   "content---docs-migrating-existing-spasf-9-e-6de": [
-    "/content---docs-migrating-existing-spasf-9-e-6de.346f53fbbccbfb94e34c.js"
+    "/content---docs-migrating-existing-spasf-9-e-6de.ecdaa0b9f372707446fd.js"
   ],
   "metadata---docs-migrating-existing-spas-7-b-1-012": [
-    "/metadata---docs-migrating-existing-spas-7-b-1-012.6923f1c9a094bdcf359b.js"
+    "/metadata---docs-migrating-existing-spas-7-b-1-012.44b7defbff351146c60c.js"
   ],
   "content---docs-migrating-react-tutorialf-77-88c": [
-    "/content---docs-migrating-react-tutorialf-77-88c.9d8ea4f626cabd118c33.js"
+    "/content---docs-migrating-react-tutorialf-77-88c.8a4f8482882b752d620e.js"
   ],
   "metadata---docs-migrating-react-tutorial-439-9f4": [
-    "/metadata---docs-migrating-react-tutorial-439-9f4.bc350991c0d864171c0e.js"
+    "/metadata---docs-migrating-react-tutorial-439-9f4.a5ccb83703ca6f15ad98.js"
   ],
   "content---docs-parcels-api-6-c-0-1a0": [
-    "/content---docs-parcels-api-6-c-0-1a0.15342bd1cbc762e901c3.js"
+    "/content---docs-parcels-api-6-c-0-1a0.8dd886b11a24238f0a56.js"
   ],
   "metadata---docs-parcels-api-8-ae-c2a": [
-    "/metadata---docs-parcels-api-8-ae-c2a.e2688542c46699f9a7cf.js"
+    "/metadata---docs-parcels-api-8-ae-c2a.5d15d65dd76ff8ca5cac.js"
   ],
   "content---docs-parcels-overviewe-6-e-e48": [
-    "/content---docs-parcels-overviewe-6-e-e48.19873ecbccaeae7a51c1.js"
+    "/content---docs-parcels-overviewe-6-e-e48.3b859ac7252066bf7ce1.js"
   ],
   "metadata---docs-parcels-overview-3-f-9-79c": [
-    "/metadata---docs-parcels-overview-3-f-9-79c.09e21277845311f0760a.js"
+    "/metadata---docs-parcels-overview-3-f-9-79c.385ebfdb8817cf67c93e.js"
   ],
   "content---docs-separating-applications-311-636": [
-    "/content---docs-separating-applications-311-636.4a56e154a7f554f9974f.js"
+    "/content---docs-separating-applications-311-636.0624a5c89dfe6c1ca1a5.js"
   ],
   "metadata---docs-separating-applicationseaf-a7e": [
-    "/metadata---docs-separating-applicationseaf-a7e.2cb847e7cee296fd0da2.js"
+    "/metadata---docs-separating-applicationseaf-a7e.fb2d8cc89911beec68b8.js"
   ],
   "content---docs-configuration-87-e-768": [
-    "/content---docs-configuration-87-e-768.f4af8b7673135604194b.js"
+    "/content---docs-configuration-87-e-768.894ce8c8044ec92c6d83.js"
   ],
   "metadata---docs-configuration-72-d-a84": [
-    "/metadata---docs-configuration-72-d-a84.73ea980b34c5ad07983d.js"
+    "/metadata---docs-configuration-72-d-a84.d8aca9e0935134337a93.js"
   ],
   "content---docs-starting-from-scratchf-9-c-9e7": [
-    "/content---docs-starting-from-scratchf-9-c-9e7.f93c1ecc796789049275.js"
+    "/content---docs-starting-from-scratchf-9-c-9e7.87a6dab0adb6cefa333c.js"
   ],
   "metadata---docs-starting-from-scratchc-35-fcd": [
-    "/metadata---docs-starting-from-scratchc-35-fcd.69a7691c7a04984fca0f.js"
-  ],
-  "component---theme-blog-list-pagea-6-a-7ba": [
-    "/component---theme-blog-list-pagea-6-a-7ba.42d18faa279882580cbb.css",
-    "/component---theme-blog-list-pagea-6-a-7ba.02a15922b1123ec5f7c9.js"
-  ],
-  "content---blog-6-cb-21e": [
-    "/content---blog-6-cb-21e.bfa77f620929756d0bd9.js"
-  ],
-  "content---blog-674-370": [
-    "/content---blog-674-370.b58674a82aeef5d48b36.js"
-  ],
-  "content---blog-6-c-1-592": [
-    "/content---blog-6-c-1-592.cfed8ce79c637d62d6ff.js"
-  ],
-  "content---blog-88-a-52e": [
-    "/content---blog-88-a-52e.f0a00ddcf0f8e90e9bec.js"
-  ],
-  "metadata---blog-1-a-9-d63": [
-    "/metadata---blog-1-a-9-d63.9afba5377ea7d5ee988e.js"
+    "/metadata---docs-starting-from-scratchc-35-fcd.6f06d2c561969676801c.js"
   ]
 }
