@@ -24,6 +24,7 @@ The CLI Plugin does the following for you:
 1) Modify your webpack config so that your project works as a single-spa application or parcel.
 2) Install [single-spa-vue](https://github.com/CanopyTax/single-spa-vue).
 3) Modify your `main.js` or `main.ts` file so that your project works as a single-spa application or parcel.
+4) Add a `set-public-path.js` that will use `systemjs-webpack-interop` in order to set the public path of your application.
 
 ### Without Vue CLI
 ```sh
@@ -34,9 +35,23 @@ Alternatively, you can use  single-spa-vue by adding `<script src="https://unpkg
 accessing the `singleSpaVue` global variable.
 
 ## Usage
+Install `systemjs-webpack-interop` if you have not already done so.
+
+`npm install systemjs-webpack-interop -S`
+
+Create a file at the same level as your `main.js/ts` called `set-public-path.js` 
+
+```js
+import { setPublicPath } from 'systemjs-webpack-interop';
+
+setPublicPath('appName');
+
+```
+
 Change your application's entry file to be the following.
 
 ```js
+import './set-public-path';
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -56,7 +71,8 @@ export const unmount = vueLifecycles.unmount;
 
 ```
 
-Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically.
+Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically and the `set-public-path.js` file
+will automatically be created with the app name being your package.json's name property.
 
 ## Shared dependencies
 For performance, it is best to share a single version and instance of Vue, Vue Router, and other large libraries.
