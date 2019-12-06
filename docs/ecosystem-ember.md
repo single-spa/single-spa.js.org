@@ -4,7 +4,7 @@ title: single-spa-ember
 sidebar_label: Ember
 ---
 
-single-spa-ember is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Ember.js](https://www.emberjs.com/). Check out the [single-spa-ember github](https://github.com/CanopyTax/single-spa-ember).
+single-spa-ember is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Ember.js](https://www.emberjs.com/). Check out the [single-spa-ember github](https://github.com/CanopyTax/single-spa-ember).
 
 It is available on npm as `single-spa-ember`, and also available on bower as `single-spa-ember` in case you want to use it with ember cli and need to use bower.
 

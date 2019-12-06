@@ -23,7 +23,7 @@ singleSpa.registerApplication('appName', () => System.import('appName'), locatio
 
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
 
-> It is described in detail inside of the [single-spa-config.md docs](single-spa-config.md#registering-applications)
+> It is described in detail inside of the [Configuration docs](configuration#registering-applications)
 
 <h3>arguments</h3>
 

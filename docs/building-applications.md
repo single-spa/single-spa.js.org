@@ -4,11 +4,11 @@ title: Building single-spa applications
 sidebar_label: single-spa applications
 ---
 
-A single-spa registered application is everything that a normal SPA is, except that it doesn't have an HTML page. In a single-spa world, your SPA contains many registered applications, where each has its own framework. Registered applications have their own client-side routing and their own frameworks/libraries. They render their own html and have full freedom to do whatever they want, whenever they are *mounted*. The concept of being *mounted* refers to whether a registered application is putting content on the DOM or not. What determines if a registered application is mounted is its [activity function](single-spa-config.md#activity-function). Whenever a registered application is *not mounted*, it should remain completely dormant until mounted.
+A single-spa registered application is everything that a normal SPA is, except that it doesn't have an HTML page. In a single-spa world, your SPA contains many registered applications, where each has its own framework. Registered applications have their own client-side routing and their own frameworks/libraries. They render their own html and have full freedom to do whatever they want, whenever they are *mounted*. The concept of being *mounted* refers to whether a registered application is putting content on the DOM or not. What determines if a registered application is mounted is its [activity function](configuration#activity-function). Whenever a registered application is *not mounted*, it should remain completely dormant until mounted.
 
 ## Creating a registered application
 
-To create a registered application, first [register the application with single-spa](single-spa-config.md#registering-applications). Once registered, the registered application must correctly implement **all** of the following lifecycle functions inside of its main entry point.
+To create a registered application, first [register the application with single-spa](configuration#registering-applications). Once registered, the registered application must correctly implement **all** of the following lifecycle functions inside of its main entry point.
 
 ## Registered application lifecycle
 
@@ -92,7 +92,7 @@ Some helper libraries that implement lifecycle functions for ease of use are ava
 
 ### Load
 
-When registered applications are being lazily loaded, this refers to when the code for a registered application is fetched from the server and executed. This will happen once the registered application's [activity function](single-spa-config.md#activity-function) returns a truthy value for the first time. It is best practice to do as little as possible / nothing at all during `load`, but instead to wait until the bootstrap lifecycle function to do anything. If you need to do something during `load`, simply put the code into a registered application's main entry point, but not inside of an exported function. For example:
+When registered applications are being lazily loaded, this refers to when the code for a registered application is fetched from the server and executed. This will happen once the registered application's [activity function](configuration#activity-function) returns a truthy value for the first time. It is best practice to do as little as possible / nothing at all during `load`, but instead to wait until the bootstrap lifecycle function to do anything. If you need to do something during `load`, simply put the code into a registered application's main entry point, but not inside of an exported function. For example:
 
 ```js
 console.log("The registered application has been loaded!");
@@ -119,7 +119,7 @@ export function bootstrap(props) {
 
 ### Mount
 
-This lifecycle function will be called whenever the registered application is not mounted, but its [activity function](single-spa-config.md#activity-function) returns a truthy value. When called, this function should look at the URL to determine the active route and then create DOM elements, DOM event listeners, etc. to render content to the user. Any subsequent routing events (such as `hashchange` and `popstate`) will **not** trigger more calls to `mount`, but instead should be handled by the application itself.
+This lifecycle function will be called whenever the registered application is not mounted, but its [activity function](configuration#activity-function) returns a truthy value. When called, this function should look at the URL to determine the active route and then create DOM elements, DOM event listeners, etc. to render content to the user. Any subsequent routing events (such as `hashchange` and `popstate`) will **not** trigger more calls to `mount`, but instead should be handled by the application itself.
 
 ```js
 export function mount(props) {
@@ -134,7 +134,7 @@ export function mount(props) {
 
 ### Unmount
 
-This lifecycle function will be called whenever the registered application is mounted, but its [activity function](single-spa-config.md#activity-function) returns a falsy value. When called, this function should clean up all DOM elements, DOM event listeners, leaked memory, globals, observable subscriptions, etc. that were created at any point when the registered application was mounted.
+This lifecycle function will be called whenever the registered application is mounted, but its [activity function](configuration#activity-function) returns a falsy value. When called, this function should clean up all DOM elements, DOM event listeners, leaked memory, globals, observable subscriptions, etc. that were created at any point when the registered application was mounted.
 
 ```js
 export function unmount(props) {

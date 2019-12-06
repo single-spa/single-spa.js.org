@@ -21,7 +21,7 @@ Run `yarn start` from the root directory to fire up the server at [http://localh
 
 ## Step One: Set up the single-spa config
 
-The __single-spa config__ consists of all code that is not part of a [registered application](single-spa-config.md#registeringapplications). Ideally, this only includes an html file and a javascript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications.
+The __single-spa config__ consists of all code that is not part of a [registered application](configuration#registeringapplications). Ideally, this only includes an html file and a javascript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications.
 
 Usually, when using [webpack](https://webpack.js.org/) with React, we recommend setting your __single-spa config__ as the entry point in your *webpack.config.js* ([see also the "Setup Webpack" example](starting-from-scratch.md#1b-setup-webpack)). However, this application was built using [create-react-app](https://github.com/facebook/create-react-app), so we don't have access to the *webpack.config.js* without [ejecting](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject).
 
@@ -41,7 +41,7 @@ registerServiceWorker();
 
 Now that we have prepared *index.js* to function as our __single-spa config__, we can begin to register the application. It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application.
 
-In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](single-spa-config.md#application-name), a [loadingFunction](single-spa-config.md#loading-function-or-application) and an [activityFunction](single-spa-config.md#activity-function).
+In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](configuration#application-name), a [loadingFunction](configuration#loading-function-or-application) and an [activityFunction](configuration#activity-function).
 
 Finally, the [start()](api.md#start) api **must** be called by your `single spa config` in order for applications to actually be mounted. Before `start()` is called, applications will be loaded, but not bootstrapped/mounted/unmounted.
 
@@ -128,7 +128,7 @@ function domElementGetter() {
 
 ## Step Four: Connect to single-spa Config
 
-Head back to the __single-spa config__ in *src/index.js* to add a [loading function](single-spa-config.md#loading-function) for the registered application by importing *root.app.js*.
+Head back to the __single-spa config__ in *src/index.js* to add a [loading function](configuration#loading-function) for the registered application by importing *root.app.js*.
 
 > It is important to note that **you do not have to use a loading function** and instead can simply pass in the application config object directly to the `registerApplication` function. However, with [Webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
 

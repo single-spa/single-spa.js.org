@@ -4,7 +4,7 @@ title: single-spa-preact
 sidebar_label: Preact
 ---
 
-single-spa-preact is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Preact](https://preactjs.com/). Check out the [single-spa-preact github](https://github.com/CanopyTax/single-spa-preact).
+single-spa-preact is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Preact](https://preactjs.com/). Check out the [single-spa-preact github](https://github.com/CanopyTax/single-spa-preact).
 
 ## Installation
 ```sh

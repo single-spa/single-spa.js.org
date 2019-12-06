@@ -192,7 +192,7 @@ Paste in the following HTML markup:
 
 For styling, we will be using the [Materialize](https://materializecss.com/) framework. We can enable all of our applications to access the Materialize library by including the styles and scripts in *index.html*.
 
-Additionally, to enable single-spa, we will need to include a script tag that references [*single-spa.config.js*](single-spa-config.md#indexhtml-file) in *index.html*. We will be adding and populating this file in the next step. Webpack outputs our built code to *dist/* so that will be the path of *single-spa.config.js*.
+Additionally, to enable single-spa, we will need to include a script tag that references [*single-spa.config.js*](configuration#indexhtml-file) in *index.html*. We will be adding and populating this file in the next step. Webpack outputs our built code to *dist/* so that will be the path of *single-spa.config.js*.
 
 <p className="filename">index.html</p>
 
@@ -220,7 +220,7 @@ Additionally, to enable single-spa, we will need to include a script tag that re
 
 ## 3. Registering applications
 
-[Registering applications](single-spa-config.md#registering-applications) is how we tell single-spa when and how to `bootstrap`, `mount`, and `unmount` an application.
+[Registering applications](configuration#registering-applications) is how we tell single-spa when and how to `bootstrap`, `mount`, and `unmount` an application.
 
 Create a new file called *single-spa.config.js* in the root directory. Let's start by registering the `home` application.
 
@@ -249,7 +249,7 @@ The above code needs explanation. In order to register an application with singl
 
 `activityFunction` must be a function that returns a truthy value that represents whether the application should be active, and must be a pure function. The function is provided `window.location` as the first argument. The most common scenario is to determine if an application is active by looking at window.location, but not always. In this case, `home` will be our root application so it will be shown at the root url paths as well as and url pathname that begins with `/home`.
 
-Lastly, we also import the `start` function from the single-spa package and call it in order for applications be mounted. Before `start` is called, applications will be loaded into the browser but not bootstrapped/mounted/unmounted. Learn more about the [start()](single-spa-config.md#calling-singlespastart) api here.
+Lastly, we also import the `start` function from the single-spa package and call it in order for applications be mounted. Before `start` is called, applications will be loaded into the browser but not bootstrapped/mounted/unmounted. Learn more about the [start()](configuration#calling-singlespastart) api here.
 
 ## 4. Create the home application
 
@@ -484,7 +484,7 @@ export default AnimationExample;
 
 ### 4.d Define the loading function
 
-We will now define the [loading function](single-spa-config.md#loading-function) for __home__ in *single-spa.config.js*. 
+We will now define the [loading function](configuration#loading-function) for __home__ in *single-spa.config.js*. 
 
 One way of doing this is by simply passing in an _application config object_ (the `reactLifecycles` functions we built in [Step 4.b](starting-from-scratch.md#b-application-lifecycles) are an example of this) directly to the `registerApplication` function. 
 

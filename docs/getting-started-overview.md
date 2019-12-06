@@ -30,7 +30,7 @@ single-spa apps consist of the following:
 1. [Applications](building-applications.md), each of which is an entire SPA itself (sort of). Each application can respond to url routing events and must know how to bootstrap, mount, and unmount themselves from the DOM. The main difference between a traditional SPA and single-spa applications is that they must be able to coexist with other applications, and they do not each have their own html page.
 
     For example, your React or Angular SPAs are applications. When active, they listen to url routing events and put content on the DOM. When inactive, they do not listen to url routing events and are totally removed from the DOM.
-2. A [single-spa-config](single-spa-config.md), which is the html page _and_ the JavaScript that registers applications with single-spa. Each application is registered with three things:
+2. A [single-spa-config](configuration), which is the html page _and_ the JavaScript that registers applications with single-spa. Each application is registered with three things:
     - A name
     - A function to load the application's code
     - A function that determines when the application is active/inactive
@@ -83,7 +83,7 @@ To create a single-spa application, you will need to do three things:
 </html>
 ```
 
-2. Create a single-spa-config. Check out the [docs](single-spa-config.md) for more detail.
+2. Create a single-spa-config. Check out the [docs](configuration) for more detail.
 
 ```js
 import * as singleSpa from 'single-spa';

@@ -4,7 +4,7 @@ title: single-spa-cycle
 sidebar_label: Cycle
 ---
 
-single-spa-cycle is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Cycle.js](https://cycle.js.org/). Check out the [single-spa-cycle github](https://github.com/pcmnac/single-spa-cycle).
+single-spa-cycle is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Cycle.js](https://cycle.js.org/). Check out the [single-spa-cycle github](https://github.com/pcmnac/single-spa-cycle).
 
 ## Installation
 ```sh

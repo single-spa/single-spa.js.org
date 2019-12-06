@@ -59,7 +59,7 @@ You can get started with parcels immediately, without using the rest of single-s
 
 You can also check out [this codepen example](https://codepen.io/joeldenning/pen/qKVoQg?editors=0010#0) to start out.
 
-And if you are already a user of [single-spa applications](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md), parcels mean that your applications can mount and unmount shared functionality whenever you want them to. Since parcels don’t have [activity functions](https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-config.md#activity-function), you don’t have to set up routes for them.
+And if you are already a user of [single-spa applications](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md), parcels mean that your applications can mount and unmount shared functionality whenever you want them to. Since parcels don’t have [activity functions](https://github.com/CanopyTax/single-spa/blob/master/docs/configuration#activity-function), you don’t have to set up routes for them.
 
 ## Let us know what you think!
 

@@ -47,7 +47,7 @@ function activityFunction(location) {
 The first argument to `registerApplication` must be a string name.
 
 ### Loading Function or Application
-The second argument to `registerApplication` must be either a function that returns a promise [loading function](single-spa-config.md#loading-function) or the resolved Application.
+The second argument to `registerApplication` must be either a function that returns a promise [loading function](configuration#loading-function) or the resolved Application.
 
 #### Application as second argument
 Optionally for the second argument you can use the resolved Application, consisting of an object with the lifecycle methods.

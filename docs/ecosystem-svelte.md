@@ -4,7 +4,7 @@ title: single-spa-svelte
 sidebar_label: Svelte
 ---
 
-single-spa-svelte is a helper library that helps implement [single-spa registered application](single-spa-config.md#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [svelte](https://svelte.technology/). Check out the [single-spa-svelte github](https://github.com/CanopyTax/single-spa-svelte).
+single-spa-svelte is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [svelte](https://svelte.technology/). Check out the [single-spa-svelte github](https://github.com/CanopyTax/single-spa-svelte).
 
 ## Quickstart
 

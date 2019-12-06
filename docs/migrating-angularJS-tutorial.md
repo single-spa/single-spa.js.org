@@ -69,7 +69,7 @@ Add the following `<script>` at the bottom of `index.html`
 
 ## Step Two: Register the application
 
-Now that our application has access to the single-spa library, we can use `window.singleSpa` to call specific functions within the library. In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](single-spa-config.md#application-name), a [loadingFunction](single-spa-config.md#loading-function-or-application) and an [activityFunction](single-spa-config.md#activity-function). 
+Now that our application has access to the single-spa library, we can use `window.singleSpa` to call specific functions within the library. In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](configuration#application-name), a [loadingFunction](configuration#loading-function-or-application) and an [activityFunction](configuration#activity-function). 
 
 Finally, the [start()](api.md#start) api **must** be called by your single spa config in order for applications to actually be mounted. Before `start()` is called, applications will be loaded, but not bootstrapped/mounted/unmounted.
 
