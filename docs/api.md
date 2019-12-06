@@ -433,7 +433,7 @@ singleSpa.setMountMaxTime(3000);
 singleSpa.setMountMaxTime(3000, true);
 
 // don't do a console warning for slow lifecycles until 10 seconds have elapsed
-singleSpa.setBootstrapMaxTime(3000, true, 10000);
+singleSpa.setMountMaxTime(3000, true, 10000);
 ```
 
 Sets the global configuration for mount timeouts.
@@ -467,7 +467,7 @@ singleSpa.setUnmountMaxTime(3000);
 singleSpa.setUnmountMaxTime(3000, true);
 
 // don't do a console warning for slow lifecycles until 10 seconds have elapsed
-singleSpa.setBootstrapMaxTime(3000, true, 10000);
+singleSpa.setUnmountMaxTime(3000, true, 10000);
 ```
 
 Sets the global configuration for unmount timeouts.
