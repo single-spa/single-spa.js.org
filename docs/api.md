@@ -19,7 +19,7 @@ import * as singleSpa from 'single-spa';
 singleSpa.registerApplication('appName', () => System.import('appName'), location => location.pathname.startsWith('appName'))
 ```
 
-`registerApplication` is the most important api your single spa config will use. Use this function to register any application within single-spa.
+`registerApplication` is the most important api your root config will use. Use this function to register any application within single-spa.
 
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
 
