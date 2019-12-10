@@ -19,7 +19,7 @@ import * as singleSpa from 'single-spa';
 singleSpa.registerApplication('appName', () => System.import('appName'), location => location.pathname.startsWith('appName'))
 ```
 
-`registerApplication` is the most important api your single spa config will use. Use this function to register any application within single-spa.
+`registerApplication` is the most important api your root config will use. Use this function to register any application within single-spa.
 
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
 
@@ -343,10 +343,14 @@ Removes the given error handler function.
 ## mountRootParcel
 
 ```js
+// Synchronous mounting
 const parcel = singleSpa.mountRootParcel(parcelConfig, {prop1: 'value1', domElement: document.getElementById('a-div')});
 parcel.mountPromise.then(() => {
 	console.log('finished mounting the parcel!')
 })
+
+// Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
+const parcel2 = singleSpa.mountRootParcel(() => import('./some-parcel.js'), {prop1: 'value1', domElement: document.getElementById('a-div')});
 ```
 
 Will create and mount a [single-spa parcel](parcels-overview.md).
@@ -356,9 +360,9 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 <h3>arguments</h3>
 
 <dl className="args-list">
-	<dt>parcelConfig: ???</dt>
+	<dt>parcelConfig: Object or Loading Function</dt>
 	<dd>[parcelConfig](parcels-api.md#parcel-configuration)</dd>
-	<dt>parcelProps: ???</dt>
+	<dt>parcelProps: Object with a domElement property</dt>
 	<dd>[parcelProps](parcels-api.md#parcel-props)</dd>
 </dl>
 
@@ -396,6 +400,10 @@ singleSpa.setBootstrapMaxTime(3000);
 
 // After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
 singleSpa.setBootstrapMaxTime(3000, true);
+
+// don't do a console warning for slow lifecycles until 10 seconds have elapsed
+singleSpa.setBootstrapMaxTime(3000, true, 10000);
+
 ```
 
 Sets the global configuration for bootstrap timeouts.
@@ -411,6 +419,8 @@ Sets the global configuration for bootstrap timeouts.
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -425,6 +435,9 @@ singleSpa.setMountMaxTime(3000);
 
 // After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
 singleSpa.setMountMaxTime(3000, true);
+
+// don't do a console warning for slow lifecycles until 10 seconds have elapsed
+singleSpa.setMountMaxTime(3000, true, 10000);
 ```
 
 Sets the global configuration for mount timeouts.
@@ -440,6 +453,8 @@ Sets the global configuration for mount timeouts.
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -454,6 +469,9 @@ singleSpa.setUnmountMaxTime(3000);
 
 // After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
 singleSpa.setUnmountMaxTime(3000, true);
+
+// don't do a console warning for slow lifecycles until 10 seconds have elapsed
+singleSpa.setUnmountMaxTime(3000, true, 10000);
 ```
 
 Sets the global configuration for unmount timeouts.
@@ -469,6 +487,8 @@ Sets the global configuration for unmount timeouts.
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
