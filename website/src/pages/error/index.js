@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 
 const r = require.context("../../components/Errors/Codes/", false, /\.js$/)
 
-let URLSearchParams = typeof window !== 'undefined' ? window.URLSearchParams : require('url').URLSearchParams
+const URLSearchParams = typeof window !== 'undefined' ? window.URLSearchParams : require('url').URLSearchParams
 
 function Error(props) {
   const params = new URLSearchParams(props.location.search)
