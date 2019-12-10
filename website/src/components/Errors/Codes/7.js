@@ -1,7 +1,7 @@
 import React from 'react'
 import CodeSnippet from '../CodeSnippet'
 
-export default function ErrorCode6(props) {
+export default function ErrorCode7(props) {
   return (
     <>
       <h1>#7: Loading function resolved with invalid parcel config</h1>
@@ -30,8 +30,8 @@ export default function ErrorCode6(props) {
       <h2>Explanation:</h2>
       <p>
         You can call <a href="/docs/parcels-api#mountparcel">mountParcel</a> and <a href="/docs/parcels-api#mountrootparcel">mountRootParcel</a> with a
-        <a href="">loading function</a> as the first argument. When doing so, the loading function must return a promise that resolves with a valid
-        <a href="">parcel config object</a>.
+        <a href="https://single-spa.js.org/docs/parcels-api#mountparcel">asynchronous loading function</a> as the first argument. When doing so,
+        the loading function must return a promise that resolves with a valid <a href="https://single-spa.js.org/docs/parcels-overview#parcel-configuration">parcel config object</a>.
       </p>
     </>
   )
