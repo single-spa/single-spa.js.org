@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const DEFAULT_OPTIONS = {
-  excludedPaths: [],
+  excludedPaths: ['/error'],
 };
 
 module.exports = function(context, opts) {
