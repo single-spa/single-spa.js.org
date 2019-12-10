@@ -3,7 +3,7 @@ jobs:
   deploy-website:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.11.1
+      - image: circleci/node:12.13.1
     steps:
       - checkout
       - run:
@@ -12,7 +12,21 @@ jobs:
             git config --global user.email "frehner@users.noreply.github.com"
             git config --global user.name "CircleCI on behalf of Anthony Frehner"
             echo "machine github.com login frehner password $GITHUB_TOKEN" > ~/.netrc
-            cd website && yarn install && GIT_USER=frehner yarn deploy
+            cd website
+            yarn install --frozen-lockfile
+            GIT_USER=frehner yarn deploy
+  build-website:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:12.13.1
+    steps:
+      - checkout
+      - run:
+          name: Building
+          command: |
+            cd website 
+            yarn install --frozen-lockfile
+            yarn build
 workflows:
   version: 2
   build_and_deploy:
@@ -21,3 +35,6 @@ workflows:
           filters:
             branches:
               only: master
+  build:
+    jobs:
+      - build-website
