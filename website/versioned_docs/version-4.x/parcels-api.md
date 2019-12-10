@@ -36,7 +36,7 @@ The first argument may be either an object or a function that returns a promise 
 const parcel1 = applicationProps.mountParcel(parcelConfig, parcelProps);
 
 // Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
-const parcel2 = applicationPorps.mountParcel(() => import('./some-parcel'), parcelProps);
+const parcel2 = applicationProps.mountParcel(() => import('./some-parcel'), parcelProps);
 ```
 
 ### mountRootParcel
