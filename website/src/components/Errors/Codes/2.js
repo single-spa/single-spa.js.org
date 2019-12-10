@@ -1,10 +1,10 @@
 import React from 'react'
 import CodeSnippet from '../CodeSnippet'
 
-export default function ErrorCode1() {
+export default function ErrorCode2() {
   return (
     <>
-      <h1>#2: Cannot mount parcel</h1>
+      <h1>#2: Cannot mount parcel - config not provided</h1>
       <p>
         Cannot mount parcel without a config object or config loading function.
       </p>
@@ -13,9 +13,11 @@ export default function ErrorCode1() {
         <p>Raw, framework agnostic code:</p>
         <CodeSnippet>
           {`
-            // Raw, framework agnostic code
+            // The most common root cause of this is that the parcelConfig failed to import correctly
+            import parcelConfig from './some-file';
+
+            console.log('Make sure this is defined!!!', parcelConfig);
             const domElement = document.createElement('div');
-            const parcelConfig = {bootstrap() {...}, mount() {...}, unmount() {...}, update() {...}}
             mountParcel(parcelConfig, {domElement})
           `}
         </CodeSnippet>
@@ -24,9 +26,11 @@ export default function ErrorCode1() {
           {`
             // If you're using react, this means the config prop you passed in is undefined,
             // perhaps because it failed to import correctly.
-            import ParcelConfig from './some-file';
+            import parcelConfig from './some-file';
+            import Parcel from 'single-spa-react/parcel';
 
-            <Parcel config={ParcelConfig} />
+            console.log('Make sure this is defined!!!', parcelConfig);
+            <Parcel config={parcelConfig} />
           `}
         </CodeSnippet>
       </div>

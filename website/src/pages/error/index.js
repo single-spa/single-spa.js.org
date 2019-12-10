@@ -21,16 +21,24 @@ function Error(props) {
 
   const Comp = r(`./${params.get("code")}.js`).default
 
+  const errorCodeArgs = params.getAll("arg")
+
   return (
     <Layout>
       <div
         className="container container--fluid padding-horiz--xl margin-top--xl"
         style={{ marginBottom: '6.8rem' }} // simulate sticky footer
       >
-        <Comp errorCodeArgs={params.getAll("arg")} />
+        <Comp errorCodeArgs={errorCodeArgs} getErrorCodeArg={getErrorCodeArg} />
+        <a href={`https://github.com/CanopyTax/single-spa.js.org/edit/master/website/src/components/Errors/Codes/${params.get("code")}.js`}>Edit this page</a>
       </div>
     </Layout>
   );
+
+  function getErrorCodeArg(index, argName) {
+    const missingArg = argName ? `(${argName})` : `(unknown)`
+    return errorCodeArgs.length > index ? errorCodeArgs[index] : missingArg
+  }
 }
 
 export default Error;
