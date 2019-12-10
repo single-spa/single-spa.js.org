@@ -168,7 +168,7 @@ export function unload(props) {
 
 ## Timeouts
 
-By default, registered applications obey the global dieOnTimeout configuration, but can override that behavior for their specific application. This is done by exporting a `timeouts` object from the main entry point of the registered application. Example:
+By default, registered applications obey the [global timeout configuration](/docs/api#setbootstrapmaxtime), but can override that behavior for their specific application. This is done by exporting a `timeouts` object from the main entry point of the registered application. Example:
 
 <p className="filename">app-1.main-entry.js</p>
 
@@ -181,21 +181,27 @@ export const timeouts = {
   bootstrap: {
     millis: 5000,
     dieOnTimeout: true,
+    warningMillis: 2500,
   },
   mount: {
     millis: 5000,
     dieOnTimeout: false,
+    warningMillis: 2500,
   },
   unmount: {
     millis: 5000,
     dieOnTimeout: true,
+    warningMillis: 2500,
   },
   unload: {
     millis: 5000,
-	dieOnTimeout: true,
+    dieOnTimeout: true,
+    warningMillis: 2500,
   },
 };
 ```
+
+Note that `millis` refers to the number of milliseconds for the final console warning, and `warningMillis` refers to the number of milliseconds at which a warning will be printed to the console (on an interval) leading up to the final console warning.
 
 ## Transitioning between applications
 If you find yourself wanting to add transitions as applications are mounted and unmounted, then you'll probably want to tie into the `bootstrap`, `mount`, and `unmount` lifecycle methods.  This [single-spa transitions](https://github.com/frehner/singlespa-transitions) repo is a small proof-of-concept of how you can tie into these lifecycle methods to add transitions as your apps mount and unmount.
