@@ -33,13 +33,13 @@ module.exports = function(context, opts) {
     <meta charset="UTF-8">
     <script>
         const redirectLink = '${newLink}' + location.search;
-        document.write('\n<meta http-equiv="refresh" content="0; url="' + redirectLink + '">');
-        document.write('\n<link rel="canonical" href="' + redirectLink + '">');
-        document.write('\n<title>Redirecting to ' + redirectLink + '</title>');
-        document.write('\n</head>')
-        document.write('\n<body>')
-        document.write('\nIf you are not redirected automatically, follow this <a href="' + redirectLink + '">link</a>.')
-        document.write('\n</body>')
+        document.write('<meta http-equiv="refresh" content="0; url="' + redirectLink + '">');
+        document.write('<link rel="canonical" href="' + redirectLink + '">');
+        document.write('<title>Redirecting to ' + redirectLink + '</title>');
+        document.write('</head>')
+        document.write('<body>')
+        document.write('If you are not redirected automatically, follow this <a href="' + redirectLink + '">link</a>.')
+        document.write('</body>')
     </script>
 </html>
         `;
