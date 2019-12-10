@@ -29,6 +29,16 @@ const parcelProps = {
 The main advantage to using an applications `mountParcel` function is that parcels mounted via an
 applications `mountParcel` will be automatically unmounted when the application is unmounted.
 
+The first argument may be either an object or a function that returns a promise that resolves with the object (a loading function).
+
+```js
+// Synchronous mounting
+const parcel1 = applicationProps.mountParcel(parcelConfig, parcelProps);
+
+// Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
+const parcel2 = applicationProps.mountParcel(() => import('./some-parcel'), parcelProps);
+```
+
 ### mountRootParcel
 
 The [mountRootParcel](api.md#mountrootparcel) method will mount the parcel but `unmount` must be called manually.

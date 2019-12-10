@@ -343,10 +343,14 @@ Removes the given error handler function.
 ## mountRootParcel
 
 ```js
+// Synchronous mounting
 const parcel = singleSpa.mountRootParcel(parcelConfig, {prop1: 'value1', domElement: document.getElementById('a-div')});
 parcel.mountPromise.then(() => {
 	console.log('finished mounting the parcel!')
 })
+
+// Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
+const parcel2 = singleSpa.mountRootParcel(() => import('./some-parcel.js'), {prop1: 'value1', domElement: document.getElementById('a-div')});
 ```
 
 Will create and mount a [single-spa parcel](parcels-overview.md).
@@ -356,9 +360,9 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 <h3>arguments</h3>
 
 <dl className="args-list">
-	<dt>parcelConfig: ???</dt>
+	<dt>parcelConfig: Object or Loading Function</dt>
 	<dd>[parcelConfig](parcels-api.md#parcel-configuration)</dd>
-	<dt>parcelProps: ???</dt>
+	<dt>parcelProps: Object with a domElement property</dt>
 	<dd>[parcelProps](parcels-api.md#parcel-props)</dd>
 </dl>
 
