@@ -4,14 +4,16 @@
   <head>
     <meta charset="UTF-8">
     <script>
-        const redirectLink = 'https://canopytax.github.io/single-spa.js.org/docs/next/ecosystem-inferno/' + location.search;
-        document.write('<meta http-equiv="refresh" content="0; url="' + redirectLink + '">');
-        document.write('<link rel="canonical" href="' + redirectLink + '">');
-        document.write('<title>Redirecting to ' + redirectLink + '</title>');
-        document.write('</head>')
-        document.write('<body>')
-        document.write('If you are not redirected automatically, follow this <a href="' + redirectLink + '">link</a>.')
-        document.write('</body>')
+      const redirectLink = 'https://canopytax.github.io/single-spa.js.org/docs/next/ecosystem-inferno/' + location.search;
+      document.write('<link rel="canonical" href="' + redirectLink + '">');
+      document.write('<title>Redirecting to ' + redirectLink + '</title>');
+      document.write('</head>')
+      document.write('<body>')
+      document.write('If you are not redirected automatically, follow this <a href="' + redirectLink + '">link</a>.')
+      document.write('</body>')
+      setTimeout(() => {
+        window.location.assign(redirectLink)
+      })
     </script>
 </html>
         
