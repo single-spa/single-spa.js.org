@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const DEFAULT_OPTIONS = {
-  excludedPaths: ['/error/'],
+  excludedPaths: [],
 };
 
 module.exports = function(context, opts) {
@@ -31,13 +31,16 @@ module.exports = function(context, opts) {
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=${newLink}">
-    <link rel="canonical" href="${newLink}">
-    <title>Redirecting to ${newLink}</title>
-  </head>
-  <body>
-    If you are not redirected automatically, follow this <a href="${newLink}">link</a>.
-  </body>
+    <script>
+        const redirectLink = '${newLink}' + location.search;
+        document.write('\n<meta http-equiv="refresh" content="0; url="' + redirectLink + '">');
+        document.write('\n<link rel="canonical" href="' + redirectLink + '">');
+        document.write('\n<title>Redirecting to ' + redirectLink + '</title>');
+        document.write('\n</head>')
+        document.write('\n<body>')
+        document.write('\nIf you are not redirected automatically, follow this <a href="' + redirectLink + '">link</a>.')
+        document.write('\n</body>')
+    </script>
 </html>
         `;
 
