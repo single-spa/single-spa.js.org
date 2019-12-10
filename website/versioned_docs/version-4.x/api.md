@@ -400,10 +400,6 @@ singleSpa.setBootstrapMaxTime(3000);
 
 // After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
 singleSpa.setBootstrapMaxTime(3000, true);
-
-// don't do a console warning for slow lifecycles until 10 seconds have elapsed
-singleSpa.setBootstrapMaxTime(3000, true, 10000);
-
 ```
 
 Sets the global configuration for bootstrap timeouts.
@@ -419,8 +415,6 @@ Sets the global configuration for bootstrap timeouts.
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
-	<dt>warningMillis: number = 1000</dt>
-	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -435,9 +429,6 @@ singleSpa.setMountMaxTime(3000);
 
 // After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
 singleSpa.setMountMaxTime(3000, true);
-
-// don't do a console warning for slow lifecycles until 10 seconds have elapsed
-singleSpa.setMountMaxTime(3000, true, 10000);
 ```
 
 Sets the global configuration for mount timeouts.
@@ -453,8 +444,6 @@ Sets the global configuration for mount timeouts.
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
-	<dt>warningMillis: number = 1000</dt>
-	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -469,9 +458,6 @@ singleSpa.setUnmountMaxTime(3000);
 
 // After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
 singleSpa.setUnmountMaxTime(3000, true);
-
-// don't do a console warning for slow lifecycles until 10 seconds have elapsed
-singleSpa.setUnmountMaxTime(3000, true, 10000);
 ```
 
 Sets the global configuration for unmount timeouts.
@@ -487,8 +473,6 @@ Sets the global configuration for unmount timeouts.
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
-	<dt>warningMillis: number = 1000</dt>
-	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
