@@ -1,8 +1,9 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-// import styles from './styles.module.css';
 
 const r = require.context("../../components/Errors/Codes/", false, /\.js$/)
+
+const URLSearchParams = typeof window !== 'undefined' ? window.URLSearchParams : require('url').URLSearchParams
 
 function Error(props) {
   const params = new URLSearchParams(props.location.search)
