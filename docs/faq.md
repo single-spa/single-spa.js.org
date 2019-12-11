@@ -12,6 +12,7 @@ The applications can all be written in the same framework, or they can be implem
 
 ## Is there a recommended setup?
 We recommend a setup that uses in-browser ES modules + [import maps](#what-are-import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
+
 1. Common libraries are easy to manage, and are only downloaded once. If you're using SystemJS, you can also [preload them](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) for a speed boost as well.
 1. Sharing code / functions / variables is as easy as `import/export`, just like in a monolithic setup
 1. Lazy loading applications is easy, which enables you to speed up initial load times
@@ -104,7 +105,7 @@ Single spa supports code splits. There are so many ways to code split we won't b
     * For SystemJS >= 6, use [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop):
     ```js
     import { setPublicPath } from 'systemjs-webpack-interop';
-    
+
     setPublicPath('name-of-module-in-import-map');
     ```
 
