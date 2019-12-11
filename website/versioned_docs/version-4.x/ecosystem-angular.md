@@ -171,7 +171,7 @@ Example Configuration:
 ```
 
 ##### ng build options
-Configuration options are provided to the `architect.build.options` section of your angular.json. 
+Configuration options are provided to the `architect.build.options` section of your angular.json.
 
 | Name | Description | Default Value |
 | ---- | ----------- | ------------- |
@@ -180,7 +180,7 @@ Configuration options are provided to the `architect.build.options` section of y
 | singleSpaWebpackConfigPath | (optional) Path to partial webpack config to be merged with angular's config. Example: `extra-webpack.config.js` | undefined |
 
 ##### ng serve options
-Configuration options are provided to the `architect.serve.options` section of your angular.json. 
+Configuration options are provided to the `architect.serve.options` section of your angular.json.
 
 | Name | Description | Default Value |
 | ---- | ----------- | ------------- |
@@ -297,7 +297,7 @@ one instance of the ZoneJS library on the page. ZoneJS will throw errors if you 
 The preferred way to do ensure only one instance of ZoneJS is with an
 [import map](http://single-spa-playground.org/playground/html-file) and [webpack externals](https://webpack.js.org/configuration/externals/#root).
 Use the latest version of ZoneJS, even if your Angular applications use an older version. The latest version is backwards compatible all the
-way back to Angular 4 and will let you right new Angular applications with newer versions of Angular.
+way back to Angular 4 and will let you write new Angular applications with newer versions of Angular.
 
 If you have followed the installation instructions correctly, your code is already set up to do all of this.
 
@@ -319,7 +319,7 @@ If you did not use the `--prefix` option, you should set the prefix manually:
 2. Go to `app.component.ts`. Modify `selector` to be `app2-root`.
 3. Go to `main.single-spa.ts`. Modify `template` to be `<app2-root>`.
 
-Additionally, make sure that `reflect-metadata` is only imported once in the root application and is not imported again in the child applications. 
+Additionally, make sure that `reflect-metadata` is only imported once in the root application and is not imported again in the child applications.
 Otherwise, you might see an `No NgModule metadata found` error.
 See [issue thread](https://github.com/CanopyTax/single-spa-angular/issues/2#issuecomment-347864894) for more details.
 
