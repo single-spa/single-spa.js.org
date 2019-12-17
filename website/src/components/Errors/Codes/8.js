@@ -1,10 +1,10 @@
 import React from 'react'
 import CodeSnippet from '../CodeSnippet'
 
-export default function ErrorCode7(props) {
+export default function ErrorCode8(props) {
   return (
     <>
-      <h1>#7: Parcel loading function did not return a promise</h1>
+      <h1>#8: Loading function resolved with invalid parcel config</h1>
       <p>
         When mounting a parcel, the config loading function must return a promise that resolves with the parcel config
       </p>
