@@ -46,12 +46,12 @@ All options are passed to single-spa-react via the `opts` parameter when calling
 - `React`: (required) The main React object, which is generally either exposed onto the window or is available via `require('react')` `import React from 'react'`.
 - `ReactDOM`: (required) The main ReactDOMbject, which is available via `require('react-dom')` `import ReactDOM from 'react-dom'`.
 - `rootComponent`: (required) The top level React component which will be rendered. Can be omitted only if `loadRootComponent` is provided.
-- `loadRootComponent`: (optional) A loading function that returns a promise that resolves with the parcel. This takes the place of the `rootComponent` opt, when provided. It is intended to help people
+- `loadRootComponent`: (optional) A loading function that takes [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) and returns a promise that resolves with the parcel. This takes the place of the `rootComponent` opt, when provided. It is intended to help people
    who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.
 - `suppressComponentDidCatchWarning`: (optional) A boolean that indicates if single-spa-react should warn when the rootComponent does not implement componentDidCatch. Defaults to false.
 - `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the
   React application will be bootstrapped, mounted, and unmounted. Note that this opt can be omitted. When omitted, the `domElementGetter` or `domElement`
-  [custom single-spa props](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#custom-props) are used.
+  [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) are used.
   To use those, do `singleSpa.registerApplication(name, app, activityFn, {domElementGetter: function() {...}})` or
   `singleSpa.registerApplication(name, app, activityFn, {domElement: document.getElementById(...)})`. If no dom element can be found through any
   of those methods, then a container div will be created and appended to document.body, by default.
