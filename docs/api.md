@@ -513,7 +513,7 @@ window.addEventListener('single-spa:before-routing-event', evt => {
 ## before routing event
 
 ```js
-singleSpa.addEventListener('single-spa:before-routing-event', () => {
+window.addEventListener('single-spa:before-routing-event', () => {
 	console.log('single-spa is about to mount/unmount applications!');
 });
 ```
@@ -523,7 +523,7 @@ A `single-spa:before-routing-event` event is fired before every routing event oc
 ## routing event
 
 ```js
-singleSpa.addEventListener('single-spa:routing-event', () => {
+window.addEventListener('single-spa:routing-event', () => {
 	console.log('single-spa finished mounting/unmounting applications!');
 });
 ```
@@ -533,7 +533,7 @@ A `single-spa:routing-event` event is fired every time that a routing event has 
 ## app-change event
 
 ```js
-singleSpa.addEventListener('single-spa:app-change', () => {
+window.addEventListener('single-spa:app-change', () => {
 	console.log('A routing event occurred where at least one application was mounted/unmounted');
 });
 ```
@@ -543,7 +543,7 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 ## no-app-change event
 
 ```js
-singleSpa.addEventListener('single-spa:before-routing-event', () => {
+window.addEventListener('single-spa:before-routing-event', () => {
 	console.log('A routing event occurred where zero applications were mounted/unmounted');
 });
 ```
@@ -553,7 +553,7 @@ When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded,
 ## before-first-mount	
 
 ```js
-singleSpa.addEventListener('single-spa:before-first-mount', () => {
+window.addEventListener('single-spa:before-first-mount', () => {
 	console.log('single-spa is about to mount the very first application for the first time');
 });
 ```
@@ -565,7 +565,7 @@ Before the first of any single-spa applications is mounted, single-spa fires a `
 ## first-mount
 
 ```js
-singleSpa.addEventListener('single-spa:first-mount', () => {
+window.addEventListener('single-spa:first-mount', () => {
 	console.log('single-spa just mounted the very first application');
 });
 ```
