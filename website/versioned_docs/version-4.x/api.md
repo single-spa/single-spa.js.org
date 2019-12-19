@@ -489,7 +489,7 @@ All of the following are [custom events](https://developer.mozilla.org/en-US/doc
 
 ```js
 window.addEventListener('single-spa:before-routing-event', evt => {
-  const originalEvent = evt.detail
+  const originalEvent = evt.detail;
   console.log('single-spa event', originalEvent);
 })
 ```
