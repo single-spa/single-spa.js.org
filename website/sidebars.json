@@ -7,6 +7,9 @@
       "migrating-angularJS-tutorial"
     ],
     "Examples": ["examples"],
+    "Concept: Microfrontend": [
+      "microfrontends-concept"
+    ],
     "Concept: Root Config": ["configuration"],
     "Concept: Application": [
       "building-applications",
@@ -14,6 +17,9 @@
       "migrating-existing-spas"
     ],
     "Concept: Parcel": ["parcels-overview"],
+    "The Recommended Setup": [
+      "recommended-setup"
+    ],
     "API": ["api", "parcels-api"],
     "Ecosystem": [
       "ecosystem",

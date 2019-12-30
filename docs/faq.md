@@ -11,13 +11,7 @@ The code for a route is called an "application", and each can (optionally) be in
 The applications can all be written in the same framework, or they can be implemented in different frameworks.
 
 ## Is there a recommended setup?
-We recommend a setup that uses in-browser ES modules + [import maps](#what-are-import-maps) (or [SystemJS](https://github.com/systemjs/systemjs) to polyfill these if you need better browser support).  This setup has several advantages:
-
-1. Common libraries are easy to manage, and are only downloaded once. If you're using SystemJS, you can also [preload them](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) for a speed boost as well.
-1. Sharing code / functions / variables is as easy as `import/export`, just like in a monolithic setup
-1. Lazy loading applications is easy, which enables you to speed up initial load times
-1. Each application (AKA microservice, AKA ES module) can be independently developed and deployed. Teams are enabled to work at their own speed, experiment (within reason as defined by the organization), QA, and deploy on thier own schedules. This usually also means that release cycles can be decreased to days instead of weeks or months
-1. A great developer experience (DX): go to your dev environment and add an import map that points the application's url to your localhost. See "[What is the DX like?](#what-is-the-developer-experience-dx-like)" for more details.
+Yes, here is [the documentation for our recommended setup](/docs/recommended-setup/).
 
 ## What is the impact to performance?
 When setup in the [recommended way](#is-there-a-recommended-setup), your code performance and bundle size will be nearly identical to a single application that has been code-split. The major differences will be the addition of the single-spa library (and SystemJS if you chose to use it). Other differences mainly come down to the difference between one (webpack / rollup / etc.) code bundle and in-browser ES modules.
