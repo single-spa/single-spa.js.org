@@ -7,13 +7,17 @@ sidebar_label: Vue
 single-spa-vue is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/CanopyTax/single-spa-vue).
 
 ## Starter repo
+
 For a full example, see [coexisting-vue-microfrontends](https://github.com/joeldenning/coexisting-vue-microfrontends).
 
 ## Live demo
+
 https://coexisting-vue-microfrontends.surge.sh
 
 ## Installation
+
 ### Vue CLI
+
 The [vue-cli-plugin-single-spa](https://github.com/CanopyTax/vue-cli-plugin-single-spa) will get everything set up.
 
 ```sh
@@ -21,31 +25,33 @@ vue add single-spa
 ```
 
 The CLI Plugin does the following for you:
-1) Modify your webpack config so that your project works as a single-spa application or parcel.
-2) Install [single-spa-vue](https://github.com/CanopyTax/single-spa-vue).
-3) Modify your `main.js` or `main.ts` file so that your project works as a single-spa application or parcel.
-4) Add a `set-public-path.js` that will use `systemjs-webpack-interop` in order to set the public path of your application.
+
+1. Modify your webpack config so that your project works as a single-spa application or parcel.
+2. Install [single-spa-vue](https://github.com/CanopyTax/single-spa-vue).
+3. Modify your `main.js` or `main.ts` file so that your project works as a single-spa application or parcel.
+4. Add a `set-public-path.js` that will use `systemjs-webpack-interop` in order to set the public path of your application.
 
 ### Without Vue CLI
+
 ```sh
 npm install --save single-spa-vue
 ```
 
-Alternatively, you can use  single-spa-vue by adding `<script src="https://unpkg.com/single-spa-vue"></script>` to your html file and
+Alternatively, you can use single-spa-vue by adding `<script src="https://unpkg.com/single-spa-vue"></script>` to your html file and
 accessing the `singleSpaVue` global variable.
 
 ## Usage
+
 Install `systemjs-webpack-interop` if you have not already done so.
 
 `npm install systemjs-webpack-interop -S`
 
-Create a file at the same level as your `main.js/ts` called `set-public-path.js` 
+Create a file at the same level as your `main.js/ts` called `set-public-path.js`
 
 ```js
 import { setPublicPath } from 'systemjs-webpack-interop';
 
 setPublicPath('appName');
-
 ```
 
 Change your application's entry file to be the following.
@@ -68,13 +74,24 @@ const vueLifecycles = singleSpaVue({
 export const bootstrap = vueLifecycles.bootstrap;
 export const mount = vueLifecycles.mount;
 export const unmount = vueLifecycles.unmount;
-
 ```
 
 Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically and the `set-public-path.js` file
 will automatically be created with the app name being your package.json's name property.
 
+If you want to deal with your Vue instance, you can modify the mount method by following this. mount method will return Promise with Vue instance after [v1.6.0](https://github.com/CanopyTax/single-spa-vue/releases/tag/v1.6.0).
+
+```js
+const vueLifecycles = singleSpaVue({...})
+
+export const mount = props => vueLifecycles.mount(props).then(instance => {
+  // do what you want with the Vue instance
+  ...
+})
+```
+
 ## Shared dependencies
+
 For performance, it is best to share a single version and instance of Vue, Vue Router, and other large libraries.
 
 To do this, add your shared dependencies as [webpack externals](https://webpack.js.org/configuration/externals). Then you use
@@ -87,21 +104,23 @@ Sharing a single instance of Vue and other common libraries is highly recommende
 [recommended setup for single-spa](https://single-spa.js.org/docs/faq.html#is-there-a-recommended-setup) for more details on why.
 
 ### Shared deps with Vue CLI
+
 ```js
 // vue.config.js
 module.exports = {
   chainWebpack: config => {
-    config.externals(['vue', 'vue-router'])
-  }
-}
+    config.externals(['vue', 'vue-router']);
+  },
+};
 ```
 
 ### Shared deps without Vue CLI
+
 ```js
 // webpack.config.js
 module.exports = {
   externals: ['vue', 'vue-router'],
-}
+};
 ```
 
 ## Options
@@ -113,10 +132,12 @@ All options are passed to single-spa-vue via the `opts` parameter when calling `
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
 
 ## As a single-spa parcel
+
 To create a single-spa parcel, simply omit the `el` option from your appOptions, since the dom element will be specified by the user of the Parcel. Every other
 option should be provided exactly the same as in the example above.
 
 ## Custom Props
+
 [single-spa custom props](/docs/building-applications.html#custom-props) are added to your App component as
 `appOptions.data`, and are accessible via `vm.$data`. See [this Vue documentation](https://vuejs.org/v2/api/#data)
 for more information on `appOptions.data`.
