@@ -819,7 +819,7 @@ angular
   });
 ```
 
-<p className="filename">gif.template.html</p>
+<p className="filename">gifs.template.html</p>
 
 ```html
 <div style="padding-top: 20px">
