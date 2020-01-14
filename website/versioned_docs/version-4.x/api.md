@@ -479,6 +479,40 @@ Sets the global configuration for unmount timeouts.
 
 `undefined`
 
+## setUnloadMaxTime
+
+```js
+// After three seconds, show a console warning while continuing to wait.
+singleSpa.setUnloadMaxTime(3000);
+
+// After three seconds, move the application to SKIP_BECAUSE_BROKEN status.
+singleSpa.setUnloadMaxTime(3000, true);
+
+// don't do a console warning for slow lifecycles until 10 seconds have elapsed
+singleSpa.setUnloadMaxTime(3000, true, 10000);
+```
+
+Sets the global configuration for unload timeouts.
+
+<h3>arguments</h3>
+
+<dl className="args-list">
+	<dt>millis: number</dt>
+	<dd>Number of milliseconds to wait for unload to complete before timing out.</dd>
+	<dt>dieOnTimeout: boolean = false</dt>
+	<dd>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <code>millis</code> is reached.</p>
+		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
+		<p>Each registered application can override this behavior for itself.</p>
+	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
+</dl>
+
+<h3>returns</h3>
+
+`undefined`
+
 ---
 
 # Events
