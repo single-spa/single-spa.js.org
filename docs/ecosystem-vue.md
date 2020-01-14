@@ -131,6 +131,18 @@ All options are passed to single-spa-vue via the `opts` parameter when calling `
 - `appOptions`: (required) An object which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
 
+To configure which dom element the single-spa application is mounted to, use [appOptions.el](https://vuejs.org/v2/api/#el):
+
+```js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render: h => h(App),
+    el: '#a-special-container',
+  },
+});
+```
+
 ## As a single-spa parcel
 
 To create a single-spa parcel, simply omit the `el` option from your appOptions, since the dom element will be specified by the user of the Parcel. Every other
