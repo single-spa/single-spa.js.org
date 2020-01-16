@@ -18,12 +18,6 @@ const users = [
     pinned: true,
   },
   {
-    caption: 'Jump',
-    image: 'img/jump.png',
-    infoLink: 'https://getjump.com',
-    pinned: true,
-  },
-  {
     caption: 'Innovaccer',
     image: 'img/innovaccer-logo-black.svg',
     infoLink: 'https://innovaccer.com',
@@ -47,6 +41,12 @@ const users = [
     infoLink: 'https://wavecell.com',
     pinned: true,
   },
+  {
+    caption: 'OpenMRS',
+    image: 'img/openmrs.svg',
+    infoLink: 'https://openmrs.org',
+    pinned: true,
+  }
 ];
 
 export default users;
