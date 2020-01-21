@@ -128,7 +128,7 @@ Changing which javascript file is loaded for each child application can be done 
             <a href="https://github.com/joeldenning/simple-single-spa-webpack-example">simple-webpack-example</a>
           </li>
           <li>
-            <a href="https://github.com/CanopyTax/single-spa-examples">single-spa-examples</a>
+            <a href="https://github.com/single-spa/single-spa-examples">single-spa-examples</a>
           </li>
         </ul>
       </td>

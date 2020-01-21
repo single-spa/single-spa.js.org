@@ -39,7 +39,7 @@ Before we get started, here are a few things we expect from you (and that you sh
 
 ## How to contribute
 
-If you'd like to contribute, start by searching through the [issues](https://github.com/CanopyTax/single-spa/issues) and [pull requests](https://github.com/CanopyTax/single-spa/pulls) to see whether someone else has raised a similar idea or question.
+If you'd like to contribute, start by searching through the [issues](https://github.com/single-spa/single-spa/issues) and [pull requests](https://github.com/single-spa/single-spa/pulls) to see whether someone else has raised a similar idea or question.
 
 If you don't see your idea listed, and you think it fits into the goals of this guide, do one of the following:
 
@@ -53,7 +53,7 @@ If you don't see your idea listed, and you think it fits into the goals of this 
 1. Git
 1. Node: install version 8.4 or greater
 1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
-1. A fork of the [single-spa repo](https://github.com/CanopyTax/single-spa)
+1. A fork of the [single-spa repo](https://github.com/single-spa/single-spa)
 1. A clone of the repo on your local machine
 
 ### Installation
@@ -75,11 +75,11 @@ If you don't see your idea listed, and you think it fits into the goals of this 
 
 1. `git add . && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fixed application lifecycles`) to stage and commit your changes
 1. `git push my-fork-name the-name-of-my-branch`
-1. Go to the [single-spa repo](https://github.com/CanopyTax/single-spa) and you should see recently pushed branches.
+1. Go to the [single-spa repo](https://github.com/single-spa/single-spa) and you should see recently pushed branches.
 1. Follow GitHub's instructions to submit a new Pull Request.
 
 ## Community
 
-Discussions about single-spa take place on the single-spa repository's [Issues](https://github.com/CanopyTax/single-spa/issues) and [Pull Requests](https://github.com/CanopyTax/single-spa/pulls) sections. Anybody is welcome to join these conversations. There is also a [slack community](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ) for regular updates.
+Discussions about single-spa take place on the single-spa repository's [Issues](https://github.com/single-spa/single-spa/issues) and [Pull Requests](https://github.com/single-spa/single-spa/pulls) sections. Anybody is welcome to join these conversations. There is also a [slack community](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ) for regular updates.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.

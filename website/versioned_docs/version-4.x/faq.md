@@ -64,7 +64,7 @@ If you're using the [recommended setup](#is-there-a-recommended-setup) for singl
 
 There's a [library](https://github.com/joeldenning/import-map-overrides) that you can use, or you can even just do it yourself - you'll note that the source code is pretty simple. The main takeaway is that you can have multiple [import maps](#what-are-import-maps) and the latest one wins - you add an import map that overrides the default URL for an application to point to your localhost.
 
-We're also looking at providing this functionality as part of the [Chrome/Firefox browser extension](https://github.com/CanopyTax/single-spa-inspector).
+We're also looking at providing this functionality as part of the [Chrome/Firefox browser extension](https://github.com/single-spa/single-spa-inspector).
 
 Finally, this setup also enables you to do overrides _in your production environment_. It obviously should be used with caution, but it does enable a powerful way of debugging problems and validating solutions.
 
@@ -85,7 +85,7 @@ With the [recommended setup](#is-there-a-recommended-setup), the process general
 
 Some options on _how_ to update your import map include:
 * Server render your `index.html` with the import map inlined. This does not mean that your DOM elements need to all be server rendered, but just the `<script type="systemjs-importmap>` element. Provide an API that either updates a database table or a file local to the server.
-* Have your import map itself on a CDN, and use [import-map-deployer](https://github.com/CanopyTax/import-map-deployer) or similar to update the import map during your CI process. This method has a small impact on performance, but is generally easier to setup if you don't have a server-rendered setup already. (You can also [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) the import map file to help provide a small speed boost). See [example travis.yml](https://github.com/openmrs/openmrs-esm-root-config/blob/master/.travis.yml). Other CI tools work, too.
+* Have your import map itself on a CDN, and use [import-map-deployer](https://github.com/single-spa/import-map-deployer) or similar to update the import map during your CI process. This method has a small impact on performance, but is generally easier to setup if you don't have a server-rendered setup already. (You can also [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) the import map file to help provide a small speed boost). See [example travis.yml](https://github.com/openmrs/openmrs-esm-root-config/blob/master/.travis.yml). Other CI tools work, too.
 
 ## Create React App
 Currently Create React App (CRA) requires [ejecting](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) or [using a tool](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config.  You can also consider some of the [popular alternatives to CRA](https://github.com/facebook/create-react-app#popular-alternatives).

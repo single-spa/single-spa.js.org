@@ -22,7 +22,7 @@ The complete code for this example is in the [`single-spa-simple-example`](https
 
 > __Note__
 >
-> We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/CanopyTax/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ) channel for more support.
+> We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/single-spa/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ) channel for more support.
 
 ## 1. Initial setup
 
@@ -607,7 +607,7 @@ export default NavBar
 
 With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. single-spa provides [`navigateToUrl`](api.md#navigatetourl), a utility function that allows for easy url navigation between registered applications.
 
-> An alternative method would be to call `pushState()`, which `navigateToUrl` does internally. This method could be used in conjunction with other client-side libraries but there are some [additional considerations when using `pushState`](https://github.com/CanopyTax/single-spa-examples/issues/54#issuecomment-424384123).
+> An alternative method would be to call `pushState()`, which `navigateToUrl` does internally. This method could be used in conjunction with other client-side libraries but there are some [additional considerations when using `pushState`](https://github.com/single-spa/single-spa-examples/issues/54#issuecomment-424384123).
 
 To use the function, we simply need to import it and call it with a click event, passing in each application's url (as designated by the activityFunction set in *single-spa.config.js*) as a string to the anchor tag's `href`.
 
@@ -873,4 +873,4 @@ From the root directory run `yarn start` to check out your new single-spa projec
 
 We hope this tutorial gives you experience building and implementing micro frontends using single-spa. Review this guide periodically and use it as a reference in your projects. If you still have questions about how to use single-spa with your specific build, check out the migration tutorials: for [AngularJS](migrating-angularJS-tutorial.md) and [React](migrating-react-tutorial.md).
 
-As always, there is more to be learned. If you want to learn how to use single-spa with Angular, Vue, or other frameworks/build systems, checkout the [`single-spa-examples`](https://github.com/CanopyTax/single-spa-examples) repo. Lastly, you may also want to study how to [separate applications](separating-applications.md) using single-spa.
+As always, there is more to be learned. If you want to learn how to use single-spa with Angular, Vue, or other frameworks/build systems, checkout the [`single-spa-examples`](https://github.com/single-spa/single-spa-examples) repo. Lastly, you may also want to study how to [separate applications](separating-applications.md) using single-spa.

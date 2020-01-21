@@ -11,7 +11,7 @@ const supportLinks = [
   },
   {
     content:
-      'At our [GitHub repo](https://github.com/CanopyTax/single-spa) Browse and [submit issues](https://github.com/CanopyTax/single-spa/issues) or [pull requests](https://github.com/CanopyTax/single-spa/pulls) for bugs you find or any new features you may want implemented. Be sure to also check out our [contributing information]().',
+      'At our [GitHub repo](https://github.com/single-spa/single-spa) Browse and [submit issues](https://github.com/single-spa/single-spa/issues) or [pull requests](https://github.com/single-spa/single-spa/pulls) for bugs you find or any new features you may want implemented. Be sure to also check out our [contributing information]().',
     title: 'Github',
   },
   {

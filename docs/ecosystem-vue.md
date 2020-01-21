@@ -4,7 +4,7 @@ title: single-spa-vue
 sidebar_label: Vue
 ---
 
-single-spa-vue is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/CanopyTax/single-spa-vue).
+single-spa-vue is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/single-spa/single-spa-vue).
 
 ## Starter repo
 
@@ -18,7 +18,7 @@ https://coexisting-vue-microfrontends.surge.sh
 
 ### Vue CLI
 
-The [vue-cli-plugin-single-spa](https://github.com/CanopyTax/vue-cli-plugin-single-spa) will get everything set up.
+The [vue-cli-plugin-single-spa](https://github.com/single-spa/vue-cli-plugin-single-spa) will get everything set up.
 
 ```sh
 vue add single-spa
@@ -27,7 +27,7 @@ vue add single-spa
 The CLI Plugin does the following for you:
 
 1. Modify your webpack config so that your project works as a single-spa application or parcel.
-2. Install [single-spa-vue](https://github.com/CanopyTax/single-spa-vue).
+2. Install [single-spa-vue](https://github.com/single-spa/single-spa-vue).
 3. Modify your `main.js` or `main.ts` file so that your project works as a single-spa application or parcel.
 4. Add a `set-public-path.js` that will use `systemjs-webpack-interop` in order to set the public path of your application.
 
@@ -79,7 +79,7 @@ export const unmount = vueLifecycles.unmount;
 Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically and the `set-public-path.js` file
 will automatically be created with the app name being your package.json's name property.
 
-If you want to deal with your Vue instance, you can modify the mount method by following this. mount method will return Promise with Vue instance after [v1.6.0](https://github.com/CanopyTax/single-spa-vue/releases/tag/v1.6.0).
+If you want to deal with your Vue instance, you can modify the mount method by following this. mount method will return Promise with Vue instance after [v1.6.0](https://github.com/single-spa/single-spa-vue/releases/tag/v1.6.0).
 
 ```js
 const vueLifecycles = singleSpaVue({...})

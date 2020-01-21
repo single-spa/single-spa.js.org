@@ -1,15 +1,15 @@
 const path = require('path');
-const repoUrl = 'https://github.com/CanopyTax/single-spa.js.org';
-const libRepoUrl = 'https://github.com/CanopyTax/single-spa';
+const repoUrl = 'https://github.com/single-spa/single-spa.js.org';
+const libRepoUrl = 'https://github.com/single-spa/single-spa';
 
 module.exports = {
   title: 'single-spa',
   tagline: 'a javascript framework for front-end microservices',
-  url: 'https://canopytax.github.io/single-spa.js.org',
+  url: 'https://single-spa.github.io/single-spa.js.org',
   baseUrl: '/',
   projectName: 'single-spa',
   favicon: 'img/logo-blue-favicon.ico',
-  organizationName: 'CanopyTax',
+  organizationName: 'single-spa',
   customFields: {
     repoUrl,
     libRepoUrl,
@@ -28,10 +28,10 @@ module.exports = {
     },
     footer: {
       logo: {
-        alt: 'CanopyTax',
+        alt: 'single-spa',
         src: 'img/canopy-logo-icon.svg',
       },
-      copyright: `Copyright © ${new Date().getFullYear()} CanopyTax.`,
+      copyright: `Copyright © ${new Date().getFullYear()} single-spa.`,
       style: 'dark',
       links: [
         {
@@ -105,7 +105,7 @@ module.exports = {
         { to: 'help/', label: 'Help' },
         { to: 'blog/', label: 'Blog' },
         { href: 'https://opencollective.com/single-spa', label: 'Donate' },
-        { href: 'https://github.com/CanopyTax/single-spa', label: 'GitHub' },
+        { href: 'https://github.com/single-spa/single-spa', label: 'GitHub' },
       ],
     },
     googleAnalytics: {

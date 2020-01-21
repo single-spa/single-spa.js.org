@@ -1,15 +1,15 @@
 const projects = [
-  { user: 'CanopyTax', repo: 'single-spa' },
-  { user: 'CanopyTax', repo: 'single-spa-angularjs' },
-  { user: 'CanopyTax', repo: 'single-spa-angular' },
+  { user: 'single-spa', repo: 'single-spa' },
+  { user: 'single-spa', repo: 'single-spa-angularjs' },
+  { user: 'single-spa', repo: 'single-spa-angular' },
   { user: 'pcmnac', repo: 'single-spa-cycle' },
-  { user: 'CanopyTax', repo: 'single-spa-ember' },
-  { user: 'CanopyTax', repo: 'single-spa-inferno' },
-  { user: 'CanopyTax', repo: 'single-spa-preact' },
-  { user: 'CanopyTax', repo: 'single-spa-react' },
-  { user: 'CanopyTax', repo: 'single-spa-svelte' },
-  { user: 'CanopyTax', repo: 'single-spa-vue' },
-  { user: 'CanopyTax', repo: 'single-spa.js.org' },
+  { user: 'single-spa', repo: 'single-spa-ember' },
+  { user: 'single-spa', repo: 'single-spa-inferno' },
+  { user: 'single-spa', repo: 'single-spa-preact' },
+  { user: 'single-spa', repo: 'single-spa-react' },
+  { user: 'single-spa', repo: 'single-spa-svelte' },
+  { user: 'single-spa', repo: 'single-spa-vue' },
+  { user: 'single-spa', repo: 'single-spa.js.org' },
 ];
 
 const coreMembers = [

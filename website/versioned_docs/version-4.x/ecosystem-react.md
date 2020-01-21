@@ -4,9 +4,9 @@ title: single-spa-react
 sidebar_label: React
 ---
 
-[![Build Status](https://travis-ci.org/CanopyTax/single-spa-react.svg?branch=master)](https://travis-ci.org/CanopyTax/single-spa-react)
+[![Build Status](https://travis-ci.org/single-spa/single-spa-react.svg?branch=master)](https://travis-ci.org/single-spa/single-spa-react)
 
-single-spa-react is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/CanopyTax/single-spa-react).
+single-spa-react is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/single-spa/single-spa-react).
 
 ## Installation
 ```sh
@@ -51,7 +51,7 @@ All options are passed to single-spa-react via the `opts` parameter when calling
 - `suppressComponentDidCatchWarning`: (optional) A boolean that indicates if single-spa-react should warn when the rootComponent does not implement componentDidCatch. Defaults to false.
 - `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the
   React application will be bootstrapped, mounted, and unmounted. Note that this opt can be omitted. When omitted, the `domElementGetter` or `domElement`
-  [custom single-spa props](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#custom-props) are used.
+  [custom single-spa props](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#custom-props) are used.
   To use those, do `singleSpa.registerApplication(name, app, activityFn, {domElementGetter: function() {...}})` or
   `singleSpa.registerApplication(name, app, activityFn, {domElement: document.getElementById(...)})`. If no dom element can be found through any
   of those methods, then a container div will be created and appended to document.body, by default.
