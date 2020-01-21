@@ -4,7 +4,7 @@ title: single-spa-html
 sidebar_label: HTML / Web Components
 ---
 
-[single-spa-html](https://github.com/CanopyTax/single-spa-html) is a helper library for mounting raw html and web components as
+[single-spa-html](https://github.com/single-spa/single-spa-html) is a helper library for mounting raw html and web components as
 single-spa applications or parcels.
 
 ## Installation

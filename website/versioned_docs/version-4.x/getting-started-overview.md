@@ -16,7 +16,7 @@ single-spa is a framework for bringing together multiple javascript microfronten
 
 ## Demo and examples
 
-Visit the [live demo](https://single-spa.surge.sh) for an example that highlights single-spa usage. The source code is available in the [single-spa-examples](https://github.com/CanopyTax/single-spa-examples) repository.
+Visit the [live demo](https://single-spa.surge.sh) for an example that highlights single-spa usage. The source code is available in the [single-spa-examples](https://github.com/single-spa/single-spa-examples) repository.
 
 Also, you can check out a [simple webpack starter project](https://github.com/joeldenning/simple-single-spa-webpack-example) which is simpler, and may be easier to understand and get started with.
 
@@ -65,7 +65,7 @@ The documentation is divided into several sections:
 * [Blog](https://single-spa.js.org/blog/)
 * [Where to Get Support](https://single-spa.js.org/en/help.html)
 
-You can help improve the single-spa website by sending pull requests to the [`single-spa.js.org` repository](https://github.com/CanopyTax/single-spa.js.org).
+You can help improve the single-spa website by sending pull requests to the [`single-spa.js.org` repository](https://github.com/single-spa/single-spa.js.org).
 
 ## Simple Usage
 
@@ -161,4 +161,4 @@ Read our [contributing guide](https://reactjs.org/contributing/how-to-contribute
 
 See [user showcase](/users).
 
-Is your company or project using single-spa? Let us know by submitting a PR to [this section](https://github.com/CanopyTax/single-spa.js.org/blob/master/website/src/data/users.js)!
+Is your company or project using single-spa? Let us know by submitting a PR to [this section](https://github.com/single-spa/single-spa.js.org/blob/master/website/src/data/users.js)!

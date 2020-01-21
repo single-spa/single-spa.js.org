@@ -5,7 +5,7 @@ sidebar_label: Angular
 ---
 ## Introduction
 
-[single-spa-angular](https://github.com/CanopyTax/single-spa-angular/) is a library for creating Angular microfrontends.
+[single-spa-angular](https://github.com/single-spa/single-spa-angular/) is a library for creating Angular microfrontends.
 
 Each microfrontend ([single-spa application](/docs/building-applications.html)) is an Angular CLI project that can
 use its own version of Angular and be deployed separately from any other. They all come together into a single
@@ -27,7 +27,7 @@ For instructions on how to test this locally before creating a pull request, see
 
 ## Angular versions
 ### Angular 1 (AngularJS)
-AngularJS is supported by [single-spa-angularjs](https://github.com/CanopyTax/single-spa-angularjs), instead of single-spa-angular.
+AngularJS is supported by [single-spa-angularjs](https://github.com/single-spa/single-spa-angularjs), instead of single-spa-angular.
 See [AngularJS docs](/docs/ecosystem-angularjs.html).
 
 ### Angular 2
@@ -126,10 +126,10 @@ npm install --save single-spa-angular
 ### Manually apply schematics
 Since the single-spa-angular schematics didn't run, you'll need to make the following changes:
 1. Create all of the files that would have been created by the schematic.
-  [See schematics files](https://github.com/CanopyTax/single-spa-angular/tree/master/src/schematics/ng-add/_files).
+  [See schematics files](https://github.com/single-spa/single-spa-angular/tree/master/src/schematics/ng-add/_files).
   Be sure to get the files in the subdirectories, too.
 2. Add `build:single-spa` and `serve:single-spa` to the [scripts](https://docs.npmjs.com/misc/scripts) in your package.json.
-  [See `addNPMScripts` function](https://github.com/CanopyTax/single-spa-angular/blob/master/src/schematics/ng-add/index.ts#L122).
+  [See `addNPMScripts` function](https://github.com/single-spa/single-spa-angular/blob/master/src/schematics/ng-add/index.ts#L122).
 3. Use the angular builder, as described in the next section.
 
 ### Use Angular Builder
@@ -263,7 +263,7 @@ export const unmount = lifecycles.unmount;
 ```
 
 ### Full Example
-See [this schematic file](https://github.com/CanopyTax/single-spa-angular/blob/master/src/schematics/ng-add/_files/src/main.single-spa.ts.template#L16)
+See [this schematic file](https://github.com/single-spa/single-spa-angular/blob/master/src/schematics/ng-add/_files/src/main.single-spa.ts.template#L16)
 for a good example of how to use the single-spa helpers.
 
 ### Options
@@ -283,7 +283,7 @@ The following options are available:
 - `Router`: (optional) The angular router class. This is required when you are using `@angular/router`.
 - `AnimationModule`: (optional) The animation module class. This is required when you are using BrowserAnimationsModule.
   Example way to import this: `import { eAnimationEngine as AnimationModule } from '@angular/animations/browser';`.
-  See [Issue 48](https://github.com/CanopyTax/single-spa-angular/issues/48) for more details.
+  See [Issue 48](https://github.com/single-spa/single-spa-angular/issues/48) for more details.
 - `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the Angular
   application will be bootstrapped, mounted, and unmounted. It's recommended to omit this and let single-spa-angular's defaults create and use
   a container div.
@@ -321,7 +321,7 @@ If you did not use the `--prefix` option, you should set the prefix manually:
 
 Additionally, make sure that `reflect-metadata` is only imported once in the root application and is not imported again in the child applications.
 Otherwise, you might see an `No NgModule metadata found` error.
-See [issue thread](https://github.com/CanopyTax/single-spa-angular/issues/2#issuecomment-347864894) for more details.
+See [issue thread](https://github.com/single-spa/single-spa-angular/issues/2#issuecomment-347864894) for more details.
 
 ### Custom Props
 [Custom props](https://single-spa.js.org/docs/building-applications.html#custom-props) are a way of passing auth or other data to your single-spa

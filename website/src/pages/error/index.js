@@ -30,7 +30,7 @@ function Error(props) {
         style={{ marginBottom: '6.8rem' }} // simulate sticky footer
       >
         <Comp errorCodeArgs={errorCodeArgs} getErrorCodeArg={getErrorCodeArg} errorCode={params.get("code")} />
-        <a href={`https://github.com/CanopyTax/single-spa.js.org/edit/master/website/src/components/Errors/Codes/${params.get("code")}.js`}>Edit this page</a>
+        <a href={`https://github.com/single-spa/single-spa.js.org/edit/master/website/src/components/Errors/Codes/${params.get("code")}.js`}>Edit this page</a>
       </div>
     </Layout>
   );

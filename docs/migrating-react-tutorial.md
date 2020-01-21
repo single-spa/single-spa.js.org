@@ -82,7 +82,7 @@ The third argument, `activityFunction`, must be a pure function. The function is
 
 Since we have registered our application, single-spa will be listening for the application to `bootstrap` and `mount`. We can use the [single-spa-react](ecosystem-react.md) helper library to make use of the generic React lifecycle hooks. See the [registered application lifecycle](building-applications.md#registered-application-lifecycle) docs to learn more about each lifecycle function.
 
-For this tutorial, we will be implementing the required lifecycle functions in a new *root.app.js* file within the *src/* folder. From the root directory, run the following code to install the [single-spa-react](https://github.com/CanopyTax/single-spa-react) helper library and create the new file:
+For this tutorial, we will be implementing the required lifecycle functions in a new *root.app.js* file within the *src/* folder. From the root directory, run the following code to install the [single-spa-react](https://github.com/single-spa/single-spa-react) helper library and create the new file:
 
 ```bash
 yarn add single-spa-react

@@ -4,27 +4,27 @@ title: single-spa-ember
 sidebar_label: Ember
 ---
 
-single-spa-ember is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Ember.js](https://www.emberjs.com/). Check out the [single-spa-ember github](https://github.com/CanopyTax/single-spa-ember).
+single-spa-ember is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Ember.js](https://www.emberjs.com/). Check out the [single-spa-ember github](https://github.com/single-spa/single-spa-ember).
 
 It is available on npm as `single-spa-ember`, and also available on bower as `single-spa-ember` in case you want to use it with ember cli and need to use bower.
 
 ## Overview
-When you are building an ember application that you want to work as a [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications), there are five things you need to implement:
+When you are building an ember application that you want to work as a [single-spa application](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#registered-applications), there are five things you need to implement:
 
-- A [loading function](https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#loading-function)
-- An [activity function](https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#activity-function)
-- A [bootstrap function](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#bootstrap)
-- A [mount function](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#mount)
-- An [unmount function](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#unmount)
+- A [loading function](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md#loading-function)
+- An [activity function](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md#activity-function)
+- A [bootstrap function](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#bootstrap)
+- A [mount function](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#mount)
+- An [unmount function](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#unmount)
 
 Single-spa-ember will help you implement all of those except for the activity function.
 
-Note that the loading and activity functions are part of the [single-spa root application](https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md), whereas the bootstrap, mount, and unmount functions are part of a [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md)
+Note that the loading and activity functions are part of the [single-spa root application](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md), whereas the bootstrap, mount, and unmount functions are part of a [single-spa application](https://github.com/single-spa/single-spa/blob/master/docs/applications.md)
 
 ## API
 
 ### loadEmberApp
-`loadEmberApp(appName, appUrl, vendorUrl)` is a function that helps you implement the [loading function](https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#loading-function) for your ember application.
+`loadEmberApp(appName, appUrl, vendorUrl)` is a function that helps you implement the [loading function](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md#loading-function) for your ember application.
 `appName` and `appUrl` are both strings and both required, whereas `vendorUrl` is an optional string.
 
 ```js
@@ -41,7 +41,7 @@ registerApplication(appName, loadingFunction, activityFunction);
 ```
 
 ### singleSpaEmber
-Single-spa-ember will implement the [single-spa lifecyle functions](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#application-lifecycle) for you. To use it, you call the default export as a function with a configuration object, which returns an object that has `bootstrap`, `mount`, and `unmount` lifecycle functions on it. The provided configuration object has the following options:
+Single-spa-ember will implement the [single-spa lifecyle functions](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#application-lifecycle) for you. To use it, you call the default export as a function with a configuration object, which returns an object that has `bootstrap`, `mount`, and `unmount` lifecycle functions on it. The provided configuration object has the following options:
 
   - `App` (required): The [ember Application](https://www.emberjs.com/api/ember/2.14.1/classes/Ember.Application).
   - `createOpts` (optional): The options to provide when calling [App.create(options)](https://www.emberjs.com/api/ember/2.14.1/classes/Ember.Application). See the [ember docs](https://www.emberjs.com/api/ember/2.14.1/classes/Ember.Application) for more details.

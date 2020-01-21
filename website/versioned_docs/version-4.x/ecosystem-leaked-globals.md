@@ -4,7 +4,7 @@ title: single-spa-leaked-globals
 sidebar_label: Leaked globals
 ---
 
-[single-spa-leaked-globals](https://github.com/CanopyTax/single-spa-leaked-globals) is a helper library for dealing with single-spa-applications
+[single-spa-leaked-globals](https://github.com/single-spa/single-spa-leaked-globals) is a helper library for dealing with single-spa-applications
 that depend on global variables. Such applications are usually applications that use AngularJS, Backbone, or other older frameworks
 that were popular when ES modules were not yet available.
 

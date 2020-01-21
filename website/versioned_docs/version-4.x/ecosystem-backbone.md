@@ -29,7 +29,7 @@ The npm package can be [found here](https://www.npmjs.com/package/@emtecinc/sing
 
 ### Option 1: Using `RequireJS` with `data-main`
 
-First, in the [single-spa application](https://github.com/CanopyTax/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save @emtec/single-spa-backbone`. Then, create an entry file for application like below, assuming the application has some `BasePath` with `AppPath` and `RequireJsPath' being relative to the base path.
+First, in the [single-spa application](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save @emtec/single-spa-backbone`. Then, create an entry file for application like below, assuming the application has some `BasePath` with `AppPath` and `RequireJsPath' being relative to the base path.
 
 ```js
 import singleSpaBackbone from '@emtecinc/single-spa-backbone';
