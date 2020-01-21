@@ -132,7 +132,13 @@ Changing which javascript file is loaded for each child application can be done 
           </li>
         </ul>
       </td>
-      <td>Contributions accepted!</td>
+      <td>
+        <ul>
+          <li>
+            <a href="https://github.com/jualoppaz/single-spa-login-example-with-npm-packages">single-spa-login-example-with-npm-packages</a>
+          </li>
+        </ul>
+      </td>
       <td>
         <ul>
           <li>
