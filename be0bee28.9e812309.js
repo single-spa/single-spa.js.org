@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[109],{236:function(s){s.exports=JSON.parse('{"id":"glossary","title":"Glossary","description":"<dl>","source":"@site/../docs/glossary.md","permalink":"/docs/next/glossary","editUrl":"https://github.com/CanopyTax/single-spa.js.org/blob/master/website/../docs/glossary.md","version":"next","sidebar_label":"Glossary"}')}}]);
