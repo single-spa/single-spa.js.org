@@ -67,4 +67,4 @@ Another potential problem for sofe services is performance. Because they are loa
 
 Getting started with sofe requires only System.js. But to help you get started we have built sofe to work with a variety of technologies, including webpack, Babel, jspm, and the Chrome Developer Tools. Sofe is also actively used in production at Canopy Tax. We would love feedback on sofe and a number of open source projects that have been built around it. As you approach your next front-end project or look to improve your existing app, consider how it might benefit from service oriented architecture.
 
-Read more about how to get started with sofe [here](https://github.com/single-spa/sofe).
+Read more about how to get started with sofe [here](https://github.com/CanopyTax/sofe).
