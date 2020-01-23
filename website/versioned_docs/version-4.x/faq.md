@@ -23,7 +23,7 @@ We recommend a setup that uses in-browser ES modules + [import maps](#what-are-i
 When setup in the [recommended way](#is-there-a-recommended-setup), your code performance and bundle size will be nearly identical to a single application that has been code-split. The major differences will be the addition of the single-spa library (and SystemJS if you chose to use it). Other differences mainly come down to the difference between one (webpack / rollup / etc.) code bundle and in-browser ES modules.
 
 ## Can I have only one version of (React, Vue, Angular, etc.) loaded?
-Yes, and it's highly recommended you do so! Using [the recommended setup](#is-there-a-recommended-setup), you configure your [import map](#what-are-import-maps) so that your library is defined only once. Then, tell each application to _not_ bundle that library; instead, the library will given to you at runtime in the browser. See [webpack’s externals](https://webpack.js.org/configuration/externals/) (and other bundlers have similar options) for how to do this.
+Yes, and it's highly recommended you do so! Using [the recommended setup](#is-there-a-recommended-setup), you configure your [import map](#what-are-import-maps) so that your library is defined only once. Then, tell each application to _not_ bundle that library; instead, the library will be given to you at runtime in the browser. See [webpack’s externals](https://webpack.js.org/configuration/externals/) (and other bundlers have similar options) for how to do this.
 
 You do have the option of _not_ excluding those libraries (for example if you want to experiment with a newer version or a different library) but be aware of the effect that will have on user's bundle sizes and application speed.
 
