@@ -8,7 +8,7 @@ single-spa-riot is a helper library that helps implement [single-spa registered 
 
 [![NPM](https://img.shields.io/npm/v/single-spa-riot.svg)](https://www.npmjs.com/package/single-spa-riot)
 
-[![Build Status](https://travis-ci.org/ariesjia/single-spa-riot.svg?branch=master)](https://travis-ci.org/ariesjia/single-spa-riot)
+[![Build Status](https://travis-ci.com/ariesjia/single-spa-riot.svg?branch=master)](https://travis-ci.com/ariesjia/single-spa-riot)
 
 [![minified](https://badgen.net/bundlephobia/minzip/single-spa-riot)](https://bundlephobia.com/result?p=single-spa-riot)
 

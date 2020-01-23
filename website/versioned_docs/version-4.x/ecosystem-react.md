@@ -4,7 +4,7 @@ title: single-spa-react
 sidebar_label: React
 ---
 
-[![Build Status](https://travis-ci.org/single-spa/single-spa-react.svg?branch=master)](https://travis-ci.org/single-spa/single-spa-react)
+[![Build Status](https://travis-ci.com/single-spa/single-spa-react.svg?branch=master)](https://travis-ci.com/single-spa/single-spa-react)
 
 single-spa-react is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/single-spa/single-spa-react).
 
