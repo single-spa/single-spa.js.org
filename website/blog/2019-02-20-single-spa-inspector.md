@@ -7,9 +7,9 @@ authorImageURL: https://pbs.twimg.com/profile_images/1037162092963348480/1XLEV4M
 
 ## Background
 
-For a long time, Canopy has had the benefit of using a tool called [sofe inspector](https://github.com/CanopyTax/sofe-inspector) (note: this is an out-of-date version of it) to list, override, and interact with single-spa applications. There has always been a desire to [figure out how to share this tool so others can benefit as well](https://github.com/single-spa/single-spa/issues/151).
+For a long time, Canopy has had the benefit of using a tool called [sofe inspector](https://github.com/single-spa/sofe-inspector) (note: this is an out-of-date version of it) to list, override, and interact with single-spa applications. There has always been a desire to [figure out how to share this tool so others can benefit as well](https://github.com/single-spa/single-spa/issues/151).
 
-With that in mind, I'm proud to announce an initial release for **[single-spa Inspector](https://github.com/CanopyTax/single-spa-inspector)**! single-spa Inspector is a Firefox and Chrome extension, much like React/Vue devtools, that allows you see and interact with your single-spa applications and configuration.
+With that in mind, I'm proud to announce an initial release for **[single-spa Inspector](https://github.com/single-spa/single-spa-inspector)**! single-spa Inspector is a Firefox and Chrome extension, much like React/Vue devtools, that allows you see and interact with your single-spa applications and configuration.
 
 ## Current Inspector Features
 
