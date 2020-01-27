@@ -198,6 +198,14 @@ To get single-spa working, you'll need to manually  modify a few files.
   doesn't try to show a 404 page or throw an error. See [angular docs](https://angular.io/guide/router#configuration) for more details about routes.
 3. Add a declaration for EmptyRouteComponent in `app.module.ts`. See [angular docs](https://angular.io/guide/ngmodules#the-basic-ngmodule) for
   more details about app.module.ts.
+  
+> __Note__
+>
+> **APP_BASE_HREF** should have the same value that the used url for mount the Angular app defined in the single-spa root application. But doing this causes strange behaviours in Angular Router when navigate between registered apps. 
+>
+> In order to avoid this is recommended using **'/'** as **APP_BASE_HREF** and repeat the url prefix for your Angular app in every route component and router links. If you set **/angular** in your Angular app activity function for mount when the url starts with this value you'll have to add **/angular** prefix in all links.
+>
+> You can see several discussions about this issue in **single-spa-angular** GitHub repo: [Router not working without APP_BASE_HREF](https://github.com/single-spa/single-spa-angular/issues/64) and [How to handle router links between different single-spa application subrouters](https://github.com/single-spa/single-spa-angular/issues/62)
 
 ### Linking between applications
 To link between applications, simply use [`routerLink`](https://angular.io/api/router/RouterLink) like normal.
