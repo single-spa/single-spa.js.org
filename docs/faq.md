@@ -13,7 +13,7 @@ The applications can all be written in the same framework, or they can be implem
 ## Is there a recommended setup?
 Yes, here is [the documentation for our recommended setup](/docs/recommended-setup/).
 
-## Should I put frameworks in the single-spa-config/root-application?
+## Should I have a parent/root app and children apps?
 No. We strongly encourage that your single-spa-config or root application does not use any javascript ui-frameworks (React, Angular, Angularjs, Vue, etc). In our experience a plain javascript module is best for the single-spa-config and only the registered applications actually use ui-frameworks (angular, react, vue, etc). 
 
 ## What is the impact to performance?
