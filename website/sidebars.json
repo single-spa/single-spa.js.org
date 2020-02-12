@@ -2,8 +2,11 @@
   "docs": {
     "Overview": ["getting-started-overview"],
     "Examples": ["examples"],
-    "single-spa CLI": [
-      "single-spa-cli"
+    "Tutorials": [
+      "single-spa-playground"
+    ],
+    "CLI": [
+      "create-single-spa"
     ],
     "Concept: Microfrontend": [
       "microfrontends-concept"
