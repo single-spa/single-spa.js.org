@@ -61,7 +61,7 @@ to make import maps work.
 
 [Tutorial video](https://www.youtube.com/watch?v=AmdKF2UhFzw&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=7)
 
-SystemJS provides polyfill-like behavior for import maps and in-browser modules. It is not a true polyfill of import maps, due to limitations of the javascript language in polyfilling javascript modules. The primary limitation is that browsers currently do not allow for custom resolution of bare specifiers.
+SystemJS provides polyfill-like behavior for import maps and in-browser modules. It is not a true polyfill of import maps, due to limitations of the javascript language in polyfilling the resolution of bare import specifiers to URLs.
 
 Since SystemJS is only polyfill-like, you'll need to compile your applications into [System.register format](https://github.com/systemjs/systemjs/blob/master/docs/system-register.md) instead of to ESM format. This allows for in-browser modules to be fully emulated in environments that don't support modules or import maps.
 
@@ -69,7 +69,7 @@ To compile your code to System.register format, set webpack's [`output.libraryTa
 
 Shared dependencies like React, Vue, and Angular, do not publish System.register versions of their libraries. However, you can find System.register versions of the libraries in [the esm-bundle project](https://github.com/esm-bundle) ([blog post](https://medium.com/@joeldenning/an-esm-bundle-for-any-npm-package-5f850db0e04d)). Alternatively, SystemJS is capable of loading them via [global loading](https://github.com/systemjs/systemjs#2-systemjs-loader) or [the AMD and named-exports extras](https://github.com/systemjs/systemjs#extras).
 
-An alternative to SystemJS that provides polyfill behavior for import maps is [es-module-shims](https://github.com/guybedford/es-module-shims). This has the advantage of using truly native ES modules. However, it is not the single-spa core team's recommended approach for production applications, since it requires in browser parsing and modification of all your bundles.
+An alternative to SystemJS that provides polyfill behavior for import maps is [es-module-shims](https://github.com/guybedford/es-module-shims). This has the advantage of using truly native ES modules. However, it is not the single-spa core team's recommended approach for production applications, since it requires less-performant in browser parsing and modification of all your bundles.
 
 ## Lazy loading
 
