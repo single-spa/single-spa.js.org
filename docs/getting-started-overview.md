@@ -14,11 +14,9 @@ single-spa is a framework for bringing together multiple javascript microfronten
 - Write code using a new framework, without rewriting your existing app
 - Lazy load code for improved initial load time.
 
-## Demo and examples
+## Demos and examples
 
-Visit the [live demo](https://single-spa.surge.sh) for an example that highlights single-spa usage. The source code is available in the [single-spa-examples](https://github.com/single-spa/single-spa-examples) repository.
-
-Also, you can check out a [simple webpack starter project](https://github.com/joeldenning/simple-single-spa-webpack-example) which is simpler, and may be easier to understand and get started with.
+See [our examples page](/docs/examples).
 
 ## Architectural Overview
 
