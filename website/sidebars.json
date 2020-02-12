@@ -1,12 +1,10 @@
 {
   "docs": {
     "Overview": ["getting-started-overview"],
-    "Tutorials": [
-      "starting-from-scratch",
-      "migrating-react-tutorial",
-      "migrating-angularJS-tutorial"
-    ],
     "Examples": ["examples"],
+    "single-spa CLI": [
+      "single-spa-cli"
+    ],
     "Concept: Microfrontend": [
       "microfrontends-concept"
     ],
