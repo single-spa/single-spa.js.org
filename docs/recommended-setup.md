@@ -40,19 +40,19 @@ Here are our recommendations:
 
 [Tutorial video](https://www.youtube.com/watch?v=Lfm2Ge_RUxs&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=3)
 
-[Import Maps](https://github.com/WICG/import-maps) are a browser specification for aliasing the import specifier to a URL.
+[Import Maps](https://github.com/WICG/import-maps) are a browser specification for aliasing "import specifiers" to a URL.
 An import specifier is the string indicating which module to load. Examples:
 
 ```js
-// ./thing.js is the "specifier"
+// ./thing.js is the import specifier
 import thing from './thing.js';
 
-// react is the specifier
+// react is the import specifier
 import React from 'react';
 ```
 
 Specifiers that are not a URL are called "bare specifiers," such as `import 'react'`. Being able to alias bare specifiers to a URL
-is crucial to being able to use in-browser modules, which is why Import Maps exist.
+is crucial to being able to use in-browser modules, which is why import maps exist.
 
 As of Feb 2020, import maps are only implemented in Chrome, and behind a developer feature toggle. As such, you will need a polyfill
 to make import maps work.
@@ -69,21 +69,31 @@ To compile your code to System.register format, set webpack's [`output.libraryTa
 
 Shared dependencies like React, Vue, and Angular, do not publish System.register versions of their libraries. However, you can find System.register versions of the libraries in [the esm-bundle project](https://github.com/esm-bundle) ([blog post](https://medium.com/@joeldenning/an-esm-bundle-for-any-npm-package-5f850db0e04d)). Alternatively, SystemJS is capable of loading them via [global loading](https://github.com/systemjs/systemjs#2-systemjs-loader) or [the AMD and named-exports extras](https://github.com/systemjs/systemjs#extras).
 
+An alternative to SystemJS that provides polyfill behavior for import maps is [es-module-shims](https://github.com/guybedford/es-module-shims). This has the advantage of using truly native ES modules. However, it is not the single-spa core team's recommended approach for production applications, since it requires in browser parsing and modification of all your bundles.
+
 ## Lazy loading
 
+[Tutorial video](https://www.youtube.com/watch?v=-LkvBMpCK-A&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=8)
+
 ## Local development
+
 [Tutorial video](https://www.youtube.com/watch?v=vjjcuIxqIzY&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=4)
 
 ## Build tools (Webpack / Rollup)
+
+[Tutorial video](https://www.youtube.com/watch?v=I6COIg-2lyM&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=9)
 
 ## Utility modules (styleguide, API, etc)
 
 ## Shared dependencies
 
 ## Deployment
+
 [Tutorial video](https://www.youtube.com/watch?v=QHunH3MFPZs&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=5)
 
 ## Continuous Integration (CI)
+
+[Tutorial video](https://www.youtube.com/watch?v=nC7rpDXa4B8&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=6)
 
 ## Applications versus parcels
 
