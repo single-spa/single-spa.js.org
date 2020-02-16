@@ -239,6 +239,8 @@ http://single-spa-playground.org and follow the instructions there to verify eve
 ## Building
 Run `npm run build:single-spa`, which will create a `dist` directory with your compiled code.
 
+In order for the [webpack public path](https://webpack.js.org/guides/public-path/#root) to be correctly set for your assets, you should use Angular CLI's `--deploy-url` option. For more information, see [this Stack Overflow answer](https://stackoverflow.com/questions/47885451/angular-cli-build-using-base-href-and-deploy-url-to-access-assets-on-cdn) which shows a few options for how to do that.
+
 ## The single-spa helpers
 
 ### Introduction
