@@ -36,7 +36,8 @@
       "ecosystem-riot",
       "ecosystem-backbone",
       "ecosystem-html-web-components",
-      "ecosystem-leaked-globals"
+      "ecosystem-leaked-globals",
+      "ecosystem-dojo"
     ],
     "Contributing": ["contributing-overview", "code-of-conduct"]
   }
