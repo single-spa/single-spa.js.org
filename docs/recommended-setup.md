@@ -75,21 +75,122 @@ An alternative to SystemJS that provides polyfill behavior for import maps is [e
 
 [Tutorial video](https://www.youtube.com/watch?v=-LkvBMpCK-A&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=8)
 
+Lazy loading is when you only download javascript code that the user needs for the current page, instead of all javascript upfront. It is a technique for improving the performance of your application by decreasing the time-to-meaningful-render when you initially load the page. If you use [single-spa loading functions](/docs/configuration#loading-function-or-application), you already have built-in lazy loading for your applications and parcels. Since an application is an "in-browser module," this means that you are only downloading the in-browser modules in your import map when you need them.
+
+Often, the route-based lazy loading provided by single-spa loading functions is all that you need to ensure great performance. However, it is also possible to do lazy loading via "code splits" with your bundler (webpack or rollup). For documentation on webpack code splits, see [these docs](https://webpack.js.org/guides/code-splitting/#dynamic-imports). It is recommended to use dynamic import (`import()`) instead of multiple entry points for code splits in a single-spa application. For code splits to work properly, you'll need to [dynamically set your public path](https://webpack.js.org/guides/public-path/#on-the-fly). A tool exists to help you set your public path correctly for use with systemjs - https://github.com/joeldenning/systemjs-webpack-interop.
+
 ## Local development
 
 [Tutorial video](https://www.youtube.com/watch?v=vjjcuIxqIzY&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=4)
+
+In contrast to monolithic frontend applications, local development with single-spa encourages only running the one microfrontend you're working on, while using deployed versions of all other microfrontends. This is important because running every single-spa microfrontend every time you want to do anything is unwieldy and cumbersome.
+
+To accomplish local development of only one microfrontend at a time, we can customize the URL for that microfrontend within the import map. For example, the following import map is set up for local development of the `navbar` application, since that's the only one pointing to a local web server. The `planets` and `things` applications are pointing to deployed (already hosted) versions of the applications.
+
+```json
+{
+  "imports": {
+    "@react-mf/navbar": "https://localhost:8080/react-mf-navbar.js",
+    "@react-mf/planets": "https://react.microfrontends.app/planets/2717466e748e53143474beb6baa38e3e5320edd7/react-mf-planets.js",
+    "@react-mf/things": "https://react.microfrontends.app/things/7f209a1ed9ac9690835c57a3a8eb59c17114bb1d/react-mf-things.js"
+  }
+}
+```
+
+A tool called [import-map-overrides](https://github.com/joeldenning/import-map-overrides) exists to customize your import map through an in-browser UI. This tool will automatically let you toggle one or more microfrontends between your localhost and the deployed version.
+
+Additionally, you have the choice of running your single-spa root config locally, or using the single-spa config that is running on a deployed environment. The single-spa core team finds it easiest to develop on deployed environments (perhaps an "integration", "development", or "staging" environment that is running within your organization) so that you do you not have to constantly run your single-spa root config.
 
 ## Build tools (Webpack / Rollup)
 
 [Tutorial video](https://www.youtube.com/watch?v=I6COIg-2lyM&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=9)
 
+It is highly encouraged to use a bundler such as webpack, rollup, parceljs, pikapack, etc. Webpack is an industry-standard for compiling many javascript source files into one or more production javascript bundles.
+
+Below are some tips for configuring your bundler to be consumable by SystemJS and single-spa. Note that if you're using create-single-spa that these are all set up for you.
+
+1. Set the output target to `system`. In webpack, this is done via [`output.libraryTarget`](https://webpack.js.org/configuration/output/#outputlibrarytarget)
+2. Use a single [entry point](https://webpack.js.org/concepts/entry-points/#root), with [dynamic imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports) for any code splitting that you'd like to accomplish. This best matches the "one bundled project = one in-browser module" paradigm encouraged by the single-spa core team.
+3. Do not use webpack's [`optimization`](https://webpack.js.org/configuration/optimization/#root) configuration options, as they make it harder to load the outputted javascript files as a single in-browser javascript module. Doing so does not make your bundle less optimized - dynamic imports are a viable strategy for accomplishing optimized bundles.
+4. Follow [the systemjs docs for webpack](https://github.com/systemjs/systemjs#compatibility-with-webpack).
+5. Consider using [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop) to create or verify your webpack config.
+6. Use [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop) to [set your webpack public path "on the fly"](https://webpack.js.org/guides/public-path/#on-the-fly).
+7. Do not set webpack [`output.library`](https://webpack.js.org/configuration/output/#outputlibrary). SystemJS does not need a name, and in fact does not support named modules without additional configuration.
+8. Consider turning off [webpack hashing](https://webpack.js.org/configuration/output/#outputfilename) for both entry and code split bundles. It is often easier to add in a commit hash during deployment of your microfrontend via your CI environment variables.
+9. Configure webpack-dev-server to not do host checks. ([docs](https://webpack.js.org/configuration/dev-server/#devserverdisablehostcheck)).
+10. Configure webpack-dev-server for CORS by setting `{headers: {'Access-Control-Allow-Origin': '*'}}`. ([docs](https://stackoverflow.com/questions/31602697/webpack-dev-server-cors-issue))
+11. If developing on https, [configure webpack-dev-server for HTTPS](https://webpack.js.org/configuration/dev-server/#devserverhttps). Also consider [trusting SSL certificates from localhost](https://stackoverflow.com/questions/7580508/getting-chrome-to-accept-self-signed-localhost-certificate).
+12. Make sure that your [webpack externals](https://webpack.js.org/configuration/externals/#root) are correctly configured for any shared, in-browser modules that you are importing.
+
 ## Utility modules (styleguide, API, etc)
 
+A "utility module" is an in-browser javascript module that is not a single-spa application or parcel. In other words, it's only purpose is to export functionality for other microfrontends to import.
+
+Common examples of utility modules include styleguides, authentication helpers, and API helpers. These modules do not need to be registered with single-spa, but are important for maintaining consistency between several single-spa applications and parcels.
+
+Example code in a utility module:
+```js
+// In a repo called "api", you may export functions from the repo's entry file.
+// These functions will be available to single-spa application, parcels, and other in-browser modules
+// via an import statement.
+
+export function authenticatedFetch(url, init) {
+  return fetch(url, init).then(r => {
+    // Maybe do some auth stuff here
+    return r.json()
+  })
+}
+```
+
+Example code in a single-spa application that is using the utility module:
+```js
+// Inside of a single-spa application, you can import the functions from the 'api' repo
+import React from 'react'
+import { authenticatedFetch } from '@org-name/api';
+
+export function Foo(props) {
+  React.useEffect(() => {
+    const abortController = new AbortController()
+    authenticatedFetch(`/api/clients/${props.clientId}`, {signal: abortController.signal})
+    .then(client => {
+      console.log(client)
+    })
+
+    return () => {
+      abortController.abort()
+    }
+  }, [props.clientId])
+
+  return null
+}
+```
+
+To make utility modules work, you must ensure that your webpack externals and import map are properly configured. An example of a working styleguide may be found at https://github.com/vue-microfrontends/styleguide.
+
 ## Shared dependencies
+
+For performance, it is crucial to only load large javascript libraries a single time. Your framework of choice (React, Vue, Angular, etc) should only be loaded on the page a single time.
+
+It is not advisable to make everything a shared dependency, because shared dependencies must be upgraded at once for every microfrontend that uses them. For small libraries, it is likely acceptable to duplicate them in each repository that uses them. For example, react-router is likely small enough to duplicate, which is nice when you want to upgrade your routing one microfrontend at a time. However, for large libraries like react, momentjs, rxjs, etc, you may consider making them shared dependencies.
+
+To accomplish this, you should use [webpack externals](https://webpack.js.org/configuration/externals/#root), [rollup externals](https://rollupjs.org/guide/en/#external), or similar. Marking libraries as external tells your bundler to not use the version in your node_modules, but rather to expect the library to exist as an in-browser module.
+
+To make the shared dependencies available as in-browser modules, they must be present in your import map. A good way of managing them is to create a repository called `shared-dependencies` that has a partial import map in it. The CI process for that repository updates your deployed import map. Upgrading the shared dependencies can then be achieved by making a pull request to that repository.
+
+Not all libraries publish their code in a suitable format for SystemJS consumption. In those cases, check https://github.com/esm-bundle for a SystemJS version of those libraries. Alternatively, you may use [SystemJS extras](https://github.com/systemjs/systemjs#extras) to support UMD bundles, which are often available.
+
+An example of a shared-dependencies repo, along with a functioning CI process for it, can be found at https://github.com/polyglot-microfrontends/shared-dependencies.
 
 ## Deployment
 
 [Tutorial video](https://www.youtube.com/watch?v=QHunH3MFPZs&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=5)
+
+Microfrontends are built and deployed completely independently. This means that the the git repository, CI, build, and deployments all occur without going through a centralized repository. For this reason, monorepos are not encouraged for microfrontends since monorepos may only have one CI for all of the packages in the repo.
+
+There are two steps to deploying a microfrontend.
+
+1. Uploading production javascript bundles to a web server / CDN. It is encouraged to use a CDN such as AWS S3 + Cloudfront, Google Cloud Storage, Microsoft Azure Storage, Digital Ocean Spaces, etc because of their superior availability, caching, and performance due to edge locations. The javascript files that you upload are completely static. It is encouraged to always write new files to the CDN instead of overwriting files.
+2. Updating your import map
 
 ## Continuous Integration (CI)
 
