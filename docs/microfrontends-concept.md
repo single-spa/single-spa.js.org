@@ -36,6 +36,12 @@ In the context of single-spa, there are three kinds of microfrontends:
 2. [single-spa parcels](/docs/parcels-overview)]: Microfrontends that render components without controlling routes.
 3. [utility modules](/docs/recommended-setup#utility-modules-styleguide-api-etc): Microfrontends that export shared javascript logic, without rendering components.
 
+A web app may include one or more types of microfrontends. [Choosing between microfrontend types](/docs/recommended-setup#applications-versus-parcels-versus-utility-modules).
+
+## Communication between Microfrontends
+
+`import { thing } from 'other-microfrontend` is the preferred way to communicate between microfrontends. [Here is some documentation](/docs/recommended-setup#inter-app-communication) that goes over this in more detail.
+
 ## Relationship to single-spa
 
 single-spa is a small, 5kb (gzipped) npm package that orchestrates the mounting and unmounting of your microfrontends. It knows when to mount the applications based on [activity functions](/docs/api/#registerapplication), and can do so in a framework agnostic way with the help of small [adapter libraries](/docs/ecosystem).
