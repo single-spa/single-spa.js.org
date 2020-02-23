@@ -121,6 +121,10 @@ Below are some tips for configuring your bundler to be consumable by SystemJS an
 10. Configure webpack-dev-server for CORS by setting `{headers: {'Access-Control-Allow-Origin': '*'}}`. ([docs](https://stackoverflow.com/questions/31602697/webpack-dev-server-cors-issue))
 11. If developing on https, [configure webpack-dev-server for HTTPS](https://webpack.js.org/configuration/dev-server/#devserverhttps). Also consider [trusting SSL certificates from localhost](https://stackoverflow.com/questions/7580508/getting-chrome-to-accept-self-signed-localhost-certificate).
 12. Make sure that your [webpack externals](https://webpack.js.org/configuration/externals/#root) are correctly configured for any shared, in-browser modules that you are importing.
+13. Set [output.jsonpFunction](https://webpack.js.org/configuration/output/#outputjsonpfunction) to be a unique string for this project. Since you'll have multiple webpack bundles running in the same browser tab, a collision of the `jsonpFunction` could result in webpack modules getting mixed between bundles.
+14. Set [sockPort](https://webpack.js.org/configuration/dev-server/#devserversockport), [sockPath](https://webpack.js.org/configuration/dev-server/#devserversockpath), and [sockHost](https://webpack.js.org/configuration/dev-server/#devserversockhost) inside of your `devServer` configuration.
+
+For a bit more information specific to webpack code splits, see [the code splits FAQ](/docs/faq#code-splits).
 
 ## Utility modules (styleguide, API, etc)
 
@@ -181,20 +185,31 @@ Not all libraries publish their code in a suitable format for SystemJS consumpti
 
 An example of a shared-dependencies repo, along with a functioning CI process for it, can be found at https://github.com/polyglot-microfrontends/shared-dependencies.
 
-## Deployment
+## Deployment and Continuous Integration (CI)
 
-[Tutorial video](https://www.youtube.com/watch?v=QHunH3MFPZs&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=5)
+[Tutorial video (Part 1)](https://www.youtube.com/watch?v=QHunH3MFPZs&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=5)
 
-Microfrontends are built and deployed completely independently. This means that the the git repository, CI, build, and deployments all occur without going through a centralized repository. For this reason, monorepos are not encouraged for microfrontends since monorepos may only have one CI for all of the packages in the repo.
+[Tutorial video (Part 2)](https://www.youtube.com/watch?v=nC7rpDXa4B8&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=6)
+
+[Example CI configuration files](https://github.com/single-spa/import-map-deployer/tree/master/examples)
+
+Microfrontends are built and deployed completely independently. This means that the git repository, CI, build, and deployments all occur without going through a centralized repository. For this reason, monorepos are not encouraged for microfrontends since monorepos may only have one CI for all of the packages in the repo.
 
 There are two steps to deploying a microfrontend.
 
 1. Uploading production javascript bundles to a web server / CDN. It is encouraged to use a CDN such as AWS S3 + Cloudfront, Google Cloud Storage, Microsoft Azure Storage, Digital Ocean Spaces, etc because of their superior availability, caching, and performance due to edge locations. The javascript files that you upload are completely static. It is encouraged to always write new files to the CDN instead of overwriting files.
-2. Updating your import map
+2. Updating your import map to point to the newly deployed file.
 
-## Continuous Integration (CI)
+The implementation of Step 1 is dependent on the infrastructure you're using for your CDN. The AWS CLI ([`aws s3 sync`](https://docs.aws.amazon.com/cli/latest/reference/s3/)), Google gsutil ([`gsutil cp`](https://github.com/single-spa/import-map-deployer/blob/master/examples/ci-for-javascript-repo/gitlab-gcp-storage/.gitlab-ci.yml)), etc are easy ways of accomplishing this.
 
-[Tutorial video](https://www.youtube.com/watch?v=nC7rpDXa4B8&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=6)
+For the implementation of Step 2, you have a choice:
+
+a) Your CI makes a `curl` HTTP call to a running instance of [import-map-deployer](), which updates the import map in a concurrent-safe way.
+b) Your CI runner pulls down the import map, modify it, and reuploads it.
+
+The advantage of a) is that it is concurrent-safe for multiple, simultaneous deployments. Without a concurrent-safe solution, there might be multiple processes pulling down and reuploading the import map at the same time, which could result in a race condition where one CI process thinks it successfully updated the import map when in reality the other CI process wrote the import map later, having based its changes on a stale version of the import map.
+
+The advantage of b) is that it doesn't require running the import-map-deployer in your production environment. Ultimately, you should choose whichever option makes sense for your organization.
 
 ## Applications versus parcels
 
