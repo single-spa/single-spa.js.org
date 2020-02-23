@@ -10,6 +10,8 @@ any language as long as it exports the correct lifecycle events. In a single-spa
 many registered applications and potentially many parcels. Typically we recommend you mount a parcel within
 the context of an application because the parcel will be unmounted with the application.
 
+If you are only using one framework, it is recommended to prefer framework components (i.e., React, Vue, and Angular components) over single-spa parcels. This is because framework components interop easier with each other than when there is an intermediate layer of single-spa parcels. You may import components between registered applications via `import` statements. You should only create a single-spa parcel if you need it to work with multiple frameworks. ([More details](/docs/recommended-setup#in-browser-versus-build-time-modules))
+
 ## Quick Example
 
 ```js
