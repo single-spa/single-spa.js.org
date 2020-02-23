@@ -111,6 +111,8 @@ Single spa supports code splits. There are so many ways to code split we won't b
     * For SystemJS 2-5: Find a code example [here](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3)
 1. Set either [`output.jsonpFunction`](https://webpack.js.org/configuration/output/#outputjsonpfunction) or [`output.library`](https://webpack.js.org/configuration/output/#outputlibrary) to ensure that each app's webpack doesn't collide with other apps' webpack. `jsonpFunction` is preferred.
 
+For more information about webpack configuration and single-spa, see [the recommended setup](/docs/recommended-setup#build-tools-webpack--rollup).
+
 ## Does single-spa require additional security considerations?
 
 No. single-spa does not add, deviate, or attempt to bypass any browser JavaScript security measures. The security needs of your applications are the same as if you did not use single-spa.
