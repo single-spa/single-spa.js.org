@@ -4,6 +4,8 @@ title: Contributing to Single-spa
 sidebar_label: Overview
 ---
 
+[List of current contributors](/contributors)
+
 Thanks for checking out single-spa! We're excited to hear and learn from you.
 
 We've put together the following guidelines to help you figure out where you can best be helpful.
