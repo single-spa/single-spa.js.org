@@ -35,6 +35,10 @@ single-spa apps consist of the following:
     - A function to load the application's code
     - A function that determines when the application is active/inactive
 
+## The Recommended Setup
+
+The single-spa core team has put together documentation, tools, and videos showing the currently encouraged best practices with single-spa. Check out [these docs](./recommended-setup.md) for more information.
+
 ## How hard will it be to use single-spa?
 
 single-spa works with ES5, ES6+, TypeScript, Webpack, SystemJS, Gulp, Grunt, Bower, ember-cli, or really any build system available. You can npm install it, jspm install it, or even just use a `<script>` tag if you prefer.
