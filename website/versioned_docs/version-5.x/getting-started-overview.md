@@ -155,7 +155,7 @@ single-spa has adopted a Code of Conduct that we expect project participants to 
 
 ### [Contributing Guide](contributing-overview.md)
 
-Read our [contributing guide](https://reactjs.org/contributing/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to single-spa.
+Read our [contributing guide](./contributing-overview.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to single-spa.
 
 ## Who's Using This?
 
