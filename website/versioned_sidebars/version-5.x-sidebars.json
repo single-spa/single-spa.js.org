@@ -1,0 +1,196 @@
+{
+  "version-5.x/docs": [
+    {
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/getting-started-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/examples"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Tutorials",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/single-spa-playground"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "CLI",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/create-single-spa"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Microfrontend",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/microfrontends-concept"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Root Config",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/configuration"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Application",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/building-applications"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/separating-applications"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/migrating-existing-spas"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Parcel",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/parcels-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "The Recommended Setup",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/recommended-setup"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/api"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/parcels-api"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Ecosystem",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-react"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-vue"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-angular"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-angularjs"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-cycle"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-ember"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-inferno"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-preact"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-svelte"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-riot"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-backbone"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-html-web-components"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-leaked-globals"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-dojo"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Contributing",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/contributing-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/code-of-conduct"
+        }
+      ]
+    }
+  ]
+}

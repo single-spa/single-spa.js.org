@@ -2,6 +2,8 @@ const path = require('path');
 const repoUrl = 'https://github.com/single-spa/single-spa.js.org';
 const libRepoUrl = 'https://github.com/single-spa/single-spa';
 
+const versions = require('./versions.json');
+
 module.exports = {
   title: 'single-spa',
   tagline: 'a javascript framework for front-end microservices',
@@ -100,6 +102,16 @@ module.exports = {
         src: 'img/logo-white-bgblue.svg',
       },
       links: [
+        {
+          to: 'versions',
+          label: versions[0],
+          style: {
+            whiteSpace: 'nowrap',
+            padding: '0.25rem 0.5rem 0.2rem 0.25rem',
+            fontSize: 'calc(0.9 * var(--ifm-font-size-base))',
+            textDecoration: 'underline',
+          },
+        },
         { to: 'docs/faq/', label: 'FAQ' },
         { to: 'docs/', label: 'Docs' },
         { to: 'help/', label: 'Help' },
