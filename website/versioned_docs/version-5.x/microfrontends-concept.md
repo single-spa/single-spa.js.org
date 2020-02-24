@@ -6,7 +6,7 @@ sidebar_label: Overview
 
 # Concept: Microfrontends
 
-[Tutorial video](https://www.youtube.com/watch?v=3EUfbnHi6Wg&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=1)
+Tutorial video: [Youtube](https://www.youtube.com/watch?v=3EUfbnHi6Wg&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=1) / [Bilibili](https://www.bilibili.com/video/av83619684)
 
 A microfrontend is a microservice that exists within a browser.
 
