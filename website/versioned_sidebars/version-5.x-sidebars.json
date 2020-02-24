@@ -180,6 +180,16 @@
     },
     {
       "type": "category",
+      "label": "Dev Tools",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/devtools"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "Contributing",
       "items": [
         {
