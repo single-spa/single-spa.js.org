@@ -1,44 +1,4 @@
 {
   "docs": {
-    "Overview": ["getting-started-overview"],
-    "Examples": ["examples"],
-    "Tutorials": [
-      "single-spa-playground"
-    ],
-    "CLI": [
-      "create-single-spa"
-    ],
-    "Concept: Microfrontend": [
-      "microfrontends-concept"
-    ],
-    "Concept: Root Config": ["configuration"],
-    "Concept: Application": [
-      "building-applications",
-      "separating-applications",
-      "migrating-existing-spas"
-    ],
-    "Concept: Parcel": ["parcels-overview"],
-    "The Recommended Setup": [
-      "recommended-setup"
-    ],
-    "API": ["api", "parcels-api"],
-    "Ecosystem": [
-      "ecosystem",
-      "ecosystem-react",
-      "ecosystem-vue",
-      "ecosystem-angular",
-      "ecosystem-angularjs",
-      "ecosystem-cycle",
-      "ecosystem-ember",
-      "ecosystem-inferno",
-      "ecosystem-preact",
-      "ecosystem-svelte",
-      "ecosystem-riot",
-      "ecosystem-backbone",
-      "ecosystem-html-web-components",
-      "ecosystem-leaked-globals",
-      "ecosystem-dojo"
-    ],
-    "Contributing": ["contributing-overview", "code-of-conduct"]
   }
 }
