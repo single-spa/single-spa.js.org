@@ -8,6 +8,12 @@ export default [
     githubUrl: "https://github.com/single-spa/single-spa.js.org"
   },
   {
+    languageName: "Português europeu",
+    languageNameEnglish: "Portuguese (Portugal)",
+    documentationUrl: "https://pt-pt.single-spa.js.org",
+    githubUrl: "https://github.com/single-spa/pt-pt.single-spa.js.org"
+  },
+  {
     languageName: "简体中文",
     languageNameEnglish: "Simplified Chinese",
     documentationUrl: "https://zh-hans.single-spa.js.org",
