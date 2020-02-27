@@ -104,7 +104,7 @@ import * as parcelConfig from './my-parcel.js'
 
 // If you pass in an appendTo prop, the parcel will be mounted there instead of
 // to a dom node inside of the current react component tree
-<Parcel>
+<Parcel
   config={parcelConfig}
   wrapWith="div"
   appendTo={document.body}
