@@ -33,7 +33,7 @@ In the context of single-spa, a microfrontend is often an in-browser javascript 
 In the context of single-spa, there are three kinds of microfrontends:
 
 1. [single-spa applications](/docs/building-applications): Microfrontends that render components for a set of specific routes.
-2. [single-spa parcels](/docs/parcels-overview)]: Microfrontends that render components without controlling routes.
+2. [single-spa parcels](/docs/parcels-overview): Microfrontends that render components without controlling routes.
 3. [utility modules](/docs/recommended-setup#utility-modules-styleguide-api-etc): Microfrontends that export shared javascript logic, without rendering components.
 
 A web app may include one or more types of microfrontends. [Choosing between microfrontend types](/docs/recommended-setup#applications-versus-parcels-versus-utility-modules).
