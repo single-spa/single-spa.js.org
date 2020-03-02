@@ -17,7 +17,7 @@ import myRootSvelteComponent from 'my-root-svelte-component.js';
 const svelteLifecycles = singleSpaSvelte({
   component: myRootSvelteComponent,
   domElementGetter: () => document.getElementById('svelte-app'),
-  data: { someData: 'data' }
+  props: { someData: 'data' }
 });
 
 export const bootstrap = svelteLifecycles.bootstrap;
@@ -30,7 +30,7 @@ export const unmount = svelteLifecycles.unmount;
 All options are passed to single-spa-svelte via the `opts` parameter when calling `singleSpaSvelte(opts)`. The following options are available:
 
 - `component`: (required) The root component that will be rendered. This component should be compiled by svelte and **not** an iife.
-- `domElementGetter`: (required) A function which will return a dom element. The root component will be mounted in this element.
+- `domElementGetter`: (optional) A function which will return a dom element. The root component will be mounted in this element. If not provided, a default dom element will be provided.
 
 Svelte-specific options
 
@@ -38,3 +38,7 @@ Svelte-specific options
 - `hydrate`: (optional) See the svelte [Creating a component](https://svelte.dev/docs#Creating_a_component) documentation
 - `intro`: (optional) If `true`, will play transitions on initial render, rather than waiting for subsequent state changes
 - `props`: (optional) An object of properties to supply to the component
+
+## single-spa props
+
+All [single-spa props](./api.md#registerapplication) are passed to the svelte component as props. The props provided to `singleSpaSvelte({props: {...}})` are merged with the single-spa props.
