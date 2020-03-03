@@ -79,31 +79,9 @@ Lazy loading is when you only download javascript code that the user needs for t
 
 Often, the route-based lazy loading provided by single-spa loading functions is all that you need to ensure great performance. However, it is also possible to do lazy loading via "code splits" with your bundler (webpack or rollup). For documentation on webpack code splits, see [these docs](https://webpack.js.org/guides/code-splitting/#dynamic-imports). It is recommended to use dynamic import (`import()`) instead of multiple entry points for code splits in a single-spa application. For code splits to work properly, you'll need to [dynamically set your public path](https://webpack.js.org/guides/public-path/#on-the-fly). A tool exists to help you set your public path correctly for use with systemjs - https://github.com/joeldenning/systemjs-webpack-interop.
 
-Lazy loading is when you only download javascript code that the user needs for the current page, instead of all javascript upfront. It is a technique for improving the performance of your application by decreasing the time-to-meaningful-render when you initially load the page. If you use [single-spa loading functions](/docs/configuration#loading-function-or-application), you already have built-in lazy loading for your applications and parcels. Since an application is an "in-browser module," this means that you are only downloading the in-browser modules in your import map when you need them.
-
-Often, the route-based lazy loading provided by single-spa loading functions is all that you need to ensure great performance. However, it is also possible to do lazy loading via "code splits" with your bundler (webpack or rollup). For documentation on webpack code splits, see [these docs](https://webpack.js.org/guides/code-splitting/#dynamic-imports). It is recommended to use dynamic import (`import()`) instead of multiple entry points for code splits in a single-spa application. For code splits to work properly, you'll need to [dynamically set your public path](https://webpack.js.org/guides/public-path/#on-the-fly). A tool exists to help you set your public path correctly for use with systemjs - https://github.com/joeldenning/systemjs-webpack-interop.
-
 ## Local development
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=vjjcuIxqIzY&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=4) / [Bilibili](https://www.bilibili.com/video/av83617789/)
-
-In contrast to monolithic frontend applications, local development with single-spa encourages only running the one microfrontend you're working on, while using deployed versions of all other microfrontends. This is important because running every single-spa microfrontend every time you want to do anything is unwieldy and cumbersome.
-
-To accomplish local development of only one microfrontend at a time, we can customize the URL for that microfrontend within the import map. For example, the following import map is set up for local development of the `navbar` application, since that's the only one pointing to a local web server. The `planets` and `things` applications are pointing to deployed (already hosted) versions of the applications.
-
-```json
-{
-  "imports": {
-    "@react-mf/navbar": "https://localhost:8080/react-mf-navbar.js",
-    "@react-mf/planets": "https://react.microfrontends.app/planets/2717466e748e53143474beb6baa38e3e5320edd7/react-mf-planets.js",
-    "@react-mf/things": "https://react.microfrontends.app/things/7f209a1ed9ac9690835c57a3a8eb59c17114bb1d/react-mf-things.js"
-  }
-}
-```
-
-A tool called [import-map-overrides](https://github.com/joeldenning/import-map-overrides) exists to customize your import map through an in-browser UI. This tool will automatically let you toggle one or more microfrontends between your localhost and the deployed version.
-
-Additionally, you have the choice of running your single-spa root config locally, or using the single-spa config that is running on a deployed environment. The single-spa core team finds it easiest to develop on deployed environments (perhaps an "integration", "development", or "staging" environment that is running within your organization) so that you do you not have to constantly run your single-spa root config.
 
 In contrast to monolithic frontend applications, local development with single-spa encourages only running the one microfrontend you're working on, while using deployed versions of all other microfrontends. This is important because running every single-spa microfrontend every time you want to do anything is unwieldy and cumbersome.
 
@@ -230,8 +208,6 @@ a) Your CI makes a `curl` HTTP call to a running instance of [import-map-deploye
 b) Your CI runner pulls down the import map, modify it, and reuploads it.
 
 The advantage of a) is that it is concurrent-safe for multiple, simultaneous deployments. Without a concurrent-safe solution, there might be multiple processes pulling down and reuploading the import map at the same time, which could result in a race condition where one CI process thinks it successfully updated the import map when in reality the other CI process wrote the import map later, having based its changes on a stale version of the import map.
-
-The advantage of b) is that it doesn't require running the import-map-deployer in your production environment. Ultimately, you should choose whichever option makes sense for your organization.
 
 The advantage of b) is that it doesn't require running the import-map-deployer in your production environment. Ultimately, you should choose whichever option makes sense for your organization.
 
