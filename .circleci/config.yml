@@ -37,4 +37,7 @@ workflows:
               only: master
   build:
     jobs:
-      - build-website
+      - build-website:
+        filters:
+          ignore:
+            - gh-pages
