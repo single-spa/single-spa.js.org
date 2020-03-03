@@ -33,6 +33,8 @@ workflows:
     jobs:
       - deploy-website:
           filters:
+            ignore:
+              - gh-pages
             branches:
               only: master
   build:
