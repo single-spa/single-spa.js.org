@@ -21,7 +21,7 @@ export const HomeSplash = () => {
             Get Started
           </Link>
 
-          <Link className="button" to="https://single-spa.surge.sh">
+          <Link className="button" to="https://vue.microfrontends.app/rate-doggos">
             See a live example
           </Link>
         </div>
