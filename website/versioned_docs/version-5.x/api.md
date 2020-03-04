@@ -34,7 +34,7 @@ Note that if an application is registered from within another application, that 
 	<dd>Must be a loading function that either returns the resolved application or a promise.</dd>
 	<dt>activityFn: (location) => boolean</dt>
 	<dd>Must be a pure function. The function is called with <code>window.location</code> as the first argument !-- TODO: any only? --> and should return a truthy value whenever the application should be active.</dd>
-	<dt>customProps?: Object = {}</dt>
+	<dt>customProps?: Object = &#123;&#125;</dt>
 	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
 
