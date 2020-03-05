@@ -38,6 +38,7 @@ workflows:
   build:
     jobs:
       - build-website:
-        filters:
-          ignore:
-            - gh-pages
+          filters:
+            branches:
+              ignore:
+                - gh-pages
