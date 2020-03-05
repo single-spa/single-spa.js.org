@@ -6,6 +6,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Namecheap',
+    image: 'img/namecheap-logo.svg',
+    infoLink: 'https://www.namecheap.com/',
+    pinned: true,
+  },
+  {
     caption: 'DealerSocket',
     image: 'img/dealersocket.png',
     infoLink: 'https://dealersocket.com/',
