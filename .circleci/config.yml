@@ -38,6 +38,6 @@ workflows:
   build:
     jobs:
       - build-website:
-        filters:
-          ignore:
-            - gh-pages
+          filters:
+            ignore:
+              - gh-pages
