@@ -32,7 +32,7 @@ module.exports = function(context, opts) {
   <head>
     <meta charset="UTF-8">
     <script>
-      const redirectLink = '${newLink}' + location.search;
+      const redirectLink = '${newLink}' + location.search + location.hash;
       document.write('<link rel="canonical" href="' + redirectLink + '">');
       document.write('<title>Redirecting to ' + redirectLink + '</title>');
       document.write('</head>')
