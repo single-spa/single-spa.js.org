@@ -33,7 +33,7 @@ Note that if an application is registered from within another application, that 
 	<dt>applicationOrLoadingFn: () => &lt;Function | Promise&gt;</dt>
 	<dd>Must be a loading function that either returns the resolved application or a promise.</dd>
 	<dt>activityFn: (location) => boolean</dt>
-	<dd>Must be a pure function. The function is called with <code>window.location</code> as the first argument !-- TODO: any only? --> and should return a truthy value whenever the application should be active.</dd>
+	<dd>Must be a pure function. The function is called with <codehtml>window.location</codehtml> as the first argument {/* TODO: any only? */} and should return a truthy value whenever the application should be active.</dd>
 	<dt>customProps?: Object = &#123;&#125;</dt>
 	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
@@ -101,8 +101,8 @@ Use this utility function to easily perform url navigation between registered ap
 		navigationObj must be one of the following types:
 		<ul>
 			<li>a url string.</li>
-			<li>a context / thisArg that has an <code>href</code> property; useful for calling <code>singleSpaNavigate.call(anchorElement)</code> with a reference to the anchor element or other context.</li>
-			<li>a DOMEvent object for a click event on a DOMElement that has an <code>href</code> attribute; ideal for the <code>&lt;a onclick="singleSpaNavigate">&lt;/a></code> use case.</li>
+			<li>a context / thisArg that has an <codehtml>href</codehtml> property; useful for calling <codehtml>singleSpaNavigate.call(anchorElement)</codehtml> with a reference to the anchor element or other context.</li>
+			<li>a DOMEvent object for a click event on a DOMElement that has an <codehtml>href</codehtml> attribute; ideal for the <codehtml>&lt;a onclick="singleSpaNavigate">&lt;/a></codehtml> use case.</li>
 		</ul>
 	</dd>
 </dl>
@@ -126,7 +126,7 @@ none
 
 <dl className="args-list">
 	<dt>appNames: string[]</dt>
-	<dd>Each string is the name of a registered application that is currently <code>MOUNTED</code>.</dd>
+	<dd>Each string is the name of a registered application that is currently <codehtml>MOUNTED</codehtml>.</dd>
 </dl>
 
 ## getAppNames
@@ -166,7 +166,7 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 <dl className="args-list">
 	<dt>appStatus: &lt;string | null&gt;</dt>
 	<dd>
-		Will be one of the following string constants, or <code>null</code> if the app does not exist.
+		Will be one of the following string constants, or <codehtml>null</codehtml> if the app does not exist.
 		<dl className="dl-inline">
 			<div>
 				<dt>NOT_LOADED</dt>
@@ -182,7 +182,7 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 			</div>
 			<div>
 				<dt>BOOTSTRAPPING</dt>
-				<dd>the <code>bootstrap</code> lifecycle function has been called but has not finished.</dd>
+				<dd>the <codehtml>bootstrap</codehtml> lifecycle function has been called but has not finished.</dd>
 			</div>
 			<div>
 				<dt>NOT_MOUNTED</dt>
@@ -256,7 +256,7 @@ Because a registered application might be mounted when `unloadApplication` is ca
 	<dt>appName: string</dt>
 	<dd>Registered application name.</dd>
 	<dt>options?: &#123;waitForUnmount: boolean = false}</dt>
-	<dd>The options must be an object that has a <code>waitForUnmount</code> property. When `waitForUnmount` is `false`, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <code>true</code>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <code>MOUNTED</code>).</dd>
+	<dd>The options must be an object that has a <codehtml>waitForUnmount</codehtml> property. When <codehtml>waitForUnmount</codehtml> is <codehtml>false</codehtml>, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <codehtml>true</codehtml>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <codehtml>MOUNTED</codehtml>).</dd>
 </dl>
 
 <h3>returns</h3>
@@ -289,7 +289,7 @@ Will call every app's activity function with the `mockWindowLocation` and give y
 
 <dl className="args-list">
 	<dt>appNames: string[]</dt>
-	<dd>Each string is the name of a registered application that matches the provided <code>mockWindowLocation</code>.</dd>
+	<dd>Each string is the name of a registered application that matches the provided <codehtml>mockWindowLocation</codehtml>.</dd>
 </dl>
 
 ## addErrorHandler
@@ -306,7 +306,7 @@ Adds a handler that will be called every time an application throws an error dur
 
 <dl className="args-list">
 	<dt>errorHandler: Function(error: Error)</dt>
-	<dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <code>message</code> and <code>appOrParcelName</code> property.</dd>
+	<dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <codehtml>message</codehtml> and <codehtml>appOrParcelName</codehtml> property.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -337,7 +337,7 @@ Removes the given error handler function.
 
 <dl className="args-list">
 	<dt>boolean</dt>
-	<dd><code>true</code> if the error handler was removed, and <code>false</code> if it was not.</dd>
+	<dd><codehtml>true</codehtml> if the error handler was removed, and <codehtml>false</codehtml> if it was not.</dd>
 </dl>
 
 ## mountRootParcel
@@ -415,7 +415,7 @@ Sets the global configuration for bootstrap timeouts.
 	<dd>Number of milliseconds to wait for bootstrap to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
 	<dd>
-		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <code>millis</code> is reached.</p>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
@@ -449,7 +449,7 @@ Sets the global configuration for mount timeouts.
 	<dd>Number of milliseconds to wait for mount to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
 	<dd>
-		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <code>millis</code> is reached.</p>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
@@ -483,7 +483,7 @@ Sets the global configuration for unmount timeouts.
 	<dd>Number of milliseconds to wait for unmount to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
 	<dd>
-		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <code>millis</code> is reached.</p>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
@@ -519,7 +519,7 @@ Sets the global configuration for unload timeouts.
 	<dd>Number of milliseconds to wait for unload to complete before timing out.</dd>
 	<dt>dieOnTimeout: boolean = false</dt>
 	<dd>
-		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <code>millis</code> is reached.</p>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
 		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
 		<p>Each registered application can override this behavior for itself.</p>
 	</dd>
