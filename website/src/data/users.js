@@ -52,6 +52,12 @@ const users = [
     image: 'img/openmrs.svg',
     infoLink: 'https://openmrs.org',
     pinned: true,
+  },
+  {
+    caption: 'Siigo',
+    image: 'img/siigo-nube-logo.png',
+    infoLink: 'https://siigonube.siigo.com',
+    pinned: true,
   }
 ];
 
