@@ -63,11 +63,11 @@ to make import maps work.
 
 Note that Module Federation is a new feature (at the time of this writing) and requires that you use webpack@>=5 (currently in beta). It is still an evolving technology.
 
-single-spa is a way of structuring your routes for microfrontends, and Module Federation is a performance technique for microfrontends. They complement each other well and can be used together. Here is a [YouTube video](https://www.youtube.com/watch?v=wxnwPLLIJCY) by a community member that talks about using single-spa and module federation together.
+single-spa is a way of structuring your routes for microfrontends. Module Federation is a performance technique for microfrontends. They complement each other well and can be used together. Here is a [YouTube video](https://www.youtube.com/watch?v=wxnwPLLIJCY) by a community member that talks about using single-spa and module federation together.
 
 With module federation, you must choose how you wish to load the microfrontends themselves. The single-spa core team recommends using SystemJS + import maps as a module loader for the microfrontends. Alternatively, you may use global variables and `<script>` elements. An example of using SystemJS to load microfrontends with module federation can be found at https://github.com/ScriptedAlchemy/mfe-webpack-demo/pull/2.
 
-The single-spa core team recommends choosing either import maps or module federation for your shared, third-party dependencies, instead of both. We have a preference towards import maps -- see the [shared dependencies section](#shared-dependencies) for a comparison.
+The single-spa core team recommends choosing either import maps or module federation for your shared, third-party dependencies. We do not recommend sharing some third-party dependencies via import map and others via module federation. When choosing between the two approaches, we have a preference towards import maps, but no objection to module federation. See the [shared dependencies section](#shared-dependencies) for a comparison.
 
 ## SystemJS
 
@@ -194,7 +194,7 @@ There are two approaches to sharing dependencies:
 1. [In-browser modules with import maps](#import-maps)
 2. [Module federation](#module-federation)
 
-You may use either one, or both. We currently recommend only using import maps.
+You may use either one, or both. We currently recommend only using import maps, although we have no objection to module federation.
 
 ### Comparison of approaches
 
