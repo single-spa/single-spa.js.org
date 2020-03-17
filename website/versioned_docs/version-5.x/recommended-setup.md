@@ -192,7 +192,7 @@ It is not advisable to make everything a shared dependency, because shared depen
 There are two approaches to sharing dependencies:
 
 1. [In-browser modules with import maps](#import-maps)
-2. [Module federation](#module-federation)
+2. [Build-time modules with module federation](#module-federation)
 
 You may use either one, or both. We currently recommend only using import maps, although we have no objection to module federation.
 
