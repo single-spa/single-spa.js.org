@@ -57,6 +57,18 @@ is crucial to being able to use in-browser modules, which is why import maps exi
 As of Feb 2020, import maps are only implemented in Chrome, and behind a developer feature toggle. As such, you will need a polyfill
 to make import maps work.
 
+## Module Federation
+
+[Module Federation](https://dev.to/marais/webpack-5-and-module-federation-4j1i) is a webpack-specific technique for sharing [build-time modules](#in-browser-versus-build-time-modules). It involves each microfrontend bundling all of its dependencies, even the shared ones. This means that there are multiple copies of each shared dependency - one per microfrontend. In the browser, the first copy of the shared dependency will be downloaded, but subsequent microfrontends will reuse that shared dependency without downloading their copy of it.
+
+Note that Module Federation is a new feature (at the time of this writing) and requires that you use webpack@>=5 (currently in beta). It is still an evolving technology.
+
+single-spa is a way of structuring your routes for microfrontends, and Module Federation is a performance technique for microfrontends. They complement each other well and can be used together. Here is a [YouTube video](https://www.youtube.com/watch?v=wxnwPLLIJCY) by a community member that talks about using single-spa and module federation together.
+
+With module federation, you must choose how you wish to load the microfrontends themselves. The single-spa core team recommends using SystemJS + import maps as a module loader for the microfrontends. Alternatively, you may use global variables and `<script>` elements. An example of using SystemJS to load microfrontends with module federation can be found at https://github.com/ScriptedAlchemy/mfe-webpack-demo/pull/2.
+
+The single-spa core team recommends choosing either import maps or module federation for your shared, third-party dependencies, instead of both. We have a preference towards import maps -- see the [shared dependencies section](#shared-dependencies) for a comparison.
+
 ## SystemJS
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=AmdKF2UhFzw&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=7) / [Bilibili](https://www.bilibili.com/video/av83620028/)
@@ -173,17 +185,37 @@ To make utility modules work, you must ensure that your webpack externals and im
 
 ## Shared dependencies
 
-For performance, it is crucial to only load large javascript libraries a single time. Your framework of choice (React, Vue, Angular, etc) should only be loaded on the page a single time.
+For performance, it is crucial that your web app loads large javascript libraries only once. Your framework of choice (React, Vue, Angular, etc) should only be loaded on the page a single time.
 
-It is not advisable to make everything a shared dependency, because shared dependencies must be upgraded at once for every microfrontend that uses them. For small libraries, it is likely acceptable to duplicate them in each repository that uses them. For example, react-router is likely small enough to duplicate, which is nice when you want to upgrade your routing one microfrontend at a time. However, for large libraries like react, momentjs, rxjs, etc, you may consider making them shared dependencies.
+It is not advisable to make everything a shared dependency, because shared dependencies must be upgraded at once for every microfrontend that uses them. For small libraries, it is likely acceptable to duplicate them in each microfrontend that uses them. For example, react-router is likely small enough to duplicate, which is nice when you want to upgrade your routing one microfrontend at a time. However, for large libraries like react, momentjs, rxjs, etc, you may consider making them shared dependencies.
 
-To accomplish this, you should use [webpack externals](https://webpack.js.org/configuration/externals/#root), [rollup externals](https://rollupjs.org/guide/en/#external), or similar. Marking libraries as external tells your bundler to not use the version in your node_modules, but rather to expect the library to exist as an in-browser module.
+There are two approaches to sharing dependencies:
+
+1. [In-browser modules with import maps](#import-maps)
+2. [Module federation](#module-federation)
+
+You may use either one, or both. We currently recommend only using import maps.
+
+### Comparison of approaches
+
+| Approach          | Share dependencies | Bundler requirements |  Managing dependencies |
+| ----------------- | ------------------ | -------------------- | ---------------------- |
+| Import Maps       | Fully supported    | Any bundler          | [shared dependecies repo](https://github.com/polyglot-microfrontends/shared-dependencies/blob/master/importmap.json) |
+| Module Federation | Fully supported    | Webpack only         | [multiple webpack configs](https://github.com/ScriptedAlchemy/mfe-webpack-demo/blob/f48ff0bd0b7d62b722ea000e5ded73f0d076a0b7/packages/01-host/webpack.config.js#L47) |
+
+### Sharing with Import Maps
+
+To share a dependency between microfrontends with [Import Maps](#import-maps), you should use [webpack externals](https://webpack.js.org/configuration/externals/#root), [rollup externals](https://rollupjs.org/guide/en/#external), or similar. Marking libraries as external tells your bundler to not use the version in your node_modules, but rather to expect the library to exist as an in-browser module.
 
 To make the shared dependencies available as in-browser modules, they must be present in your import map. A good way of managing them is to create a repository called `shared-dependencies` that has a partial import map in it. The CI process for that repository updates your deployed import map. Upgrading the shared dependencies can then be achieved by making a pull request to that repository.
 
 Not all libraries publish their code in a suitable format for SystemJS consumption. In those cases, check https://github.com/esm-bundle for a SystemJS version of those libraries. Alternatively, you may use [SystemJS extras](https://github.com/systemjs/systemjs#extras) to support UMD bundles, which are often available.
 
 An example of a shared-dependencies repo, along with a functioning CI process for it, can be found at https://github.com/polyglot-microfrontends/shared-dependencies.
+
+### Sharing with Module Federation
+
+At the time of this writing, module federation is new and still changing. Check out [this example repo](https://github.com/joeldenning/mfe-webpack-demo/tree/system) which uses systemjs to load the microfrontends, but module federation to share `react`, `react-dom`, and `react-router`.
 
 ## Deployment and Continuous Integration (CI)
 
