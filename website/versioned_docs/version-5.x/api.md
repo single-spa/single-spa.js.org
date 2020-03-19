@@ -45,13 +45,20 @@ Note that if an application is registered from within another application, that 
 ## start
 ```js
 singleSpa.start();
+
+// Optionally, you can provide configuration
+singleSpa.start({
+	urlRerouteOnly: true
+});
 ```
 
 Must be called by your single spa config. Before `start` is called, applications will be loaded, but will never be bootstrapped, mounted or unmounted. The reason for `start` is to give you control over the performance of your single page application. For example, you may want to declare registered applications immediately (to start downloading the code for the active ones), but not actually mount the registered applications until an initial AJAX request (maybe to get information about the logged in user) has been completed. In that case, the best performance is achieved by calling `registerApplication` immediately, but calling `start` after the AJAX request is completed.
 
 <h3>arguments</h3>
 
-none
+The `start(opts)` api optionally accepts a single `opts` object, with the following properties. If the opts object is omitted, all defaults will be applied.
+
+- `urlRerouteOnly`: A boolean that defaults to false. If set to true, calls to `history.pushState()` and `history.replaceState()` will not trigger a single-spa reroute unless the client side route was changed. Setting this to true can be better for performance in some situations. For more information, read [original issue](https://github.com/single-spa/single-spa/issues/484).
 
 <h3>returns</h3>
 
