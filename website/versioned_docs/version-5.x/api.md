@@ -247,7 +247,7 @@ singleSpa.unloadApplication('app1');
 singleSpa.unloadApplication('app1', {waitForUnmount: true});
 ```
 
-The purpose of unloading a registered application is to set it back to to a NOT_LOADED status, which means that it will be re-bootstrapped the next time it needs to mount. The main use-case for this was to allow for the hot-reloading of entire registered applications, but `unloadApplication` can be useful whenever you want to re-bootstrap your application.
+The purpose of unloading a registered application is to set it back to a NOT_LOADED status, which means that it will be re-bootstrapped the next time it needs to mount. The main use-case for this was to allow for the hot-reloading of entire registered applications, but `unloadApplication` can be useful whenever you want to re-bootstrap your application.
 
 Single-spa performs the following steps when unloadApplication is called.
 
