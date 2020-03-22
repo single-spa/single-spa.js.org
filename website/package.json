@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "docusaurus build && yarn copycircle",
+    "copycircle": "copyfiles -u 1 '../.circleci/**/*.*' build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "eslint:check": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings 1",
@@ -10,6 +11,7 @@
     "format:check": "prettier --config .prettierrc --check '**/*.{ts,js,tsx,jsx,scss,css,html,md}'"
   },
   "devDependencies": {
+    "copyfiles": "^2.2.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
