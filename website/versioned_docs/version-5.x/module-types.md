@@ -19,3 +19,33 @@ Here is how each single-spa module works conceptually. This information should h
 | Core building block               | only needed with multiple frameworks | useful to share business logic       |
 
 Each single-spa module is in reality an in browser javascript module see [here](/docs/recommended-setup#in-browser-versus-build-time-modules) for more information. Each type/module fits into the overal microfrontend approach.
+
+## Applications
+
+### Applications are declarative
+Applications use a declarative api. Your single-spa config (also sometimes called root config) defines applications ahead of time, defines the condition at which they are active, but doesn't mount the application directly.
+
+### Applications have managed lifecylces
+single-spa manages registered applications and is in charge of all of their lifecycles. This prevents you from writing a bunch of logic about when applications should mount and unmount; single-spa takes care of that for you.
+All single spa needs to make this work automatically is for an activity function that describes when your application should be active.
+
+## Parcels
+
+### Parcels are impertive
+Parcels exist in many ways as an escape hatch from the normal declarative flow. They exist primarily to allow you to reuse UI across applications when those applications are written in multiple frameworks.
+
+### You manage the lifecycles of Parcels
+When you call `mountParcel` or `mountRootParcel` the parcel is mounted immediately and returns the parcel object. You need to call the `unmount` method on the parcel manually when the component that calls `mountParcel` unmounts.
+
+### Parcels are best suited for sharing components between frameworks
+Taking a component and turning it into a `parcelConfig` is as easy as using the [single-spa helpers](/docs/ecosystem#help-for-frameworks) for that framework. This results in an object that single-spa can use to create and mount a parcel.
+Because single-spa can mount a parcel anywhere, this gives you a way to share components across frameworks. It should not be used if the shared component is being used in another application of the same framework.
+For example: `applicationOne` is written in Vue and contains all the UI/Logic to create a user. `application2` is written in react and needs to create a user. Using a single-spa parcel allows you to wrap your `app1` vue component
+in a way that will make it work inside `application2` despite the different frameworks. Even better if `application2` is unmounted by single-spa (per the activity function returning false)
+Think of parcels as a single-spa specific implementation of webcomponents.
+
+## Utility modules share business logic
+Utility modules are a great place to share business logic. Instead of each application creating their own implementation of something tied to your buisness logic, you can use a plain javascript object (single-spa utility) to share that logic.
+For example: Authorization. How does each application know which user is logged in? You could have each application ask the server or read a JWT but that creates duplicate work in each application.
+Instead implmenting logic around who is logged in one module (with all the necessary methods exported on the module) and each application can simply ask the utility module who is logged in.
+This approach also works well for data [fetching](/docs/recommended-setup#api-data).
