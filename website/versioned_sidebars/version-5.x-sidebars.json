@@ -90,6 +90,16 @@
     },
     {
       "type": "category",
+      "label": "Concept: Single spa modules",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/module-types"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "The Recommended Setup",
       "items": [
         {
