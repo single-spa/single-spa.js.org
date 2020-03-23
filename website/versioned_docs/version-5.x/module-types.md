@@ -8,7 +8,7 @@ sidebar_label: Conceptual Module Types
 
 Single-spa has [different categories](/docs/microfrontends-concept#types-of-microfrontends) of microfrontends. It is up to you where and how you use each of them. However, the single-spa core team has [recommendations](/docs/recommended-setup/#applications-versus-parcels-versus-utility-modules).
 
-Here is how each single-spa module works conceptually. This information should help you understand our [recommendations](/docs/recommended-setup/#applications-versus-parcels-versus-utility-modules) on which to use where.
+Here is how each single-spa module works conceptually. This information should help you understand our [recommendations](/docs/recommended-setup/#applications-versus-parcels-versus-utility-modules).
 
 | application                       | parcel                               | utility                              |
 | --------------------------------- | ------------------------------------ | ------------------------------------ |
