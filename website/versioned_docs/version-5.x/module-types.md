@@ -35,10 +35,10 @@ All single spa needs to make this work automatically is for an activity function
 Parcels exist in many ways as an escape hatch from the normal declarative flow. They exist primarily to allow you to reuse UI across applications when those applications are written in multiple frameworks.
 
 ### You manage the lifecycles of Parcels
-When you call `mountParcel` or `mountRootParcel` the parcel is mounted immediately and returns the parcel object. You need to call the `unmount` method on the parcel manually when the component that calls `mountParcel` unmounts.
+When you call `mountParcel` or `mountRootParcel` [(see api)](/docs/parcels-api) the parcel is mounted immediately and returns the parcel object. You need to call the `unmount` method on the parcel manually when the component that calls `mountParcel` unmounts.
 
 ### Parcels are best suited for sharing components between frameworks
-Taking a component and turning it into a `parcelConfig` is as easy as using the [single-spa helpers](/docs/ecosystem#help-for-frameworks) for that framework. This results in an object that single-spa can use to create and mount a parcel.
+Creating a parcel is as easy as using the [single-spa helpers](/docs/ecosystem#help-for-frameworks) for that framework on a specific component. This returns an object (`parcelConfig`) that single-spa can use to create and mount a parcel.
 Because single-spa can mount a parcel anywhere, this gives you a way to share components across frameworks. It should not be used if the shared component is being used in another application of the same framework.
 For example: `applicationOne` is written in Vue and contains all the UI/Logic to create a user. `application2` is written in react and needs to create a user. Using a single-spa parcel allows you to wrap your `app1` vue component
 in a way that will make it work inside `application2` despite the different frameworks. Even better if `application2` is unmounted by single-spa (per the activity function returning false)
