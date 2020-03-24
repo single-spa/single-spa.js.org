@@ -10,13 +10,13 @@ Single-spa has [different categories](/docs/microfrontends-concept#types-of-micr
 
 Here is how each single-spa microfrontend works conceptually. This information should help you understand our [recommendations](/docs/recommended-setup/#applications-versus-parcels-versus-utility-modules).
 
-| application                       | parcel                               | utility                              |
-| --------------------------------- | ------------------------------------ | ------------------------------------ |
-| has multiple routes               | no routes                            | no routes                            |
-| declarative API                   | imperative API                        | not registered/mounted by single-spa |
-| renders UI                        | renders UI                           | no UI                                |
-| single-spa managed lifecylces     | custom managed lifecycles            | no DOM elements                      |
-| Core building block               | only needed with multiple frameworks | useful to share business logic       |
+| Topic                | application                       | parcel                               | utility                              |
+| -------------------- | --------------------------------- | ------------------------------------ | ------------------------------------ |
+| routing              | has multiple routes               | no routes                            | no routes                            |
+| API                  | declarative API                   | imperative API                       | no direct single-spa api             |
+| contains/renders UI  | renders UI                        | renders UI                           | no direct rending of UI              |
+| lifecycles           | single-spa managed lifecylces     | custom managed lifecycles            | no lifecycles                        |
+| When to use          | Core building block               | only needed with multiple frameworks | useful to share common logic         |
 
 Each single-spa microfrontend is an in-browser javascript module ([explaination](/docs/recommended-setup#in-browser-versus-build-time-modules)).
 
@@ -44,8 +44,8 @@ For example: `applicationOne` is written in Vue and contains all the UI/Logic to
 in a way that will make it work inside `application2` despite the different frameworks. Even better if `application2` is unmounted by single-spa (per the activity function returning false)
 Think of parcels as a single-spa specific implementation of webcomponents.
 
-## Utility modules share business logic
-Utility modules are a great place to share business logic. Instead of each application creating their own implementation of something tied to your buisness logic, you can use a plain javascript object (single-spa utility) to share that logic.
+## Utility modules share common logic
+Utility modules are a great place to share common logic. Instead of each application creating their own implementation of common logic, you can use a plain javascript object (single-spa utility) to share that logic.
 For example: Authorization. How does each application know which user is logged in? You could have each application ask the server or read a JWT but that creates duplicate work in each application.
 Using Utility modules you can implement logic around who is logged in one module (with all the necessary methods exported on the module) and each single-spa application can use the logic by importing the methods from the utilty module.
 This approach also works well for data [fetching](/docs/recommended-setup#api-data).
