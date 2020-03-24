@@ -47,6 +47,10 @@
         {
           "type": "doc",
           "id": "version-5.x/microfrontends-concept"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/module-types"
         }
       ]
     },
