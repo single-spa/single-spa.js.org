@@ -4,7 +4,7 @@ title: Parcels
 sidebar_label: Overview
 ---
 _Parcels are very powerful, but easy to use incorrectly. Avoid using them until you have a better understanding of [single-spa microfrontend types](/docs/module-types) and your application architecture architecture has matured._
-
+_Parcels are an advanced feature of single-spa. We recommend that you use applications as the primary type of microfrontend in your architecture. See [this explanation](/docs/module-types) for more details
 A single-spa parcel is a framework agnostic component. It is a chunk of functionality meant to be mounted manually by an application, without having to worry about which framework was used to implement the parcel or application. Parcels use similar methodology as registered applications but are mounted by a manual function call rather than the activity function.
 A parcel can be as large as an application or as small as a component and written in
 any language as long as it exports the correct lifecycle events. In a single-spa world, your SPA contains
