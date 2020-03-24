@@ -23,7 +23,7 @@ Each single-spa microfrontend is an in-browser javascript module ([explaination]
 ## Applications
 
 ### Applications are declarative
-Applications use a declarative api. Your single-spa config (also sometimes called root config) defines applications ahead of time, defines the condition at which they are active, but doesn't mount the application directly.
+Applications use a declarative api called `registerApplication`. Your single-spa config (also sometimes called root config) defines applications ahead of time, defines the condition at which they are active, but doesn't mount the application directly.
 
 ### Applications have managed lifecycles
 single-spa manages registered applications and is in charge of all of their lifecycles. This prevents you from writing a bunch of logic about when applications should mount and unmount; single-spa takes care of that for you.
