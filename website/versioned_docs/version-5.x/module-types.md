@@ -13,7 +13,7 @@ Here is how each single-spa microfrontend works conceptually. This information s
 | Topic                | application                       | parcel                               | utility                              |
 | -------------------- | --------------------------------- | ------------------------------------ | ------------------------------------ |
 | routing              | has multiple routes               | no routes                            | no routes                            |
-| API                  | declarative API                   | imperative API                       | no direct single-spa api             |
+| API                  | declarative API                   | imperative API                       | no single-spa api                    |
 | renders UI           | renders UI                        | renders UI                           | doesn't directly render UI           |
 | lifecycles           | single-spa managed lifecylces     | custom managed lifecycles            | no lifecycles                        |
 | When to use          | Core building block               | only needed with multiple frameworks | useful to share common logic         |
