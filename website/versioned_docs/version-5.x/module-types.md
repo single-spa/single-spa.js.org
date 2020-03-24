@@ -31,7 +31,7 @@ All single spa needs to make this work automatically is for an activity function
 
 ## Parcels
 
-### Parcels are imperitive
+### Parcels are imperative
 Parcels exist in many ways as an escape hatch from the normal declarative flow. They exist primarily to allow you to reuse UI across applications when those applications are written in multiple frameworks.
 
 ### You manage the lifecycles of Parcels
