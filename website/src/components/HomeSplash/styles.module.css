@@ -10,7 +10,7 @@ html[data-theme='dark'] .heroBanner {
   background-color: var(--ifm-color-primary-darkest);
 }
 
-.heroButtons a:first-child {
+.heroButtons a:not(:last-child) {
   margin-right: 4px;
 }
 
