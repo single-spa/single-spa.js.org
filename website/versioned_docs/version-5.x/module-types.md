@@ -18,7 +18,7 @@ Here is how each single-spa microfrontend works conceptually. This information s
 | single-spa managed lifecylces     | custom managed lifecycles            | no DOM elements                      |
 | Core building block               | only needed with multiple frameworks | useful to share business logic       |
 
-Each single-spa microfrontend is in reality an in browser javascript module see [here](/docs/recommended-setup#in-browser-versus-build-time-modules) for more information. Each microfrontend fits into the overall microfrontend approach.
+Each single-spa microfrontend is an in-browser javascript module ([explaination](/docs/recommended-setup#in-browser-versus-build-time-modules)).
 
 ## Applications
 
