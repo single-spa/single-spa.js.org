@@ -47,6 +47,10 @@
         {
           "type": "doc",
           "id": "version-5.x/microfrontends-concept"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/module-types"
         }
       ]
     },
@@ -85,16 +89,6 @@
         {
           "type": "doc",
           "id": "version-5.x/parcels-overview"
-        }
-      ]
-    },
-    {
-      "type": "category",
-      "label": "Concept: Single spa modules",
-      "items": [
-        {
-          "type": "doc",
-          "id": "version-5.x/module-types"
         }
       ]
     },
