@@ -73,7 +73,7 @@ singleSpa.registerApplication(
 
 ```js
 export function mount(props) {
-  console.log(props.customProps.authToken); // do something with the common authToken in app1
+  console.log(props.authToken); // do something with the common authToken in app1
   return reactLifecycles.mount(props);
 }
 ```
