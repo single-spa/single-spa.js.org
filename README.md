@@ -16,7 +16,7 @@ This repo contains the source code and documentation powering [single-spa.js.org
 ### Installation
 
 1. `git clone git@github.com:single-spa/single-spa.js.org.git`
-1. `cd single-spa.js.org/website` to go into the webite root
+1. `cd single-spa.js.org/website` to go into the website root
 1. `yarn` to install the website's npm dependencies
 
 ### Running locally
