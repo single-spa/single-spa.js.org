@@ -18,7 +18,7 @@ Each microfrontend has its own git repository, its own package.json, and its own
 
 Microservices are backend services that run in their own operating system process, control their own databases, and communicate with each other over the network.
 
-Compare that to microfrontends that all exist within a single tab: all browser javascript within a tab exists in a single operating system process (and even thread!). Browser javascript generally does not directly access databases, and communication within a browser tab happens in-memory instead of over the network.
+Compare that to microfrontends that all exist within a single browser tab: all browser javascript within a tab exists in a single operating system process (and even thread!). Browser javascript generally does not directly access databases, and communication within a browser tab happens in-memory instead of over the network.
 
 So what do they have in common???
 
@@ -40,7 +40,7 @@ A web app may include one or more types of microfrontends. See [an in-depth comp
 
 ## Communication between Microfrontends
 
-`import { thing } from 'other-microfrontend` is the preferred way to communicate between microfrontends. [Here is some documentation](/docs/recommended-setup#inter-app-communication) that goes over this in more detail.
+`import { thing } from 'other-microfrontend'` is the preferred way to communicate between microfrontends. [Here is some documentation](/docs/recommended-setup#inter-app-communication) that goes over this in more detail.
 
 ## Relationship to single-spa
 
