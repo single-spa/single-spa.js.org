@@ -10,7 +10,7 @@ Tutorial video: [Youtube](https://www.youtube.com/watch?v=3EUfbnHi6Wg&list=PLLUD
 
 A microfrontend is a microservice that exists within a browser.
 
-Microfrontends are sections of your UI, often consisting of dozens of components and use frameworks like React, Vue, and Angular to render their components. Each microfrontend can be managed by a different team, and may choose its own framework. It is practical and suggested to use just one framework for all your microfrontends, although you may add additional framework when migrating or when experimenting.
+Microfrontends are sections of your UI, often consisting of dozens of components, that use frameworks like React, Vue, and Angular to render their components. Each microfrontend can be managed by a different team, and may choose its own framework. It is practical and suggested to use just one framework for all your microfrontends, although you may add additional framework when migrating or when experimenting.
 
 Each microfrontend has its own git repository, its own package.json, and its own build tool configuration. As a result, each microfrontend has **an independent build process** and **an independent deploy / CI**. This generally means that each repo has fast build times.
 
