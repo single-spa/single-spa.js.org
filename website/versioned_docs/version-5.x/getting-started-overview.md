@@ -73,7 +73,7 @@ You can help improve the single-spa website by sending pull requests to the [`si
 
 ## Simple Usage
 
-For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [this starting from scratch tutorial](starting-from-scratch.md).
+For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [these examples](./examples.md).
 
 To create a single-spa application, you will need to do three things:
 
