@@ -98,7 +98,7 @@ Create React App (CRA) projects must be altered before use with single-spa. The 
 Here are your options:
 
 1. Remove `react-scripts` and then run [`create-single-spa`](./create-single-spa.md) on your project. This will merge create-single-spa's package.json with yours, and provide you with a default webpack config. Run `yarn start` and fix webpack configuration errors until it's working.
-1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config.
+1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config. See [this Gist with example webpack config](https://gist.github.com/joeldenning/79f2592086ad132fae8ee5aae054c0b6).
 1. [Eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) your CRA project's webpack config so you can modify it.
 
 If you don't use create-single-spa's default webpack config, here are the changes you need to make:
