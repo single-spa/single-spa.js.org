@@ -88,9 +88,20 @@ Some options on _how_ to update your import map include:
 * Have your import map itself on a CDN, and use [import-map-deployer](https://github.com/single-spa/import-map-deployer) or similar to update the import map during your CI process. This method has a small impact on performance, but is generally easier to setup if you don't have a server-rendered setup already. (You can also [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content) the import map file to help provide a small speed boost). See [example travis.yml](https://github.com/openmrs/openmrs-esm-root-config/blob/master/.travis.yml). Other CI tools work, too.
 
 ## Create React App
-Currently Create React App (CRA) requires [ejecting](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) or [using a tool](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config.  You can also consider some of the [popular alternatives to CRA](https://github.com/facebook/create-react-app#popular-alternatives).
 
-When you use the [recommended setup](#is-there-a-recommended-setup) the following things need to change (as of CRA v3.0.1):
+Tutorial video: [Youtube](https://www.youtube.com/watch?v=W8oaySHuj3Y&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=10) / [Bilibili](https://www.bilibili.com/video/BV16Z4y1j72X/)
+
+If you are starting from scratch, it is preferred to use [create-single-spa](./create-single-spa.md) instead of create-react-app.
+
+Create React App (CRA) projects must be altered before use with single-spa. The reason is that CRA presumes that each project has its own HTML file, whereas in single-spa all microfrontends must share an HTML file.
+
+Here are your options:
+
+1. Remove `react-scripts` and then run [`create-single-spa`](./create-single-spa.md) on your project. This will merge create-single-spa's package.json with yours, and provide you with a default webpack config. Run `yarn start` and fix webpack configuration errors until it's working.
+1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config.
+1. [Eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) your CRA project's webpack config so you can modify it.
+
+If you don't use create-single-spa's default webpack config, here are the changes you need to make:
 
 1. Remove Webpack optimizations block, because they add multiple webpack chunks that don't load each other
 1. Remove html-webpack plugin
