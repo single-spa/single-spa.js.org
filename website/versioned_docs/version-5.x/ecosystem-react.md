@@ -134,7 +134,7 @@ import * as parcelConfig from './my-parcel.js'
 <Parcel
   config={parcelConfig}
   wrapWith="div"
-  wrapWith={{ background: 'black' }}
+  wrapStyle={{ background: 'black' }}
 />
 ```
 
