@@ -115,12 +115,11 @@ prefix, we decided to do this for you!
 The path prefix will match the start of your URL, allowing everything after the
 prefix. Examples:
 - '/myApp' will match https://my.app.com/myApp and https://my.app.com/myApp/anything/everything
-- '/users/:userId' will match https://my.app.com/users/1 and https://my.app.com/users/1/anyhthing/everything 
+- '/users/:userId' will match https://my.app.com/users/1 and https://my.app.com/users/1/anyhthing/everything
 - '/#/allow/for/:hash/route' will match https://my.app.com/#/allow/for/whatever-in-dynamic-subroute/route
 - 'bothPathname/#/and/:hash/route' will match https://my.app.com/bothPathName/#/and/123/route
 - '/path/:dynamic/another' will NOT match https://my.app.com/path//another
 - '/path/:dynamic/another' will NOT match https://my.app.com/path/another
-
 
 ## Calling singleSpa.start()
 The [`start()` api](api.md#start) **must** be called by your single spa config in order for

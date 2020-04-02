@@ -75,7 +75,6 @@ singleSpa.registerApplication({
 
 `undefined`
 
-
 > It is described in detail inside of the [Configuration docs](configuration#registering-applications)
 
 ## start
@@ -291,7 +290,7 @@ Single-spa performs the following steps when unloadApplication is called.
 2. Set the app status to NOT_LOADED
 3. Trigger a reroute, during which single-spa will potentially mount the application that was just unloaded.
 
-Because a registered application might be mounted when `unloadApplication` is called, you can specify whether you want to immediately unload or if you want to wait until the application is no longer mounted. This is done with the `waitForUnmount` option. 
+Because a registered application might be mounted when `unloadApplication` is called, you can specify whether you want to immediately unload or if you want to wait until the application is no longer mounted. This is done with the `waitForUnmount` option.
 
 <h3>arguments</h3>
 
@@ -367,7 +366,7 @@ function handleErr(err) {
 }
 ```
 
-Removes the given error handler function. 
+Removes the given error handler function.
 
 <h3>arguments</h3>
 
@@ -627,7 +626,7 @@ window.addEventListener('single-spa:no-app-change', () => {
 
 When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded, single-spa fires a `single-spa:no-app-change` event. This is the inverse of the `single-spa:app-change` event. Only one will be fired for each routing event.
 
-## before-first-mount	
+## before-first-mount
 
 ```js
 window.addEventListener('single-spa:before-first-mount', () => {
