@@ -4,7 +4,7 @@ title: Applications API
 sidebar_label: Applications API
 ---
 
-single-spa exports named functions and variables rather than a single default export.
+Single-spa exports named functions and variables rather than a single default export.
 This means importing must happen in one of two ways:
 
 ```js
@@ -14,16 +14,18 @@ import * as singleSpa from 'single-spa';
 ```
 
 ## registerApplication
-
-```js
-singleSpa.registerApplication('appName', () => System.import('appName'), location => location.pathname.startsWith('appName'))
-```
-
-`registerApplication` is the most important api your root config will use. Use this function to register any application within single-spa.
-
+`registerApplication` is the most important API your root config will use. Use this function to register any application within single-spa.
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
 
-> It is described in detail inside of the [Configuration docs](configuration#registering-applications)
+There are two ways of registering your application:
+### Simple arguments
+```js
+singleSpa.registerApplication(
+	'appName',
+	() => System.import('appName'),
+	location => location.pathname.startsWith('appName')
+)
+```
 
 <h3>arguments</h3>
 
@@ -41,6 +43,40 @@ Note that if an application is registered from within another application, that 
 <h3>returns</h3>
 
 `undefined`
+
+### Configuration object
+```js
+singleSpa.registerApplication({
+	name: 'appName',
+	app: () => System.import('appName'),
+	activeWhen: '/appName'
+	customProps: {}
+})
+```
+
+<h3>arguments</h3>
+
+<dl className="args-list">
+	<dt>name?: string</dt>
+	<dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
+	<dt>app?: Application | () => Application | Promise&lt;Application&gt; </dt>
+	<dd>Application object or a function that returns the resolved application (Promise or not)</dd>
+	<dt>activeWhen: string | (location) => boolean | (string | (location) => boolean)[]</dt>
+	<dd>Can be a path prefix which will match every URL starting with this path,
+	an activity function (as described in the simple arguments) or an array
+	containing both of them. If any of the criteria is true, it will keep the
+	application active. Examples of path prefixes: '/appName', '/users/:userId'
+	</dd>
+	<dt>customProps?: Object = &#123;&#125;</dt>
+	<dd>Will be passed to the application during each lifecycle method.</dd>
+</dl>
+
+<h3>returns</h3>
+
+`undefined`
+
+
+> It is described in detail inside of the [Configuration docs](configuration#registering-applications)
 
 ## start
 ```js

@@ -5,6 +5,7 @@ sidebar_label: single-spa config
 ---
 
 The single spa root config consists of the following:
+
 1. The root HTML file that is shared by all single-spa applications.
 2. the javascript that calls [`singleSpa.registerApplication()`](/docs/api.html#registerapplication).
 
@@ -25,31 +26,37 @@ does not have to. Note that if an application is registered from within another 
 will be maintained between the applications. Instead, the applications will be siblings and will be mounted
 and unmounted according to their own activity functions.
 
-In order to register an application, call the `registerApplication(name, howToLoad, activityFunction)` api. Example:
+In order to register an application, call the `registerApplication` function. Example:
 
 ```js
 // single-spa-config.js
 import { registerApplication, start } from 'single-spa';
 
-registerApplication("applicationName", loadingFunction, activityFunction);
+// Simple usage
+registerApplication(
+    'app2',
+    () => import('src/app2/main.js'),
+    (location) => location.pathname.startsWith('/app2')
+);
+
+// Config with more expressive API
+registerApplication({
+    name: 'app1',
+    app: () => import('src/app1/main.js'),
+    activeWhen: '/app1'
+);
+
 start();
-
-function loadingFunction() {
-  return import("src/app1/main.js");
-}
-
-function activityFunction(location) {
-  return location.pathname.indexOf("/app1/") === 0;
-}
 ```
+### Using arguments
 
-### Application name
+#### Application name
 The first argument to `registerApplication` must be a string name.
 
-### Loading Function or Application
+#### Loading Function or Application
 The second argument to `registerApplication` must be either a function that returns a promise [loading function](configuration#loading-function) or the resolved Application.
 
-#### Application as second argument
+##### Application as second argument
 Optionally for the second argument you can use the resolved Application, consisting of an object with the lifecycle methods.
 This allows you import the Application from another file or define applications inline in your single-spa-config
 
@@ -63,13 +70,13 @@ registerApplication('applicatonName', application, activityFunction)
 
 ```
 
-#### Loading function
+##### Loading function
 The second argument to `registerApplication` must be a function that returns a promise (or an ["async function"](https://ponyfoo.com/articles/understanding-javascript-async-await)).
 The function will be called with no arguments when it's time to load the application for the first time. The returned
 promise must be resolved with the application. The most common implementation of a loading function is an import call:
 `() => import('/path/to/application.js')`
 
-### Activity function
+#### Activity function
 The third argument to `registerApplication` must be a pure function, the function is provided `window.location` as the first argument, and returns a truthy
 value whenever the application should be active. Most commonly, the activity function determines if an application
 is active by looking at `window.location`/the first param.
@@ -81,6 +88,39 @@ single-spa will call each application's activity function under the following sc
 - `pushState` or `replaceState` is called
 - [`triggerAppChange`](api.md#triggerappchange) api is called on single-spa
 - Whenever the `checkActivityFunctions` method is called
+
+### Using configuration object
+
+```js
+const config = {
+    name: 'myApp',
+    app: () => import('src/myApp/main.js'),
+    activeWhen: ['/myApp', (location) => location.pathname.startsWith('/some/other/path')],
+}
+```
+
+#### config.name
+Must be a string name
+
+#### config.app
+The definition of your app, which can be an object with single-spa lifecycle
+methods, or a loading function, the same as the second argument on the arguments API
+
+#### config.activeWhen
+Can be an activity function, like the arguments API, a path prefix or and array
+with both. Since the most common use case is to look at the `window.location` and match the URL with a
+prefix, we decided to do this for you!
+
+#### Path prefix
+The path prefix will match the start of your URL, allowing everything after the
+prefix. Examples:
+- '/myApp' will match https://my.app.com/myApp and https://my.app.com/myApp/anything/everything
+- '/users/:userId' will match https://my.app.com/users/1 and https://my.app.com/users/1/anyhthing/everything 
+- '/#/allow/for/:hash/route' will match https://my.app.com/#/allow/for/whatever-in-dynamic-subroute/route
+- 'bothPathname/#/and/:hash/route' will match https://my.app.com/bothPathName/#/and/123/route
+- '/path/:dynamic/another' will NOT match https://my.app.com/path//another
+- '/path/:dynamic/another' will NOT match https://my.app.com/path/another
+
 
 ## Calling singleSpa.start()
 The [`start()` api](api.md#start) **must** be called by your single spa config in order for
