@@ -37,7 +37,7 @@ function bootstrap(props) {
   const {
     name,        // The name of the application
     singleSpa,   // The singleSpa instance
-    mountParcel, // Function for manually mounting 
+    mountParcel, // Function for manually mounting
     customProps  // Additional custom information
   } = props;     // Props are given to every lifecycle
   return Promise.resolve();
@@ -61,12 +61,12 @@ In addition to the built-in props that are provided by single-spa, you may optio
 <p className="filename">root.application.js</p>
 
 ```js
-singleSpa.registerApplication(
-  'app1', 
-  () => {}, 
-  () => {}, 
-  { authToken: "d83jD63UdZ6RS6f70D0" }
-);
+singleSpa.registerApplication({
+  name: 'app1',
+  activeWhen,
+  app,
+  customProps: { authToken: "d83jD63UdZ6RS6f70D0" }
+});
 ```
 
 <p className="filename">app1.js</p>

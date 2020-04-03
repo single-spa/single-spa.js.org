@@ -1,5 +1,5 @@
 ---
-id: ecosystem-react 
+id: ecosystem-react
 title: single-spa-react
 sidebar_label: React
 ---
@@ -52,8 +52,8 @@ All options are passed to single-spa-react via the `opts` parameter when calling
 - `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the
   React application will be bootstrapped, mounted, and unmounted. Note that this opt can be omitted. When omitted, the `domElementGetter` or `domElement`
   [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) are used.
-  To use those, do `singleSpa.registerApplication(name, app, activityFn, {domElementGetter: function() {...}})` or
-  `singleSpa.registerApplication(name, app, activityFn, {domElement: document.getElementById(...)})`. If no dom element can be found through any
+  To use those, do `singleSpa.registerApplication({ name, app, activeWhen, customProps: {domElementGetter: function() {...}} })` or
+  `singleSpa.registerApplication({ name, app, activeWhen, {domElement: document.getElementById(...)} })`. If no dom element can be found through any
   of those methods, then a container div will be created and appended to document.body, by default.
 - `parcelCanUpdate`: (optional) A boolean that controls whether an update lifecycle will be created for the returned parcel. Note that option does not impact single-spa applications, but only parcels.
   It is true by default.
