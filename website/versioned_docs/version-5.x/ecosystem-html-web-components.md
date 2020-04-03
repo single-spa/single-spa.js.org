@@ -46,7 +46,11 @@ const webComponentApp = window.singleSpaHtml.default({
   template: props => `<x-my-web-component attr="${props.attr}"></x-my-web-component>`,
 })
 
-singleSpa.registerApplication('name', webComponentApp, () => true)
+singleSpa.registerApplication({
+  name: 'name',
+  app: webComponentApp,
+  activeWhen: () => true
+})
 ```
 
 ## API / Options

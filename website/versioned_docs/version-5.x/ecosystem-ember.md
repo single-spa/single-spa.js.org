@@ -33,11 +33,11 @@ Note that the loading and activity functions are part of the [single-spa root ap
 import {registerApplication} from 'single-spa';
 import {loadEmberApp} from 'single-spa-ember';
 
-const appName = 'ember-app';
-const loadingFunction = () => loadEmberApp(appName, '/dist/ember-app/assets/ember-app.js', '/dist/ember-app/assets/vendor.js');
-const activityFunction = location => location.hash.startsWith('ember');
+const name = 'ember-app';
+const app = () => loadEmberApp(name, '/dist/ember-app/assets/ember-app.js', '/dist/ember-app/assets/vendor.js');
+const activeWhen = location => location.hash.startsWith('ember');
 
-registerApplication(appName, loadingFunction, activityFunction);
+registerApplication({ name, app, activeWhen });
 ```
 
 ### singleSpaEmber
@@ -86,7 +86,7 @@ module.exports = function(defaults) {
 		},
     // Add options here
   });
-  
+
   // Tell ember how to use the single-spa-ember library
   app.import('bower_components/single-spa-ember/amd/single-spa-ember.js', {
 		using: [

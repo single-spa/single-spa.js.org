@@ -107,19 +107,34 @@ The definition of your app, which can be an object with single-spa lifecycle
 methods, or a loading function, the same as the second argument on the arguments API
 
 #### config.activeWhen
-Can be an activity function, like the arguments API, a path prefix or and array
+Can be an activity function, like the arguments API, a path prefix or an array
 with both. Since the most common use case is to look at the `window.location` and match the URL with a
 prefix, we decided to do this for you!
 
 #### Path prefix
 The path prefix will match the start of your URL, allowing everything after the
 prefix. Examples:
-- '/myApp' will match https://my.app.com/myApp and https://my.app.com/myApp/anything/everything
-- '/users/:userId' will match https://my.app.com/users/1 and https://my.app.com/users/1/anyhthing/everything
-- '/#/allow/for/:hash/route' will match https://my.app.com/#/allow/for/whatever-in-dynamic-subroute/route
-- 'bothPathname/#/and/:hash/route' will match https://my.app.com/bothPathName/#/and/123/route
-- '/path/:dynamic/another' will NOT match https://my.app.com/path//another
-- '/path/:dynamic/another' will NOT match https://my.app.com/path/another
+  <dl>
+    <dt>'/app1'</dt>
+    <dd>✅ https://app.com/app1</dd>
+    <dd>✅ https://app.com/app1/anything/everything</dd>
+    <dd>🚫 https://app.com/app2</dd>
+    <dt>'/users/:userId/profile'</dt>
+    <dd>✅ https://app.com/users/123/profile</dd>
+    <dd>✅ https://app.com/users/123/profile/sub-profile/</dd>
+    <dd>🚫 https://app.com/users//profile/sub-profile/</dd>
+    <dd>🚫 https://app.com/users/profile/sub-profile/</dd>
+    <dt>'/pathname/#/hash'</dt>
+    <dd>✅ https://app.com/pathname/#/hash</dd>
+    <dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
+    <dd>🚫 https://app.com/pathname#/hash/route/nested</dd>
+    <dd>🚫 https://app.com/pathname#/another-hash</dd>
+    <dt>['/pathname/#/hash', '/app1']</dt>
+    <dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
+    <dd>✅ https://app.com/app1/anything/everything</dd>
+    <dd>🚫 https://app.com/pathname/app1</dd>
+    <dd>🚫 https://app.com/app2</dd>
+  </dl>
 
 ## Calling singleSpa.start()
 The [`start()` api](api.md#start) **must** be called by your single spa config in order for

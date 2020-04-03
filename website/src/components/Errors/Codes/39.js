@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-export default function ErrorCode37() {
-
+export default function ErrorCode39() {
   return (
     <>
       <h1>#39: Invalid registerApplication configuration object</h1>
@@ -12,5 +11,5 @@ export default function ErrorCode37() {
         See <a href="/docs/configuration">registerApplication API documentation</a> for more information.
       </p>
     </>
-  )
+  );
 }

@@ -57,15 +57,39 @@ singleSpa.registerApplication({
 <h3>arguments</h3>
 
 <dl className="args-list">
-	<dt>name?: string</dt>
+	<dt>name: string</dt>
 	<dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
-	<dt>app?: Application | () => Application | Promise&lt;Application&gt; </dt>
+	<dt>app: Application | () => Application | Promise&lt;Application&gt; </dt>
 	<dd>Application object or a function that returns the resolved application (Promise or not)</dd>
 	<dt>activeWhen: string | (location) => boolean | (string | (location) => boolean)[]</dt>
 	<dd>Can be a path prefix which will match every URL starting with this path,
 	an activity function (as described in the simple arguments) or an array
 	containing both of them. If any of the criteria is true, it will keep the
-	application active. Examples of path prefixes: '/appName', '/users/:userId'
+	application active. The path prefix also accepts dynamic values (they must
+	start with ':'), as some paths would receive url params and should still
+	trigger your application.
+	Examples:
+		<dl>
+			<dt>'/app1'</dt>
+			<dd>✅ https://app.com/app1</dd>
+			<dd>✅ https://app.com/app1/anything/everything</dd>
+      <dd>🚫 https://app.com/app2</dd>
+			<dt>'/users/:userId/profile'</dt>
+			<dd>✅ https://app.com/users/123/profile</dd>
+			<dd>✅ https://app.com/users/123/profile/sub-profile/</dd>
+			<dd>🚫 https://app.com/users//profile/sub-profile/</dd>
+			<dd>🚫 https://app.com/users/profile/sub-profile/</dd>
+			<dt>'/pathname/#/hash'</dt>
+			<dd>✅ https://app.com/pathname/#/hash</dd>
+			<dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
+			<dd>🚫 https://app.com/pathname#/hash/route/nested</dd>
+			<dd>🚫 https://app.com/pathname#/another-hash</dd>
+      <dt>['/pathname/#/hash', '/app1']</dt>
+			<dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
+			<dd>✅ https://app.com/app1/anything/everything</dd>
+			<dd>🚫 https://app.com/pathname/app1</dd>
+			<dd>🚫 https://app.com/app2</dd>
+		</dl>
 	</dd>
 	<dt>customProps?: Object = &#123;&#125;</dt>
 	<dd>Will be passed to the application during each lifecycle method.</dd>

@@ -76,7 +76,11 @@ window.myAngularApp = singleSpaAngularJS({
 
 Your [loading function](/docs/configuration.html#loading-function-or-application) should just be the global variable itself. For example:
 ```js
-singleSpa.registerApplication('my-angular-app', myAngularApp, () => true);
+singleSpa.registerApplication({
+  name: 'my-angular-app',
+  app: myAngularApp,
+  activeWhen: () => true
+});
 ```
 
 ## Options
