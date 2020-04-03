@@ -49,7 +49,7 @@ All options are passed to single-spa-react via the `opts` parameter when calling
 - `loadRootComponent`: (optional) A loading function that takes [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) and returns a promise that resolves with the parcel. This takes the place of the `rootComponent` opt, when provided. It is intended to help people
    who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.
 - `suppressComponentDidCatchWarning`: (optional) A boolean that indicates if single-spa-react should warn when the rootComponent does not implement componentDidCatch. Defaults to false.
-- `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the
+- `domElementGetter`: (optional) A function that is given the single-spa props and returns a DOMElement. This dom element is where the
   React application will be bootstrapped, mounted, and unmounted. Note that this opt can be omitted. When omitted, the `domElementGetter` or `domElement`
   [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) are used.
   To use those, do `singleSpa.registerApplication({ name, app, activeWhen, customProps: {domElementGetter: function() {...}} })` or
