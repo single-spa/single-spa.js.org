@@ -41,14 +41,11 @@ The single-spa core team has put together documentation, tools, and videos showi
 
 ## How hard will it be to use single-spa?
 
-single-spa works with ES5, ES6+, TypeScript, Webpack, SystemJS, Gulp, Grunt, Bower, ember-cli, or really any build system available. You can npm install it, jspm install it, or even just use a `<script>` tag if you prefer.
+single-spa works with ES5, ES6+, TypeScript, Webpack, SystemJS, Gulp, Grunt, Bower, ember-cli, or really any build system available. You can npm install it or even just use a `<script>` tag if you prefer.
 
 Our objective is to make using single-spa as easy as possible. But we should also point out that this is an advanced architecture that is different from how front-end applications are typically done.
 
 If you're not starting your application from scratch, you'll have to [migrate your SPA](migrating-existing-spas.md) to become a single-spa application.
-
-* [React - Migrating to single-spa](migrating-react-tutorial.md)
-* [AngularJS - Migrating to single-spa](migrating-angularJS-tutorial.md)
 
 single-spa works in Chrome, Firefox, Safari, IE11, and Edge.
 
