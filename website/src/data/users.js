@@ -12,10 +12,16 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'Alipay',
+    image: 'img/logo-alipay.jpg',
+    infoLink: 'https://intl.alipay.com/',
+    pinned: true,
+  },
+  {
     caption: 'DealerSocket',
     image: 'img/dealersocket.png',
     infoLink: 'https://dealersocket.com/',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'Beamery',
@@ -45,7 +51,7 @@ const users = [
     caption: 'Wavecell',
     image: 'img/wavecell.svg',
     infoLink: 'https://wavecell.com',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'OpenMRS',
@@ -57,7 +63,7 @@ const users = [
     caption: 'Siigo',
     image: 'img/siigo-nube-logo.png',
     infoLink: 'https://siigonube.siigo.com',
-    pinned: true,
+    pinned: false,
   }
 ];
 
