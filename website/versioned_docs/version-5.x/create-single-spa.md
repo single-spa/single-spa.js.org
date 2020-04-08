@@ -81,6 +81,10 @@ module.exports = webpackConfigEnv => {
     orgName: 'name-of-company',
     // The name of the current project. This usually matches the git repo's name
     projectName: 'name-of-project',
+    // If your project uses typescript, set typecheck. Otherwise, omit it.
+    typecheck: 'typescript',
+    // Set to true if your project uses react
+    react: true,
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
   })
@@ -117,6 +121,8 @@ module.exports = webpackConfigEnv => {
     orgName: 'name-of-company',
     // The name of the current project. This usually matches the git repo's name
     projectName: 'name-of-project',
+    // If your project uses typescript, set typecheck. Otherwise, omit it.
+    typecheck: 'typescript',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
   })
