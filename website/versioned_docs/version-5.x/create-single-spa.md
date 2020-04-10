@@ -19,6 +19,12 @@ npm install --global create-single-spa
 yarn global add create-single-spa
 ```
 
+Then run the following:
+
+```sh
+create-single-spa
+```
+
 Alternatively, you may use create-single-spa without global installation:
 
 ```sh
@@ -31,7 +37,51 @@ npx create-single-spa
 yarn create single-spa
 ```
 
-This will open up a CLI prompt asking you what kind of project you want to create or update. create-single-spa **installs into the current directory**, so be sure to create an empty directory if you're starting from scratch.
+This will open up a CLI prompt asking you what kind of project you want to create or update.
+
+## CLI arguments
+
+You may pass arguments to create-single-spa like so:
+
+```sh
+# Different ways of doing the same thing
+create-single-spa --framework react
+npm init single-spa --framework react
+npx create-single-spa --framework react
+yarn create single-spa --framework react
+```
+
+Here are the available CLI options:
+
+### --dir
+
+You may specify which directory create-single-spa runs in the following ways:
+
+```sh
+# Two ways of doing the same thing
+create-single-spa my-dir
+create-single-spa --dir my-dir
+```
+
+### --moduleType
+
+You can specify which kind of microfrontend you are creating with the `--moduleType` CLI argument:
+
+```sh
+create-single-spa --moduleType root-config
+create-single-spa --moduleType app-parcel
+create-single-spa --moduleType util-module
+```
+
+### --framework
+
+You can specify which framework you're using with the `--framework` CLI argument. Note that if you specify a framework that you may omit the `--moduleType`, as it is inferred to be `app-parcel`.
+
+```sh
+create-single-spa --framework react
+create-single-spa --framework vue
+create-single-spa --framework angular
+```
 
 ## Project types
 
