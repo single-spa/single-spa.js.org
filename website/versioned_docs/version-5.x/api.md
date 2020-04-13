@@ -624,8 +624,8 @@ A `single-spa:before-routing-event` event is fired before every routing event oc
 
 ```js
 window.addEventListener('single-spa:routing-event', () => {
-	console.log('single-spa finished mounting/unmounting applications!');
-	console.log(evt.originalEvent) // PopStateEvent
+  console.log('single-spa finished mounting/unmounting applications!');
+  console.log(evt.originalEvent) // PopStateEvent
   console.log(evt.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
   console.log(evt.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
   console.log(evt.totalAppChanges) // 2
@@ -638,8 +638,8 @@ A `single-spa:routing-event` event is fired every time that a routing event has 
 
 ```js
 window.addEventListener('single-spa:app-change', (evt) => {
-	console.log('A routing event occurred where at least one application was mounted/unmounted');
-	console.log(evt.originalEvent) // PopStateEvent
+  console.log('A routing event occurred where at least one application was mounted/unmounted');
+  console.log(evt.originalEvent) // PopStateEvent
   console.log(evt.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
   console.log(evt.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
   console.log(evt.totalAppChanges) // 2
@@ -652,8 +652,8 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 
 ```js
 window.addEventListener('single-spa:no-app-change', () => {
-	console.log('A routing event occurred where zero applications were mounted/unmounted');
-	console.log(evt.originalEvent) // PopStateEvent
+  console.log('A routing event occurred where zero applications were mounted/unmounted');
+  console.log(evt.originalEvent) // PopStateEvent
   console.log(evt.newAppStatuses) // { }
   console.log(evt.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
   console.log(evt.totalAppChanges) // 0
