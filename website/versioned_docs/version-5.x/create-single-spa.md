@@ -131,10 +131,6 @@ module.exports = webpackConfigEnv => {
     orgName: 'name-of-company',
     // The name of the current project. This usually matches the git repo's name
     projectName: 'name-of-project',
-    // If your project uses typescript, set typecheck. Otherwise, omit it.
-    typecheck: 'typescript',
-    // Set to true if your project uses react
-    react: true,
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
   })
@@ -171,8 +167,86 @@ module.exports = webpackConfigEnv => {
     orgName: 'name-of-company',
     // The name of the current project. This usually matches the git repo's name
     projectName: 'name-of-project',
-    // If your project uses typescript, set typecheck. Otherwise, omit it.
-    typecheck: 'typescript',
+    // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
+    webpackConfigEnv,
+  })
+
+  return webpackMerge.smart(defaultConfig, {
+    // modify the webpack config however you'd like to by adding to this object
+  })
+}
+```
+
+## webpack-config-single-spa-ts
+
+[Github project](https://github.com/single-spa/create-single-spa/tree/master/packages/webpack-config-single-spa-ts)
+
+A shareable, customizable webpack config that adds typescript-specific configuration to `webpack-config-single-spa`. Note that webpack-config-single-spa-ts has a peerDependency on `typescript`.
+
+### Installation
+
+```sh
+npm install --save-dev webpack-config-single-spa-ts webpack-merge
+
+yarn add --dev webpack-config-single-spa-ts webpack-merge
+```
+
+### Usage
+
+```js
+const webpackMerge = require('webpack-merge');
+const singleSpaDefaults = require('webpack-config-single-spa-ts');
+
+module.exports = webpackConfigEnv => {
+  const defaultConfig = singleSpaDefaults({
+    // The name of the organization this application is written for
+    orgName: 'name-of-company',
+    // The name of the current project. This usually matches the git repo's name
+    projectName: 'name-of-project',
+    // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
+    webpackConfigEnv,
+  })
+
+  return webpackMerge.smart(defaultConfig, {
+    // modify the webpack config however you'd like to by adding to this object
+  })
+}
+```
+
+```js
+const singleSpaTs = require('webpack-config-single-spa-ts');
+
+// Alternatively, you may modify a webpack config directly
+const myOtherWebpackConfig = {/* ... */}
+const finalConfig = singleSpaDefaults.modifyConfig(myOtherWebpackConfig)
+```
+
+## webpack-config-single-spa-react-ts
+
+[Github project](https://github.com/single-spa/create-single-spa/tree/master/packages/webpack-config-single-spa-react-ts)
+
+A shareable, customizable webpack config that creates a webpack config that works with both react and typescript. Note that webpack-config-single-spa-react-ts simply merges the config from webpack-config-single-spa-react with that of webpack-config-single-spa-ts.
+
+### Installation
+
+```sh
+npm install --save-dev webpack-config-single-spa-react-ts webpack-merge
+
+yarn add --dev webpack-config-single-spa-react-ts webpack-merge
+```
+
+### Usage
+
+```js
+const webpackMerge = require('webpack-merge');
+const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
+
+module.exports = webpackConfigEnv => {
+  const defaultConfig = singleSpaDefaults({
+    // The name of the organization this application is written for
+    orgName: 'name-of-company',
+    // The name of the current project. This usually matches the git repo's name
+    projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
   })
