@@ -17,7 +17,8 @@ We recommend a setup that uses in-browser ES modules + import maps (or SystemJS 
 
 ## Alternatives
 
-[qiankun](https://github.com/umijs/qiankun) is a popular alternative to this recommended setup.
+* [qiankun](https://github.com/umijs/qiankun) is a popular alternative to this recommended setup.
+* [Isomorphic Layout Composer](https://github.com/namecheap/ilc) - complete solution for Micro Frontends composition into SPA with SSR support
 
 ## In-browser versus build-time modules
 
