@@ -12,9 +12,9 @@ const users = [
     pinned: true,
   },
   {
-    caption: 'Alipay',
-    image: 'img/logo-alipay.jpg',
-    infoLink: 'https://intl.alipay.com/',
+    caption: 'UmiJS',
+    image: 'img/logo-umijs.png',
+    infoLink: 'https://umijs.org/',
     pinned: true,
   },
   {
@@ -55,7 +55,7 @@ const users = [
   },
   {
     caption: 'OpenMRS',
-    image: 'img/openmrs.svg',
+    image: 'img/openmrs.jpg',
     infoLink: 'https://openmrs.org',
     pinned: true,
   },
