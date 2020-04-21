@@ -64,7 +64,7 @@ The documentation is divided into several sections:
 * [Ecosystem](ecosystem.md)
 * [Contributing Guide](contributing-overview.md)
 * [Blog](https://single-spa.js.org/blog/)
-* [Where to Get Support](https://single-spa.js.org/en/help.html)
+* [Where to Get Support](https://single-spa.js.org/help/)
 
 You can help improve the single-spa website by sending pull requests to the [`single-spa.js.org` repository](https://github.com/single-spa/single-spa.js.org).
 
