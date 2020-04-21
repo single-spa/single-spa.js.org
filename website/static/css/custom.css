@@ -81,17 +81,11 @@ blockquote p:nth-child(2n) {
 }
 
 .footer__logo {
-  background: var(--ifm-color-white);
   border-radius: 3px;
   display: block;
   margin: 0 auto 1rem;
-  opacity: 0.7;
   transition: opacity 0.15s ease-in-out;
   width: 38px;
-}
-
-.footer__logo:hover {
-  opacity: 1;
 }
 
 .footer__logo img {

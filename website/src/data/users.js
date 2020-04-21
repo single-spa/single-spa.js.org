@@ -2,7 +2,7 @@ const users = [
   {
     caption: 'CanopyTax',
     image: 'img/canopy-logo-icon.svg',
-    infoLink: 'https://www.canopytax.com',
+    infoLink: 'https://www.getcanopy.com/',
     pinned: true,
   },
   {
