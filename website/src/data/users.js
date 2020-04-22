@@ -58,6 +58,12 @@ const users = [
     image: 'img/siigo-nube-logo.png',
     infoLink: 'https://siigonube.siigo.com',
     pinned: true,
+  },
+  {
+    caption: 'CatalystOne',
+    image: '',
+    infoLink: 'https://www.catalystone.com/',
+    pinned: true
   }
 ];
 
