@@ -91,13 +91,10 @@ function Footer() {
         {(logo || copyright) && (
           <div className="text--center">
             {logo && logo.src && (
-              <a
+              <img
                 className="footer__logo margin-bottom--sm"
-                href="https://www.canopytax.com/"
-                target="_blank"
-                rel="noopener noreferrer">
-                <img alt={logo.alt} src={useBaseUrl(logo.src)} />
-              </a>
+                alt={logo.alt} src={useBaseUrl(logo.src)}
+              />
             )}
             {copyright}
           </div>

@@ -2,7 +2,7 @@ const users = [
   {
     caption: 'CanopyTax',
     image: 'img/canopy-logo-icon.svg',
-    infoLink: 'https://www.canopytax.com',
+    infoLink: 'https://www.getcanopy.com/',
     pinned: true,
   },
   {
@@ -64,6 +64,12 @@ const users = [
     image: 'img/siigo-nube-logo.png',
     infoLink: 'https://siigonube.siigo.com',
     pinned: false,
+  },
+  {
+    caption: 'CatalystOne',
+    image: 'img/catalystone-logo.svg',
+    infoLink: 'https://www.catalystone.com/',
+    pinned: false
   }
 ];
 
