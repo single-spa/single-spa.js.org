@@ -31,7 +31,7 @@ module.exports = {
     footer: {
       logo: {
         alt: 'single-spa',
-        src: 'img/canopy-logo-icon.svg',
+        src: 'img/logo-white-bgblue.svg',
       },
       copyright: `Copyright © ${new Date().getFullYear()} single-spa.`,
       style: 'dark',
