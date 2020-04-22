@@ -12,10 +12,16 @@ const users = [
     pinned: true,
   },
   {
+    caption: 'UmiJS',
+    image: 'img/logo-umijs.png',
+    infoLink: 'https://umijs.org/',
+    pinned: true,
+  },
+  {
     caption: 'DealerSocket',
     image: 'img/dealersocket.png',
     infoLink: 'https://dealersocket.com/',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'Beamery',
@@ -45,11 +51,11 @@ const users = [
     caption: 'Wavecell',
     image: 'img/wavecell.svg',
     infoLink: 'https://wavecell.com',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'OpenMRS',
-    image: 'img/openmrs.svg',
+    image: 'img/openmrs.jpg',
     infoLink: 'https://openmrs.org',
     pinned: true,
   },
@@ -57,13 +63,13 @@ const users = [
     caption: 'Siigo',
     image: 'img/siigo-nube-logo.png',
     infoLink: 'https://siigonube.siigo.com',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'CatalystOne',
     image: 'img/catalystone-logo.svg',
     infoLink: 'https://www.catalystone.com/',
-    pinned: true
+    pinned: false
   }
 ];
 
