@@ -61,7 +61,7 @@ const users = [
   },
   {
     caption: 'CatalystOne',
-    image: '',
+    image: 'img/catalystone-logo.svg',
     infoLink: 'https://www.catalystone.com/',
     pinned: true
   }
