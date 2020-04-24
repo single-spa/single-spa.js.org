@@ -79,6 +79,15 @@ work with Angular 8. Follow the [Angular CLI instructions](#angular-cli).
 Note that the schematics for Angular 8 [do not use the custom Angular builder](#angular-builder), but instead use
 [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
 
+### Angular 9
+Angular 9 is supported by single-spa-angular.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 9. Follow the [Angular CLI instructions](#angular-cli).
+
+Note that the schematics for Angular 9 [do not use the custom Angular builder](#angular-builder), but instead use
+[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
+
 ## Angular CLI
 You may use Angular CLI and single-spa together with any version of Angular. However, the [Angular CLI schematics](#schematics)
 only work if you're using Angular >= 7. If you're using an older version of Angular, follow
@@ -250,21 +259,80 @@ regardless of whether you are using Angular CLI or not. This is the core of the 
 for Angular applications to bootstrap, mount, and unmount. See
 [single-spa lifecycles](http://localhost:3000/docs/building-applications.html#registered-application-lifecycle) for more information.
 
-## Basic usage
-```ts
-import singleSpaAngular from 'single-spa-angular';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+### Migrating from single-spa-angular@3.x to single-spa-angular@4.x
+​
+Migrating from 3.x to 4.x requires only few API updates.
+​
+#### Packages
+​
+```shell
+npm i --save single-spa-angular@4.0.0
+# Or if you're using yarn
+yarn add single-spa-angular@4.0.0
+```
+​
+#### API Updates
+​
+`single-spa-angular` doesn't have a default export anymore, instead you have to import a named `singleSpaAngular` function. Given the following code:
+​
+```js
+import singleSpaAngular from 'single-spa-angular'; // single-spa-angular@3.x
+import { singleSpaAngular } from 'single-spa-angular'; // single-spa-angular@4.x
+```
+​
+Also, if your application uses routing then you have to import the `getSingleSpaExtraProviders` function. Let's look at the following example, this is how it was in `single-spa-angular@3.x`:
+​
+```js
 import { NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppModule } from './app/app.module';
-
+import singleSpaAngular from 'single-spa-angular';
+​
 const lifecycles = singleSpaAngular({
   bootstrapFunction: singleSpaProps => {
+    singleSpaPropsSubject.next(singleSpaProps);
     return platformBrowserDynamic().bootstrapModule(AppModule);
   },
   template: '<app-root />',
   Router,
-  NgZone: NgZone,
+  NgZone,
+});
+```
+​
+And this is how it should be in `single-spa-angular@4.x`:
+​
+```js
+import { NgZone } from '@angular/core';
+import { Router } from '@angular/router';
+import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
+​
+const lifecycles = singleSpaAngular({
+  bootstrapFunction: singleSpaProps => {
+    singleSpaPropsSubject.next(singleSpaProps);
+    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
+  },
+  template: '<app-root />',
+  Router,
+  NgZone,
+});
+```
+
+## Basic usage
+
+```ts
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NgZone } from '@angular/core';
+import { Router } from '@angular/router';
+import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
+
+import { AppModule } from './app/app.module';
+
+const lifecycles = singleSpaAngular({
+  bootstrapFunction: singleSpaProps => {
+    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
+  },
+  template: '<app-root />',
+  Router,
+  NgZone,
 });
 
 export const bootstrap = lifecycles.bootstrap;
@@ -341,7 +409,7 @@ angular cli schematic, you may subscribe to the singleSpaPropsSubject in your co
 ```ts
 // An example showing where you get access to the single-spa props:
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import singleSpaAngular from 'single-spa-angular';
+import { singleSpaAngular } from 'single-spa-angular';
 
 const lifecycles = singleSpaAngular({
   bootstrapFunction(singleSpaProps) {
@@ -413,15 +481,11 @@ Create an [Angular Pipe](https://angular.io/guide/pipes) that lets you calculate
 import { Pipe, PipeTransform } from '@angular/core';
 import { assetUrl } from 'src/single-spa/public-path';
 
-@Pipe({
-  name: 'assetUrl'
-})
+@Pipe({ name: 'assetUrl' })
 export class AssetUrlPipe implements PipeTransform {
-
-  public transform(value: any, args?: any): any {
+  transform(value: string): string {
     return assetUrl(value);
   }
-
 }
 ```
 
