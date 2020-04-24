@@ -266,7 +266,7 @@ Migrating from 3.x to 4.x requires only few API updates.
 #### Packages
 ​
 ```shell
-npm i single-spa-angular@4.0.0
+npm i --save single-spa-angular@4.0.0
 # Or if you're using yarn
 yarn add single-spa-angular@4.0.0
 ```
