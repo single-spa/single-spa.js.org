@@ -44,4 +44,4 @@ After filing a report, a representative will contact you personally. If the pers
 
 Anyone asked to stop unacceptable behavior is expected to comply immediately. If an individual engages in unacceptable behavior, the representative may take any action they deem appropriate, up to and including a permanent ban from our community without warning.
 
-This Code Of Conduct follows the [template](http://todogroup.org/opencodeofconduct/) established by the [TODO Group](http://todogroup.org/).
+This Code Of Conduct follows the [template](https://github.com/todogroup/opencodeofconduct) established by the [TODO Group](http://todogroup.org/).
