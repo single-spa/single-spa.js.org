@@ -9,7 +9,7 @@ const TITLE = 'Core Team Members';
 
 const getContributors = token => `
   ${JSON.stringify(projects)}.forEach(({user, repo}) => {
-    fetch(\`https://api.github.com/repos/\${user}/\${repo}/contributors?access_token=${token}\`)
+    fetch(\`https://api.github.com/repos/\${user}/\${repo}/contributors\`)
       .then(res => res.json())
       .then(data => {
         const contributors = data.map(({html_url, login, id, avatar_url}) => (\`  
