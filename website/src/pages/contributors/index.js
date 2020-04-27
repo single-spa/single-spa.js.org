@@ -55,18 +55,30 @@ function Contributors() {
           )}
           style={{ paddingBottom: '40px' }}>
           <div className={styles.contributorsList}>
-            {coreMembers.map(({ name, login, avatarUrl }, index) => (
-              <a
-                key={index}
-                href={`https://github.com/${login}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.contributorItem}>
-                <span
-                  className={styles.contributorImg}
-                  style={{ backgroundImage: `url(${avatarUrl})` }}></span>
-                <h3 className={styles.contributorLogin}>{name}</h3>
-              </a>
+            {coreMembers.map(({ name, login, avatarUrl, sponsorUrl }, index) => (
+              <div key={index} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <a
+                  href={`https://github.com/${login}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contributorItem}>
+                  <span
+                    className={styles.contributorImg}
+                    style={{ backgroundImage: `url(${avatarUrl})` }}></span>
+                  <h3 className={styles.contributorLogin}>{name}</h3>
+                </a>
+                {sponsorUrl &&
+                  <a
+                    href={sponsorUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contributorItem}>
+                      Sponsor
+                  </a>
+                }
+                <a>
+                </a>
+              </div>
             ))}
           </div>
         </div>
