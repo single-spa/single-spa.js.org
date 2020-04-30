@@ -31,7 +31,7 @@ AngularJS is supported by [single-spa-angularjs](https://github.com/single-spa/s
 See [AngularJS docs](/docs/ecosystem-angularjs.html).
 
 ### Angular 2
-Angular 2 is supported by single-spa-angular.
+Angular 2 is supported by single-spa-angular@3.
 
 The [single-spa-angular schematics](#schematics) are not supported by Angular 2, so you'll have to
 follow the [steps for manual installation](#manual-installation). The
@@ -41,37 +41,37 @@ follow the [steps for manual installation](#manual-installation). The
 Angular 3 [never existed](https://www.infoworld.com/article/3150716/forget-angular-3-google-skips-straight-to-angular-4.html).
 
 ### Angular 4
-Angular 4 is supported by single-spa-angular.
+Angular 4 is supported by single-spa-angular@3.
 
 The [single-spa-angular schematics](#schematics) are not supported by Angular 4, so you'll have to
 follow the [steps for manual installation](#manual-installation). The
 [single-spa helpers](#the-single-spa-helpers) work with Angular 4.
 
 ### Angular 5
-Angular 5 is supported by single-spa-angular.
+Angular 5 is supported by single-spa-angular@3.
 
 The [single-spa-angular schematics](#schematics) are not supported by Angular 5, so you'll have to
 follow the [steps for manual installation](#manual-installation). The
 [single-spa helpers](#the-single-spa-helpers) work with Angular 5.
 
 ### Angular 6
-Angular 6 is supported by single-spa-angular.
+Angular 6 is supported by single-spa-angular@3.
 
 The [single-spa-angular schematics](#schematics) are not supported by Angular 6, so you'll have to
 follow the [steps for manual installation](#manual-installation). The
 [single-spa helpers](#the-single-spa-helpers) work with Angular 6.
 
 ### Angular 7
-Angular 7 is supported by single-spa-angular.
+Angular 7 is supported by single-spa-angular@3.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 7. Follow the [Angular CLI instructions](#angular-cli).
 
-Note that the schematics for Angular 7 use an [Angular Builder](#angular-builder) that is no longer
+Note that the schematics for Angular 7 use an [Angular Builder](#use-angular-builder) that is no longer
 used in the Angular 8 schematics.
 
 ### Angular 8
-Angular 8 is supported by single-spa-angular.
+Angular 8 is supported by single-spa-angular@3.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 8. Follow the [Angular CLI instructions](#angular-cli).
@@ -80,7 +80,7 @@ Note that the schematics for Angular 8 [do not use the custom Angular builder](#
 [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
 
 ### Angular 9
-Angular 9 is supported by single-spa-angular.
+Angular 9 is supported by single-spa-angular@4.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 9. Follow the [Angular CLI instructions](#angular-cli).
