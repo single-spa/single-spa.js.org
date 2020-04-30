@@ -55,8 +55,8 @@ Changing which javascript file is loaded for each child application can be done 
 
 #### Comparison
 
-|   | Difficulty to set up | Separate code repositories possible | Independent CI builds | Separate deployments | Examples |
-| - | -------------------- | ----------------------------------- | --------------- | -------------------- | -------- |
-| Monorepo | Easy | :x: | :x: | :x: | &mdash; |
-| NPM Packages | Medium | :white_check_mark: | :white_check_mark: | :x: | [1](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages) |
-| Module loading | Hard | :white_check_mark: | :white_check_mark: | :white_check_mark: | [1](https://github.com/react-microfrontends/) [2](https://github.com/vue-microfrontends/) [3](https://github.com/polyglot-microfrontends/) |
+|   | Separate code repositories possible | Independent CI builds | Separate deployments | Examples |
+| - | ----------------------------------- | --------------- | -------------------- | -------- |
+| Monorepo | :x: | :x: | :x: | &mdash; |
+| NPM Packages | :white_check_mark: | :white_check_mark: | :x: | [1](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages) |
+| Module loading | :white_check_mark: | :white_check_mark: | :white_check_mark: | [1](https://github.com/react-microfrontends/) [2](https://github.com/vue-microfrontends/) [3](https://github.com/polyglot-microfrontends/) |
