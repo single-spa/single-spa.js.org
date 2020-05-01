@@ -156,7 +156,7 @@ prefix. Examples:
     <dd>🚫 https://app.com/app2</dd>
   </dl>
 
-### config.customProps
+#### config.customProps
 
 The optional `customProps` property provides [custom props](./building-applications#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
 
