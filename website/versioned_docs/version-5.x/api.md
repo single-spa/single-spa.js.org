@@ -599,7 +599,21 @@ Sets the global configuration for unload timeouts.
 
 # Events
 
-All of the following are [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) fired by single-spa on the window. The event `detail` property contains the native DOM event that triggered the reroute, such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent). These events can be handled by using [`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), like so:
+Single-spa fires two kinds of events to the `window`: (1) PopStateEvent and (2) CustomEvent.
+
+The PopStateEvents fired by single-spa are the way single-spa lets all applications that are active on the page know that they should re-render.
+
+```js
+window.addEventListener('popstate', evt => {
+	if (evt.singleSpa) {
+		console.log('This event was fired by single-spa to forcibly trigger a re-render')
+	} else {
+		console.log('This event was fired by native browser behavior')
+	}
+});
+```
+
+The [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) are fired by single-spa on the window. The event `detail` property contains the native DOM event that triggered the reroute, such as a [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent) or [HashChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent). These events can be handled by using [`addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), like so:
 
 <!-- TODO: are these events augmented like the addErrorHandler Error is? -->
 
