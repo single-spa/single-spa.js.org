@@ -56,7 +56,7 @@ Each lifecycle function is guranteed to be called with the following props:
 
 #### Custom props
 
-In addition to the built-in props that are provided by single-spa, you may optionally specify custom props to be passed to an application by providing a fourth argument to `registerApplication`. These *customProps* will be passed into each lifecycle method.
+In addition to the built-in props that are provided by single-spa, you may optionally specify custom props to be passed to an application. These *customProps* will be passed into each lifecycle method. The custom props are an object, and you can provide either the object or a function that returns the object. Custom prop functions are called with the application name and current window.location as arguments.
 
 <p className="filename">root.application.js</p>
 
@@ -66,6 +66,15 @@ singleSpa.registerApplication({
   activeWhen,
   app,
   customProps: { authToken: "d83jD63UdZ6RS6f70D0" }
+});
+
+singleSpa.registerApplication({
+  name: 'app1',
+  activeWhen,
+  app,
+  customProps: (name, location) => {
+    return { authToken: "d83jD63UdZ6RS6f70D0" };
+  }
 });
 ```
 
