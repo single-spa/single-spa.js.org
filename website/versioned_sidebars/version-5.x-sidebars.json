@@ -27,6 +27,10 @@
         {
           "type": "doc",
           "id": "version-5.x/single-spa-playground"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/videos"
         }
       ]
     },
