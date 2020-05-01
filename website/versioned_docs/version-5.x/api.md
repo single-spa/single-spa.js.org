@@ -597,16 +597,20 @@ Sets the global configuration for unload timeouts.
 
 `undefined`
 
-# Events
+## Events
 
-Single-spa fires two kinds of events to the `window`: (1) PopStateEvent and (2) CustomEvent.
+Single-spa fires two kinds of events to the `window`:
 
-The PopStateEvents fired by single-spa are the way single-spa lets all applications that are active on the page know that they should re-render.
+1. PopStateEvent
+2. CustomEvent
+
+The PopStateEvents fired by single-spa are the way single-spa tells all active applications to re-render. This occurs when one application calls [history.pushState](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState), [history.replaceState](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState), or [triggerAppChange](#triggerAppChange).
 
 ```js
 window.addEventListener('popstate', evt => {
 	if (evt.singleSpa) {
 		console.log('This event was fired by single-spa to forcibly trigger a re-render')
+		console.log(evt.singleSpaTrigger); // pushState | replaceState
 	} else {
 		console.log('This event was fired by native browser behavior')
 	}
