@@ -608,12 +608,12 @@ The PopStateEvents fired by single-spa are the way single-spa tells all active a
 
 ```js
 window.addEventListener('popstate', evt => {
-	if (evt.singleSpa) {
-		console.log('This event was fired by single-spa to forcibly trigger a re-render')
-		console.log(evt.singleSpaTrigger); // pushState | replaceState
-	} else {
-		console.log('This event was fired by native browser behavior')
-	}
+  if (evt.singleSpa) {
+    console.log('This event was fired by single-spa to forcibly trigger a re-render')
+    console.log(evt.singleSpaTrigger); // pushState | replaceState
+  } else {
+    console.log('This event was fired by native browser behavior')
+  }
 });
 ```
 
