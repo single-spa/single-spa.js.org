@@ -677,6 +677,18 @@ window.addEventListener('single-spa:before-routing-event', () => {
 
 A `single-spa:before-routing-event` event is fired before every routing event occurs, which is after each hashchange, popstate, or triggerAppChange, even if no changes to registered applications were necessary.
 
+## before mount routing event
+
+```js
+window.addEventListener('single-spa:before-mount-routing-event', (evt) => {
+	console.log('single-spa is about to mount/unmount applications!');
+	console.log(evt.detail)
+});
+```
+
+A `single-spa:before-mount-routing-event` event is fired after `before-routing-event` and before `routing-event`. It is guaranteed to fire after all single-spa applications have been unmounted, but before any new applications have been mounted.
+
+
 ## routing event
 
 ```js
