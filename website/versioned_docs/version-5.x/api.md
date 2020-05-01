@@ -629,7 +629,7 @@ window.addEventListener('single-spa:before-mount-routing-event', (evt) => {
 });
 ```
 
-A `single-spa:before-mount-routing-event` event is fired before `routing-event` but after `before-routing-event`. It is guaranteed to fire after all single-spa applications have been unmounted, but before any new applications have been mounted.
+A `single-spa:before-mount-routing-event` event is fired after `before-routing-event` and before `routing-event`. It is guaranteed to fire after all single-spa applications have been unmounted, but before any new applications have been mounted.
 
 
 ## routing event
