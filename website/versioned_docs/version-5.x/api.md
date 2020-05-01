@@ -439,6 +439,45 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 	<dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
 </dl>
 
+## pathToActiveWhen
+
+The `pathToActiveWhen` function converts a string URL path into an [activity function](./configuration#activity-function). The string path may contain route parameters that single-spa will match any characters to. It assumes that the string provided is a **prefix**.
+
+This function is used by single-spa when a string is passed into `registerApplication` as the `activeWhen` argument.
+
+***Arguments***
+
+1. `path` (string): The URL prefix that.
+
+***Return Value***
+
+`(location: Location) => boolean`
+
+A function that accepts a URL as an argument and returns a boolean indicating whether the path matches that URL.
+
+***Examples:***
+
+```js
+let activeWhen = singleSpa.pathToActiveWhen('/settings');
+activewhen(new URL('http://localhost/settings')); // true
+activewhen(new URL('http://localhost/settings/password')); // true
+activeWhen(new URL('http://localhost/')); // false
+
+activeWhen = singleSpa.pathToActiveWhen('/user/:id/settings');
+activewhen(new URL('http://localhost/users/6f7dsdf8g9df8g9dfg/settings')); // true
+activewhen(new URL('http://localhost/users/1324/settings')); // true
+activewhen(new URL('http://localhost/users/1324/settings/password')); // true
+activewhen(new URL('http://localhost/users/1/settings')); // true
+activewhen(new URL('http://localhost/users/1')); // false
+activewhen(new URL('http://localhost/settings')); // false
+activeWhen(new URL('http://localhost/')); // false
+
+activeWhen = singleSpa.pathToActiveWhen('/page#/hash');
+activeWhen(new URL('http://localhost/page#/hash')); // true
+activeWhen(new URL('http://localhost/#/hash')); // false
+activeWhen(new URL('http://localhost/page')); // false
+```
+
 ## ensureJQuerySupport
 
 ```js
