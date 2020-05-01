@@ -34,16 +34,20 @@ import { registerApplication, start } from 'single-spa';
 
 // Simple usage
 registerApplication(
-    'app2',
-    () => import('src/app2/main.js'),
-    (location) => location.pathname.startsWith('/app2')
+  'app2',
+  () => import('src/app2/main.js'),
+  (location) => location.pathname.startsWith('/app2'),
+  {some: 'value'}
 );
 
 // Config with more expressive API
 registerApplication({
-    name: 'app1',
-    app: () => import('src/app1/main.js'),
-    activeWhen: '/app1'
+  name: 'app1',
+  app: () => import('src/app1/main.js'),
+  activeWhen: '/app1',
+  customProps: {
+    some: 'value',
+  }
 );
 
 start();
@@ -89,14 +93,30 @@ single-spa will call each application's activity function under the following sc
 - [`triggerAppChange`](api.md#triggerappchange) api is called on single-spa
 - Whenever the `checkActivityFunctions` method is called
 
+#### Custom props
+
+The optional fourth argument to `registerApplication` is [custom props](./building-applications#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
+
 ### Using configuration object
 
 ```js
-const config = {
-    name: 'myApp',
-    app: () => import('src/myApp/main.js'),
-    activeWhen: ['/myApp', (location) => location.pathname.startsWith('/some/other/path')],
-}
+singleSpa.registerApplication({
+  name: 'myApp',
+  app: () => import('src/myApp/main.js'),
+  activeWhen: ['/myApp', (location) => location.pathname.startsWith('/some/other/path')],
+  customProps: {
+    some: 'value',
+  },
+});
+
+singleSpa.registerApplication({
+  name: 'myApp',
+  app: () => import('src/myApp/main.js'),
+  activeWhen: ['/myApp', (location) => location.pathname.startsWith('/some/other/path')],
+  customProps: (name, location) => ({
+    some: 'value',
+  }),
+});
 ```
 
 #### config.name
@@ -135,6 +155,10 @@ prefix. Examples:
     <dd>🚫 https://app.com/pathname/app1</dd>
     <dd>🚫 https://app.com/app2</dd>
   </dl>
+
+### config.customProps
+
+The optional `customProps` property provides [custom props](./building-applications#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
 
 ## Calling singleSpa.start()
 The [`start()` api](api.md#start) **must** be called by your single spa config in order for
