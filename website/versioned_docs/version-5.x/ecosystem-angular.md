@@ -569,3 +569,58 @@ If you need to support IE11 or older, do the following:
 - Change angular.json `target` to `es5` ([example](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32#diff-acbfc718bf309f27dd3699a4ad80a2d1R13))
 
 [Full example commit to get IE11 support](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32)
+
+## Advanced
+
+### Zone-less applications
+
+It's possible to develop Angular applications that don't rely on `zone.js` library, these applications are called _zone-less_. You have to run change detection manually in _zone-less_ applications through `ApplicationRef.tick()` or `ChangeDetectorRef.detectChanges()`. You can find more info in [Angular NoopZone docs](https://angular.io/guide/zone#noopzone).
+
+The point is that you do not need to load `zone.js` library in your root html file. As Angular docs mention that you should have a comprehensive knowledge of change detection to develop such applications. Let's start by _nooping_ zone when bootstrapping module:
+
+```ts
+import { singleSpaAngular } from 'single-spa-angular';
+
+const lifecycles = singleSpaAngular({
+  bootstrapFunction: () =>
+    platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' }),
+  template: '<app-root />',
+  NgZone: 'noop',
+});
+```
+
+> 💡 Note, that we have to specify `noop` 2 times: when bootstrapping `AppModule` and setting `NgZone` property to `noop`, thus we tell Angular and single-spa-angular that we're not going to use zones.
+
+### Routing in zone-less applications
+
+Since routing is managed by single-spa and there is no zone that tells Angular that some asynchronous event has occured, then we need to tell Angular when to run change detection if routing occurs. Let's look at the below code:
+
+```js
+import { ApplicationRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { singleSpaAngular } from 'single-spa-angular';
+
+const lifecycles = singleSpaAngular({
+  bootstrapFunction: async () => {
+    const ngModuleRef = await platformBrowserDynamic().bootstrapModule(
+      AppModule,
+      { ngZone: 'noop' },
+    );
+
+    const appRef = ngModuleRef.injector.get(ApplicationRef);
+    const listener = () => appRef.tick();
+    window.addEventListener('popstate', listener);
+
+    ngModuleRef.onDestroy(() => {
+      window.removeEventListener('popstate', listener);
+    });
+
+    return ngModuleRef;
+  },
+  template: '<app-root />',
+  NgZone: 'noop',
+  Router,
+});
+```
+
+> ⚠️ Starting from 4.x single-spa-angular requires calling `getSingleSpaExtraProviders` function in applications that have routing. Do not call this function in _zone-less_ application.
