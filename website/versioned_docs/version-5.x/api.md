@@ -694,10 +694,10 @@ A `single-spa:before-mount-routing-event` event is fired after `before-routing-e
 ```js
 window.addEventListener('single-spa:routing-event', (evt) => {
   console.log('single-spa finished mounting/unmounting applications!');
-  console.log(evt.originalEvent) // PopStateEvent
-  console.log(evt.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-  console.log(evt.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-  console.log(evt.totalAppChanges) // 2
+  console.log(evt.detail.originalEvent) // PopStateEvent
+  console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
+  console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+  console.log(evt.detail.totalAppChanges) // 2
 });
 ```
 
@@ -708,10 +708,10 @@ A `single-spa:routing-event` event is fired every time that a routing event has 
 ```js
 window.addEventListener('single-spa:app-change', (evt) => {
   console.log('A routing event occurred where at least one application was mounted/unmounted');
-  console.log(evt.originalEvent) // PopStateEvent
-  console.log(evt.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-  console.log(evt.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-  console.log(evt.totalAppChanges) // 2
+  console.log(evt.detail.originalEvent) // PopStateEvent
+  console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
+  console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+  console.log(evt.detail.totalAppChanges) // 2
 });
 ```
 
@@ -722,10 +722,10 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 ```js
 window.addEventListener('single-spa:no-app-change', (evt) => {
   console.log('A routing event occurred where zero applications were mounted/unmounted');
-  console.log(evt.originalEvent) // PopStateEvent
-  console.log(evt.newAppStatuses) // { }
-  console.log(evt.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-  console.log(evt.totalAppChanges) // 0
+  console.log(evt.detail.originalEvent) // PopStateEvent
+  console.log(evt.detail.newAppStatuses) // { }
+  console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
+  console.log(evt.detail.totalAppChanges) // 0
 });
 ```
 
