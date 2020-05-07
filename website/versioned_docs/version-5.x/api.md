@@ -692,7 +692,7 @@ A `single-spa:before-mount-routing-event` event is fired after `before-routing-e
 ## routing event
 
 ```js
-window.addEventListener('single-spa:routing-event', () => {
+window.addEventListener('single-spa:routing-event', (evt) => {
   console.log('single-spa finished mounting/unmounting applications!');
   console.log(evt.originalEvent) // PopStateEvent
   console.log(evt.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
@@ -720,7 +720,7 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 ## no-app-change event
 
 ```js
-window.addEventListener('single-spa:no-app-change', () => {
+window.addEventListener('single-spa:no-app-change', (evt) => {
   console.log('A routing event occurred where zero applications were mounted/unmounted');
   console.log(evt.originalEvent) // PopStateEvent
   console.log(evt.newAppStatuses) // { }
