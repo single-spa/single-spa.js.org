@@ -88,7 +88,7 @@ singleSpa.registerApplication({
 All options are passed to single-spa-angularjs via the `opts` parameter when calling `singleSpaAngularJS(opts)`. The following options are available:
 
 - `angular`: (required) The main angular object, which is generally either exposed onto the window or is available via `require('angular')` or `import angular from 'angular'`.
-- `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the angular
+- `domElementGetter`: (optional) A function that takes in the `props` parameter and returns a DOMElement. This dom element is where the angular
   application will be bootstrapped, mounted, and unmounted. If not provided, the default is to create a div and append it to `document.body`.
 - `mainAngularModule`: (required) A string that is the name of the angular module that will be bootstrapped by angular. See [angular docs](https://docs.angularjs.org/api/ng/function/angular.bootstrap) for `angular.bootstrap()`.
 - `uiRouter`: (optional) If you are using angular-ui-router, set this option to either `true` or to a string value. The string value will be the value of the ui-view html attribute. For example, `uiRouter: 'core'` will be `<div ui-view="core" />` whereas `uiRouter: true` turns into `<div ui-view />`.
