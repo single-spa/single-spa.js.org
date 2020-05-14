@@ -678,8 +678,8 @@ The following table shows the order in which the custom events are fired during 
 | 3 | `single-spa:before-mount-routing-event` | &mdash; |
 | 4 | `single-spa:before-first-mount` | Is this the first time any application is mounting? |
 | 5 | `single-spa:first-mount` | Is this the first time any application was mounted? |
-| 5 | `single-spa:app-change` or `single-spa:no-app-change` | Did any applications change status? |
-| 6 | `single-spa:routing-event` | &mdash; |
+| 6 | `single-spa:app-change` or `single-spa:no-app-change` | Did any applications change status? |
+| 7 | `single-spa:routing-event` | &mdash; |
 
 ### before-app-change event
 
