@@ -21,23 +21,23 @@ There are two ways of registering your application:
 ### Simple arguments
 ```js
 singleSpa.registerApplication(
-  'appName',
-  () => System.import('appName'),
-  location => location.pathname.startsWith('appName')
+	'appName',
+	() => System.import('appName'),
+	location => location.pathname.startsWith('appName')
 )
 ```
 
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>appName: string</dt>
-  <dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
-  <dt>applicationOrLoadingFn: () => &lt;Function | Promise&gt;</dt>
-  <dd>Must be a loading function that either returns the resolved application or a promise.</dd>
-  <dt>activityFn: (location) => boolean</dt>
-  <dd>Must be a pure function. The function is called with <codehtml>window.location</codehtml> as the first argument {/* TODO: any only? */} and should return a truthy value whenever the application should be active.</dd>
-  <dt>customProps?: Object = &#123;&#125;</dt>
-  <dd>Will be passed to the application during each lifecycle method.</dd>
+	<dt>appName: string</dt>
+	<dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
+	<dt>applicationOrLoadingFn: () => &lt;Function | Promise&gt;</dt>
+	<dd>Must be a loading function that either returns the resolved application or a promise.</dd>
+	<dt>activityFn: (location) => boolean</dt>
+	<dd>Must be a pure function. The function is called with <codehtml>window.location</codehtml> as the first argument {/* TODO: any only? */} and should return a truthy value whenever the application should be active.</dd>
+	<dt>customProps?: Object = &#123;&#125;</dt>
+	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -47,52 +47,52 @@ singleSpa.registerApplication(
 ### Configuration object
 ```js
 singleSpa.registerApplication({
-  name: 'appName',
-  app: () => System.import('appName'),
-  activeWhen: '/appName'
-  customProps: {}
+	name: 'appName',
+	app: () => System.import('appName'),
+	activeWhen: '/appName'
+	customProps: {}
 })
 ```
 
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>name: string</dt>
-  <dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
-  <dt>app: Application | () => Application | Promise&lt;Application&gt; </dt>
-  <dd>Application object or a function that returns the resolved application (Promise or not)</dd>
-  <dt>activeWhen: string | (location) => boolean | (string | (location) => boolean)[]</dt>
-  <dd>Can be a path prefix which will match every URL starting with this path,
-  an activity function (as described in the simple arguments) or an array
-  containing both of them. If any of the criteria is true, it will keep the
-  application active. The path prefix also accepts dynamic values (they must
-  start with ':'), as some paths would receive url params and should still
-  trigger your application.
-  Examples:
-    <dl>
-      <dt>'/app1'</dt>
-      <dd>✅ https://app.com/app1</dd>
-      <dd>✅ https://app.com/app1/anything/everything</dd>
-      <dd>🚫 https://app.com/app2</dd>
-      <dt>'/users/:userId/profile'</dt>
-      <dd>✅ https://app.com/users/123/profile</dd>
-      <dd>✅ https://app.com/users/123/profile/sub-profile/</dd>
-      <dd>🚫 https://app.com/users//profile/sub-profile/</dd>
-      <dd>🚫 https://app.com/users/profile/sub-profile/</dd>
-      <dt>'/pathname/#/hash'</dt>
-      <dd>✅ https://app.com/pathname/#/hash</dd>
-      <dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
-      <dd>🚫 https://app.com/pathname#/hash/route/nested</dd>
-      <dd>🚫 https://app.com/pathname#/another-hash</dd>
-      <dt>['/pathname/#/hash', '/app1']</dt>
-      <dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
-      <dd>✅ https://app.com/app1/anything/everything</dd>
-      <dd>🚫 https://app.com/pathname/app1</dd>
-      <dd>🚫 https://app.com/app2</dd>
-    </dl>
-  </dd>
-  <dt>customProps?: Object = &#123;&#125;</dt>
-  <dd>Will be passed to the application during each lifecycle method.</dd>
+	<dt>name: string</dt>
+	<dd>App name that single-spa will register and reference this application with, and will be labelled with in dev tools.</dd>
+	<dt>app: Application | () => Application | Promise&lt;Application&gt; </dt>
+	<dd>Application object or a function that returns the resolved application (Promise or not)</dd>
+	<dt>activeWhen: string | (location) => boolean | (string | (location) => boolean)[]</dt>
+	<dd>Can be a path prefix which will match every URL starting with this path,
+	an activity function (as described in the simple arguments) or an array
+	containing both of them. If any of the criteria is true, it will keep the
+	application active. The path prefix also accepts dynamic values (they must
+	start with ':'), as some paths would receive url params and should still
+	trigger your application.
+	Examples:
+		<dl>
+			<dt>'/app1'</dt>
+			<dd>✅ https://app.com/app1</dd>
+			<dd>✅ https://app.com/app1/anything/everything</dd>
+			<dd>🚫 https://app.com/app2</dd>
+			<dt>'/users/:userId/profile'</dt>
+			<dd>✅ https://app.com/users/123/profile</dd>
+			<dd>✅ https://app.com/users/123/profile/sub-profile/</dd>
+			<dd>🚫 https://app.com/users//profile/sub-profile/</dd>
+			<dd>🚫 https://app.com/users/profile/sub-profile/</dd>
+			<dt>'/pathname/#/hash'</dt>
+			<dd>✅ https://app.com/pathname/#/hash</dd>
+			<dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
+			<dd>🚫 https://app.com/pathname#/hash/route/nested</dd>
+			<dd>🚫 https://app.com/pathname#/another-hash</dd>
+			<dt>['/pathname/#/hash', '/app1']</dt>
+			<dd>✅ https://app.com/pathname/#/hash/route/nested</dd>
+			<dd>✅ https://app.com/app1/anything/everything</dd>
+			<dd>🚫 https://app.com/pathname/app1</dd>
+			<dd>🚫 https://app.com/app2</dd>
+		</dl>
+	</dd>
+	<dt>customProps?: Object = &#123;&#125;</dt>
+	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -107,7 +107,7 @@ singleSpa.start();
 
 // Optionally, you can provide configuration
 singleSpa.start({
-  urlRerouteOnly: true
+	urlRerouteOnly: true
 });
 ```
 
@@ -139,8 +139,8 @@ none
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>Promise</dt>
-  <dd>Returns a Promise that will resolve/reject when all apps have mounted.</dd>
+	<dt>Promise</dt>
+	<dd>Returns a Promise that will resolve/reject when all apps have mounted.</dd>
 </dl>
 
 ## navigateToUrl
@@ -162,15 +162,15 @@ Use this utility function to easily perform url navigation between registered ap
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>navigationObj: string | context | DOMEvent</dt>
-  <dd>
-    navigationObj must be one of the following types:
-    <ul>
-      <li>a url string.</li>
-      <li>a context / thisArg that has an <codehtml>href</codehtml> property; useful for calling <codehtml>singleSpaNavigate.call(anchorElement)</codehtml> with a reference to the anchor element or other context.</li>
-      <li>a DOMEvent object for a click event on a DOMElement that has an <codehtml>href</codehtml> attribute; ideal for the <codehtml>&lt;a onclick="singleSpaNavigate">&lt;/a></codehtml> use case.</li>
-    </ul>
-  </dd>
+	<dt>navigationObj: string | context | DOMEvent</dt>
+	<dd>
+		navigationObj must be one of the following types:
+		<ul>
+			<li>a url string.</li>
+			<li>a context / thisArg that has an <codehtml>href</codehtml> property; useful for calling <codehtml>singleSpaNavigate.call(anchorElement)</codehtml> with a reference to the anchor element or other context.</li>
+			<li>a DOMEvent object for a click event on a DOMElement that has an <codehtml>href</codehtml> attribute; ideal for the <codehtml>&lt;a onclick="singleSpaNavigate">&lt;/a></codehtml> use case.</li>
+		</ul>
+	</dd>
 </dl>
 
 <h3>returns</h3>
@@ -191,8 +191,8 @@ none
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>appNames: string[]</dt>
-  <dd>Each string is the name of a registered application that is currently <codehtml>MOUNTED</codehtml>.</dd>
+	<dt>appNames: string[]</dt>
+	<dd>Each string is the name of a registered application that is currently <codehtml>MOUNTED</codehtml>.</dd>
 </dl>
 
 ## getAppNames
@@ -209,8 +209,8 @@ none
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>appNames: string[]</dt>
-  <dd>Each string is the name of a registered application regardless of app status.</dd>
+	<dt>appNames: string[]</dt>
+	<dd>Each string is the name of a registered application regardless of app status.</dd>
 </dl>
 
 ## getAppStatus
@@ -223,65 +223,65 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>appName: string</dt>
-  <dd>Registered application name.</dd>
+	<dt>appName: string</dt>
+	<dd>Registered application name.</dd>
 </dl>
 
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>appStatus: &lt;string | null&gt;</dt>
-  <dd>
-    Will be one of the following string constants, or <codehtml>null</codehtml> if the app does not exist.
-    <dl className="dl-inline">
-      <div>
-        <dt>NOT_LOADED</dt>
-        <dd>app has been registered with single-spa but has not yet been loaded.</dd>
-      </div>
-      <div>
-        <dt>LOADING_SOURCE_CODE</dt>
-        <dd>'s source code is being fetched.</dd>
-      </div>
-      <div>
-        <dt>NOT_BOOTSTRAPPED</dt>
-        <dd>app has been loaded but not bootstrapped.</dd>
-      </div>
-      <div>
-        <dt>BOOTSTRAPPING</dt>
-        <dd>the <codehtml>bootstrap</codehtml> lifecycle function has been called but has not finished.</dd>
-      </div>
-      <div>
-        <dt>NOT_MOUNTED</dt>
-        <dd>app has been loaded and bootstrapped but not yet mounted.</dd>
-      </div>
-      <div>
-        <dt>MOUNTING</dt>
-        <dd>app is being mounted but not finished.</dd>
-      </div>
-      <div>
-        <dt>MOUNTED</dt>
-        <dd>app is currently active and is mounted to the DOM.</dd>
-      </div>
-      <div>
-        <dt>UNMOUNTING</dt>
-        <dd>app is currently being unmounted but has not finished.</dd>
-      </div>
-      <div>
-        <dt>UNLOADING</dt>
-        <dd>app is currently being unloaded but has not finished.</dd>
-      </div>
-      <div>
-        <dt>SKIP_BECAUSE_BROKEN</dt>
-        <dd>app threw an error during load, bootstrap, mount, or unmount and has been siloed because it is misbehaving and has been skipped. Other apps will continue on normally.</dd>
-      </div>
-      <div>
-        <dt>LOAD_ERROR</dt>
-        <dd>
-          The app's loading function returned a promise that rejected. This is often due to a network error attempting to download the javascript bundle for the application. Single-spa will retry loading the application after the user navigates away from the current route and then comes back to it.
-        </dd>
-      </div>
-    </dl>
-  </dd>
+	<dt>appStatus: &lt;string | null&gt;</dt>
+	<dd>
+		Will be one of the following string constants, or <codehtml>null</codehtml> if the app does not exist.
+		<dl className="dl-inline">
+			<div>
+				<dt>NOT_LOADED</dt>
+				<dd>app has been registered with single-spa but has not yet been loaded.</dd>
+			</div>
+			<div>
+				<dt>LOADING_SOURCE_CODE</dt>
+				<dd>'s source code is being fetched.</dd>
+			</div>
+			<div>
+				<dt>NOT_BOOTSTRAPPED</dt>
+				<dd>app has been loaded but not bootstrapped.</dd>
+			</div>
+			<div>
+				<dt>BOOTSTRAPPING</dt>
+				<dd>the <codehtml>bootstrap</codehtml> lifecycle function has been called but has not finished.</dd>
+			</div>
+			<div>
+				<dt>NOT_MOUNTED</dt>
+				<dd>app has been loaded and bootstrapped but not yet mounted.</dd>
+			</div>
+			<div>
+				<dt>MOUNTING</dt>
+				<dd>app is being mounted but not finished.</dd>
+			</div>
+			<div>
+				<dt>MOUNTED</dt>
+				<dd>app is currently active and is mounted to the DOM.</dd>
+			</div>
+			<div>
+				<dt>UNMOUNTING</dt>
+				<dd>app is currently being unmounted but has not finished.</dd>
+			</div>
+			<div>
+				<dt>UNLOADING</dt>
+				<dd>app is currently being unloaded but has not finished.</dd>
+			</div>
+			<div>
+				<dt>SKIP_BECAUSE_BROKEN</dt>
+				<dd>app threw an error during load, bootstrap, mount, or unmount and has been siloed because it is misbehaving and has been skipped. Other apps will continue on normally.</dd>
+			</div>
+			<div>
+				<dt>LOAD_ERROR</dt>
+				<dd>
+					The app's loading function returned a promise that rejected. This is often due to a network error attempting to download the javascript bundle for the application. Single-spa will retry loading the application after the user navigates away from the current route and then comes back to it.
+				</dd>
+			</div>
+		</dl>
+	</dd>
 </dl>
 
 **Note about LOAD_ERROR status**
@@ -290,9 +290,9 @@ Note that if you're using SystemJS to load your bundles, you need to add the fol
 when your loading function calls `System.import()` on an application in `LOAD_ERROR` status.
 ```js
 singleSpa.addErrorHandler(err => {
-  if (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
-    System.delete(System.resolve(err.appOrParcelName));
-  }
+	if (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
+		System.delete(System.resolve(err.appOrParcelName));
+	}
 })
 ```
 
@@ -319,17 +319,17 @@ Because a registered application might be mounted when `unloadApplication` is ca
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>appName: string</dt>
-  <dd>Registered application name.</dd>
-  <dt>options?: &#123;waitForUnmount: boolean = false}</dt>
-  <dd>The options must be an object that has a <codehtml>waitForUnmount</codehtml> property. When <codehtml>waitForUnmount</codehtml> is <codehtml>false</codehtml>, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <codehtml>true</codehtml>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <codehtml>MOUNTED</codehtml>).</dd>
+	<dt>appName: string</dt>
+	<dd>Registered application name.</dd>
+	<dt>options?: &#123;waitForUnmount: boolean = false}</dt>
+	<dd>The options must be an object that has a <codehtml>waitForUnmount</codehtml> property. When <codehtml>waitForUnmount</codehtml> is <codehtml>false</codehtml>, single-spa immediately unloads the specified registered application even if the app is currently mounted. If it is <codehtml>true</codehtml>, single-spa will unload the registered application as soon as it is safe to do so (when the app status is not <codehtml>MOUNTED</codehtml>).</dd>
 </dl>
 
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>Promise</dt>
-  <dd>This promise will be resolved when the registered application has been successfully removed.</dd>
+	<dt>Promise</dt>
+	<dd>This promise will be resolved when the registered application has been successfully removed.</dd>
 </dl>
 
 ## checkActivityFunctions
@@ -347,32 +347,32 @@ Will call every app's activity function with the `mockWindowLocation` and give y
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>mockWindowLocation: string</dt>
-  <dd>A string representing a window.location that will be used when calling every application's activity function to test if they return true.</dd>
+	<dt>mockWindowLocation: string</dt>
+	<dd>A string representing a window.location that will be used when calling every application's activity function to test if they return true.</dd>
 </dl>
 
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>appNames: string[]</dt>
-  <dd>Each string is the name of a registered application that matches the provided <codehtml>mockWindowLocation</codehtml>.</dd>
+	<dt>appNames: string[]</dt>
+	<dd>Each string is the name of a registered application that matches the provided <codehtml>mockWindowLocation</codehtml>.</dd>
 </dl>
 
 ## addErrorHandler
 
 ```js
 singleSpa.addErrorHandler(err => {
-  console.log(err);
-  console.log(err.appOrParcelName);
-  console.log(singleSpa.getAppStatus(err.appOrParcelName));
+	console.log(err);
+	console.log(err.appOrParcelName);
+	console.log(singleSpa.getAppStatus(err.appOrParcelName));
 });
 ```
 
 Adds a handler that will be called every time an application throws an error during a lifecycle function or activity function. When there are no error handlers, single-spa throws the error to the window.
 
 <dl className="args-list">
-  <dt>errorHandler: Function(error: Error)</dt>
-  <dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <codehtml>message</codehtml> and <codehtml>appOrParcelName</codehtml> property.</dd>
+	<dt>errorHandler: Function(error: Error)</dt>
+	<dd>Must be a function. Will be called with an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that additionally has a <codehtml>message</codehtml> and <codehtml>appOrParcelName</codehtml> property.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -386,7 +386,7 @@ singleSpa.addErrorHandler(handleErr)
 singleSpa.removeErrorHandler(handleErr)
 
 function handleErr(err) {
-  console.log(err)
+	console.log(err)
 }
 ```
 
@@ -395,15 +395,15 @@ Removes the given error handler function.
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>errorHandler: Function</dt>
-  <dd>Reference to the error handling function.</dd>
+	<dt>errorHandler: Function</dt>
+	<dd>Reference to the error handling function.</dd>
 </dl>
 
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>boolean</dt>
-  <dd><codehtml>true</codehtml> if the error handler was removed, and <codehtml>false</codehtml> if it was not.</dd>
+	<dt>boolean</dt>
+	<dd><codehtml>true</codehtml> if the error handler was removed, and <codehtml>false</codehtml> if it was not.</dd>
 </dl>
 
 ## mountRootParcel
@@ -412,7 +412,7 @@ Removes the given error handler function.
 // Synchronous mounting
 const parcel = singleSpa.mountRootParcel(parcelConfig, {prop1: 'value1', domElement: document.getElementById('a-div')});
 parcel.mountPromise.then(() => {
-  console.log('finished mounting the parcel!')
+	console.log('finished mounting the parcel!')
 })
 
 // Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
@@ -426,17 +426,17 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>parcelConfig: Object or Loading Function</dt>
-  <dd>[parcelConfig](parcels-api.md#parcel-configuration)</dd>
-  <dt>parcelProps: Object with a domElement property</dt>
-  <dd>[parcelProps](parcels-api.md#parcel-props)</dd>
+	<dt>parcelConfig: Object or Loading Function</dt>
+	<dd>[parcelConfig](parcels-api.md#parcel-configuration)</dd>
+	<dt>parcelProps: Object with a domElement property</dt>
+	<dd>[parcelProps](parcels-api.md#parcel-props)</dd>
 </dl>
 
 <h3>returns</h3>
 
 <dl className="args-list">
-  <dt>Parcel object</dt>
-  <dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
+	<dt>Parcel object</dt>
+	<dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
 </dl>
 
 ## pathToActiveWhen
@@ -489,8 +489,8 @@ jQuery uses [event delegation](https://learn.jquery.com/events/event-delegation/
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>jQuery?: JQueryFn = window.jQuery</dt>
-  <dd>A reference to the global variable that jQuery has been bound to.</dd>
+	<dt>jQuery?: JQueryFn = window.jQuery</dt>
+	<dd>A reference to the global variable that jQuery has been bound to.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -516,16 +516,16 @@ Sets the global configuration for bootstrap timeouts.
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>millis: number</dt>
-  <dd>Number of milliseconds to wait for bootstrap to complete before timing out.</dd>
-  <dt>dieOnTimeout: boolean = false</dt>
-  <dd>
-    <p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
-    <p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
-    <p>Each registered application can override this behavior for itself.</p>
-  </dd>
-  <dt>warningMillis: number = 1000</dt>
-  <dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
+	<dt>millis: number</dt>
+	<dd>Number of milliseconds to wait for bootstrap to complete before timing out.</dd>
+	<dt>dieOnTimeout: boolean = false</dt>
+	<dd>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
+		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
+		<p>Each registered application can override this behavior for itself.</p>
+	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -550,16 +550,16 @@ Sets the global configuration for mount timeouts.
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>millis: number</dt>
-  <dd>Number of milliseconds to wait for mount to complete before timing out.</dd>
-  <dt>dieOnTimeout: boolean = false</dt>
-  <dd>
-    <p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
-    <p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
-    <p>Each registered application can override this behavior for itself.</p>
-  </dd>
-  <dt>warningMillis: number = 1000</dt>
-  <dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
+	<dt>millis: number</dt>
+	<dd>Number of milliseconds to wait for mount to complete before timing out.</dd>
+	<dt>dieOnTimeout: boolean = false</dt>
+	<dd>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
+		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
+		<p>Each registered application can override this behavior for itself.</p>
+	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -584,16 +584,16 @@ Sets the global configuration for unmount timeouts.
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>millis: number</dt>
-  <dd>Number of milliseconds to wait for unmount to complete before timing out.</dd>
-  <dt>dieOnTimeout: boolean = false</dt>
-  <dd>
-    <p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
-    <p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
-    <p>Each registered application can override this behavior for itself.</p>
-  </dd>
-  <dt>warningMillis: number = 1000</dt>
-  <dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
+	<dt>millis: number</dt>
+	<dd>Number of milliseconds to wait for unmount to complete before timing out.</dd>
+	<dt>dieOnTimeout: boolean = false</dt>
+	<dd>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
+		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
+		<p>Each registered application can override this behavior for itself.</p>
+	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -620,16 +620,16 @@ Sets the global configuration for unload timeouts.
 <h3>arguments</h3>
 
 <dl className="args-list">
-  <dt>millis: number</dt>
-  <dd>Number of milliseconds to wait for unload to complete before timing out.</dd>
-  <dt>dieOnTimeout: boolean = false</dt>
-  <dd>
-    <p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
-    <p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
-    <p>Each registered application can override this behavior for itself.</p>
-  </dd>
-  <dt>warningMillis: number = 1000</dt>
-  <dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
+	<dt>millis: number</dt>
+	<dd>Number of milliseconds to wait for unload to complete before timing out.</dd>
+	<dt>dieOnTimeout: boolean = false</dt>
+	<dd>
+		<p>If false, registered applications that are slowing things down will cause nothing more than some warnings in the console up until <codehtml>millis</codehtml> is reached.</p>
+		<p>If true, registered applications that are slowing things down will be siloed into a SKIP_BECAUSE_BROKEN status where they will never again be given the chance to break everything.</p>
+		<p>Each registered application can override this behavior for itself.</p>
+	</dd>
+	<dt>warningMillis: number = 1000</dt>
+	<dd>Number of milliseconds to wait between console warnings that occur before the final timeout.</dd>
 </dl>
 
 <h3>returns</h3>
@@ -646,12 +646,12 @@ single-spa fires [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/AP
 
 ```js
 window.addEventListener('popstate', evt => {
-  if (evt.singleSpa) {
-    console.log('This event was fired by single-spa to forcibly trigger a re-render')
-    console.log(evt.singleSpaTrigger); // pushState | replaceState
-  } else {
-    console.log('This event was fired by native browser behavior')
-  }
+	if (evt.singleSpa) {
+		console.log('This event was fired by single-spa to forcibly trigger a re-render')
+		console.log(evt.singleSpaTrigger); // pushState | replaceState
+	} else {
+		console.log('This event was fired by native browser behavior')
+	}
 });
 ```
 
@@ -661,11 +661,11 @@ single-spa fires a series of [custom events](https://developer.mozilla.org/en-US
 
 ```js
 window.addEventListener('single-spa:before-routing-event', evt => {
-  const { originalEvent, newAppStatuses, appsByNewStatus, totalAppChanges } = evt.detail;
-  console.log('original event that triggered this single-spa event', originalEvent); // PopStateEvent | HashChangeEvent | undefined
-  console.log('the new status for all applications after the reroute finishes', newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-  console.log('the applications that changed, grouped by their status', appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-  console.log('number of applications that changed status so far during this reroute', totalAppChanges); // 2
+	const { originalEvent, newAppStatuses, appsByNewStatus, totalAppChanges } = evt.detail;
+	console.log('original event that triggered this single-spa event', originalEvent); // PopStateEvent | HashChangeEvent | undefined
+	console.log('the new status for all applications after the reroute finishes', newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
+	console.log('the applications that changed, grouped by their status', appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+	console.log('number of applications that changed status so far during this reroute', totalAppChanges); // 2
 })
 ```
 
@@ -685,11 +685,11 @@ The following table shows the order in which the custom events are fired during 
 
 ```js
 window.addEventListener('single-spa:before-app-change', (evt) => {
-  console.log('single-spa is about to mount/unmount applications!');
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { app1: MOUNTED }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
-  console.log(evt.detail.totalAppChanges) // 1
+	console.log('single-spa is about to mount/unmount applications!');
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
+	console.log(evt.detail.totalAppChanges) // 1
 });
 ```
 
@@ -699,11 +699,11 @@ A `single-spa:before-app-change` event is fired before reroutes that will result
 
 ```js
 window.addEventListener('single-spa:before-no-app-change', (evt) => {
-  console.log('single-spa is about to do a no-op reroute');
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-  console.log(evt.detail.totalAppChanges) // 0
+	console.log('single-spa is about to do a no-op reroute');
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
+	console.log(evt.detail.totalAppChanges) // 0
 });
 ```
 
@@ -713,11 +713,11 @@ A `single-spa:before-no-app-change` event is fired before reroutes that will res
 
 ```js
 window.addEventListener('single-spa:before-routing-event', (evt) => {
-  console.log('single-spa is about to mount/unmount applications!');
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-  console.log(evt.detail.totalAppChanges) // 0
+	console.log('single-spa is about to mount/unmount applications!');
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
+	console.log(evt.detail.totalAppChanges) // 0
 });
 ```
 
@@ -727,12 +727,12 @@ A `single-spa:before-routing-event` event is fired before every routing event oc
 
 ```js
 window.addEventListener('single-spa:before-mount-routing-event', (evt) => {
-  console.log('single-spa is about to mount/unmount applications!');
-  console.log(evt.detail)
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { app1: MOUNTED }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
-  console.log(evt.detail.totalAppChanges) // 1
+	console.log('single-spa is about to mount/unmount applications!');
+	console.log(evt.detail)
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
+	console.log(evt.detail.totalAppChanges) // 1
 });
 ```
 
@@ -742,7 +742,7 @@ A `single-spa:before-mount-routing-event` event is fired after `before-routing-e
 
 ```js
 window.addEventListener('single-spa:before-first-mount', () => {
-  console.log('single-spa is about to mount the very first application for the first time');
+	console.log('single-spa is about to mount the very first application for the first time');
 });
 ```
 
@@ -754,7 +754,7 @@ Before the first of any single-spa applications is mounted, single-spa fires a `
 
 ```js
 window.addEventListener('single-spa:first-mount', () => {
-  console.log('single-spa just mounted the very first application');
+	console.log('single-spa just mounted the very first application');
 });
 ```
 
@@ -766,11 +766,11 @@ After the first of any single-spa applications is mounted, single-spa fires a `s
 
 ```js
 window.addEventListener('single-spa:app-change', (evt) => {
-  console.log('A routing event occurred where at least one application was mounted/unmounted');
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-  console.log(evt.detail.totalAppChanges) // 2
+	console.log('A routing event occurred where at least one application was mounted/unmounted');
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+	console.log(evt.detail.totalAppChanges) // 2
 });
 ```
 
@@ -780,11 +780,11 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 
 ```js
 window.addEventListener('single-spa:no-app-change', (evt) => {
-  console.log('A routing event occurred where zero applications were mounted/unmounted');
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-  console.log(evt.detail.totalAppChanges) // 0
+	console.log('A routing event occurred where zero applications were mounted/unmounted');
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
+	console.log(evt.detail.totalAppChanges) // 0
 });
 ```
 
@@ -794,11 +794,11 @@ When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded,
 
 ```js
 window.addEventListener('single-spa:routing-event', (evt) => {
-  console.log('single-spa finished mounting/unmounting applications!');
-  console.log(evt.detail.originalEvent) // PopStateEvent
-  console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-  console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-  console.log(evt.detail.totalAppChanges) // 2
+	console.log('single-spa finished mounting/unmounting applications!');
+	console.log(evt.detail.originalEvent) // PopStateEvent
+	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
+	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+	console.log(evt.detail.totalAppChanges) // 2
 });
 ```
 
