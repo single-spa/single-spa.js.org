@@ -65,7 +65,8 @@ add `name-of-app` to your [import map](https://single-spa-playground.org/playgro
 
 ### As a global variable
 ```js
-window.myAngularApp = singleSpaAngularJS({
+// note that "js" is not capitalized in the name of the global variable.
+window.myAngularApp = singleSpaAngularjs({
   angular: angular,
   mainAngularModule: 'app',
   uiRouter: true,
