@@ -20,6 +20,7 @@ module.exports = {
   },
   scripts: [
     'https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js',
+    'https://cdn.jsdelivr.net/npm/allies@1.0.2/allies.js',
     '/js/index.js',
   ],
   themeConfig: {
