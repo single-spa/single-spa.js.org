@@ -134,11 +134,12 @@ npm install --save single-spa-angular
 
 ### Manually apply schematics
 Since the single-spa-angular schematics didn't run, you'll need to make the following changes:
+
 1. Create all of the files that would have been created by the schematic.
-  [See schematics files](https://github.com/single-spa/single-spa-angular/tree/master/src/schematics/ng-add/_files).
+  [See schematics files](https://github.com/single-spa/single-spa-angular/tree/master/schematics/ng-add/_files).
   Be sure to get the files in the subdirectories, too.
 2. Add `build:single-spa` and `serve:single-spa` to the [scripts](https://docs.npmjs.com/misc/scripts) in your package.json.
-  [See `addNPMScripts` function](https://github.com/single-spa/single-spa-angular/blob/master/src/schematics/ng-add/index.ts#L122).
+  [See `addNPMScripts` function](https://github.com/single-spa/single-spa-angular/blob/master/schematics/ng-add/index.ts#L161).
 3. Use the angular builder, as described in the next section.
 
 ### Use Angular Builder
@@ -341,7 +342,7 @@ export const unmount = lifecycles.unmount;
 ```
 
 ### Full Example
-See [this schematic file](https://github.com/single-spa/single-spa-angular/blob/master/src/schematics/ng-add/_files/src/main.single-spa.ts.template#L16)
+See [this schematic file](https://github.com/single-spa/single-spa-angular/blob/master/schematics/ng-add/_files/src/main.single-spa.ts.template#L16)
 for a good example of how to use the single-spa helpers.
 
 ### Options
