@@ -134,6 +134,7 @@ npm install --save single-spa-angular
 
 ### Manually apply schematics
 Since the single-spa-angular schematics didn't run, you'll need to make the following changes:
+
 1. Create all of the files that would have been created by the schematic.
   [See schematics files](https://github.com/single-spa/single-spa-angular/tree/master/src/schematics/ng-add/_files).
   Be sure to get the files in the subdirectories, too.
