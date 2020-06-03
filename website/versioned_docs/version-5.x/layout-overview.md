@@ -51,7 +51,7 @@ In your root html file, add a `<single-spa-router>` element to the body. It shou
 ```html
 <html>
   <body>
-    <single-spa-router>
+    <single-spa-router style="display: none">
       <nav class="topnav">
         <application name="@organization/nav"></application>
       </nav>
