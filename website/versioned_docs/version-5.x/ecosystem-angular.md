@@ -286,12 +286,12 @@ Also, if your application uses routing then you have to import the `getSingleSpa
 ```js
 import { NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import singleSpaAngular from 'single-spa-angular';
+import singleSpaAngular, { getSingleSpaExtraProviders } from 'single-spa-angular';
 ​
 const lifecycles = singleSpaAngular({
   bootstrapFunction: singleSpaProps => {
     singleSpaPropsSubject.next(singleSpaProps);
-    return platformBrowserDynamic().bootstrapModule(AppModule);
+    return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
   },
   template: '<app-root />',
   Router,
