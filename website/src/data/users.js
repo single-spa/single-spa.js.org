@@ -70,6 +70,12 @@ const users = [
     image: 'img/catalystone-logo.svg',
     infoLink: 'https://www.catalystone.com/',
     pinned: false
+  },
+  {
+    caption: 'Canonical',
+    image: 'img/canonical-logo.svg',
+    infoLink: 'https://www.canonical.com/',
+    pinned: false
   }
 ];
 
