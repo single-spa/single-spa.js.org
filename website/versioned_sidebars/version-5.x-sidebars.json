@@ -98,6 +98,16 @@
     },
     {
       "type": "category",
+      "label": "Layout Engine (Beta)",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/layout-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "The Recommended Setup",
       "items": [
         {
