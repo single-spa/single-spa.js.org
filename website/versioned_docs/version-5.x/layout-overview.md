@@ -46,7 +46,7 @@ You must use single-spa@>=5.4.0 in order for the layout engine to work. Addition
 
 ## Basic usage
 
-In your root html file, add a `<single-spa-router>` element to the head. It should contain `<route>` elements, `<application>` elements, and any other dom elements:
+In your root html file, add a `<template>` element to the head. It should have a `<single-spa-router>` element that contains `<route>` elements, `<application>` elements, and any other dom elements:
 
 ```html
 <html>
