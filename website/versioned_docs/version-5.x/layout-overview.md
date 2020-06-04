@@ -46,28 +46,30 @@ You must use single-spa@>=5.4.0 in order for the layout engine to work. Addition
 
 ## Basic usage
 
-In your root html file, add a `<single-spa-router>` element to the body. It should contain `<route>` elements, `<application>` elements, and any other dom elements:
+In your root html file, add a `<single-spa-router>` element to the head. It should contain `<route>` elements, `<application>` elements, and any other dom elements:
 
 ```html
 <html>
-  <body>
-    <single-spa-router style="display: none">
-      <nav class="topnav">
-        <application name="@organization/nav"></application>
-      </nav>
-      <div class="main-content">
-        <route path="settings">
-          <application name="@organization/settings"></application>
-        </route>
-        <route path="clients">
-          <application name="@organization/clients"></application>
-        </route>
-      </div>
-      <footer>
-        <application name="@organization/footer"></application>
-      </footer>
-    </single-spa-router>
-  </body>
+  <head>
+    <template id="single-spa-layout">
+      <single-spa-router>
+        <nav class="topnav">
+          <application name="@organization/nav"></application>
+        </nav>
+        <div class="main-content">
+          <route path="settings">
+            <application name="@organization/settings"></application>
+          </route>
+          <route path="clients">
+            <application name="@organization/clients"></application>
+          </route>
+        </div>
+        <footer>
+          <application name="@organization/footer"></application>
+        </footer>
+      </single-spa-router>
+    </template>
+  </head>
 </html>
 ```
 
@@ -81,7 +83,7 @@ import {
   constructLayoutEngine,
 } from 'single-spa-layout';
 
-const routes = constructRoutes(document.querySelector('single-spa-router'));
+const routes = constructRoutes(document.querySelector('#single-spa-layout'));
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
