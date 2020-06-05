@@ -1,0 +1,352 @@
+---
+id: layout-definition
+title: Layout Definition
+sidebar_label: Layout Definition
+---
+
+A layout is a combination of HTMLElements, routes, and [single-spa applications](./building-applications). Layout is defined statically in your [root config](./configuration) to handle your top level routes and dom elements. Single-spa-layout should not be used outside of the root config; instead, a UI framework (React, Angular, Vue) should handle layouts within the applications.
+
+You may define layouts as either HTML templates or JSON objects. Defining in JSON is supported for organizations who prefer storing their layout definitions in a database instead of code. Both HTML and JSON layouts have the same feature set. However, storing layouts in code is generally preferred and encouraged by default. If you're just getting started with single-spa-layout, we encourage using an HTML template.
+
+Once you define your layout, you should `constructRoutes`, `constructApplications`, and `constructLayoutEngine`.
+
+## HTML Layouts
+
+You may define HTML layouts either within your root config's index.html file, or within a javascript string that is parsed as HTML. We generally encourage defining the layout within your root config's index.html file.
+
+To define a layout within your index.html file, create a `<template id="single-spa-layout">` element that contains your layout. Within the template, add a `<single-spa-router>` element, along with any routes, applications, and dom elements.
+
+Note that HTMLElements defined in your layout are static - there is no way to forcibly re-render or change them.
+
+```html
+<!-- index.ejs -->
+<html>
+  <head>
+    <template>
+      <single-spa-router>
+        <div class="main-content">
+          <route path="settings">
+            <application name="settings"></application>
+          </route>
+        </div>
+      </single-spa-router>
+    </template>
+  </head>
+</html>
+```
+
+```js
+// Not recommended, but javascript construction of HTMLElements is also possible
+const doc = new DOMParser().parseFromString(`
+<single-spa-router>
+  <div class="main-content">
+    <route path="settings">
+      <application name="settings"></application>
+    </route>
+  </div>
+</single-spa-router>
+`, "text/html").documentElement
+```
+
+## JSON Layouts
+
+You may define your layout as JSON, including routes, applications, and arbitrary dom elements.
+
+```js
+const layout = {
+  "routes": [
+    { "type": "route", "path": "settings", "routes": [
+      { "type": "application", "name": "settings" }
+    ]}
+  ]
+};
+```
+
+## Layout Elements
+
+A layout element is an HTMLElement or JSON object that represents either a dom node, route, or application.
+
+### `<template>`
+
+The [`template` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) is only used when defining the layout as HTML. Its purpose is to prevent its contents from being displayed by the browser, since the layout definition should not be visible to user.
+
+```html
+<template>
+  <!-- Define your layout here -->
+  <single-spa-router></single-spa-router>
+</template>
+```
+
+Note that `<template>` elements are not fully supported in IE11. However, you do not need to polyfill template elements in order to use them in single-spa-layout. Instead, simply add `style="display: none;"` to the template to prevent its contents from being displayed in IE11.
+
+```html
+<template style="display: none;">
+  <!-- Define your layout here -->
+  <single-spa-router></single-spa-router>
+</template>
+```
+
+### `<single-spa-router>`
+
+The `single-spa-router` element is required as the top level container of your layout. All attributes are optional.
+
+```html
+<single-spa-router mode="hash|history" base="/" disableWarnings></single-spa-router>
+```
+
+```json
+{
+  "mode": "hash|history",
+  "base": "/",
+  "disableWarnings": false,
+  "containerEl": "#container",
+  "routes": []
+}
+```
+
+**Attributes**
+
+- `mode` (optional): A string that must be `hash` or `history` that defaults to `history`. This indicates whether the routes should be matched against the Location [pathname](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) or [hash](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash).
+- `base` (optional): A string URL prefix that will be considered when matching route paths.
+- `disableWarnings` (optional): A boolean that turns of single-spa-layout's console warnings when the elements provided are incorrect.
+- `containerEl` (optional): A string [CSS Selector](https://developer.mozilla.org/en-US/docs/Glossary/CSS_Selector) or [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) that is used as the container for all single-spa dom elements. Defaults to `body`.
+
+### `<route>`
+
+The `route` element is used to control which applications and dom elements are shown for a top-level URL route. It may contain HTMLElements, applications, or other routes.
+
+```html
+<route path="clients">
+  <application name="clients"></application>
+</route>
+
+<route default>
+  <application name="clients"></application>
+</route>
+```
+
+```json
+{
+  "type": "route",
+  "path": "clients",
+  "routes": [
+    { "type": "application", "name": "clients" }
+  ],
+  "default": false
+}
+```
+
+**Attributes**
+
+Routes must either have a path or be a default route.
+
+- `routes` (required): An array of children elements that will be displayed when the route is active
+- `path` (optional): A string path that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](./api#pathtoactivewhen) to convert the path string to an [activity function](./configuration#activity-function).
+- `default` (optional): A boolean that determines whether this route will match all remaining URLs that have not been defined by sibling routes. This is useful for 404 Not Found pages. A sibling route is defined as any route with the same nearest-parent-route.
+- `props`: An object of [single-spa custom props](./building-applications#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
+
+### `<application>`
+
+The `application` element is used to render a [single-spa application](./building-applications). Applications may be contained within route elements, or may exist at the top level as applications that will always be rendered. A container HTMLElement will be created by single-spa-layout when the application is rendered. The container HTMLElement is created with an `id` attribute of `single-spa-application:appName` such that your [framework helpers](./ecosystem.md) will automatically use it when [mounting](./building-applications#mount) the application.
+
+The same application may appear multiple times in your layout, under different routes. However, each application can only be defined once per-route.
+
+```html
+<!-- Basic usage -->
+<application name="appName"></application>
+
+<!-- Use a named loader that is defined in javascript -->
+<application name="appName" loader="mainContentLoader"></application>
+
+<!-- Add a single-spa custom prop to the application. The value of the prop is defined in javascript -->
+<application name="appName" myProp></application>
+
+<!-- Add a single-spa custom prop whose javascript definition is named differently than the prop's name -->
+<application name="appName" myOtherProp="myProp"></application>
+```
+
+```js
+// Basic usage
+{
+  "type": "application",
+  "name": "appName"
+}
+
+// Use a single-spa parcel as a loading UI
+// You may also use Angular, Vue, etc.
+const parcelConfig = singleSpaReact({...})
+{
+  "type": "application",
+  "name": "appName",
+  "loader": parcelConfig
+}
+
+// Use an HTML string as a loading UI
+{
+  "type": "application",
+  "name": "appName",
+  "loader": "<img src='loading.gif'>"
+}
+
+// Add single-spa custom props
+{
+  "type": "application",
+  "name": "appName",
+  "props": {
+    "myProp": "some-value"
+  }
+}
+```
+
+**Attributes**
+
+- `name` (required): The string [application name](./api#configuration-object).
+- `loader` (optional): An HTML string or [single-spa parcel config object](./parcels-overview#parcel-configuration). The loader will be mounted to the DOM while waiting for the application's [loading function](./configuration#loading-function-or-application) to resolve. You can read more about defining loaders [in the docs below](#loading-uis)
+- `props`: An object of [single-spa custom props](./building-applications#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
+
+### DOM elements
+
+Arbitrary HTMLElements may be placed anywhere in your layout. To do so in HTML, simply add the HTMLElemet like normal. Defining HTMLElements in JSON is not supported yet, but will be soon [tracking issue](https://github.com/single-spa/single-spa-layout/issues/40).
+
+```html
+<nav class="topnav"></nav>
+<div class="main-content">
+  <button>A button</button>
+</div>
+```
+
+single-spa-layout only supports updating DOM elements during route transitions. Arbitrary re-renders and updates are not supported.
+
+DOM elements defined within a route will be mounted/unmounted as the route becomes active/inactive. If you define the same DOM element twice under different routes, it will be destroyed and recreated when navigating between the routes.
+
+## Props
+
+[Single-spa custom props](./building-applications#lifecycle-props) may be defined on both `route` and `application` elements. Any route props will be merged together with the application props to create the final props that are passed to [the single-spa lifecycle functions](./building-applications#registered-application-lifecycle).
+
+Defining props on JSON objects is straightforward, as they are an object that can contain strings, numbers, booleans, objects, arrays, etc. However, defining complex data types in HTML is not as straightforward, since HTML attributes are always strings. To work around this, single-spa-layout allows you to name your props in the HTML, but define their values in javascript.
+
+```html
+<application name="settings" authToken loggedInUser></application>
+```
+
+```js
+import { constructRoutes } from 'single-spa-layout';
+
+const options = {
+  props: {
+    authToken: "fds789dsfyuiosodusfd",
+    loggedInUser: fetch('/api/logged-in-user').then(r => r.json())
+  }
+}
+
+const routes = constructRoutes(document.querySelector('#single-spa-template'), options)
+```
+
+If you wish to rename a prop from how it is defined in your options object, that is also supported:
+
+```html
+<application name="settings" authToken permissions="adminPermissions"></application>
+```
+
+```js
+import { constructRoutes } from 'single-spa-layout';
+
+const options = {
+  props: {
+    authToken: "fds789dsfyuiosodusfd",
+    adminPermissions: {
+      invoices: false,
+      userManagement: true
+    }
+  }
+}
+
+const routes = constructRoutes(document.querySelector('#single-spa-template'), options)
+```
+
+The full API documentation for the `constructRoutes` API explains the `options` object in detail.
+
+## Loading UIs
+
+It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define per-application loaders that will be mounted to the DOM while the application's [loading function]() is pending. It is possible to share the same loading UI for multiple applications.
+
+A loading UI is defined as either an HTML string or as a [parcel config object](). HTML strings are best for static, non-interactive loaders, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the loader.
+
+Defining loaders via javascript objects is straightforward, as they are an object that can contain strings, numbers, booleans, objects, arrays, etc. However, defining complex data types in HTML is not as straightforward, since HTML attributes are always strings. To work around this, single-spa-layout allows you to name your loaders in the HTML, but define their values in javascript.
+
+```html
+<application name="topnav" loader="topNav"></application>
+<application name="topnav" loader="settings"></application>
+```
+
+```js
+import { constructRoutes } from 'single-spa-layout';
+
+// You may also use Angular, Vue, etc.
+const settingsLoader = singleSpaReact({...})
+
+const options = {
+  loaders: {
+    topNavPlaceholder: `<nav class="placeholder"></nav>`,
+    settings: settingsLoader
+  }
+}
+
+const routes = constructRoutes(document.querySelector('#single-spa-template'), options)
+```
+
+The full API documentation for the `constructRoutes` API explains the `options` object in detail.
+
+## Transitions
+
+Support for route transitions is planned, but not yet implemented. If you have interest in this feature, please provide use cases, upvotes, and feedback in [this tracking issue](https://github.com/single-spa/single-spa-layout/issues/11).
+
+## Default Routes (404 Not Found)
+
+Default routes are routes that activate when no other sibling routes match the current URL. They do not have a URL path and may contain any combination of DOM elements and single-spa applications.
+
+```html
+<single-spa-router>
+  <route path="cart"></route>
+  <route path="product-detail"></route>
+  <route default>
+    <h1>404 Not Found</h1>
+  </route>
+</single-spa-router>
+```
+
+Default routes are matched against their **sibling** routes, which allows for nesting:
+
+```html
+<single-spa-router>
+  <route path="cart"></route>
+  <route path="product-detail/:productId">
+    <route path="reviews"></route>
+    <route path="images"></route>
+    <route default>
+      <h1>Unknown product page</h1>
+    </route>
+  </route>
+  <route default>
+    <h1>404 Not Found</h1>
+  </route>
+</single-spa-router>
+```
+
+Sibling routes are defined as those that share a "nearest parent route." This means that they do not have to be direct siblings in your HTML/JSON, but can be nested within DOM elements:
+
+```html
+<single-spa-router>
+  <route path="product-detail/:productId">
+    <div class="product-content">
+      <route path="reviews"></route>
+      <route path="images"></route>
+    </div>
+    <!-- The reviews and images routes are siblings, since they share a nearest parent route -->
+    <!-- The default route will activate when the URL does not match reviews or images -->
+    <route default>
+      <h1>Unknown product page</h1>
+    </route>
+  </route>
+</single-spa-router>
+```
