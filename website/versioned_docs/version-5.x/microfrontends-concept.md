@@ -10,23 +10,23 @@ Tutorial video: [Youtube](https://www.youtube.com/watch?v=3EUfbnHi6Wg&list=PLLUD
 
 A microfrontend is a microservice that exists within a browser.
 
-Microfrontends are sections of your UI, often consisting of dozens of components, that use frameworks like React, Vue, and Angular to render their components. Each microfrontend can be managed by a different team, and may choose its own framework. It is practical and suggested to use just one framework for all your microfrontends, although you may add additional framework when migrating or when experimenting.
+Microfrontends are sections of your UI, often consisting of dozens of components, that use frameworks like React, Vue, and Angular to render their components. Each microfrontend can be managed by a different team and may be implemented using its own framework. It is practical and suggested to use just one framework for all your microfrontends, although you may add additional frameworks when migrating or when experimenting.
 
-Each microfrontend has its own git repository, its own package.json, and its own build tool configuration. As a result, each microfrontend has **an independent build process** and **an independent deploy / CI**. This generally means that each repo has fast build times.
+Each microfrontend has its own git repository, its own `package.json` file, and its own build tool configuration. As a result, each microfrontend has **an independent build process** and **an independent deploy / CI**. This generally means that each repo has fast build times.
 
-## Comparison to microservices
+## Comparison to Microservices
 
 Microservices are backend services that run in their own operating system process, control their own databases, and communicate with each other over the network.
 
-Compare that to microfrontends that all exist within a single browser tab: all browser javascript within a tab exists in a single operating system process (and even thread!). Browser javascript generally does not directly access databases, and communication within a browser tab happens in-memory instead of over the network.
+Compare that to microfrontends that all exist within a single browser tab: all browser JavaScript within a tab exists in a single operating system process (and even thread!). Browser JavaScript generally does not directly access databases, and communication within a browser tab happens in-memory instead of over the network.
 
 So what do they have in common???
 
 Independent builds and deployments. Think of the DOM as the shared resource that your microfrontends are owning. One microfrontend's DOM should not be touched by another microfrontend, similar to how one backend microservice's database should not be touched by any microservice except the one that owns/controls it.
 
-## Concrete technical definition
+## Concrete Technical Definition
 
-In the context of single-spa, a microfrontend is often an in-browser javascript module. You can read more about this [in the recommended setup](/docs/recommended-setup#in-browser-versus-build-time-modules).
+In the context of single-spa, a microfrontend is often an in-browser JavaScript module. You can read more about this [in the recommended setup](/docs/recommended-setup#in-browser-versus-build-time-modules).
 
 ## Types of Microfrontends
 
@@ -34,7 +34,7 @@ In the context of single-spa, there are three kinds of microfrontends:
 
 1. [single-spa applications](/docs/building-applications): Microfrontends that render components for a set of specific routes.
 2. [single-spa parcels](/docs/parcels-overview): Microfrontends that render components without controlling routes.
-3. [utility modules](/docs/recommended-setup#utility-modules-styleguide-api-etc): Microfrontends that export shared javascript logic, without rendering components.
+3. [utility modules](/docs/recommended-setup#utility-modules-styleguide-api-etc): Microfrontends that export shared JavaScript logic, without rendering components.
 
 A web app may include one or more types of microfrontends. See [an in-depth comparison](/docs/module-types), and our recommendations for [choosing between microfrontend types](/docs/recommended-setup#applications-versus-parcels-versus-utility-modules).
 

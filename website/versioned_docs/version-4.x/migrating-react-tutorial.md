@@ -21,7 +21,7 @@ Run `yarn start` from the root directory to fire up the server at [http://localh
 
 ## Step One: Set up the single-spa config
 
-The __single-spa config__ consists of all code that is not part of a [registered application](configuration#registeringapplications). Ideally, this only includes an html file and a javascript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications.
+The __single-spa config__ consists of all code that is not part of a [registered application](configuration#registeringapplications). Ideally, this only includes an HTML file and a JavaScript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications.
 
 Usually, when using [webpack](https://webpack.js.org/) with React, we recommend setting your __single-spa config__ as the entry point in your *webpack.config.js* ([see also the "Setup Webpack" example](starting-from-scratch.md#1b-setup-webpack)). However, this application was built using [create-react-app](https://github.com/facebook/create-react-app), so we don't have access to the *webpack.config.js* without [ejecting](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject).
 
@@ -91,7 +91,7 @@ touch src/root.app.js
 
 During this process, we need to establish a `rootComponent`, which is the top level React component to be rendered. In this case *src/containers/App.js* has already been designated as the top level component. If you recall, we removed this from the *index.js* file so we could set up our __single-spa config__.
 
-Finally, we will use the `domElementGetter()` function to return a DOMElement where the application will be bootstrapped, mounted, and unmounted. Notice that our SPA already has an html file in the *public/* folder containing a `<div />` with and id of `root`.
+Finally, we will use the `domElementGetter()` function to return a DOMElement where the application will be bootstrapped, mounted, and unmounted. Notice that our SPA already has an HTML file in the *public/* folder containing a `<div />` with and id of `root`.
 
 Set up the registered application lifecycle functions by adding the following to *src/root.app.js*:
 

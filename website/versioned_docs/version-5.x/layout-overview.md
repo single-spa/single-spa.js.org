@@ -47,7 +47,7 @@ You must use single-spa@>=5.4.0 in order for the layout engine to work. Addition
 
 ## Basic usage
 
-In your root html file, add a `<single-spa-router>` element to the body. It should contain `<route>` elements, `<application>` elements, and any other dom elements:
+In your root HTML file, add a `<single-spa-router>` element to the body. It should contain `<route>` elements, `<application>` elements, and any other dom elements:
 
 ```html
 <html>
@@ -72,7 +72,7 @@ In your root html file, add a `<single-spa-router>` element to the body. It shou
 </html>
 ```
 
-Then inside of your root-config's javascript code, add the following:
+Then inside of your root-config's JavaScript code, add the following:
 
 ```js
 import { registerApplication, start } from 'single-spa';

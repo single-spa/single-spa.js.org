@@ -243,8 +243,8 @@ Run the following:
 npm run serve:single-spa
 ```
 
-This **will not** open up an html file, since single-spa applications all [share one html file](/docs/configuration.html). Instead, go to
-http://single-spa-playground.org and follow the instructions there to verify everything is working and for instructions on creating the shared html file.
+This **will not** open up an HTML file, since single-spa applications all [share one html file](/docs/configuration.html). Instead, go to
+http://single-spa-playground.org and follow the instructions there to verify everything is working and for instructions on creating the shared HTML file.
 
 ## Building
 Run `npm run build:single-spa`, which will create a `dist` directory with your compiled code.
@@ -353,7 +353,7 @@ The following options are available:
 
 - `bootstrapFunction`: (required) A function that is given custom props as an argument and returns a promise that resolves with a resolved Angular module that is bootstrapped. Usually, your implementation will look like this: `bootstrapFunction: (customProps) => platformBrowserDynamic().bootstrapModule()`.
   See [custom props documentation](https://single-spa.js.org/docs/building-applications.html#custom-props) for more info on the argument passed to the function.
-- `template`: (required) An html string that will be put into the DOM Element returned by `domElementGetter`. This template can be anything,
+- `template`: (required) An HTML string that will be put into the DOM Element returned by `domElementGetter`. This template can be anything,
   but it is recommended that you keeping it simple by making it only one Angular component. For example, `<app-root />` is recommended,
   but `<div><app-root /><span>Hello</span><another-component /></div>` is allowed. Note that `innerHTML` is used to put the template
   onto the DOM. Also note that when using multiple angular applications simultaneously, you will want to make sure that the component
@@ -471,7 +471,7 @@ import { assetUrl } from 'src/single-spa/asset-url';
 const imageUrl = assetUrl('yoshi.png')
 ```
 
-#### Within html templates
+#### Within HTML templates
 
 ##### Option 1
 
@@ -507,7 +507,7 @@ This is because single-spa applications have to all share an HTML file.
 have no impact on your single-spa build.
 
 #### Option 1
-Add the script tags directly into your [root html file](http://single-spa-playground.org/playground/html-file). This way is easiest.
+Add the script tags directly into your [root HTML file](http://single-spa-playground.org/playground/html-file). This way is easiest.
 The downside is that all of the scripts get loaded even for routes that don't need them. However, that is generally okay and this
 is the preferred way to do it.
 
@@ -516,7 +516,7 @@ If you want the scripts to only be loaded when needed, you can add a custom
 [bootstrap lifecycle](http://localhost:3000/docs/building-applications.html#bootstrap) to your code.
 
 Note that lazy loading these scripts can actually be worse for performance *if you always need them*, since
-they will start downloading later than if you put them right into the root html file.
+they will start downloading later than if you put them right into the root HTML file.
 
 ```ts
 // main.single-spa.ts
@@ -564,14 +564,14 @@ be loaded by single-spa-angular's webpack config, without you having to configur
 Your component styles will also be loaded like normal without you having to configure anything.
 
 ### Polyfills
-[Polyfills in your angular.json](https://angular.io/guide/browser-support) are javascript code that make your project work in older browsers,
+[Polyfills in your angular.json](https://angular.io/guide/browser-support) are JavaScript code that make your project work in older browsers,
 such as IE11.
 
 **The polyfills that you specify in your angular.json file will not be loaded automatically**. This is because we should only load
-polyfills once in the root html file, instead of once per application.
+polyfills once in the root HTML file, instead of once per application.
 
 To load polyfills, you'll need to follow the instructions in the [Angular documentation for non-CLI users](https://angular.io/guide/browser-support#polyfills-for-non-cli-users).
-Even if you are using Angular CLI, you will need to follow those instructions, since your [single-spa root html file](https://single-spa-playground.org/playground/html-file)
+Even if you are using Angular CLI, you will need to follow those instructions, since your [single-spa root HTML file](https://single-spa-playground.org/playground/html-file)
 is not using Angular CLI and that's where the polyfills need to go.
 
 If you're looking for a quick one-liner, try adding this line near the top of your index.html.
@@ -596,7 +596,7 @@ If you need to support IE11 or older, do the following:
 
 It's possible to develop Angular applications that don't rely on `zone.js` library, these applications are called _zone-less_. You have to run change detection manually in _zone-less_ applications through `ApplicationRef.tick()` or `ChangeDetectorRef.detectChanges()`. You can find more info in [Angular NoopZone docs](https://angular.io/guide/zone#noopzone).
 
-The point is that you do not need to load `zone.js` library in your root html file. As Angular docs mention that you should have a comprehensive knowledge of change detection to develop such applications. Let's start by _nooping_ zone when bootstrapping module:
+The point is that you do not need to load `zone.js` library in your root HTML file. As Angular docs mention that you should have a comprehensive knowledge of change detection to develop such applications. Let's start by _nooping_ zone when bootstrapping module:
 
 ```ts
 import { singleSpaAngular } from 'single-spa-angular';

@@ -23,15 +23,15 @@ JSPM/SystemJS has worse documentation than Webpack, but is a great solution for 
 
 If you’re struggling to decide between the two, then ask yourself the following: Do I want multiple completely separate bundles? If you don’t, I recommend Webpack because it has better docs, a larger community, and fewer gotchas. Otherwise, I’d go with JSPM, since Webpack has no plans to support dynamic runtime loading [(See tweet below from Mr. Larkin, himself)](https://twitter.com/TheLarkInn/status/789968589419745280).
 
-## Step Two: create a brand new html file
+## Step Two: create a brand new HTML file
 
-The next step is to create what single-spa calls your [“root application.”](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md) Really your root application is just the stuff that initializes single-spa, and it starts with an html file.
+The next step is to create what single-spa calls your [“root application.”](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md) Really your root application is just the stuff that initializes single-spa, and it starts with an HTML file.
 
-Even if you’ve got an existing project that already has it’s own html file, I recommend starting fresh with a new html file. That way, there is a clear distinction between what is in your root application (shared between all apps) and what is in a child application (not shared with everything).
+Even if you’ve got an existing project that already has it’s own HTML file, I recommend starting fresh with a new HTML file. That way, there is a clear distinction between what is in your root application (shared between all apps) and what is in a child application (not shared with everything).
 
 You’ll want to keep your root application as small as possible, since it’s sort of the master controller of everything and could become a bottleneck. You don’t want to be constantly changing both the root application and the child applications.
 
-So for now, just have a `<script>` to a single javascript file (root-application.js), which will be explained in Step Three.
+So for now, just have a `<script>` to a single JavaScript file (root-application.js), which will be explained in Step Three.
 
 Since Webpack is probably the more common use case, my code examples from here on will assume that you’re using Webpack 2. The equivalent Webpack 1 or JSPM code has all the same concepts and only some minor code differences.
 

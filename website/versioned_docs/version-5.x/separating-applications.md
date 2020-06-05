@@ -4,7 +4,7 @@ title: Splitting up applications
 sidebar_label: Splitting applications
 ---
 
-In a large, microserviced system, your root single-spa configuration and each of the applications should probably have its own git repository. How to do that in a javascript project isn't necessarily clear, so some options are listed below.
+In a large, microserviced system, your root single-spa configuration and each of the applications should probably have its own git repository. How to do that in a JavaScript project isn't necessarily clear, so some options are listed below.
 
 Since single-spa is a framework that helps with organizational scaling, it is important to figure out how to split out and separate applications from each other so that developers and teams can work on the applications without interfering one another.
 
@@ -12,7 +12,7 @@ Most interpretations of microservice architecture encourage separate code reposi
 
 #### Option 1: One code repo, one build
 
-The simplest approach for using single-spa is to have one code repository with everything in it. Typically, you would have a single package.json with a single webpack config that produces a bundle that can be included in an html file with a `<script>` tag.
+The simplest approach for using single-spa is to have one code repository with everything in it. Typically, you would have a single package.json with a single webpack config that produces a bundle that can be included in an HTML file with a `<script>` tag.
 
 Advantages:
 
@@ -46,12 +46,12 @@ Disadvantages:
 
 Create a root application which can allow single-spa applications to deploy themselves separately. To do so,
 create a manifest file that the single-spa applications update during their deployment process, which controls
-which versions of the single-spa applications are "live". Then change which javascript file is loaded based on the manifest.
+which versions of the single-spa applications are "live". Then change which JavaScript file is loaded based on the manifest.
 
-Changing which javascript file is loaded for each child application can be done in many ways.
+Changing which JavaScript file is loaded for each child application can be done in many ways.
 
 1. Web server: have your webserver create a dynamic script tag for the "live" version of each single-spa application.
-2. Use a [module loader](https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/) such as [SystemJS](https://github.com/systemjs/systemjs) that can download and execute javascript code in the browser from dynamic urls.
+2. Use a [module loader](https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/) such as [SystemJS](https://github.com/systemjs/systemjs) that can download and execute JavaScript code in the browser from dynamic urls.
 
 #### Comparison
 

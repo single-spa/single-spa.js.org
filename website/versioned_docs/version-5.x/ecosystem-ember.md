@@ -63,7 +63,7 @@ export const unmount = emberLifecycles.unmount;
 ```
 
 ## Usage with ember cli
-For the most part, you can get applications that use [ember cli](https://ember-cli.com/) to work pretty seamlessly with single-spa. Maybe the biggest thing you'll have to worry about is that ember-cli assumes that it controls the entire html page, whereas a single-spa application does not. However, usually we can achieve equivalent behavior by just loading the vendor and app bundles into the html page dynamically, instead of baking them right into the html page. Below is a description of the known things you should do when setting up an ember-cli application with single-spa:
+For the most part, you can get applications that use [ember cli](https://ember-cli.com/) to work pretty seamlessly with single-spa. Maybe the biggest thing you'll have to worry about is that ember-cli assumes that it controls the entire HTML page, whereas a single-spa application does not. However, usually we can achieve equivalent behavior by just loading the vendor and app bundles into the HTML page dynamically, instead of baking them right into the HTML page. Below is a description of the known things you should do when setting up an ember-cli application with single-spa:
 
 First, since the ember cli only supports dependencies from bower, you'll need to do:
 
@@ -80,7 +80,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     autoRun: false, // Set autoRun to false, because we only want the ember app to render to the DOM when single-spa tells it to.
-    storeConfigInMeta: false, // We're making a single-spa application, which doesn't exclusively own the html file. So we don't want to have to have a `<meta>` tag for the ember environment to be initialized.
+    storeConfigInMeta: false, // We're making a single-spa application, which doesn't exclusively own the HTML file. So we don't want to have to have a `<meta>` tag for the ember environment to be initialized.
 		fingerprint: {
 			customHash: null, // This is optional, just will make it easier for you to have the same url every time you do an ember build.
 		},

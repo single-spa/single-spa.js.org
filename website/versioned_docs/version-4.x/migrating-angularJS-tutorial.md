@@ -30,7 +30,7 @@ Run `grunt` in the root directory to fire up a server at `http://localhost:8080`
 
 ## Step One: Create a single-spa config
 
-The single spa config consists of all code that is not part of a [registered application](https://single-spa.js.org/docs/configuration.html#registeringapplications). Ideally, this only includes an html file and a javascript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications. The single spa config should not be doing client-side html rendering nor should it be responding to routing events such as `hashchange` or `popstate`. Instead, all of that functionality should be taken care of either by single-spa itself or by a single-spa application.
+The single spa config consists of all code that is not part of a [registered application](https://single-spa.js.org/docs/configuration.html#registeringapplications). Ideally, this only includes an HTML file and a JavaScript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications. The single spa config should not be doing client-side HTML rendering nor should it be responding to routing events such as `hashchange` or `popstate`. Instead, all of that functionality should be taken care of either by single-spa itself or by a single-spa application.
 
 It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application. We will be creating a `single-spa.config.js` file to house all of our single-spa logic.
 
@@ -42,7 +42,7 @@ touch public/single-spa.config.js
 
 ### a) importing without using import
 
-Since we are using an older version of Angular, and we do not have access to babel, we cannot use `import` or even `require()` to obtain access to the single-spa library. One way around this is to include a `<script>` tag in the project's html file which will provide us access to the library. Single-spa is hosted on [https://unpkg.com/](https://unpkg.com/) and when called, creates a global variable.
+Since we are using an older version of Angular, and we do not have access to babel, we cannot use `import` or even `require()` to obtain access to the single-spa library. One way around this is to include a `<script>` tag in the project's HTML file which will provide us access to the library. Single-spa is hosted on [https://unpkg.com/](https://unpkg.com/) and when called, creates a global variable.
 
 In `public/index.html`, add the following script tag at the bottom of the `<head>`
 
@@ -55,7 +55,7 @@ In `public/index.html`, add the following script tag at the bottom of the `<head
 
 ### b) Connect the config file
 
-To get single-spa connected, we will need to include a script tag connecting the html file to single-spa.config.js (we will be building the single-spa.config.js file in the next step).
+To get single-spa connected, we will need to include a script tag connecting the HTML file to single-spa.config.js (we will be building the single-spa.config.js file in the next step).
 
 Add the following `<script>` at the bottom of `index.html`
 
@@ -99,7 +99,7 @@ The third argument, `activityFunction`, must be a pure function. The function is
 
 Since we have registered our application, single-spa will be listening for the application to `bootstrap` and `mount`. We can use the [single-spa-angularjs](ecosystem-angularjs.md) helper library which will handle generic lifecycle hooks (bootstrap, mount and unmount) for registered angularjs applications.
 
-To gain access to the `single-spa-angularjs` library, we will need to include another `<script>` tag in our html file.
+To gain access to the `single-spa-angularjs` library, we will need to include another `<script>` tag in our HTML file.
 
 Add the following in `public/index.html` at the very bottom of the `<head>`.
 
@@ -150,7 +150,7 @@ window.singleSpa.registerApplication(
 window.singleSpa.start();
 ```
 
-## Step Four: Adjust your html file
+## Step Four: Adjust your HTML file
 
 Since most existing SPAs are used to having control of an *index.html* file for their css, fonts, third party script-tags, etc., it's likely that you'll have to do some work to make sure all of those keep on working when your SPA becomes an html-less application.
 
@@ -158,7 +158,7 @@ In this case, we are going to have to make a few adjustments to the current *ind
 
 ### a) Prevent auto bootstrapping
 
-Currently, our *index.html* contains two hurdles we will need to overcome to allow single-spa to control the DOM. The first is the auto-bootstrap directive [`ng-app`](https://docs.angularjs.org/api/ng/directive/ngApp) at the top of the html file. If left in the html file, `ng-app` will force the entire application to automatically bootstrap and render, overriding the single-spa lifecycle functions. To fix this, we simply need to remove `ng-app` from the html file and then allow `single-spa-angularjs` to call the `bootstrap` function instead (recall that we set this up in [Step Three](migrating-angularJS-tutorial.md#step-three-setup-lifecycle-functions)).
+Currently, our *index.html* contains two hurdles we will need to overcome to allow single-spa to control the DOM. The first is the auto-bootstrap directive [`ng-app`](https://docs.angularjs.org/api/ng/directive/ngApp) at the top of the HTML file. If left in the HTML file, `ng-app` will force the entire application to automatically bootstrap and render, overriding the single-spa lifecycle functions. To fix this, we simply need to remove `ng-app` from the HTML file and then allow `single-spa-angularjs` to call the `bootstrap` function instead (recall that we set this up in [Step Three](migrating-angularJS-tutorial.md#step-three-setup-lifecycle-functions)).
 
 In *index.html* remove `ng-app="AngularDrumMachine`.
 
@@ -172,7 +172,7 @@ In *index.html* remove `ng-app="AngularDrumMachine`.
 
 ### b) Create a Template
 
-The second challenge is that the *index.html* currently holds the entire application template. Since html will automatically render anything in the file, we will need to pull all of the SPAs logic out of the html file and replace it with a new `<div />` containing the `id` single-spa will use to mount the application. To do this, we will create a new template that we can then provide to the `single-spa-angularjs` lifecycle function.
+The second challenge is that the *index.html* currently holds the entire application template. Since HTML will automatically render anything in the file, we will need to pull all of the SPAs logic out of the HTML file and replace it with a new `<div />` containing the `id` single-spa will use to mount the application. To do this, we will create a new template that we can then provide to the `single-spa-angularjs` lifecycle function.
 
 Create a new directory inside of *public/assets* called *templates/*. Then create a new template called *display-machine.template.html*.
 
@@ -266,7 +266,7 @@ The new template *display-machine.template.html* should look like this:
 
 ### c) Create a Directive
 
-Per the [AngularJS conventions](https://docs.angularjs.org/guide/directive), we will need to create a directive in order to "compile" our new html template. Let's start by creating a new *directives/* folder inside *public/app* to house a new *display-machine.directive.js*
+Per the [AngularJS conventions](https://docs.angularjs.org/guide/directive), we will need to create a directive in order to "compile" our new HTML template. Let's start by creating a new *directives/* folder inside *public/app* to house a new *display-machine.directive.js*
 
 ```bash
 mkdir public/app/directives
