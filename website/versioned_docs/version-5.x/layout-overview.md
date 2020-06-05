@@ -29,6 +29,7 @@ You only need to install the layout engine into your [root config](./configurati
 ```sh
 npm install --save single-spa-layout@beta
 
+# or
 yarn add single-spa-layout@beta
 ```
 
