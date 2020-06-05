@@ -109,7 +109,7 @@ A [Yeoman generator](https://yeoman.io/) that prompts the user and then creates 
 
 [Github project](https://github.com/single-spa/create-single-spa/tree/master/packages/webpack-config-single-spa)
 
-A shareable, customizable webpack config that is used for utility modules and React single-spa applications.
+A shareable, customizable webpack config that is used for utility modules and single-spa applications.
 
 ### Installation
 
