@@ -55,7 +55,7 @@ Here are the available CLI options:
 
 ### --dir
 
-You may specify which directory create-single-spa runs in the following ways:
+You may specify which directory create-single-spa runs in through either of the following ways:
 
 ```sh
 # Two ways of doing the same thing
@@ -116,6 +116,7 @@ A shareable, customizable webpack config that is used for utility modules and Re
 ```sh
 npm install --save-dev webpack-config-single-spa webpack-merge
 
+# or
 yarn add --dev webpack-config-single-spa webpack-merge
 ```
 
@@ -152,6 +153,7 @@ A shareable, customizable webpack config that adds react-specific configuration 
 ```sh
 npm install --save-dev webpack-config-single-spa-react webpack-merge
 
+# or
 yarn add --dev webpack-config-single-spa-react webpack-merge
 ```
 
@@ -188,6 +190,7 @@ A shareable, customizable webpack config that adds typescript-specific configura
 ```sh
 npm install --save-dev webpack-config-single-spa-ts webpack-merge
 
+# or
 yarn add --dev webpack-config-single-spa-ts webpack-merge
 ```
 
@@ -232,6 +235,7 @@ A shareable, customizable webpack config that creates a webpack config that work
 ```sh
 npm install --save-dev webpack-config-single-spa-react-ts webpack-merge
 
+# or
 yarn add --dev webpack-config-single-spa-react-ts webpack-merge
 ```
 

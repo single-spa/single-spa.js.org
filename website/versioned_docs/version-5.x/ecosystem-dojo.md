@@ -12,7 +12,7 @@ single-spa-dojo is a helper library that helps implement [single-spa registered 
 ```sh
 npm install --save single-spa-dojo
 
-# Or
+# or
 yarn add single-spa-dojo
 ```
 

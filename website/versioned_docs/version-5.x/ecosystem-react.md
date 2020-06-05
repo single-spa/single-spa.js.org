@@ -12,7 +12,7 @@ single-spa-react is a helper library that helps implement [single-spa registered
 ```sh
 npm install --save single-spa-react
 
-# Or
+# or
 yarn add single-spa-react
 ```
 
