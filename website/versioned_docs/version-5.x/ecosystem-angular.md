@@ -373,12 +373,11 @@ The following options are available:
 [ZoneJS](https://github.com/angular/zone.js/) is the library that Angular uses for change detection. You absolutely must have exactly
 one instance of the ZoneJS library on the page. ZoneJS will throw errors if you have more than one instance of ZoneJS on the page.
 
-The preferred way to do ensure only one instance of ZoneJS is with an
-[import map](http://single-spa-playground.org/playground/html-file) and [webpack externals](https://webpack.js.org/configuration/externals/#root).
-Use the latest version of ZoneJS, even if your Angular applications use an older version. The latest version is backwards compatible all the
-way back to Angular 4 and will let you write new Angular applications with newer versions of Angular.
+The preferred way to ensure only one instance of ZoneJS is loaded on your page is with a script tag in your root-config's HTML file. You should load ZoneJS upfront a single time, before loading SystemJS or any of your microfrontends.
 
-If you have followed the installation instructions correctly, your code is already set up to do all of this.
+```html
+<script src="https://cdn.jsdelivr.net/npm/zone.js@0.10.3/dist/zone.min.js"></script>
+```
 
 Note that having only one instance of ZoneJS is different than having only one zone within that instance. single-spa-angular
 automatically will ensure that each of your Angular applications has its own isolated, separate zone.
