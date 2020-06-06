@@ -24,7 +24,7 @@ We recommend a setup that uses in-browser ES modules + import maps (or SystemJS 
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=Jxqiu6pdMSU&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=2) / [Bilibili](https://www.bilibili.com/video/av83498486/)
 
-An in-browser javascript module is when imports and exports are not compiled away by your build tool, but instead are
+An in-browser JavaScript module is when imports and exports are not compiled away by your build tool, but instead are
 resolved within the browser. This is different from build-time modules, which are supplied by your node_modules and
 compiled away before they touch the browser.
 
@@ -74,7 +74,7 @@ The single-spa core team recommends choosing either import maps or module federa
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=AmdKF2UhFzw&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=7) / [Bilibili](https://www.bilibili.com/video/av83620028/)
 
-SystemJS provides polyfill-like behavior for import maps and in-browser modules. It is not a true polyfill of import maps, due to limitations of the javascript language in polyfilling the resolution of bare import specifiers to URLs.
+SystemJS provides polyfill-like behavior for import maps and in-browser modules. It is not a true polyfill of import maps, due to limitations of the JavaScript language in polyfilling the resolution of bare import specifiers to URLs.
 
 Since SystemJS is only polyfill-like, you'll need to compile your applications into [System.register format](https://github.com/systemjs/systemjs/blob/master/docs/system-register.md) instead of to ESM format. This allows for in-browser modules to be fully emulated in environments that don't support modules or import maps.
 
@@ -88,7 +88,7 @@ An alternative to SystemJS that provides polyfill behavior for import maps is [e
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=-LkvBMpCK-A&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=8) / [Bilibili](https://www.bilibili.com/video/av83620658/)
 
-Lazy loading is when you only download javascript code that the user needs for the current page, instead of all javascript upfront. It is a technique for improving the performance of your application by decreasing the time-to-meaningful-render when you initially load the page. If you use [single-spa loading functions](/docs/configuration#loading-function-or-application), you already have built-in lazy loading for your applications and parcels. Since an application is an "in-browser module," this means that you are only downloading the in-browser modules in your import map when you need them.
+Lazy loading is when you only download JavaScript code that the user needs for the current page, instead of all JavaScript up front. It is a technique for improving the performance of your application by decreasing the time-to-meaningful-render when you initially load the page. If you use [single-spa loading functions](/docs/configuration#loading-function-or-application), you already have built-in lazy loading for your applications and parcels. Since an application is an "in-browser module," this means that you are only downloading the in-browser modules in your import map when you need them.
 
 Often, the route-based lazy loading provided by single-spa loading functions is all that you need to ensure great performance. However, it is also possible to do lazy loading via "code splits" with your bundler (webpack or rollup). For documentation on webpack code splits, see [these docs](https://webpack.js.org/guides/code-splitting/#dynamic-imports). It is recommended to use dynamic import (`import()`) instead of multiple entry points for code splits in a single-spa application. For code splits to work properly, you'll need to [dynamically set your public path](https://webpack.js.org/guides/public-path/#on-the-fly). A tool exists to help you set your public path correctly for use with systemjs - https://github.com/joeldenning/systemjs-webpack-interop.
 
@@ -118,13 +118,13 @@ Additionally, you have the choice of running your single-spa root config locally
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=I6COIg-2lyM&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=9) / [Bilibili](https://www.bilibili.com/video/av84104639/)
 
-It is highly encouraged to use a bundler such as webpack, rollup, parceljs, pikapack, etc. Webpack is an industry-standard for compiling many javascript source files into one or more production javascript bundles.
+It is highly encouraged to use a bundler such as webpack, rollup, parceljs, pikapack, etc. Webpack is an industry-standard for compiling many JavaScript source files into one or more production JavaScript bundles.
 
 Below are some tips for configuring your bundler to be consumable by SystemJS and single-spa. Note that if you're using [create-single-spa](/docs/create-single-spa) that these are all set up for you. We leave these instructions here not to overwhelm you with webpack configuration hell, but rather to help you if you choose not to use create-single-spa.
 
 1. Set the output target to `system`. In webpack, this is done via [`output.libraryTarget`](https://webpack.js.org/configuration/output/#outputlibrarytarget)
 2. Use a single [entry point](https://webpack.js.org/concepts/entry-points/#root), with [dynamic imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports) for any code splitting that you'd like to accomplish. This best matches the "one bundled project = one in-browser module" paradigm encouraged by the single-spa core team.
-3. Do not use webpack's [`optimization`](https://webpack.js.org/configuration/optimization/#root) configuration options, as they make it harder to load the outputted javascript files as a single in-browser javascript module. Doing so does not make your bundle less optimized - dynamic imports are a viable strategy for accomplishing optimized bundles.
+3. Do not use webpack's [`optimization`](https://webpack.js.org/configuration/optimization/#root) configuration options, as they make it harder to load the outputted JavaScript files as a single in-browser JavaScript module. Doing so does not make your bundle less optimized - dynamic imports are a viable strategy for accomplishing optimized bundles.
 4. Follow [the systemjs docs for webpack](https://github.com/systemjs/systemjs#compatibility-with-webpack).
 5. Consider using [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop) to create or verify your webpack config.
 6. Use [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop) to [set your webpack public path "on the fly"](https://webpack.js.org/guides/public-path/#on-the-fly).
@@ -141,7 +141,7 @@ For a bit more information specific to webpack code splits, see [the code splits
 
 ## Utility modules (styleguide, API, etc)
 
-A "utility module" is an in-browser javascript module that is not a single-spa application or parcel. In other words, it's only purpose is to export functionality for other microfrontends to import.
+A "utility module" is an in-browser JavaScript module that is not a single-spa application or parcel. In other words, it's only purpose is to export functionality for other microfrontends to import.
 
 Common examples of utility modules include styleguides, authentication helpers, and API helpers. These modules do not need to be registered with single-spa, but are important for maintaining consistency between several single-spa applications and parcels.
 
@@ -186,7 +186,7 @@ To make utility modules work, you must ensure that your webpack externals and im
 
 ## Shared dependencies
 
-For performance, it is crucial that your web app loads large javascript libraries only once. Your framework of choice (React, Vue, Angular, etc) should only be loaded on the page a single time.
+For performance, it is crucial that your web app loads large JavaScript libraries only once. Your framework of choice (React, Vue, Angular, etc) should only be loaded on the page a single time.
 
 It is not advisable to make everything a shared dependency, because shared dependencies must be upgraded at once for every microfrontend that uses them. For small libraries, it is likely acceptable to duplicate them in each microfrontend that uses them. For example, react-router is likely small enough to duplicate, which is nice when you want to upgrade your routing one microfrontend at a time. However, for large libraries like react, momentjs, rxjs, etc, you may consider making them shared dependencies.
 
@@ -230,7 +230,7 @@ Microfrontends are built and deployed completely independently. This means that 
 
 There are two steps to deploying a microfrontend.
 
-1. Uploading production javascript bundles to a web server / CDN. It is encouraged to use a CDN such as AWS S3 + Cloudfront, Google Cloud Storage, Microsoft Azure Storage, Digital Ocean Spaces, etc because of their superior availability, caching, and performance due to edge locations. The javascript files that you upload are completely static. It is encouraged to always write new files to the CDN instead of overwriting files.
+1. Uploading production JavaScript bundles to a web server / CDN. It is encouraged to use a CDN such as AWS S3 + Cloudfront, Google Cloud Storage, Microsoft Azure Storage, Digital Ocean Spaces, etc because of their superior availability, caching, and performance due to edge locations. The JavaScript files that you upload are completely static. It is encouraged to always write new files to the CDN instead of overwriting files.
 2. Updating your import map to point to the newly deployed file.
 
 The implementation of Step 1 is dependent on the infrastructure you're using for your CDN. The AWS CLI ([`aws s3 sync`](https://docs.aws.amazon.com/cli/latest/reference/s3/)), Google gsutil ([`gsutil cp`](https://github.com/single-spa/import-map-deployer/blob/master/examples/ci-for-javascript-repo/gitlab-gcp-storage/.gitlab-ci.yml)), etc are easy ways of accomplishing this.
@@ -269,7 +269,7 @@ There are three things that microfrontends might need to share / communicate:
 
 Example - [exporting a shared component](https://github.com/vue-microfrontends/styleguide/blob/af3eaa70bec7daa74635eb3ec76140fb647b0b14/src/vue-mf-styleguide.js#L5) and [importing a shared component](https://github.com/vue-microfrontends/rate-dogs/blob/fe3196234b9cbd6d627199b03a96e7b5f0285c4b/src/components/rate-dogs.vue#L25).
 
-You can import and export functions, components, logic, and environment variables between your microfrontends that are in different git repos and javascript bundles:
+You can import and export functions, components, logic, and environment variables between your microfrontends that are in different git repos and JavaScript bundles:
 
 ```js
 // Inside of a utility module called @org-name/auth
@@ -289,7 +289,7 @@ const showLinkToInvoiceFeature = userHasAccess('invoicing');
 
 Example - [exporting a `fetchWithCache` function](https://github.com/react-microfrontends/api/blob/c3c336129e920bbc6137f04cce24b718105efed1/src/react-mf-api.js#L3) and [importing the function](https://github.com/react-microfrontends/people/blob/ad18de9b96b52e6975244e6662becfe13e41a2db/src/utils/api.js#L1).
 
-API data often does not need to be shared between microfrontends, since each single-spa application controls different routes and different routes often have different data. However, occasionally you do need to share API data between microfrontends. An in-memory javascript cache of API objects is a solution used by several companies to solve this. For React users, this is similar to Data Fetching with Suspense, where the fetching logic for routes is split out from the component code that uses the data.
+API data often does not need to be shared between microfrontends, since each single-spa application controls different routes and different routes often have different data. However, occasionally you do need to share API data between microfrontends. An in-memory JavaScript cache of API objects is a solution used by several companies to solve this. For React users, this is similar to Data Fetching with Suspense, where the fetching logic for routes is split out from the component code that uses the data.
 
 ```js
 // Inside of your api utility module, you can lazily fetch data either when another microfrontend calls your exported

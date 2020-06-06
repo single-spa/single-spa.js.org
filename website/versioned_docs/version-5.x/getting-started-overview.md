@@ -8,7 +8,7 @@ sidebar_label: Overview of single-spa
 
 [Join the chat on Slack](https://join.slack.com/t/single-spa/shared_invite/enQtODAwNTIyMzc4OTE1LWUxMTUwY2M1MTY0ZGMzOTUzMGNkMzI1NzRiYzYwOWM1MTEzZDM1NDAyNWM3ZmViOTAzZThkMDcwMWZmNTFmMWQ)
 
-single-spa is a framework for bringing together multiple javascript microfrontends in a frontend application. Architecting your frontend using single-spa enables many benefits, such as:
+single-spa is a framework for bringing together multiple JavaScript microfrontends in a frontend application. Architecting your frontend using single-spa enables many benefits, such as:
 
 - [Use multiple frameworks](ecosystem.md#help-for-frameworks) on the same page [without page refreshing](building-applications.md)
   ([React](ecosystem-react.md), [AngularJS](ecosystem-angularjs.md), [Angular](ecosystem-angular.md), [Ember](ecosystem-ember.md), or whatever you're using)
@@ -27,10 +27,10 @@ It was born out of Canopy's desire to use React + react-router instead of being 
 
 single-spa apps consist of the following:
 
-1. [Applications](building-applications.md), each of which is an entire SPA itself (sort of). Each application can respond to url routing events and must know how to bootstrap, mount, and unmount itself from the DOM. The main difference between a traditional SPA and single-spa applications is that they must be able to coexist with other applications, and they do not each have their own html page.
+1. [Applications](building-applications.md), each of which is an entire SPA itself (sort of). Each application can respond to url routing events and must know how to bootstrap, mount, and unmount itself from the DOM. The main difference between a traditional SPA and single-spa applications is that they must be able to coexist with other applications, and they do not each have their own HTML page.
 
     For example, your React or Angular SPAs are applications. When active, they listen to url routing events and put content on the DOM. When inactive, they do not listen to url routing events and are totally removed from the DOM.
-2. A [single-spa-config](configuration), which is the html page _and_ the JavaScript that registers applications with single-spa. Each application is registered with three things:
+2. A [single-spa-config](configuration), which is the HTML page _and_ the JavaScript that registers applications with single-spa. Each application is registered with three things:
     - A name
     - A function to load the application's code
     - A function that determines when the application is active/inactive
@@ -91,7 +91,7 @@ import * as singleSpa from 'single-spa';
 
 const name = 'app1';
 
-/* The app can be a resolved application or a function that returns a promise that resolves with the javascript application module.
+/* The app can be a resolved application or a function that returns a promise that resolves with the JavaScript application module.
  * The purpose of it is to facilitate lazy loading -- single-spa will not download the code for a application until it needs to.
  * In this example, import() is supported in webpack and returns a Promise, but single-spa works with any loading function that returns a Promise.
  */

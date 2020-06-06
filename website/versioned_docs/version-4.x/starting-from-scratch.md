@@ -163,9 +163,9 @@ The last step in our project set up is to include a couple scripts in our packag
 },
 ```
 
-## 2. Create the html file
+## 2. Create the HTML file
 
-Our goal in this step will be to create a __single-spa config__. The single-spa config file is where your applications are initialized, and an html page will request this config.
+Our goal in this step will be to create a __single-spa config__. The single-spa config file is where your applications are initialized, and an HTML page will request this config.
 
 You’ll want to keep your single-spa config as small as possible since it is the master controller and could easily become a maintenance bottleneck. You don’t want to be constantly changing both the single-spa config and the child applications.
 
@@ -542,7 +542,7 @@ registerApplication(
 
 > __Hint__
 >
-> Don't forget to define a corresponding mount point for _every newly registered application_ in your root html file. We did this already in [Step 2.a](starting-from-scratch.md#2a-create-indexhtml) so just remember to do so for each new application in the future.
+> Don't forget to define a corresponding mount point for _every newly registered application_ in your root HTML file. We did this already in [Step 2.a](starting-from-scratch.md#2a-create-indexhtml) so just remember to do so for each new application in the future.
 
 ### 5.b Setup NavBar
 
