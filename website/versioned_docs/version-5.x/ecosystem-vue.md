@@ -37,7 +37,7 @@ The CLI Plugin does the following for you:
 npm install --save single-spa-vue
 ```
 
-Alternatively, you can use single-spa-vue by adding `<script src="https://unpkg.com/single-spa-vue"></script>` to your html file and
+Alternatively, you can use single-spa-vue by adding `<script src="https://unpkg.com/single-spa-vue"></script>` to your HTML file and
 accessing the `singleSpaVue` global variable.
 
 ## Usage

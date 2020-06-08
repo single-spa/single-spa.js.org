@@ -11,19 +11,19 @@ And with the release of [version 4](https://github.com/single-spa/single-spa/rel
 
 ## Another way to do framework agnostic components?
 
-For those familiar with [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), you may be wondering why a javascript library would try to do what browsers are starting natively to do.
+For those familiar with [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), you may be wondering why a JavaScript library would try to do what browsers are starting natively to do.
 
 And as one of the contributors to the custom elements polyfill, let me be the first one to say that we did not make this decision lightly.
 
 If you’re interested in diving into the details, check out [One Company’s Relationship With Custom Elements](https://medium.com/canopy-tax/one-companys-relationship-with-custom-elements-d360baf3b253), which explains some of the difficulties we’ve been through with web components and custom elements.
 
-TLDR: React and some other frameworks don’t interop with custom elements very well. Additionally dealing with inner html, attributes vs properties, and customized builtins can be a pain.
+TLDR: React and some other frameworks don’t interop with custom elements very well. Additionally dealing with inner HTML, attributes vs properties, and customized builtins can be a pain.
 
 ## Okay but you haven’t told me what a single-spa parcel is
 
 A parcel is single-spa’s way of building a component in one framework and using it in another.
 
-To implement a parcel, just create a javascript object that has 3–4 functions on it. We call this javascript object a _parcel config_ and there are three required functions to implement: bootstrap, mount, and unmount. A fourth function, update, is optional.
+To implement a parcel, just create a JavaScript object that has 3–4 functions on it. We call this JavaScript object a _parcel config_ and there are three required functions to implement: bootstrap, mount, and unmount. A fourth function, update, is optional.
 
 Each of the functions will be called by single-spa at the right time, but the parcel config will control what happens. In other words, single-spa controls the “when,” but the parcel config controls the “what” and the “how.”
 

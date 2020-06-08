@@ -157,17 +157,17 @@ optional
 
 * `AppWithRequire` (required) : This parameter takes an object and expects below properties:
 	* `IsDataMain` (optional) : This parameter takes a boolean value and is used to specify whether require js will use `data-main` to load the app.
-	* `AppPath` (required) : This parameter takes a string value and specifies the path of javascript file, which is entry point of your application and will be booted up using RequireJs. The path is relative to BasePath.
+	* `AppPath` (required) : This parameter takes a string value and specifies the path of JavaScript file, which is entry point of your application and will be booted up using RequireJs. The path is relative to BasePath.
 	* `RequireJsPath` (required) : This parameter takes a string value and takes the path of the RequireJs file and is relative to BasePath.
-	* `DependenciesJsPaths` (optional) : This is an optional parameter takes an array of strings. It can be used to optionally provide a list of javascript path which you want to load in the browser.
+	* `DependenciesJsPaths` (optional) : This is an optional parameter takes an array of strings. It can be used to optionally provide a list of JavaScript paths which you want to load in the browser.
 
 * `AppWithBackboneJs` (optional) : This parameter takes an object and expects below properties:
-	* `AppPath` (required) : This parameter takes a string value and specifies the path of javascript file, which is entry point of your application and will be booted up using Backbone Js. The path is relative to BasePath.
+	* `AppPath` (required) : This parameter takes a string value and specifies the path of JavaScript file, which is entry point of your application and will be booted up using Backbone Js. The path is relative to BasePath.
 	* `BackboneJsPath` (required) : This parameter takes a string value and takes the path of the Backbone Js file and is relative to BasePath.
-	* `DependenciesJsPaths` (optional) : This is an optional parameter takes an array of strings. It can be used to optionally provide a list of javascript path which you want to load in the browser.
+	* `DependenciesJsPaths` (optional) : This is an optional parameter takes an array of strings. It can be used to optionally provide a list of JavaScript paths which you want to load in the browser.
 
 * `App` (optional) : This parameter takes an object and expects below properties:
-	* `AppPath` (required) : This parameter takes a string value and specifies the path of javascript file, which is production build of your backbone application. The path is relative to BasePath.
+	* `AppPath` (required) : This parameter takes a string value and specifies the path of the JavaScript file, which is the production build of your backbone application. The path is relative to BasePath.
 
 ### Note : Out of AppWithRequire, AppWithBackboneJs and  App only one is required
 

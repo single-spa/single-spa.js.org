@@ -6,7 +6,7 @@ export default function ErrorCode22(props) {
     <>
       <h1>#22: Custom props must be an object</h1>
       <p>
-        Cannot register application '{props.getErrorCodeArg(0)}' because the customProps are not a plain javascript object.
+        Cannot register application '{props.getErrorCodeArg(0)}' because the customProps are not a plain JavaScript object.
       </p>
       <h2>To fix:</h2>
       <div>

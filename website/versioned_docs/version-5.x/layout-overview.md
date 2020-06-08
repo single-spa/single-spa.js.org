@@ -29,6 +29,7 @@ You only need to install the layout engine into your [root config](./configurati
 ```sh
 npm install --save single-spa-layout@beta
 
+# or
 yarn add single-spa-layout@beta
 ```
 
@@ -46,32 +47,34 @@ You must use single-spa@>=5.4.0 in order for the layout engine to work. Addition
 
 ## Basic usage
 
-In your root html file, add a `<single-spa-router>` element to the body. It should contain `<route>` elements, `<application>` elements, and any other dom elements:
+In your root html file, add a `<template>` element to the head. It should have a `<single-spa-router>` element that contains `<route>` elements, `<application>` elements, and any other dom elements:
 
 ```html
 <html>
-  <body>
-    <single-spa-router style="display: none">
-      <nav class="topnav">
-        <application name="@organization/nav"></application>
-      </nav>
-      <div class="main-content">
-        <route path="settings">
-          <application name="@organization/settings"></application>
-        </route>
-        <route path="clients">
-          <application name="@organization/clients"></application>
-        </route>
-      </div>
-      <footer>
-        <application name="@organization/footer"></application>
-      </footer>
-    </single-spa-router>
-  </body>
+  <head>
+    <template id="single-spa-layout">
+      <single-spa-router>
+        <nav class="topnav">
+          <application name="@organization/nav"></application>
+        </nav>
+        <div class="main-content">
+          <route path="settings">
+            <application name="@organization/settings"></application>
+          </route>
+          <route path="clients">
+            <application name="@organization/clients"></application>
+          </route>
+        </div>
+        <footer>
+          <application name="@organization/footer"></application>
+        </footer>
+      </single-spa-router>
+    </template>
+  </head>
 </html>
 ```
 
-Then inside of your root-config's javascript code, add the following:
+Then inside of your root-config's JavaScript code, add the following:
 
 ```js
 import { registerApplication, start } from 'single-spa';
@@ -81,7 +84,7 @@ import {
   constructLayoutEngine,
 } from 'single-spa-layout';
 
-const routes = constructRoutes(document.querySelector('single-spa-router'));
+const routes = constructRoutes(document.querySelector('#single-spa-layout'));
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
