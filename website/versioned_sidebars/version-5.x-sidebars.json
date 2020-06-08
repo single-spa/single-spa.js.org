@@ -103,6 +103,10 @@
         {
           "type": "doc",
           "id": "version-5.x/layout-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/layout-definition"
         }
       ]
     },
