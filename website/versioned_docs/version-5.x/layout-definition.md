@@ -268,9 +268,9 @@ The full API documentation for the `constructRoutes` API explains the `data` obj
 
 ## Loading UIs
 
-It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define per-application loaders that will be mounted to the DOM while the application's [loading function]() is pending. It is possible to share the same loading UI for multiple applications.
+It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define per-application loaders that will be mounted to the DOM while the application's [loading function](./configuration.md#loading-function-or-application) is pending. It is possible to share the same loading UI for multiple applications.
 
-A loading UI is defined as either an HTML string or as a [parcel config object](). HTML strings are best for static, non-interactive loaders, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the loader.
+A loading UI is defined as either an HTML string or as a [parcel config object](./parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive loaders, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the loader.
 
 Defining loaders via javascript objects is straightforward, as they are an object that can contain strings, numbers, booleans, objects, arrays, etc. However, defining complex data types in HTML is not as straightforward, since HTML attributes are always strings. To work around this, single-spa-layout allows you to name your loaders in the HTML, but define their values in javascript.
 
