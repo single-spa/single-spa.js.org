@@ -107,6 +107,10 @@
         {
           "type": "doc",
           "id": "version-5.x/layout-definition"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/layout-api"
         }
       ]
     },

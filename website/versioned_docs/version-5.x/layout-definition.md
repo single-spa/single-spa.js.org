@@ -232,17 +232,17 @@ Defining props on JSON objects is straightforward, as they are an object that ca
 ```js
 import { constructRoutes } from 'single-spa-layout';
 
-const options = {
+const data = {
   props: {
     authToken: "fds789dsfyuiosodusfd",
     loggedInUser: fetch('/api/logged-in-user').then(r => r.json())
   }
 }
 
-const routes = constructRoutes(document.querySelector('#single-spa-template'), options)
+const routes = constructRoutes(document.querySelector('#single-spa-template'), data)
 ```
 
-If you wish to rename a prop from how it is defined in your options object, that is also supported:
+If you wish to rename a prop from how it is defined in your data object, that is also supported:
 
 ```html
 <application name="settings" authToken permissions="adminPermissions"></application>
@@ -251,7 +251,7 @@ If you wish to rename a prop from how it is defined in your options object, that
 ```js
 import { constructRoutes } from 'single-spa-layout';
 
-const options = {
+const data = {
   props: {
     authToken: "fds789dsfyuiosodusfd",
     adminPermissions: {
@@ -261,10 +261,10 @@ const options = {
   }
 }
 
-const routes = constructRoutes(document.querySelector('#single-spa-template'), options)
+const routes = constructRoutes(document.querySelector('#single-spa-template'), data)
 ```
 
-The full API documentation for the `constructRoutes` API explains the `options` object in detail.
+The full API documentation for the `constructRoutes` API explains the `data` object in detail.
 
 ## Loading UIs
 
@@ -285,17 +285,17 @@ import { constructRoutes } from 'single-spa-layout';
 // You may also use Angular, Vue, etc.
 const settingsLoader = singleSpaReact({...})
 
-const options = {
+const data = {
   loaders: {
     topNavPlaceholder: `<nav class="placeholder"></nav>`,
     settings: settingsLoader
   }
 }
 
-const routes = constructRoutes(document.querySelector('#single-spa-template'), options)
+const routes = constructRoutes(document.querySelector('#single-spa-template'), data)
 ```
 
-The full API documentation for the `constructRoutes` API explains the `options` object in detail.
+The full API documentation for the `constructRoutes` API explains the `data` object in detail.
 
 ## Transitions
 
