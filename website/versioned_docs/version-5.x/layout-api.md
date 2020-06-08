@@ -91,12 +91,14 @@ start();
 
 - `routes` (required): The opaque `resolvedRoutes` object returned from `constructRoutes`.
 - `applications` (required): The array of [application registration objects](./configuration.md#registering-applications) returned from `constructApplications`.
+- `active` (optional): A boolean that indicates whether the layout engine should start out active or not. Defaults to true.
 
 **Return Value**
 
 A `layoutEngine` object, with the following properties:
 
 - `isActive`: a function that accepts no arguments and returns a boolean indicating whether the layout engine is active or not. When active, the layout engine will change the DOM during route transitions.
+
 - `activate`: a function that accepts no arguments and returns `undefined`. Calling this function activates the layout engine, which includes setting up routing event listeners so that the layout engine can change the DOM during route transitions.
 - `deactivate`: a function that accepts no arguments and returns `undefined`. Calling this function deactivates the layout engine, which includes tearing down all routing event listeners so that the layout engine no longer changes the DOM during route transitions.
 
