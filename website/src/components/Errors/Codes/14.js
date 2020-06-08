@@ -17,10 +17,10 @@ export default function ErrorCode14(props) {
 
             navigateToUrl('/path')
 
-            // Or via html
+            // Or via HTML
             <a href="/path" onClick="singleSpaNavigate">Link</a>
 
-            // Or via jsx / templates
+            // Or via JSX / templates
             <a href="/path" onClick={navigateToUrl}>Link</a>
           `}
         </CodeSnippet>

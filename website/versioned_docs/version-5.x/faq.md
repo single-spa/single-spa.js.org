@@ -14,7 +14,7 @@ The applications can all be written in the same framework, or they can be implem
 Yes, here is [the documentation for our recommended setup](/docs/recommended-setup/).
 
 ## Should I have a parent/root app and children apps?
-No. We strongly encourage that your single-spa-config or root application does not use any javascript ui-frameworks (React, Angular, Angularjs, Vue, etc). In our experience a plain javascript module is best for the single-spa-config and only the registered applications actually use ui-frameworks (angular, react, vue, etc). 
+No. We strongly encourage that your single-spa-config or root application does not use any JavaScript UI frameworks (React, Angular, Angularjs, Vue, etc). In our experience a plain JavaScript module is best for the single-spa-config and only the registered applications actually use UI frameworks (Angular, React, Vue, etc). 
 
 Why? You end up creating a structure that has all the disadvantages of microservices without any of the advantages: your apps are now coupled together and you have to change multiple apps at the same time in order to make updates. Good microservices are completely **independent**, and this pattern breaks that.
 

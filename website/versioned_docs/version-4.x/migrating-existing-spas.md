@@ -9,13 +9,13 @@ need to do three things:
 
 1. Create a [single spa config](configuration)
 1. [Convert your SPA or SPAs to be registered applications](#converting-spas-into-registered-applications)
-1. Adjust your html file so that your single spa config is the new boss in town.
+1. Adjust your HTML file so that your single spa config is the new boss in town.
    See [docs](configuration#indexhtml-file).
 
 ## Converting SPAs into registered applications
 Your existing SPAs, whether they be Angular, React, or something else, probably are
 not used to unmounting themselves from the DOM. Also, they probably have had the luxury
-of controlling the entire html page themselves, instead of being purely javascript applications
+of controlling the entire HTML page themselves, instead of being purely JavaScript applications
 that don't have sole control over `<script>` tags and `<link>` tags. So in order to convert them
 into single-spa registered applications, they will need to overcome those obstacles while implementing
 lifecycle functions.
@@ -33,5 +33,5 @@ Since existing SPAs are used to having an index.html file for their css, fonts,
 third party script-tags, etc., it's likely that you'll have to do some work
 to make sure all of those keep on working when your SPA becomes an html-less [
 application](building-applications.md). It is best to try to put all that
-you can into the javascript bundle, but your escape hatch is to put the things
+you can into the JavaScript bundle, but your escape hatch is to put the things
 you need into your [single spa config](configuration).

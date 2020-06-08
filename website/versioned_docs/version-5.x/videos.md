@@ -1,6 +1,6 @@
 ---
 id: videos
-title: Video tutorials
+title: Video Tutorials
 sidebar_label: Videos
 ---
 
@@ -8,11 +8,11 @@ sidebar_label: Videos
 
 A variety of video tutorials exist from both the single-spa core team and other community members.
 
-## From core team
+## From the Core Team
 
 [Youtube Playlist](https://www.youtube.com/playlist?list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU) / [Bilibili](https://space.bilibili.com/495254378)
 
-## From community
+## From the Community
 
 Feel free to add your tutorial videos to this list!
 
