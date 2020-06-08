@@ -11,7 +11,7 @@ export default function ErrorCode30(props) {
       </p>
       <p>
         This problem is logged as a warning to the console, but is not thrown as an additional error. The reason it is logged is that
-        only javascript Error objects will provide a good stacktrace for you to debug the cause of the Error.
+        only JavaScript Error objects will provide a good stacktrace for you to debug the cause of the Error.
       </p>
       <h2>To fix:</h2>
       <div>

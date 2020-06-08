@@ -13,7 +13,7 @@ They both return a [parcel object](parcels-api.md#parcel-object). The parcel obj
 
 ### Parcel Props
 
-When mounting a parcel the second argument is props, a javascript object of properties to be passed to the parcel. This object must have a domElement prop, which is the dom node that the parcel will mount into.
+When mounting a parcel the second argument is props, a JavaScript object of properties to be passed to the parcel. This object must have a domElement prop, which is the dom node that the parcel will mount into.
 
 ```js
 const parcelProps = {

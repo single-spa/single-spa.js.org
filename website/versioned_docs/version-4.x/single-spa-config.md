@@ -6,7 +6,7 @@ sidebar_label: single-spa config
 
 The single spa root config consists of the following:
 1. The root HTML file that is shared by all single-spa applications.
-2. the javascript that calls [`singleSpa.registerApplication()`](/docs/api.html#registerapplication).
+2. The JavaScript that calls [`singleSpa.registerApplication()`](/docs/api.html#registerapplication).
 
 Your root config exists only to start up the single-spa applications.
 

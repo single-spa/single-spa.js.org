@@ -39,8 +39,7 @@ single-spa-leaked-globals won't work for you.
 ```sh
 npm install --save single-spa-leaked-globals
 
-# Or
-
+# or
 yarn add single-spa-leaked-globals
 ```
 

@@ -18,7 +18,7 @@ Here is how each single-spa microfrontend works conceptually. This information s
 | lifecycles           | single-spa managed lifecycles     | custom managed lifecycles            | no lifecycles                        |
 | When to use          | Core building block               | only needed with multiple frameworks | useful to share common logic         |
 
-Each single-spa microfrontend is an in-browser javascript module ([explanation](./recommended-setup#in-browser-versus-build-time-modules.md)).
+Each single-spa microfrontend is an in-browser JavaScript module ([explanation](./recommended-setup#in-browser-versus-build-time-modules.md)).
 
 ## Applications
 
@@ -45,7 +45,7 @@ in a way that will make it work inside `application2` despite the different fram
 Think of parcels as a single-spa specific implementation of webcomponents.
 
 ## Utility modules share common logic
-Utility modules are a great place to share common logic. Instead of each application creating their own implementation of common logic, you can use a plain javascript object (single-spa utility) to share that logic.
+Utility modules are a great place to share common logic. Instead of each application creating their own implementation of common logic, you can use a plain JavaScript object (single-spa utility) to share that logic.
 For example: Authorization. How does each application know which user is logged in? You could have each application ask the server or read a JWT but that creates duplicate work in each application.
 Using Utility modules you can implement logic around who is logged in one module (with all the necessary methods exported on the module) and each single-spa application can use the logic by importing the methods from the utilty module.
 This approach also works well for data [fetching](./recommended-setup#api-data.md).

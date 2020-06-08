@@ -277,7 +277,7 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 			<div>
 				<dt>LOAD_ERROR</dt>
 				<dd>
-					The app's loading function returned a promise that rejected. This is often due to a network error attempting to download the javascript bundle for the application. Single-spa will retry loading the application after the user navigates away from the current route and then comes back to it.
+					The app's loading function returned a promise that rejected. This is often due to a network error attempting to download the JavaScript bundle for the application. Single-spa will retry loading the application after the user navigates away from the current route and then comes back to it.
 				</dd>
 			</div>
 		</dl>

@@ -29,6 +29,7 @@ You only need to install the layout engine into your [root config](./configurati
 ```sh
 npm install --save single-spa-layout@beta
 
+# or
 yarn add single-spa-layout@beta
 ```
 
@@ -73,7 +74,7 @@ In your root html file, add a `<template>` element to the head. It should have a
 </html>
 ```
 
-Then inside of your root-config's javascript code, add the following:
+Then inside of your root-config's JavaScript code, add the following:
 
 ```js
 import { registerApplication, start } from 'single-spa';
