@@ -42,3 +42,8 @@ workflows:
             branches:
               ignore:
                 - gh-pages
+      - deploy-website:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
