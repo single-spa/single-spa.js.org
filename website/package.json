@@ -2,7 +2,7 @@
   "scripts": {
     "start": "docusaurus start",
     "build": "docusaurus build",
-    "copycircle": "copyfiles -u 1 '../.circleci/**/*.*' build",
+    "copycircle": "copyfiles -u 1 '../.circleci/**/*.*' static",
     "swizzle": "docusaurus swizzle",
     "deploy": "yarn copycircle && docusaurus deploy",
     "eslint:check": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings 1",
