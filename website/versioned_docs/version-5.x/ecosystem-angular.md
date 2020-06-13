@@ -499,6 +499,37 @@ Then use it in your template:
 ```html
 <img [src]="'yoshi.png' | assetUrl" />
 ```
+##### Option 3
+
+upload via sass; This demonstration was done with the angular 8 and 9 versions, example: 
+
+```sass
+.body-row {
+    background: url("/assets/images/person.jpg") no-repeat right bottom
+}
+```
+To be able to show your images using Sass URL we have to do some configuration in our angular.json file, should go to the attribute
+**architect > build > options**and add the attribute  **"rebaseRootRelativeCssUrls"** value "true".
+Now inside the assets attribute (which is an array) you should add a slash **"/"** to the value of the **"ouput"** attribute which outputs its external styles (this is optional); example
+
+ ```json
+			"options": {
+				...
+						"rebaseRootRelativeCssUrls": true,
+						"aot": true,
+						"assets": [
+							"src/favicon.ico",
+							"src/assets",
+							{
+								"glob": "**/*",
+								"input": "node_modules/@material/dist/collection/assets",
+								"output": "/assets"
+							}
+						],
+				...
+					},
+```
+
 
 ### Scripts
 [Scripts in your angular.json](https://angular.io/guide/workspace-config#additional-build-and-test-options) are not loaded by single-spa.
