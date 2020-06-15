@@ -515,20 +515,18 @@ To be able to show your images using Sass URL we have to do some configuration i
 Now inside the assets attribute (which is an array) you should add a slash **"/"** to the value of the **"ouput"** attribute which outputs its external styles (this is optional); example
 
  ```json
-			"options": {
-				...
-						"rebaseRootRelativeCssUrls": true,
-						"assets": [
-							"src/favicon.ico",
-							"src/assets",
-							{
-								"glob": "**/*",
-								"input": "node_modules/@material/dist/collection/assets",
-								"output": "/assets"
-							}
-						],
-				...
-					},
+	"options": {	
+	"rebaseRootRelativeCssUrls": true,
+	"assets": [
+		"src/favicon.ico",
+		"src/assets",
+		{
+			"glob": "**/*",
+			"input": "node_modules/@material/dist/collection/assets",
+			"output": "/assets"
+		}
+		]
+	}
 ```
 
 
