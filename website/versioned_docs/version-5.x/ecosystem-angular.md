@@ -503,6 +503,8 @@ Then use it in your template:
 
 upload via sass; This demonstration was done with the angular 8 and 9 versions, example: 
 
+This option allows you to keep your css referencing asset urls, which will be rewritten to respect the webpack public path:
+
 ```sass
 .body-row {
     background: url("/assets/images/person.jpg") no-repeat right bottom
