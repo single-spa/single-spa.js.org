@@ -26,5 +26,6 @@ sidebar_label: Resources
 - [single-spa-login-example-with-npm-packages](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages) is a single-spa application example which imports registered applications from NPM packages and manages authentication features as login.
 - [demo-single-spa-with-spax](https://github.com/crossjs/spax/tree/master/packages/demo-single-spa) is a tiny [spax](https://spax.js.org) example with react-scripts and craco.
 - [single-spa-html with js example](https://github.com/filoxo/single-spa-html-with-js-example) is an example repo of using single-spa-html that is enhanced with plain JavaScript.
+- [coexisting-angular-microfrontends/login](https://github.com/Vallerious/coexisting-angular-microfrontends/tree/feature/login) is a branch that implements a login functionality between Angular apps. It uses localStorage as shared memory space to store and retrieve a token.
 
 Have your own starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/docs/examples.md) to add yours to this list.
