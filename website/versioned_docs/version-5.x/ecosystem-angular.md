@@ -518,7 +518,6 @@ Now inside the assets attribute (which is an array) you should add a slash **"/"
 			"options": {
 				...
 						"rebaseRootRelativeCssUrls": true,
-						"aot": true,
 						"assets": [
 							"src/favicon.ico",
 							"src/assets",
