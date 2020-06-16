@@ -158,11 +158,8 @@ The same application may appear multiple times in your layout, under different r
 <!-- Use a named loader that is defined in javascript -->
 <application name="appName" loader="mainContentLoader"></application>
 
-<!-- Add a single-spa custom prop to the application. The value of the prop is defined in javascript -->
-<application name="appName" myProp></application>
-
-<!-- Add a single-spa custom prop whose javascript definition is named differently than the prop's name -->
-<application name="appName" myOtherProp="myProp"></application>
+<!-- Add single-spa custom props to the application. The value of the prop is defined in javascript -->
+<application name="appName" props="myProp,authToken"></application>
 ```
 
 ```js
@@ -226,7 +223,7 @@ DOM elements defined within a route will be mounted/unmounted as the route becom
 Defining props on JSON objects is straightforward, as they are an object that can contain strings, numbers, booleans, objects, arrays, etc. However, defining complex data types in HTML is not as straightforward, since HTML attributes are always strings. To work around this, single-spa-layout allows you to name your props in the HTML, but define their values in javascript.
 
 ```html
-<application name="settings" authToken loggedInUser></application>
+<application name="settings" props="authToken,loggedInUser"></application>
 ```
 
 ```js
@@ -236,28 +233,6 @@ const data = {
   props: {
     authToken: "fds789dsfyuiosodusfd",
     loggedInUser: fetch('/api/logged-in-user').then(r => r.json())
-  }
-}
-
-const routes = constructRoutes(document.querySelector('#single-spa-template'), data)
-```
-
-If you wish to rename a prop from how it is defined in your data object, that is also supported:
-
-```html
-<application name="settings" authToken permissions="adminPermissions"></application>
-```
-
-```js
-import { constructRoutes } from 'single-spa-layout';
-
-const data = {
-  props: {
-    authToken: "fds789dsfyuiosodusfd",
-    adminPermissions: {
-      invoices: false,
-      userManagement: true
-    }
   }
 }
 
