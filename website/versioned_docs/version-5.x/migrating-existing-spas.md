@@ -7,10 +7,10 @@ sidebar_label: Migrating existing code
 If you're interested in migrating existing SPAs into a single-spa, you'll
 need to do three things:
 
-1. Create a [single spa config](./configuration)
+1. Create a [single spa config](/docs/configuration)
 1. [Convert your SPA or SPAs to be registered applications](#converting-spas-into-registered-applications)
 1. Adjust your HTML file so that your single spa config is the new boss in town.
-   See [docs](configuration#indexhtml-file).
+   See [docs](/docs/configuration#indexhtml-file).
 
 ## Converting SPAs into registered applications
 Your existing SPAs, whether they be Angular, React, or something else, probably are
