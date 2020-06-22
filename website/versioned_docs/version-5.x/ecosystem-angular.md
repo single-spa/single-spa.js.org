@@ -576,7 +576,7 @@ The [rebaseRootRelativeCssUrls](https://angular.io/cli/build) option allows you 
 To do this, you may change your angular.json or run `ng build --rebaseRootRelativeCssUrls`. In the angular.json file, you should modify
 architect > build > options and update the property `rebaseRootRelativeCssUrls` to be `true`.
 
-Now inside the assets attribute (which is an array) you should add a slash **"/"** to the value of the **"ouput"** attribute which outputs its external styles (this is optional); example
+Now inside the assets attribute (which is an array) you should add a slash **"/"** to the value of the **"output"** attribute which outputs its external styles (this is optional). Example:
 
  ```json
 {
