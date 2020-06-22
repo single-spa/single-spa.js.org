@@ -567,9 +567,9 @@ Your component styles will also be loaded like normal without you having to conf
 
 The [rebaseRootRelativeCssUrls](https://angular.io/cli/build) option allows you to keep your css referencing asset urls, which will be rewritten to respect the webpack public path:
 
-```sass
+```css
 .body-row {
-    background: url("/assets/images/person.jpg") no-repeat right bottom
+    background: url("/assets/images/person.jpg") no-repeat right bottom;
 }
 ```
 
