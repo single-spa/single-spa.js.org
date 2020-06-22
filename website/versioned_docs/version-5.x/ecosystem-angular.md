@@ -580,7 +580,7 @@ Now inside the assets attribute (which is an array) you should add a slash **"/"
 
  ```json
 {
-	"options": {	
+  "options": {	
     "rebaseRootRelativeCssUrls": true,
     "assets": [
       "src/favicon.ico",
