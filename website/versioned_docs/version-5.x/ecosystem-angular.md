@@ -563,6 +563,38 @@ be loaded by single-spa-angular's webpack config, without you having to configur
 
 Your component styles will also be loaded like normal without you having to configure anything.
 
+**rebaseRootRelativeCssUrls**
+
+The [rebaseRootRelativeCssUrls](https://angular.io/cli/build) option allows you to keep your css referencing asset urls, which will be rewritten to respect the webpack public path:
+
+```css
+.body-row {
+    background: url("/assets/images/person.jpg") no-repeat right bottom;
+}
+```
+
+To do this, you may change your angular.json or run `ng build --rebaseRootRelativeCssUrls`. In the angular.json file, you should modify
+architect > build > options and update the property `rebaseRootRelativeCssUrls` to be `true`.
+
+Now inside the assets attribute (which is an array) you should add a slash **"/"** to the value of the **"output"** attribute which outputs its external styles (this is optional). Example:
+
+ ```json
+{
+  "options": {	
+    "rebaseRootRelativeCssUrls": true,
+    "assets": [
+      "src/favicon.ico",
+      "src/assets",
+      {
+        "glob": "**/*",
+        "input": "node_modules/@material/dist/collection/assets",
+        "output": "/assets"
+      }
+    ]
+  }
+}
+```
+
 ### Polyfills
 [Polyfills in your angular.json](https://angular.io/guide/browser-support) are JavaScript code that make your project work in older browsers,
 such as IE11.
