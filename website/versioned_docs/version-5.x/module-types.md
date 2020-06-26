@@ -49,5 +49,5 @@ Think of parcels as a single-spa specific implementation of webcomponents.
 ### Utility modules share common logic
 Utility modules are a great place to share common logic. Instead of each application creating their own implementation of common logic, you can use a plain JavaScript object (single-spa utility) to share that logic.
 For example: Authorization. How does each application know which user is logged in? You could have each application ask the server or read a JWT but that creates duplicate work in each application.
-Using utility modules, you can implement logic around who is logged in all in one module (with all the necessary methods exported on the module) and each single-spa application can use the logic by importing the methods from the utilty module.
+Using the utility module pattern would allow you to create one module that implements the authorization logic. This module would export any needed methods, and then your other single-spa applications could use those authorization methods by importing them.
 This approach also works well for data [fetching](./recommended-setup#api-data.md).
