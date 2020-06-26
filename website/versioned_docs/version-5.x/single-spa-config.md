@@ -1,17 +1,17 @@
 ---
 id: configuration
-title: Using single-spa-config
-sidebar_label: single-spa config
+title: Configuring single-spa
+sidebar_label: Configuring single-spa
 ---
 
-The single spa root config consists of the following:
+The single-spa root config consists of the following:
 
 1. The root HTML file that is shared by all single-spa applications.
 2. The JavaScript that calls [`singleSpa.registerApplication()`](/docs/api.html#registerapplication).
 
 Your root config exists only to start up the single-spa applications.
 
-## Index.html file
+## index.html file
 See [this example root config](http://single-spa-playground.org/playground/html-file) for what a root HTML file looks like.
 Notice how it does not have any divs or buttons, but just calls `registerApplication()`.
 
@@ -21,9 +21,9 @@ it allows you to [independently deploy](/docs/separating-applications.html) your
 ## Registering applications
 
 You must register [applications](building-applications.md) with single-spa so it knows how and when to
-initiate, load, mount, and unmount. Registration most commonly occurs inside of the single spa config, but
-does not have to. Note that if an application is registered from within another application, that no hierarchy
-will be maintained between the applications. Instead, the applications will be siblings and will be mounted
+initiate, load, mount, and unmount each application. Registration most commonly occurs inside of the single-spa config but
+does not have to. Note that if an application is registered from within another application, no hierarchy will be
+maintained between the applications. Instead, the applications will be siblings and will be mounted
 and unmounted according to their own activity functions.
 
 In order to register an application, call the `registerApplication` function. Example:
@@ -37,7 +37,7 @@ registerApplication(
   'app2',
   () => import('src/app2/main.js'),
   (location) => location.pathname.startsWith('/app2'),
-  {some: 'value'}
+  { some: 'value' }
 );
 
 // Config with more expressive API
