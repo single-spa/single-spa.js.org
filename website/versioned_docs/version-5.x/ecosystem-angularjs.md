@@ -11,8 +11,8 @@ single-spa-angularjs is a helper library that helps implement [single-spa regist
 npm install --save single-spa-angularjs
 ```
 
-Note that you can alternatively `<script src="https://unpkg.com/single-spa-angularjs"></script>` and access the library
-via the `singleSpaAngularjs` global variable if that is easier for you.
+Note that you can alternatively `<script src="https://cdn.jsdelivr.net/npm/single-spa-angularjs@<VERSION>/lib/single-spa-angularjs.js` and access the library
+via the `window.singleSpaAngularjs.default()` global function if that is easier for you.
 
 ## With a bundler
 
@@ -39,6 +39,7 @@ export const unmount = ngLifecycles.unmount;
 If you're not using a bundler, you'll need to make your angularjs application a SystemJS module or a global variable. The SystemJS
 module is preferred, and you can read about it more in the [recommended single-spa setup](/docs/faq.html#is-there-a-recommended-setup).
 
+
 ### As a SystemJS module
 Add the following to your AngularJS application. If you're using gulp/grunt to concatenate files together, just create a new file called
 `single-spa-application.js` and make sure it's included in your final build file.
@@ -47,7 +48,7 @@ Add the following to your AngularJS application. If you're using gulp/grunt to c
 System.register([], function(_export) {
   return {
     execute: function() {
-      _export(singleSpaAngularJS({
+      _export(window.singleSpaAngularjs.default({
         angular: angular,
         mainAngularModule: 'app',
         uiRouter: true,
