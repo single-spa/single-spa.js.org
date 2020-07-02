@@ -196,6 +196,27 @@ Configuration options are provided to the `architect.serve.options` section of y
 | ---- | ----------- | ------------- |
 | singleSpaWebpackConfigPath | (optional) Path to partial webpack config to be merged with angular's config. Example: `extra-webpack.config.js` | undefined |
 
+### Use Custom Webpack
+
+Starting with Angular 8, single-spa-angular's schematics install and use [`@angular-builders/custom-webpack`](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack) to modify the webpack config. The schematics also create an `extra-webpack.config.js` file in your project where you can modify the configuration further.
+
+The extra-webpack.config.js file should include the following:
+
+```js
+const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
+
+module.exports = (config, options) => {
+  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
+
+  // Feel free to modify this webpack config however you'd like to
+  return singleSpaWebpackConfig;
+};
+```
+
+If you're using SystemJS, you may want to consider changing the [webpack output.libraryTarget](https://webpack.js.org/configuration/output/#outputlibrarytarget) to be `"system"`, for better interop with SystemJS.
+
+Older versions of single-spa-angular@3 and single-spa-angular@4 created extra-webpack.config.js files that did not pass `options` into `singleSpaAngularWebpack`. When you upgrade to newer versions, you'll need to pass in the options as shown above.
+
 ## Routing
 
 ### Configure routes
