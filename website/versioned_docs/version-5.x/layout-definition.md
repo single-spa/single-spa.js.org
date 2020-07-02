@@ -220,6 +220,23 @@ DOM elements defined within a route will be mounted/unmounted as the route becom
 
 [Single-spa custom props](./building-applications#lifecycle-props) may be defined on both `route` and `application` elements. Any route props will be merged together with the application props to create the final props that are passed to [the single-spa lifecycle functions](./building-applications#registered-application-lifecycle).
 
+### JSON
+
+In a JSON layout definition, you can define props with the `props` property on your applications and routes:
+
+```js
+import { constructRoutes } from 'single-spa-layout';
+
+constructRoutes({
+  routes: [
+    { type: "application", name: "nav" props: { title: "Title" } },
+    { type: "route", path: "settings" props: { otherProp: "Some value" } },
+  ]
+})
+```
+
+### HTML
+
 Defining props on JSON objects is straightforward, as they are an object that can contain strings, numbers, booleans, objects, arrays, etc. However, defining complex data types in HTML is not as straightforward, since HTML attributes are always strings. To work around this, single-spa-layout allows you to name your props in the HTML, but define their values in javascript.
 
 ```html
