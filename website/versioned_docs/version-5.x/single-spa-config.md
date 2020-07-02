@@ -11,9 +11,8 @@ The single-spa root config consists of the following:
 
 Your root config exists only to start up the single-spa applications.
 
-## index.html file
-See [this example root config](http://single-spa-playground.org/playground/html-file) for what a root HTML file looks like.
-Notice how it does not have any divs or buttons, but just calls `registerApplication()`.
+## Index.html file
+See [this example root config](https://github.com/polyglot-microfrontends/root-config/blob/master/src/index.ejs) for what a root HTML file looks like.
 
 **You do not have to use SystemJS when using single-spa**, but many examples and tutorials will encourage you to do so because
 it allows you to [independently deploy](/docs/separating-applications.html) your applications.
