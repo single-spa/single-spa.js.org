@@ -146,7 +146,8 @@ Since the single-spa-angular schematics didn't run, you'll need to make the foll
 
 **Note that this only applies to Angular versions pre Angular 8**. Up until Angular 8, we maintained an angular builder
 that allowed us to control the webpack config, but since Angular 8 we use
-[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack) instead.
+[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack) instead. See [documentation](#use-custom-webpack) for
+using the custom webpack builder with single-spa-angular and Angular 8+.
 
 **If you installed this library with Angular 7 using the Angular Schematic, this is already configured and
 you don't need to change it. Otherwise, you might need to do this manually.**
@@ -195,6 +196,36 @@ Configuration options are provided to the `architect.serve.options` section of y
 | Name | Description | Default Value |
 | ---- | ----------- | ------------- |
 | singleSpaWebpackConfigPath | (optional) Path to partial webpack config to be merged with angular's config. Example: `extra-webpack.config.js` | undefined |
+
+### Use Custom Webpack
+
+Starting with Angular 8, single-spa-angular's schematics install and use [`@angular-builders/custom-webpack`](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack) to modify the webpack config. The schematics also create an `extra-webpack.config.js` file in your project where you can modify the configuration further.
+
+The extra-webpack.config.js file should include the following:
+
+```js
+const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
+
+module.exports = (config, options) => {
+  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
+
+  // Feel free to modify this webpack config however you'd like to
+  return singleSpaWebpackConfig;
+};
+```
+
+Older versions of single-spa-angular@3 and single-spa-angular@4 created extra-webpack.config.js files that did not pass `options` into `singleSpaAngularWebpack`. When you upgrade to newer versions, you'll need to pass in the options as shown above.
+
+In addition to modifying the webpack config directly, you may alter some of single-spa-angular's behavior by changing the angular.json. Configuration options are provided to the `architect.build.options.customWebpackConfig` section of your angular.json. 
+
+| Name | Description | Default Value |
+| ---- | ----------- | ------------- |
+| path | (required) Path to the the above `extra-webpack.config.js` file. | N/A |
+| libraryName | (optional) Specify the name of the module | Angular CLI project name |
+| libraryTarget | (optional) The type of library to build [see available options](https://github.com/webpack/webpack/blob/master/declarations/WebpackOptions.d.ts#L1111) | "UMD" |
+
+If you're using SystemJS, you may want to consider changing the [webpack output.libraryTarget](https://webpack.js.org/configuration/output/#outputlibrarytarget) to be `"system"`, for better interop with SystemJS.
+
 
 ## Routing
 
