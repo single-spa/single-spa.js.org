@@ -232,7 +232,7 @@ If you're using SystemJS, you may want to consider changing the [webpack output.
 ### Configure routes
 To get single-spa working, you'll need to manually  modify a few files.
 
-1. Add `providers: [{ provide: APP_BASE_HREF, useValue: '/' }]` to `app.module.ts`. See
+1. Add `providers: [{ provide: APP_BASE_HREF, useValue: '/' }]` to `app-routing.module.ts`. See
   [angular docs](https://angular.io/api/common/APP_BASE_HREF) for more details about APP_BASE_HREF.
 2. Add `{ path: '**', component: EmptyRouteComponent }` to your `app-routing.module.ts` routes. The EmptyRouteComponent is part of the
   single-spa-angular schematics. This route makes sure that when single-spa is transitioning between routes that your Angular application
