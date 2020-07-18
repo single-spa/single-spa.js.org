@@ -66,7 +66,9 @@ import singleSpaVue from 'single-spa-vue';
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
-    render: h => h(App),
+    render(h) {
+      return h(App);
+    },
     router,
   },
 });
@@ -88,6 +90,41 @@ export const mount = props => vueLifecycles.mount(props).then(instance => {
   // do what you want with the Vue instance
   ...
 })
+```
+
+## Custom props
+
+[Single-spa custom props](/docs/building-applications/#lifecycle-props) can be passed to your root component like so:
+
+```js
+// main.js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render(h) {
+      return h(App, {
+        props: {
+          mountParcel: this.mountParcel,
+          otherProp: this.otherProp,
+        },
+      });
+    },
+    router,
+  },
+});
+```
+
+
+```vue
+// App.vue
+<template>
+  <button>{{ otherProp }}</button>
+</template>
+<script>
+export default {
+  props: ['mountParcel', 'otherProp'],
+}
+</script>
 ```
 
 ## Shared dependencies
