@@ -41,4 +41,4 @@ Svelte-specific options
 
 ## single-spa props
 
-All [single-spa props](./api.md#registerapplication) are passed to the svelte component as props. The props provided to `singleSpaSvelte({props: {...}})` are merged with the single-spa props.
+All [single-spa props](/docs/api/#registerapplication) are passed to the svelte component as props. The props provided to `singleSpaSvelte({props: {...}})` are merged with the single-spa props.

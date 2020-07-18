@@ -8,7 +8,7 @@ A single-spa registered application is everything that a normal SPA is, except t
 
 ## Creating a registered application
 
-To create a registered application, first [register the application with single-spa](./configuration/#registering-applications). Once registered, the registered application must correctly implement **all** of the following lifecycle functions inside of its main entry point.
+To create a registered application, first [register the application with single-spa](/docs/configuration//#registering-applications). Once registered, the registered application must correctly implement **all** of the following lifecycle functions inside of its main entry point.
 
 ## Registered application lifecycle
 

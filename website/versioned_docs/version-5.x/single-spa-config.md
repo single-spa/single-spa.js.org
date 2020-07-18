@@ -94,7 +94,7 @@ single-spa will call each application's activity function under the following sc
 
 #### Custom props
 
-The optional fourth argument to `registerApplication` is [custom props](./building-applications#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
+The optional fourth argument to `registerApplication` is [custom props](/docs/building-applications/#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
 
 ### Using configuration object
 
@@ -157,7 +157,7 @@ prefix. Examples:
 
 #### config.customProps
 
-The optional `customProps` property provides [custom props](./building-applications#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
+The optional `customProps` property provides [custom props](/docs/building-applications/#custom-props) that are passed to the application's single-spa lifecycle functions. The custom props may be either an object or a function that returns an object. Custom prop functions are called with the application name and current `window.location` as arguments.
 
 ## Calling singleSpa.start()
 The [`start()` api](api.md#start) **must** be called by your single spa config in order for

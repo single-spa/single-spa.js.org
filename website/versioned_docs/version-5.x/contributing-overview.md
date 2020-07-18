@@ -35,7 +35,7 @@ Interested in making a contribution? Read on!
 Before we get started, here are a few things we expect from you (and that you should expect from others):
 
 * Be kind and thoughtful in your conversations around this project. We all come from different backgrounds and projects, which means we likely have different perspectives on "how open source is done." Try to listen to others rather than convince them that your way is correct.
-* Please read the single-spa [Contributor Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
+* Please read the single-spa [Contributor Code of Conduct](/docs/code-of-conduct/). By participating in this project, you agree to abide by its terms.
 * If you open a pull request, please ensure that your contribution passes all tests. If there are test failures, you will need to address them before we can merge your contribution.
 * When adding content, please consider if it is widely valuable. Please don't add references or links to things you or your employer have created as others will do so if they appreciate it.
 
