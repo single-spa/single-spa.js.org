@@ -106,13 +106,13 @@ Some options on _how_ to update your import map include:
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=W8oaySHuj3Y&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=10) / [Bilibili](https://www.bilibili.com/video/BV16Z4y1j72X/)
 
-If you are starting from scratch, it is preferred to use [create-single-spa](./create-single-spa.md) instead of create-react-app.
+If you are starting from scratch, it is preferred to use [create-single-spa](/docs/create-single-spa/) instead of create-react-app.
 
 Create React App (CRA) projects must be altered before use with single-spa. The reason is that CRA presumes that each project has its own HTML file, whereas in single-spa all microfrontends must share an HTML file.
 
 Here are your options:
 
-1. Remove `react-scripts` and then run [`create-single-spa`](./create-single-spa.md) on your project. This will merge create-single-spa's package.json with yours, and provide you with a default webpack config. Run `yarn start` and fix webpack configuration errors until it's working.
+1. Remove `react-scripts` and then run [`create-single-spa`](/docs/create-single-spa/) on your project. This will merge create-single-spa's package.json with yours, and provide you with a default webpack config. Run `yarn start` and fix webpack configuration errors until it's working.
 1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config. See [this Gist](https://gist.github.com/joeldenning/79f2592086ad132fae8ee5aae054c0b6) that shows a basic config you can start with. The example config may not work in every case or solve every problem.
 1. [Eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) your CRA project's webpack config so you can modify it.
 

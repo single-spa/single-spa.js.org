@@ -17,14 +17,14 @@ The `single-spa-layout` npm package is an optional add-on to single-spa. The lay
 
 The layout engine performs two major tasks:
 
-1. Generate [single-spa registration config](./api#configuration-object) from an HTML Element and/or JSON object.
-1. Listen to [routing events](./api#events) to ensure that all DOM elements are laid out correctly before the single-spa applications are mounted.
+1. Generate [single-spa registration config](/docs/api/#configuration-object) from an HTML Element and/or JSON object.
+1. Listen to [routing events](/docs/api/#events) to ensure that all DOM elements are laid out correctly before the single-spa applications are mounted.
 
 `single-spa-layout` is 3.2kb gzipped (9kb ungzipped).
 
 ## Installation
 
-You only need to install the layout engine into your [root config](./configuration) (not in any other application).
+You only need to install the layout engine into your [root config](/docs/configuration/) (not in any other application).
 
 ```sh
 npm install --save single-spa-layout@beta

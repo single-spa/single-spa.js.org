@@ -37,7 +37,7 @@ single-spa apps consist of the following:
 
 ## The Recommended Setup
 
-The single-spa core team has put together documentation, tools, and videos showing the currently encouraged best practices with single-spa. Check out [these docs](./recommended-setup.md) for more information.
+The single-spa core team has put together documentation, tools, and videos showing the currently encouraged best practices with single-spa. Check out [these docs](/docs/recommended-setup/) for more information.
 
 ## How hard will it be to use single-spa?
 
@@ -70,7 +70,7 @@ You can help improve the single-spa website by sending pull requests to the [`si
 
 ## Simple Usage
 
-For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [these examples](./examples.md).
+For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [these examples](/docs/examples/).
 
 To create a single-spa application, you will need to do three things:
 
@@ -157,7 +157,7 @@ single-spa has adopted a Code of Conduct that we expect project participants to 
 
 ### [Contributing Guide](contributing-overview.md)
 
-Read our [contributing guide](./contributing-overview.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to single-spa.
+Read our [contributing guide](/docs/contributing-overview/) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to single-spa.
 
 ## Who's Using This?
 

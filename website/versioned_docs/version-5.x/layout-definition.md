@@ -4,7 +4,7 @@ title: Layout Definition
 sidebar_label: Layout Definition
 ---
 
-A layout is a combination of HTMLElements, routes, and [single-spa applications](./building-applications). Layout is defined statically in your [root config](./configuration) to handle your top level routes and dom elements. Single-spa-layout should not be used outside of the root config; instead, a UI framework (React, Angular, Vue) should handle layouts within the applications.
+A layout is a combination of HTMLElements, routes, and [single-spa applications](/docs/building-applications/). Layout is defined statically in your [root config](/docs/configuration/) to handle your top level routes and dom elements. Single-spa-layout should not be used outside of the root config; instead, a UI framework (React, Angular, Vue) should handle layouts within the applications.
 
 You may define layouts as either HTML templates or JSON objects. Defining in JSON is supported for organizations who prefer storing their layout definitions in a database instead of code. Both HTML and JSON layouts have the same feature set. However, storing layouts in code is generally preferred and encouraged by default. If you're just getting started with single-spa-layout, we encourage using an HTML template.
 
@@ -141,13 +141,13 @@ The `route` element is used to control which applications and dom elements are s
 Routes must either have a path or be a default route.
 
 - `routes` (required): An array of children elements that will be displayed when the route is active
-- `path` (optional): A string path that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](./api#pathtoactivewhen) to convert the path string to an [activity function](./configuration#activity-function).
+- `path` (optional): A string path that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](/docs/api/#pathtoactivewhen) to convert the path string to an [activity function](/docs/configuration/#activity-function).
 - `default` (optional): A boolean that determines whether this route will match all remaining URLs that have not been defined by sibling routes. This is useful for 404 Not Found pages. A sibling route is defined as any route with the same nearest-parent-route.
-- `props`: An object of [single-spa custom props](./building-applications#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
+- `props`: An object of [single-spa custom props](/docs/building-applications/#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
 
 ### `<application>`
 
-The `application` element is used to render a [single-spa application](./building-applications). Applications may be contained within route elements, or may exist at the top level as applications that will always be rendered. A container HTMLElement will be created by single-spa-layout when the application is rendered. The container HTMLElement is created with an `id` attribute of `single-spa-application:appName` such that your [framework helpers](./ecosystem.md) will automatically use it when [mounting](./building-applications#mount) the application.
+The `application` element is used to render a [single-spa application](/docs/building-applications/). Applications may be contained within route elements, or may exist at the top level as applications that will always be rendered. A container HTMLElement will be created by single-spa-layout when the application is rendered. The container HTMLElement is created with an `id` attribute of `single-spa-application:appName` such that your [framework helpers](/docs/ecosystem/) will automatically use it when [mounting](/docs/building-applications/#mount) the application.
 
 The same application may appear multiple times in your layout, under different routes. However, each application can only be defined once per-route.
 
@@ -197,9 +197,9 @@ const parcelConfig = singleSpaReact({...})
 
 **Attributes**
 
-- `name` (required): The string [application name](./api#configuration-object).
-- `loader` (optional): An HTML string or [single-spa parcel config object](./parcels-overview#parcel-configuration). The loader will be mounted to the DOM while waiting for the application's [loading function](./configuration#loading-function-or-application) to resolve. You can read more about defining loaders [in the docs below](#loading-uis)
-- `props`: An object of [single-spa custom props](./building-applications#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
+- `name` (required): The string [application name](/docs/api/#configuration-object).
+- `loader` (optional): An HTML string or [single-spa parcel config object](/docs/parcels-overview/#parcel-configuration). The loader will be mounted to the DOM while waiting for the application's [loading function](/docs/configuration/#loading-function-or-application) to resolve. You can read more about defining loaders [in the docs below](#loading-uis)
+- `props`: An object of [single-spa custom props](/docs/building-applications/#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
 
 ### DOM elements
 
@@ -218,7 +218,7 @@ DOM elements defined within a route will be mounted/unmounted as the route becom
 
 ## Props
 
-[Single-spa custom props](./building-applications#lifecycle-props) may be defined on both `route` and `application` elements. Any route props will be merged together with the application props to create the final props that are passed to [the single-spa lifecycle functions](./building-applications#registered-application-lifecycle).
+[Single-spa custom props](/docs/building-applications/#lifecycle-props) may be defined on both `route` and `application` elements. Any route props will be merged together with the application props to create the final props that are passed to [the single-spa lifecycle functions](/docs/building-applications/#registered-application-lifecycle).
 
 ### JSON
 
@@ -260,9 +260,9 @@ The full API documentation for the `constructRoutes` API explains the `data` obj
 
 ## Loading UIs
 
-It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define per-application loaders that will be mounted to the DOM while the application's [loading function](./configuration.md#loading-function-or-application) is pending. It is possible to share the same loading UI for multiple applications.
+It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define per-application loaders that will be mounted to the DOM while the application's [loading function](/docs/configuration/#loading-function-or-application) is pending. It is possible to share the same loading UI for multiple applications.
 
-A loading UI is defined as either an HTML string or as a [parcel config object](./parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive loaders, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the loader.
+A loading UI is defined as either an HTML string or as a [parcel config object](/docs/parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive loaders, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the loader.
 
 Defining loaders via javascript objects is straightforward, as they are an object that can contain strings, numbers, booleans, objects, arrays, etc. However, defining complex data types in HTML is not as straightforward, since HTML attributes are always strings. To work around this, single-spa-layout allows you to name your loaders in the HTML, but define their values in javascript.
 

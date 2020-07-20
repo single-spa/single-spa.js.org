@@ -8,7 +8,7 @@ The single-spa-layout library exposes several javascript functions as a public A
 
 ## constructRoutes
 
-The `constructRoutes` API transforms your [Layout Definition](./layout-definition.md) into an opaque "resolved routes" object. We call it "opaque" because the shape of the object is irrelevant, as you will only use it when calling other APIs within single-spa-layout.
+The `constructRoutes` API transforms your [Layout Definition](/docs/layout-definition/) into an opaque "resolved routes" object. We call it "opaque" because the shape of the object is irrelevant, as you will only use it when calling other APIs within single-spa-layout.
 
 ```js
 import { constructRoutes } from 'single-spa-layout';
@@ -31,8 +31,8 @@ const resolvedRoutes = constructRoutes(htmlTemplate, layoutData)
 
 **Arguments**
 
-- `routesConfig` (required): Routes config is a [JSON Layout Definition](./layout-definition.md#json-layouts), an [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement), or a [parse5 HTML element](https://github.com/inikulin/parse5). If it is an HTMLElement, it must be a `<single-spa-router>` element or a `<template>` that contains a single-spa-router element.
-- `layoutData` (optional): Layout data is an optionally provided object that defines [props](./layout-definition.md#props) and [loaders](./layout-definition.md#props) for [HTML Layouts](./layout-definition.md#html-layouts). You can omit it if using a [JSON Layout](./layout-definition.md#json-layout) or if you do not need to define props or loaders in your HTML Layout. The layoutData object should have top level properties `props` and `loaders` that are each objects. Each of those objects' keys is the name of a prop or loader and its corresponding value.
+- `routesConfig` (required): Routes config is a [JSON Layout Definition](/docs/layout-definition/#json-layouts), an [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement), or a [parse5 HTML element](https://github.com/inikulin/parse5). If it is an HTMLElement, it must be a `<single-spa-router>` element or a `<template>` that contains a single-spa-router element.
+- `layoutData` (optional): Layout data is an optionally provided object that defines [props](/docs/layout-definition/#props) and [loaders](/docs/layout-definition/#props) for [HTML Layouts](/docs/layout-definition/#html-layouts). You can omit it if using a [JSON Layout](/docs/layout-definition/#json-layout) or if you do not need to define props or loaders in your HTML Layout. The layoutData object should have top level properties `props` and `loaders` that are each objects. Each of those objects' keys is the name of a prop or loader and its corresponding value.
 
 **Return value**
 
@@ -40,7 +40,7 @@ An opaque `resolvedRoutes` object. It is opaque because you will only use the ob
 
 ## constructApplications
 
-The `constructApplications` API transforms your `resolvedRoutes` into [single-spa application registration objects](./configuration.md#registering-applications). These application registration objects are then used to call [singleSpa.registerApplication()](./api.md#registerapplication).
+The `constructApplications` API transforms your `resolvedRoutes` into [single-spa application registration objects](/docs/configuration#registering-applications). These application registration objects are then used to call [singleSpa.registerApplication()](/docs/api/#registerapplication).
 
 ```js
 import { constructRoutes, constructApplications } from 'single-spa-layout';
@@ -59,11 +59,11 @@ applications.forEach(registerApplication);
 `constructApplications` accepts a single object as an argument, with the following properties:
 
 - `routes` (required): The opaque `resolvedRoutes` object returned from `constructRoutes`.
-- `loadApp` (required): A function that is given an application object and must return a [loading function](./configuration#loading-function-or-application).
+- `loadApp` (required): A function that is given an application object and must return a [loading function](/docs/configuration/#loading-function-or-application).
 
 **Return value**
 
-`constructApplications` returns an array of [single-spa registration objects](./configuration.md#registering-applications).
+`constructApplications` returns an array of [single-spa registration objects](/docs/configuration/#registering-applications).
 
 ## constructLayoutEngine
 
@@ -90,7 +90,7 @@ start();
 `constructLayoutEngine` accepts a single object as an argument, with the following properties:
 
 - `routes` (required): The opaque `resolvedRoutes` object returned from `constructRoutes`.
-- `applications` (required): The array of [application registration objects](./configuration.md#registering-applications) returned from `constructApplications`.
+- `applications` (required): The array of [application registration objects](/docs/configuration/#registering-applications) returned from `constructApplications`.
 - `active` (optional): A boolean that indicates whether the layout engine should start out active or not. Defaults to true.
 
 **Return Value**
