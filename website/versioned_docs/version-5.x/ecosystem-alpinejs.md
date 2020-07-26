@@ -22,7 +22,7 @@ Alternatively, you can use single-spa-alpinejs from a CDN as a global variable:
 <script src="https://cdn.jsdelivr.net/npm/single-spa-alpinejs"></script>
 ```
 
-Note that you might want to lock down the package to a specific version. See [here](https://cdn.jsdelivr.net/npm/single-spa-aplinejs) for
+Note that you might want to lock down the package to a specific version. See [here](https://cdn.jsdelivr.net/npm/single-spa-alpinejs) for
 how to do that.
 
 ## Usage
