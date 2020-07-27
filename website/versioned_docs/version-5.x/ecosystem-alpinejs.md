@@ -39,10 +39,14 @@ how to do that.
 import singleSpaAlpinejs from 'single-spa-alpinejs';
 const alpinejslifecycles = singleSpaAlpinejs({
   template: `
-    <div class="mui-panel" x-data="{ open: false }">
-      <div class="mui--test-display1">Test x-show</div>
-      <button class="mui-btn mui-btn--primary" @click="open = !open">Open/Close</button>
-      <div x-show="open" class="mui--text-display4">
+    <div class="rounded overflow-hidden shadow-lg font-sans p-1 m-1" 
+         x-data="{ open: false }">
+      <div class="font-bold p-1">Example for x-show attribute</div>
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+              hover:text-white py-2 px-4 border border-blue-500 
+              hover:border-transparent rounded" 
+              @click="open = !open">Open/Close</button>
+      <div x-show="open" class="text-4xl">
           Hey, I'm open
       </div>
     </div>`,
@@ -60,10 +64,13 @@ Example usage when installed via CDN:
 ```js
 const alpinejsApp = window.singleSpaAlpinejs.default({
   template: `
-    <div class="mui-panel" x-data="{ open: false }">
-      <div class="mui--test-display1">Test x-show</div>
-      <button class="mui-btn mui-btn--primary" @click="open = !open">Open/Close</button>
-      <div x-show="open" class="mui--text-display4">
+    <div class="rounded overflow-hidden shadow-lg font-sans p-1 m-1" 
+         x-data="{ open: false }">
+      <div class="font-bold p-1">Example for x-show attribute</div>
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+      hover:text-white py-2 px-4 border border-blue-500 
+      hover:border-transparent rounded" @click="open = !open">Open/Close</button>
+      <div x-show="open" class="text-4xl">
           Hey, I'm open
       </div>
     </div>`,
@@ -90,10 +97,12 @@ singleSpa.registerApplication({
 import singleSpaAlpinejs from 'single-spa-alpinejs';
 const alpinejslifecycles = singleSpaAlpinejs({
   template: `
-    <div class="mui-panel">
-      <div class="mui--test-display1"> Test x-show</div>
-      <button class="mui-btn mui-btn--primary" @click="open = !open">Open/Close</button>
-      <div x-show="open" class="mui--text-display4">
+    <div class="rounded overflow-hidden shadow-lg font-sans p-1 m-1">
+      <div class="font-bold p-1">Example for x-show attribute</div>
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+      hover:text-white py-2 px-4 border border-blue-500 
+      hover:border-transparent rounded" @click="open = !open">Open/Close</button>
+      <div x-show="open" class="text-4xl">
           Hey, I'm open
       </div>
     </div>`,
@@ -112,10 +121,12 @@ Example usage when installed via CDN:
 ```js
 const alpinejsApp = window.singleSpaAlpinejs.default({
   template: `
-    <div class="mui-panel">
-      <div class="mui--test-display1"> Test x-show</div>
-      <button class="mui-btn mui-btn--primary" @click="open = !open">Open/Close</button>
-      <div x-show="open" class="mui--text-display4">
+    <div class="rounded overflow-hidden shadow-lg font-sans p-1 m-1">
+      <div class="font-bold p-1">Example for x-show attribute</div>
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+      hover:text-white py-2 px-4 border border-blue-500 
+      hover:border-transparent rounded" @click="open = !open">Open/Close</button>
+      <div x-show="open" class="text-4xl">
           Hey, I'm open
       </div>
     </div>`,
@@ -137,7 +148,7 @@ singleSpa.registerApplication({
   - a function
   - a function returning a promise
 - Please note the `xData` attribute _must_ be provided otherwise the `xInit` attribute will be ignored.
-- The sample below references the example from the [Alpine Toolbox - Alpine JS and fetch()](https://codepen.io/eddieebeling/pen/dyoZOBX) and demonstrates how you can use the `xInit` and `xData` attributes to create an AlpineJS application .
+- The sample below references the example from the [Alpine Toolbox - Alpine JS and fetch()](https://www.alpinetoolbox.com/examples/) and demonstrates how you can use the `xInit` and `xData` attributes to create an AlpineJS application .
 
 #### Via npm
 
