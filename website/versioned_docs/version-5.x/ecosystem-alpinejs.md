@@ -137,6 +137,7 @@ singleSpa.registerApplication({
   - a function
   - a function returning a promise
 - Please note the `xData` attribute _must_ be provided otherwise the `xInit` attribute will be ignored.
+- The sample below references the example from the [Alpine Toolbox - Alpine JS and fetch()](https://codepen.io/eddieebeling/pen/dyoZOBX) and demonstrates how you can use the `xInit` and `xData` attributes to create an AlpineJS application .
 
 #### Via npm
 
