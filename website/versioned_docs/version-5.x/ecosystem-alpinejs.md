@@ -89,7 +89,7 @@ singleSpa.registerApplication({
 - You could also provide `x-data` externally and the helper will add it to the component.
   - The `x-data` can be provided in the following forms (via the options attribute `xData`)
     - an object
-    - a function
+    - a function that returns an object
     - a function that returns a promise which resolves with an object.
 
 #### Via npm
