@@ -4,7 +4,7 @@ title: single-spa-alpinejs
 sidebar_label: AlpineJS
 ---
 
-[single-spa-alpinejs](https://github.com/single-spa/single-spa-alpinejs) is a helper library for mounting alpinejs components as
+[single-spa-alpinejs](https://github.com/single-spa/single-spa-alpinejs) is a helper library for mounting [alpinejs](https://github.com/alpinejs/alpine/) components as
 single-spa applications or parcels.
 
 ## Installation
