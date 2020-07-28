@@ -230,8 +230,11 @@ singleSpa.registerApplication({
 
 ```
 
-- The helper does the following - Adds the template to the dom wrapped in `parent dom element` with and id that has a prefix of `alpine`. In this case it will be `id='alpine-myapp'` - Attaches a resolved `xData` as a string `x-data="{ "name": "myapp" ,"open": false }"` to the `parent dom element`. - It will make the user defined `appXInitFn` available globally as an attribute of `window.singleSpaAlpineXInit` and will be accessible via variable `window.singleSpaAlpineXInit.myapp` - Attaches a resolved `xInit` as a string that calls the globally defined variable `x-init="singleSpaAlpineXInit.myapp('alpine-myapp')"` to the `parent dom element`.
-
+- The helper does the following 
+  - Adds the template to the dom wrapped in `parent dom element` with and id that has a prefix of `alpine`. In this case it will be `id='alpine-myapp'` 
+  - Attaches a resolved `xData` as a string `x-data="{ "name": "myapp" ,"open": false }"` to the `parent dom element`. 
+  - It will make the user defined `appXInitFn` available globally as an attribute of `window.singleSpaAlpineXInit` and will be accessible via variable `window.singleSpaAlpineXInit.myapp` 
+  - Attaches a resolved `xInit` as a string that calls the globally defined variable `x-init="singleSpaAlpineXInit.myapp('alpine-myapp')"` to the `parent dom element`.
   - **Note** that this also passes `id` of the `parent dom element` which can then be used to access the alpine data elements to update the state as required.
 
   #### Special characters in the application names
