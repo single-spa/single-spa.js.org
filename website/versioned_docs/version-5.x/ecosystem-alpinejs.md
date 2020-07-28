@@ -251,4 +251,4 @@ singleSpa.registerApplication({
 
   - The single spa helper converts these to valid `global` function names by `replacing` `all the special characters` with underscores (`_`). This does not require any special handling from the user as the helper takes care of this internally
 
-  - In the above case the `xInit` dom element would look like the following `x-init="singleSpaAlpineXInit._my_app('alpine-myapp')"` where the `xInit` function is available as a `global` variable `_my_app`.
+  - In the above case the `xInit` dom element would look like the following `x-init="singleSpaAlpineXInit._my_app('alpine-@my/app')"` where the `xInit` function is available as a `global` variable `_my_app`.
