@@ -201,6 +201,10 @@
         {
           "type": "doc",
           "id": "version-5.x/ecosystem-dojo"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-alpinejs"
         }
       ]
     },
