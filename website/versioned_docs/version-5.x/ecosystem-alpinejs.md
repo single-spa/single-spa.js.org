@@ -31,7 +31,7 @@ how to do that.
 
 ### _1 - Template Only_
 
-- The simplest way were the template contains all the required data and initialization logic (including `x-data` and `x-init`) as part of the dom. The template is provided via the options attribute `template`
+- The simplest way where the template contains all the required data and initialization logic (including `x-data` and `x-init`) as part of the dom. The template is provided via the options attribute `template`
 
 #### Via npm
 
