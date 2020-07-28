@@ -23,6 +23,7 @@ to contribute to this list with your own project:
 - [single-spa-riot](/docs/ecosystem-riot/)
 - [single-spa-backbone](/docs/ecosystem-backbone/)
 - [single-spa-dojo](/docs/ecosystem-dojo/)
+- [single-spa-alpinejs](/docs/ecosystem-alpinejs/)
 
 ## Other helpful libraries
 
