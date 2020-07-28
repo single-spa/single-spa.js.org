@@ -156,6 +156,7 @@ singleSpa.registerApplication({
 
 ```js
 import singleSpaAlpinejs from 'single-spa-alpinejs';
+
 const appTemplate = `
     <div class="w-full h-full text-gray-800">
         <h1 class="mt-0 mb-3 font-light text-3xl" x-text="title"><!-- title text --></h1>
