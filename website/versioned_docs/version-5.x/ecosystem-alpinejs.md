@@ -96,6 +96,7 @@ singleSpa.registerApplication({
 
 ```js
 import singleSpaAlpinejs from 'single-spa-alpinejs';
+
 const alpinejslifecycles = singleSpaAlpinejs({
   template: `
     <div class="rounded overflow-hidden shadow-lg font-sans p-1 m-1">
