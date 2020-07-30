@@ -205,7 +205,7 @@ html[data-theme='dark'] .args-list > dt {
 }
 
 @media (min-width: 997px) {
-  .padding-vert--lg > .container > .row > .col {
+  main .row > [class="col"] {
     max-width: 75%;
   }
 }
