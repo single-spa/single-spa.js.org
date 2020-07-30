@@ -203,3 +203,9 @@ html[data-theme='dark'] .args-list > dt {
   top: auto;
   width: 1px;
 }
+
+@media (min-width: 997px) {
+  main .row > [class="col"] {
+    max-width: 75%;
+  }
+}
