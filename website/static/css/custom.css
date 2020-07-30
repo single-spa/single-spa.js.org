@@ -203,3 +203,9 @@ html[data-theme='dark'] .args-list > dt {
   top: auto;
   width: 1px;
 }
+
+@media (min-width: 997px) {
+  .padding-vert--lg > .container > .row > .col {
+    max-width: 75%;
+  }
+}
