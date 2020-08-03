@@ -37,18 +37,17 @@ You do have the option of _not_ excluding those libraries (for example if you wa
 
 ## How can I share application state between applications?
 
-In general, we recommend trying to avoid this — it couples those apps together. If you find yourself doing this frequently between apps, you may want to consider that those separate apps should actually just be one app.
+The primary means of communicating between applications is [cross microfrontend imports](/docs/recommended-setup#cross-microfrontend-imports). This allows you define a public interface for a microfrontend that others can use. You may expose functions, data, components, stores, or anything else from any microfrontend to be available in any other.
 
-Generally, it’s better to just make an API request for the data that each app needs, even if parts of it have been requested by other apps. In practice, if you’ve designed your application boundaries correctly, there will end up being very little application state that is truly shared — for example, your friends list has different data requirements than your social feed.
+We recommend that each application manage as much of its own state as possible so that your applications remain independently deployable without the risk of breaking each other. Generally, it’s better to make an API request for the data that each app needs, even if parts of it have been requested by other apps. If you've split your applications well, there will end up being very little application state that is truly shared — for example, your friends list has different data requirements than your social feed.
 
-However, that doesn’t mean it can’t be done. Here are several ways:
+The list below shows some common practices:
 
-1. Create a shared API request library that can cache requests and their responses. If somone hits an API, and then that API is hit again by another application, it just uses the cache
-1. Expose the shared state as an export, and other libraries can import it. Observables (like [RxJS](https://rxjs-dev.firebaseapp.com/)) are useful here since they can stream new values to subscribers
-1. Use [custom browser events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events) to communicate
+1. Create a shared API [utility microfrontend](/docs/recommended-setup#utility-modules-styleguide-api-etc) that caches fetch/XHR requests and their responses. All microfrontends call into the API microfrontend when making a request, so that the microfrontend can control whether to refetch the data or not.
+1. Create a shared Auth [utility microfrontend](/docs/recommended-setup#utility-modules-styleguide-api-etc) that exposes a `userCanAccess` function for other microfrontends to use when checking permissions. The auth module may also include other exports such as the logged in user object, auth tokens, etc.
+1. Export shared state from the public interface of your microfrontend so that libraries can import it. For values that change over time, Observables ([RxJS docs](https://rxjs-dev.firebaseapp.com/)) can be useful. Create a [ReplaySubject](https://www.learnrxjs.io/learn-rxjs/subjects/replaysubject) so that you can push new values out to all subscribers at any time.
+1. Use [custom browser events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Creating_custom_events) to communicate. Fire them on the window in one microfrontend, and listen to the event in a different microfrontend.
 1. Use [cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies), [local/session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), or other similar methods for storing and reading that state. These methods work best with things that don't change often, e.g. logged-in user info.
-
-**Please note that this is just talking about sharing application state: sharing functions, components, etc. is as easy as an `export` in one project and an `import` in the other. See [import map](#what-are-import-maps) documentation for more details**
 
 ## Should I use frontend microservices?
 
