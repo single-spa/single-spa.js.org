@@ -182,5 +182,16 @@ start();
 
 ## Two registered applications simultaneously??
 Yep, it's possible. And it's actually not that scary if you do it right. And once you do,
-it's really really powerful. One approach to do this is to create a `<div id="app-name"></div>` for each app,
+it's really really powerful. One approach to do this is to create a `<div>` for each app,
 so that they never try to modify the same DOM at the same time.
+
+The `<div>` will need an `id` starting with the prefix `single-spa-application:`
+and then your app name. For example, if you had an app called `app-name`, you'd
+make a `<div>` with the id `single-spa-application:app-name`.
+
+An example with multiple applications would look like this:
+
+```html
+<div id="single-spa-application:app-name"></div>
+<div id="single-spa-application:other-app"></div>
+```
