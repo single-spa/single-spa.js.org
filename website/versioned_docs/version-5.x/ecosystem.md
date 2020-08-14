@@ -31,3 +31,4 @@ to contribute to this list with your own project:
 - [import-map-deployer](https://github.com/single-spa/import-map-deployer)
 - [SystemJS](https://github.com/systemjs/systemjs)
 - [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop)
+- [webpack-import-map-plugin](https://github.com/zleight1/webpack-import-map-plugin)
