@@ -54,7 +54,9 @@ import { setPublicPath } from 'systemjs-webpack-interop';
 setPublicPath('appName');
 ```
 
-Change your application's entry file to be the following.
+### Vue 2
+
+For Vue 2, change your application's entry file to be the following:
 
 ```js
 import './set-public-path';
@@ -70,6 +72,39 @@ const vueLifecycles = singleSpaVue({
       return h(App);
     },
     router,
+  },
+});
+
+export const bootstrap = vueLifecycles.bootstrap;
+export const mount = vueLifecycles.mount;
+export const unmount = vueLifecycles.unmount;
+```
+
+### Vue 3
+
+For Vue 3, change your application's entry file to be the following:
+
+```js
+import './set-public-path';
+import { h, createApp } from 'vue';
+import singleSpaVue from '../lib/single-spa-vue.js';
+
+import App from './App.vue';
+
+const vueLifecycles = singleSpaVue({
+  createApp,
+  appOptions: {
+    render() {
+      return h(App, {
+        props: {
+          // single-spa props are available on the "this" object. Forward them to your component as needed.
+          // https://single-spa.js.org/docs/building-applications#lifecyle-props
+          name: this.name,
+          mountParcel: this.mountParcel,
+          singleSpa: this.singleSpa,
+        },
+      });
+    },
   },
 });
 
