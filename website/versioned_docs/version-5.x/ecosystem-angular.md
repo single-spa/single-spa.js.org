@@ -651,6 +651,80 @@ If you need to support IE11 or older, do the following:
 
 [Full example commit to get IE11 support](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32)
 
+## Angular Elements
+
+> ⚠️ This feature is available starting from `single-spa-angular@4.4.0`. You also may need to become familiar with [Angular Elements documentation](https://angular.io/guide/elements).
+
+Let's start with installing the `@angular/elements`:
+
+```shell
+npm i --save @angular/elements
+# Or if you're using yarn
+yarn add @angular/elements
+```
+
+The next step is to edit `main.single-spa.ts`:
+
+```ts
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { singleSpaAngularElements } from 'single-spa-angular/elements';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+const lifecycles = singleSpaAngularElements({
+  template: '<app-custom-element />',
+  // We can actually not rely on the `zone.js` library, our custom element
+  // will behave itself as a zone-less application.
+  bootstrapFunction: () => platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' }),
+});
+
+export const bootstrap = lifecycles.bootstrap;
+export const mount = lifecycles.mount;
+export const unmount = lifecycles.unmount;
+```
+
+Note that the `app-custom-element` selector will be used when defining our [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
+
+After that, you'll have to edit `app.module.ts` and define a custom tag:
+
+```ts
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { createCustomElement } from '@angular/elements';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [AppComponent],
+})
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) {}
+
+  ngDoBootstrap(): void {
+    customElements.define(
+      // This tag we've have provided in `options.template` when called `singleSpaAngularElements`.
+      'app-custom-element',
+      createCustomElement(AppComponent, { injector: this.injector }),
+    );
+  }
+}
+```
+
+The following options are available to be passed when calling `singleSpaAngularElements`:
+
+- `bootstrapFunction` (required)
+- `template` (required)
+- `domElementGetter` (optional)
+
+See [options](#options) for detailed explanation.
+
 ## Advanced
 
 ### Zone-less applications
