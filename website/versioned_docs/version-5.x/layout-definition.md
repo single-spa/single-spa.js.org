@@ -279,7 +279,7 @@ const settingsLoader = singleSpaReact({...})
 
 const data = {
   loaders: {
-    topNavPlaceholder: `<nav class="placeholder"></nav>`,
+    topNav: `<nav class="placeholder"></nav>`,
     settings: settingsLoader
   }
 }
