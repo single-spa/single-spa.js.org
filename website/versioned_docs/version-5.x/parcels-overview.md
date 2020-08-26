@@ -153,7 +153,7 @@ function unmount(props) {
 ### Update (optional)
 
 The update lifecycle function will be called whenever the user of the parcel calls `parcel.update()`.
-Single this lifecycle is optional, the user of a parcel needs to check whether the parcel has implemented the update lifecycle before attempting to make the call.
+Since this lifecycle is optional, the user of a parcel needs to check whether the parcel has implemented the update lifecycle before attempting to make the call.
 
 ## Example use cases
 
