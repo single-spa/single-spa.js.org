@@ -69,7 +69,7 @@ const application = {
   mount: () => Promise.resolve(), //mount function
   unmount: () => Promise.resolve(), //unmount function
 }
-registerApplication('applicatonName', application, activityFunction)
+registerApplication('applicationName', application, activityFunction)
 
 ```
 
