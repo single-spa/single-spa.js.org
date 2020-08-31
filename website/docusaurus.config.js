@@ -7,7 +7,7 @@ const versions = require('./versions.json');
 module.exports = {
   title: 'single-spa',
   tagline: 'A javascript router for front-end microservices',
-  url: 'https://single-spa.github.io/single-spa.js.org',
+  url: 'https://single-spa.github.io/es.single-spa.js.org',
   baseUrl: '/',
   projectName: 'single-spa',
   favicon: 'img/logo-blue-favicon.ico',
