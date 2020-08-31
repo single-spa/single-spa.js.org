@@ -18,5 +18,11 @@ export default [
     languageNameEnglish: "Simplified Chinese",
     documentationUrl: "https://zh-hans.single-spa.js.org",
     githubUrl: "https://github.com/single-spa/zh-hans.single-spa.js.org"
-  }
+  },
+  {
+    languageName: "Español",
+    languageNameEnglish: "Spanish",
+    documentationUrl: "https://es.single-spa.js.org",
+    githubUrl: "https://github.com/single-spa/es.single-spa.js.org"
+  },
 ]
