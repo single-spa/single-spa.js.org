@@ -76,6 +76,12 @@ const users = [
     image: 'img/canonical-logo.svg',
     infoLink: 'https://www.canonical.com/',
     pinned: false
+  },
+  {
+    caption: 'Unbabel',
+    image: 'img/unbabel-logo.svg',
+    infoLink: 'https://www.unbabel.com/',
+    pinned: false
   }
 ];
 
