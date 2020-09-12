@@ -82,6 +82,12 @@ const users = [
     image: 'img/unbabel-logo.svg',
     infoLink: 'https://www.unbabel.com/',
     pinned: false
+  },
+  {
+    caption: 'Australia Post Global eCommerce Solutions',
+    image: 'img/apg-ecommerce-solutions-logo.png',
+    infoLink: 'https://www.apgecommerce.com/',
+    pinned: true
   }
 ];
 
