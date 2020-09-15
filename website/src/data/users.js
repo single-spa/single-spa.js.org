@@ -39,7 +39,7 @@ const users = [
     caption: 'Dstillery',
     image: 'img/dstillery.png',
     infoLink: 'https://dstillery.com',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'Scania',
@@ -75,7 +75,7 @@ const users = [
     caption: 'Canonical',
     image: 'img/canonical-logo.svg',
     infoLink: 'https://www.canonical.com/',
-    pinned: false
+    pinned: true
   },
   {
     caption: 'Unbabel',
