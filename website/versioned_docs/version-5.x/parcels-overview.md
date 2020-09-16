@@ -71,7 +71,7 @@ export const MyParcel = singleSpaReact({
 // in this case singleSpaReact is taking our inputs and generating an object with the required lifecycles.
 ```
 
-Then to use the parcel you just created all you need to do is use the `Parcel` component provided in [single-spa-react](single-spa-react.md#parcels)
+Then to use the parcel you just created all you need to do is use the `Parcel` component provided in [single-spa-react](ecosystem-react.md#parcels)
 
 ```jsx
 // mycomponent.js
@@ -91,7 +91,7 @@ export class myComponent extends React.Component {
 }
 ```
 
-Note that in some cases the optional props are required [(see additional examples)](single-spa-react.md#examples).
+Note that in some cases the optional props are required [(see additional examples)](ecosystem-react.md#examples).
 
 ## Parcel Lifecycles
 
