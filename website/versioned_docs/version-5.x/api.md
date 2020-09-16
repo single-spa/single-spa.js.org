@@ -463,7 +463,7 @@ activewhen(new URL('http://localhost/settings')); // true
 activewhen(new URL('http://localhost/settings/password')); // true
 activeWhen(new URL('http://localhost/')); // false
 
-activeWhen = singleSpa.pathToActiveWhen('/user/:id/settings');
+activeWhen = singleSpa.pathToActiveWhen('/users/:id/settings');
 activewhen(new URL('http://localhost/users/6f7dsdf8g9df8g9dfg/settings')); // true
 activewhen(new URL('http://localhost/users/1324/settings')); // true
 activewhen(new URL('http://localhost/users/1324/settings/password')); // true
