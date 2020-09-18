@@ -419,9 +419,9 @@ Sibling routes are defined as those that share a "nearest parent route." This me
 
 ## Error UIs
 
-When a single-spa application fails to load, mount, or unmount, it moves to [SKIP_BECAUSE_BROKEN](/docs/api#getappstatus) status. When in SKIP_BECAUSE_BROKEN status, often nothing is visible to the user and they won't understand why the application is not showing. You can call [unloadApplication](/docs/api#unloadapplication) to move the application back to NOT_LOADING status, which will cause single-spa to re-attempt downloading and mounting it. However, it is often desireable to show an error state when the application fails.
+When a single-spa application fails to load, mount, or unmount, it moves to [SKIP_BECAUSE_BROKEN or LOAD_ERROR](/docs/api#getappstatus) status. When in SKIP_BECAUSE_BROKEN status, often nothing is visible to the user and they won't understand why the application is not showing. You can call [unloadApplication](/docs/api#unloadapplication) to move the application back to NOT_LOADING status, which will cause single-spa to re-attempt downloading and mounting it. However, it is often desireable to show an error state when the application errors.
 
-An error UI is defined as either an HTML string or as a [parcel config object](/docs/parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive error states, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamicall render the error state.
+An error UI is defined as either an HTML string or as a [parcel config object](/docs/parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive error states, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the error state. The error UI will be shown whenever the application's status is SKIP_BECAUSE_BROKEN or LOAD_ERROR.
 
 Defining error uis via javascript objects is straightforward, as the string or parcel can be defined in an application object via the `error` property:
 
