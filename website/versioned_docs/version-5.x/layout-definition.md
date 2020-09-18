@@ -218,7 +218,7 @@ DOM elements defined within a route will be mounted/unmounted as the route becom
 
 #### JSON DOM Nodes
 
-The format of dom nodes in JSON is largely based on the [parse5](https://github.com/inikulin/parse5) format for HTMLElements.
+The format of dom nodes in JSON is largely based on the [parse5](https://github.com/inikulin/parse5) format.
 
 ##### HTMLElement
 
