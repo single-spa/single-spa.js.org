@@ -261,7 +261,7 @@ Tutorial video (Part 2): [Youtube](https://www.youtube.com/watch?v=nC7rpDXa4B8&l
 
 [Example CI configuration files](https://github.com/single-spa/import-map-deployer/tree/master/examples)
 
-Microfrontends are built and deployed completely independently. This means that the git repository, CI, build, and deployments all occur without going through a centralized repository. For this reason, monorepos are not encouraged for microfrontends since monorepos may only have one CI for all of the packages in the repo.
+Microfrontends are built and deployed completely independently. This means that the git repository, CI, build, and deployments all occur without going through a centralized repository. For this reason, monorepos are not encouraged for microfrontends. CI for monorepos can be configured to only build and deploy the packages that have changed but it is often more complex. Modern CI platforms such as [AWS Amplify](https://aws.amazon.com/blogs/mobile/set-up-continuous-deployment-and-hosting-for-a-monorepo-with-aws-amplify-console/) and [Vercel](https://vercel.com/blog/monorepos) are starting to have built-in support for monorepos however.
 
 There are two steps to deploying a microfrontend.
 
