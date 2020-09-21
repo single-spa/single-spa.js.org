@@ -17,7 +17,7 @@ During the course of a single-spa page, registered applications are loaded, boot
 A lifecycle function is a function or array of functions that single-spa will call on a registered application. single-spa calls these by finding specific named exports from the registered application's main file.
 
 Notes:
-- Implementing `bootstrap`, `mount`, and `unmount` is required. But implementing `unload` is optional.
+- Implementing `mount` and `unmount` is required. But implementing `bootstrap` and `unload` is optional.
 - Each lifecycle function must either return a `Promise` or be an `async function`.
 - If an array of functions is exported (instead of just one function), the functions will be called
   one-after-the-other, waiting for the resolution of one function's promise before calling the next.
