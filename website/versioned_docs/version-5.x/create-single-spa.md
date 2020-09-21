@@ -161,7 +161,7 @@ yarn add --dev webpack-config-single-spa-react webpack-merge
 
 ```js
 const webpackMerge = require('webpack-merge');
-const singleSpaDefaults = require('webpack-config-single-spa');
+const singleSpaDefaults = require('webpack-config-single-spa-react');
 
 module.exports = webpackConfigEnv => {
   const defaultConfig = singleSpaDefaults({
