@@ -162,6 +162,8 @@ The same application may appear multiple times in your layout, under different r
 <application name="appName" props="myProp,authToken"></application>
 ```
 
+#### application config using JSON
+
 ```js
 // Basic usage
 {
@@ -169,13 +171,20 @@ The same application may appear multiple times in your layout, under different r
   "name": "appName"
 }
 
+import singleSpaReactParcel from 'single-spa-react'
+
 // Use a single-spa parcel as a loading UI
 // You may also use Angular, Vue, etc.
-const parcelConfig = singleSpaReact({...})
+const parcelConfig = singleSpaReactParcel({
+  React,
+  ReactDom,
+  rootComponent: MyParcelComponent
+})
+
 {
   "type": "application",
   "name": "appName",
-  "loader": parcelConfig
+  "loader": parcelConfig // use the parcel
 }
 
 // Use an HTML string as a loading UI
@@ -349,7 +358,7 @@ Defining loaders via javascript objects is straightforward, as they are an objec
 import { constructRoutes } from 'single-spa-layout';
 
 // You may also use Angular, Vue, etc.
-const settingsLoader = singleSpaReact({...})
+const settingsLoader = singleSpaReactParcel({...})
 
 const data = {
   loaders: {
@@ -434,7 +443,7 @@ Defining error uis via javascript objects is straightforward, as the string or p
 ```
 
 ```js
-const myErrorParcel = singleSpaReact({...})
+const myErrorParcel = singleSpaReactParcel({...})
 
 {
   "type": "application",
@@ -454,7 +463,7 @@ However, defining error uis in HTML is less straightforward, since HTML attribut
 ```
 
 ```js
-const myErrorParcel = singleSpaReact({...})
+const myErrorParcel = singleSpaReactParcel({...})
 
 const routes = constructRoutes(document.querySelector('#single-spa-layout'), {
   errors: {
