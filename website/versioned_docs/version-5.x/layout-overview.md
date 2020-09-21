@@ -14,6 +14,7 @@ The `single-spa-layout` npm package is an optional add-on to single-spa. The lay
 - Loading UIs when applications are downloaded.
 - Default routes for Not Found / 404 pages.
 - Transitions between routes (implementation pending).
+- Error pages
 
 The layout engine performs two major tasks:
 
