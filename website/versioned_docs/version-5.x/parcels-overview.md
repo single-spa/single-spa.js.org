@@ -18,17 +18,25 @@ If you are only using one framework, it is recommended to prefer framework compo
 ```js
 // The parcel implementation
 const parcelConfig = {
-  bootstrap() {
+  // optional
+  bootstrap(props) {
     // one time initialization
-    return Promise.resolve()
+    return Promise.resolve();
   },
-  mount() {
+  // required
+  mount(props) {
     // use a framework to create dom nodes and mount the parcel
-    return Promise.resolve()
+    return Promise.resolve();
   },
-  unmount() {
+  // required
+  unmount(props) {
     // use a framework to unmount dom nodes and perform other cleanup
-    return Promise.resolve()
+    return Promise.resolve();
+  },
+  // optional
+  update(props) {
+    // use a framework to update dom nodes
+    return Promise.resolve();
   }
 }
 
@@ -53,7 +61,7 @@ parcel.mountPromise.then(() => {
 ## Parcel configuration
 
 A parcel is just an object with 3 or 4 functions on it. When mounting a parcel, you can provide either the object itself or a loading function that asynchronously downloads the parcel object.
-Each function on a parcel object is a lifecycle method, which is a function that returns a promise. Parcels have three required lifecycle methods (bootstrap, mount, and unmount) and one optional lifecycle method (update).
+Each function on a parcel object is a lifecycle method, which is a function that returns a promise. Parcels have two required lifecycle methods (mount and unmount) and two optional lifecycles method (bootstrap and update).
 When implementing a parcel, it's strongly recommended that you use the [lifecycle helper methods](ecosystem.md#help-for-frameworks).
 An example of a parcel written in React would look like this:
 ```js
