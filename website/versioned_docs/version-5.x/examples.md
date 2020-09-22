@@ -12,6 +12,7 @@ sidebar_label: Resources
 - [Vue Microfrontends](https://github.com/vue-microfrontends) (check out root-config repo first)
 - [Polyglot Microfrontends](https://github.com/polyglot-microfrontends) (check out root-config repo first)
 - [single-spa-es5-angularjs](https://github.com/joeldenning/single-spa-es5-angularjs) is a very tiny es5 example with angularjs.
+- [Isomorphic Microfrontends](https://github.com/isomorphic-microfrontends) is a setup that shows server-side rendering (SSR) with single-spa-layout.
 
 ### Older examples
 
