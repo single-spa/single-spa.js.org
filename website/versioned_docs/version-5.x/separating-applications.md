@@ -30,8 +30,6 @@ Create a root application that npm installs each of the single-spa applications.
 
 Typically, the single-spa applications compile themselves separately with babel and/or webpack.
 
-Note that you can also use the [monorepo methodology](https://medium.com/netscape/the-case-for-monorepos-907c1361708a) which allows for separate builds without having separate code repositories.
-
 Advantages:
 
 - npm install is familiar and easy to set up
@@ -42,7 +40,13 @@ Disadvantages:
 - The root application must reinstall the child applications in order to rebuild/redeploy
 - Medium difficulty to set up
 
-#### Option 3: Dynamic Module Loading
+#### Option 3: Monorepos
+
+Create a [monorepo](https://medium.com/netscape/the-case-for-monorepos-907c1361708a) with multiple SPAs in a single (mono) repo. 
+This allows for separate builds and deployment without having separate code repositories.
+
+
+#### Option 4: Dynamic Module Loading
 
 Create a root application which can allow single-spa applications to deploy themselves separately. To do so,
 create a manifest file that the single-spa applications update during their deployment process, which controls
@@ -57,6 +61,6 @@ Changing which JavaScript file is loaded for each child application can be done 
 
 |   | Separate code repositories possible | Independent CI builds | Separate deployments | Examples |
 | - | ----------------------------------- | --------------- | -------------------- | -------- |
-| Monorepo | :x: | :x: | :x: | &mdash; |
 | NPM Packages | :white_check_mark: | :white_check_mark: | :x: | [1](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages) |
+| Monorepo | :x: | :white_check_mark: [1](https://medium.com/labs42/monorepo-with-circleci-conditional-workflows-69e65d3f1bd0) | :white_check_mark: [1](https://medium.com/labs42/monorepo-with-circleci-conditional-workflows-69e65d3f1bd0) | &mdash; |
 | Module loading | :white_check_mark: | :white_check_mark: | :white_check_mark: | [1](https://github.com/react-microfrontends/) [2](https://github.com/vue-microfrontends/) [3](https://github.com/polyglot-microfrontends/) |
