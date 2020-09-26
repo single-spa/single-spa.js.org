@@ -63,5 +63,5 @@ Changing which JavaScript file is loaded for each child application can be done 
 | - | ----------------------------------- | --------------- | -------------------- | -------- |
 | Monolith | :x: | :x: | :x: | &mdash; |
 | NPM Packages | :white_check_mark: | :white_check_mark: | :x: | [1](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages) |
-| Monorepo | :white_check_mark: | :white_check_mark: | :white_check_mark: | &mdash; |
+| Monorepo | :x: | :white_check_mark: [1](https://medium.com/labs42/monorepo-with-circleci-conditional-workflows-69e65d3f1bd0) | :white_check_mark: [1](https://medium.com/labs42/monorepo-with-circleci-conditional-workflows-69e65d3f1bd0) | &mdash; |
 | Module loading | :white_check_mark: | :white_check_mark: | :white_check_mark: | [1](https://github.com/react-microfrontends/) [2](https://github.com/vue-microfrontends/) [3](https://github.com/polyglot-microfrontends/) |
