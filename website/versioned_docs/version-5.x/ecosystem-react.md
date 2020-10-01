@@ -96,7 +96,12 @@ You can use the Parcel component either by npm installing the library and import
 
 #### Examples
 ```jsx
+// webpack 5 syntax
 import Parcel from 'single-spa-react/parcel'
+// webpack 4 syntax
+import Parcel from 'single-spa-react/lib/esm/parcel'
+
+
 import * as parcelConfig from './my-parcel.js'
 
 // config is required. The parcel will be mounted inside of the
