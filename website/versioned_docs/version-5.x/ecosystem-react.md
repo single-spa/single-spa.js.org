@@ -96,7 +96,19 @@ You can use the Parcel component either by npm installing the library and import
 
 #### Examples
 ```jsx
+// Use this import path in environments that support package.json exports
+// See https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_package_entry_points
+// and see https://github.com/single-spa/single-spa-react/releases/tag/v3.0.0
+// Use this in Webpack 5 and recent versions of Node
 import Parcel from 'single-spa-react/parcel'
+
+// Use this import path in environments that don't support package.json exports
+// See https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_package_entry_points
+// and see https://github.com/single-spa/single-spa-react/releases/tag/v3.0.0
+// Use this in Webpack 4 and older versions of Node
+import Parcel from 'single-spa-react/lib/esm/parcel'
+
+
 import * as parcelConfig from './my-parcel.js'
 
 // config is required. The parcel will be mounted inside of the
