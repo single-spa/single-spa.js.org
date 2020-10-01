@@ -289,6 +289,6 @@ Hydration (or rehydration) refers to browser Javascript initializing and attachi
 
 > See also ["Rendering on the Web"](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) by Google.
 
-In the context of microfrontends, hydration is done by the underlying UI framework of the microfrontend (React, Vue, Angular, etc). For example, in React, this is done by calling [ReactDOM.hydrate()](https://reactjs.org/docs/react-dom.html#hydrate). The [single-spa adapter libraries](http://localhost:3000/docs/ecosystem) allow you to specify whether you are hydrating or mounting for the first time (see single-spa-react's [`renderType` option](/docs/ecosystem-react#options)).
+In the context of microfrontends, hydration is done by the underlying UI framework of the microfrontend (React, Vue, Angular, etc). For example, in React, this is done by calling [ReactDOM.hydrate()](https://reactjs.org/docs/react-dom.html#hydrate). The [single-spa adapter libraries](/docs/ecosystem) allow you to specify whether you are hydrating or mounting for the first time (see single-spa-react's [`renderType` option](/docs/ecosystem-react#options)).
 
 The role of single-spa-layout is to determine which microfrontends should hydrate which parts of the DOM. This is done automatically when you call [constructLayoutEngine](/docs/layout-api#constructlayoutengine) and [singleSpa.start()](/docs/api#start). If using TailorX instead of single-spa-layout, the [Isomorphic Layout Composer Project](https://github.com/namecheap/ilc) serves a similar purpose as `constructLayoutEngine`.
