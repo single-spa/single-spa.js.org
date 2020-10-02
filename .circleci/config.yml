@@ -29,6 +29,7 @@ jobs:
             yarn build
             if [ "$CIRCLE_BRANCH" != "master" ]; then
               # Ping FeaturePeek
+              cd ..
               bash <(curl -s https://peek.run/ci)
             fi
 workflows:
