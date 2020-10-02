@@ -27,6 +27,10 @@ jobs:
             cd website 
             yarn install --frozen-lockfile
             yarn build
+            if [ "$CIRCLE_BRANCH" != "master" ]; then
+              # Ping FeaturePeek
+              bash <(curl -s https://peek.run/ci)
+            fi
 workflows:
   version: 2
   build_and_deploy:
