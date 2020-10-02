@@ -26,7 +26,7 @@ The ultimate goal of server-side rendering is to generate an HTTP response that 
 2. Fetch - Begin rendering the HTML for each microfrontend to a stream.
 3. Headers - Retrieve HTTP response headers from each microfrontend. Merge them together and send the result as the HTTP response headers to the browser.
 4. Body - Send the HTTP response body to the browser, which is an HTML document consisting of static and dynamic parts. This involves waiting for each microfrontend's stream to end before proceeding to the next portion of HTML.
-5. Hydrate - Within the browser, download all javascript needed to hydrate the HTML.
+5. Hydrate - Within the browser, download all javascript needed and then hydrate the HTML.
 
 ## 1. Layout
 
@@ -36,7 +36,7 @@ To define an HTML template that lays out your page, first choose a "microfronten
 2. [Tailor](https://github.com/zalando/tailor): A popular, battle tested layout engine that predates single-spa-layout and is not officially affiliated with single-spa.
 3. [TailorX](https://github.com/StyleT/tailorx): An actively maintained fork of Tailor that is used by [Namecheap](https://www.namecheap.com/) in their single-spa website. The single-spa core team collaborated with the creators of TailorX when authoring single-spa-layout, taking some inspiration from it.
 
-We generally recommend single-spa-layout, although choosing one of the other options might make sense for your situation, since single-spa-layout is newer and less battle tested than Tailor/TailorX.
+We generally recommend single-spa-layout, although choosing one of the other options might make sense for your situation, since single-spa-layout is newer and has been used less than Tailor/TailorX.
 
 With single-spa-layout, you define a single template that handles all routes. [Full documentation](/docs/layout-definition).
 
@@ -101,7 +101,7 @@ Module loading refers to loading javascript code using `import` and `import()`. 
 
 ```js
 import('@org-name/navbar/server.js').then(navbar => {
-  const headers = navbar.getHTTPHeaders(props);
+  const headers = navbar.getResponseHeaders(props);
   const htmlStream = navbar.serverRender(props);
 })
 ```
@@ -122,12 +122,29 @@ const serverLayout = constructServerLayout({
 });
 
 http.createServer((req, res) => {
-  const { bodyStream } = renderServerResponseBody(serverLayout, {
+  const { bodyStream } = renderServerResponseBody({
+    res,
+    serverLayout,
     urlPath: req.path,
-    renderApplication(props) {
-      return import(`${props.name}/server.js`).then(app => {
-        return app.serverRender(props);
-      });
+    async renderApplication({ appName, propsPromise }) {
+      const [app, props] = await Promise.all([
+        import(`${props.name}/server.mjs`,
+        propsPromise
+      )])
+      return app.serverRender(props);
+    },
+    async retrieveApplicationHeaders({ appName, propsPromise }) {
+      const [app, props] = await Promise.all([
+        import(`${props.name}/server.mjs`,
+        propsPromise
+      )])
+      return app.getResponseHeaders(props);
+    },
+    async retrieveProp(propName) {
+      return "prop value"
+    },
+    assembleFinalHeaders(appHeaders) {
+      return Object.assign({}, ...Object.values(allHeaders).map(a => a.appHeaders));
     },
     renderFragment(name) {
       // not relevant to the docs here
@@ -186,20 +203,31 @@ const serverLayout = constructServerLayout({
 });
 
 http.createServer((req, res) => {
-  const { bodyStream } = renderServerResponseBody(serverLayout, {
+  const fetchPromises = {}
+
+  renderServerResponseBody(serverLayout, {
+    res,
+    serverLayout,
     urlPath: req.path,
-    renderApplication(props) {
-      return fetch(`http://${props.name}`).then(r => {
-        if (r.ok) {
-          // r.body is a Readable stream
-          return r.body;
-        } else {
-          throw Error(`Received http response ${r.status} from microfrontend ${props.name}`);
-        }
-      })
-      return import(`${props.name}/server.js`).then(app => {
-        return app.serverRender(props);
-      });
+    async renderApplication({ appName, propsPromise }) {
+      const props = await propsPromise
+      const fetchPromise = fetchPromises[appName] || (fetchPromises[appName] = fetchMicrofrontend(props))
+      const response = await fetchPromise;
+      // r.body is a Readable stream when you use node-fetch,
+      // which is best for performance when using single-spa-layout
+      return response.body;
+    },
+    async retrieveApplicationHeaders({ appName, propsPromise }) {
+      const props = await propsPromise
+      const fetchPromise = fetchPromises[appName] || (fetchPromises[appName] = fetchMicrofrontend(props))
+      const response = await fetchPromise;
+      return response.headers;
+    },
+    async retrieveProp(propName) {
+      return "prop value"
+    },
+    assembleFinalHeaders(allHeaders) {
+      return Object.assign({}, ...Object.values(allHeaders))
     },
     renderFragment(name) {
       // not relevant to the docs here
@@ -208,13 +236,25 @@ http.createServer((req, res) => {
 
   bodyStream.pipe(res);
 }).listen(9000)
+
+async function fetchMicrofrontend(props) {
+  fetch(`http://${props.name}`, {
+    headers: props
+  }).then(r => {
+    if (r.ok) {
+      return r;
+    } else {
+      throw Error(`Received http response ${r.status} from microfrontend ${appName}`);
+    }
+  })
+}
 ```
 
 ## 3. HTTP Response Headers
 
 The HTTP response headers sent to the browser are a combination of default headers and the headers retrieved from each microfrontend. Your [method of fetching microfrontends](#2-fetch) does not change how the final headers are merged and assembled for the browser.
 
-Tailor and TailorX have default methods of merging headers. At the time of this writing, single-spa-layout requires manual merging of the headers.
+Tailor and TailorX have built-in methods of merging headers. Single-spa-layout allows for custom merging via the `assembleFinalHeaders` option:
 
 ```js
 import {
@@ -229,32 +269,37 @@ const serverLayout = constructServerLayout({
 });
 
 http.createServer((req, res) => {
-  const { bodyStream, applicationProps } = renderServerResponseBody({...});
-
-  const defaultHeaders = {
-    'content-type': 'text/html',
-  }
-
-  setResponseHeaders({
+  const { bodyStream } = renderServerResponseBody({
     res,
-    applicationProps,
-    retrieveApplicationHeaders(props) {
-      return import(`${props.name}/server.js`).then(app => {
-        return app.getHTTPHeaders(props)
-      })
+    serverLayout,
+    urlPath: req.path,
+    async renderApplication({ appName, propsPromise }) {
+      const [app, props] = await Promise.all([
+        import(`${props.name}/server.mjs`,
+        propsPromise
+      )])
+      return app.serverRender(props);
     },
-    mergeHeaders(headersList) {
-      // This is where you customize which headers to send to the browser
-      const finalHeaders = {...defaultHeaders}
-      headersList.forEach(headers => {
-        for (let headerName in headers) {
-          finalHeaders[headerName] = headers[headerName];
-        }
-      })
+    async retrieveApplicationHeaders({ appName, propsPromise }) {
+      const [app, props] = await Promise.all([
+        import(`${props.name}/server.mjs`,
+        propsPromise
+      )])
+      return app.getResponseHeaders(props);
     },
-  }).then(() => {
-    bodyStream.pipe(res);
-  })
+    async retrieveProp(propName) {
+      return "prop value"
+    },
+    assembleFinalHeaders(allHeaders) {
+      // appHeaders contains all the application names, props, and headers for 
+      return Object.assign({}, ...Object.values(allHeaders).map(a => a.appHeaders));
+    },
+    renderFragment(name) {
+      // not relevant to the docs here
+    }
+  });
+
+  bodyStream.pipe(res);
 }).listen(9000)
 ```
 
@@ -262,11 +307,11 @@ http.createServer((req, res) => {
 
 The HTTP Response body sent from the web server to the browser must be streamed, byte by byte, in order to maximize performance. [NodeJS Readable streams](https://nodejs.org/api/stream.html#stream_readable_streams) make this possible by acting as a buffer that sends each byte as received, instead of all bytes at once.
 
-All microfrontend layout middlewares mentioned in this document stream the HTML response body to the browser. In the context of single-spa-layout, this is done by calling `bodyStream.pipe(res)`
+All microfrontend layout middlewares mentioned in this document stream the HTML response body to the browser. In the context of single-spa-layout, this is done by calling `sendLayoutHTTPResponse`
 
 ```js
 import {
-  renderServerResponseBody,
+  sendLayoutHTTPResponse,
 } from "single-spa-layout/server";
 import http from 'http';
 
@@ -275,10 +320,9 @@ const serverLayout = constructServerLayout({
 });
 
 http.createServer((req, res) => {
-  const { bodyStream, applicationProps } = renderServerResponseBody({...});
-
-  setResponseHeaders({...}).then(() => {
-    bodyStream.pipe(res);
+  sendLayoutHTTPResponse({
+    res,
+    // Add all other needed options here, too
   })
 }).listen(9000)
 ```

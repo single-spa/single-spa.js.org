@@ -14,11 +14,17 @@ The `single-spa-layout` npm package is an optional add-on to single-spa. The lay
 - Loading UIs when applications are downloaded.
 - Default routes for Not Found / 404 pages.
 - Transitions between routes (implementation pending).
+- Server side rendering of single-spa applications
 
-The layout engine performs two major tasks:
+In the browser, the layout engine performs two major tasks:
 
 1. Generate [single-spa registration config](/docs/api/#configuration-object) from an HTML Element and/or JSON object.
 1. Listen to [routing events](/docs/api/#events) to ensure that all DOM elements are laid out correctly before the single-spa applications are mounted.
+
+On the server, the layout engine performs two tasks:
+
+1. Construct a [server layout object](/docs/layout-api#constructserverlayout) from an HTML template.
+2. Send an HTML document (HTTP response headers and body) to the browser, based on the server layout object and current route.
 
 `single-spa-layout` is 3.2kb gzipped (9kb ungzipped).
 
@@ -37,9 +43,9 @@ yarn add single-spa-layout@beta
 
 `single-spa-layout` is new and currently released under the `beta` dist-tag on npm. We are gathering feedback and improving the layout engine in preparation for a stable release. Although we do not expect the layout engine to change drastically, we do not recommend using it in a production setting until it is released as stable.
 
-### Browser support
+### Browser / NodeJS support
 
-`single-spa-layout` works in all browsers supported by single-spa, including IE11.
+`single-spa-layout` works in all browsers supported by single-spa, including IE11. On the server, all NodeJS versions that support ESM are supported.
 
 ### Requirements
 
