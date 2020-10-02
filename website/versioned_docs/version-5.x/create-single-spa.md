@@ -83,6 +83,10 @@ create-single-spa --framework vue
 create-single-spa --framework angular
 ```
 
+### --layout
+
+When generating a root config, the `--layout` CLI argument indicates that you want to use [single-spa-layout](/docs/layout-overview) in your root config.
+
 ## Project types
 
 create-single-spa asks you if you'd like to create a single-spa application, a utility module, or a root-config. All three module types assume that you are using the [recommended setup](/docs/recommended-setup).
