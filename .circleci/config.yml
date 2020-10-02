@@ -27,6 +27,9 @@ jobs:
             cd website 
             yarn install --frozen-lockfile
             yarn build
+      - run:
+          name: Ping FeaturePeek
+          command: bash <(curl -s https://peek.run/ci)
 workflows:
   version: 2
   build_and_deploy:
