@@ -98,7 +98,7 @@
     },
     {
       "type": "category",
-      "label": "Layout Engine (Beta)",
+      "label": "Layout Engine",
       "items": [
         {
           "type": "doc",
@@ -210,7 +210,7 @@
     },
     {
       "type": "category",
-      "label": "Server Side Rendering (Beta)",
+      "label": "Server Side Rendering (New)",
       "items": [
         {
           "type": "doc",
