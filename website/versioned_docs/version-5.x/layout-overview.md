@@ -34,15 +34,11 @@ On the server, the layout engine performs two tasks:
 You only need to install the layout engine into your [root config](/docs/configuration/) (not in any other application).
 
 ```sh
-npm install --save single-spa-layout@beta
+npm install --save single-spa-layout
 
 # or
-yarn add single-spa-layout@beta
+yarn add single-spa-layout
 ```
-
-### Project status
-
-`single-spa-layout` is new and currently released under the `beta` dist-tag on npm. We are gathering feedback and improving the layout engine in preparation for a stable release. Although we do not expect the layout engine to change drastically, we do not recommend using it in a production setting until it is released as stable.
 
 ### Browser / NodeJS support
 
