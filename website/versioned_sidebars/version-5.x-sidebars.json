@@ -210,6 +210,16 @@
     },
     {
       "type": "category",
+      "label": "Server Side Rendering (Beta)",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/ssr-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "Dev Tools",
       "items": [
         {

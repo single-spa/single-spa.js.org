@@ -201,6 +201,16 @@ const parcelConfig = singleSpaReact({...})
 - `loader` (optional): An HTML string or [single-spa parcel config object](/docs/parcels-overview/#parcel-configuration). The loader will be mounted to the DOM while waiting for the application's [loading function](/docs/configuration/#loading-function-or-application) to resolve. You can read more about defining loaders [in the docs below](#loading-uis)
 - `props`: An object of [single-spa custom props](/docs/building-applications/#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
 
+### `<fragment>`
+
+The `fragment` element is used to specify a dynamic server-rendered portion of the template. Fragments are commonly used to inline import maps, add dynamic CSS / fonts, or customize the HTML `<head>` metadata. See [sendLayoutHTTPResponse](/docs/layout-api#sendlayouthttpresponse) for more information about how fragments are rendered. Note that `<fragment>` elements only have meaning in server templates, not browser-only templates.
+
+```html
+<fragment name="importmap"></fragment>
+
+<fragment name="head-metadata"></fragment>
+```
+
 ### DOM elements
 
 Arbitrary HTMLElements may be placed anywhere in your layout. You may define arbirary dom elements in both HTML and JSON.
