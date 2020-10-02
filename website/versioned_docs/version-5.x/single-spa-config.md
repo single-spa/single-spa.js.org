@@ -47,7 +47,7 @@ registerApplication({
   customProps: {
     some: 'value',
   }
-);
+});
 
 start();
 ```
