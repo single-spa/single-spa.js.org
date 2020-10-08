@@ -781,3 +781,33 @@ const lifecycles = singleSpaAngular({
 ```
 
 > ⚠️ `single-spa-angular@4.x` requires calling `getSingleSpaExtraProviders` function in applications that have routing. Do not call this function in _zone-less_ application.
+
+### Parcels
+
+In order to consume parcels created in other frameworks (vue, react) in angular, there is a angular parcel component available which can be used to fetch the vue or react parcel and add it to the DOM in angular. The link to the parcel component https://github.com/ricardofct/single-spa-angular/blob/angular-parcel/src/browser-lib/parcel-lib/parcel.component.ts. Copy this component and paste it in your angular code.
+
+To use the component in html
+```html
+<parcel *ngIf="spaSite" [config]="spaSite" [mountParcel]="mountParcel"> </parcel>
+```
+
+The inputs config and mountparcel have to be passed with the value as show below. Make sure sample-vue-parcel is present in imports in index.html in root application
+```ts
+import { Component, OnInit } from '@angular/core';
+import { mountRootParcel, ParcelConfig} from "single-spa";
+const windowAny: any = window;
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements OnInit {
+  mountParcel = mountRootParcel;
+  spaSite:any;
+   ngOnInit() {
+    windowAny.System.import("sample-vue-parcel").then(mod => {
+      this.spaSite = mod;
+    });
+  }
+}
+```
