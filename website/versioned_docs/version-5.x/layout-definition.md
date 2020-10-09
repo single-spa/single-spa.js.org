@@ -313,8 +313,8 @@ import { constructRoutes } from 'single-spa-layout';
 
 constructRoutes({
   routes: [
-    { type: "application", name: "nav" props: { title: "Title" } },
-    { type: "route", path: "settings" props: { otherProp: "Some value" } },
+    { type: "application", name: "nav", props: { title: "Title" } },
+    { type: "route", path: "settings", props: { otherProp: "Some value" } },
   ]
 })
 ```
