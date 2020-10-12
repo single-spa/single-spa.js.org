@@ -194,7 +194,10 @@ http.createServer((req, res) => {
     serverLayout,
     urlPath: req.path,
     async renderApplication({ appName, propsPromise }) {
-      return `<button>${appName} app</button>`;
+      return {
+        assets: `<link rel="stylesheet" href="/my-styles.css">`,
+        content: `<button>${appName} app</button>`
+      }
     },
     async retrieveApplicationHeaders({ appName, propsPromise }) {
       return {
@@ -225,7 +228,7 @@ http.createServer((req, res) => {
 - `serverLayout` (required): The opaque server layout object returned from `constructServerLayout`.
 - `urlPath` (required): A string url path that will be used as the current route. Example: `/settings`
 - `assembleFinalHeaders` (required): A function that is passed all application headers and returns the final HTTP headers sent to the browser. The application headers are collected from the `retrieveApplicationHeaders` function into an array of AppHeaders objects. Each AppHeaders object has an `appName` and `appHeaders` object, where the appName is a string and the `appHeaders` is a headers object. `assembleFinalHeaders` must return a headers object.
-- `renderApplication` (optional): A function that is given information about a single-spa application and should return the HTML content for that application. This function is required if a single-spa application matches the current route. The argument passed to the renderApplication function is an object with an `appName` string and a `propsPromise` promise. The `propsPromise` resolves with the props for the application. The function can return a string, [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams), or a Promise. Returned promises must resolve with a string or Readable stream.
+- `renderApplication` (optional): A function that is given information about a single-spa application and should return the HTML content (and, optionally, the assets) for that application. This function is required if a single-spa application matches the current route. The argument passed to the renderApplication function is an object with an `appName` string and a `propsPromise` promise. The `propsPromise` resolves with the props for the application. The function can return an object, string, [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams), or a Promise. Returned objects must be of format `type ApplicationRenderResult = { assets: Readable | Promise<Readable> | string | Promise<string>, content: }`. Returned promises must resolve with an ApplicationRenderResult object, string or Readable stream. The `assets` returned from renderApplication are rendered into [the `<assets>` element](/docs/layout-definition#assets) in your layout definition.
 - `retrieveApplicationHeaders` (optional): A function that is given information about a single-spa application and should return the HTTP response headers for that application. This function is required if a single-spa application matches the current route. The argument passed to the retrieveApplicationHeaders function is an object with an `appName` string and a `propsPromise` promise. The `propsPromise` resolves with the props for the application. The function can a headers object or a Promise that resolves with a headers object.
 - `renderFragment` (optional): A function that is given a fragment name and returns the HTML content for that fragment. This corresponds to `<fragment>` elements in the layout definition, and is required if the the layout definition contains a `<fragment>` element. The `renderFragment` function can return a string, [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams), or a Promise. Returned promises must resolve with a string or Readable stream.
 - `retrieveProp` (optional): A function that is given a propName and returns the prop's value. This function is required if any rendered applications have props. `retrieveProp` can return a value, or a promise that resolves with a value.

@@ -211,6 +211,14 @@ The `fragment` element is used to specify a dynamic server-rendered portion of t
 <fragment name="head-metadata"></fragment>
 ```
 
+### `<assets>`
+
+The `<assets>` element is used to specify the location of server-rendered application assets, including CSS and fonts. When server-side rendered, the `<assets>` element is replaced by all the assets from the active applications on the page. Applications specify their assets as part of the `renderApplication` function provided to [the `sendLayoutHTTPResponse` function](/docs/layout-api#sendLayoutHTTPResponse).
+
+```html
+<assets></assets>
+```
+
 ### DOM elements
 
 Arbitrary HTMLElements may be placed anywhere in your layout. You may define arbirary dom elements in both HTML and JSON.
