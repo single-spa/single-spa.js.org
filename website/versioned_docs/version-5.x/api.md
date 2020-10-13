@@ -657,7 +657,7 @@ window.addEventListener('popstate', evt => {
 
 ### Canceling navigation
 
-Canceling navigation refers to the URL changing and then immediately changing back to what it was before. This is done before any mounting, unmounting, or loading that would otherwise take place. . This can be used in conjunction with Vue router and Angular router's built-in navigation guards that allow for cancelation of a navigation event.
+Canceling navigation refers to the URL changing and then immediately changing back to what it was before. This is done before any mounting, unmounting, or loading that would otherwise take place. This can be used in conjunction with Vue router and Angular router's built-in navigation guards that allow for cancelation of a navigation event.
 
 To cancel a navigation event, listen to the `single-spa:before-routing-event` event:
 
