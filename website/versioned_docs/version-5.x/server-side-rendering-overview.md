@@ -112,8 +112,7 @@ In the context of single-spa-layout, this is done inside of the `renderApplicati
 ```js
 import {
   constructServerLayout,
-  setResponseHeaders,
-  renderServerResponseBody,
+  sendLayoutHTTPResponse
 } from "single-spa-layout/server";
 import http from 'http';
 
@@ -122,7 +121,7 @@ const serverLayout = constructServerLayout({
 });
 
 http.createServer((req, res) => {
-  const { bodyStream } = renderServerResponseBody({
+  const { bodyStream } = sendLayoutHTTPResponse({
     res,
     serverLayout,
     urlPath: req.path,
@@ -192,8 +191,7 @@ In the context of single-spa-layout, this is done with the `renderApplication` f
 ```js
 import {
   constructServerLayout,
-  setResponseHeaders,
-  renderServerResponseBody,
+  sendLayoutHTTPResponse,
 } from "single-spa-layout/server";
 import http from 'http';
 import fetch from 'node-fetch';
@@ -205,7 +203,7 @@ const serverLayout = constructServerLayout({
 http.createServer((req, res) => {
   const fetchPromises = {}
 
-  renderServerResponseBody(serverLayout, {
+  sendLayoutHTTPResponse(serverLayout, {
     res,
     serverLayout,
     urlPath: req.path,
@@ -259,8 +257,7 @@ Tailor and TailorX have built-in methods of merging headers. Single-spa-layout a
 ```js
 import {
   constructServerLayout,
-  setResponseHeaders,
-  renderServerResponseBody,
+  sendLayoutHTTPResponse
 } from "single-spa-layout/server";
 import http from 'http';
 
@@ -269,7 +266,7 @@ const serverLayout = constructServerLayout({
 });
 
 http.createServer((req, res) => {
-  const { bodyStream } = renderServerResponseBody({
+  const { bodyStream } = sendLayoutHTTPResponse({
     res,
     serverLayout,
     urlPath: req.path,
