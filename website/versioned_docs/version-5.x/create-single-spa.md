@@ -333,6 +333,7 @@ http.createServer((req, res) => {
     res.status(200).send(htmlWithInlinedImportMap);
 
     // Example of how to apply a NodeJS import map
+    // More info at https://github.com/node-loader/node-loader-import-maps
     global.nodeLoader.setImportMapPromise(Promise.resolve(nodeImportMap));
     import('module-in-import-map');
   });
