@@ -22,18 +22,18 @@ See [our examples page](/docs/examples).
 
 ## Architectural Overview
 
-single-spa takes inspiration from modern framework component lifecycles by applying lifecycles to entire applications.
-It was born out of Canopy's desire to use React + react-router instead of being forever stuck with our AngularJS + ui-router application, and now single-spa supports almost any framework. Since JavaScript is notorious for the short life of its many frameworks, we decided to make it easy to use whichever frameworks you want.
+single-spa takes inspiration from modern framework component lifecycles by abstracting lifecycles for entire applications.
+Born out of Canopy's desire to use React + react-router instead of being forever stuck with our AngularJS + ui-router application, single-spa is now a mature library that enables frontend microservices architecture aka "microfrontends". Microfrontends enable many benefits such as independent deployments, migration and experimentation, and resilient applications.
 
 single-spa apps consist of the following:
 
-1. [Applications](building-applications.md), each of which is an entire SPA itself (sort of). Each application can respond to url routing events and must know how to bootstrap, mount, and unmount itself from the DOM. The main difference between a traditional SPA and single-spa applications is that they must be able to coexist with other applications, and they do not each have their own HTML page.
+1. A [single-spa root config](configuration), which renders the HTML page _and_ the JavaScript that registers applications. Each application is registered with three things:
+   - A name
+   - A function to load the application's code
+   - A function that determines when the application is active/inactive
+1. [Applications](building-applications.md) which can be thought of as single-page applications packaged up into modules. Each application must know how to bootstrap, mount, and unmount itself from the DOM. The main difference between a traditional SPA and single-spa applications is that they must be able to coexist with other applications as they do not each have their own HTML page.
 
-    For example, your React or Angular SPAs are applications. When active, they listen to url routing events and put content on the DOM. When inactive, they do not listen to url routing events and are totally removed from the DOM.
-2. A [single-spa-config](configuration), which is the HTML page _and_ the JavaScript that registers applications with single-spa. Each application is registered with three things:
-    - A name
-    - A function to load the application's code
-    - A function that determines when the application is active/inactive
+   For example, your React or Angular SPAs are applications. When active, they can listen to url routing events and put content on the DOM. When inactive, they do not listen to url routing events and are totally removed from the DOM.
 
 ## The Recommended Setup
 
@@ -43,11 +43,11 @@ The single-spa core team has put together documentation, tools, and videos showi
 
 single-spa works with ES5, ES6+, TypeScript, Webpack, SystemJS, Gulp, Grunt, Bower, ember-cli, or really any build system available. You can npm install it or even just use a `<script>` tag if you prefer.
 
-Our objective is to make using single-spa as easy as possible. But we should also point out that this is an advanced architecture that is different from how front-end applications are typically done.
+While our objective is to make using single-spa as easy as possible, we should also note that this is an _advanced architecture_ that is different from how front-end applications are typically done. This will require changes to existing paradigms as well as understanding of underlying tools.
 
 If you're not starting your application from scratch, you'll have to [migrate your SPA](migrating-existing-spas.md) to become a single-spa application.
 
-single-spa works in Chrome, Firefox, Safari, IE11, and Edge.
+single-spa works in Chrome, Firefox, Safari, Edge, and IE11 (with polyfills).
 
 ## Isn't single-spa sort of a redundant name?
 
@@ -57,91 +57,89 @@ Yep.
 
 The documentation is divided into several sections:
 
-* [Getting Started](getting-started-overview.md)
-* [single-spa Applications](building-applications.md)
-* [single-spa Parcels](parcels-overview.md)
-* [Examples](examples.md)
-* [Ecosystem](ecosystem.md)
-* [Contributing Guide](contributing-overview.md)
-* [Blog](https://single-spa.js.org/blog/)
-* [Where to Get Support](https://single-spa.js.org/help/)
+- [Getting Started](getting-started-overview.md)
+- [single-spa Applications](building-applications.md)
+- [single-spa Parcels](parcels-overview.md)
+- [Examples](examples.md)
+- [Ecosystem](ecosystem.md)
+- [Contributing Guide](contributing-overview.md)
+- [Blog](https://single-spa.js.org/blog/)
+- [Where to Get Support](https://single-spa.js.org/help/)
 
 You can help improve the single-spa website by sending pull requests to the [`single-spa.js.org` repository](https://github.com/single-spa/single-spa.js.org).
 
-## Simple Usage
+## Quick start
 
-For a full example, check out [this simple webpack example](https://github.com/joeldenning/simple-single-spa-webpack-example) or [these examples](/docs/examples/).
+To help beginners to single-spa get started quickly we have developed [`create-single-spa`](/docs/create-single-spa/), a utility for generating starter code. This guide will cover creating the root-config and your first single-spa application. Let's get started.
 
-To create a single-spa application, you will need to do three things:
+> Once you've gotten some of the basics down, refer to these other [single-spa examples](/docs/examples/) to see more advanced usage.
 
-1. Create an html file.
+### Create a root config
 
-```html
-<html>
-<body>
-	<script src="single-spa-config.js"></script>
-</body>
-</html>
+1.  Invoke `create-single-spa` to generate a root-config by running:
+
+        npx create-single-spa --moduleType root-config
+
+    Follow the remaining prompts with a few things in mind:
+
+    - [single-spa Layout Engine](https://single-spa.js.org/docs/layout-overview) is optional at this time but is recommended if you foresee utilizing [server side rendering](https://single-spa.js.org/docs/ssr-overview)
+    - the `orgName` should be the same across all of your applications as it is used as a namespace to enable [in-browser module resolution](https://single-spa.js.org/docs/recommended-setup/#in-browser-versus-build-time-modules)
+
+1.  Once created, navigate into the newly created root-config folder
+1.  Run the `start` script using your preferred package manager
+1.  Navigate to http://localhost:9000/ in your browser
+1.  You now have a working root-config!
+
+**Be sure to review the comments inside the generated code as well as the information in the Welcome application** even if some of the content is duplicated in this guide.
+
+> [single-spa-playground.org](http://single-spa-playground.org/playground) is an alternative guide to run an application without needing to create your own root-config.
+
+### Create a single-spa application
+
+1.  Invoke `create-single-spa` to generate a single-spa application by running:
+
+        npx create-single-spa --moduleType app-parcel
+
+    Follow the remaining prompts to generate a single-spa application using your framework of choice
+
+1.  Once created, navigate into the newly created application folder
+1.  Run the `start` script using your preferred package manager
+
+### Add shared dependencies
+
+[Shared dependencies](https://single-spa.js.org/docs/recommended-setup/#shared-dependencies) are used to improve performance by sharing a module in the browser through [import maps](https://single-spa.js.org/docs/recommended-setup/#import-maps) declared in the root-config. Adding these at this point is _conditionally optional_, depending on if the generated application expects any shared dependencies.
+
+For example, if using React the generated Webpack config already expects `React` and `ReactDOM` to be shared dependencies, so you must add these to the import map. Vue, Angular, and Svelte don't require shared dependencies at this time.
+
+```json
+"react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+"react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js"
 ```
 
-2. Create a single-spa-config. Check out the [docs](configuration) for more detail.
+As your architecture matures, you may add more shared dependencies in the future so don't stress about leveraging these perfectly at first.
 
-```js
-import * as singleSpa from 'single-spa';
+### Register the application
 
-const name = 'app1';
+1. Return to the root-config and add your application to the import map in `src/index.ejs`
 
-/* The app can be a resolved application or a function that returns a promise that resolves with the JavaScript application module.
- * The purpose of it is to facilitate lazy loading -- single-spa will not download the code for a application until it needs to.
- * In this example, import() is supported in webpack and returns a Promise, but single-spa works with any loading function that returns a Promise.
- */
-const app = () => import('./app1/app1.js');
+   <small>The application's package.json name field is recommended</small>
 
-/* single-spa does some top-level routing to determine which application is active for any url. You can implement this routing any way you'd like.
- * One useful convention might be to prefix the url with the name of the app that is active, to keep your top-level routing simple.
- */
-const activeWhen = '/app1';
+1. Register as a single-spa application
 
-singleSpa.registerApplication({ name, app, activeWhen });
+   if **not** using single-spa Layout Engine
 
-singleSpa.start();
-```
+   - Open `src/root-config.js`
+   - Remove the code for registering `@single-spa/welcome` as an application
+   - Uncomment the sample `registerApplication` code and update it with the module name of your application
 
-3. Create an application. Check out the [docs](building-applications.md) for more detail.
+   if using single-spa Layout Engine
 
-```js
-//app1.js
+   - Remove the existing `<application name="@single-spa/welcome"></application>` element
+   - Add your own `<application name=""></application>` element using the `name` the module name used in the import map from the previous ste
 
-let domEl;
+Thats it! Your first single-spa application should now be running in your root-config.
 
-export function bootstrap(props) {
-	return Promise
-		.resolve()
-		.then(() => {
-			domEl = document.createElement('div');
-			domEl.id = 'app1';
-			document.body.appendChild(domEl);
-		});
-}
-
-export function mount(props) {
-	return Promise
-		.resolve()
-		.then(() => {
-			// This is where you would normally use a framework to mount some ui to the dom. See https://single-spa.js.org/docs/ecosystem.html.
-			domEl.textContent = 'App 1 is mounted!'
-		});
-}
-
-export function unmount(props) {
-	return Promise
-		.resolve()
-		.then(() => {
-			// This is normally where you would tell the framework to unmount the ui from the dom. See https://single-spa.js.org/docs/ecosystem.html
-			domEl.textContent = '';
-		})
-}
-```
+---
 
 ## API
 
