@@ -264,3 +264,78 @@ module.exports = webpackConfigEnv => {
   })
 }
 ```
+
+## single-spa-web-server-utils
+
+The `single-spa-web-server-utils` package is a collection of functions that help when implementing a web server for an index.html file. This package can be used to inline import maps into an HTML, which helps with the performance of your application. Additionally, it can be used to modify a browser import map so that it's suitable for usage in NodeJS for dynamic module loading and server rendering ([Dynamic Module Loading](/docs/ssr-overview#a-module-loading) and [Server Rendering](https://single-spa.js.org/docs/ssr-overview#intro-to-ssr))).
+
+The web server utils poll the import map from a URL and generate a `browserImportMap` and `nodeImportMap` from the response.
+
+### Installation
+
+```sh
+npm install --save single-spa-web-server-utils
+
+# alternatively
+yarn add single-spa-web-server-utils
+```
+
+### getImportMaps
+
+The `getImportMaps` function accepts an object parameter and returns a promise that resolves with an object with two import maps: `browserImportMap` and `nodeImportMap`.
+
+```js
+const { getImportMaps } = require('single-spa-web-server-utils');
+const http = require('http');
+const ejs = require('ejs');
+const fs = require('fs');
+const path = require('path');
+
+const htmlTemplate = ejs.compile(fs.readFileSync(path.resolve(process.cwd(), 'views/index.html'), 'utf-8'));
+
+http.createServer((req, res) => {
+  getImportMaps({
+    // required
+    // The URL at which the server
+    url: 'https://my-cdn.com/live.importmap',
+
+    // optional - defaults to 30000
+    // The ms to wait when polling the import map
+    pollInterval: 30000,
+
+    // optional - defaults to false
+    // Whether to allow for import-map-overrides via cookies sent in the request.
+    // More details about overrides via cookies at
+    // https://github.com/joeldenning/import-map-overrides/blob/master/docs/api.md#node
+    allowOverrides: true,
+
+    // optional - only needed when allowOverrides is true
+    // The IncomingMessage from an http server. This is used to gather
+    // cookies for import-map-overrides
+    req,
+
+    // optional
+    // This allows you to remove entries from the downloaded import map
+    // from the returned `nodeImportMap`. This is useful for customizing
+    // an import map that is used in the browser so that it can be used
+    // for dynamic NodeJS module loading. Each key is a string import specifier.
+    // Keys that you return `true` for are preserved in the nodeImportMap.
+    nodeKeyFilter(key) {
+      return true;
+    }
+  })
+  .then(({browserImportMap, nodeImportMap}) => {
+    console.log(browserImportMap, nodeImportMap);
+
+    // Example of how to inline a browser import map
+    const htmlWithInlinedImportMap = htmlTemplate({importMap: browserImportMap});
+    res.setResponseHeader('Content-Type', 'text/html');
+    res.status(200).send(htmlWithInlinedImportMap);
+
+    // Example of how to apply a NodeJS import map
+    // More info at https://github.com/node-loader/node-loader-import-maps
+    global.nodeLoader.setImportMapPromise(Promise.resolve(nodeImportMap));
+    import('module-in-import-map');
+  });
+});
+```
