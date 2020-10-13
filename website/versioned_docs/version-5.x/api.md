@@ -655,17 +655,41 @@ window.addEventListener('popstate', evt => {
 });
 ```
 
+### Canceling navigation
+
+Canceling navigation refers to the URL changing and then immediately changing back to what it was before. This is done before any mounting, unmounting, or loading that would otherwise take place. This can be used in conjunction with Vue router and Angular router's built-in navigation guards that allow for cancelation of a navigation event.
+
+To cancel a navigation event, listen to the `single-spa:before-routing-event` event:
+
+```js
+window.addEventListener('single-spa:before-routing-event', ({detail: {oldUrl, newUrl, cancelNavigation}}) => {
+	if (new URL(oldUrl).pathname === '/route1' && new URL(newUrl).pathname === '/route2') {
+		cancelNavigation();
+	}
+})
+```
+
+When a navigation is canceled, no applications will be mounted, unmounted, loaded, or unloaded. All single-spa routing events will fire for the canceled navigation, but they will each have the `navigationIsCanceled` property set to `true` on the `event.detail` (Details below in Custom Events section).
+
+Navigation cancelation is sometimes used as a mechanism for preventing users from accessing routes for which they are unauthorized. However, we generally recommend permission checks on each route as the proper way to guard routes, instead of navigation cancelation.
+
 ### Custom Events
 
 single-spa fires a series of [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) whenever it reroutes. A reroute occurs whenever the browser URL changes in any way or a `triggerAppChange` is called. The custom events are fired to the `window`. Each custom event has a [`detail` property](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail) with the following properties:
 
 ```js
 window.addEventListener('single-spa:before-routing-event', evt => {
-	const { originalEvent, newAppStatuses, appsByNewStatus, totalAppChanges } = evt.detail;
+	const { originalEvent, newAppStatuses, appsByNewStatus, totalAppChanges, oldUrl, newUrl, navigationIsCanceled, cancelNavigation } = evt.detail;
 	console.log('original event that triggered this single-spa event', originalEvent); // PopStateEvent | HashChangeEvent | undefined
 	console.log('the new status for all applications after the reroute finishes', newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
 	console.log('the applications that changed, grouped by their status', appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
 	console.log('number of applications that changed status so far during this reroute', totalAppChanges); // 2
+	console.log('the URL before the navigationEvent', oldUrl); // http://localhost:8080/old-route
+	console.log('the URL after the navigationEvent', newUrl); // http://localhost:8080/new-route
+	console.log('has the navigation been canceled', navigationIsCanceled); // false
+
+	// The cancelNavigation function is only defined in the before-routing-event
+	evt.detail.cancelNavigation();
 })
 ```
 
