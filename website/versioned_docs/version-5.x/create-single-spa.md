@@ -299,7 +299,7 @@ http.createServer((req, res) => {
     // The URL at which the server
     url: 'https://my-cdn.com/live.importmap',
 
-    // optional - defaults to 300000
+    // optional - defaults to 30000
     // The ms to wait when polling the import map
     pollInterval: 30000,
 
