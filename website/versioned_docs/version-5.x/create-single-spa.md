@@ -253,8 +253,15 @@ module.exports = webpackConfigEnv => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
+    
     // The name of the current project. This usually matches the git repo's name
     projectName: 'name-of-project',
+    
+    // optional
+    // This changes whether package names that start with @your-org-name are
+    // treated as webpack externals or not. Defaults to true
+    orgPackagesAsExternal: true,
+    
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
   })
