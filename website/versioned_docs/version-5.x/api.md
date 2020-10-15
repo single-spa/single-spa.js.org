@@ -332,6 +332,24 @@ Because a registered application might be mounted when `unloadApplication` is ca
 	<dd>This promise will be resolved when the registered application has been successfully removed.</dd>
 </dl>
 
+## unregisterApplication
+
+```js
+import { unregisterApplication } from 'single-spa';
+
+unregisterApplication('app1').then(() => {
+	console.log('app1 is now unmounted, unloaded, and no longer registered!');
+})
+```
+
+The `unregisterApplication` function will unmount, unload, and unregister an application. Once it is no longer registered, the application will never again be mounted.
+
+This api was introduced in single-spa@5.8.0. A few notes about this api:
+
+- Unregistering an application does not delete it from the SystemJS module registry.
+- Unregistering an application does not delete its code or javascript frameworks from browser memory.
+- An alternative to unregistering applications is to perform permission checks inside of the application's activity function. This has a similar effect of preventing the application from ever mounting.
+
 ## checkActivityFunctions
 
 ```js
