@@ -348,7 +348,7 @@ This api was introduced in single-spa@5.8.0. A few notes about this api:
 
 - Unregistering an application does not delete it from the SystemJS module registry.
 - Unregistering an application does not delete its code or javascript frameworks from browser memory.
-- An alternative to unregistering applications is to perform permission checks inside of the application's activity function. This has a similar effect of preventing the application from ever mounting. simply `return false` from the application's activity function, which ensures that 
+- An alternative to unregistering applications is to perform permission checks inside of the application's activity function. This has a similar effect of preventing the application from ever mounting.
 
 <h3>arguments</h3>
 
