@@ -329,7 +329,7 @@ Because a registered application might be mounted when `unloadApplication` is ca
 
 <dl className="args-list">
 	<dt>Promise</dt>
-	<dd>This promise will be resolved when the registered application has been successfully removed.</dd>
+	<dd>This promise will be resolved when the registered application has been successfully unloaded.</dd>
 </dl>
 
 ## unregisterApplication
@@ -348,8 +348,20 @@ This api was introduced in single-spa@5.8.0. A few notes about this api:
 
 - Unregistering an application does not delete it from the SystemJS module registry.
 - Unregistering an application does not delete its code or javascript frameworks from browser memory.
-- An alternative to unregistering applications is to perform permission checks inside of the application's activity function. This has a similar effect of preventing the application from ever mounting.
+- An alternative to unregistering applications is to perform permission checks inside of the application's activity function. This has a similar effect of preventing the application from ever mounting. simply `return false` from the application's activity function, which ensures that 
 
+<h3>arguments</h3>
+
+<dl className="args-list">
+	<dt>appName: string</dt>
+</dl>
+
+<h3>returns</h3>
+
+<dl className="args-list">
+	<dt>Promise</dt>
+	<dd>This promise will be resolved when the application has been successfully unregistered.</dd>
+</dl>
 ## checkActivityFunctions
 
 ```js
