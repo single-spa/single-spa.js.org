@@ -36,7 +36,7 @@ singleSpa.registerApplication(
 	<dd>Must be a loading function that either returns the resolved application or a promise.</dd>
 	<dt>activityFn: (location) => boolean</dt>
 	<dd>Must be a pure function. The function is called with <codehtml>window.location</codehtml> as the first argument {/* TODO: any only? */} and should return a truthy value whenever the application should be active.</dd>
-	<dt>customProps?: Object = &#123;&#125;</dt>
+	<dt>customProps?: Object | () => Object</dt>
 	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
 
@@ -50,7 +50,21 @@ singleSpa.registerApplication({
 	name: 'appName',
 	app: () => System.import('appName'),
 	activeWhen: '/appName'
-	customProps: {}
+	customProps: {
+		authToken: 'xc67f6as87f7s9d'
+	}
+})
+
+singleSpa.registerApplication({
+	name: 'appName',
+	app: () => System.import('appName'),
+	activeWhen: '/appName',
+	// Dynamic custom props that can change based on route
+	customProps(appName, location) {
+		return {
+			authToken: 'xc67f6as87f7s9d'
+		}
+	}
 })
 ```
 
@@ -91,7 +105,7 @@ singleSpa.registerApplication({
 			<dd>🚫 https://app.com/app2</dd>
 		</dl>
 	</dd>
-	<dt>customProps?: Object = &#123;&#125;</dt>
+	<dt>customProps?: Object | () => Object</dt>
 	<dd>Will be passed to the application during each lifecycle method.</dd>
 </dl>
 
