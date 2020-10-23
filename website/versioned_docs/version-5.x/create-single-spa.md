@@ -130,7 +130,7 @@ yarn add --dev webpack-config-single-spa webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -138,6 +138,8 @@ module.exports = webpackConfigEnv => {
     projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -167,7 +169,7 @@ yarn add --dev webpack-config-single-spa-react webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-react');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -175,6 +177,8 @@ module.exports = webpackConfigEnv => {
     projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -204,7 +208,7 @@ yarn add --dev webpack-config-single-spa-ts webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-ts');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -212,6 +216,8 @@ module.exports = webpackConfigEnv => {
     projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -249,7 +255,7 @@ yarn add --dev webpack-config-single-spa-react-ts webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -264,6 +270,9 @@ module.exports = webpackConfigEnv => {
     
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
