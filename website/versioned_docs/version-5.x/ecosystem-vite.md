@@ -23,7 +23,17 @@ single-spa works well with native modules, systemjs, or even both. With Vite + s
 
 ## Configuration
 
-First install the koa cors plugin:
+```sh
+# If you're using Vue
+npm install --save single-spa-vue
+
+# alternatively you can use Yarn
+yarn add single-spa-vue
+```
+
+Modify the `src/main.js` file to not mount your app immediately, but rather to export the single-spa lifecycles. For Vue apps, see https://single-spa.js.org/docs/ecosystem-vue#usage.
+
+Install the koa cors plugin:
 
 ```sh
 npm install --save-dev @koa/cors
