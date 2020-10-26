@@ -113,7 +113,7 @@ The `single-spa-router` element is required as the top level container of your l
 
 ### `<route>`
 
-The `route` element is used to control which applications and dom elements are shown for a top-level URL route. It may contain HTMLElements, applications, or other routes.
+The `route` element is used to control which applications and dom elements are shown for a top-level URL route. It may contain HTMLElements, applications, or other routes. Note that the route path is a URL prefix, not an exact match.
 
 ```html
 <route path="clients">
@@ -141,7 +141,7 @@ The `route` element is used to control which applications and dom elements are s
 Routes must either have a path or be a default route.
 
 - `routes` (required): An array of children elements that will be displayed when the route is active
-- `path` (optional): A string path that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](/docs/api/#pathtoactivewhen) to convert the path string to an [activity function](/docs/configuration/#activity-function).
+- `path` (optional): A string **path prefix** that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](/docs/api/#pathtoactivewhen) to convert the path string to an [activity function](/docs/configuration/#activity-function). The path is a prefix because it will match when any subroutes of the path match.
 - `default` (optional): A boolean that determines whether this route will match all remaining URLs that have not been defined by sibling routes. This is useful for 404 Not Found pages. A sibling route is defined as any route with the same nearest-parent-route.
 - `props`: An object of [single-spa custom props](/docs/building-applications/#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
 
