@@ -205,6 +205,10 @@
         {
           "type": "doc",
           "id": "version-5.x/ecosystem-alpinejs"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-vite"
         }
       ]
     },
