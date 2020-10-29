@@ -18,7 +18,7 @@ If you are only using one framework, it is recommended to prefer framework compo
 ```js
 // The parcel implementation
 const parcelConfig = {
-  // optional
+  // required
   bootstrap(props) {
     // one time initialization
     return Promise.resolve();
