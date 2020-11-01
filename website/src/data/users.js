@@ -88,6 +88,12 @@ const users = [
     image: 'img/apg-ecommerce-solutions-logo.png',
     infoLink: 'https://www.apgecommerce.com/',
     pinned: true
+  },
+  {
+    caption: 'Zup I.T.',
+    image: 'img/zup-logo.png',
+    infoLink: 'https://www.zup.com.br/en/',
+    pinned: true
   }
 ];
 
