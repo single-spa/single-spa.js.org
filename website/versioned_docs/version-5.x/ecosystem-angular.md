@@ -94,7 +94,7 @@ Note that the schematics for Angular 9 [do not use the custom Angular builder](#
 [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
 
 ### Angular 10
-Angular 10 is supported by single-spa-angular@4.4.0+.
+Angular 10 is supported by single-spa-angular@4.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 10. Follow the [Angular CLI instructions](#angular-cli).
