@@ -83,6 +83,10 @@ create-single-spa --framework vue
 create-single-spa --framework angular
 ```
 
+### --layout
+
+When generating a root config, the `--layout` CLI argument indicates that you want to use [single-spa-layout](/docs/layout-overview) in your root config.
+
 ## Project types
 
 create-single-spa asks you if you'd like to create a single-spa application, a utility module, or a root-config. All three module types assume that you are using the [recommended setup](/docs/recommended-setup).
@@ -126,7 +130,7 @@ yarn add --dev webpack-config-single-spa webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -134,6 +138,8 @@ module.exports = webpackConfigEnv => {
     projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -161,9 +167,9 @@ yarn add --dev webpack-config-single-spa-react webpack-merge
 
 ```js
 const webpackMerge = require('webpack-merge');
-const singleSpaDefaults = require('webpack-config-single-spa');
+const singleSpaDefaults = require('webpack-config-single-spa-react');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -171,6 +177,8 @@ module.exports = webpackConfigEnv => {
     projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -200,7 +208,7 @@ yarn add --dev webpack-config-single-spa-ts webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-ts');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
@@ -208,6 +216,8 @@ module.exports = webpackConfigEnv => {
     projectName: 'name-of-project',
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -245,18 +255,103 @@ yarn add --dev webpack-config-single-spa-react-ts webpack-merge
 const webpackMerge = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
 
-module.exports = webpackConfigEnv => {
+module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
     orgName: 'name-of-company',
+    
     // The name of the current project. This usually matches the git repo's name
     projectName: 'name-of-project',
+    
+    // optional
+    // This changes whether package names that start with @your-org-name are
+    // treated as webpack externals or not. Defaults to true
+    orgPackagesAsExternal: true,
+    
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    
+    // The CLI commands in the package.json script that triggered this build
+    argv,
   })
 
   return webpackMerge.smart(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
   })
 }
+```
+
+## single-spa-web-server-utils
+
+The `single-spa-web-server-utils` package is a collection of functions that help when implementing a web server for an index.html file. This package can be used to inline import maps into an HTML, which helps with the performance of your application. Additionally, it can be used to modify a browser import map so that it's suitable for usage in NodeJS for dynamic module loading and server rendering ([Dynamic Module Loading](/docs/ssr-overview#a-module-loading) and [Server Rendering](https://single-spa.js.org/docs/ssr-overview#intro-to-ssr))).
+
+The web server utils poll the import map from a URL and generate a `browserImportMap` and `nodeImportMap` from the response.
+
+### Installation
+
+```sh
+npm install --save single-spa-web-server-utils
+
+# alternatively
+yarn add single-spa-web-server-utils
+```
+
+### getImportMaps
+
+The `getImportMaps` function accepts an object parameter and returns a promise that resolves with an object with two import maps: `browserImportMap` and `nodeImportMap`.
+
+```js
+const { getImportMaps } = require('single-spa-web-server-utils');
+const http = require('http');
+const ejs = require('ejs');
+const fs = require('fs');
+const path = require('path');
+
+const htmlTemplate = ejs.compile(fs.readFileSync(path.resolve(process.cwd(), 'views/index.html'), 'utf-8'));
+
+http.createServer((req, res) => {
+  getImportMaps({
+    // required
+    // The URL at which the server
+    url: 'https://my-cdn.com/live.importmap',
+
+    // optional - defaults to 30000
+    // The ms to wait when polling the import map
+    pollInterval: 30000,
+
+    // optional - defaults to false
+    // Whether to allow for import-map-overrides via cookies sent in the request.
+    // More details about overrides via cookies at
+    // https://github.com/joeldenning/import-map-overrides/blob/master/docs/api.md#node
+    allowOverrides: true,
+
+    // optional - only needed when allowOverrides is true
+    // The IncomingMessage from an http server. This is used to gather
+    // cookies for import-map-overrides
+    req,
+
+    // optional
+    // This allows you to remove entries from the downloaded import map
+    // from the returned `nodeImportMap`. This is useful for customizing
+    // an import map that is used in the browser so that it can be used
+    // for dynamic NodeJS module loading. Each key is a string import specifier.
+    // Keys that you return `true` for are preserved in the nodeImportMap.
+    nodeKeyFilter(key) {
+      return true;
+    }
+  })
+  .then(({browserImportMap, nodeImportMap}) => {
+    console.log(browserImportMap, nodeImportMap);
+
+    // Example of how to inline a browser import map
+    const htmlWithInlinedImportMap = htmlTemplate({importMap: browserImportMap});
+    res.setResponseHeader('Content-Type', 'text/html');
+    res.status(200).send(htmlWithInlinedImportMap);
+
+    // Example of how to apply a NodeJS import map
+    // More info at https://github.com/node-loader/node-loader-import-maps
+    global.nodeLoader.setImportMapPromise(Promise.resolve(nodeImportMap));
+    import('module-in-import-map');
+  });
+});
 ```

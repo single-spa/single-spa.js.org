@@ -39,7 +39,7 @@ const users = [
     caption: 'Dstillery',
     image: 'img/dstillery.png',
     infoLink: 'https://dstillery.com',
-    pinned: true,
+    pinned: false,
   },
   {
     caption: 'Scania',
@@ -75,7 +75,19 @@ const users = [
     caption: 'Canonical',
     image: 'img/canonical-logo.svg',
     infoLink: 'https://www.canonical.com/',
+    pinned: true
+  },
+  {
+    caption: 'Unbabel',
+    image: 'img/unbabel-logo.svg',
+    infoLink: 'https://www.unbabel.com/',
     pinned: false
+  },
+  {
+    caption: 'Australia Post Global eCommerce Solutions',
+    image: 'img/apg-ecommerce-solutions-logo.png',
+    infoLink: 'https://www.apgecommerce.com/',
+    pinned: true
   }
 ];
 

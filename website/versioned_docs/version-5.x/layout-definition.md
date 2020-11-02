@@ -52,8 +52,8 @@ const doc = new DOMParser().parseFromString(`
 
 You may define your layout as JSON, including routes, applications, and arbitrary dom elements.
 
-```js
-const layout = {
+```json
+{
   "routes": [
     { "type": "route", "path": "settings", "routes": [
       { "type": "application", "name": "settings" }
@@ -113,7 +113,7 @@ The `single-spa-router` element is required as the top level container of your l
 
 ### `<route>`
 
-The `route` element is used to control which applications and dom elements are shown for a top-level URL route. It may contain HTMLElements, applications, or other routes.
+The `route` element is used to control which applications and dom elements are shown for a top-level URL route. It may contain HTMLElements, applications, or other routes. Note that the route path is a URL prefix, not an exact match.
 
 ```html
 <route path="clients">
@@ -141,7 +141,7 @@ The `route` element is used to control which applications and dom elements are s
 Routes must either have a path or be a default route.
 
 - `routes` (required): An array of children elements that will be displayed when the route is active
-- `path` (optional): A string path that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](/docs/api/#pathtoactivewhen) to convert the path string to an [activity function](/docs/configuration/#activity-function).
+- `path` (optional): A string **path prefix** that will be matched against the browser's URL. The path is relative to its parent route (or the base URL). Leading and trailing `/` characters are unnecessary and are automatically applied. Paths may contain "dynamic segments" by using the `:` character (`"clients/:id/reports"`). Single-spa-layout uses single-spa's [`pathToActiveWhen` function](/docs/api/#pathtoactivewhen) to convert the path string to an [activity function](/docs/configuration/#activity-function). The path is a prefix because it will match when any subroutes of the path match.
 - `default` (optional): A boolean that determines whether this route will match all remaining URLs that have not been defined by sibling routes. This is useful for 404 Not Found pages. A sibling route is defined as any route with the same nearest-parent-route.
 - `props`: An object of [single-spa custom props](/docs/building-applications/#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
 
@@ -201,9 +201,31 @@ const parcelConfig = singleSpaReact({...})
 - `loader` (optional): An HTML string or [single-spa parcel config object](/docs/parcels-overview/#parcel-configuration). The loader will be mounted to the DOM while waiting for the application's [loading function](/docs/configuration/#loading-function-or-application) to resolve. You can read more about defining loaders [in the docs below](#loading-uis)
 - `props`: An object of [single-spa custom props](/docs/building-applications/#lifecycle-props) that will be provided to the application when it is mounted. Note that these can be defined differently for the same application on different routes. You can read more about defining props within your HTML [in the docs below](#props).
 
+### `<fragment>`
+
+The `fragment` element is used to specify a dynamic server-rendered portion of the template. Fragments are commonly used to inline import maps, add dynamic CSS / fonts, or customize the HTML `<head>` metadata. See [sendLayoutHTTPResponse](/docs/layout-api#sendlayouthttpresponse) for more information about how fragments are rendered. Note that `<fragment>` elements only have meaning in server templates, not browser-only templates.
+
+```html
+<fragment name="importmap"></fragment>
+
+<fragment name="head-metadata"></fragment>
+```
+
+### `<assets>`
+
+The `<assets>` element is used to specify the location of server-rendered application assets, including CSS and fonts. When server-side rendered, the `<assets>` element is replaced by all the assets from the active applications on the page. Applications specify their assets as part of the `renderApplication` function provided to [the `sendLayoutHTTPResponse` function](/docs/layout-api#sendLayoutHTTPResponse).
+
+```html
+<assets></assets>
+```
+
 ### DOM elements
 
-Arbitrary HTMLElements may be placed anywhere in your layout. To do so in HTML, simply add the HTMLElemet like normal. Defining HTMLElements in JSON is not supported yet, but will be soon [tracking issue](https://github.com/single-spa/single-spa-layout/issues/40).
+Arbitrary HTMLElements may be placed anywhere in your layout. You may define arbirary dom elements in both HTML and JSON.
+
+single-spa-layout only supports updating DOM elements during route transitions. Arbitrary re-renders and updates are not supported.
+
+DOM elements defined within a route will be mounted/unmounted as the route becomes active/inactive. If you define the same DOM element twice under different routes, it will be destroyed and recreated when navigating between the routes.
 
 ```html
 <nav class="topnav"></nav>
@@ -212,9 +234,79 @@ Arbitrary HTMLElements may be placed anywhere in your layout. To do so in HTML, 
 </div>
 ```
 
-single-spa-layout only supports updating DOM elements during route transitions. Arbitrary re-renders and updates are not supported.
+#### JSON DOM Nodes
 
-DOM elements defined within a route will be mounted/unmounted as the route becomes active/inactive. If you define the same DOM element twice under different routes, it will be destroyed and recreated when navigating between the routes.
+The format of dom nodes in JSON is largely based on the [parse5](https://github.com/inikulin/parse5) format.
+
+##### HTMLElement
+
+Elements are defined with their `nodeName` as the `type`. HTML attributes are specified as the `attrs` array, where each item is an object with `name` and `value` properties.
+
+```json
+{
+  "type": "div",
+  "attrs": [
+    {
+      "name": "class",
+      "value": "blue"
+    }
+  ]
+}
+```
+
+Child nodes are specified via the `"routes"` property.
+
+```json
+{
+  "type": "div",
+  "routes": [
+    {
+      "type": "button"
+    }
+  ]
+}
+```
+
+##### Text Nodes
+
+Text Nodes are defined separately from the parent containers, as separate objects with `type` set to `#text`:
+
+```json
+{
+  "type": "#text",
+  "value": "The displayed text"
+}
+```
+
+Button with text:
+
+```json
+{
+  "type": "button",
+  "routes": [
+    {
+      "type": "#text",
+      "value": "The button text"
+    }
+  ]
+}
+```
+
+Note that text nodes may not have `routes` (children).
+
+##### Comment Nodes
+
+Comment Nodes are defined as objects whose `type` is `#comment`:
+
+```json
+{
+  "type": "#comment",
+  "value": "The comment text"
+}
+```
+
+Note that comments may not have `routes` (children).
+
 
 ## Props
 
@@ -229,8 +321,8 @@ import { constructRoutes } from 'single-spa-layout';
 
 constructRoutes({
   routes: [
-    { type: "application", name: "nav" props: { title: "Title" } },
-    { type: "route", path: "settings" props: { otherProp: "Some value" } },
+    { type: "application", name: "nav", props: { title: "Title" } },
+    { type: "route", path: "settings", props: { otherProp: "Some value" } },
   ]
 })
 ```
@@ -279,7 +371,7 @@ const settingsLoader = singleSpaReact({...})
 
 const data = {
   loaders: {
-    topNavPlaceholder: `<nav class="placeholder"></nav>`,
+    topNav: `<nav class="placeholder"></nav>`,
     settings: settingsLoader
   }
 }
@@ -341,4 +433,52 @@ Sibling routes are defined as those that share a "nearest parent route." This me
     </route>
   </route>
 </single-spa-router>
+```
+
+## Error UIs
+
+When a single-spa application fails to load, mount, or unmount, it moves to [SKIP_BECAUSE_BROKEN or LOAD_ERROR](/docs/api#getappstatus) status. When in SKIP_BECAUSE_BROKEN status, often nothing is visible to the user and they won't understand why the application is not showing. You can call [unloadApplication](/docs/api#unloadapplication) to move the application back to NOT_LOADING status, which will cause single-spa to re-attempt downloading and mounting it. However, it is often desireable to show an error state when the application errors.
+
+An error UI is defined as either an HTML string or as a [parcel config object](/docs/parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive error states, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the error state. The error UI will be shown whenever the application's status is SKIP_BECAUSE_BROKEN or LOAD_ERROR.
+
+Defining error uis via javascript objects is straightforward, as the string or parcel can be defined in an application object via the `error` property:
+
+```js
+{
+  "type": "application",
+  "name": "nav",
+  "error": "<h1>Oops! The navbar isn't working right now</h1>"
+}
+```
+
+```js
+const myErrorParcel = singleSpaReact({...})
+
+{
+  "type": "application",
+  "name": "nav",
+  "error": myErrorParcel
+}
+```
+
+However, defining error uis in HTML is less straightforward, since HTML attributes are always strings and therefore can't be a parcel config object. To work around this, error UIs are named in the HTML, but defined in javascript:
+
+```html
+<template id="single-spa-layout">
+  <single-spa-router>
+    <application name="nav" error="navError"></application>
+  </single-spa-router>
+</template>
+```
+
+```js
+const myErrorParcel = singleSpaReact({...})
+
+const routes = constructRoutes(document.querySelector('#single-spa-layout'), {
+  errors: {
+    navError: myErrorParcel
+    // alternatively:
+    // navError: "<h1>Oops! The navbar isn't working right now</h1>"
+  }
+})
 ```

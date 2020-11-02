@@ -98,7 +98,7 @@
     },
     {
       "type": "category",
-      "label": "Layout Engine (Beta)",
+      "label": "Layout Engine",
       "items": [
         {
           "type": "doc",
@@ -205,6 +205,20 @@
         {
           "type": "doc",
           "id": "version-5.x/ecosystem-alpinejs"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-vite"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Server Side Rendering (New)",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/ssr-overview"
         }
       ]
     },

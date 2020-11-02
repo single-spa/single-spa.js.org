@@ -85,6 +85,7 @@ You can use the Parcel component either by npm installing the library and import
 - `config` (required): Either a single-spa parcel config object, or a "loading function" that returns a Promise that resolves with the parcel config.
 - `wrapWith` (optional): A string [tagName](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName).`<Parcel>` will create a dom node of that type for the parcel to be mounted into. Defaults to `div`
 - `wrapStyle`(optional): Styles that will apply to `wrapWith`.
+- `wrapClassName` (optional): classNames that will apply to `wrapWith`. 
 - `appendTo` (optional): A dom element to append the parcel to. By default, this is not needed because the parcel will be mounted in the DOM that the `<Parcel>` component was rendered into. Useful for appending parcels to document.body or other separate parts of the dom.
 - `mountParcel` (sometimes required, sometimes not): The `mountParcel` function provided by single-spa. In general, it is preferred to use an application's mountParcel function instead of the
    single-spa's root mountParcel function, so that single-spa can keep track of the parent-child relationship and automatically unmount the application's parcels when the application unmounts.
@@ -95,7 +96,19 @@ You can use the Parcel component either by npm installing the library and import
 
 #### Examples
 ```jsx
+// Use this import path in environments that support package.json exports
+// See https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_package_entry_points
+// and see https://github.com/single-spa/single-spa-react/releases/tag/v3.0.0
+// Use this in Webpack 5 and recent versions of Node
 import Parcel from 'single-spa-react/parcel'
+
+// Use this import path in environments that don't support package.json exports
+// See https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_package_entry_points
+// and see https://github.com/single-spa/single-spa-react/releases/tag/v3.0.0
+// Use this in Webpack 4 and older versions of Node
+import Parcel from 'single-spa-react/lib/esm/parcel'
+
+
 import * as parcelConfig from './my-parcel.js'
 
 // config is required. The parcel will be mounted inside of the
@@ -143,6 +156,14 @@ import * as parcelConfig from './my-parcel.js'
   wrapWith="div"
   wrapStyle={{ background: 'black' }}
 />
+
+// Add classNames to wrapWith element.
+<Parcel
+  config={parcelConfig}
+  wrapWith="div"
+  wrapClassName="wrapper"
+/>
+
 ```
 
 ## Create React App

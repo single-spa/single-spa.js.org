@@ -4,11 +4,11 @@ title: single-spa-vue
 sidebar_label: Vue
 ---
 
-single-spa-vue is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/single-spa/single-spa-vue).
+single-spa-vue is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [Vue.js](https://vuejs.org/). Check out the [single-spa-vue github](https://github.com/single-spa/single-spa-vue).
 
-## Starter repo
+## Example
 
-For a full example, see [coexisting-vue-microfrontends](https://github.com/joeldenning/coexisting-vue-microfrontends).
+For a full example, see [vue-microfrontends](https://github.com/vue-microfrontends).
 
 ## Live demo
 
@@ -102,7 +102,7 @@ For Vue 3, change your application's entry file to be the following:
 import './set-public-path';
 import { h, createApp } from 'vue';
 import singleSpaVue from '../lib/single-spa-vue.js';
-
+import router from './router';
 import App from './App.vue';
 
 const vueLifecycles = singleSpaVue({
@@ -110,16 +110,17 @@ const vueLifecycles = singleSpaVue({
   appOptions: {
     render() {
       return h(App, {
-        props: {
-          // single-spa props are available on the "this" object. Forward them to your component as needed.
-          // https://single-spa.js.org/docs/building-applications#lifecyle-props
-          name: this.name,
-          mountParcel: this.mountParcel,
-          singleSpa: this.singleSpa,
-        },
+        // single-spa props are available on the "this" object. Forward them to your component as needed.
+        // https://single-spa.js.org/docs/building-applications#lifecyle-props
+        name: this.name,
+        mountParcel: this.mountParcel,
+        singleSpa: this.singleSpa,
       });
     },
   },
+  handleInstance: (app) => {
+    app.use(router);
+  }
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
@@ -138,10 +139,8 @@ const vueLifecycles = singleSpaVue({
   appOptions: {
     render(h) {
       return h(App, {
-        props: {
-          mountParcel: this.mountParcel,
-          otherProp: this.otherProp,
-        },
+        mountParcel: this.mountParcel,
+        otherProp: this.otherProp,
       });
     },
     router,
@@ -202,6 +201,7 @@ All options are passed to single-spa-vue via the `opts` parameter when calling `
 - `Vue`: (required) The main Vue object, which is generally either exposed onto the window or is available via `require('vue')` `import Vue from 'vue'`.
 - `appOptions`: (required) An object which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
+- `handleInstance`: (optional) A method can be used to handle Vue instance. Vue 3 brings [new instance API](https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp), and you can access *the app instance* from this, like `handleInstance: (app) => app.use(router)`. For Vue 2 users, a [Vue instance](https://vuejs.org/v2/guide/instance.html) can be accessed.
 
 To configure which dom element the single-spa application is mounted to, use [appOptions.el](https://vuejs.org/v2/api/#el):
 

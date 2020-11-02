@@ -3,6 +3,11 @@ id: ecosystem-angular
 title: single-spa-angular
 sidebar_label: Angular
 ---
+
+## Project Status
+
+This project needs new maintainers. The single-spa core team does not have the Angular expertise needed to continously support all versions of Angular, as none of us use single-spa-angular in any of our serious projects. We could use help keeping up with the six month release cadence of Angular, diagnosing problems in the issue queues, and providing support in the single-spa Slack workspace. Angular is the framework that is hardest to support in the single-spa ecosystem, and we rely on the community to help us with it. If you have interest in helping with the maintenance of this project, please let us know!
+
 ## Introduction
 
 [single-spa-angular](https://github.com/single-spa/single-spa-angular/) is a library for creating Angular microfrontends.
@@ -659,6 +664,80 @@ If you need to support IE11 or older, do the following:
 - Change angular.json `target` to `es5` ([example](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32#diff-acbfc718bf309f27dd3699a4ad80a2d1R13))
 
 [Full example commit to get IE11 support](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32)
+
+## Angular Elements
+
+> ⚠️ This feature is available starting from `single-spa-angular@4.4.0`. You also may need to become familiar with [Angular Elements documentation](https://angular.io/guide/elements).
+
+Let's start with installing the `@angular/elements`:
+
+```shell
+npm i --save @angular/elements
+# Or if you're using yarn
+yarn add @angular/elements
+```
+
+The next step is to edit `main.single-spa.ts`:
+
+```ts
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { singleSpaAngularElements } from 'single-spa-angular/elements';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+const lifecycles = singleSpaAngularElements({
+  template: '<app-custom-element />',
+  // We can actually not rely on the `zone.js` library, our custom element
+  // will behave itself as a zone-less application.
+  bootstrapFunction: () => platformBrowserDynamic().bootstrapModule(AppModule, { ngZone: 'noop' }),
+});
+
+export const bootstrap = lifecycles.bootstrap;
+export const mount = lifecycles.mount;
+export const unmount = lifecycles.unmount;
+```
+
+Note that the `app-custom-element` selector will be used when defining our [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
+
+After that, you'll have to edit `app.module.ts` and define a custom tag:
+
+```ts
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { createCustomElement } from '@angular/elements';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [AppComponent],
+})
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) {}
+
+  ngDoBootstrap(): void {
+    customElements.define(
+      // This tag we've have provided in `options.template` when called `singleSpaAngularElements`.
+      'app-custom-element',
+      createCustomElement(AppComponent, { injector: this.injector }),
+    );
+  }
+}
+```
+
+The following options are available to be passed when calling `singleSpaAngularElements`:
+
+- `bootstrapFunction` (required)
+- `template` (required)
+- `domElementGetter` (optional)
+
+See [options](#options) for detailed explanation.
 
 ## Advanced
 
