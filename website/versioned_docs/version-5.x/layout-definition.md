@@ -36,8 +36,8 @@ Note that HTMLElements defined in your layout are static - there is no way to fo
 ```
 
 ```js
-// Not recommended, but javascript construction of HTMLElements is also possible
-const doc = new DOMParser().parseFromString(`
+// Javascript construction of HTMLElements is also possible
+const routerElement = new DOMParser().parseFromString(`
 <single-spa-router>
   <div class="main-content">
     <route path="settings">
@@ -45,7 +45,7 @@ const doc = new DOMParser().parseFromString(`
     </route>
   </div>
 </single-spa-router>
-`, "text/html").documentElement
+`, "text/html").documentElement.querySelector('single-spa-router');
 ```
 
 ## JSON Layouts
