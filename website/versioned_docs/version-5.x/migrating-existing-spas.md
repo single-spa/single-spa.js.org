@@ -32,6 +32,6 @@ and memory.
 Since existing SPAs are used to having an index.html file for their css, fonts,
 third party script-tags, etc., it's likely that you'll have to do some work
 to make sure all of those keep on working when your SPA becomes an html-less [
-application](building-applications.md). It is best to try to put all that
+application](/docs/building-applications). It is best to try to put all that
 you can into the JavaScript bundle, but your escape hatch is to put the things
-you need into your [single spa config](configuration).
+you need into your [single spa config](/docs/configuration).
