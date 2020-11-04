@@ -34,4 +34,4 @@ sidebar_label: Resources
 - [single-spa application with Webpack lazyStyleTag](https://github.com/filoxo/single-spa-example-webpack-lazystyletag) is a simple example that leverages Webpack style-loader's lazyStyleTag functionality to dynamically add and remove the CSS associated with a single-spa application.
 - [single-spa shared state utility using Rxjs](https://github.com/filoxo/single-spa-example-rxjs-shared-state) shows how to use a utility module that shares application state across multiple single-spa applications and frameworks.
 
-Have your own starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/docs/examples.md) to add yours to this list.
+Have your own example or starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/website/versioned_docs/version-5.x/examples.md) to add yours to this list.
