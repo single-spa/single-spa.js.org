@@ -30,5 +30,8 @@ sidebar_label: Resources
 - [coexisting-angular-microfrontends/login](https://github.com/Vallerious/coexisting-angular-microfrontends/tree/feature/login) is a branch that implements a login functionality between Angular apps. It uses localStorage as shared memory space to store and retrieve a token.
 - [single-spa-angular-cli](https://github.com/matt-gold/single-spa-angular-cli) is an all-Angular example repo that uses SystemJS to load single-spa-angular applications into a containing Angular CLI application at different routes.
 - [ember-micro-frontends](https://github.com/ember-micro-frontends) is an all-Ember example repo that uses single-spa-ember applications into a containing Ember.js application at different routes.
+- [single-spa application with shared styled-components](https://github.com/filoxo/single-spa-example-shared-styled-components) shows how to share styled-components, a library that is required to be a singleton instance.
+- [single-spa application with Webpack lazyStyleTag](https://github.com/filoxo/single-spa-example-webpack-lazystyletag) is a simple example that leverages Webpack style-loader's lazyStyleTag functionality to dynamically add and remove the CSS associated with a single-spa application.
+- [single-spa shared state utility using Rxjs](https://github.com/filoxo/single-spa-example-rxjs-shared-state) shows how to use a utility module that shares application state across multiple single-spa applications and frameworks.
 
 Have your own starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/docs/examples.md) to add yours to this list.
