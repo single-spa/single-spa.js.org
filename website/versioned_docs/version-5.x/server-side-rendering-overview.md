@@ -18,6 +18,10 @@ A primary purpose of server-side rendering is improved performance. Server rende
 
 Server rendered applications are generally harder to build and maintain, since the code has to work on both client and server. Additionally, SSR often complicates the infrastructure needed to run your application, since many SPA + SSR solutions require NodeJS, which is not required in production for client-only SPAs.
 
+## Example
+
+The [isomorphic-microfrontends example](https://github.com/isomorphic-microfrontends) shows React server-rendered microfrontends. You can view the live demo of the code at https://isomorphic.microfrontends.app.
+
 ## Implementation Overview
 
 The ultimate goal of server-side rendering is to generate an HTTP response that the browser will display to the user while javascript is hydrating. Most microfrontend server-side rendering implementations, including single-spa's recommended approach, do this with the following steps:
