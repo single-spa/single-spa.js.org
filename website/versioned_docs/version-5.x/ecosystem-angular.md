@@ -330,7 +330,7 @@ Also, if your application uses routing then you have to import the `getSingleSpa
 ​
 ```js
 import { NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import singleSpaAngular, { getSingleSpaExtraProviders } from 'single-spa-angular';
 ​
 const lifecycles = singleSpaAngular({
@@ -340,6 +340,7 @@ const lifecycles = singleSpaAngular({
   },
   template: '<app-root />',
   Router,
+  NavigationStart,
   NgZone,
 });
 ```
@@ -348,7 +349,7 @@ And this is how it should be in `single-spa-angular@4.x`:
 ​
 ```js
 import { NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
 ​
 const lifecycles = singleSpaAngular({
@@ -358,6 +359,7 @@ const lifecycles = singleSpaAngular({
   },
   template: '<app-root />',
   Router,
+  NavigationStart,
   NgZone,
 });
 ```
@@ -367,7 +369,7 @@ const lifecycles = singleSpaAngular({
 ```ts
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { singleSpaAngular, getSingleSpaExtraProviders } from 'single-spa-angular';
 
 import { AppModule } from './app/app.module';
@@ -378,6 +380,7 @@ const lifecycles = singleSpaAngular({
   },
   template: '<app-root />',
   Router,
+  NavigationStart,
   NgZone,
 });
 
@@ -768,7 +771,7 @@ Since routing is managed by single-spa and there is no zone that tells Angular t
 
 ```js
 import { ApplicationRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { singleSpaAngular } from 'single-spa-angular';
 
 const lifecycles = singleSpaAngular({
@@ -791,6 +794,7 @@ const lifecycles = singleSpaAngular({
   template: '<app-root />',
   NgZone: 'noop',
   Router,
+  NavigationStart,
 });
 ```
 
