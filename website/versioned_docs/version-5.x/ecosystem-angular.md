@@ -742,9 +742,7 @@ The following options are available to be passed when calling `singleSpaAngularE
 
 See [options](#options) for detailed explanation.
 
-## Advanced
-
-### Zone-less applications
+## Zone-less applications
 
 > ⚠️ This feature is available starting from `single-spa-angular@4.1`.
 
@@ -799,3 +797,99 @@ const lifecycles = singleSpaAngular({
 ```
 
 > ⚠️ `single-spa-angular@4.x` requires calling `getSingleSpaExtraProviders` function in applications that have routing. Do not call this function in _zone-less_ application.
+
+## Inter-app communication via RxJS
+
+First of all, check out this [Inter-app communication guide](/docs/recommended-setup#inter-app-communication).
+
+It's possible to setup a communication between microfrontends via RxJS using [cross microfrontend imports](docs/recommended-setup/#cross-microfrontend-imports).
+
+Following the Angular approach, you will want to write a service to do this, but remember that even if you share a service between microfrontends, each application will have its own service instance.
+
+```ts
+// ⚠️ Don't do this
+@Injectable({ providedIn: 'root' })
+export class MessageService {}
+```
+
+An injected service can only be used when you share Angular dependencies between applications. Each application will have its own `root` injector, but they will all be tied to the same platform injector. Given the following code:
+
+```ts
+import { Injectable } from '@angular/core';
+import { PartialObserver, Subject } from 'rxjs';
+
+@Injectable({ providedIn: 'platform' }) // <-- notice `platform` instead of `root`
+export class MessageService {
+  private channels: { [channel: string]: Subject<any> } = {};
+
+  getChannel<T>(channel: string) {
+    const publisher: Subject<T> =
+      this.channels[channel] || (this.channels[channel] = new Subject());
+
+    return {
+      publish: (value: T) => publisher.next(value),
+      subscribe: (observer: PartialObserver<T>) => publisher.subscribe(observer),
+    };
+  }
+}
+```
+
+This service will be instantiated at the platform injector level. You can inject it into the components of any application:
+
+```ts
+@Component({ ... })
+export class NavbarComponent {
+  toggled = false;
+
+  constructor(private messageService: MessageService) {}
+
+  toggle(): void {
+    this.toggled = !this.toggled;
+    this.messageService.getChannel<boolean>('navbarToggled').publish(this.toggled);
+  }
+}
+```
+
+If you don't care about dependency injection, then you can create a service with static methods:
+
+```ts
+import { PartialObserver, Subject } from 'rxjs';
+
+export class MessageService {
+  private static channels: { [channel: string]: Subject<any> } = {};
+
+  static getChannel<T>(channel: string) {
+    const publisher: Subject<T> =
+      this.channels[channel] || (this.channels[channel] = new Subject());
+
+    return {
+      publish: (value: T) => publisher.next(value),
+      subscribe: (observer: PartialObserver<T>) => publisher.subscribe(observer),
+    };
+  }
+}
+```
+
+Also, you should remember that this service must be an "isolated" dependency, for example the Nrwl Nx library, where each library is in the "libs" folder and you import it via TypeScript paths.
+
+Every application that uses this library should add it to its Webpack config as an external dependency:
+
+```js
+const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
+
+module.exports = (config, options) => {
+  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
+  singleSpaWebpackConfig.externals = [/^@org\/message-service$/];
+  return singleSpaWebpackConfig;
+};
+```
+
+But this service should be part of root application bundle and [shared with import maps](/docs/recommended-setup/#sharing-with-import-maps), for example:
+
+```json
+{
+  "imports": {
+    "@org/message-service": "http://localhost:8080/message-service.js"
+  }
+}
+```
