@@ -804,73 +804,32 @@ First of all, check out this [Inter-app communication guide](/docs/recommended-s
 
 It's possible to setup a communication between microfrontends via RxJS using [cross microfrontend imports](docs/recommended-setup/#cross-microfrontend-imports).
 
-Following the Angular approach, you will want to write a service to do this, but remember that even if you share a service between microfrontends, each application will have its own service instance.
+We can not create complex abstractions, but simply export the `Subject`:
 
 ```ts
-// ⚠️ Don't do this
-@Injectable({ providedIn: 'root' })
-export class MessageService {}
+// Inside of @org/api
+import { ReplaySubject } from 'rxjs';
+import { User } from '@org/models';
+
+// `1` means that we want to buffer the last emitted value
+export const userSubject$ = new ReplaySubject<User>(1);
 ```
 
-An injected service can only be used when you share Angular dependencies between applications. Each application will have its own `root` injector, but they will all be tied to the same platform injector. Given the following code:
+And then you just need to import this `Subject` into the microfrontend application:
 
 ```ts
-import { Injectable } from '@angular/core';
-import { PartialObserver, Subject } from 'rxjs';
+// Inside of @org/app1 single-spa application
+import { userSubject$ } from '@org/api';
+import { User } from '@org/models';
 
-@Injectable({ providedIn: 'platform' }) // <-- notice `platform` instead of `root`
-export class MessageService {
-  private channels: { [channel: string]: Subject<any> } = {};
+userSubject$.subscribe(user => {
+  // ...
+});
 
-  getChannel<T>(channel: string) {
-    const publisher: Subject<T> =
-      this.channels[channel] || (this.channels[channel] = new Subject());
-
-    return {
-      publish: (value: T) => publisher.next(value),
-      subscribe: (observer: PartialObserver<T>) => publisher.subscribe(observer),
-    };
-  }
-}
+userSubject$.next(newUser);
 ```
 
-This service will be instantiated at the platform injector level. You can inject it into the components of any application:
-
-```ts
-@Component({ ... })
-export class NavbarComponent {
-  toggled = false;
-
-  constructor(private messageService: MessageService) {}
-
-  toggle(): void {
-    this.toggled = !this.toggled;
-    this.messageService.getChannel<boolean>('navbarToggled').publish(this.toggled);
-  }
-}
-```
-
-If you don't care about dependency injection, then you can create a service with static methods:
-
-```ts
-import { PartialObserver, Subject } from 'rxjs';
-
-export class MessageService {
-  private static channels: { [channel: string]: Subject<any> } = {};
-
-  static getChannel<T>(channel: string) {
-    const publisher: Subject<T> =
-      this.channels[channel] || (this.channels[channel] = new Subject());
-
-    return {
-      publish: (value: T) => publisher.next(value),
-      subscribe: (observer: PartialObserver<T>) => publisher.subscribe(observer),
-    };
-  }
-}
-```
-
-Also, you should remember that this service must be an "isolated" dependency, for example the Nrwl Nx library, where each library is in the "libs" folder and you import it via TypeScript paths.
+Also, you should remember that `@org/api` should be an "isolated" dependency, for example the Nrwl Nx library, where each library is in the "libs" folder and you import it via TypeScript paths.
 
 Every application that uses this library should add it to its Webpack config as an external dependency:
 
@@ -879,17 +838,17 @@ const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').defaul
 
 module.exports = (config, options) => {
   const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
-  singleSpaWebpackConfig.externals = [/^@org\/message-service$/];
+  singleSpaWebpackConfig.externals = [/^@org\/api$/];
   return singleSpaWebpackConfig;
 };
 ```
 
-But this service should be part of root application bundle and [shared with import maps](/docs/recommended-setup/#sharing-with-import-maps), for example:
+But this library should be part of root application bundle and [shared with import maps](/docs/recommended-setup/#sharing-with-import-maps), for example:
 
 ```json
 {
   "imports": {
-    "@org/message-service": "http://localhost:8080/message-service.js"
+    "@org/api": "http://localhost:8080/api.js"
   }
 }
 ```
