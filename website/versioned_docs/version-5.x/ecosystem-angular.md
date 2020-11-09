@@ -742,9 +742,7 @@ The following options are available to be passed when calling `singleSpaAngularE
 
 See [options](#options) for detailed explanation.
 
-## Advanced
-
-### Zone-less applications
+## Zone-less applications
 
 > ⚠️ This feature is available starting from `single-spa-angular@4.1`.
 
@@ -799,3 +797,58 @@ const lifecycles = singleSpaAngular({
 ```
 
 > ⚠️ `single-spa-angular@4.x` requires calling `getSingleSpaExtraProviders` function in applications that have routing. Do not call this function in _zone-less_ application.
+
+## Inter-app communication via RxJS
+
+First of all, check out this [Inter-app communication guide](/docs/recommended-setup#inter-app-communication).
+
+It's possible to setup a communication between microfrontends via RxJS using [cross microfrontend imports](docs/recommended-setup/#cross-microfrontend-imports).
+
+We can not create complex abstractions, but simply export the `Subject`:
+
+```ts
+// Inside of @org/api
+import { ReplaySubject } from 'rxjs';
+import { User } from '@org/models';
+
+// `1` means that we want to buffer the last emitted value
+export const userSubject$ = new ReplaySubject<User>(1);
+```
+
+And then you just need to import this `Subject` into the microfrontend application:
+
+```ts
+// Inside of @org/app1 single-spa application
+import { userSubject$ } from '@org/api';
+import { User } from '@org/models';
+
+userSubject$.subscribe(user => {
+  // ...
+});
+
+userSubject$.next(newUser);
+```
+
+Also, you should remember that `@org/api` should be an "isolated" dependency, for example the Nrwl Nx library, where each library is in the "libs" folder and you import it via TypeScript paths.
+
+Every application that uses this library should add it to its Webpack config as an external dependency:
+
+```js
+const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
+
+module.exports = (config, options) => {
+  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
+  singleSpaWebpackConfig.externals = [/^@org\/api$/];
+  return singleSpaWebpackConfig;
+};
+```
+
+But this library should be part of root application bundle and [shared with import maps](/docs/recommended-setup/#sharing-with-import-maps), for example:
+
+```json
+{
+  "imports": {
+    "@org/api": "http://localhost:8080/api.js"
+  }
+}
+```
