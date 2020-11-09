@@ -742,6 +742,67 @@ The following options are available to be passed when calling `singleSpaAngularE
 
 See [options](#options) for detailed explanation.
 
+## Parcels
+
+We encourage you to get familiar with the documentation, namely [Parcels overview](/docs/parcels-overview.md) and [Parcels API](/docs/parcels-api.md). This documentation will give you a basic understanding of what parsels are.
+
+Additionally, single-spa-angular provides a `<parcel>` component to make using framework agnostic single-spa parcels easier. This allows you to put the parcel into your component's template, instead of calling `mountRootParcel()` by yourselves.
+
+`single-spa-angular/parcel` package exports the `ParcelModule` which exports the `<parcel>` component:
+
+```ts
+// Inside of src/app/app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { ParcelModule } from 'single-spa-angular/parcel';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, ParcelModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+The example below shows how you can render React parcels:
+
+```ts
+// Inside of src/app/app.component.ts
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { mountRootParcel } from 'single-spa';
+
+import { config } from './ReactWidget/ReactWidget';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {
+  config = config;
+  mountRootParcel = mountRootParcel;
+}
+```
+
+For React, you will need to create a file with the extension `.tsx`:
+
+```tsx
+// Inside of src/app/ReactWidget/ReactWidget.tsx
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import singleSpaReact from 'single-spa-react';
+
+const ReactWidget = () => <div>Hello from React!</div>;
+
+export const config = singleSpaReact({
+  React,
+  ReactDOM,
+  rootComponent: ReactWidget,
+});
+```
+
 ## Zone-less applications
 
 > ⚠️ This feature is available starting from `single-spa-angular@4.1`.
