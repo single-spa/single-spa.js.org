@@ -777,7 +777,7 @@ import { config } from './ReactWidget/ReactWidget';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<parcel [config]="config" [mountParcel]="mountRootParcel"></parcel>',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
