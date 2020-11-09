@@ -139,7 +139,11 @@ module.exports = (webpackConfigEnv, argv) => {
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
-    argv,
+    argv,     
+    // optional
+    // This changes whether package names that start with @your-org-name are
+    // treated as webpack externals or not. Defaults to true
+    orgPackagesAsExternal: true,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -178,7 +182,11 @@ module.exports = (webpackConfigEnv, argv) => {
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
-    argv,
+    argv, 
+    // optional
+    // This changes whether package names that start with @your-org-name are
+    // treated as webpack externals or not. Defaults to true
+    orgPackagesAsExternal: true,
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -270,6 +278,11 @@ module.exports = (webpackConfigEnv, argv) => {
     
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
+    
+    // optional
+    // This changes whether package names that start with @your-org-name are
+    // treated as webpack externals or not. Defaults to true
+    orgPackagesAsExternal: true,
     
     // The CLI commands in the package.json script that triggered this build
     argv,
