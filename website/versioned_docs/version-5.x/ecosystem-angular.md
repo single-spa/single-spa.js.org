@@ -744,7 +744,7 @@ See [options](#options) for detailed explanation.
 
 ## Parcels
 
-We encourage you to get familiar with the documentation, namely [Parcels overview](/docs/parcels-overview.md) and [Parcels API](/docs/parcels-api.md). This documentation will give you a basic understanding of what parcels are.
+We encourage you to get familiar with the documentation, namely [Parcels overview](/docs/parcels-overview) and [Parcels API](/docs/parcels-api). This documentation will give you a basic understanding of what parcels are.
 
 Additionally, single-spa-angular provides a `<parcel>` component to make using framework agnostic single-spa parcels easier. This allows you to put the parcel into your component's template, instead of calling `mountRootParcel()` by yourselves.
 
