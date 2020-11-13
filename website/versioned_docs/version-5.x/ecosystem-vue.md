@@ -253,7 +253,11 @@ To render a parcel config object in Vue, you can use single-spa-vue's `Parcel` c
 </template>
 
 <script>
+// For old versions of webpack
 import Parcel from 'single-spa-vue/dist/esm/parcel'
+// For new versions of webpack
+import Parcel from 'single-spa-vue/parcel'
+
 import { mountRootParcel } from 'single-spa'
 
 const Widget =
