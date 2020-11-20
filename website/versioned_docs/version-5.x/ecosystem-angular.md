@@ -102,6 +102,16 @@ work with Angular 10. Follow the [Angular CLI instructions](#angular-cli).
 Note that the schematics for Angular 10 [do not use the custom Angular builder](#angular-builder), but instead use
 [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
 
+### Angular 11
+
+Angular 11 is supported by single-spa-angular@4.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 11. Follow the [Angular CLI instructions](#angular-cli).
+
+Note that the schematics for Angular 11 [do not use the custom Angular builder](#angular-builder), but instead use
+[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
+
 ## Angular CLI
 You may use Angular CLI and single-spa together with any version of Angular. However, the [Angular CLI schematics](#schematics)
 only work if you're using Angular >= 7. If you're using an older version of Angular, follow
