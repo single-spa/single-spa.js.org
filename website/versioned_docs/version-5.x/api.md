@@ -376,6 +376,7 @@ This api was introduced in single-spa@5.8.0. A few notes about this api:
 	<dt>Promise</dt>
 	<dd>This promise will be resolved when the application has been successfully unregistered.</dd>
 </dl>
+
 ## checkActivityFunctions
 
 ```js
