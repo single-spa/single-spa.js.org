@@ -33,6 +33,6 @@ sidebar_label: Resources
 - [single-spa application with shared styled-components](https://github.com/filoxo/single-spa-example-shared-styled-components) shows how to share styled-components, a library that is required to be a singleton instance.
 - [single-spa application with Webpack lazyStyleTag](https://github.com/filoxo/single-spa-example-webpack-lazystyletag) is a simple example that leverages Webpack style-loader's lazyStyleTag functionality to dynamically add and remove the CSS associated with a single-spa application.
 - [single-spa shared state utility using Rxjs](https://github.com/filoxo/single-spa-example-rxjs-shared-state) shows how to use a utility module that shares application state across multiple single-spa applications and frameworks.
-- [svelte-micro-frontends](https://github.com/svelte-micro-frontends) is an all-Svelte example of a Restaurant booking app based on the famous [Micro frontends article](https://martinfowler.com/articles/micro-frontends.html) by [Cam Jackson](https://twitter.com/thecamjackson).
+- [svelte-micro-frontends](https://github.com/svelte-micro-frontends) is an all-Svelte example of a Restaurant booking app based on the popular [Micro frontends article](https://martinfowler.com/articles/micro-frontends.html) by [Cam Jackson](https://twitter.com/thecamjackson).
 
 Have your own example or starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/website/versioned_docs/version-5.x/examples.md) to add yours to this list.
