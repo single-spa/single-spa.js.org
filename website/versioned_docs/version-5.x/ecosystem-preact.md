@@ -36,4 +36,4 @@ All options are passed to single-spa-preact via the `opts` parameter when callin
 
 - `preact`: (required) The main Preact object, which is generally either exposed onto the window or is available via `require('preact')` or `import preact from 'preact'`.
 - `rootComponent`: (required) The top level preact component which will be rendered
-- `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the Preact application will be bootstrapped, mounted, and unmounted. If omitted, a div will be created and appended to the body.
+- `domElementGetter`: (optional) A function that is given the single-spa props and returns a DOMElement. This dom element is where the Preact application will be bootstrapped, mounted, and unmounted. If omitted, a div will be created and appended to the body.
