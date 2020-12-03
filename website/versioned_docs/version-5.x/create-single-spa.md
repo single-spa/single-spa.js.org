@@ -144,6 +144,10 @@ module.exports = (webpackConfigEnv, argv) => {
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
     orgPackagesAsExternal: true,
+
+    // optional, defaults to 1
+    // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
+    rootDirectoryLevel: 1
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -187,6 +191,10 @@ module.exports = (webpackConfigEnv, argv) => {
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
     orgPackagesAsExternal: true,
+
+    // optional, defaults to 1
+    // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
+    rootDirectoryLevel: 1
   })
 
   return webpackMerge.smart(defaultConfig, {
@@ -275,17 +283,21 @@ module.exports = (webpackConfigEnv, argv) => {
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
     orgPackagesAsExternal: true,
-    
+
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
-    
+
     // optional
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
     orgPackagesAsExternal: true,
-    
+
     // The CLI commands in the package.json script that triggered this build
     argv,
+
+    // optional, defaults to 1
+    // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
+    rootDirectoryLevel: 1
   })
 
   return webpackMerge.smart(defaultConfig, {
