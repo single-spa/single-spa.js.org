@@ -26,8 +26,11 @@ Each single-spa microfrontend is an in-browser JavaScript module ([explanation](
 Applications use a declarative API called `registerApplication`. Your single-spa config (also sometimes called the root config) defines applications ahead of time and defines the conditions for when each application is active, but it doesn't mount the applications directly.
 
 ### Applications have managed lifecycles
-single-spa manages registered applications and is in charge of all of their lifecycles. This prevents you from writing a bunch of logic about when applications should mount and unmount; single-spa takes care of that for you.
+single-spa manages registered applications and is in charge of all of their lifecycles. This prevents you from needing to write a bunch of logic about when applications should mount and unmount; single-spa takes care of that for you.
 All that single-spa needs to make this work automatically is an activity function that describes when your application should be active.
+
+### Applications and their public interface
+Applications [_must_ export their lifecycles](/docs/building-applications#registered-application-lifecycle) so they can be managed by single-spa but they can also export additional methods, values, components, parcels, or more as part of their public interface. It is common to use these exports inside another application so you can create highly cohesive modules with low coupling.
 
 ## Parcels
 
