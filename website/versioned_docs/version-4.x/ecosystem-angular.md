@@ -14,7 +14,7 @@ web page where one or more single-spa applications is active at any time.
 The documentation here is extensive, so use the sidenav on the right. 👉👉👉
 
 ### Community
-Join the `#angular` channel in [single-spa's slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-j4c38g92-JmV7O~35dkN1CnaBkK7NTw).
+Join the `#angular` channel in [single-spa's slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-jy1x8x93-52Tth0fZBUzZmHcEpWw2Jg).
 
 ### Demo
 https://coexisting-angular-microfrontends.surge.sh
