@@ -130,7 +130,7 @@ export const unmount = vueLifecycles.unmount;
 
 ## Custom props
 
-[Single-spa custom props](/docs/building-applications/#lifecycle-props) can be passed to your root component like so:
+[Single-spa custom props](/docs/building-applications/#custom-props) can be passed to your root component like so:
 
 ```js
 // main.js
