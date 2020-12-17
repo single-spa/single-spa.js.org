@@ -375,7 +375,7 @@ The full API documentation for the `constructRoutes` API explains the `data` obj
 
 ## Loading UIs
 
-It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define per-application loaders that will be mounted to the DOM while the application's [loading function](/docs/configuration/#loading-function-or-application) is pending. It is possible to share the same loading UI for multiple applications.
+It is often desireable to show a loading UI when waiting for an application's code to download and execute. Single-spa-layout allows you to define pre-application loaders that will be mounted to the DOM while the application's [loading function](/docs/configuration/#loading-function-or-application) is pending. It is possible to share the same loading UI for multiple applications.
 
 A loading UI is defined as either an HTML string or as a [parcel config object](/docs/parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive loaders, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the loader.
 
