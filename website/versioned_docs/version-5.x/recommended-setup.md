@@ -62,7 +62,7 @@ to make import maps work.
 
 [Module Federation](https://dev.to/marais/webpack-5-and-module-federation-4j1i) is a webpack-specific technique for sharing [build-time modules](#in-browser-versus-build-time-modules). It involves each microfrontend bundling all of its dependencies, even the shared ones. This means that there are multiple copies of each shared dependency - one per microfrontend. In the browser, the first copy of the shared dependency will be downloaded, but subsequent microfrontends will reuse that shared dependency without downloading their copy of it.
 
-Note that Module Federation is a new feature (at the time of this writing) and requires that you use webpack@>=5 (currently in beta). It is still an evolving technology.
+Note that Module Federation is a new feature (at the time of this writing) and requires that you use webpack@>=5. It is still an evolving technology.
 
 single-spa is a way of structuring your routes for microfrontends. Module Federation is a performance technique for microfrontends. They complement each other well and can be used together. Here is a [YouTube video](https://www.youtube.com/watch?v=wxnwPLLIJCY) by a community member that talks about using single-spa and module federation together.
 
