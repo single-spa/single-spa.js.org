@@ -48,12 +48,11 @@ export default {
     // Compile the bundle to System.register format, for production usage
     format: 'system',
   },
-  // Pending https://github.com/vuejs/vue-next/pull/2477,
   // vue template assets will correctly resolve even when you are
   // using import map overrides
-  // vueTransformAssetUrls: {
-  //   base: 'http://localhost:3000/src/'
-  // }
+  vueTransformAssetUrls: {
+    base: 'http://localhost:3000/src/'
+  }
 }
 ```
 
