@@ -13,6 +13,7 @@ sidebar_label: Resources
 - [Polyglot Microfrontends](https://github.com/polyglot-microfrontends) (check out root-config repo first)
 - [single-spa-es5-angularjs](https://github.com/joeldenning/single-spa-es5-angularjs) is a very tiny es5 example with angularjs.
 - [Isomorphic Microfrontends](https://github.com/isomorphic-microfrontends) shows server-side rendering (SSR) with single-spa and single-spa-layout.
+- [Vite Microfrontends](https://github.com/joeldenning/vite-single-spa-example) shows a single-spa application that uses Vite.
 
 ### Older examples
 
