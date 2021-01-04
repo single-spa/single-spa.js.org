@@ -81,7 +81,7 @@ export const mount = [
 ]
 
 export const unmount = [
-  leakedGlobalsLifecycles.mount,
+  leakedGlobalsLifecycles.unmount,
   // Make sure leaked globals lifecycles' unmount function is **after** other lifecycles' unmount
   // This is so the global vars are still available during the framework unmount lifecycle function.
   frameworkLifecycles.unmount,
