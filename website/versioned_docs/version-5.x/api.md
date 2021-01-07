@@ -486,13 +486,14 @@ Will create and mount a [single-spa parcel](parcels-overview.md).
 
 ## pathToActiveWhen
 
-The `pathToActiveWhen` function converts a string URL path into an [activity function](/docs/configuration/#activity-function). The string path may contain route parameters that single-spa will match any characters to. It assumes that the string provided is a **prefix**.
+The `pathToActiveWhen` function converts a string URL path into an [activity function](/docs/configuration/#activity-function). The string path may contain route parameters that single-spa will match any characters to. By default, pathToActiveWhen assumes that the string provided is a **prefix**; however, this can be altered with the `exactMatch` parameter.
 
 This function is used by single-spa when a string is passed into `registerApplication` as the `activeWhen` argument.
 
 ***Arguments***
 
 1. `path` (string): The URL prefix that.
+2. `exactMatch` (boolean, optional, defaults to `false`, requires single-spa@>=5.9.0): A boolean that controls whether trailing characters after the path should be allowed. When `false`, trailing characters are allowed. When `true`, trailing characters are not allowed.
 
 ***Return Value***
 
