@@ -168,7 +168,7 @@ document.querySelector('a').addEventListener(singleSpa.navigateToUrl);
 
 ```html
 <!-- A fourth way to use navigateToUrl, this one inside of your HTML -->
-<a href="/new-url" onclick="singleSpaNavigate()">My link</a>
+<a href="/new-url" onclick="singleSpaNavigate(event)">My link</a>
 ```
 
 Use this utility function to easily perform url navigation between registered applications without needing to deal with `event.preventDefault()`, `pushState`, `triggerAppChange()`, etc.
