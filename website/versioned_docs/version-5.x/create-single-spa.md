@@ -33,7 +33,7 @@ npm init single-spa
 # or
 npx create-single-spa
 
-# or 
+# or
 yarn create single-spa
 ```
 
@@ -139,7 +139,7 @@ module.exports = (webpackConfigEnv, argv) => {
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
-    argv,     
+    argv,
     // optional
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
@@ -147,13 +147,13 @@ module.exports = (webpackConfigEnv, argv) => {
 
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
-    rootDirectoryLevel: 1
-  })
+    rootDirectoryLevel: 1,
+  });
 
   return webpackMerge.smart(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
-  })
-}
+  });
+};
 ```
 
 ## webpack-config-single-spa-react
@@ -186,7 +186,7 @@ module.exports = (webpackConfigEnv, argv) => {
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
-    argv, 
+    argv,
     // optional
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
@@ -194,13 +194,13 @@ module.exports = (webpackConfigEnv, argv) => {
 
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
-    rootDirectoryLevel: 1
-  })
+    rootDirectoryLevel: 1,
+  });
 
   return webpackMerge.smart(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
-  })
-}
+  });
+};
 ```
 
 ## webpack-config-single-spa-ts
@@ -234,20 +234,22 @@ module.exports = (webpackConfigEnv, argv) => {
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
     argv,
-  })
+  });
 
   return webpackMerge.smart(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
-  })
-}
+  });
+};
 ```
 
 ```js
 const singleSpaTs = require('webpack-config-single-spa-ts');
 
 // Alternatively, you may modify a webpack config directly
-const myOtherWebpackConfig = {/* ... */}
-const finalConfig = singleSpaDefaults.modifyConfig(myOtherWebpackConfig)
+const myOtherWebpackConfig = {
+  /* ... */
+};
+const finalConfig = singleSpaDefaults.modifyConfig(myOtherWebpackConfig);
 ```
 
 ## webpack-config-single-spa-react-ts
@@ -336,7 +338,9 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
-const htmlTemplate = ejs.compile(fs.readFileSync(path.resolve(process.cwd(), 'views/index.html'), 'utf-8'));
+const htmlTemplate = ejs.compile(
+  fs.readFileSync(path.resolve(process.cwd(), 'views/index.html'), 'utf-8'),
+);
 
 http.createServer((req, res) => {
   getImportMaps({
@@ -367,13 +371,14 @@ http.createServer((req, res) => {
     // Keys that you return `true` for are preserved in the nodeImportMap.
     nodeKeyFilter(key) {
       return true;
-    }
-  })
-  .then(({browserImportMap, nodeImportMap}) => {
+    },
+  }).then(({ browserImportMap, nodeImportMap }) => {
     console.log(browserImportMap, nodeImportMap);
 
     // Example of how to inline a browser import map
-    const htmlWithInlinedImportMap = htmlTemplate({importMap: browserImportMap});
+    const htmlWithInlinedImportMap = htmlTemplate({
+      importMap: browserImportMap,
+    });
     res.setResponseHeader('Content-Type', 'text/html');
     res.status(200).send(htmlWithInlinedImportMap);
 
