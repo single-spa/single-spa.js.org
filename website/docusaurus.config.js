@@ -102,7 +102,7 @@ module.exports = {
         alt: 'single-spa Logo',
         src: 'img/logo-white-bgblue.svg',
       },
-      links: [
+      items: [
         {
           to: 'versions',
           label: versions[0],
@@ -119,7 +119,7 @@ module.exports = {
         { to: 'blog/', label: 'Blog' },
         { href: 'https://opencollective.com/single-spa', label: 'Donate' },
         { href: 'https://github.com/single-spa/single-spa', label: 'GitHub' },
-        { to: 'languages', label: '简Жहि Languages'},
+        { to: 'languages', label: '简Жहि Languages' },
       ],
     },
     googleAnalytics: {
