@@ -91,7 +91,7 @@ When generating a root config, the `--layout` CLI argument indicates that you wa
 
 create-single-spa asks you if you'd like to create a single-spa application, a utility module, or a root-config. All three module types assume that you are using the [recommended setup](/docs/recommended-setup).
 
-If you select that you'd like to create a single-spa application, you will be prompted for which framework you'd like to choose. React is implemented with premade configurations for babel + webpack + jest. Angular is implemented with Angular CLI and [single-spa-angular](). Vue is implemented with Vue CLI and [vue-cli-plugin-single-spa](/ecosystem/ecosystem-vue#vue-cli).
+If you select that you'd like to create a single-spa application, you will be prompted for which framework you'd like to choose. React is implemented with premade configurations for babel + webpack + jest. Angular is implemented with Angular CLI and [single-spa-angular](/docs/ecosystem-angular). Vue is implemented with Vue CLI and [vue-cli-plugin-single-spa](/docs/ecosystem-vue#vue-cli).
 
 # NPM packages
 
