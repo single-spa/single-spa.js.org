@@ -49,9 +49,7 @@ yarn add --dev @babel/core @babel/preset-env @babel/preset-react @babel/plugin-s
 
 Next create a *.babelrc* file and paste in the following:
 
-<p className="filename">.babelrc</p>
-
-```js
+```js title=".babelrc"
 {
   "presets": [
     ["@babel/preset-env", {
@@ -98,7 +96,7 @@ In the root of your project create a new file name *webpack.config.js* and paste
 
 <p className="filename">webpack.config.js</p>
 
-```js
+```js title="webpack.config.js"
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -154,9 +152,7 @@ module.exports = {
 
 The last step in our project set up is to include a couple scripts in our package.json to run webpack-dev-server and to create a production build. Add the following to your *package.json*:
 
-<p className="filename">package.json</p>
-
-```js
+```js title="package.json"
 "scripts": {
   "start": "webpack-dev-server --open",
   "build": "webpack --config webpack.config.js -p"
@@ -175,9 +171,7 @@ Create an *index.html* file the root directory. Inside this file, we'll be addin
 
 Paste in the following HTML markup:
 
-<p className="filename">index.html</p>
-
-```html
+```html title="index.html"
 <html>
   <head></head>
   <body>
@@ -194,9 +188,7 @@ For styling, we will be using the [Materialize](https://materializecss.com/) fra
 
 Additionally, to enable single-spa, we will need to include a script tag that references [*single-spa.config.js*](configuration#indexhtml-file) in *index.html*. We will be adding and populating this file in the next step. Webpack outputs our built code to *dist/* so that will be the path of *single-spa.config.js*.
 
-<p className="filename">index.html</p>
-
-```html
+```html title="index.html"
 <html>
   <head>
     <!-- Materialize -->
@@ -224,7 +216,7 @@ Additionally, to enable single-spa, we will need to include a script tag that re
 
 Create a new file called *single-spa.config.js* in the root directory. Let's start by registering the `home` application.
 
-<p className="filename">single-spa.config.js</p>
+```js title="single-spa.config.js"
 
 ```js
 import { registerApplication, start } from 'single-spa'
@@ -298,9 +290,7 @@ Since we have registered our application, single-spa will be listening for the _
 
 `singleSpaReact` requires 4 parameters: the instance of React, the instance of ReactDOM, the rootComponent to be rendered (in this case, the `Home` component), and a `domElementGetter` function that return a DOMElement where the Home application will be bootstrapped, mounted, and unmounted by single-spa.
 
-<p className="filename">home.app.js</p>
-
-```js
+```js title="home.app.js"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
@@ -334,11 +324,7 @@ export const unmount = [
 
 Now that we have the __home__ application registered, let us build the React app. We've reproduced the code from [react-router's Animated Transitions](https://reacttraining.com/react-router/web/example/animated-transitions) below with two modifications, which are highlighted below. The first change is to add `/home` as the basename prop for `Router`, since in [Step 3](starting-from-scratch.md#step-three-registering-an-app) we had configured this application to handle routing at the `/home` path. The second change is to the top-most div's styles so that __home__ appears beneath the __navBar__ that we'll create later.
 
-<p className="filename">root.component.js</p>
-
-```js {24,27}
-import React from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+```js {24,27} title="root.component.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -490,7 +476,7 @@ One way of doing this is by simply passing in an _application config object_ (th
 
 However, to encourage best practices, we will leverage [code splitting using Webpack](https://webpack.js.org/guides/code-splitting/) to easily lazy-load registered applications on-demand. Think about your project's needs when deciding which route to take.
 
-<p className="filename">single-spa.config.js</p>
+```js {7} title="single-spa.config.js"
 
 ```js {7}
 import {registerApplication, start} from 'single-spa'
@@ -530,7 +516,7 @@ Just as before, register the __navBar__ application using the `registerApplicati
 
 <p className="filename">single-spa.config.js</p>
 
-```js {3-7}
+```js {3-7} title="single-spa.config.js"
 import {registerApplication, start} from 'single-spa'
 
 registerApplication(
@@ -563,7 +549,7 @@ In *navbar.app.js* add the following application lifecycles. This is slightly di
 
 <p className="filename">navbar.app.js</p>
 
-```js
+```js title="navbar.app.js"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
@@ -587,8 +573,7 @@ Recall that Materialize is included so we can use the class names it provides in
 
 <p className="filename">root.component.js</p>
 
-```js
-import React from 'react'
+```js title="root.component.js"
 
 const NavBar = () => (
   <nav>
@@ -615,9 +600,7 @@ An alternative method would be to call `pushState()`, which `navigateToUrl` does
 
 <p className="filename">root.component.js</p>
 
-```js {2,7,9,10}
-import React from 'react'
-import {navigateToUrl} from 'single-spa'
+```js {2,7,9,10} title="root.component.js"
 
 const NavBar = () => (
   <nav>
@@ -668,7 +651,7 @@ Just as we did for the __home__ and __navBar__ applications, we start by registe
 
 <p className="filename">single-spa.config.js</p>
 
-```js
+```js title="single-spa.config.js"
 registerApplication(
   'angularJS', 
   () => import ('./src/angularJS/angularJS.app.js'), 
@@ -678,9 +661,7 @@ registerApplication(
 
 Hard-coding the activityFunction begins to get tedious so let us add a function that will simplify the matching logic for our application configuration. To do this, we've created a function that takes a string that represents the path prefix and returns a function that accepts `location` and matches whether the `location` starts with the path prefix.
 
-<p className="filename">single-spa.config.js</p>
-
-```js {3-7,12}
+```js {3-7,12} title="single-spa.config.js"
 ...
 
 function pathPrefix(prefix) {
@@ -706,7 +687,7 @@ Just as we did for our __home__ and __navBar__ applications, set up the lifecycl
 
 <p className="filename">angularJS.app.js</p>
 
-```js
+```js title="angularJS.app.js"
 import singleSpaAngularJS from 'single-spa-angularjs';
 import angular from 'angular';
 import './app.module.js';
@@ -743,7 +724,7 @@ To start, we will build *app.module.js* followed by *root.component.js* which wi
 
 <p className="filename">app.module.js</p>
 
-```js
+```js title="app.module.js"
 import angular from 'angular';
 import 'angular-ui-router';
 
@@ -751,9 +732,7 @@ angular
 .module('angularJS-app', ['ui.router']);
 ```
 
-<p className="filename">root.component.js</p>
-
-```js
+```js title="root.component.js"
 import angular from 'angular';
 import template from './root.template.html';
 
@@ -764,10 +743,7 @@ angular
 })
 ```
 
-<p className="filename">root.template.html</p>
-
-```html
-<div ng-style='vm.styles'>
+```html title="root.template.html"
   <div class="container">
     <div class="row">
       <h4 class="light">
@@ -795,9 +771,7 @@ angular
 
 Next we will add a basic Gif Component and import it in the root component.
 
-<p className="filename">gifs.component.js</p>
-
-```js
+```js title="gifs.component.js"
 import angular from 'angular';
 import template from './gifs.template.html';
 
@@ -823,9 +797,7 @@ angular
   });
 ```
 
-<p className="filename">gifs.template.html</p>
-
-```html
+```html title="gifs.template.html"
 <div style="padding-top: 20px">
   <h4 class="light">
     Cat Gifs gifs
@@ -844,7 +816,7 @@ Now that we have each of our components built out, all we have left to do is con
 
 <p className="filename">routes.js</p>
 
-```js
+```js title="routes.js"
 import angular from 'angular';
 import './root.component.js';
 import './gifs.component.js';

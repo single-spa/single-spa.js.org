@@ -58,9 +58,7 @@ Each lifecycle function is guranteed to be called with the following props:
 
 In addition to the built-in props that are provided by single-spa, you may optionally specify custom props to be passed to an application. These *customProps* will be passed into each lifecycle method. The custom props are an object, and you can provide either the object or a function that returns the object. Custom prop functions are called with the application name and current window.location as arguments.
 
-<p className="filename">root.application.js</p>
-
-```js
+```js title="root-config.js"
 singleSpa.registerApplication({
   name: 'app1',
   activeWhen,
@@ -78,9 +76,7 @@ singleSpa.registerApplication({
 });
 ```
 
-<p className="filename">app1.js</p>
-
-```js
+```js title="app1.js"
 export function mount(props) {
   console.log(props.authToken); // do something with the common authToken in app1
   return reactLifecycles.mount(props);
@@ -179,9 +175,7 @@ export function unload(props) {
 
 By default, registered applications obey the [global timeout configuration](/docs/api#setbootstrapmaxtime), but can override that behavior for their specific application. This is done by exporting a `timeouts` object from the main entry point of the registered application. Example:
 
-<p className="filename">app-1.main-entry.js</p>
-
-```js
+```js title="app-1.js"
 export function bootstrap(props) {...}
 export function mount(props) {...}
 export function unmount(props) {...}

@@ -29,9 +29,7 @@ To avoid having to eject, we are going to hijack the current entry point, *src/i
 
 Start by removing everything except `registerServiceWorker`. 
 
-<p className="filename">src/index.js</p>
-
-```js
+```js title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
 
 registerServiceWorker();
@@ -47,9 +45,7 @@ Finally, the [start()](api.md#start) api **must** be called by your `single spa 
 
 In *src/index.js*, start by importing the `registerApplication` and `start` functions:
 
-<p className="filename">src/index.js</p>
-
-```js {2}
+```js {2} title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
 import {registerApplication, start} from 'single-spa';
 
@@ -58,9 +54,7 @@ registerServiceWorker();
 
 With our functions imported, we can now register an application with single-spa and call `start()`:
 
-<p className="filename">src/index.js</p>
-
-```js {4-8,10}
+```js {4-8,10} title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
 import {registerApplication, start} from 'single-spa';
 
@@ -134,7 +128,7 @@ Head back to the __single-spa config__ in *src/index.js* to add a [loading funct
 It is important to note that **you do not have to use a loading function** and instead can simply pass in the application config object directly to the `registerApplication` function. However, with [Webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
 :::
 
-```js {8}
+```js {8} title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
 import {registerApplication, start} from 'single-spa';
 
