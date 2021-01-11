@@ -751,7 +751,7 @@ If you need to support IE11 or older, do the following:
 
 ## Angular Elements
 
-:::caution
+:::info
 This feature is available starting from `single-spa-angular@4.4.0`. You also may need to become familiar with [Angular Elements documentation](https://angular.io/guide/elements).
 :::
 
@@ -890,7 +890,7 @@ export const config = singleSpaReact({
 
 ## Zone-less applications
 
-:::caution
+:::info
 This feature is available starting from `single-spa-angular@4.1`.
 :::
 
@@ -909,8 +909,8 @@ const lifecycles = singleSpaAngular({
 });
 ```
 
-:::note
-We must specify `noop` 2 times: when bootstrapping `AppModule` and setting `NgZone` property to `noop`, thus we tell Angular and single-spa-angular that we're not going to use zones.
+:::caution
+We must specify `noop` _twice_: when bootstrapping `AppModule`, and setting `NgZone` property to `noop`. This tells Angular and single-spa-angular that we're not going to use zones.
 :::
 
 ### Routing in zone-less applications
