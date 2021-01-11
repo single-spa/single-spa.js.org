@@ -111,7 +111,9 @@ Add the following in `public/index.html` at the very bottom of the `<head>`.
 </head>
 ```
 
-> You may want to read more about [the importance of `<script>` tag order](https://eager.io/blog/everything-I-know-about-the-script-tag/).
+:::info
+You may want to read more about [the importance of `<script>` tag order](https://eager.io/blog/everything-I-know-about-the-script-tag/).
+:::
 
 Now that our application has access to the `single-spa-angularjs` library, we can set up the [application lifecycle](building-applications.md#registered-application-lifecycle). Add the following code:
 

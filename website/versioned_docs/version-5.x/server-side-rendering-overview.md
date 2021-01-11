@@ -332,7 +332,9 @@ http.createServer((req, res) => {
 
 Hydration (or rehydration) refers to browser Javascript initializing and attaching event listeners to the HTML sent by the server. There are several variants, including progressive rehydration and partial rehydration.
 
-> See also ["Rendering on the Web"](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) by Google.
+:::info
+See also ["Rendering on the Web"](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) by Google.
+:::
 
 In the context of microfrontends, hydration is done by the underlying UI framework of the microfrontend (React, Vue, Angular, etc). For example, in React, this is done by calling [ReactDOM.hydrate()](https://reactjs.org/docs/react-dom.html#hydrate). The [single-spa adapter libraries](/docs/ecosystem) allow you to specify whether you are hydrating or mounting for the first time (see single-spa-react's [`renderType` option](/docs/ecosystem-react#options)).
 

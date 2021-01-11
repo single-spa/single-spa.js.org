@@ -24,9 +24,9 @@ Notes:
 - If single-spa is [not started](api.md#start), applications will be loaded,
   but will not be bootstrapped, mounted or unmounted.
 
-> **Note**
->
-> Framework-specific helper libraries exist in the [single-spa ecosystem](ecosystem.md) to implement these required lifecycle methods. This documentation is helpful for understanding what those helpers are doing, or for implementing your own.
+:::info
+Framework-specific helper libraries exist in the [single-spa ecosystem](ecosystem.md) to implement these required lifecycle methods. This documentation is helpful for understanding what those helpers are doing, or for implementing your own.
+:::
 
 ## Lifecyle props
 

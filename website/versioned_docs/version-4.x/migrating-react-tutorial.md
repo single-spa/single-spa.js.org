@@ -130,9 +130,9 @@ function domElementGetter() {
 
 Head back to the __single-spa config__ in *src/index.js* to add a [loading function](configuration#loading-function) for the registered application by importing *root.app.js*.
 
-> It is important to note that **you do not have to use a loading function** and instead can simply pass in the application config object directly to the `registerApplication` function. However, with [Webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
-
-<p className="filename">src/index.js</p>
+:::note
+It is important to note that **you do not have to use a loading function** and instead can simply pass in the application config object directly to the `registerApplication` function. However, with [Webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
+:::
 
 ```js {8}
 import registerServiceWorker from './registerServiceWorker';

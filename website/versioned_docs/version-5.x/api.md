@@ -113,7 +113,9 @@ singleSpa.registerApplication({
 
 `undefined`
 
-> It is described in detail inside of the [Configuration docs](configuration#registering-applications)
+:::note
+It is described in detail inside of the [Configuration docs](configuration#registering-applications)
+:::
 
 ## start
 ```js
@@ -466,7 +468,9 @@ const parcel2 = singleSpa.mountRootParcel(() => import('./some-parcel.js'), {pro
 
 Will create and mount a [single-spa parcel](parcels-overview.md).
 
-> Note: parcels do not automatically unmount. Unmounting will need to be triggered manually.
+:::caution Parcels do not automatically unmount
+Unmounting will need to be triggered manually.
+:::
 
 <h3>arguments</h3>
 
@@ -818,7 +822,9 @@ window.addEventListener('single-spa:before-first-mount', () => {
 
 Before the first of any single-spa applications is mounted, single-spa fires a `single-spa:before-first-mount` event; therefore it will only be fired once ever. More specifically, it fires after the application is already loaded but before mounting.
 
-> **Suggested use case:** remove a loader bar that the user is seeing right before the first app will be mounted.
+:::tip Suggested use case
+remove a loader bar that the user is seeing right before the first app will be mounted.
+:::
 
 ### first-mount
 
@@ -830,7 +836,9 @@ window.addEventListener('single-spa:first-mount', () => {
 
 After the first of any single-spa applications is mounted, single-spa fires a `single-spa:first-mount` event; therefore it will only be fired once ever.
 
-> **Suggested use case:** log the time it took before the user sees any of the apps mounted.
+:::tip Suggested use case
+log the time it took before the user sees any of the apps mounted.
+:::
 
 ### app-change event
 

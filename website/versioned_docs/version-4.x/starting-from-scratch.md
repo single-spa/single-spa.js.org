@@ -20,15 +20,15 @@ For this tutorial we will be creating the following applications to showcase the
 
 The complete code for this example is in the [`single-spa-simple-example`](https://github.com/alocke12992/single-spa-simple-example) repository.
 
-> __Note__
->
-> We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/single-spa/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/zt-jy1x8x93-52Tth0fZBUzZmHcEpWw2Jg) channel for more support.
+:::note
+We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/single-spa/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/zt-jy1x8x93-52Tth0fZBUzZmHcEpWw2Jg) channel for more support.
+:::
 
 ## 1. Initial setup
 
-> __Note__
->
-> For this tutorial, we will be using [yarn](https://yarnpkg.com/en/) but npm has its own equivalent commands and can be used almost interchangibly.
+:::info
+For this tutorial, we will be using [yarn](https://yarnpkg.com/en/) but npm has its own equivalent commands and can be used almost interchangibly.
+:::
 
 Create a new folder for this project and navigate into it. Initialize a new project using your package manager, and then install single-spa as a dependency. Then create a *src/* folder to hold all of our micro-service applications, with each in their own folder.
 
@@ -72,9 +72,9 @@ Learn more about what each of these packages do by visiting the [Babel docs](htt
 
 ### 1.b Setup Webpack
 
-> __Note__
->
-> It is important to point out that __you do not have to use Webpack in order use single-spa__. Learn more about [Separating applications](separating-applications.md) and the different ways you can use single-spa for your specific build.
+:::note
+It is important to point out that **you do not have to use Webpack in order use single-spa**. Learn more about [Separating applications](separating-applications.md) and the different ways you can use single-spa for your specific build.
+:::
 
 Run the following commands to add Webpack, Webpack plugins, and loaders.
 
@@ -517,7 +517,9 @@ Run `yarn start` in the root directory to start up the `webpack-dev-server`.
 
 Creating and registering our __navBar__ application will be very similar to the process we used to create our __home__ application. The main difference is that __navBar__ will export as an object with lifecycle methods and use [dynamic imports](https://webpack.js.org/guides/code-splitting/#dynamic-imports) (a Webpack 2+ feature) to obtain the application object.
 
-> You may wish to revisit [Step 3](starting-from-scratch.md#3-registering-applications) for a more detailed explanation on how to register an application.
+:::note
+You may wish to revisit [Step 3](starting-from-scratch.md#3-registering-applications) for a more detailed explanation on how to register an application.
+:::
 
 ### 5.a Register navBar
 
@@ -540,9 +542,9 @@ registerApplication(
 ...
 ```
 
-> __Hint__
->
-> Don't forget to define a corresponding mount point for _every newly registered application_ in your root HTML file. We did this already in [Step 2.a](starting-from-scratch.md#2a-create-indexhtml) so just remember to do so for each new application in the future.
+:::caution
+Don't forget to define a corresponding mount point for _every newly registered application_ in your root HTML file. We did this already in [Step 2.a](starting-from-scratch.md#2a-create-indexhtml) so just remember to do so for each new application in the future.
+:::
 
 ### 5.b Setup NavBar
 
@@ -607,9 +609,9 @@ export default NavBar
 
 With single-spa, there are a number of options that will allow us to navigate between our separate SPAs. single-spa provides [`navigateToUrl`](api.md#navigatetourl), a utility function that allows for easy url navigation between registered applications.
 
-> An alternative method would be to call `pushState()`, which `navigateToUrl` does internally. This method could be used in conjunction with other client-side libraries but there are some [additional considerations when using `pushState`](https://github.com/single-spa/single-spa-examples/issues/54#issuecomment-424384123).
-
-To use the function, we simply need to import it and call it with a click event, passing in each application's url (as designated by the activityFunction set in *single-spa.config.js*) as a string to the anchor tag's `href`.
+:::tip
+An alternative method would be to call `pushState()`, which `navigateToUrl` does internally. This method could be used in conjunction with other client-side libraries but there are some [additional considerations when using `pushState`](https://github.com/single-spa/single-spa-examples/issues/54#issuecomment-424384123).
+:::
 
 <p className="filename">root.component.js</p>
 
@@ -632,9 +634,9 @@ const NavBar = () => (
 export default NavBar
 ```
 
-> __Note__
->
-> We have yet to build the AngularJS application that corresponds to the `/angularJS` URL so navigating to it at this point will fail.
+:::info
+We have yet to build the AngularJS application that corresponds to the `/angularJS` URL so navigating to it at this point will fail.
+:::
 
 ## 6. Create the angularJS application
 
@@ -656,7 +658,9 @@ Using your package manager, add `angular`, `angular-ui-router`, and [`single-spa
 yarn add angular angular-ui-router single-spa-angularjs
 ```
 
-> Within the [single-spa ecosystem](ecosystem.md) there is a growing number of projects that help you bootstrap, mount, and unmount your applications that are written with popular frameworks.
+:::info
+Within the [single-spa ecosystem](ecosystem.md) there is a growing number of projects that help you bootstrap, mount, and unmount your applications that are written with popular frameworks.
+:::
 
 ### 6.b Register angularJS as an application
 

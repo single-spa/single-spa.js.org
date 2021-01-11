@@ -264,13 +264,13 @@ To get single-spa working, you'll need to manually  modify a few files.
 3. Add a declaration for EmptyRouteComponent in `app.module.ts`. See [angular docs](https://angular.io/guide/ngmodules#the-basic-ngmodule) for
   more details about app.module.ts.
 
-> __Note__
->
-> **APP_BASE_HREF** should have the same value that the used url for mount the Angular app defined in the single-spa root application. But doing this causes strange behaviours in Angular Router when navigate between registered apps. 
->
-> In order to avoid this is recommended using **'/'** as **APP_BASE_HREF** and repeat the url prefix for your Angular app in every route component and router links. If you set **/angular** in your Angular app activity function for mount when the url starts with this value you'll have to add **/angular** prefix in all links.
->
-> You can see several discussions about this issue in **single-spa-angular** GitHub repo: [Router not working without APP_BASE_HREF](https://github.com/single-spa/single-spa-angular/issues/64) and [How to handle router links between different single-spa application subrouters](https://github.com/single-spa/single-spa-angular/issues/62)
+:::caution
+**APP_BASE_HREF** should have the same value that the used url for mount the Angular app defined in the single-spa root application. But doing this causes strange behaviours in Angular Router when navigate between registered apps.
+
+In order to avoid this is recommended using **'/'** as **APP_BASE_HREF** and repeat the url prefix for your Angular app in every route component and router links. If you set **/angular** in your Angular app activity function for mount when the url starts with this value you'll have to add **/angular** prefix in all links.
+
+You can see several discussions about this issue in **single-spa-angular** GitHub repo: [Router not working without APP_BASE_HREF](https://github.com/single-spa/single-spa-angular/issues/64) and [How to handle router links between different single-spa application subrouters](https://github.com/single-spa/single-spa-angular/issues/62)
+:::
 
 ### Linking between applications
 To link between applications, simply use [`routerLink`](https://angular.io/api/router/RouterLink) like normal.
@@ -680,7 +680,9 @@ If you need to support IE11 or older, do the following:
 
 ## Angular Elements
 
-> ⚠️ This feature is available starting from `single-spa-angular@4.4.0`. You also may need to become familiar with [Angular Elements documentation](https://angular.io/guide/elements).
+:::caution
+This feature is available starting from `single-spa-angular@4.4.0`. You also may need to become familiar with [Angular Elements documentation](https://angular.io/guide/elements).
+:::
 
 Let's start with installing the `@angular/elements`:
 
@@ -815,7 +817,9 @@ export const config = singleSpaReact({
 
 ## Zone-less applications
 
-> ⚠️ This feature is available starting from `single-spa-angular@4.1`.
+:::caution
+This feature is available starting from `single-spa-angular@4.1`.
+:::
 
 It's possible to develop Angular applications that don't rely on `zone.js` library, these applications are called _zone-less_. You have to run change detection manually in _zone-less_ applications through `ApplicationRef.tick()` or `ChangeDetectorRef.detectChanges()`. You can find more info in [Angular NoopZone docs](https://angular.io/guide/zone#noopzone).
 
@@ -832,7 +836,9 @@ const lifecycles = singleSpaAngular({
 });
 ```
 
-> 💡 Note, that we have to specify `noop` 2 times: when bootstrapping `AppModule` and setting `NgZone` property to `noop`, thus we tell Angular and single-spa-angular that we're not going to use zones.
+:::note
+We must specify `noop` 2 times: when bootstrapping `AppModule` and setting `NgZone` property to `noop`, thus we tell Angular and single-spa-angular that we're not going to use zones.
+:::
 
 ### Routing in zone-less applications
 
@@ -867,7 +873,9 @@ const lifecycles = singleSpaAngular({
 });
 ```
 
-> ⚠️ `single-spa-angular@4.x` requires calling `getSingleSpaExtraProviders` function in applications that have routing. Do not call this function in _zone-less_ application.
+:::caution
+`single-spa-angular@4.x` **requires** calling `getSingleSpaExtraProviders` function in applications that have routing. Do not call this function in _zone-less_ application.
+:::
 
 ## Inter-app communication via RxJS
 
