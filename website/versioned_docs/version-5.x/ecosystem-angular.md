@@ -32,7 +32,7 @@ https://github.com/joeldenning/coexisting-angular-microfrontends
 
 ### Contributing
 
-For instructions on how to test this locally before creating a pull request, see the [Contributing docs](/CONTRIBUTING/md).
+For instructions on how to test this locally before creating a pull request, see the [Contributing docs](https://github.com/single-spa/single-spa-angular/blob/master/CONTRIBUTING.md).
 
 ## Angular versions
 
@@ -954,7 +954,7 @@ const lifecycles = singleSpaAngular({
 
 First of all, check out this [Inter-app communication guide](/docs/recommended-setup#inter-app-communication).
 
-It's possible to setup a communication between microfrontends via RxJS using [cross microfrontend imports](docs/recommended-setup/#cross-microfrontend-imports).
+It's possible to setup a communication between microfrontends via RxJS using [cross microfrontend imports](/docs/recommended-setup#cross-microfrontend-imports).
 
 We can not create complex abstractions, but simply export the `Subject`:
 

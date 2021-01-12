@@ -28,7 +28,7 @@ https://github.com/joeldenning/coexisting-angular-microfrontends
 
 ### Contributing
 
-For instructions on how to test this locally before creating a pull request, see the [Contributing docs](/CONTRIBUTING/md).
+For instructions on how to test this locally before creating a pull request, see the [Contributing docs](https://github.com/single-spa/single-spa-angular/blob/master/CONTRIBUTING.md).
 
 ## Angular versions
 
