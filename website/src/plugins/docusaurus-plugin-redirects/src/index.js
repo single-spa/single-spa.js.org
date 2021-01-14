@@ -9,7 +9,7 @@ module.exports = function(context, opts) {
   const options = { ...DEFAULT_OPTIONS, ...opts };
 
   return {
-    name: 'docusaurus-plugin-redirects',
+    name: 'custom-docusaurus-plugin-redirects',
 
     async postBuild({ siteConfig = {}, routesPaths = [], outDir }) {
       routesPaths.map(routesPath => {
