@@ -88,11 +88,11 @@ export class myComponent extends React.Component {
 }
 ```
 
-Note that in some cases the optional props are required [(see additional examples)](single-spa-react.md#examples).
+Note that in some cases the optional props are required [(see additional examples)](/docs/ecosystem-react/#examples).
 
 ## Parcel Lifecycles
 
-Start with [applications](api.md#registered-application-lifecycle) to learn more about the functionality of single-spa's lifecycle methods.
+Start with [applications](/docs/api/#registered-application-lifecycle) to learn more about the functionality of single-spa's lifecycle methods.
 
 ### Bootstrap
 
@@ -197,7 +197,7 @@ In general we suggest using the application-aware `mountParcel` API. `mountParce
 
 ### How do I get the `mountParcel` API?
 
-In order to keep the function contextually bound to an application it is provided to the application as a [lifecycle prop](building-applications.md#lifecyle-props). You will need to store and manage that function yourself in your application.
+In order to keep the function contextually bound to an application it is provided to the application as a [lifecycle prop](/docs/building-applications/#lifecyle-props). You will need to store and manage that function yourself in your application.
 
 Example of storing the application specific `mountParcel` API:
 
