@@ -139,7 +139,7 @@ As your architecture matures, you may add more shared dependencies in the future
    if using single-spa Layout Engine
 
    - Remove the existing `<application name="@single-spa/welcome"></application>` element
-   - Add your own `<application name=""></application>` element using the `name` the module name used in the import map from the previous ste
+   - Add your own `<application name=""></application>` element using the `name` the module name used in the import map from the previous step
 
 Thats it! Your first single-spa application should now be running in your root-config.
 
