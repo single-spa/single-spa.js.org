@@ -261,7 +261,7 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 			</div>
 			<div>
 				<dt>LOADING_SOURCE_CODE</dt>
-				<dd>'s source code is being fetched.</dd>
+				<dd>app's source code is being fetched.</dd>
 			</div>
 			<div>
 				<dt>NOT_BOOTSTRAPPED</dt>
