@@ -344,7 +344,7 @@ In order for the [webpack public path](https://webpack.js.org/guides/public-path
 "single-spa helpers" refers to the in-browser portion of single-spa-angular. The helpers are used by all versions of Angular and
 regardless of whether you are using Angular CLI or not. This is the core of the single-spa-angular library that makes it possible
 for Angular applications to bootstrap, mount, and unmount. See
-[single-spa lifecycles](http://localhost:3000/docs/building-applications.html#registered-application-lifecycle) for more information.
+[single-spa lifecycles](/docs/building-applications.html#registered-application-lifecycle) for more information.
 
 ### Migrating from single-spa-angular@3.x to single-spa-angular@4.x
 
@@ -633,7 +633,7 @@ is the preferred way to do it.
 #### Option 2
 
 If you want the scripts to only be loaded when needed, you can add a custom
-[bootstrap lifecycle](http://localhost:3000/docs/building-applications.html#bootstrap) to your code.
+[bootstrap lifecycle](/docs/building-applications.html#bootstrap) to your code.
 
 Note that lazy loading these scripts can actually be worse for performance _if you always need them_, since
 they will start downloading later than if you put them right into the root HTML file.
