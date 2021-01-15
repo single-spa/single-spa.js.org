@@ -14,17 +14,20 @@ import * as singleSpa from 'single-spa';
 ```
 
 ## registerApplication
+
 `registerApplication` is the most important API your root config will use. Use this function to register any application within single-spa.
 Note that if an application is registered from within another application, that no hierarchy will be maintained between the applications.
 
 There are two ways of registering your application:
+
 ### Simple arguments
+
 ```js
 singleSpa.registerApplication(
-	'appName',
-	() => System.import('appName'),
-	location => location.pathname.startsWith('appName')
-)
+  'appName',
+  () => System.import('appName'),
+  location => location.pathname.startsWith('appName'),
+);
 ```
 
 <h3>arguments</h3>
@@ -45,6 +48,7 @@ singleSpa.registerApplication(
 `undefined`
 
 ### Configuration object
+
 ```js
 singleSpa.registerApplication({
 	name: 'appName',
@@ -113,15 +117,18 @@ singleSpa.registerApplication({
 
 `undefined`
 
-> It is described in detail inside of the [Configuration docs](configuration#registering-applications)
+:::note
+It is described in detail inside of the [Configuration docs](configuration#registering-applications)
+:::
 
 ## start
+
 ```js
 singleSpa.start();
 
 // Optionally, you can provide configuration
 singleSpa.start({
-	urlRerouteOnly: true
+  urlRerouteOnly: true,
 });
 ```
 
@@ -161,7 +168,7 @@ none
 
 ```js
 // Three ways of using navigateToUrl
-singleSpa.navigateToUrl("/new-url");
+singleSpa.navigateToUrl('/new-url');
 singleSpa.navigateToUrl(document.querySelector('a'));
 document.querySelector('a').addEventListener(singleSpa.navigateToUrl);
 ```
@@ -298,16 +305,16 @@ console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 	</dd>
 </dl>
 
-**Note about LOAD_ERROR status**
+### Handling LOAD_ERROR status to retry module
 
-Note that if you're using SystemJS to load your bundles, you need to add the following code to get SystemJS to re-attempt the network request
-when your loading function calls `System.import()` on an application in `LOAD_ERROR` status.
+If a module fails to load (for example, due to network error), single-spa will handle the error but SystemJS will not automatically retry to download the module later. To do so, add a single-spa errorHandler that deletes the module from the SystemJS registry and re-attempt to download the module when `System.import()` on an application in `LOAD_ERROR` status is called again.
+
 ```js
 singleSpa.addErrorHandler(err => {
-	if (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
-		System.delete(System.resolve(err.appOrParcelName));
-	}
-})
+  if (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
+    System.delete(System.resolve(err.appOrParcelName));
+  }
+});
 ```
 
 ## unloadApplication
@@ -317,7 +324,7 @@ singleSpa.addErrorHandler(err => {
 singleSpa.unloadApplication('app1');
 
 // Unload the application only after it naturally unmounts due to a route change.
-singleSpa.unloadApplication('app1', {waitForUnmount: true});
+singleSpa.unloadApplication('app1', { waitForUnmount: true });
 ```
 
 The purpose of unloading a registered application is to set it back to a NOT_LOADED status, which means that it will be re-bootstrapped the next time it needs to mount. The main use-case for this was to allow for the hot-reloading of entire registered applications, but `unloadApplication` can be useful whenever you want to re-bootstrap your application.
@@ -352,8 +359,8 @@ Because a registered application might be mounted when `unloadApplication` is ca
 import { unregisterApplication } from 'single-spa';
 
 unregisterApplication('app1').then(() => {
-	console.log('app1 is now unmounted, unloaded, and no longer registered!');
-})
+  console.log('app1 is now unmounted, unloaded, and no longer registered!');
+});
 ```
 
 The `unregisterApplication` function will unmount, unload, and unregister an application. Once it is no longer registered, the application will never again be mounted.
@@ -383,7 +390,9 @@ This api was introduced in single-spa@5.8.0. A few notes about this api:
 const appsThatShouldBeActive = singleSpa.checkActivityFunctions();
 console.log(appsThatShouldBeActive); // ['app1']
 
-const appsForACertainRoute = singleSpa.checkActivityFunctions({pathname: '/app2'});
+const appsForACertainRoute = singleSpa.checkActivityFunctions({
+  pathname: '/app2',
+});
 console.log(appsForACertainRoute); // ['app2']
 ```
 
@@ -407,9 +416,9 @@ Will call every app's activity function with the `mockWindowLocation` and give y
 
 ```js
 singleSpa.addErrorHandler(err => {
-	console.log(err);
-	console.log(err.appOrParcelName);
-	console.log(singleSpa.getAppStatus(err.appOrParcelName));
+  console.log(err);
+  console.log(err.appOrParcelName);
+  console.log(singleSpa.getAppStatus(err.appOrParcelName));
 });
 ```
 
@@ -427,11 +436,11 @@ Adds a handler that will be called every time an application throws an error dur
 ## removeErrorHandler
 
 ```js
-singleSpa.addErrorHandler(handleErr)
-singleSpa.removeErrorHandler(handleErr)
+singleSpa.addErrorHandler(handleErr);
+singleSpa.removeErrorHandler(handleErr);
 
 function handleErr(err) {
-	console.log(err)
+  console.log(err);
 }
 ```
 
@@ -455,18 +464,26 @@ Removes the given error handler function.
 
 ```js
 // Synchronous mounting
-const parcel = singleSpa.mountRootParcel(parcelConfig, {prop1: 'value1', domElement: document.getElementById('a-div')});
+const parcel = singleSpa.mountRootParcel(parcelConfig, {
+  prop1: 'value1',
+  domElement: document.getElementById('a-div'),
+});
 parcel.mountPromise.then(() => {
-	console.log('finished mounting the parcel!')
-})
+  console.log('finished mounting the parcel!');
+});
 
 // Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
-const parcel2 = singleSpa.mountRootParcel(() => import('./some-parcel.js'), {prop1: 'value1', domElement: document.getElementById('a-div')});
+const parcel2 = singleSpa.mountRootParcel(() => import('./some-parcel.js'), {
+  prop1: 'value1',
+  domElement: document.getElementById('a-div'),
+});
 ```
 
 Will create and mount a [single-spa parcel](parcels-overview.md).
 
-> Note: parcels do not automatically unmount. Unmounting will need to be triggered manually.
+:::caution Parcels do not automatically unmount
+Unmounting will need to be triggered manually.
+:::
 
 <h3>arguments</h3>
 
@@ -490,18 +507,18 @@ The `pathToActiveWhen` function converts a string URL path into an [activity fun
 
 This function is used by single-spa when a string is passed into `registerApplication` as the `activeWhen` argument.
 
-***Arguments***
+**_Arguments_**
 
 1. `path` (string): The URL prefix that.
 2. `exactMatch` (boolean, optional, defaults to `false`, requires single-spa@>=5.9.0): A boolean that controls whether trailing characters after the path should be allowed. When `false`, trailing characters are allowed. When `true`, trailing characters are not allowed.
 
-***Return Value***
+**_Return Value_**
 
 `(location: Location) => boolean`
 
 A function that accepts a URL as an argument and returns a boolean indicating whether the path matches that URL.
 
-***Examples:***
+**_Examples:_**
 
 ```js
 let activeWhen = singleSpa.pathToActiveWhen('/settings');
@@ -554,7 +571,6 @@ singleSpa.setBootstrapMaxTime(3000, true);
 
 // don't do a console warning for slow lifecycles until 10 seconds have elapsed
 singleSpa.setBootstrapMaxTime(3000, true, 10000);
-
 ```
 
 Sets the global configuration for bootstrap timeouts.
@@ -692,12 +708,14 @@ single-spa fires [PopStateEvent](https://developer.mozilla.org/en-US/docs/Web/AP
 
 ```js
 window.addEventListener('popstate', evt => {
-	if (evt.singleSpa) {
-		console.log('This event was fired by single-spa to forcibly trigger a re-render')
-		console.log(evt.singleSpaTrigger); // pushState | replaceState
-	} else {
-		console.log('This event was fired by native browser behavior')
-	}
+  if (evt.singleSpa) {
+    console.log(
+      'This event was fired by single-spa to forcibly trigger a re-render',
+    );
+    console.log(evt.singleSpaTrigger); // pushState | replaceState
+  } else {
+    console.log('This event was fired by native browser behavior');
+  }
 });
 ```
 
@@ -708,11 +726,17 @@ Canceling navigation refers to the URL changing and then immediately changing ba
 To cancel a navigation event, listen to the `single-spa:before-routing-event` event:
 
 ```js
-window.addEventListener('single-spa:before-routing-event', ({detail: {oldUrl, newUrl, cancelNavigation}}) => {
-	if (new URL(oldUrl).pathname === '/route1' && new URL(newUrl).pathname === '/route2') {
-		cancelNavigation();
-	}
-})
+window.addEventListener(
+  'single-spa:before-routing-event',
+  ({ detail: { oldUrl, newUrl, cancelNavigation } }) => {
+    if (
+      new URL(oldUrl).pathname === '/route1' &&
+      new URL(newUrl).pathname === '/route2'
+    ) {
+      cancelNavigation();
+    }
+  },
+);
 ```
 
 When a navigation is canceled, no applications will be mounted, unmounted, loaded, or unloaded. All single-spa routing events will fire for the canceled navigation, but they will each have the `navigationIsCanceled` property set to `true` on the `event.detail` (Details below in Custom Events section).
@@ -725,41 +749,62 @@ single-spa fires a series of [custom events](https://developer.mozilla.org/en-US
 
 ```js
 window.addEventListener('single-spa:before-routing-event', evt => {
-	const { originalEvent, newAppStatuses, appsByNewStatus, totalAppChanges, oldUrl, newUrl, navigationIsCanceled, cancelNavigation } = evt.detail;
-	console.log('original event that triggered this single-spa event', originalEvent); // PopStateEvent | HashChangeEvent | undefined
-	console.log('the new status for all applications after the reroute finishes', newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-	console.log('the applications that changed, grouped by their status', appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-	console.log('number of applications that changed status so far during this reroute', totalAppChanges); // 2
-	console.log('the URL before the navigationEvent', oldUrl); // http://localhost:8080/old-route
-	console.log('the URL after the navigationEvent', newUrl); // http://localhost:8080/new-route
-	console.log('has the navigation been canceled', navigationIsCanceled); // false
+  const {
+    originalEvent,
+    newAppStatuses,
+    appsByNewStatus,
+    totalAppChanges,
+    oldUrl,
+    newUrl,
+    navigationIsCanceled,
+    cancelNavigation,
+  } = evt.detail;
+  console.log(
+    'original event that triggered this single-spa event',
+    originalEvent,
+  ); // PopStateEvent | HashChangeEvent | undefined
+  console.log(
+    'the new status for all applications after the reroute finishes',
+    newAppStatuses,
+  ); // { app1: MOUNTED, app2: NOT_MOUNTED }
+  console.log(
+    'the applications that changed, grouped by their status',
+    appsByNewStatus,
+  ); // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+  console.log(
+    'number of applications that changed status so far during this reroute',
+    totalAppChanges,
+  ); // 2
+  console.log('the URL before the navigationEvent', oldUrl); // http://localhost:8080/old-route
+  console.log('the URL after the navigationEvent', newUrl); // http://localhost:8080/new-route
+  console.log('has the navigation been canceled', navigationIsCanceled); // false
 
-	// The cancelNavigation function is only defined in the before-routing-event
-	evt.detail.cancelNavigation();
-})
+  // The cancelNavigation function is only defined in the before-routing-event
+  evt.detail.cancelNavigation();
+});
 ```
 
 The following table shows the order in which the custom events are fired during a reroute:
 
-| Event order | Event Name | Condition for firing |
-| ----------- | ---------- | -------------------- |
-| 1 | `single-spa:before-app-change` or `single-spa:before-no-app-change` | Will any applications change status? |
-| 2 | `single-spa:before-routing-event` | &mdash; |
-| 3 | `single-spa:before-mount-routing-event` | &mdash; |
-| 4 | `single-spa:before-first-mount` | Is this the first time any application is mounting? |
-| 5 | `single-spa:first-mount` | Is this the first time any application was mounted? |
-| 6 | `single-spa:app-change` or `single-spa:no-app-change` | Did any applications change status? |
-| 7 | `single-spa:routing-event` | &mdash; |
+| Event order | Event Name                                                          | Condition for firing                                |
+| ----------- | ------------------------------------------------------------------- | --------------------------------------------------- |
+| 1           | `single-spa:before-app-change` or `single-spa:before-no-app-change` | Will any applications change status?                |
+| 2           | `single-spa:before-routing-event`                                   | &mdash;                                             |
+| 3           | `single-spa:before-mount-routing-event`                             | &mdash;                                             |
+| 4           | `single-spa:before-first-mount`                                     | Is this the first time any application is mounting? |
+| 5           | `single-spa:first-mount`                                            | Is this the first time any application was mounted? |
+| 6           | `single-spa:app-change` or `single-spa:no-app-change`               | Did any applications change status?                 |
+| 7           | `single-spa:routing-event`                                          | &mdash;                                             |
 
 ### before-app-change event
 
 ```js
-window.addEventListener('single-spa:before-app-change', (evt) => {
-	console.log('single-spa is about to mount/unmount applications!');
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
-	console.log(evt.detail.totalAppChanges) // 1
+window.addEventListener('single-spa:before-app-change', evt => {
+  console.log('single-spa is about to mount/unmount applications!');
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { app1: MOUNTED }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
+  console.log(evt.detail.totalAppChanges); // 1
 });
 ```
 
@@ -768,12 +813,12 @@ A `single-spa:before-app-change` event is fired before reroutes that will result
 ### before-no-app-change
 
 ```js
-window.addEventListener('single-spa:before-no-app-change', (evt) => {
-	console.log('single-spa is about to do a no-op reroute');
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-	console.log(evt.detail.totalAppChanges) // 0
+window.addEventListener('single-spa:before-no-app-change', evt => {
+  console.log('single-spa is about to do a no-op reroute');
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: [], NOT_MOUNTED: [] }
+  console.log(evt.detail.totalAppChanges); // 0
 });
 ```
 
@@ -782,12 +827,12 @@ A `single-spa:before-no-app-change` event is fired before reroutes that will res
 ### before-routing-event
 
 ```js
-window.addEventListener('single-spa:before-routing-event', (evt) => {
-	console.log('single-spa is about to mount/unmount applications!');
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-	console.log(evt.detail.totalAppChanges) // 0
+window.addEventListener('single-spa:before-routing-event', evt => {
+  console.log('single-spa is about to mount/unmount applications!');
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: [], NOT_MOUNTED: [] }
+  console.log(evt.detail.totalAppChanges); // 0
 });
 ```
 
@@ -796,13 +841,13 @@ A `single-spa:before-routing-event` event is fired before every routing event oc
 ### before-mount-routing-event
 
 ```js
-window.addEventListener('single-spa:before-mount-routing-event', (evt) => {
-	console.log('single-spa is about to mount/unmount applications!');
-	console.log(evt.detail)
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
-	console.log(evt.detail.totalAppChanges) // 1
+window.addEventListener('single-spa:before-mount-routing-event', evt => {
+  console.log('single-spa is about to mount/unmount applications!');
+  console.log(evt.detail);
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { app1: MOUNTED }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: ['app1'], NOT_MOUNTED: [] }
+  console.log(evt.detail.totalAppChanges); // 1
 });
 ```
 
@@ -812,35 +857,43 @@ A `single-spa:before-mount-routing-event` event is fired after `before-routing-e
 
 ```js
 window.addEventListener('single-spa:before-first-mount', () => {
-	console.log('single-spa is about to mount the very first application for the first time');
+  console.log(
+    'single-spa is about to mount the very first application for the first time',
+  );
 });
 ```
 
 Before the first of any single-spa applications is mounted, single-spa fires a `single-spa:before-first-mount` event; therefore it will only be fired once ever. More specifically, it fires after the application is already loaded but before mounting.
 
-> **Suggested use case:** remove a loader bar that the user is seeing right before the first app will be mounted.
+:::tip Suggested use case
+remove a loader bar that the user is seeing right before the first app will be mounted.
+:::
 
 ### first-mount
 
 ```js
 window.addEventListener('single-spa:first-mount', () => {
-	console.log('single-spa just mounted the very first application');
+  console.log('single-spa just mounted the very first application');
 });
 ```
 
 After the first of any single-spa applications is mounted, single-spa fires a `single-spa:first-mount` event; therefore it will only be fired once ever.
 
-> **Suggested use case:** log the time it took before the user sees any of the apps mounted.
+:::tip Suggested use case
+log the time it took before the user sees any of the apps mounted.
+:::
 
 ### app-change event
 
 ```js
-window.addEventListener('single-spa:app-change', (evt) => {
-	console.log('A routing event occurred where at least one application was mounted/unmounted');
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-	console.log(evt.detail.totalAppChanges) // 2
+window.addEventListener('single-spa:app-change', evt => {
+  console.log(
+    'A routing event occurred where at least one application was mounted/unmounted',
+  );
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { app1: MOUNTED, app2: NOT_MOUNTED }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+  console.log(evt.detail.totalAppChanges); // 2
 });
 ```
 
@@ -849,12 +902,14 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 ### no-app-change event
 
 ```js
-window.addEventListener('single-spa:no-app-change', (evt) => {
-	console.log('A routing event occurred where zero applications were mounted/unmounted');
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: [], NOT_MOUNTED: [] }
-	console.log(evt.detail.totalAppChanges) // 0
+window.addEventListener('single-spa:no-app-change', evt => {
+  console.log(
+    'A routing event occurred where zero applications were mounted/unmounted',
+  );
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: [], NOT_MOUNTED: [] }
+  console.log(evt.detail.totalAppChanges); // 0
 });
 ```
 
@@ -863,12 +918,12 @@ When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded,
 ### routing-event
 
 ```js
-window.addEventListener('single-spa:routing-event', (evt) => {
-	console.log('single-spa finished mounting/unmounting applications!');
-	console.log(evt.detail.originalEvent) // PopStateEvent
-	console.log(evt.detail.newAppStatuses) // { app1: MOUNTED, app2: NOT_MOUNTED }
-	console.log(evt.detail.appsByNewStatus) // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-	console.log(evt.detail.totalAppChanges) // 2
+window.addEventListener('single-spa:routing-event', evt => {
+  console.log('single-spa finished mounting/unmounting applications!');
+  console.log(evt.detail.originalEvent); // PopStateEvent
+  console.log(evt.detail.newAppStatuses); // { app1: MOUNTED, app2: NOT_MOUNTED }
+  console.log(evt.detail.appsByNewStatus); // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
+  console.log(evt.detail.totalAppChanges); // 2
 });
 ```
 

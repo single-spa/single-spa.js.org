@@ -34,7 +34,7 @@ The single spa config consists of all code that is not part of a [registered app
 
 It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application. We will be creating a `single-spa.config.js` file to house all of our single-spa logic.
 
-Inside the *public/* folder, create a *single-spa-config.js* file.
+Inside the _public/_ folder, create a _single-spa-config.js_ file.
 
 ```bash
 touch public/single-spa.config.js
@@ -48,8 +48,8 @@ In `public/index.html`, add the following script tag at the bottom of the `<head
 
 ```html
 <head>
-<!-- ... -->
-<script src="https://unpkg.com/single-spa"></script>
+  <!-- ... -->
+  <script src="https://unpkg.com/single-spa"></script>
 </head>
 ```
 
@@ -69,24 +69,22 @@ Add the following `<script>` at the bottom of `index.html`
 
 ## Step Two: Register the application
 
-Now that our application has access to the single-spa library, we can use `window.singleSpa` to call specific functions within the library. In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](configuration#application-name), a [loadingFunction](configuration#loading-function-or-application) and an [activityFunction](configuration#activity-function). 
+Now that our application has access to the single-spa library, we can use `window.singleSpa` to call specific functions within the library. In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](configuration#application-name), a [loadingFunction](configuration#loading-function-or-application) and an [activityFunction](configuration#activity-function).
 
 Finally, the [start()](api.md#start) api **must** be called by your single spa config in order for applications to actually be mounted. Before `start()` is called, applications will be loaded, but not bootstrapped/mounted/unmounted.
 
-*Note that since we are not using Babel, we cannot use the ES6 `const`, `let`, or `arrow functions`.*
+_Note that since we are not using Babel, we cannot use the ES6 `const`, `let`, or `arrow functions`._
 
 Start by stubbing out the registration function by adding the following in `public/single-spa.config.js`:
 
-<p className="filename">public/single-spa.config.js</p>
-
-```js
+```js title="public/single-spa.config.js"
 window.singleSpa.registerApplication(
-  'drum-machine', 
+  'drum-machine',
   loadingFunction,
   function activityFunction() {
     return true;
-  }
-)
+  },
+);
 
 window.singleSpa.start();
 ```
@@ -111,13 +109,13 @@ Add the following in `public/index.html` at the very bottom of the `<head>`.
 </head>
 ```
 
-> You may want to read more about [the importance of `<script>` tag order](https://eager.io/blog/everything-I-know-about-the-script-tag/).
+:::info
+You may want to read more about [the importance of `<script>` tag order](https://eager.io/blog/everything-I-know-about-the-script-tag/).
+:::
 
 Now that our application has access to the `single-spa-angularjs` library, we can set up the [application lifecycle](building-applications.md#registered-application-lifecycle). Add the following code:
 
-<p className="filename">public/single-spa.config.js</p>
-
-```js
+```js title="public/single-spa.config.js"
 var drumMachineApp = window.singleSpaAngularjs.default({
   angular: window.angular,
   domElementGetter: function() {
@@ -135,13 +133,11 @@ var drumMachineApp = window.singleSpaAngularjs.default({
 
 With our app's lifecycle function defined, we can now include it in our `registerApplication` function.
 
-<p className="filename">public/single-spa.config.js</p>
-
-```js {4}
+```js {4} title="public/single-spa.config.js"
 ...
 window.singleSpa.registerApplication(
-  'drum-machine', 
-  drumMachineApp, 
+  'drum-machine',
+  drumMachineApp,
   function activityFunction(location) {
     return true;
   }
@@ -152,38 +148,38 @@ window.singleSpa.start();
 
 ## Step Four: Adjust your HTML file
 
-Since most existing SPAs are used to having control of an *index.html* file for their css, fonts, third party script-tags, etc., it's likely that you'll have to do some work to make sure all of those keep on working when your SPA becomes an html-less application.
+Since most existing SPAs are used to having control of an _index.html_ file for their css, fonts, third party script-tags, etc., it's likely that you'll have to do some work to make sure all of those keep on working when your SPA becomes an html-less application.
 
-In this case, we are going to have to make a few adjustments to the current *index.html* to make sure that the SPA is not mounted until single-spa tells it to.
+In this case, we are going to have to make a few adjustments to the current _index.html_ to make sure that the SPA is not mounted until single-spa tells it to.
 
 ### a) Prevent auto bootstrapping
 
-Currently, our *index.html* contains two hurdles we will need to overcome to allow single-spa to control the DOM. The first is the auto-bootstrap directive [`ng-app`](https://docs.angularjs.org/api/ng/directive/ngApp) at the top of the HTML file. If left in the HTML file, `ng-app` will force the entire application to automatically bootstrap and render, overriding the single-spa lifecycle functions. To fix this, we simply need to remove `ng-app` from the HTML file and then allow `single-spa-angularjs` to call the `bootstrap` function instead (recall that we set this up in [Step Three](migrating-angularJS-tutorial.md#step-three-setup-lifecycle-functions)).
+Currently, our _index.html_ contains two hurdles we will need to overcome to allow single-spa to control the DOM. The first is the auto-bootstrap directive [`ng-app`](https://docs.angularjs.org/api/ng/directive/ngApp) at the top of the HTML file. If left in the HTML file, `ng-app` will force the entire application to automatically bootstrap and render, overriding the single-spa lifecycle functions. To fix this, we simply need to remove `ng-app` from the HTML file and then allow `single-spa-angularjs` to call the `bootstrap` function instead (recall that we set this up in [Step Three](migrating-angularJS-tutorial.md#step-three-setup-lifecycle-functions)).
 
-In *index.html* remove `ng-app="AngularDrumMachine`.
+In _index.html_ remove `ng-app="AngularDrumMachine`.
 
 ```html
 <!DOCTYPE html>
 <!-- Remove ng-app -->
 <html lang="en-us">
-<!-- ... -->
+  <!-- ... -->
 </html>
 ```
 
 ### b) Create a Template
 
-The second challenge is that the *index.html* currently holds the entire application template. Since HTML will automatically render anything in the file, we will need to pull all of the SPAs logic out of the HTML file and replace it with a new `<div />` containing the `id` single-spa will use to mount the application. To do this, we will create a new template that we can then provide to the `single-spa-angularjs` lifecycle function.
+The second challenge is that the _index.html_ currently holds the entire application template. Since HTML will automatically render anything in the file, we will need to pull all of the SPAs logic out of the HTML file and replace it with a new `<div />` containing the `id` single-spa will use to mount the application. To do this, we will create a new template that we can then provide to the `single-spa-angularjs` lifecycle function.
 
-Create a new directory inside of *public/assets* called *templates/*. Then create a new template called *display-machine.template.html*.
+Create a new directory inside of _public/assets_ called _templates/_. Then create a new template called _display-machine.template.html_.
 
 ```bash
 mkdir public/assets/templates
 touch public/assets/templates/display-machine.template.html
 ```
 
-Then, remove lines 24 - 83 from *index.html* and paste them inside of *display-machine.template.html*. You will also need to remove the `ng-view` directive in the `<body>` tag. Once removed, add a new `<div>` containing the id single-spa will use to mount the SPA.
+Then, remove lines 24 - 83 from _index.html_ and paste them inside of _display-machine.template.html_. You will also need to remove the `ng-view` directive in the `<body>` tag. Once removed, add a new `<div>` containing the id single-spa will use to mount the SPA.
 
-*index.html* should now look like this:
+_index.html_ should now look like this:
 
 ```html
 <body>
@@ -194,7 +190,7 @@ Then, remove lines 24 - 83 from *index.html* and paste them inside of *display-m
 </body>
 ```
 
-The new template *display-machine.template.html* should look like this:
+The new template _display-machine.template.html_ should look like this:
 
 ```html
 <a class="show-for-medium-up" href="https://github.com/dougjohnston/angular-drum-machine">
@@ -266,7 +262,7 @@ The new template *display-machine.template.html* should look like this:
 
 ### c) Create a Directive
 
-Per the [AngularJS conventions](https://docs.angularjs.org/guide/directive), we will need to create a directive in order to "compile" our new HTML template. Let's start by creating a new *directives/* folder inside *public/app* to house a new *display-machine.directive.js*
+Per the [AngularJS conventions](https://docs.angularjs.org/guide/directive), we will need to create a directive in order to "compile" our new HTML template. Let's start by creating a new _directives/_ folder inside _public/app_ to house a new _display-machine.directive.js_
 
 ```bash
 mkdir public/app/directives
@@ -275,19 +271,19 @@ touch public/app/directives/display-machine.directive.js
 
 Then, inside of `display-machine.directive.js` we will register our new directive on the "AngularDrumMachine" module, restrict the directive to be triggered by a class name using the `E` option, and tell it to load our template using the `templateUrl` option.
 
-Add the following code to *public/app/directives/display-machine.directive.js*`*:
+Add the following code to _public/app/directives/display-machine.directive.js_`\*:
 
 ```js
 'use strict';
 
-angular
-.module('AngularDrumMachine')
-.directive('displayMachine', [function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'assets/templates/display-machine.template.html',
-  }
-}])
+angular.module('AngularDrumMachine').directive('displayMachine', [
+  function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'assets/templates/display-machine.template.html',
+    };
+  },
+]);
 ```
 
 # That's it

@@ -37,31 +37,31 @@ export const devtools = {
     selectors: [
       // an array of CSS selector strings, meant to be unique ways to identify the outermost container of your app
       // you can have more than one, for cases like parcels or different containers for differet views
-      "#my-app",
-      ".some-container .app"
+      '#my-app',
+      '.some-container .app',
     ],
     // options is optional
     options: {
       // these options allow you some control over how the overlay div looks/behaves
       // the listed values below are the defaults
 
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
       zIndex: 40,
-      position: "absolute",
+      position: 'absolute',
       top: 0,
       left: 0,
-      color: "#000", // the default for this is actually based on the app's name, so it's dynamic. can be a hex or a CSS color name
-      background: "#000", // the default for this is actually based on the app's name, so it's dynamic. can be a hex or a CSS color name
+      color: '#000', // the default for this is actually based on the app's name, so it's dynamic. can be a hex or a CSS color name
+      background: '#000', // the default for this is actually based on the app's name, so it's dynamic. can be a hex or a CSS color name
       textBlocks: [
         // allows you to add additional text to the overlay. for example, you can add the name of the team/squad that owns this app
         // each string in this array will be in a new div
         // 'blue squad', 'is awesome'
         // turns into:
         // <div>blue squad</div><div>is awesome</div>
-      ]
-    }
-  }
+      ],
+    },
+  },
 };
 ```
 
@@ -69,4 +69,4 @@ export const devtools = {
 
 If your environment uses [import-maps](https://github.com/WICG/import-maps), single-spa Inspector provides an interface for adding import-map overrides when utilizing the [import-map-overrides](https://github.com/joeldenning/import-map-overrides) library. Once the [installation requirements](https://github.com/joeldenning/import-map-overrides#installation) for import-map-overrides are completed, you can add, remove, and refresh the page with your overrides.
 
-![Example of single-spa Inspector extension with import-maps overrides](/static/img/demo-with-importmapoverrides.png)
+![Example of single-spa Inspector extension with import-maps overrides](/img/demo-with-importmapoverrides.png)

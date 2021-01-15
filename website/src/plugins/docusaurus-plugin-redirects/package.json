@@ -1,5 +1,5 @@
 {
-  "name": "@docusaurus/plugin-redirects",
+  "name": "custom-docusaurus-plugin-redirects",
   "version": "0.0.1",
   "description": "Redirects plugin for Docusaurus",
   "main": "src/index.js",

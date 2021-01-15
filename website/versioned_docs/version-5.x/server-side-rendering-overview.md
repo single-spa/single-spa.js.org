@@ -81,7 +81,7 @@ With single-spa-layout, you define a single template that handles all routes. [F
     </template>
     <fragment name="importmap"></fragment>
     <script>
-      System.import("@org-name/root-config");
+      System.import('@org-name/root-config');
     </script>
     <import-map-overrides-full
       show-when-local-storage="devtools"
@@ -107,63 +107,64 @@ Module loading refers to loading javascript code using `import` and `import()`. 
 import('@org-name/navbar/server.js').then(navbar => {
   const headers = navbar.getResponseHeaders(props);
   const htmlStream = navbar.serverRender(props);
-})
+});
 ```
 
 In the context of single-spa-layout, this is done inside of the `renderApplication` function:
 
-
 ```js
 import {
   constructServerLayout,
-  sendLayoutHTTPResponse
-} from "single-spa-layout/server";
+  sendLayoutHTTPResponse,
+} from 'single-spa-layout/server';
 import http from 'http';
 
 const serverLayout = constructServerLayout({
-  filePath: "server/views/index.html",
+  filePath: 'server/views/index.html',
 });
 
-http.createServer((req, res) => {
-  const { bodyStream } = sendLayoutHTTPResponse({
-    res,
-    serverLayout,
-    urlPath: req.path,
-    async renderApplication({ appName, propsPromise }) {
-      const [app, props] = await Promise.all([
-        import(`${props.name}/server.mjs`,
-        propsPromise
-      )])
-      return app.serverRender(props);
-    },
-    async retrieveApplicationHeaders({ appName, propsPromise }) {
-      const [app, props] = await Promise.all([
-        import(`${props.name}/server.mjs`,
-        propsPromise
-      )])
-      return app.getResponseHeaders(props);
-    },
-    async retrieveProp(propName) {
-      return "prop value"
-    },
-    assembleFinalHeaders(appHeaders) {
-      return Object.assign({}, ...Object.values(allHeaders).map(a => a.appHeaders));
-    },
-    renderFragment(name) {
-      // not relevant to the docs here
-    }
-  });
+http
+  .createServer((req, res) => {
+    const { bodyStream } = sendLayoutHTTPResponse({
+      res,
+      serverLayout,
+      urlPath: req.path,
+      async renderApplication({ appName, propsPromise }) {
+        const [app, props] = await Promise.all([
+          import(`${props.name}/server.mjs`, propsPromise),
+        ]);
+        return app.serverRender(props);
+      },
+      async retrieveApplicationHeaders({ appName, propsPromise }) {
+        const [app, props] = await Promise.all([
+          import(`${props.name}/server.mjs`, propsPromise),
+        ]);
+        return app.getResponseHeaders(props);
+      },
+      async retrieveProp(propName) {
+        return 'prop value';
+      },
+      assembleFinalHeaders(appHeaders) {
+        return Object.assign(
+          {},
+          ...Object.values(allHeaders).map(a => a.appHeaders),
+        );
+      },
+      renderFragment(name) {
+        // not relevant to the docs here
+      },
+    });
 
-  bodyStream.pipe(res);
-}).listen(9000)
+    bodyStream.pipe(res);
+  })
+  .listen(9000);
 ```
 
-To facilitate independent deployments of our microfrontends, such that the web server does not have to reboot/redeploy every time we update every microfrontend, we can use *dynamic module loading*. Dynamic module loading refers to loading a module from a dynamic location - often from somewhere on disk or over the network. By default, NodeJS will only load modules from relative URLs or from the `node_modules` directory, but dynamic module loading allows you to load modules from any arbitrary file path or URL.
+To facilitate independent deployments of our microfrontends, such that the web server does not have to reboot/redeploy every time we update every microfrontend, we can use _dynamic module loading_. Dynamic module loading refers to loading a module from a dynamic location - often from somewhere on disk or over the network. By default, NodeJS will only load modules from relative URLs or from the `node_modules` directory, but dynamic module loading allows you to load modules from any arbitrary file path or URL.
 
 A pattern to facilitate independent deployments via dynamic module loading is for each microfrontend's deployment to upload one or more javascript files to a trusted CDN, and then use dynamic module loading to load a certain version of the code on the CDN. The web server polls for new versions of each microfrontend and downloads the newer versions as they are deployed.
 
 To accomplish dynamic module loading, we can use [NodeJS module loaders](https://nodejs.org/api/esm.html#esm_experimental_loaders). Specifically, [@node-loader/import-maps](https://github.com/node-loader/node-loader-import-maps) and [@node-loader/http](https://github.com/node-loader/node-loader-http) allow us to control where the module is located and how to download it over the network. The code belows how a server-side import map facilitates dynamic module loading
-
 
 **Before deployment of navbar**:
 
@@ -176,6 +177,7 @@ To accomplish dynamic module loading, we can use [NodeJS module loaders](https:/
 ```
 
 **After deployment of navbar**:
+
 ```json
 {
   "imports": {
@@ -196,59 +198,67 @@ In the context of single-spa-layout, this is done with the `renderApplication` f
 import {
   constructServerLayout,
   sendLayoutHTTPResponse,
-} from "single-spa-layout/server";
+} from 'single-spa-layout/server';
 import http from 'http';
 import fetch from 'node-fetch';
 
 const serverLayout = constructServerLayout({
-  filePath: "server/views/index.html",
+  filePath: 'server/views/index.html',
 });
 
-http.createServer((req, res) => {
-  const fetchPromises = {}
+http
+  .createServer((req, res) => {
+    const fetchPromises = {};
 
-  sendLayoutHTTPResponse(serverLayout, {
-    res,
-    serverLayout,
-    urlPath: req.path,
-    async renderApplication({ appName, propsPromise }) {
-      const props = await propsPromise
-      const fetchPromise = fetchPromises[appName] || (fetchPromises[appName] = fetchMicrofrontend(props))
-      const response = await fetchPromise;
-      // r.body is a Readable stream when you use node-fetch,
-      // which is best for performance when using single-spa-layout
-      return response.body;
-    },
-    async retrieveApplicationHeaders({ appName, propsPromise }) {
-      const props = await propsPromise
-      const fetchPromise = fetchPromises[appName] || (fetchPromises[appName] = fetchMicrofrontend(props))
-      const response = await fetchPromise;
-      return response.headers;
-    },
-    async retrieveProp(propName) {
-      return "prop value"
-    },
-    assembleFinalHeaders(allHeaders) {
-      return Object.assign({}, ...Object.values(allHeaders))
-    },
-    renderFragment(name) {
-      // not relevant to the docs here
-    }
-  });
+    sendLayoutHTTPResponse(serverLayout, {
+      res,
+      serverLayout,
+      urlPath: req.path,
+      async renderApplication({ appName, propsPromise }) {
+        const props = await propsPromise;
+        const fetchPromise =
+          fetchPromises[appName] ||
+          (fetchPromises[appName] = fetchMicrofrontend(props));
+        const response = await fetchPromise;
+        // r.body is a Readable stream when you use node-fetch,
+        // which is best for performance when using single-spa-layout
+        return response.body;
+      },
+      async retrieveApplicationHeaders({ appName, propsPromise }) {
+        const props = await propsPromise;
+        const fetchPromise =
+          fetchPromises[appName] ||
+          (fetchPromises[appName] = fetchMicrofrontend(props));
+        const response = await fetchPromise;
+        return response.headers;
+      },
+      async retrieveProp(propName) {
+        return 'prop value';
+      },
+      assembleFinalHeaders(allHeaders) {
+        return Object.assign({}, ...Object.values(allHeaders));
+      },
+      renderFragment(name) {
+        // not relevant to the docs here
+      },
+    });
 
-  bodyStream.pipe(res);
-}).listen(9000)
+    bodyStream.pipe(res);
+  })
+  .listen(9000);
 
 async function fetchMicrofrontend(props) {
   fetch(`http://${props.name}`, {
-    headers: props
+    headers: props,
   }).then(r => {
     if (r.ok) {
       return r;
     } else {
-      throw Error(`Received http response ${r.status} from microfrontend ${appName}`);
+      throw Error(
+        `Received http response ${r.status} from microfrontend ${appName}`,
+      );
     }
-  })
+  });
 }
 ```
 
@@ -261,47 +271,50 @@ Tailor and TailorX have built-in methods of merging headers. Single-spa-layout a
 ```js
 import {
   constructServerLayout,
-  sendLayoutHTTPResponse
-} from "single-spa-layout/server";
+  sendLayoutHTTPResponse,
+} from 'single-spa-layout/server';
 import http from 'http';
 
 const serverLayout = constructServerLayout({
-  filePath: "server/views/index.html",
+  filePath: 'server/views/index.html',
 });
 
-http.createServer((req, res) => {
-  const { bodyStream } = sendLayoutHTTPResponse({
-    res,
-    serverLayout,
-    urlPath: req.path,
-    async renderApplication({ appName, propsPromise }) {
-      const [app, props] = await Promise.all([
-        import(`${props.name}/server.mjs`,
-        propsPromise
-      )])
-      return app.serverRender(props);
-    },
-    async retrieveApplicationHeaders({ appName, propsPromise }) {
-      const [app, props] = await Promise.all([
-        import(`${props.name}/server.mjs`,
-        propsPromise
-      )])
-      return app.getResponseHeaders(props);
-    },
-    async retrieveProp(propName) {
-      return "prop value"
-    },
-    assembleFinalHeaders(allHeaders) {
-      // appHeaders contains all the application names, props, and headers for 
-      return Object.assign({}, ...Object.values(allHeaders).map(a => a.appHeaders));
-    },
-    renderFragment(name) {
-      // not relevant to the docs here
-    }
-  });
+http
+  .createServer((req, res) => {
+    const { bodyStream } = sendLayoutHTTPResponse({
+      res,
+      serverLayout,
+      urlPath: req.path,
+      async renderApplication({ appName, propsPromise }) {
+        const [app, props] = await Promise.all([
+          import(`${props.name}/server.mjs`, propsPromise),
+        ]);
+        return app.serverRender(props);
+      },
+      async retrieveApplicationHeaders({ appName, propsPromise }) {
+        const [app, props] = await Promise.all([
+          import(`${props.name}/server.mjs`, propsPromise),
+        ]);
+        return app.getResponseHeaders(props);
+      },
+      async retrieveProp(propName) {
+        return 'prop value';
+      },
+      assembleFinalHeaders(allHeaders) {
+        // appHeaders contains all the application names, props, and headers for
+        return Object.assign(
+          {},
+          ...Object.values(allHeaders).map(a => a.appHeaders),
+        );
+      },
+      renderFragment(name) {
+        // not relevant to the docs here
+      },
+    });
 
-  bodyStream.pipe(res);
-}).listen(9000)
+    bodyStream.pipe(res);
+  })
+  .listen(9000);
 ```
 
 ## 4. HTTP Response Body
@@ -311,28 +324,30 @@ The HTTP Response body sent from the web server to the browser must be streamed,
 All microfrontend layout middlewares mentioned in this document stream the HTML response body to the browser. In the context of single-spa-layout, this is done by calling `sendLayoutHTTPResponse`
 
 ```js
-import {
-  sendLayoutHTTPResponse,
-} from "single-spa-layout/server";
+import { sendLayoutHTTPResponse } from 'single-spa-layout/server';
 import http from 'http';
 
 const serverLayout = constructServerLayout({
-  filePath: "server/views/index.html",
+  filePath: 'server/views/index.html',
 });
 
-http.createServer((req, res) => {
-  sendLayoutHTTPResponse({
-    res,
-    // Add all other needed options here, too
+http
+  .createServer((req, res) => {
+    sendLayoutHTTPResponse({
+      res,
+      // Add all other needed options here, too
+    });
   })
-}).listen(9000)
+  .listen(9000);
 ```
 
 ## 5. Hydrate
 
 Hydration (or rehydration) refers to browser Javascript initializing and attaching event listeners to the HTML sent by the server. There are several variants, including progressive rehydration and partial rehydration.
 
-> See also ["Rendering on the Web"](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) by Google.
+:::info
+See also ["Rendering on the Web"](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) by Google.
+:::
 
 In the context of microfrontends, hydration is done by the underlying UI framework of the microfrontend (React, Vue, Angular, etc). For example, in React, this is done by calling [ReactDOM.hydrate()](https://reactjs.org/docs/react-dom.html#hydrate). The [single-spa adapter libraries](/docs/ecosystem) allow you to specify whether you are hydrating or mounting for the first time (see single-spa-react's [`renderType` option](/docs/ecosystem-react#options)).
 

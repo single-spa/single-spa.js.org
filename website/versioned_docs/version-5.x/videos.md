@@ -4,8 +4,6 @@ title: Video Tutorials
 sidebar_label: Videos
 ---
 
-# Video Tutorials
-
 A variety of video tutorials exist from both the single-spa core team and other community members.
 
 ## From the Core Team

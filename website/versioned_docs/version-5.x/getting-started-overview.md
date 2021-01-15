@@ -72,7 +72,9 @@ You can help improve the single-spa website by sending pull requests to the [`si
 
 To help beginners to single-spa get started quickly we have developed [`create-single-spa`](/docs/create-single-spa/), a utility for generating starter code. This guide will cover creating the root-config and your first single-spa application. Let's get started.
 
-> Once you've gotten some of the basics down, refer to these other [single-spa examples](/docs/examples/) to see more advanced usage.
+:::note
+Once you've gotten some of the basics down, refer to these other [single-spa examples](/docs/examples/) to see more advanced usage.
+:::
 
 ### Create a root config
 
@@ -92,7 +94,9 @@ To help beginners to single-spa get started quickly we have developed [`create-s
 
 **Be sure to review the comments inside the generated code as well as the information in the Welcome application** even if some of the content is duplicated in this guide.
 
-> [single-spa-playground.org](http://single-spa-playground.org/playground) is an alternative guide to run an application without needing to create your own root-config.
+:::tip
+[single-spa-playground.org](http://single-spa-playground.org/playground) is an alternative guide to run an application without needing to create your own root-config.
+:::
 
 ### Create a single-spa application
 

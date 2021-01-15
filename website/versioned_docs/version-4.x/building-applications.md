@@ -4,7 +4,7 @@ title: Building single-spa applications
 sidebar_label: single-spa applications
 ---
 
-A single-spa registered application is everything that a normal SPA is, except that it doesn't have an HTML page. In a single-spa world, your SPA contains many registered applications, where each has its own framework. Registered applications have their own client-side routing and their own frameworks/libraries. They render their own HTML and have full freedom to do whatever they want, whenever they are *mounted*. The concept of being *mounted* refers to whether a registered application is putting content on the DOM or not. What determines if a registered application is mounted is its [activity function](configuration#activity-function). Whenever a registered application is *not mounted*, it should remain completely dormant until mounted.
+A single-spa registered application is everything that a normal SPA is, except that it doesn't have an HTML page. In a single-spa world, your SPA contains many registered applications, where each has its own framework. Registered applications have their own client-side routing and their own frameworks/libraries. They render their own HTML and have full freedom to do whatever they want, whenever they are _mounted_. The concept of being _mounted_ refers to whether a registered application is putting content on the DOM or not. What determines if a registered application is mounted is its [activity function](configuration#activity-function). Whenever a registered application is _not mounted_, it should remain completely dormant until mounted.
 
 ## Creating a registered application
 
@@ -17,6 +17,7 @@ During the course of a single-spa page, registered applications are loaded, boot
 A lifecycle function is a function or array of functions that single-spa will call on a registered application. single-spa calls these by finding specific named exports from the registered application's main file.
 
 Notes:
+
 - Implementing `mount` and `unmount` is required. But implementing `bootstrap` and `unload` is optional.
 - Each lifecycle function must either return a `Promise` or be an `async function`.
 - If an array of functions is exported (instead of just one function), the functions will be called
@@ -24,9 +25,9 @@ Notes:
 - If single-spa is [not started](api.md#start), applications will be loaded,
   but will not be bootstrapped, mounted or unmounted.
 
-> **Note**
->
-> Framework-specific helper libraries exist in the [single-spa ecosystem](ecosystem.md) to implement these required lifecycle methods. This documentation is helpful for understanding what those helpers are doing, or for implementing your own.
+:::info
+Framework-specific helper libraries exist in the [single-spa ecosystem](ecosystem.md) to implement these required lifecycle methods. This documentation is helpful for understanding what those helpers are doing, or for implementing your own.
+:::
 
 ## Lifecyle props
 
@@ -35,11 +36,11 @@ Lifecycle functions are called with a `props` argument, which is an object with 
 ```js
 function bootstrap(props) {
   const {
-    name,        // The name of the application
-    singleSpa,   // The singleSpa instance
-    mountParcel, // Function for manually mounting 
-    customProps  // Additional custom information
-  } = props;     // Props are given to every lifecycle
+    name, // The name of the application
+    singleSpa, // The singleSpa instance
+    mountParcel, // Function for manually mounting
+    customProps, // Additional custom information
+  } = props; // Props are given to every lifecycle
   return Promise.resolve();
 }
 ```
@@ -56,22 +57,18 @@ Each lifecycle function is guranteed to be called with the following props:
 
 #### Custom props
 
-In addition to the built-in props that are provided by single-spa, you may optionally specify custom props to be passed to an application by providing a fourth argument to `registerApplication`. These *customProps* will be passed into each lifecycle method.
+In addition to the built-in props that are provided by single-spa, you may optionally specify custom props to be passed to an application by providing a fourth argument to `registerApplication`. These _customProps_ will be passed into each lifecycle method.
 
-<p className="filename">root.application.js</p>
-
-```js
+```js title="root.application.js"
 singleSpa.registerApplication(
-  'app1', 
-  () => {}, 
-  () => {}, 
-  { authToken: "d83jD63UdZ6RS6f70D0" }
+  'app1',
+  () => {},
+  () => {},
+  { authToken: 'd83jD63UdZ6RS6f70D0' },
 );
 ```
 
-<p className="filename">app1.js</p>
-
-```js
+```js title="app1.js"
 export function mount(props) {
   console.log(props.customProps.authToken); // do something with the common authToken in app1
   return reactLifecycles.mount(props);
@@ -84,7 +81,7 @@ Some use cases could be to:
 - pass down some initialization information, like the rendering target
 - pass a reference to a common event bus so each app may talk to each other
 
-Note that when no *customProps* are provided during registration, `props.customProps` defaults to an empty object.
+Note that when no _customProps_ are provided during registration, `props.customProps` defaults to an empty object.
 
 ### Lifecycle helpers
 
@@ -108,12 +105,10 @@ This lifecycle function will be called once, right before the registered applica
 
 ```js
 export function bootstrap(props) {
-  return Promise
-    .resolve()
-    .then(() => {
-      // One-time initialization code goes here
-      console.log('bootstrapped!')
-    });
+  return Promise.resolve().then(() => {
+    // One-time initialization code goes here
+    console.log('bootstrapped!');
+  });
 }
 ```
 
@@ -123,12 +118,10 @@ This lifecycle function will be called whenever the registered application is no
 
 ```js
 export function mount(props) {
-  return Promise
-    .resolve()
-    .then(() => {
-      // Do framework UI rendering here
-      console.log('mounted!')
-    });
+  return Promise.resolve().then(() => {
+    // Do framework UI rendering here
+    console.log('mounted!');
+  });
 }
 ```
 
@@ -138,12 +131,10 @@ This lifecycle function will be called whenever the registered application is mo
 
 ```js
 export function unmount(props) {
-  return Promise
-    .resolve()
-    .then(() => {
-      // Do framework UI unrendering here
-      console.log('unmounted!');
-    });
+  return Promise.resolve().then(() => {
+    // Do framework UI unrendering here
+    console.log('unmounted!');
+  });
 }
 ```
 
@@ -157,12 +148,10 @@ The motivation for `unload` was to implement the hot-loading of entire registere
 
 ```js
 export function unload(props) {
-  return Promise
-    .resolve()
-    .then(() => {
-      // Hot-reloading implementation goes here
-      console.log('unloaded!');
-    });
+  return Promise.resolve().then(() => {
+    // Hot-reloading implementation goes here
+    console.log('unloaded!');
+  });
 }
 ```
 
@@ -170,9 +159,7 @@ export function unload(props) {
 
 By default, registered applications obey the global dieOnTimeout configuration, but can override that behavior for their specific application. This is done by exporting a `timeouts` object from the main entry point of the registered application. Example:
 
-<p className="filename">app-1.main-entry.js</p>
-
-```js
+```js title="app-1.js"
 export function bootstrap(props) {...}
 export function mount(props) {...}
 export function unmount(props) {...}
@@ -198,6 +185,7 @@ export const timeouts = {
 ```
 
 ## Transitioning between applications
-If you find yourself wanting to add transitions as applications are mounted and unmounted, then you'll probably want to tie into the `bootstrap`, `mount`, and `unmount` lifecycle methods.  This [single-spa transitions](https://github.com/frehner/singlespa-transitions) repo is a small proof-of-concept of how you can tie into these lifecycle methods to add transitions as your apps mount and unmount.
+
+If you find yourself wanting to add transitions as applications are mounted and unmounted, then you'll probably want to tie into the `bootstrap`, `mount`, and `unmount` lifecycle methods. This [single-spa transitions](https://github.com/frehner/singlespa-transitions) repo is a small proof-of-concept of how you can tie into these lifecycle methods to add transitions as your apps mount and unmount.
 
 Transitions for pages within a mounted application can be handled entirely by the application itself. For example, using [react-transition-group](https://github.com/reactjs/react-transition-group) for React-based projects.

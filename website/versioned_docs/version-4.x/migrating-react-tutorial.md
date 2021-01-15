@@ -21,17 +21,15 @@ Run `yarn start` from the root directory to fire up the server at [http://localh
 
 ## Step One: Set up the single-spa config
 
-The __single-spa config__ consists of all code that is not part of a [registered application](configuration#registeringapplications). Ideally, this only includes an HTML file and a JavaScript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications.
+The **single-spa config** consists of all code that is not part of a [registered application](configuration#registeringapplications). Ideally, this only includes an HTML file and a JavaScript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications.
 
-Usually, when using [webpack](https://webpack.js.org/) with React, we recommend setting your __single-spa config__ as the entry point in your *webpack.config.js* ([see also the "Setup Webpack" example](starting-from-scratch.md#1b-setup-webpack)). However, this application was built using [create-react-app](https://github.com/facebook/create-react-app), so we don't have access to the *webpack.config.js* without [ejecting](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject).
+Usually, when using [webpack](https://webpack.js.org/) with React, we recommend setting your **single-spa config** as the entry point in your _webpack.config.js_ ([see also the "Setup Webpack" example](starting-from-scratch.md#1b-setup-webpack)). However, this application was built using [create-react-app](https://github.com/facebook/create-react-app), so we don't have access to the _webpack.config.js_ without [ejecting](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject).
 
-To avoid having to eject, we are going to hijack the current entry point, *src/index.js* so we can use it to register our SPA as a single-spa application.
+To avoid having to eject, we are going to hijack the current entry point, _src/index.js_ so we can use it to register our SPA as a single-spa application.
 
-Start by removing everything except `registerServiceWorker`. 
+Start by removing everything except `registerServiceWorker`.
 
-<p className="filename">src/index.js</p>
-
-```js
+```js title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
 
 registerServiceWorker();
@@ -39,35 +37,31 @@ registerServiceWorker();
 
 ## Step Two: Register the Application
 
-Now that we have prepared *index.js* to function as our __single-spa config__, we can begin to register the application. It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application.
+Now that we have prepared _index.js_ to function as our **single-spa config**, we can begin to register the application. It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application.
 
 In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](configuration#application-name), a [loadingFunction](configuration#loading-function-or-application) and an [activityFunction](configuration#activity-function).
 
 Finally, the [start()](api.md#start) api **must** be called by your `single spa config` in order for applications to actually be mounted. Before `start()` is called, applications will be loaded, but not bootstrapped/mounted/unmounted.
 
-In *src/index.js*, start by importing the `registerApplication` and `start` functions:
+In _src/index.js_, start by importing the `registerApplication` and `start` functions:
 
-<p className="filename">src/index.js</p>
-
-```js {2}
+```js {2} title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
-import {registerApplication, start} from 'single-spa';
+import { registerApplication, start } from 'single-spa';
 
 registerServiceWorker();
 ```
 
 With our functions imported, we can now register an application with single-spa and call `start()`:
 
-<p className="filename">src/index.js</p>
-
-```js {4-8,10}
+```js {4-8,10} title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
-import {registerApplication, start} from 'single-spa';
+import { registerApplication, start } from 'single-spa';
 
 registerApplication(
-  'root',          // Name of this single-spa application
+  'root', // Name of this single-spa application
   loadingFunction, // Our loading function
-  activityFunction // Our activity function
+  activityFunction, // Our activity function
 );
 
 start();
@@ -82,18 +76,18 @@ The third argument, `activityFunction`, must be a pure function. The function is
 
 Since we have registered our application, single-spa will be listening for the application to `bootstrap` and `mount`. We can use the [single-spa-react](ecosystem-react.md) helper library to make use of the generic React lifecycle hooks. See the [registered application lifecycle](building-applications.md#registered-application-lifecycle) docs to learn more about each lifecycle function.
 
-For this tutorial, we will be implementing the required lifecycle functions in a new *root.app.js* file within the *src/* folder. From the root directory, run the following code to install the [single-spa-react](https://github.com/single-spa/single-spa-react) helper library and create the new file:
+For this tutorial, we will be implementing the required lifecycle functions in a new _root.app.js_ file within the _src/_ folder. From the root directory, run the following code to install the [single-spa-react](https://github.com/single-spa/single-spa-react) helper library and create the new file:
 
 ```bash
 yarn add single-spa-react
 touch src/root.app.js
 ```
 
-During this process, we need to establish a `rootComponent`, which is the top level React component to be rendered. In this case *src/containers/App.js* has already been designated as the top level component. If you recall, we removed this from the *index.js* file so we could set up our __single-spa config__.
+During this process, we need to establish a `rootComponent`, which is the top level React component to be rendered. In this case _src/containers/App.js_ has already been designated as the top level component. If you recall, we removed this from the _index.js_ file so we could set up our **single-spa config**.
 
-Finally, we will use the `domElementGetter()` function to return a DOMElement where the application will be bootstrapped, mounted, and unmounted. Notice that our SPA already has an HTML file in the *public/* folder containing a `<div />` with and id of `root`.
+Finally, we will use the `domElementGetter()` function to return a DOMElement where the application will be bootstrapped, mounted, and unmounted. Notice that our SPA already has an HTML file in the _public/_ folder containing a `<div />` with and id of `root`.
 
-Set up the registered application lifecycle functions by adding the following to *src/root.app.js*:
+Set up the registered application lifecycle functions by adding the following to _src/root.app.js_:
 
 ```js
 import React from 'react';
@@ -108,40 +102,34 @@ const reactLifecycles = singleSpaReact({
   domElementGetter,
 });
 
-export const bootstrap = [
-  reactLifecycles.bootstrap,
-];
+export const bootstrap = [reactLifecycles.bootstrap];
 
-export const mount = [
-  reactLifecycles.mount,
-];
+export const mount = [reactLifecycles.mount];
 
-export const unmount = [
-  reactLifecycles.unmount,
-];
+export const unmount = [reactLifecycles.unmount];
 
 function domElementGetter() {
-  // This is where single-spa will mount our application  
-  return document.getElementById("root");
+  // This is where single-spa will mount our application
+  return document.getElementById('root');
 }
 ```
 
 ## Step Four: Connect to single-spa Config
 
-Head back to the __single-spa config__ in *src/index.js* to add a [loading function](configuration#loading-function) for the registered application by importing *root.app.js*.
+Head back to the **single-spa config** in _src/index.js_ to add a [loading function](configuration#loading-function) for the registered application by importing _root.app.js_.
 
-> It is important to note that **you do not have to use a loading function** and instead can simply pass in the application config object directly to the `registerApplication` function. However, with [Webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
+:::note
+It is important to note that **you do not have to use a loading function** and instead can simply pass in the application config object directly to the `registerApplication` function. However, with [Webpack 2+](https://webpack.js.org/), we can take advantage of its support for [code splitting](https://webpack.js.org/guides/code-splitting/) with [import()](https://webpack.js.org/api/module-methods/#import) in order to easily lazy-load registered applications when they are needed. Think about your project's build when deciding which route to take.
+:::
 
-<p className="filename">src/index.js</p>
-
-```js {8}
+```js {8} title="src/index.js"
 import registerServiceWorker from './registerServiceWorker';
-import {registerApplication, start} from 'single-spa';
+import { registerApplication, start } from 'single-spa';
 
 registerApplication(
   'root',
   () => import('./root.app.js'),
-  () => true
+  () => true,
 );
 
 start();
