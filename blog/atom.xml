@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://single-spa.github.io/single-spa.js.org/blog</id>
+    <title>single-spa Blog</title>
+    <updated>2020-02-24T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://single-spa.github.io/single-spa.js.org/blog"/>
+    <subtitle>single-spa Blog</subtitle>
+    <icon>https://single-spa.github.io/single-spa.js.org/img/logo-blue-favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[single-spa 5]]></title>
+        <id>single-spa 5</id>
+        <link href="https://single-spa.github.io/single-spa.js.org/blog/2020/02/24/single-spa-5"/>
+        <updated>2020-02-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Announcing single-spa@5]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[single-spa Inspector and 4.1]]></title>
+        <id>single-spa Inspector and 4.1</id>
+        <link href="https://single-spa.github.io/single-spa.js.org/blog/2019/02/20/single-spa-inspector"/>
+        <updated>2019-02-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Background]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[single-spa parcels, explained]]></title>
+        <id>single-spa parcels, explained</id>
+        <link href="https://single-spa.github.io/single-spa.js.org/blog/2018/06/19/single-spa-parcels-explained"/>
+        <updated>2018-06-19T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Ever since single-spa@1.0.0, the single-spa team has been dedicated to bringing microservices to the frontend. We have made it possible for AngularJS, React, Angular, Vue, and other frameworks to coexist side by side in the same page.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A step-by-step guide to single-spa]]></title>
+        <id>A step-by-step guide to single-spa</id>
+        <link href="https://single-spa.github.io/single-spa.js.org/blog/2016/12/16/a-step-by-step-guide-to-single-spa"/>
+        <updated>2016-12-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Case for SOA in the Browser]]></title>
+        <id>A Case for SOA in the Browser</id>
+        <link href="https://single-spa.github.io/single-spa.js.org/blog/2016/02/26/a-case-for-soa-in-the-browser"/>
+        <updated>2016-02-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one portion of the SPA without breaking another portion.]]></summary>
+    </entry>
+</feed>

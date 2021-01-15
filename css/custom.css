@@ -131,25 +131,11 @@ input#search_input_react::placeholder {
   display: none;
 }
 
-.highlighted-line {
-  background-color: rgba(0, 17, 255, 0.1);
+.docusaurus-highlight-code-line {
+  background-color: rgba(255, 255, 255, 0.15);
   display: block;
-  margin: 0 -1rem;
-  padding: 0 1rem;
-}
-
-.filename {
-  background: rgb(30, 30, 30);
-  color: var(--ifm-color-white);
-  display: inline-block;
-  font-size: 0.8rem;
-  font-style: italic;
-  margin-bottom: 0 !important;
-  padding: 5px;
-}
-
-.filename + pre {
-  border-top-left-radius: 0;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
 }
 
 .deprecated {
@@ -195,6 +181,10 @@ html[data-theme='dark'] .args-list > dt {
   content: ': ';
 }
 
+.dl-inline dd {
+  margin: 0;
+}
+
 .sr-text {
   height: 1px;
   left: -10000px;
@@ -205,7 +195,7 @@ html[data-theme='dark'] .args-list > dt {
 }
 
 @media (min-width: 997px) {
-  main .row > [class="col"] {
+  main .row > [class='col'] {
     max-width: 75%;
   }
 }

@@ -3,17 +3,12 @@
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
-    <script>
-      const redirectLink = 'https://single-spa.github.io/single-spa.js.org/docs/code-of-conduct/' + location.search + location.hash;
-      document.write('<link rel="canonical" href="' + redirectLink + '">');
-      document.write('<title>Redirecting to ' + redirectLink + '</title>');
-      document.write('</head>')
-      document.write('<body>')
-      document.write('If you are not redirected automatically, follow this <a href="' + redirectLink + '">link</a>.')
-      document.write('</body>')
-      setTimeout(() => {
-        window.location.assign(redirectLink)
-      })
-    </script>
+    <meta http-equiv="refresh" content="0; url=https://single-spa.github.io/single-spa.js.org/docs/code-of-conduct/">
+    <link rel="canonical" href="https://single-spa.github.io/single-spa.js.org/docs/code-of-conduct/" />
+    <title>Redirecting to https://single-spa.github.io/single-spa.js.org/docs/code-of-conduct/</title>
+  </head>
+  <script>
+    window.location.href = 'https://single-spa.github.io/single-spa.js.org/docs/code-of-conduct/';
+  </script>
 </html>
         
