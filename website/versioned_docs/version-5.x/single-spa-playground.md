@@ -4,8 +4,6 @@ title: single-spa-playground
 sidebar_label: Playground
 ---
 
-# Single-spa Playground
-
 [Playground website](http://single-spa-playground.org)
 
 [Github project](https://github.com/single-spa/single-spa-playground)
