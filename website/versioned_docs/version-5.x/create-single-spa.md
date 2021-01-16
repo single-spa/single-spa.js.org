@@ -148,6 +148,11 @@ module.exports = (webpackConfigEnv, argv) => {
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
     rootDirectoryLevel: 1,
+    
+    // optional, defaults to false
+    // Disable html-webpack-plugin (and standalone-single-spa-webpack-plugin) entirely
+    // This is intended for root configs, but can be used in other cases, too
+    disableHtmlGeneration: false
   });
 
   return webpackMerge.smart(defaultConfig, {
