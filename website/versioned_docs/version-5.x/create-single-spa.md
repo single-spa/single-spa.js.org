@@ -414,6 +414,7 @@ To avoid duplicate copies of loaders, first check whether it is already installe
 When referencing a loader that is installed as a dependency of webpack-config-single-spa, use [require.resolve](https://nodejs.org/api/modules.html#modules_require_resolve_request_options) to ensure the loader is imported from the correct path:
 
 ```js
+const { mergeWithRules } = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa');
 
 module.exports = (webpackConfigEnv) => {
@@ -423,7 +424,14 @@ module.exports = (webpackConfigEnv) => {
     webpackConfigEnv,
   });
   
-  return merge(singleSpaDefaults, {
+  return mergeWithRules({
+    module: {
+      rules: {
+        test: "match",
+        use: "replace",
+      },
+    },
+  })(defaultConfig, {
     module: {
       rules: [
         {
