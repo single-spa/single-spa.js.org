@@ -442,5 +442,5 @@ module.exports = (webpackConfigEnv) => {
       ],
     },
   })
-  }
+}
 ```
