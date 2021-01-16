@@ -394,3 +394,53 @@ http.createServer((req, res) => {
   });
 });
 ```
+
+## Customizing Webpack
+
+The create-single-spa CLI internally uses [webpack-merge](https://github.com/survivejs/webpack-merge) to merge together webpack configs. Additionally, the CLI generates a `webpack.config.js` file in each project where you can customize the webpack config further via `webpack-merge`.
+
+### Merging rules
+
+When merging [webpack rules](https://webpack.js.org/configuration/module/#modulerules), use webpack-merge's [`mergeWithRules`](https://github.com/survivejs/webpack-merge#mergewithrules) function to avoid duplicate rules.
+
+[Example](https://github.com/react-microfrontends/styleguide/blob/504c8516e30274fc0e3221a719d5355b14af9500/webpack.config.js#L11)
+
+### Loaders
+
+`webpack-config-single-spa` and its variants often depend on webpack [loaders](https://webpack.js.org/loaders/#root). Because webpack loaders are loaded via file path, it's possible to accidentally have duplicate copies of the same loader, if the same loader is also installed in both webpack-config-single-spa and in your project. This can result in errors.
+
+To avoid duplicate copies of loaders, first check whether it is already installed by wepback-config-single-spa before adding it to your own project ([see package.json](https://unpkg.com/webpack-config-single-spa@2.0.0/package.json)). If the loader is listed there, then **do not install it into your project, too**. If you already have the loader installed in your project, uninstall it.
+
+When referencing a loader that is installed as a dependency of webpack-config-single-spa, use [require.resolve](https://nodejs.org/api/modules.html#modules_require_resolve_request_options) to ensure the loader is imported from the correct path:
+
+```js
+const singleSpaDefaults = require('webpack-config-single-spa');
+
+module.exports = (webpackConfigEnv) => {
+  const defaultConfig = singleSpaDefaults({
+    orgName: "react-mf",
+    projectName: "styleguide",
+    webpackConfigEnv,
+  });
+  
+  return merge(singleSpaDefaults, {
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: [
+            // Use require.resolve to ensure the correct loader is used
+            require.resolve("style-loader", {
+              paths: [require.resolve("webpack-config-single-spa")],
+            }),
+            require.resolve("css-loader", {
+              paths: [require.resolve("webpack-config-single-spa")],
+            }),
+            "postcss-loader",
+          ],
+        },
+      ],
+    },
+  })
+  }
+```
