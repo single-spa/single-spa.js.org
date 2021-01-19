@@ -13,7 +13,7 @@ export default function ErrorCode41(props) {
       <p>
         Mark single-spa as a <a href="https://webpack.js.org/configuration/externals/#root" rel="noopener" target="_blank">webpack external</a> in your root config and in each of your microfrontends.
         This will ensure that it will be omitted from the bundle and will be provided at runtime in the browser. If using SystemJS, you will need to add single-spa to
-        your <a href="/docs/recommended-setup.md#import-maps">import map</a>.
+        your <a href="/docs/recommended-setup#import-maps">import map</a>.
       </p>
       <h2>Additional references</h2>
       <p>
