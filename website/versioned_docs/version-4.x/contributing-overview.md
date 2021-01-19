@@ -10,11 +10,11 @@ We've put together the following guidelines to help you figure out where you can
 
 ## Table of Contents
 
-0. [Types of contributions we're looking for](#types-of-contributions-were-looking-for)
+1. [Types of contributions we're looking for](#types-of-contributions-were-looking-for)
 1. [Ground rules & expectations](#ground-rules-expectations)
-2. [How to contribute](#how-to-contribute)
-3. [Setting up your environment](#setting-up-your-environment)
-4. [Community](#community)
+1. [How to contribute](#how-to-contribute)
+1. [Setting up your environment](#setting-up-your-environment)
+1. [Community](#community)
 
 ## Types of contributions we're looking for
 
