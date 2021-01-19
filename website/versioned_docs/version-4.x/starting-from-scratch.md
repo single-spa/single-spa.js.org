@@ -21,7 +21,7 @@ For this tutorial we will be creating the following applications to showcase the
 The complete code for this example is in the [`single-spa-simple-example`](https://github.com/alocke12992/single-spa-simple-example) repository.
 
 :::note
-We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/single-spa/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/zt-jy1x8x93-52Tth0fZBUzZmHcEpWw2Jg) channel for more support.
+We encourage you to read through all the [single-spa docs](/) to become familiar with the entire single-spa setup. Visit the [single-spa Github](https://github.com/single-spa/single-spa), the [help section](https://single-spa.js.org/help.html), or our community [Slack](https://join.slack.com/t/single-spa/shared_invite/zt-l2iljnpv-pW_o92mMpMR8RWfIOI6pTQ) channel for more support.
 :::
 
 ## 1. Initial setup
