@@ -6,7 +6,7 @@ sidebar_label: Overview of single-spa
 
 ## JavaScript Microfrontends
 
-[Join the chat on Slack](https://join.slack.com/t/single-spa/shared_invite/zt-jy1x8x93-52Tth0fZBUzZmHcEpWw2Jg)
+[Join the chat on Slack](https://join.slack.com/t/single-spa/shared_invite/zt-l2iljnpv-pW_o92mMpMR8RWfIOI6pTQ)
 
 single-spa is a framework for bringing together multiple JavaScript microfrontends in a frontend application. Architecting your frontend using single-spa enables many benefits, such as:
 
