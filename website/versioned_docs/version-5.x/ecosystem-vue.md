@@ -360,7 +360,6 @@ With this directory structure (which is the Vue CLI default), the public path sh
 
 ```js
 // vue.config.js
-// In vue.config.js
 module.exports = {
   chainWebpack(config) {
     config.plugin('SystemJSPublicPathWebpackPlugin').tap((args) => {
