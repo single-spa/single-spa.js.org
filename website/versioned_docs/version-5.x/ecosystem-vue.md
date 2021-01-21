@@ -343,3 +343,30 @@ export default {
 }
 </script>
 ```
+
+## Webpack Public Path
+
+[vue-cli-plugin-single-spa](https://github.com/single-spa/vue-cli-plugin-single-spa) sets the [webpack public path](https://webpack.js.org/guides/public-path/#root) via [SystemJSPublicPathWebpackPlugin](https://github.com/joeldenning/systemjs-webpack-interop). By default, the public path is set to match the following output directory structure:
+
+```sh
+dist/
+  js/
+    app.js
+  css/
+    main.css
+```
+
+With this directory structure (which is the Vue CLI default), the public path should **not** include the `js` folder. This is accomplished by settings [`rootDirectoryLevel`](https://github.com/joeldenning/systemjs-webpack-interop#as-a-webpack-plugin) to be `2`. If this doesn't match your directory structure or setup, you can change the `rootDirectoryLevel` with the following code in your vue.config.js or webpack.config.js:
+
+```js
+// vue.config.js
+// In vue.config.js
+module.exports = {
+  chainWebpack(config) {
+    config.plugin('SystemJSPublicPathWebpackPlugin').tap((args) => {
+      args[0].rootDirectoryLevel = 1;
+      return args;
+    });
+  }
+}
+```
