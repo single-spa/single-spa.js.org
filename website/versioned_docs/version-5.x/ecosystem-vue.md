@@ -356,7 +356,7 @@ dist/
     main.css
 ```
 
-With this directory structure (which is the Vue CLI default), the public path should **not** include the `js` folder. This is accomplished by settings [`rootDirectoryLevel`](https://github.com/joeldenning/systemjs-webpack-interop#as-a-webpack-plugin) to be `2`. If this doesn't match your directory structure or setup, you can change the `rootDirectoryLevel` with the following code in your vue.config.js or webpack.config.js:
+With this directory structure (which is the Vue CLI default), the public path should **not** include the `js` folder. This is accomplished by setting [`rootDirectoryLevel`](https://github.com/joeldenning/systemjs-webpack-interop#as-a-webpack-plugin) to be `2`. If this doesn't match your directory structure or setup, you can change the `rootDirectoryLevel` with the following code in your vue.config.js or webpack.config.js:
 
 ```js
 // vue.config.js
