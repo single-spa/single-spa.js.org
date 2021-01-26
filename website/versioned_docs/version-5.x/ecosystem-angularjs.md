@@ -156,10 +156,16 @@ $scope.mountParcel = mountRootParcel
 If you run into issues related to `singleSpaProps` not being available for injection, this is likely caused by using `<single-spa-parcel>` outside of a single-spa application or parcel. It is okay to do so, but you'll need to manually provide the `singleSpaProps` value:
 
 ```js
+import { mountRootParcel } from 'single-spa';
+
 angular.module('single-spa-angularjs').config(['$provide', ($provide) => {
   // This can be an empty object, you just need the DI to not fail
   const props = {};
-  $provide.value('singleSpaProps', {});
+
+  // Alternatively, you can provide a mountParcel function that will be used as the default value for the mount-parcel attribute
+  // const props = {mountParcel: mountRootParcel}
+
+  $provide.value('singleSpaProps', props);
 }])
 ```
 
