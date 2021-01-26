@@ -217,9 +217,26 @@ const vueLifecycles = singleSpaVue({
 
 ## Custom Props
 
-[single-spa custom props](/docs/building-applications.html#custom-props) are added to your App component as
-`appOptions.data`, and are accessible via `vm.$data`. See [this Vue documentation](https://vuejs.org/v2/api/#data)
-for more information on `appOptions.data`.
+[single-spa custom props](/docs/building-applications.html#custom-props) are available in the `render()` function in your main file. They can be passed as custom props to your App component.
+
+```js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render(h) {
+      return h(App, {
+        props: {
+          // single-spa props are available on the "this" object. Forward them to your component as needed.
+          // https://single-spa.js.org/docs/building-applications#lifecyle-props
+          name: this.name,
+          mountParcel: this.mountParcel,
+          singleSpa: this.singleSpa,
+        },
+      });
+    },
+  },
+});
+```
 
 ## Parcels
 
