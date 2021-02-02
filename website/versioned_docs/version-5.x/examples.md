@@ -14,6 +14,7 @@ sidebar_label: Resources
 - [single-spa-es5-angularjs](https://github.com/joeldenning/single-spa-es5-angularjs) is a very tiny es5 example with angularjs.
 - [Isomorphic Microfrontends](https://github.com/isomorphic-microfrontends) shows server-side rendering (SSR) with single-spa and single-spa-layout.
 - [Vite single-spa application](https://github.com/joeldenning/vite-single-spa-example) shows a single-spa application that uses Vite.
+- [Snowpack single-spa application](https://github.com/joeldenning/snowpack-single-spa-example) shows a single-spa application that uses Snowpack.
 
 ### Older examples
 
