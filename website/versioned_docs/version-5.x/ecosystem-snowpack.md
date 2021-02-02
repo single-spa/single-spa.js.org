@@ -92,7 +92,9 @@ module.exports = {
 
 Snowpack works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:8080/index.js as the URL for your import map override.
 
+:::caution
 Static Assets currently do not load from the correct URL in development, pending a PR to Snowpack: https://github.com/snowpackjs/snowpack/pull/2407. However, static assets do load from the correct URL in production, due to systemjs-webpack-interop.
+:::
 
 ## Native Modules vs SystemJS
 
