@@ -49,6 +49,8 @@ module.exports = {
             mode: "development",
             module: {
               rules: [
+                // This rule is necessary in webpack 4, but breaks things in webpack 5
+                // At the time of writing this documentation, @snowpack/plugin-webpack uses webpack 4.
                 {
                   parser: {
                     system: false,
