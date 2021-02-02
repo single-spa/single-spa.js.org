@@ -209,6 +209,10 @@
         {
           "type": "doc",
           "id": "version-5.x/ecosystem-vite"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/ecosystem-snowpack"
         }
       ]
     },
