@@ -277,8 +277,6 @@ import Parcel from 'single-spa-vue/parcel'
 
 import { mountRootParcel } from 'single-spa'
 
-const Widget =
-
 export default {
   components: {
     Parcel
