@@ -199,7 +199,7 @@ module.exports = {
 All options are passed to single-spa-vue via the `opts` parameter when calling `singleSpaVue(opts)`. The following options are available:
 
 - `Vue`: (required) The main Vue object, which is generally either exposed onto the window or is available via `require('vue')` `import Vue from 'vue'`.
-- `appOptions`: (required) An object which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
+- `appOptions`: (required) An object or async function which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
 - `handleInstance`: (optional) A method can be used to handle Vue instance. Vue 3 brings [new instance API](https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp), and you can access *the app instance* from this, like `handleInstance: (app) => app.use(router)`. For Vue 2 users, a [Vue instance](https://vuejs.org/v2/guide/instance.html) can be accessed.
 
@@ -211,6 +211,20 @@ const vueLifecycles = singleSpaVue({
   appOptions: {
     render: h => h(App),
     el: '#a-special-container',
+  },
+});
+```
+
+To configure options asynchronously return a promise from appOptions function:
+
+```js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  async appOptions() {
+    return {
+      router: await routerFactory(),
+      render: h => h(App)
+    }
   },
 });
 ```
