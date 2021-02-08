@@ -224,7 +224,7 @@ The `<assets>` element is used to specify the location of server-rendered applic
 
 The `<redirect>` element is used to specify route redirects. On the server side, this is done with `res.redirect()`, which results in an HTTP 302 being sent to the browser. Within the browser, this is done by [canceling navigation](/docs/api#canceling-navigation) and then calling [`navigateToUrl()`](/docs/api#navigatetourl).
 
-Redirects are always defined with **absolute paths.** This means that nesting a `<redirect>` inside of a route will not behave any differently than placing the redirect at the top level. All redirects should have full paths, including a leading slash.
+Redirects are always defined with **absolute paths.** This means that nesting a `<redirect>` inside of a route will not behave any differently than placing the redirect at the top level. All redirects should have full paths. Leading slashes are optional in those full paths.
 
 ```html
 <redirect from="/" to="/login"></redirect>
