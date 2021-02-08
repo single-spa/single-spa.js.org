@@ -34,7 +34,7 @@ is via [webpack externals](https://webpack.js.org/configuration/externals/#root)
 Here are our recommendations:
 
 1. Each single-spa application should be an in-browser Javascript module.
-2. Large shared dependencies (ie, the react, vue, or angular libraries) should each be in-browser modules.
+2. Each large shared-dependency (ie, the react, vue, or angular libraries) should also be an in-browser module.
 3. Everything else should be a build-time module.
 
 ## Import Maps
