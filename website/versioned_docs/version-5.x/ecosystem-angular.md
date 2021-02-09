@@ -4,9 +4,9 @@ title: single-spa-angular
 sidebar_label: Angular
 ---
 
-## Project Status
+### Project Status
 
-This project needs new maintainers. The single-spa core team does not have the Angular expertise needed to continously support all versions of Angular, as none of us use single-spa-angular in any of our serious projects. We could use help keeping up with the six month release cadence of Angular, diagnosing problems in the issue queues, and providing support in the single-spa Slack workspace. Angular is the framework that is hardest to support in the single-spa ecosystem, and we rely on the community to help us with it. If you have interest in helping with the maintenance of this project, please let us know!
+The single-spa-angular project is overseen by the single-spa core team, but largely maintained by the community using it. This is because the single-spa core team is stronger in other frameworks and often doesn't have the expertise to fix bugs in a timely manner. There are a few community members who help us actively maintain the project, which we greatly appreciate. If you have Angular experience, we'd appreciate your help in maintaining the repo. To do so, set up notifications by watching the single-spa-angular Github repository. Also, please join the `#maintainers` and `#angular` channels in Slack.
 
 ## Introduction
 
