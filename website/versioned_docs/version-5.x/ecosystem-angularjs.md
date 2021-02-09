@@ -103,6 +103,72 @@ All options are passed to single-spa-angularjs via the `opts` parameter when cal
 
 [single-spa custom props](/docs/building-applications/#lifecycle-props) are made available as `$rootScope.singleSpaProps`.
 
+## Parcels
+
+### Creating AngularJS parcels
+
+The `singleSpaAngularJs()` function returns an object that can serve as either a [single-spa application](/docs/building-applications) or [single-spa parcel](/docs/parcels-overview).
+
+### Rendering parcels in AngularJS
+
+To render a single-spa parcel inside of your AngularJS application, you can use the `<single-spa-parcel>` directive. To do so, first add the `"single-spa-angularjs"` module as a dependency of your application:
+
+```js
+import 'single-spa-angularjs/lib/parcel.js';
+
+angular.module('myMainModule', [
+  'single-spa-angularjs'
+])
+```
+
+Then you can use the `<single-spa-parcel>` directive in your templates:
+
+```html
+<single-spa-parcel
+  parcel-config="parcelConfig"
+  props="parcelProps"
+  mount-parcel="mountRootParcel"
+/>
+```
+
+In your controller, set the corresponding values on the $scope:
+
+```js
+import { mountRootParcel } from 'single-spa';
+
+// The parcelConfig binding is required. It must be an object or loading function that resolves with an object.
+$scope.parcelConfig = {async mount() {}, async unmount() {}}
+
+// You can retrieve parcels from other microfrontends via cross-microfrontend imports
+// See https://single-spa.js.org/docs/recommended-setup#cross-microfrontend-imports
+// $scope.parcelConfig = () => System.import('@org/settings-modal');
+
+// The props binding is optional, defaulting to no custom props being passed into the parcel
+$scope.props = {
+  extra: 'info can be passed here'
+}
+
+// As long as you're using <single-spa-parcel> inside of another single-spa application or parcel,
+// the mountParcel binding is not needed. However, it is needed otherwise.
+$scope.mountParcel = mountRootParcel
+```
+
+If you run into issues related to `singleSpaProps` not being available for injection, this is likely caused by using `<single-spa-parcel>` outside of a single-spa application or parcel. It is okay to do so, but you'll need to manually provide the `singleSpaProps` value:
+
+```js
+import { mountRootParcel } from 'single-spa';
+
+angular.module('single-spa-angularjs').config(['$provide', ($provide) => {
+  // This can be an empty object, you just need the DI to not fail
+  const props = {};
+
+  // Alternatively, you can provide a mountParcel function that will be used as the default value for the mount-parcel attribute
+  // const props = {mountParcel: mountRootParcel}
+
+  $provide.value('singleSpaProps', props);
+}])
+```
+
 ## Examples
 
 - [polyglot microfrontends account settings](https://github.com/polyglot-microfrontends/account-settings): Gulp + angularjs@1.7 project integrated with Vue microfrontends.

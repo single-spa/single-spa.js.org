@@ -199,7 +199,7 @@ module.exports = {
 All options are passed to single-spa-vue via the `opts` parameter when calling `singleSpaVue(opts)`. The following options are available:
 
 - `Vue`: (required) The main Vue object, which is generally either exposed onto the window or is available via `require('vue')` `import Vue from 'vue'`.
-- `appOptions`: (required) An object which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
+- `appOptions`: (required) An object or async function which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
 - `handleInstance`: (optional) A method can be used to handle Vue instance. Vue 3 brings [new instance API](https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp), and you can access *the app instance* from this, like `handleInstance: (app) => app.use(router)`. For Vue 2 users, a [Vue instance](https://vuejs.org/v2/guide/instance.html) can be accessed.
 
@@ -215,11 +215,42 @@ const vueLifecycles = singleSpaVue({
 });
 ```
 
+To configure options asynchronously return a promise from appOptions function:
+
+```js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  async appOptions() {
+    return {
+      router: await routerFactory(),
+      render: h => h(App)
+    }
+  },
+});
+```
+
 ## Custom Props
 
-[single-spa custom props](/docs/building-applications.html#custom-props) are added to your App component as
-`appOptions.data`, and are accessible via `vm.$data`. See [this Vue documentation](https://vuejs.org/v2/api/#data)
-for more information on `appOptions.data`.
+[single-spa custom props](/docs/building-applications.html#custom-props) are available in the `render()` function in your main file. They can be passed as custom props to your App component.
+
+```js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render(h) {
+      return h(App, {
+        props: {
+          // single-spa props are available on the "this" object. Forward them to your component as needed.
+          // https://single-spa.js.org/docs/building-applications#lifecyle-props
+          name: this.name,
+          mountParcel: this.mountParcel,
+          singleSpa: this.singleSpa,
+        },
+      });
+    },
+  },
+});
+```
 
 ## Parcels
 
@@ -259,8 +290,6 @@ import Parcel from 'single-spa-vue/dist/esm/parcel'
 import Parcel from 'single-spa-vue/parcel'
 
 import { mountRootParcel } from 'single-spa'
-
-const Widget =
 
 export default {
   components: {
@@ -356,11 +385,18 @@ dist/
     main.css
 ```
 
+<<<<<<< HEAD
 With this directory structure (which is the Vue CLI default), the public path should **not** include the `js` folder. This is accomplished by settings [`rootDirectoryLevel`](https://github.com/joeldenning/systemjs-webpack-interop#as-a-webpack-plugin) to be `2`. If this doesn't match your directory structure or setup, you can change the `rootDirectoryLevel` with the following code in your vue.config.js or webpack.config.js:
 
 ```js
 // vue.config.js
 // In vue.config.js
+=======
+With this directory structure (which is the Vue CLI default), the public path should **not** include the `js` folder. This is accomplished by setting [`rootDirectoryLevel`](https://github.com/joeldenning/systemjs-webpack-interop#as-a-webpack-plugin) to be `2`. If this doesn't match your directory structure or setup, you can change the `rootDirectoryLevel` with the following code in your vue.config.js or webpack.config.js:
+
+```js
+// vue.config.js
+>>>>>>> 5866e530e3e90761fd6d6e96efabccaae21bee8d
 module.exports = {
   chainWebpack(config) {
     config.plugin('SystemJSPublicPathWebpackPlugin').tap((args) => {
