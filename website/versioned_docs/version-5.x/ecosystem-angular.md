@@ -4,6 +4,10 @@ title: single-spa-angular
 sidebar_label: Angular
 ---
 
+### Project Status
+
+The single-spa-angular project is overseen by the single-spa core team, but largely maintained by the community using it. This is because the single-spa core team is stronger in other frameworks and often doesn't have the expertise to fix bugs in a timely manner. There are a few community members who help us actively maintain the project, which we greatly appreciate. If you have Angular experience, we'd appreciate your help in maintaining the repo. To do so, set up notifications by watching the single-spa-angular Github repository. Also, please join the `#maintainers` and `#angular` channels in Slack.
+
 ## Introduction
 
 [single-spa-angular](https://github.com/single-spa/single-spa-angular/) is a library for creating Angular microfrontends.
@@ -17,10 +21,6 @@ The documentation here is extensive, so use the sidenav on the right. 👉👉�
 ### Community
 
 Join the `#angular` channel in [single-spa's slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-l2iljnpv-pW_o92mMpMR8RWfIOI6pTQ).
-
-### Project Status
-
-The single-spa-angular project is overseen by the single-spa core team, but largely maintained by the community using it. This is because the single-spa core team is stronger in other frameworks and often doesn't have the expertise to fix bugs in a timely manner. If you have Angular experience, we'd appreciate your help in maintaining the repo. To do so, set up notifications by watching the single-spa-angular Github repository. Also, please join the `#maintainers` and `#angular` channels in Slack.
 
 ### Demo
 
