@@ -47,7 +47,7 @@ function bootstrap(props) {
 
 #### Built-in props
 
-Each lifecycle function is guranteed to be called with the following props:
+Each lifecycle function is guaranteed to be called with the following props:
 
 - `name`: The string name that was registered to single-spa.
 - `singleSpa`: A reference to the singleSpa instance, itself. This is intended to allow applications and helper libraries to call singleSpa
