@@ -66,9 +66,9 @@ For example: Authorization. How does each application know which user is logged 
 Using the utility module pattern would allow you to create one module that implements the authorization logic. This module would export any needed methods, and then your other single-spa applications could use those authorization methods by importing them.
 This approach also works well for data [fetching](/docs/recommended-setup#api-data).
 
-### Examples of Utility MFEs
+### Examples of Utility Microfrontends
 
-The following are commonly implemented as a Utility MFE:
+The following are commonly implemented as a Utility Microfrontend:
 
 - Notification service
 - Styleguide/component library
