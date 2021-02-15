@@ -390,26 +390,24 @@ This api was introduced in single-spa@5.8.0. A few notes about this api:
 const appsThatShouldBeActive = singleSpa.checkActivityFunctions();
 console.log(appsThatShouldBeActive); // ['app1']
 
-const appsForACertainRoute = singleSpa.checkActivityFunctions({
-  pathname: '/app2',
-});
+const appsForACertainRoute = singleSpa.checkActivityFunctions(new URL('/app2', window.location.href));
 console.log(appsForACertainRoute); // ['app2']
 ```
 
-Will call every app's activity function with the `mockWindowLocation` and give you list of which applications should be mounted with that location.
+Will call every app's activity function with `url` and give you list of which applications should be mounted with that location.
 
 <h3>arguments</h3>
 
 <dl className="args-list">
-	<dt>mockWindowLocation: string</dt>
-	<dd>A string representing a window.location that will be used when calling every application's activity function to test if they return true.</dd>
+	<dt>url: URL</dt>
+	<dd>A <codehtml>URL</codehtml> object that will be used instead of window.location when calling every application's activity function to test if they return true.</dd>
 </dl>
 
 <h3>returns</h3>
 
 <dl className="args-list">
 	<dt>appNames: string[]</dt>
-	<dd>Each string is the name of a registered application that matches the provided <codehtml>mockWindowLocation</codehtml>.</dd>
+	<dd>Each string is the name of a registered application that matches the provided <codehtml>url</codehtml>.</dd>
 </dl>
 
 ## addErrorHandler
@@ -514,9 +512,9 @@ This function is used by single-spa when a string is passed into `registerApplic
 
 **_Return Value_**
 
-`(location: Location) => boolean`
+`(url: URL) => boolean`
 
-A function that accepts a URL as an argument and returns a boolean indicating whether the path matches that URL.
+A function that accepts a `URL` object as an argument and returns a boolean indicating whether the path matches that URL.
 
 **_Examples:_**
 
