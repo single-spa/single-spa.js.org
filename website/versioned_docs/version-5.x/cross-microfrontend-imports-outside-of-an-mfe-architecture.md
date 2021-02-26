@@ -45,7 +45,7 @@ To share code from your MFE NPM package you'll need to:
 
 ## Webpack and rollup externals
 
-Many build systems support externals. Externals are used to tell the build system _not_ to bundle a certain dependency. Both Webpack and Rollup support regular expressions in their externals definition.
+Many build systems support externals. Externals are used to tell the build system _not_ to include a certain dependency into the final build/bundle. Both Webpack and Rollup also support regular expressions in their externals definition.
 
 ## Version inconsistency Issues
 
@@ -63,9 +63,14 @@ Consider the following example:
 
 `my-application` uses `my-shared-npm-module`. When `my-application` builds it provides lodash to `my-shared-npm-module`.
 
-If `my-application` specifies lodash `v4.0.0`+ in `package.json` a bug will be introduced where the `pluck` method does not exist.
+If `my-application` specifies lodash `v4.0.0`+ in `package.json` a bug will be introduced where the `pluck` method does not exist. This bug _could_ be completely missed by unit tests in _both_ projects.
 
-Managing this can be a tricky problem. Tools like rennovate can help keep every package updated and highlight issues, but won't catch everything. Not using build-tool externals is also an option but it will bloat total code size especially for large dependencies.
+|                | unit-tests-pass    | 
+| my-application | :white_check_mark: | 
+| my-shared-npm..| :white_check_mark: |
+
+
+Managing this can be a tricky problem. Tools like rennovate can help keep every package updated and highlight issues, but won't catch everything. Not using build-tool externals at all is also an option but it will bloat total code size especially for large dependencies as they could be included into the final code bundle(s) multiple times.
 
 
 // old approach
