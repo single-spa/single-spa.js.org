@@ -33,13 +33,34 @@ How are you building your MFE application?
 
 If you are following the [recommended setup](/docs/recommended-setup) or using [create-single-spa](/docs/create-single-spa) you unlock some [spectacular benefits](/docs/separating-applications#comparison) in your application. One disadvantage of this approach is that your MFE code is typically not bundled as an NPM module, so sharing code between an MFE architected in this way and a traditional NPM/build-time setup is more complex.
 
-Consider the following example:
+In this structure be aware of the following limitations when trying to share code between MFEs and NPM modules:
+- An NPM module used in a non-mfe context cannot directly interop with MFEs without modifications
+- [A MFE module cannot execute in another environment without modifications](#running-mfes-in-another-environment)
 
-`legacy-app` Is a traditional server rendered web application. It uses the NPM module `org-logged-in-user`
-
-// TODO
 
 # Reference Items
+
+## Running MFEs in another environment
+
+If you wish to execute a microfrontend in a different environment the microfrontend must conform to the expectations of the environment in which they are running.
+
+### Node/NPM environment
+
+Node/NPM by default expect that modules are present at build-time. If you wish to use a single-spa microfrontend in node you will need to [ensure that the microfrontend is present at build time](#modifying-dynamic-microfrontends-to-work-in-node) or [the node environment can be modified to dynamically resolve the microfrontend](#dyanmic-module-loading-in-node).
+
+## Modifying dynamic microfrontends to work in node
+
+Microfrontends designed for an environment with dynamic module loading can be modified to work in node by changing the webpack/rollup config. Assuming you want to continue deploying the microfrontend without publishing as well, the build configuration should be changed to create multiple build outputs. One for an environment with dynamic module resolution and one for a Node/NPM environment.
+
+You'll need to change the build for the microfrontend you wish to publish to NPM as well as all of its dependencies that are also microfrontends.
+
+### Example
+
+`mfe-auth` uses `mfe-fetch` to make network requests, both are built to function in an environment with SystemJS for dynamic module resolution. Both would need to be pubished to NPM to use `mfe-auth`
+
+## Dynamic module loading in node
+
+You can modify the node environment to understand dynamic module resolution by using a [dynamic module loader designed for Node](https://github.com/systemjs/systemjs#3-system-nodecjs-loader). This is very useful in situations where you want to reuse code designed for an environment with dynamic module loading.
 
 ## Code duplication
 
@@ -58,11 +79,10 @@ To share code from your MFE NPM package you'll need to:
 
 ## NPM all the way down
 
-Modules shared via NPM should only leverage NPM if you expect them to work in multiple different applications that have different expecations and configurations.
+Modules shared via NPM should only leverage NPM if you expect them to work in a standard node environment. In practice this means that any NPM modules that must work in a browser environment with SystemJS and a node environment without SystemJS should rely on each dependent module being present at build time.
+### Scenario
 
-Consider the following scenario:
-
-`npm-mod-1` is running on a node server and it uses `npm-mod-2`. `npm-mod-2` was built to function in a dynamic module resolution environment and uses `mfe-mod-1` that isn't published to NPM. There won't be any build errors when building `npm-mod-2` but there will be some errors during the build or execution of `npm-mod-1`. The node environment does not have the capacity to dynamically resolve the missing `js-module`.
+`npm-mod-1` is running on a node server and it uses `npm-mod-2`. `npm-mod-2` was built to function in a dynamic module resolution environment and uses `mfe-mod-1` that isn't published to NPM. There won't be any build errors when building/publishing `npm-mod-2` [because it uses build externals for `mfe-mod-1`](#webpack-and-rollup-externals) but there will be errors during the build or execution of `npm-mod-1` in a node environment. The node environment does not have the capacity to dynamically resolve the missing `mfe-mod-1` so it must be present at run-time without relying upon dynamic module resolution.
 
 ## Webpack and rollup externals
 
