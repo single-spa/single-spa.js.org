@@ -1,8 +1,10 @@
-# Cross microfrontend imports outside of an MFE architecture
+---
+id: cross-microfrontend-imports-outside-of-an-mfe-architecture
+title: Cross microfrontend imports outside of an MFE architecture
+sidebar_label: Mixed architectures 
+---
 
-This document aims to highlight problems and explore some solutions related to sharing code between a project that is an MFE and another project that is not an MFE. Sharing code between different projects has been common in the JS ecosystem for years. When sharing code between mixed architectures there are a few challenges that should be examined in depth. Depending on how your MFE code is [divided, built, and delivered](/docs/separating-applications) you will have different challenges in sharing code between projects of different architectures.
-
-# Decision Tree
+This document aims to highlight problems and explore some solutions related to sharing code between a project that is built with single-spa and another project that is not. Sharing code between different projects has been common in the JS ecosystem for years. When sharing code between mixed architectures there are a few challenges that should be examined in depth. Depending on how your MFE code is [divided, built, and delivered](/docs/separating-applications) you will have different challenges in sharing code between projects of different architectures.
 
 This document is structured as a decision tree using your [MFE application structure as the top level decision](/docs/separating-applications).
 
@@ -50,9 +52,9 @@ Node/NPM by default expect that modules are present at build-time. If you wish t
 
 ## Modifying dynamic microfrontends to work in node
 
-Microfrontends designed for an environment with dynamic module loading can be modified to work in node by changing the webpack/rollup config. Assuming you want to continue deploying the microfrontend without publishing as well, the build configuration should be changed to create multiple build outputs. One for an environment with dynamic module resolution and one for a Node/NPM environment.
+Microfrontends designed for an environment with dynamic module loading (SystemJS) can be modified to work in node by changing the webpack/rollup config. If you wish to continue to build for SystemJS the build configuration can be changed to create multiple build outputs. One for SystemJS and one for a Node/NPM environment.
 
-You'll need to change the build for the microfrontend you wish to publish to NPM as well as all of its dependencies that are also microfrontends.
+You'll need to change the build for the microfrontend you wish to publish to NPM [as well as all of its dependencies that are also microfrontends](#npm-all-the-way-down).
 
 ### Example
 
@@ -79,7 +81,7 @@ To share code from your MFE NPM package you'll need to:
 
 ## NPM all the way down
 
-Modules shared via NPM should only leverage NPM if you expect them to work in a standard node environment. In practice this means that any NPM modules that must work in a browser environment with SystemJS and a node environment without SystemJS should rely on each dependent module being present at build time.
+Modules shared via NPM should only leverage NPM if you expect them to work in a standard node environment. In practice this means that any NPM modules that must work in a browser environment with SystemJS and a node environment without SystemJS should rely on each dependent module being present at build time/published to NPM.
 ### Scenario
 
 `npm-mod-1` is running on a node server and it uses `npm-mod-2`. `npm-mod-2` was built to function in a dynamic module resolution environment and uses `mfe-mod-1` that isn't published to NPM. There won't be any build errors when building/publishing `npm-mod-2` [because it uses build externals for `mfe-mod-1`](#webpack-and-rollup-externals) but there will be errors during the build or execution of `npm-mod-1` in a node environment. The node environment does not have the capacity to dynamically resolve the missing `mfe-mod-1` so it must be present at run-time without relying upon dynamic module resolution.
