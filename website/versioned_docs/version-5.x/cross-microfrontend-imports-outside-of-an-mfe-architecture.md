@@ -31,7 +31,21 @@ How are you building your MFE application?
 
 ## Recommended: Dynamic Module Loading
 
+If you are following the [recommended setup](/docs/recommended-setup) or using [create-single-spa](/docs/create-single-spa) you unlock some [spectacular benefits](/docs/separating-applications#comparison) in your application. One disadvantage of this approach is that your MFE code is typically not bundled as an NPM module, so sharing code between an MFE architected in this way and a traditional NPM/build-time setup is more complex.
 
+Consider the following example:
+
+`legacy-app` Is a traditional server rendered web application. It uses the NPM module `org-logged-in-user`
+
+// TODO
+
+# Reference Items
+
+## Code duplication
+
+If you are duplicating code as a method of sharing code between different projects you will have to address:
+- Updating duplicated code
+- Total application size
 ## Sharing NPM modules between MFEs and non-MFEs
 
 This is probably the easiest way to share code between projects. 
@@ -40,8 +54,15 @@ To share code from your MFE NPM package you'll need to:
 - set-up [webpack/rollup externals](#webpack-and-rollup-externals)
 - manage [version inconsistency issues](#version-inconsistency-issues)
 - you may need to further divide up modules to prevent unnecessary dependencies.
+- requires [NPM modules "all the way down"](#npm-all-the-way-down)
 
-# Reference Items
+## NPM all the way down
+
+Modules shared via NPM should only leverage NPM if you expect them to work in multiple different applications that have different expecations and configurations.
+
+Consider the following scenario:
+
+`npm-mod-1` is running on a node server and it uses `npm-mod-2`. `npm-mod-2` was built to function in a dynamic module resolution environment and uses `mfe-mod-1` that isn't published to NPM. There won't be any build errors when building `npm-mod-2` but there will be some errors during the build or execution of `npm-mod-1`. The node environment does not have the capacity to dynamically resolve the missing `js-module`.
 
 ## Webpack and rollup externals
 
@@ -49,7 +70,7 @@ Many build systems support externals. Externals are used to tell the build syste
 
 ## Version inconsistency Issues
 
-When you have many projects using the same module from NPM and have set-up that module as a build-time external. There are several key challenges to manage.
+When you have many projects using the same module from NPM and have set-up that module as a [build-time external](#webpack-and-rollup-externals). There are several key challenges to manage.
 
 ### Externals are used for unit tests but not bundled into the code
 
@@ -68,6 +89,5 @@ If `my-application` specifies lodash `v4.0.0`+ in `package.json` a bug will be i
 |                | unit-tests-pass    | 
 | my-application | :white_check_mark: | 
 | my-shared-npm..| :white_check_mark: |
-
 
 Managing this can be a tricky problem. Tools like rennovate can help keep every package updated and highlight issues, but won't catch everything. Not using build-tool externals at all is also an option but it will bloat total code size especially for large dependencies as they could be included into the final code bundle(s) multiple times.
