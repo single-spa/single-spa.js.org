@@ -42,6 +42,37 @@ In this structure be aware of the following limitations when trying to share cod
 
 # Reference Items
 
+## NPM and microfrontend interop
+
+An NPM module that wants to use microfrontends and still work in multiple environments will need to choose a path forward for interoperability.
+- [Indirect/Abstract interop](indirect-interop-with-microfrontends)
+- [Don't use code that isn't published to NPM](#npm-all-the-way-down)
+- [Publish all microfrontends to NPM as well as dynamic environment](#running-mfes-in-another-environment)
+- [Fork the project](forking-for-interop)
+
+## Forking for interop
+
+If you must be able to use MFEs in a dynamic module environment and want to keep your builds as simple as possible forking the project may be a good solution. This could be an especially valuable approach in a situation where you're migrating from a NPM/build-time centric solution to a microfrontend/run-time specific solution. The cost of maintaining abstract interop code or publishing microfrontends to NPM and complicating the migration may needs to be weighed against the cost of "maintaining" two separate projects.
+
+## Indirect interop with microfrontends
+
+Instead of having an NPM module use microfrontends and limit itself to only microfrontend envrionments it could use abstract methods to interop with microfrontends. Specifically instead of directly importing a microfrontend it could rely upon a wrapper module to map different module of different types, resolved in different ways, to a common API.
+
+A good example of this is a shared component library currently published exclusively to NPM. If you want that shared component library to work as both an NPM module in a standard node environment and a microfrontend in an environment with dynamic module resolution you will need to change how the component library works. Instead of creating a component library and publishing it to NPM you'd create an abstract component library and publish that to NPM. Then create/publish an NPM specific implementation of that abstract component library to NPM and create/deploy an MFE specific implementation of the abstract component library using `import-map-deployer`.
+
+### Example of abstract react component
+```js
+export default function CancelButton({translationFn, onClick}) {
+  return <Button onClick={onClick}>{translationFn('Cancel')}</Button>
+}
+```
+Instead of exporting a `CancelButton` component that directly relies upon `npm-translation-method` you would need to export a component that could use a provided translation method so that the NPM specific implementation could provide `npm-translation-method` and the microfrontend specific implementaton could provide `mfe-translation-method`. Both methods would have to have to map the same signature which may create tight coupling issues.
+
+Disadvantages:
+- coupling issues
+- complex
+- difficult to manage
+- potential performance issues
 ## Running MFEs in another environment
 
 If you wish to execute a microfrontend in a different environment the microfrontend must conform to the expectations of the environment in which they are running.
