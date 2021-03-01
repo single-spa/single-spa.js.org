@@ -749,6 +749,20 @@ If you need to support IE11 or older, do the following:
 
 [Full example commit to get IE11 support](https://github.com/joeldenning/coexisting-angular-microfrontends/commit/22cbb2dc1c15165c39b10aa4019fe517fa88af32)
 
+## Shared Angular
+
+Sharing one or more instances of Angular between microfrontends provides the following benefits:
+
+1. Performance improvement, due to reduced amount of javascript to load.
+1. [Cross-microfrontend imports](/docs/recommended-setup#cross-microfrontend-imports) of angular components are possible. (Without a shared instance of Angular, you can still use cross-microfrontend imports of [single-spa parcels](#parcels))
+
+There are two techniques for sharing Angular: [SystemJS in-browser modules](/docs/recommended-setup#systemjs) and [Module Federation](/docs/recommended-setup#module-federation). Sharing with SystemJS varies depending on whether you're using Ivy or not. If you're using Ivy, you'll need a `POST_R3` version of the angular core libraries, which are not included in the official Angular packages. You can use the following esm-bundle packages, which provide POST_R3 / ivy-compatible versions that can be shared via SystemJS:
+
+- https://github.com/esm-bundle/angular__core
+- https://github.com/esm-bundle/angular__router
+- https://github.com/esm-bundle/angular__platform-browser
+- https://github.com/esm-bundle/angular__common
+
 ## Angular Elements
 
 :::info
