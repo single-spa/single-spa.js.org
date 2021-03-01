@@ -52,14 +52,14 @@ const routerElement = new DOMParser().parseFromString(`
 
 You may define your layout as JSON, including routes, applications, and arbitrary dom elements.
 
-```json
-{
+```js
+const routes = constructRoutes({
   "routes": [
     { "type": "route", "path": "settings", "routes": [
       { "type": "application", "name": "settings" }
     ]}
   ]
-};
+});
 ```
 
 ## Layout Elements
