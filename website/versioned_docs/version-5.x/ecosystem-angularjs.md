@@ -212,6 +212,79 @@ Migrating an existing AngularJS application to single-spa can be a tricky. Here 
 console.log('legacyAngularjsApp status', singleSpa.getAppStatus('legacyAngularjsApp');
 ```
 
+### Step 2: Convert to SystemJS module:
+
+This step is not required unless you want to do [cross microfrontend imports](/docs/recommended-setup#cross-microfrontend-imports) between your angularjs microfrontend and other microfrontends.
+
+1. Add systemjs to your index.html file:
+
+```html
+<!-- consider checking/upgrading systemjs version -->
+<script type="systemjs-importmap">
+  {
+    "imports": {
+      "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.1/lib/system/single-spa.min.js",
+      "@org/legacyAngularjsApp": "/main-angular-app.js"
+    }
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/systemjs@6.9.1/dist/system.min.js"></script>
+```
+
+2. Remove the global single-spa script:
+
+```diff
+- <script src="https://cdn.jsdelivr.net/npm/single-spa@5.9.1/lib/umd/single-spa.min.js"></script>
+```
+
+3. Modify your main / first angularjs script file to create a systemjs module instead of global variable. See [this code](/docs/ecosystem-angularjs#as-a-systemjs-module).
+
+4. Remove the `<script>` for loading that main / first angularjs script file. Replace it with a System.import.
+
+```diff
+- <script src="/main-angular-app.js"></script>
+```
+
+5. Modify the `<script>` in your main HTML file to load the angularjs app as a systemjs module instead of global variable:
+
+```diff
+- window.singleSpa.registerApplication({
+-   name: "legacyAngularjsApp",
+-   app: window.legacyAngularjsApp,
+-   app: function() { return System.import('@org/legacyAngularjsApp'); },
+-   activeWhen: ['/']
+- })
+```
+
+6. Verify that the app continues working.
+
+### Step 3: Add new microfrontend
+
+In single-spa, it's encouraged to split microfrontends by route. During the migration/transition period, you may need to have the legacy angularjs application always active to show navigation menus, even for routes that are controlled by new microfrontends.
+
+1. Add a new call to `registerApplication()` to your index.html file.
+```js
+window.singleSpa.registerApplication({
+  name: "new-microfrontend",
+  app: function () { return System.import("new-microfrontend"); },
+  activeWen: ["/route-for-new-microfrontend"]
+})
+```
+2. Add the new microfrontend to your import map in the index.html file.
+
+```html
+<script type="systemjs-importmap">
+  {
+    "imports": {
+      "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.1/lib/system/single-spa.min.js",
+      "@org/legacyAngularjsApp": "/main-angular-app.js",
+      "@org/new-microfrontend": "http://localhost:8080/new-microfrontend.js"
+    }
+  }
+</script>
+```
+3. Start a new microfrontend on the port in the import map. Go to the route for the new microfrontend and verify it is loaded.
+
 ## Examples
 
 - [polyglot microfrontends account settings](https://github.com/polyglot-microfrontends/account-settings): Gulp + angularjs@1.7 project integrated with Vue microfrontends.
