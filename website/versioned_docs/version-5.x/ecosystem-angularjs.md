@@ -262,6 +262,8 @@ This step is not required unless you want to do [cross microfrontend imports](/d
 
 In single-spa, it's encouraged to split microfrontends by route. During the migration/transition period, you may need to have the legacy angularjs application always active to show navigation menus, even for routes that are controlled by new microfrontends.
 
+It's recommended to create new microfrontends via the [single-spa CLI](/docs/create-single-spa).
+
 1. Add a new call to `registerApplication()` to your index.html file.
 ```js
 window.singleSpa.registerApplication({
