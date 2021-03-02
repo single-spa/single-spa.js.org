@@ -248,12 +248,12 @@ This step is not required unless you want to do [cross microfrontend imports](/d
 5. Modify the `<script>` in your main HTML file to load the angularjs app as a systemjs module instead of global variable:
 
 ```diff
-- window.singleSpa.registerApplication({
--   name: "legacyAngularjsApp",
+ window.singleSpa.registerApplication({
+   name: "legacyAngularjsApp",
 -   app: window.legacyAngularjsApp,
 +   app: function() { return System.import('@org/legacyAngularjsApp'); },
--   activeWhen: ['/']
-- })
+   activeWhen: ['/']
+ })
 ```
 
 6. Verify that the app continues working.
