@@ -251,7 +251,7 @@ This step is not required unless you want to do [cross microfrontend imports](/d
 - window.singleSpa.registerApplication({
 -   name: "legacyAngularjsApp",
 -   app: window.legacyAngularjsApp,
--   app: function() { return System.import('@org/legacyAngularjsApp'); },
++   app: function() { return System.import('@org/legacyAngularjsApp'); },
 -   activeWhen: ['/']
 - })
 ```
