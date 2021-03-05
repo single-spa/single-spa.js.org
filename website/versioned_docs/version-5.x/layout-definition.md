@@ -36,8 +36,8 @@ Note that HTMLElements defined in your layout are static - there is no way to fo
 ```
 
 ```js
-// Javascript construction of HTMLElements is also possible
-const routerElement = new DOMParser().parseFromString(`
+// You can pass in an HTML string, too, in the browser
+const routes = constructRoutes(`
 <single-spa-router>
   <div class="main-content">
     <route path="settings">
@@ -45,7 +45,14 @@ const routerElement = new DOMParser().parseFromString(`
     </route>
   </div>
 </single-spa-router>
-`, "text/html").documentElement.querySelector('single-spa-router');
+`);
+```
+
+```js
+// With a properly configured bundler, you can import the html as a string from another file
+import layout from './microfrontends-layout.html';
+
+const routes = constructRoutes(layout);
 ```
 
 ## JSON Layouts
