@@ -249,7 +249,7 @@ To make the shared dependencies available as in-browser modules, they must be pr
 
 Not all libraries publish their code in a suitable format for SystemJS consumption. In those cases, check https://github.com/esm-bundle for a SystemJS version of those libraries. Alternatively, you may use [SystemJS extras](https://github.com/systemjs/systemjs#extras) to support UMD bundles, which are often available.
 
-Another option for finding a suitable version of a library for your import map is to use the JSPM CDN, which provides precompiled SystemJS versions of every package on npm (example: https://system-cdn.jspm.io/npm:@material-ui/core@4.11.3/index.js). See https://jspm.org/docs/cdn for more info.
+Another option for finding a suitable version of a library for your import map is to use the JSPM CDN, which provides precompiled SystemJS versions of every package on npm (example: https://system-cdn.jspm.io/npm:@material-ui/core@4.11.3/index.js). See https://jspm.org/docs/cdn for more info. You can generate an import map for your shared dependencies at https://generator.jspm.io/.
 
 An example of a shared-dependencies repo, along with a functioning CI process for it, can be found at https://github.com/polyglot-microfrontends/shared-dependencies.
 
