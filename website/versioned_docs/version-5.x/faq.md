@@ -158,4 +158,4 @@ Outside of that, web applications may use the following resources that have thei
 - [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity#How_Subresource_Integrity_helps)
   - See also [import-maps script “integrity” attribute](https://github.com/WICG/import-maps/issues/174)
 - Import-maps are also governed by CSP
-  - See also ["Supplying out-of-band metadata for each module"](https://github.com/WICG/import-maps/blb/master/README.md#supplying-out-of-band-metadata-for-each-module)
+  - See also ["Supplying out-of-band metadata for each module"](https://github.com/WICG/import-maps/blob/master/README.md#supplying-out-of-band-metadata-for-each-module)
