@@ -55,8 +55,7 @@ import React from 'react';
 Specifiers that are not a URL are called "bare specifiers," such as `import 'react'`. Being able to alias bare specifiers to a URL
 is crucial to being able to use in-browser modules, which is why import maps exist.
 
-As of Feb 2020, import maps are only implemented in Chrome, and behind a developer feature toggle. As such, you will need a polyfill
-to make import maps work.
+Import Maps are not supported in all browsers. See https://caniuse.com/import-maps for more detail. You can use [SystemJS](https://github.com/systemjs/systemjs) or [es-module-shims](https://github.com/guybedford/es-module-shims to polyfill support for import maps.
 
 ## Module Federation
 
