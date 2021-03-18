@@ -94,6 +94,12 @@ const users = [
     image: 'img/zup-logo.png',
     infoLink: 'https://www.zup.com.br/en/',
     pinned: true
+  },
+  {
+    caption: 'Sinbad ',
+    image: 'img/sinbad-logo.png',
+    infoLink: 'https://sinbad.co.id/',
+    pinned: true
   }
 ];
 
