@@ -97,7 +97,7 @@ const users = [
   },
   {
     caption: 'Sinbad ',
-    image: 'img/sinbad-logo.png',
+    image: 'https://sinbad.co.id/images/sinbad.svg',
     infoLink: 'https://sinbad.co.id/',
     pinned: true
   }
