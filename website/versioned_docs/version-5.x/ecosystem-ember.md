@@ -65,8 +65,11 @@ export const unmount = emberLifecycles.unmount;
 ## Usage with ember cli
 For the most part, you can get applications that use [ember cli](https://ember-cli.com/) to work pretty seamlessly with single-spa. Maybe the biggest thing you'll have to worry about is that ember-cli assumes that it controls the entire HTML page, whereas a single-spa application does not. However, usually we can achieve equivalent behavior by just loading the vendor and app bundles into the HTML page dynamically, instead of baking them right into the HTML page. Below is a description of the known things you should do when setting up an ember-cli application with single-spa:
 
-First, since the ember cli only supports dependencies from bower, you'll need to do:
+First, you'll need to add `single-spa-ember` as a dependency to the ember project. This can be done with `npm`, `yarn`, or `bower`. For example:
 
+- `npm init`
+- `npm install single-spa-ember`
+or
 - `bower init`
 - `bower install single-spa-ember --save`
 
@@ -87,12 +90,21 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  // Tell ember how to use the single-spa-ember library
+  // Tell ember how to use the single-spa-ember library - pick one of the following
+  // if you used npm or yarn
+  app.import('node_modules/single-spa-ember/amd/single-spa-ember.js', {
+		using: [
+			{transformation: 'amd', as: 'single-spa-ember'},
+		],
+	});
+
+  // **or** if you used bower
   app.import('bower_components/single-spa-ember/amd/single-spa-ember.js', {
 		using: [
 			{transformation: 'amd', as: 'single-spa-ember'},
 		],
 	});
+  
 
   return app.toTree();
 };
