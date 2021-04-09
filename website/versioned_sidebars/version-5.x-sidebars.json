@@ -102,7 +102,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/testing-units"
+          "id": "version-5.x/testing/units"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/testing/e2e"
         }
       ]
     },
