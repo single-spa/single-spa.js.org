@@ -10,7 +10,7 @@ As microfrontends gain widespread adoption, testing tools will catch up and the 
 
 :::
 
-Unit testing a single-spa [application](/docs/module-types#applications), [parcel](/docs/module-types#parcels), or [utility](/docs/module-types/#utilities) is very similar to unit testing in the framework you are using with two notable exceptions:
+Unit testing a single-spa [application](/docs/module-types#applications), [parcel](/docs/module-types#parcels), or [utility](/docs/module-types/#utilities) is very similar to unit testing in the framework you are using, with two notable exceptions:
 - Importing microfrontends
 - `System.import`
 
