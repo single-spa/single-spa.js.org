@@ -94,7 +94,7 @@ In other words, how do I build and deploy a single-spa application?
 With the [recommended setup](#is-there-a-recommended-setup), the process generally flows like this:
 
 1. Bundle your code and upload it to a CDN.
-1. Update your dev environment's import map to point to the that new URL. In other words, your import map used to say `"styleguide": "cdn.com/styleguide/v1.js"` and now it should say `"styleguide": "cdn.com/styleguide/v2.js"`
+1. Update your dev environment's import map to point to the new URL. In other words, your import map used to say `"styleguide": "cdn.com/styleguide/v1.js"` and now it should say `"styleguide": "cdn.com/styleguide/v2.js"`
 
 Some options on _how_ to update your import map include:
 
