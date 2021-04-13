@@ -77,7 +77,7 @@ Jest will detect folders named `__mocks__` and if the naming convention is exact
 ├── node_modules
 ├── jest.setup.js
 ├── ...
-└── jest.config.json
+└── jest.config.js
 ```
 
 #### setup file
