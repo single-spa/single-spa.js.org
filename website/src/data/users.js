@@ -99,13 +99,13 @@ const users = [
     caption: 'Sinbad ',
     image: 'https://sinbad.co.id/images/sinbad.svg',
     infoLink: 'https://sinbad.co.id/',
-    pinned: true
+    pinned: false
   },
   {
     caption: 'Metigy ',
     image: '//d12ug919f4lfza.cloudfront.net/metigy-logo-square-orange.svg',
     infoLink: 'https://metigy.com/',
-    pinned: true
+    pinned: false
   }
 ];
 
