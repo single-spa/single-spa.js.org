@@ -101,7 +101,11 @@ All options are passed to single-spa-angularjs via the `opts` parameter when cal
 
 ## Custom Props
 
-[single-spa custom props](/docs/building-applications/#lifecycle-props) are made available as `$rootScope.singleSpaProps`.
+[single-spa custom props](/docs/building-applications/#lifecycle-props) are made available as `$rootScope.singleSpaProps`. In templates, you can access custom props via `$root.singleSpaProps`. For example:
+
+```html
+<div>{{ $root.singleSpaProps.token }}</div>
+```
 
 ## Parcels
 
