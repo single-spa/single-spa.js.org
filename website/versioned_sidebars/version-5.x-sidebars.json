@@ -98,6 +98,20 @@
     },
     {
       "type": "category",
+      "label": "Testing",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-5.x/testing/units"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/testing/e2e"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "Layout Engine",
       "items": [
         {

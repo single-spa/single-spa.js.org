@@ -159,3 +159,7 @@ Outside of that, web applications may use the following resources that have thei
   - See also [import-maps script “integrity” attribute](https://github.com/WICG/import-maps/issues/174)
 - Import-maps are also governed by CSP
   - See also ["Supplying out-of-band metadata for each module"](https://github.com/WICG/import-maps/blob/master/README.md#supplying-out-of-band-metadata-for-each-module)
+
+## How do I write tests for single-spa?
+
+See [the documentation for unit](/docs/testing/units/) and [E2E](/docs/testing/e2e) tests.
