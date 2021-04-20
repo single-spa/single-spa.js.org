@@ -53,7 +53,7 @@ singleSpa.registerApplication(
 singleSpa.registerApplication({
 	name: 'appName',
 	app: () => System.import('appName'),
-	activeWhen: '/appName'
+	activeWhen: '/appName',
 	customProps: {
 		authToken: 'xc67f6as87f7s9d'
 	}
