@@ -47,7 +47,7 @@ In the above examples I showed how `People` imports a component from `styleguide
 1. [Add a setupFile](#setup-file)
 
 #### Jest config
-Jest is configured with a configuration file. Jest supports many options of configuration, below is an example configuration using some of the options. See [more options on Jest's official documentation site](https://jestjs.io/docs/configuration).
+Jest is configured with a configuration file. Below is an example configuration using some of the options. See [more options on Jest's official documentation site](https://jestjs.io/docs/configuration).
 ````js
 module.exports = {
   collectCoverageFrom: ['src/**/*.js'],
