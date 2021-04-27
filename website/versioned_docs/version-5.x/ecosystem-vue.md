@@ -202,6 +202,7 @@ All options are passed to single-spa-vue via the `opts` parameter when calling `
 - `appOptions`: (required) An object or async function which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application.
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
 - `handleInstance`: (optional) A method can be used to handle Vue instance. Vue 3 brings [new instance API](https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp), and you can access *the app instance* from this, like `handleInstance: (app) => app.use(router)`. For Vue 2 users, a [Vue instance](https://vuejs.org/v2/guide/instance.html) can be accessed.
+- `replaceMode`: (optional, defaults to `false`) A boolean that determines whether your root Vue component will entirely replace the container element it's mounted to. The Vue library always replaces, so to implement `replaceMode: false` a temporary `<div class="single-spa-container">` element is created inside of the container, so that Vue replaces that element rather than the container. Introduced in single-spa-vue@2.3.0.
 
 To configure which dom element the single-spa application is mounted to, use [appOptions.el](https://vuejs.org/v2/api/#el):
 
