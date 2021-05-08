@@ -58,6 +58,10 @@ module.exports = {
           title: 'Community',
           items: [
             {
+              label: 'Sponsors',
+              to: 'sponsors/',
+            },
+            {
               label: 'User Showcase',
               to: 'users/',
             },

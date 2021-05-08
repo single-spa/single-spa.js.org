@@ -1,0 +1,38 @@
+.sponsor {
+  padding: 0 20px 80px 20px;
+}
+
+.sponsorHeading {
+  font-size: 30px;
+  line-height: 1em;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.sponsorHeadingColored {
+  color: var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .sponsorHeadingColored {
+  color: var(--ifm-color-primary-lightest);
+}
+
+.sponsorLogos {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.sponsorLogo {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  background: white;
+  margin: 15px;
+  border-radius: 8px;
+  padding: 5px;
+  justify-content: center;
+}
