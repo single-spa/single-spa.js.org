@@ -81,6 +81,8 @@ To compile your code to System.register format, set webpack's [`output.libraryTa
 
 Shared dependencies like React, Vue, and Angular, do not publish System.register versions of their libraries. However, you can find System.register versions of the libraries in [the esm-bundle project](https://github.com/esm-bundle) ([blog post](https://medium.com/@joeldenning/an-esm-bundle-for-any-npm-package-5f850db0e04d)). Alternatively, SystemJS is capable of loading them via [global loading](https://github.com/systemjs/systemjs#2-systemjs-loader) or [the AMD and named-exports extras](https://github.com/systemjs/systemjs#extras).
 
+Another resource for sharing dependencies is the [self-hosted-shared-dependencies](https://github.com/single-spa/self-hosted-shared-dependencies) project.
+
 An alternative to SystemJS that provides polyfill behavior for import maps is [es-module-shims](https://github.com/guybedford/es-module-shims). This has the advantage of using truly native ES modules. However, it is not the single-spa core team's recommended approach for production applications, since it requires less-performant in browser parsing and modification of all your bundles.
 
 ## Lazy loading
@@ -249,6 +251,8 @@ To make the shared dependencies available as in-browser modules, they must be pr
 Not all libraries publish their code in a suitable format for SystemJS consumption. In those cases, check https://github.com/esm-bundle for a SystemJS version of those libraries. Alternatively, you may use [SystemJS extras](https://github.com/systemjs/systemjs#extras) to support UMD bundles, which are often available.
 
 Another option for finding a suitable version of a library for your import map is to use the JSPM CDN, which provides precompiled SystemJS versions of every package on npm (example: https://system-cdn.jspm.io/npm:@material-ui/core@4.11.3/index.js). See https://jspm.org/docs/cdn for more info. You can generate an import map for your shared dependencies at https://generator.jspm.io/.
+
+Another option for hosting shared dependencies is [self-hosted-shared-dependencies](https://github.com/single-spa/self-hosted-shared-dependencies), which generates a directory of third party packages that you can self host on your server / CDN.
 
 An example of a shared-dependencies repo, along with a functioning CI process for it, can be found at https://github.com/polyglot-microfrontends/shared-dependencies.
 
