@@ -23,7 +23,7 @@ module.exports = function(context, opts) {
 
         const newLink = `${siteConfig.url}${routesPath}${
           routesPath.endsWith('/') ? '' : '/'
-        }`;
+        }${location.hash}`;
         const fileName = path.basename(routesPath);
         const filePath = path.dirname(routesPath);
         const htmlContent = `
