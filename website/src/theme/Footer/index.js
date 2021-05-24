@@ -10,7 +10,7 @@ function Footer() {
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
-  const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => localStorage.getItem("hide-workshop-banner") !== "true")
+  const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem("hide-workshop-banner") !== "true" : false)
 
   if (!footer) {
     return null;
