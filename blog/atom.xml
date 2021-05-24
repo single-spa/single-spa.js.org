@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://single-spa.js.org/blog"/>
     <subtitle>single-spa Blog</subtitle>
-    <icon>https://single-spa.js.org/img/logo-blue-favicon.ico</icon>
+    <icon>https://single-spa.js.org/img/single-spa-mark-magenta.svg</icon>
     <entry>
         <title type="html"><![CDATA[single-spa 5]]></title>
         <id>single-spa 5</id>

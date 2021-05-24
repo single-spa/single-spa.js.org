@@ -4,7 +4,7 @@
   <ShortName>single-spa</ShortName>
   <Description>Search single-spa</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://single-spa.js.org/img/logo-blue-favicon.ico</Image>
+  <Image width="16" height="16" type="image/x-icon">https://single-spa.js.org/img/single-spa-mark-magenta.svg</Image>
   <Url type="text/html" method="get" template="https://single-spa.js.org/search?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://single-spa.js.org/opensearch.xml" />
   <moz:SearchForm>https://single-spa.js.org</moz:SearchForm>
