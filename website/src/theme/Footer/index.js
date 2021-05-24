@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import classnames from 'classnames';
 
 import Link from '@docusaurus/Link';
@@ -10,10 +10,17 @@ function Footer() {
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
+  const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => localStorage.getItem("hide-workshop-banner") !== "true")
 
   if (!footer) {
     return null;
   }
+
+  useEffect(() => {
+    if (!showWorkshopBanner) {
+      localStorage.setItem('hide-workshop-banner', true)
+    }
+  }, [showWorkshopBanner])
 
   const { copyright, links = [], logo } = footer;
 
@@ -99,6 +106,21 @@ function Footer() {
             Originally developed at <a href='https://getcanopy.com'>Canopy</a>
           </div>
           {copyright && copyright}
+          {showWorkshopBanner &&
+            <div className="footer__banner">
+              <div>
+                Learn microfrontends from the single-spa core team at single-spa-workshop.com!
+              </div>
+              <div class="footer__banner--actions">
+                <div role="button" tabIndex={0} onClick={() => setShowWorkspaceBanner(false)}>
+                  Dismiss
+                </div>
+                <a href="https://single-spa-workshop.com" target="_blank" rel="noopener">
+                  View Courses
+                </a>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </footer>

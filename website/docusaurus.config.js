@@ -10,7 +10,7 @@ module.exports = {
   url: 'https://single-spa.js.org',
   baseUrl: '/',
   projectName: 'single-spa',
-  favicon: 'img/logo-blue-favicon.ico',
+  favicon: 'img/single-spa-mark-magenta.svg',
   organizationName: 'single-spa',
   customFields: {
     repoUrl,
@@ -32,11 +32,24 @@ module.exports = {
     footer: {
       logo: {
         alt: 'single-spa',
-        src: 'img/logo-white-bgblue.svg',
+        src: 'img/single-spa-logo-magenta.svg',
       },
       copyright: `Copyright © ${new Date().getFullYear()} single-spa.`,
       style: 'dark',
       links: [
+        {
+          title: "Courses",
+          items: [
+            {
+              label: "Single-Spa Workshop",
+              to: "https://single-spa-workshop.com"
+            },
+            {
+              label: "Microfrontend Fundamentals",
+              to: "https://single-spa-workshop.com"
+            },
+          ]
+        },
         {
           title: 'Docs',
           items: [
@@ -104,7 +117,7 @@ module.exports = {
       title: 'single-spa',
       logo: {
         alt: 'single-spa Logo',
-        src: 'img/logo-white-bgblue.svg',
+        src: 'img/single-spa-mark-magenta.svg',
       },
       items: [
         {
@@ -119,6 +132,7 @@ module.exports = {
         },
         { to: 'docs/faq/', label: 'FAQ' },
         { to: 'docs/', label: 'Docs' },
+        { to: 'https://single-spa-workshop.com', label: 'Courses' },
         { to: 'help/', label: 'Help' },
         { to: 'blog/', label: 'Blog' },
         { href: 'https://opencollective.com/single-spa', label: 'Donate' },
