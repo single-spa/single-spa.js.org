@@ -98,6 +98,42 @@ blockquote p:nth-child(2n) {
   vertical-align: bottom;
 }
 
+.footer__banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 50px;
+  z-index: 1000;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background-color: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-darkest);
+}
+
+.footer__banner--actions {
+  display: flex;
+  align-items: center;
+}
+
+.footer__banner--actions div[role=button] {
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.footer__banner .footer__banner--actions a {
+  background-color: #ee689f !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 16px;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
 .footer__item--gh {
   display: block;
   font-size: 0;
