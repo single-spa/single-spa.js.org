@@ -25,6 +25,11 @@
       "label": "Tutorials",
       "items": [
         {
+          "type": "link",
+          "label": "Official Courses",
+          "href": "https://single-spa-workshop.com"
+        },
+        {
           "type": "doc",
           "id": "version-5.x/single-spa-playground"
         },

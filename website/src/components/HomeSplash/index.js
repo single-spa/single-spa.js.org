@@ -23,8 +23,8 @@ export const HomeSplash = () => {
 
           <Link
             className="button"
-            to="https://vue.microfrontends.app/rate-doggos">
-            See a live example
+            to="https://single-spa-workshop.com">
+            Official Courses
           </Link>
 
           <Link
