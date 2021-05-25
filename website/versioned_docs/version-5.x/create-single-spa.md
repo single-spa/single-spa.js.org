@@ -200,6 +200,12 @@ module.exports = (webpackConfigEnv, argv) => {
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
     rootDirectoryLevel: 1,
+    
+    // optional, defaults to {}
+    // This controls the options given to standalone-single-spa-webpack-plugin
+    // See https://github.com/single-spa/standalone-single-spa-webpack-plugin#usage
+    standaloneOptions: {
+    }
   });
 
   return webpackMerge.smart(defaultConfig, {
