@@ -94,6 +94,7 @@ All options are passed to single-spa-angularjs via the `opts` parameter when cal
   application will be bootstrapped, mounted, and unmounted. If not provided, the default is to create a div and append it to `document.body`.
 - `mainAngularModule`: (required) A string that is the name of the angular module that will be bootstrapped by angular. See [angular docs](https://docs.angularjs.org/api/ng/function/angular.bootstrap) for `angular.bootstrap()`.
 - `uiRouter`: (optional) If you are using angular-ui-router, set this option to either `true` or to a string value. The string value will be the value of the ui-view HTML attribute. For example, `uiRouter: 'core'` will be `<div ui-view="core" />` whereas `uiRouter: true` turns into `<div ui-view />`.
+- `ngRoute`: (optional) If you are using ngRoute, set this option to `true` to have an `<ng-view>` element automatically injected into the DOM during mount.
 - `preserveGlobal`: (optional) A boolean that defaults to false. Set if you want to keep angular on the global even after an app unmounts.
 - `elementId`: (optional) A string which will be used to identify the element appended to the DOM and bootstrapped by Angular.
 - `strictDi`: (optional - part of the bootstrap [config object](https://docs.angularjs.org/api/ng/function/angular.bootstrap#usage)) A boolean that defaults to false. Set if you want to enable StrictDi mode
