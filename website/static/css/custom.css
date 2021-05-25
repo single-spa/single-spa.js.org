@@ -134,6 +134,18 @@ blockquote p:nth-child(2n) {
   border-radius: 3px;
 }
 
+@media screen and (max-width: 460px) {
+  .footer__banner {
+    font-size: 10px;
+    padding: 0 4px;
+  }
+
+  .footer__banner .footer__banner--actions a {
+    font-size: 12px;
+    padding: 0 4px;
+  }
+}
+
 .footer__item--gh {
   display: block;
   font-size: 0;
@@ -238,4 +250,8 @@ html[data-theme='dark'] .args-list > dt {
   main .row > [class='col'] {
     max-width: 75%;
   }
+}
+
+.allies__banner {
+  bottom: var(--alliesBannerBottom, 0px) !important;
 }
