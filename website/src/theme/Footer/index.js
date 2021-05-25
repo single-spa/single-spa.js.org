@@ -11,14 +11,48 @@ function Footer() {
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
   const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem("hide-workshop-banner") !== "true" : false)
+  const [showAlliesBanner, setShowAlliesBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem('hide-allies-banner') !== "true" : false)
 
   if (!footer) {
     return null;
   }
 
   useEffect(() => {
-    if (!showWorkshopBanner) {
+    const alliesContainer = document.querySelector('.allies__container')
+
+    if (alliesContainer) {
+      if (showAlliesBanner) {
+        alliesContainer.style.display = 'block'
+      } else {
+        alliesContainer.style.display = 'none'
+      }
+
+      alliesContainer.addEventListener('click', dismiss)
+      return () => {
+        alliesContainer.removeEventListener('click', dismiss)
+      }
+    }
+
+    function dismiss() {
+      setShowAlliesBanner(false)
+    }
+  }, [showAlliesBanner])
+
+  useEffect(() => {
+    if (showAlliesBanner) {
+      localStorage.removeItem('hide-allies-banner')
+    } else {
+      localStorage.setItem('hide-allies-banner', true)
+    }
+  }, [showAlliesBanner])
+
+  useEffect(() => {
+    if (showWorkshopBanner) {
+      localStorage.removeItem('hide-workshop-banner')
+      document.documentElement.style.setProperty('--alliesBannerBottom', '50px')
+    } else {
       localStorage.setItem('hide-workshop-banner', true)
+      document.documentElement.style.setProperty('--alliesBannerBottom', '0px')
     }
   }, [showWorkshopBanner])
 
@@ -111,7 +145,7 @@ function Footer() {
               <div>
                 Learn microfrontends from the single-spa core team at single-spa-workshop.com!
               </div>
-              <div class="footer__banner--actions">
+              <div className="footer__banner--actions">
                 <div role="button" tabIndex={0} onClick={() => setShowWorkspaceBanner(false)}>
                   Dismiss
                 </div>
