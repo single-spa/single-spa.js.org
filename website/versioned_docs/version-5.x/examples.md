@@ -43,6 +43,7 @@ sidebar_label: Resources
   - [Ivy sharing](https://github.com/daniloesk/single-spa-examples/tree/v20201217-importmap-ivy): Dependency sharing using Ivy.
   - [ember and react](https://github.com/ember-react-microfrontend): a multi-framework example where we combine Ember with React
   - [Svelte-React-Vue-Angular-single-spa](https://github.com/Svelte-React-Vue-Angular-SPA) a multi-framework example with Svelte, React, Angular and Vue. This single spa uses single-spa-router.
+  - [single-spa-apollo-cleint-auth-with-apollo-federation-backend](https://github.com/hashaneranda/hotel-app) is a single spa frontend example for hotel app with authentication, styled-components, apollo-client for graphql along with apollo federation microservice backend
 
 
 Have your own example or starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/website/versioned_docs/version-5.x/examples.md) to add yours to this list.
