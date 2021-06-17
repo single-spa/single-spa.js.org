@@ -18,41 +18,25 @@ By default, Vite uses ES modules in local development, but not in production. Th
 
 Modify the `src/main.js` file to not mount your app immediately, but rather to export the single-spa lifecycles. For Vue apps, see https://single-spa.js.org/docs/ecosystem-vue#usage.
 
-Then install the koa cors plugin:
-
-```sh
-npm install --save-dev @koa/cors
-
-# alternative
-yarn add --dev @koa/cors
-```
-
 The following Vite config can be used as the basis for a single-spa + Vite setup:
 
 ```js
-import cors from '@koa/cors'
+import vue from '@vitejs/plugin-vue'
 
 export default {
-  configureServer: ({ app }) => {
-    // The server is only used in dev - not in prod,
-    // so allowing any origin is safe.
-    app.use(cors({ origin: '*' }));
-  },
-  rollupInputOptions: {
-    // Make sure that rollup captures the exports from your main.js,
-    // so that single-spa can find them
+  rollupOptions: {
     input: 'src/main.js',
-    preserveEntrySignatures: true,
-  },
-  rollupOutputOptions: {
-    // Compile the bundle to System.register format, for production usage
     format: 'system',
+    preserveEntrySignatures: true
   },
-  // vue template assets will correctly resolve even when you are
-  // using import map overrides
-  vueTransformAssetUrls: {
-    base: 'http://localhost:3000/src/'
-  }
+  base: 'http://localhost:3000',
+  plugins: [vue({
+    template: {
+      transformAssetUrls: {
+        base: '/src'
+      }
+    }
+  })],
 }
 ```
 
