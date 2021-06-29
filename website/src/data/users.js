@@ -111,7 +111,7 @@ const users = [
     caption: 'Deutsche Telekom AG',
     image: 'img/telekom-logo.svg',
     infoLink: 'https://www.telekom.com/en',
-    pinned: false
+    pinned: true
   }
 ];
 
