@@ -106,6 +106,12 @@ const users = [
     image: '//d12ug919f4lfza.cloudfront.net/metigy-logo-square-orange.svg',
     infoLink: 'https://metigy.com/',
     pinned: false
+  },
+  {
+    caption: 'Deutsche Telekom AG',
+    image: 'img/telekom-logo.svg',
+    infoLink: 'https://www.telekom.com/en',
+    pinned: true
   }
 ];
 
