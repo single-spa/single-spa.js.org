@@ -165,6 +165,60 @@ module.exports = (webpackConfigEnv, argv) => {
 };
 ```
 
+### TLS
+
+To host your code in development with TLS / SSL enabled, provide the `--env https` CLI argument. By default, webpack-dev-server generates a TLS certificate that is not trusted by your operating system. This causes browsers to not load the file without cumbersome workarounds. To avoid those workarounds, follow the following steps:
+
+1. Create a directory to store the certificate. `~/.localhost-ssl` is recommended.
+
+```sh
+mkdir ~/.localhost-ssl
+cd ~/.localhost-ssl
+```
+2. Generate a TLS certificate.
+```sh
+# This command works in bash, but might not work in fish or other shells
+openssl req -x509 -out localhost.crt -keyout localhost.key \
+  -newkey rsa:2048 -nodes -sha256 \
+  -subj '/CN=localhost' -extensions EXT -config <( \
+   printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+```
+3. Create a file `tls-options.cjs`
+```js
+const fs = require('fs');
+const path = require('path');
+
+module.exports = {
+  key: fs.readFileSync(path.resolve(__dirname, 'localhost.key'), 'utf-8'),
+  cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'), 'utf-8'),
+}
+```
+4. Add the `SINGLE_SPA_TLS_OPTIONS` to your shell profile:
+```sh
+# Linux / Mac
+echo 'export SINGLE_SPA_TLS_OPTIONS=/Users/YOUR_USERNAME/.localhost-ssl/tls-options.cjs' >> ~/.bashrc
+
+# Windows
+# Please contribute with how you did this! https://github.com/single-spa/single-spa.js.org/blob/master/website/versioned_docs/version-5.x/create-single-spa.md
+```
+5. Close and reopen your current terminal tab, so the new environment variable is set.
+6. Tell your operating system to trust the certificate
+```sh
+# Mac
+
+# Add the cert to Keychain
+open localhost.crt
+# Follow these instructions: https://support.apple.com/guide/keychain-access/change-the-trust-settings-of-a-certificate-kyca11871/mac
+
+# Linux
+# https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list
+
+# Windows
+# https://smallbusiness.chron.com/disable-ssl-certificate-godaddys-class-2-certification-authority-28842.html
+```
+7. Restart your browser. In chrome, you can do this by going to `chrome://restart` in an empty tab.
+8. Start webpack-dev-server: `npm start -- --https`. Go directly to the path to a javascript file hosted by the web server. It should now be listed as trusted.
+
 ## webpack-config-single-spa-react
 
 [Github project](https://github.com/single-spa/create-single-spa/tree/master/packages/webpack-config-single-spa-react)
