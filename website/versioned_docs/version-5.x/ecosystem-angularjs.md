@@ -214,7 +214,7 @@ Migrating an existing AngularJS application to single-spa can be a tricky. Here 
 
 ```js
 // in the browser console, check that it's in `MOUNTED` status
-console.log('legacyAngularjsApp status', singleSpa.getAppStatus('legacyAngularjsApp');
+console.log('legacyAngularjsApp status', singleSpa.getAppStatus('legacyAngularjsApp'));
 ```
 
 ### Step 2: Convert to SystemJS module:
@@ -233,7 +233,7 @@ This step is not required unless you want to do [cross microfrontend imports](/d
     }
   }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/systemjs@6.9.1/dist/system.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/systemjs@6.10.2/dist/system.min.js"></script>
 ```
 
 2. Remove the global single-spa script:
