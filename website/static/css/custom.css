@@ -8,6 +8,7 @@
   --ifm-color-primary-lightest: #f0c29e;
   --ifm-link-hover-decoration: #f0c29e;
   --ifm-code-font-size: 90%;
+  --single-spa-link-color: #ee689f;
 }
 
 .navbar__items {
@@ -125,7 +126,7 @@ blockquote p:nth-child(2n) {
 }
 
 .footer__banner .footer__banner--actions a {
-  background-color: #ee689f !important;
+  background-color: var(--single-spa-link-color) !important;
   color: white !important;
   font-weight: bold;
   font-size: 18px;
@@ -261,5 +262,5 @@ html[data-theme='dark'] .args-list > dt {
     text-decoration: underline;
 }
 .markdown a {
-    color: #ee689f;
+    color: var(--single-spa-link-color);
 }
