@@ -255,3 +255,11 @@ html[data-theme='dark'] .args-list > dt {
 .allies__banner {
   bottom: var(--alliesBannerBottom, 0px) !important;
 }
+
+/* Adding link styles only for markdown link */
+.markdown a:not(:hover) {
+    text-decoration: underline;
+}
+.markdown a {
+    color: #ee689f;
+}
