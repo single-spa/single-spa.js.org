@@ -520,17 +520,17 @@ A function that accepts a `URL` object as an argument and returns a boolean indi
 
 ```js
 let activeWhen = singleSpa.pathToActiveWhen('/settings');
-activewhen(new URL('http://localhost/settings')); // true
-activewhen(new URL('http://localhost/settings/password')); // true
+activeWhen(new URL('http://localhost/settings')); // true
+activeWhen(new URL('http://localhost/settings/password')); // true
 activeWhen(new URL('http://localhost/')); // false
 
 activeWhen = singleSpa.pathToActiveWhen('/users/:id/settings');
-activewhen(new URL('http://localhost/users/6f7dsdf8g9df8g9dfg/settings')); // true
-activewhen(new URL('http://localhost/users/1324/settings')); // true
-activewhen(new URL('http://localhost/users/1324/settings/password')); // true
-activewhen(new URL('http://localhost/users/1/settings')); // true
-activewhen(new URL('http://localhost/users/1')); // false
-activewhen(new URL('http://localhost/settings')); // false
+activeWhen(new URL('http://localhost/users/6f7dsdf8g9df8g9dfg/settings')); // true
+activeWhen(new URL('http://localhost/users/1324/settings')); // true
+activeWhen(new URL('http://localhost/users/1324/settings/password')); // true
+activeWhen(new URL('http://localhost/users/1/settings')); // true
+activeWhen(new URL('http://localhost/users/1')); // false
+activeWhen(new URL('http://localhost/settings')); // false
 activeWhen(new URL('http://localhost/')); // false
 
 activeWhen = singleSpa.pathToActiveWhen('/page#/hash');
