@@ -30,11 +30,6 @@ const coreMembers = [
     avatarUrl: 'https://avatars1.githubusercontent.com/u/3054066',
   },
   {
-    name: 'Bret Little',
-    login: 'blittle',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/1566869',
-  },
-  {
     name: 'Carlos Filoteo',
     login: 'filoxo',
     avatarUrl: 'https://avatars1.githubusercontent.com/u/4202993?v=4',
