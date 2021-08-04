@@ -277,6 +277,8 @@ There are two steps to deploying a microfrontend.
 
 The implementation of Step 1 is dependent on the infrastructure you're using for your CDN. The AWS CLI ([`aws s3 sync`](https://docs.aws.amazon.com/cli/latest/reference/s3/)), Google gsutil ([`gsutil cp`](https://github.com/single-spa/import-map-deployer/blob/master/examples/ci-for-javascript-repo/gitlab-gcp-storage/.gitlab-ci.yml)), etc are easy ways of accomplishing this.
 
+If you prefer or require using docker containers rather than Cloud Storage like S3, see https://github.com/single-spa/docker-import-maps-mfe-server
+
 For the implementation of Step 2, you have a choice:
 
 a) Your CI makes a `curl` HTTP call to a running instance of [import-map-deployer](https://github.com/single-spa/import-map-deployer), which updates the import map in a concurrent-safe way.
