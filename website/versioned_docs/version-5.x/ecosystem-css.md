@@ -289,8 +289,18 @@ const cssLifecycles = singleSpaCss({
 
   // optional: defaults to 5000. The number of milliseconds to wait on the <link> to load
   // before failing the mount lifecycle.
-  timeout: 5000
-})
+  timeout: 5000,
+
+  // optional: defaults to a standard <link rel="stylesheet" href="/main.css"> element
+  // Customize the creation of the link element that is used by single-spa-css by providing a
+  // function. For example, for setting the cross-origin or other HTML attributes on the <link>
+  createLink(url) {
+    const linkEl = document.createElement('link');
+    linkEl.rel = 'stylesheet';
+    linkEl.href = url;
+    return linkEl;
+  },
+});
 
 const reactLifecycles = singleSpaReact({...})
 
