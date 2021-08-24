@@ -57,12 +57,12 @@ An example of a parcel written in React would look like this:
 
 ```js title="myParcel.js"
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
 import MyParcelComponent from './my-parcel-component.component.js';
 export const MyParcel = singleSpaReact({
   React,
-  ReactDom,
+  ReactDOM,
   rootComponent: MyParcelComponent,
 });
 
