@@ -112,7 +112,13 @@ const users = [
     image: 'img/telekom-logo.svg',
     infoLink: 'https://www.telekom.com/en',
     pinned: true
-  }
+  },
+  {
+    caption: 'Nutanix Beam',
+    image: 'https://cdn.beam.nutanix.com/assets/commons/img/XBeam-black.svg',
+    infoLink: 'https://beam.nutanix.com',
+    pinned: false
+  },
 ];
 
 export default users;
