@@ -327,6 +327,33 @@ To link to a nested route, use [`routerLink`](https://angular.io/api/router/Rout
 </a>
 ```
 
+### Enabling hash mode
+
+You need to firstly enable hash mode in root-config.
+
+If you are using layout html with `single-spa-router`, add `mode="hash"`
+```html
+<single-spa-router mode="hash">
+    ...
+</single-spa-router>
+```
+If you are registering each route manually, use `location.hash`
+```js
+
+registerApplication({
+  name: "@orgName/app1",
+  app: () => System.import("@orgName/app1"),
+  activeWhen: (location) => location.hash.startsWith("#/app1"),
+});
+```
+Then, enable hash mode in your routing module of angular micro frontend application.
+```ts
+@NgModule({
+    imports: [RouterModule.forRoot(routes, {useHash: true})],
+    exports: [RouterModule]
+})
+```
+
 ## Serving
 
 Run the following:
