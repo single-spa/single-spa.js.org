@@ -119,6 +119,12 @@ const users = [
     infoLink: 'https://beam.nutanix.com',
     pinned: false
   },
+  {
+    caption: 'DevApi plataforma de integração',
+    image: 'https://d1xi0evtytrbem.cloudfront.net/website/logo.png',
+    infoLink: 'https://devapi.com.br',
+    pinned: true
+  },
 ];
 
 export default users;
