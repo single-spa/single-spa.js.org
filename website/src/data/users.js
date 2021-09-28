@@ -123,7 +123,7 @@ const users = [
     caption: 'DevApi plataforma de integração',
     image: 'https://d1xi0evtytrbem.cloudfront.net/website/logo.png',
     infoLink: 'https://devapi.com.br',
-    pinned: true
+    pinned: false
   },
 ];
 
