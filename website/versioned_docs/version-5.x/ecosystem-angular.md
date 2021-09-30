@@ -936,6 +936,101 @@ export const config = singleSpaReact({
 });
 ```
 
+### Loading External Components Asynchronously
+
+If your code is part of an import map and you include a global reference to
+systemjs, you can dynamically set the as an async function. 
+
+For example, if your import map includes the `ReactComponent`.
+
+```javascript
+{
+  imports: {
+    "@org/react-component": '/org-react-component.js'
+  }
+}
+```
+
+You can dynamically load the component by setting the `config` as an
+asynchronous function that fetches the component.
+
+Since some versions of webpack use SystemJS under the hood, you'll need to
+reference the global version.
+
+```ts
+// Inside of src/app/app.component.ts
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { mountRootParcel } from 'single-spa';
+
+@Component({
+  selector: 'app-root',
+  template:
+    '<parcel [config]="config" [mountParcel]="mountRootParcel"></parcel>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {
+  async config() {
+    return window.System.import('@org/react-component')
+  }
+  mountRootParcel = mountRootParcel;
+}
+```
+
+### Passing Custom Props
+
+You can pass any custom props to the parcel by passing an object of props using
+the `customProps` attribute.
+
+If you have a custom click event in your React component:
+
+```tsx
+// Inside of src/app/ReactWidget/ReactWidget.tsx
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import singleSpaReact from 'single-spa-react';
+
+const ReactWidget = ({ handleClick }) => <button onClick={handleClick}>Click Me!</button>;
+
+export const config = singleSpaReact({
+  React,
+  ReactDOM,
+  rootComponent: ReactWidget,
+});
+```
+
+You can pass a function as a custom prop. Remember that the context changes when
+you pass in a function, so you may need to use an [arrow
+function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#call_apply_and_bind)
+to preserve the original Angular context.
+
+```ts
+// Inside of src/app/app.component.ts
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { mountRootParcel } from 'single-spa';
+
+import { config } from './ReactWidget/ReactWidget';
+
+@Component({
+  selector: 'app-root',
+  template:
+    '<parcel [config]="config" [customProps]="parcelProps" [mountParcel]="mountRootParcel"></parcel>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent {
+  config = config;
+  mountRootParcel = mountRootParcel;
+
+  handleClick = () => {
+    alert('Hello World');
+  }
+
+  parcelProps = {
+    handleClick = this.handleClick
+  }
+}
+```
+
+
 ## Zone-less applications
 
 :::info
