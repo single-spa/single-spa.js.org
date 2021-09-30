@@ -939,7 +939,7 @@ export const config = singleSpaReact({
 ### Loading External Components Asynchronously
 
 If your code is part of an import map and you include a global reference to
-systemjs, you can dynamically set the as an async function. 
+systemjs, you can dynamically import the code using an `async` method.
 
 For example, if your import map includes the `ReactComponent`.
 
@@ -952,7 +952,7 @@ For example, if your import map includes the `ReactComponent`.
 ```
 
 You can dynamically load the component by setting the `config` as an
-asynchronous function that fetches the component.
+asynchronous method that fetches the component.
 
 Since some versions of webpack use SystemJS under the hood, you'll need to
 reference the global version.
