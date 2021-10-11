@@ -304,17 +304,12 @@ module.exports = (webpackConfigEnv, argv) => {
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
 
-    // optional
-    // This changes whether package names that start with @your-org-name are
-    // treated as webpack externals or not. Defaults to true
-    orgPackagesAsExternal: true,
-
     // The CLI commands in the package.json script that triggered this build
     argv,
 
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
-    rootDirectoryLevel: 1
+    rootDirectoryLevel: 1,
 
     // optional, defaults to false.
     // When true, this removes html-webpack-plugin and standalone-single-spa-webpack-plugin
