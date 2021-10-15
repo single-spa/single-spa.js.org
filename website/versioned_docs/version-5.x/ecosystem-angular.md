@@ -981,7 +981,7 @@ export class AppComponent {
 You can pass any custom props to the parcel by passing an object of props using
 the `customProps` attribute.
 
-If you have a custom click event in your React component:
+For example, if you're rendering a React parcel from an Angular component, you can pass a click handler from Angular into the React parcel:
 
 ```tsx
 // Inside of src/app/ReactWidget/ReactWidget.tsx
@@ -991,17 +991,13 @@ import singleSpaReact from 'single-spa-react';
 
 const ReactWidget = ({ handleClick }) => <button onClick={handleClick}>Click Me!</button>;
 
-export const config = singleSpaReact({
+export const parcelConfig = singleSpaReact({
   React,
   ReactDOM,
   rootComponent: ReactWidget,
 });
 ```
-
-You can pass a function as a custom prop. Remember that the context changes when
-you pass in a function, so you may need to use an [arrow
-function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#call_apply_and_bind)
-to preserve the original Angular context.
+You can pass a function (or any other value) as a custom prop. To ensure that the functions you pass to the parcel are bound with the correct javascript context, use the `handleClick = () => {` syntax when defining your functions.
 
 ```ts
 // Inside of src/app/app.component.ts
