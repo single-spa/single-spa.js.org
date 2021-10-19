@@ -503,7 +503,7 @@ The following options are available:
 - `Router`: (optional) The angular router class. This is required when you are using `@angular/router`.
 - `AnimationModule`: (optional) The animation module class. This is required when you are using BrowserAnimationsModule.
   Example way to import this: `import { eAnimationEngine as AnimationModule } from '@angular/animations/browser';`.
-  See [Issue 48](https://github.com/single-spa/single-spa-angular/issues/48) for more details.
+  See [Issue 48](https://github.com/single-spa/single-spa-angular/issues/48) for more details. Note that AnimationModule is no longer needed in Angular 12, so this option can be ignored in Angular >= 12.
 - `domElementGetter`: (optional) A function that takes in no arguments and returns a DOMElement. This dom element is where the Angular
   application will be bootstrapped, mounted, and unmounted. It's recommended to omit this and let single-spa-angular's defaults create and use
   a container div.
