@@ -145,7 +145,7 @@ import 'single-spa-layout/dist/esm/single-spa-layout-server.min.js';
 The `constructServerLayout` api parses an HTML file and prepares it for rendering. This should be done once when the NodeJS server boots up, so the same serverLayout can be reused for all incoming HTTP requests.
 
 ```js
-import { constructServerLayout } from 'single-spa-layout';
+import { constructServerLayout } from 'single-spa-layout/server';
 
 const serverLayout = constructServerLayout({
   // filepath is resolved relative to the cwd (current working directory)
