@@ -288,7 +288,7 @@ The advantage of a) is that it is concurrent-safe for multiple, simultaneous dep
 
 The advantage of b) is that it doesn't require running the import-map-deployer in your production environment. Ultimately, you should choose whichever option makes sense for your organization.
 
-Another option of deploying and making sure the latests javascript files are beeing used is making use of redirect (http statuscode 302). The single-spa importmap uses the unhashed url of the javascript file. eg: dist/app.js. Then when the requests for this file comes to the server it is redirected to the actual deployed file eg. dist/app.123abc.js and this is then served to the client. This way the importmap never has to be updated and the microfronted can be separatly deployed.
+Another option of deploying and making sure the latests javascript files are beeing used is making use of redirect (HTTP status code 302). The single-spa import map uses the unhashed url of the javascript file. eg: dist/app.js. Then when the requests for this file comes to the server it is redirected to the actual deployed file eg. dist/app.123abc.js and this is then served to the client. This way the import map never has to be updated and the microfrontend can be separately deployed.
 
 ## Applications versus parcels versus utility modules
 
