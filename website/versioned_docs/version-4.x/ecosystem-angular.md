@@ -16,7 +16,7 @@ The documentation here is extensive, so use the sidenav on the right. 👉👉�
 
 ### Community
 
-Join the `#angular` channel in [single-spa's slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-l2iljnpv-pW_o92mMpMR8RWfIOI6pTQ).
+Join the `#angular` channel in [single-spa's Slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-yxfqpl2u-PNx3uZtS3pgAXbOBWsdwOA).
 
 ### Demo
 
