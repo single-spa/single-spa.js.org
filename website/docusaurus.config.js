@@ -85,7 +85,7 @@ module.exports = {
             {
               label: 'Chat in Slack',
               href:
-                'https://join.slack.com/t/single-spa/shared_invite/zt-mafdeybq-0v1aIm3KKaqyVCT2xeny3Q',
+                'https://join.slack.com/t/single-spa/shared_invite/zt-yxfqpl2u-PNx3uZtS3pgAXbOBWsdwOA',
             },
             {
               label: 'Twitter',

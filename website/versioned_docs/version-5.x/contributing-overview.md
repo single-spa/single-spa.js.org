@@ -82,6 +82,6 @@ If you don't see your idea listed, and you think it fits into the goals of this 
 
 ## Community
 
-Discussions about single-spa take place on the single-spa repository's [Issues](https://github.com/single-spa/single-spa/issues) and [Pull Requests](https://github.com/single-spa/single-spa/pulls) sections. Anybody is welcome to join these conversations. There is also a [slack community](https://join.slack.com/t/single-spa/shared_invite/zt-mafdeybq-0v1aIm3KKaqyVCT2xeny3Q) for regular updates.
+Discussions about single-spa take place on the single-spa repository's [Issues](https://github.com/single-spa/single-spa/issues) and [Pull Requests](https://github.com/single-spa/single-spa/pulls) sections. Anybody is welcome to join these conversations. There is also a [Slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-yxfqpl2u-PNx3uZtS3pgAXbOBWsdwOA) for regular updates.
 
 Wherever possible, do not take these conversations to private channels, including contacting the maintainers directly. Keeping communication public means everybody can benefit and learn from the conversation.
