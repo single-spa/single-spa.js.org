@@ -8,7 +8,7 @@ sidebar_label: Overview
 
 In the context of single page applications (SPAs), server-side rendering (SSR) refers to dynamic generation of the HTML page that is sent from web server to browser. In a single page application, the server only generates the very first page that the user requests, leaving all subsequent pages to be rendered by the browser.
 
-To accomplish server-side rendering of an SPA, javascript code is executed in NodeJS to generate the initial HTML. In the browser, the same javascript code is executed during a "hydration" process, which attaches event listeners to the HTML. Most popular UI Frameworks (Vue, React, Angular, etc) are capable of executing in both NodeJS and the browser, and offer APIs for both generating the server HTML and hydrating it in the browser. Additionally, there are popular frameworks such as NextJS and Nuxt which simplify the developer experience of server-side rendering.
+To accomplish server-side rendering of a SPA, javascript code is executed in NodeJS to generate the initial HTML. In the browser, the same javascript code is executed during a "hydration" process, which attaches event listeners to the HTML. Most popular UI Frameworks (Vue, React, Angular, etc) are capable of executing in both NodeJS and the browser, and offer APIs for both generating the server HTML and hydrating it in the browser. Additionally, there are popular frameworks such as NextJS and Nuxt which simplify the developer experience of server-side rendering.
 
 In the context of microfrontends, server-side rendering refers to assembling the HTML from multiple, separate microfrontends. Each microfrontend controls a fragment of the HTML sent from web server to browser, and hydrate their fragment once initialized in the browser.
 
@@ -164,7 +164,7 @@ To facilitate independent deployments of our microfrontends, such that the web s
 
 A pattern to facilitate independent deployments via dynamic module loading is for each microfrontend's deployment to upload one or more javascript files to a trusted CDN, and then use dynamic module loading to load a certain version of the code on the CDN. The web server polls for new versions of each microfrontend and downloads the newer versions as they are deployed.
 
-To accomplish dynamic module loading, we can use [NodeJS module loaders](https://nodejs.org/api/esm.html#esm_experimental_loaders). Specifically, [@node-loader/import-maps](https://github.com/node-loader/node-loader-import-maps) and [@node-loader/http](https://github.com/node-loader/node-loader-http) allow us to control where the module is located and how to download it over the network. The code belows how a server-side import map facilitates dynamic module loading
+To accomplish dynamic module loading, we can use [NodeJS module loaders](https://nodejs.org/api/esm.html#esm_experimental_loaders). Specifically, [@node-loader/import-maps](https://github.com/node-loader/node-loader-import-maps) and [@node-loader/http](https://github.com/node-loader/node-loader-http) allow us to control where the module is located and how to download it over the network. The code below shows how a server-side import map facilitates dynamic module loading
 
 **Before deployment of navbar**:
 
