@@ -164,7 +164,7 @@ To facilitate independent deployments of our microfrontends, such that the web s
 
 A pattern to facilitate independent deployments via dynamic module loading is for each microfrontend's deployment to upload one or more javascript files to a trusted CDN, and then use dynamic module loading to load a certain version of the code on the CDN. The web server polls for new versions of each microfrontend and downloads the newer versions as they are deployed.
 
-To accomplish dynamic module loading, we can use [NodeJS module loaders](https://nodejs.org/api/esm.html#esm_experimental_loaders). Specifically, [@node-loader/import-maps](https://github.com/node-loader/node-loader-import-maps) and [@node-loader/http](https://github.com/node-loader/node-loader-http) allow us to control where the module is located and how to download it over the network. The code belows how a server-side import map facilitates dynamic module loading
+To accomplish dynamic module loading, we can use [NodeJS module loaders](https://nodejs.org/api/esm.html#esm_experimental_loaders). Specifically, [@node-loader/import-maps](https://github.com/node-loader/node-loader-import-maps) and [@node-loader/http](https://github.com/node-loader/node-loader-http) allow us to control where the module is located and how to download it over the network. The code below shows how a server-side import map facilitates dynamic module loading
 
 **Before deployment of navbar**:
 
