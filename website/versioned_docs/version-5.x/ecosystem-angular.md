@@ -773,6 +773,17 @@ If you're looking for a quick one-liner, try adding this line near the top of yo
 <script src="https://unpkg.com/core-js-bundle/minified.js"></script>
 ```
 
+To correct the error `It looks like your application or one of its dependencies is using i18n`.
+
+Install `@angular/localize` in your root-config module
+```sh
+npm i @angular/localize
+```
+Add following import to your root-config.js
+```ts
+import "@angular/localize/init";
+```
+
 ### Internet Explorer
 
 If you need to support IE11 or older, do the following:
