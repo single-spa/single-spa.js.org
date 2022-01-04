@@ -125,7 +125,7 @@ const users = [
     infoLink: 'https://devapi.com.br',
     pinned: false
   },
-    {
+  {
     caption: 'Kvist Solutions AS',
     image: 'img/kvist.svg',
     infoLink: 'https://kvistsolutions.com',
