@@ -96,7 +96,7 @@ export const unmount = vueLifecycles.unmount;
 
 ### Vue 3
 
-> :warning: **Vue 3's router only works properly with single-spa's [urlRerouteOnly](/docs/api.md#start) set to `true`! In single-spa@<=5, the default value for `urlRerouteOnly` is false. So make sure to update your root config to set it to true. Also, upgrade to vue-cli-plugin-single-spa@>=3 in order to ensure standalone mode sets urlRerouteOnly to true. [Github discussion](https://github.com/single-spa/single-spa-vue/issues/85)**
+> :warning: **Vue 3's router only works properly with single-spa's [urlRerouteOnly](api.md#start) set to `true`! In single-spa@<=5, the default value for `urlRerouteOnly` is false. So make sure to update your root config to set it to true. Also, upgrade to vue-cli-plugin-single-spa@>=3 in order to ensure standalone mode sets urlRerouteOnly to true. [Github discussion](https://github.com/single-spa/single-spa-vue/issues/85)**
 
 For Vue 3, change your application's entry file to be the following:
 
