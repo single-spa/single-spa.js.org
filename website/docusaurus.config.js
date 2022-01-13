@@ -1,5 +1,5 @@
 const path = require('path');
-const repoUrl = 'https://github.com/single-spa/single-spa.js.org';
+const repoUrl = 'https://github.com/single-spa/fr.single-spa.js.org';
 const libRepoUrl = 'https://github.com/single-spa/single-spa';
 
 const versions = require('./versions.json');
@@ -7,7 +7,7 @@ const versions = require('./versions.json');
 module.exports = {
   title: 'single-spa',
   tagline: 'A javascript router for front-end microservices',
-  url: 'https://single-spa.js.org',
+  url: 'https://fr.single-spa.js.org',
   baseUrl: '/',
   projectName: 'single-spa',
   favicon: 'img/single-spa-mark-magenta.svg',
