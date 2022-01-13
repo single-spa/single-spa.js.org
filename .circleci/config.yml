@@ -11,10 +11,10 @@ jobs:
           command: |
             git config --global user.email "joeldenning@users.noreply.github.com"
             git config --global user.name "CircleCI on behalf of Joel Denning"
-            echo "machine github.com login frehner password $GITHUB_TOKEN" > ~/.netrc
+            # echo "machine github.com login frehner password $GITHUB_TOKEN" > ~/.netrc
             cd website
             yarn install --frozen-lockfile
-            GIT_USER=joeldenning yarn deploy
+            GIT_USER=joeldenning GIT_PASS=$GITHUB_TOKEN  yarn deploy
   build-website:
     docker:
       # specify the version you desire here
