@@ -2,11 +2,32 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+  pull_request:
+    branches:
+      - "*"
 
 jobs:
+  build:
+    name: Build Docusaurus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: yarn
+          cache-dependency-path: website/yarn.lock
+      - name: Build website
+        working-directory: website
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
   deploy:
     name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/master' && github.repository_owner == 'single-spa'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
