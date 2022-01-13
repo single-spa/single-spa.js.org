@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd website
       - uses: actions/setup-node@v2
+        working-directory: website
         with:
           node-version: 16.x
           cache: yarn
+          cache-dependency-path: website/yarn.lock
       - name: Build website
+        working-directory: website
         run: |
           yarn install --frozen-lockfile
           yarn build
