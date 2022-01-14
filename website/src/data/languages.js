@@ -37,4 +37,10 @@ export default [
     documentationUrl: "https://id.single-spa.js.org",
     githubUrl: "https://github.com/single-spa/id.single-spa.js.org"
   },
+  {
+    languageName: "French",
+    languageNameEnglish: "French",
+    documentationUrl: "https://fr.single-spa.js.org",
+    githubUrl: "https://github.com/single-spa/fr.single-spa.js.org"
+  },
 ]
