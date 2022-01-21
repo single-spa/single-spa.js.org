@@ -134,6 +134,13 @@ Angular 12 is supported by single-spa-angular@5.
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 12. Follow the [Angular CLI instructions](#angular-cli).
 
+### Angular 13
+
+Angular 13 is supported by single-spa-angular@6.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 13. Follow the [Angular CLI instructions](#angular-cli).
+
 ## Angular CLI
 
 You may use Angular CLI and single-spa together with any version of Angular. However, the [Angular CLI schematics](#schematics)
