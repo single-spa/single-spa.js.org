@@ -51,3 +51,4 @@ Want to help improve the `single-spa.js.org` website? Checkout the steps below t
 1. Go to the [single-spa.js.org repo](https://github.com/single-spa/single-spa.js.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes.
+
