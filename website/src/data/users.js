@@ -131,6 +131,12 @@ const users = [
     infoLink: 'https://kvistsolutions.com',
     pinned: false
   },
+  {
+    caption: 'Infomedia',
+    image: 'https://www.infomedia.co.id/wp-content/uploads/2020/09/infomedia_logo.png',
+    infoLink: 'https://www.infomedia.co.id',
+    pinned: true
+  },
 ];
 
 export default users;
