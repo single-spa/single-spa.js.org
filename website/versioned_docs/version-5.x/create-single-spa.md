@@ -339,7 +339,7 @@ yarn add single-spa-web-server-utils
 
 ### getImportMaps
 
-The `getImportMaps` function accepts an object parameter and returns a promise that resolves with an object with two import maps: `browserImportMap` and `nodeImportMap`.
+The `getImportMaps` function accepts an object parameter and returns a promise that resolves with an object with two import maps: `browserImportMap` and `nodeImportMap`. Note that import maps are polled at the specified interval forever until either `reset()` or `clearAllIntervals()` is called. Import Maps are stored in memory in a javascript variable that exists outside of the `getImportMaps` function, so subsequent calls to `getImportMaps` will all use the same cache.
 
 ```js
 const { getImportMaps } = require('single-spa-web-server-utils');
@@ -398,6 +398,27 @@ http.createServer((req, res) => {
     import('module-in-import-map');
   });
 });
+```
+
+### clearAllIntervals
+
+This clears all import map polling intervals that were created via `setInterval()` inside of `getImportMaps()`. This is useful for tests and for cleaning up memory.
+
+
+```js
+import { clearAllIntervals } from 'single-spa-web-server-utils';
+
+clearAllIntervals();
+```
+
+### reset
+
+This clears all intervals (see [clearAllIntervals](#clearallintervals)), and also clears the in-memory cache of all import maps. In other words, after `reset()` is called, `getImportMaps()` will always result in a new network request to fetch the import map.
+
+```js
+import { reset } from 'single-spa-web-server-utils';
+
+reset();
 ```
 
 ## Customizing Webpack
