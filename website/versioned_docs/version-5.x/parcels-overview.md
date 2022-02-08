@@ -209,7 +209,7 @@ In general we suggest using the application-aware `mountParcel` API. `mountParce
 
 ### How do I get the `mountParcel` API?
 
-In order to keep the function contextually bound to an application it is provided to the application as a [lifecycle prop](/docs/building-applications/#lifecyle-props). You will need to store and manage that function yourself in your application.
+In order to keep the function contextually bound to an application it is provided to the application as a [lifecycle prop](/docs/building-applications/#lifecycle-props). You will need to store and manage that function yourself in your application.
 
 Example of storing the application specific `mountParcel` API:
 
