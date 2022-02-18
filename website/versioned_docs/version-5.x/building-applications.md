@@ -29,7 +29,7 @@ Notes:
 Framework-specific helper libraries exist in the [single-spa ecosystem](ecosystem.md) to implement these required lifecycle methods. This documentation is helpful for understanding what those helpers are doing, or for implementing your own.
 :::
 
-## Lifecyle props
+## Lifecycle props
 
 Lifecycle functions are called with a `props` argument, which is an object with some guaranteed information and additional custom information.
 

@@ -40,7 +40,7 @@ export default function InvalidLifecycle(props) {
       </div>
       <h2>Explanation:</h2>
       <p>
-        The <a href={props.isParcel ? 'http://localhost:3000/docs/parcels-api/#parcel-object' : 'https://single-spa.js.org/docs/building-applications/#lifecyle-props'}>{props.lifecycleName} lifecycle function</a> must be a function or array of functions that return a promise.
+        The <a href={props.isParcel ? 'http://localhost:3000/docs/parcels-api/#parcel-object' : 'https://single-spa.js.org/docs/building-applications/#lifecycle-props'}>{props.lifecycleName} lifecycle function</a> must be a function or array of functions that return a promise.
       </p>
     </>
   )
