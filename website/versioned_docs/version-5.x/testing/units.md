@@ -30,7 +30,7 @@ We suggest mocks over installing microfrontends for local tests (for example via
 
 ## `System.import`
 
-Occasionally you will choose to interop with another microfrontend asynchronously by explicitly calling `System.import`. Testing in this scenairo may require mocking both SystemJS and the module you're importing. Additionally because `System.import` returns a promise your tests in that area will need to be asynchronous and wait for promises to resolve.
+Occasionally you will choose to interop with another microfrontend asynchronously by explicitly calling `System.import`. Testing in this scenario may require mocking both SystemJS and the module you're importing. Additionally because `System.import` returns a promise your tests in that area will need to be asynchronous and wait for promises to resolve.
 
 An example of this can be found in `people` and `planets` applications from `react.microfrontends.app`. The [People application](https://github.com/react-microfrontends/people/blob/master/src/react-mf-people.js#L21) exports a function that resolves with a component. The [Planets Application](https://github.com/react-microfrontends/planets/blob/main/src/planets-page/selected-planet/selected-planet.component.js) imports and uses that component asynchronously with `React.lazy`. Testing this component would necessitate mocking both `SystemJS` and `People`.
 
