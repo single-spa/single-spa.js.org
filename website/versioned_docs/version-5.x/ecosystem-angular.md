@@ -288,6 +288,7 @@ In addition to modifying the webpack config directly, you may alter some of sing
 | path          | (required) Path to the the above `extra-webpack.config.js` file.                                                                                       | N/A                      |
 | libraryName   | (optional) Specify the name of the module                                                                                                              | Angular CLI project name |
 | libraryTarget | (optional) The type of library to build [see available options](https://github.com/webpack/webpack/blob/master/declarations/WebpackOptions.d.ts#L1111) | "UMD"                    |
+| excludeAngularDependencies | (optional) Excludes Angular dependencies from the bundle by adding them to Webpack `externals` | false |
 
 If you're using SystemJS, you may want to consider changing the [webpack output.libraryTarget](https://webpack.js.org/configuration/output/#outputlibrarytarget) to be `"system"`, for better interop with SystemJS.
 
@@ -339,21 +340,25 @@ To link to a nested route, use [`routerLink`](https://angular.io/api/router/Rout
 You need to firstly enable hash mode in root-config.
 
 If you are using layout html with `single-spa-router`, add `mode="hash"`
+
 ```html
 <single-spa-router mode="hash">
-    ...
+  ...
 </single-spa-router>
 ```
-If you are registering each route manually, use `location.hash`
-```js
 
+If you are registering each route manually, use `location.hash`
+
+```js
 registerApplication({
-  name: "@orgName/app1",
-  app: () => System.import("@orgName/app1"),
-  activeWhen: (location) => location.hash.startsWith("#/app1"),
+  name: '@orgName/app1',
+  app: () => System.import('@orgName/app1'),
+  activeWhen: location => location.hash.startsWith('#/app1'),
 });
 ```
+
 Then, enable hash mode in your routing module of angular micro frontend application.
+
 ```ts
 @NgModule({
     imports: [RouterModule.forRoot(routes, {useHash: true})],
@@ -783,12 +788,15 @@ If you're looking for a quick one-liner, try adding this line near the top of yo
 To correct the error `It looks like your application or one of its dependencies is using i18n`.
 
 Install `@angular/localize` in your root-config module
+
 ```sh
 npm i @angular/localize
 ```
+
 Add following import to your root-config.js
+
 ```ts
-import "@angular/localize/init";
+import '@angular/localize/init';
 ```
 
 ### Internet Explorer
@@ -808,12 +816,132 @@ Sharing one or more instances of Angular between microfrontends provides the fol
 1. Performance improvement, due to reduced amount of javascript to load.
 1. [Cross-microfrontend imports](/docs/recommended-setup#cross-microfrontend-imports) of angular components are possible. (Without a shared instance of Angular, you can still use cross-microfrontend imports of [single-spa parcels](#parcels))
 
-There are two techniques for sharing Angular: [SystemJS in-browser modules](/docs/recommended-setup#systemjs) and [Module Federation](/docs/recommended-setup#module-federation). Sharing with SystemJS varies depending on whether you're using Ivy or not. If you're using Ivy, you'll need a `POST_R3` version of the angular core libraries, which are not included in the official Angular packages. You can use the following esm-bundle packages, which provide POST_R3 / ivy-compatible versions that can be shared via SystemJS:
+There are two techniques for sharing Angular: [SystemJS in-browser modules](/docs/recommended-setup#systemjs) and [Module Federation](/docs/recommended-setup#module-federation).
+
+The below guide uses SystemJS for sharing dependencies.
+
+> :warning: Angular 13 has few breaking changes. It dropped View Engine support, and this means there's a single template compiler right now (Ivy). They also introduced changes to the Angular Package Format. UMD bundles are no longer generated when building libraries. The `ng-packagr` now emits only ES2015 and ES2020 bundles. See this article for more info: https://blog.angular.io/angular-v13-is-now-available-cce66f7bc296.
+
+You can use the following esm-bundle packages, which provide Ivy-compatible versions that can be shared via SystemJS:
 
 - https://github.com/esm-bundle/angular__core
-- https://github.com/esm-bundle/angular__router
-- https://github.com/esm-bundle/angular__platform-browser
 - https://github.com/esm-bundle/angular__common
+- https://github.com/esm-bundle/angular__compiler
+- https://github.com/esm-bundle/angular__platform-browser
+- https://github.com/esm-bundle/angular__platform-browser-dynamic
+- https://github.com/esm-bundle/angular__animations
+- https://github.com/esm-bundle/angular__router
+- https://github.com/esm-bundle/angular__forms
+- https://github.com/esm-bundle/angular__elements
+- https://github.com/esm-bundle/angular__upgrade
+- https://github.com/esm-bundle/angular__service-worker
+- https://github.com/esm-bundle/angular__localize
+
+The single-spa-angular is also available in SystemJS format:
+
+- https://github.com/esm-bundle/single-spa-angular
+
+Let's imagine that we have 2 Angular applications and the root-config application. Angular applications want to share dependencies. First of all, we need to exclude Angular dependencies from their bundles, this can be done via Webpack `externals` property, but `single-spa-angular@6.2.0+` has an option that will exclude `rxjs`, `@angular/*` and `single-spa-angular/*` packages:
+
+```json
+"build": {
+  "builder": "@angular-builders/custom-webpack:browser",
+  "options": {
+    "customWebpackConfig": {
+      "libraryTarget": "system",
+      "excludeAngularDependencies": true,
+      "path": "..."
+    }
+  }
+}
+```
+
+Note that we set the `libraryTarget` to `system` and `excludeAngularDependencies` to `true`.
+
+Next we need to replace `enableProdMode` from `@angular/core` with `enableProdMode` from `single-spa-angular` in our applications:
+
+```js
+import { enableProdMode } from 'single-spa-angular';
+
+if (environment.production) {
+  enableProdMode();
+}
+```
+
+This is because Angular's `enableProdMode` throws an error when it's called multiple times, but it will be called multiple times when dependencies are shared. `single-spa-angular` calls the original `enableProdMode` but swallows the error.
+
+We also have to consider the platform injector that will be re-used between applications. Angular creates a platform injector when it bootstraps an application; it creates it only once and then re-uses it. Each Angular application has its own platform injector when dependencies are NOT shared and will have a single one when dependencies are shared. This means that `providedIn: 'platform'` services will be a part of the single injector and will be shared between applications.
+
+`single-spa-angular` exports the `getSingleSpaExtraProviders` function that adds `SingleSpaPlatformLocation` to the platform injector. This function should be called in each application (even if that application doesn't use routing). We also have to share the `single-spa-angular` package because applications should reference the same `SingleSpaPlatformLocation` class. Assume that `app1` is created earlier than `app2`, `app1` doesn't call `getSingleSpaExtraProviders()` when bootstrapping the root module, but `app2` does. The platform injector is created eagerly when the `platformBrowser()` is called for the first time. The `app2` will then try to retrieve the `SingleSpaPlatformLocation`, but there's no such injectee within the platform injector since `app1` didn't declare this dependency.
+
+The root-config should have a SystemJS import map with all of the required packages:
+
+```json
+{
+  "imports": {
+    "app1": "http://localhost:4200/main.js",
+    "app2": "http://localhost:4201/main.js",
+
+    "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/5.9.3/system/single-spa.dev.js",
+    "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs.min.js",
+    "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs-operators.min.js",
+    "@angular/compiler": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__compiler/system/es2020/ivy/angular-compiler.js",
+    "@angular/core": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__core/system/es2020/ivy/angular-core.js",
+    "@angular/common": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__common/system/es2020/ivy/angular-common.js",
+    "@angular/common/http": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__common/system/es2020/ivy/angular-http.js",
+    "@angular/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__animations/system/es2020/ivy/angular-animations.js",
+    "@angular/animations/browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__animations/system/es2020/ivy/angular-browser.js",
+    "@angular/platform-browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser/system/es2020/ivy/angular-platform-browser.js",
+    "@angular/platform-browser/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser/system/es2020/ivy/angular-animations.js",
+    "@angular/platform-browser-dynamic": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser-dynamic/system/es2020/ivy/angular-platform-browser-dynamic.js",
+    "@angular/router": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__router/system/es2020/ivy/angular-router.js",
+    "single-spa-angular/internals": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@6.2.0/system/es2020/ivy/angular-single-spa-angular-internals.js",
+    "single-spa-angular": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@6.2.0/system/es2020/ivy/angular-single-spa-angular.js"
+  }
+}
+```
+
+Production bundles also don't use `@angular/compiler` and `@angular/platform-browser-dynamic` packages. You would want to use minified packages when the root-config is built in production mode. This can be achieved by using `if-else` conditions within the EJS template:
+
+```html
+<% if (htmlWebpackPlugin.options.isDevelopment) { %>
+<script type="systemjs-importmap">
+  {
+    "imports": {
+      "@angular/compiler": "..."
+    }
+  }
+</script>
+<%} else { %>
+<script type="systemjs-importmap">
+  {
+    "imports": {
+      "@angular/core": "angular-core.min.js"
+    }
+  }
+</script>
+<% } %>
+```
+
+The root-config then can load `single-spa`, register applications and start the `single-spa` in order for applications to be mounted:
+
+```js
+System.import('single-spa').then(({ registerApplication, start }) => {
+  registerApplication({
+    name: 'app1',
+    app: () => System.import('app1'),
+    activeWhen: location => location.pathname.startsWith('/app1'),
+  });
+
+  registerApplication({
+    name: 'app2',
+    app: () => System.import('app2'),
+    activeWhen: location => location.pathname.startsWith('/app2'),
+  });
+
+  start();
+});
+```
 
 ## Angular Elements
 
@@ -988,7 +1116,7 @@ import { mountRootParcel } from 'single-spa';
 })
 export class AppComponent {
   async config() {
-    return window.System.import('@org/react-component')
+    return window.System.import('@org/react-component');
   }
   mountRootParcel = mountRootParcel;
 }
@@ -1007,7 +1135,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
 
-const ReactWidget = ({ handleClick }) => <button onClick={handleClick}>Click Me!</button>;
+const ReactWidget = ({ handleClick }) => (
+  <button onClick={handleClick}>Click Me!</button>
+);
 
 export const parcelConfig = singleSpaReact({
   React,
@@ -1015,6 +1145,7 @@ export const parcelConfig = singleSpaReact({
   rootComponent: ReactWidget,
 });
 ```
+
 You can pass a function (or any other value) as a custom prop. To ensure that the functions you pass to the parcel are bound with the correct javascript context, use the `handleClick = () => {` syntax when defining your functions.
 
 ```ts
@@ -1036,14 +1167,13 @@ export class AppComponent {
 
   handleClick = () => {
     alert('Hello World');
-  }
+  };
 
   parcelProps = {
-    handleClick = this.handleClick
-  }
+    handleClick = this.handleClick,
+  };
 }
 ```
-
 
 ## Zone-less applications
 
