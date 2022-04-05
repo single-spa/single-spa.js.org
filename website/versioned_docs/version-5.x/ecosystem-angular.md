@@ -283,12 +283,12 @@ Older versions of single-spa-angular@3 and single-spa-angular@4 created extra-we
 
 In addition to modifying the webpack config directly, you may alter some of single-spa-angular's behavior by changing the angular.json. Configuration options are provided to the `architect.build.options.customWebpackConfig` section of your angular.json.
 
-| Name          | Description                                                                                                                                            | Default Value            |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| path          | (required) Path to the the above `extra-webpack.config.js` file.                                                                                       | N/A                      |
-| libraryName   | (optional) Specify the name of the module                                                                                                              | Angular CLI project name |
-| libraryTarget | (optional) The type of library to build [see available options](https://github.com/webpack/webpack/blob/master/declarations/WebpackOptions.d.ts#L1111) | "UMD"                    |
-| excludeAngularDependencies | (optional) Excludes Angular dependencies from the bundle by adding them to Webpack `externals` | false |
+| Name                       | Description                                                                                                                                            | Default Value            |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
+| path                       | (required) Path to the the above `extra-webpack.config.js` file.                                                                                       | N/A                      |
+| libraryName                | (optional) Specify the name of the module                                                                                                              | Angular CLI project name |
+| libraryTarget              | (optional) The type of library to build [see available options](https://github.com/webpack/webpack/blob/master/declarations/WebpackOptions.d.ts#L1111) | "UMD"                    |
+| excludeAngularDependencies | (optional) Excludes Angular dependencies from the bundle by adding them to Webpack `externals`                                                         | false                    |
 
 If you're using SystemJS, you may want to consider changing the [webpack output.libraryTarget](https://webpack.js.org/configuration/output/#outputlibrarytarget) to be `"system"`, for better interop with SystemJS.
 
@@ -901,7 +901,7 @@ The root-config should have a SystemJS import map with all of the required packa
 }
 ```
 
-Production bundles also don't use `@angular/compiler` and `@angular/platform-browser-dynamic` packages. You would want to use minified packages when the root-config is built in production mode. This can be achieved by using `if-else` conditions within the EJS template:
+Production bundles also don't use `@angular/compiler` and `@angular/platform-browser-dynamic` packages. You would want to use minified packages when the root-config is built in production mode. One approach could be to use `if-else` conditions within the root-config `.ejs` template:
 
 ```html
 <% if (htmlWebpackPlugin.options.isDevelopment) { %>
@@ -922,6 +922,27 @@ Production bundles also don't use `@angular/compiler` and `@angular/platform-bro
 </script>
 <% } %>
 ```
+
+Note: the `isDevelopment` can be provided when creating the `HtmlWebpackPlugin`:
+
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = (env, { mode }) => {
+  const isDevelopment = mode !== 'production';
+
+  return {
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: '...',
+        isDevelopment,
+      }),
+    ],
+  };
+};
+```
+
+The `mode` will equal production when you run `webpack --mode production`.
 
 The root-config then can load `single-spa`, register applications and start the `single-spa` in order for applications to be mounted:
 
