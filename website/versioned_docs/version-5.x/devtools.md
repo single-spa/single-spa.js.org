@@ -13,7 +13,7 @@ Requires >= single-spa@4.1.
 - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/single-spa-inspector/)
 - [Chrome](https://chrome.google.com/webstore/detail/single-spa-inspector/emldbibkihanfiaiaghebffnbahjcgcp)
 
-Note: you can also build and run this locally. See [how to contribute](#how-to-contribute).
+Note: you can also build and run this locally. See [how to contribute](/docs/contributing-overview/#how-to-contribute).
 
 ## Features
 
