@@ -45,5 +45,9 @@ sidebar_label: Resources
   - [Svelte-React-Vue-Angular-single-spa](https://github.com/Svelte-React-Vue-Angular-SPA) a multi-framework example with Svelte, React, Angular and Vue. This single spa uses single-spa-router.
   - [single-spa-apollo-cleint-auth-with-apollo-federation-backend](https://github.com/hashaneranda/hotel-app) is a single spa frontend example for hotel app with authentication, styled-components, apollo-client for graphql along with apollo federation microservice backend
 - [single-spa-react-angular](https://github.com/nitinreddy3/react-ng-spa-app) a multi-framework example with React and Angular. This app uses routes to render the React and Angular apps.
+- [single-spa with Vite](https://github.com/YHhaoareyou/vite-single-spa-ts-root-config) an example micro-frontends project using single-spa, Vite and TypeScript. All micro-frontends app and even the root-config in the project use Vite instead of Webpack.
+  - [Root-config](https://github.com/YHhaoareyou/vite-single-spa-ts-root-config)
+  - [React app](https://github.com/YHhaoareyou/vite-single-spa-ts-react-example)
+  - [Vue app](https://github.com/YHhaoareyou/vite-single-spa-ts-vue-example)
 
 Have your own example or starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/website/versioned_docs/version-5.x/examples.md) to add yours to this list.
