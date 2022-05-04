@@ -140,7 +140,7 @@ const users = [
   {
     caption: 'Asurion',
     image: 'img/asurion.svg',
-    infoLink: 'https://www.asurion.com',
+    infoLink: 'https://medium.com/asurion-product-development',
     pinned: true
   },
 ];
