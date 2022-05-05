@@ -11,5 +11,11 @@ const sponsors = [
     infoLink: 'https://pos.toasttab.com/',
     pinned: true,
   },
+  {
+    caption: 'Asurion',
+    image: 'img/asurion.svg',
+    infoLink: 'https://medium.com/asurion-product-development',
+    pinned: true,
+  },
 ]
 export default sponsors

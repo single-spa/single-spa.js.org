@@ -137,6 +137,12 @@ const users = [
     infoLink: 'https://www.infomedia.co.id',
     pinned: true
   },
+  {
+    caption: 'Asurion',
+    image: 'img/asurion.svg',
+    infoLink: 'https://medium.com/asurion-product-development',
+    pinned: true
+  },
 ];
 
 export default users;
