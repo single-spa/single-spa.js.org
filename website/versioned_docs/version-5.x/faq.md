@@ -113,7 +113,7 @@ Here are your options:
 
 1. Remove `react-scripts` and then run [`create-single-spa`](/docs/create-single-spa/) on your project. This will merge create-single-spa's package.json with yours, and provide you with a default webpack config. Run `yarn start` and fix webpack configuration errors until it's working.
 1. Use [craco-plugin-single-spa-application](https://github.com/hasanayan/craco-plugin-single-spa-application) to modify the webpack config without ejecting. See the project's README for basic configuration.
-1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config. See [this Gist](https://gist.github.com/joeldenning/79f2592086ad132fae8ee5aae054c0b6) that shows a basic config you can start with. The example config may not work in every case or solve every problem.
+1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config. Use [react-app-rewired-single-spa](https://github.com/fupengl/react-app-rewired-single-spa) to modify the webpack config without ejecting. See the project's README for basic configuration.
 1. [Eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) your CRA project's webpack config so you can modify it.
 
 If you don't use create-single-spa's default webpack config, here are the changes you need to make:
