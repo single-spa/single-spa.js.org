@@ -6,7 +6,7 @@ sidebar_label: Overview
 
 The single-spa-inspector is a Firefox/Chrome devtools extension to provide utilities for helping with [single-spa](https://single-spa.js.org) applications. [Github project](https://github.com/single-spa/single-spa-inspector).
 
-Requires >= single-spa@4.1.
+Requires >= single-spa&commat;4.1.
 
 ## Installation links
 
