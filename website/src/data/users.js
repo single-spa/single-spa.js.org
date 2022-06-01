@@ -143,6 +143,12 @@ const users = [
     infoLink: 'https://medium.com/asurion-product-development',
     pinned: true
   },
+  {
+    caption: 'CTAIMA',
+    image: 'img/logo-CTAIMA.svg',
+    infoLink: 'https://www.ctaima.com/',
+    pinned: true
+  },
 ];
 
 export default users;
