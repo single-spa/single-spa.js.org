@@ -160,12 +160,16 @@ cd my-app
 In the root of your Angular CLI application run the following:
 
 ```sh
+# If you use any Angular version lower than 14.
 ng add single-spa-angular
+# If you use Angular 14 you have to specify the project name.
+# This is because the `defaultProject` option has been deprecated by Angular CLI.
+ng add single-spa-angular --project my-cool-app
 ```
 
 ### Schematics
 
-[Angular schematics](https://angular.io/guide/schematics) are processed when you run `ng add single-spa-angular`.
+[Angular schematics](https://angular.io/guide/schematics) are processed when you run `ng add single-spa-angular` or `ng add single-spa-angular --project my-cool-app`.
 
 The single-spa-angular schematics perform the following tasks:
 
