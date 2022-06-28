@@ -144,6 +144,12 @@ const users = [
     pinned: true
   },
   {
+    caption: 'BlueDot',
+    image: 'https://www.bluedotcorp.com/wp-content/uploads/2021/03/logo-blue-2.svg',
+    infoLink: 'https://www.bluedotcorp.com/',
+    pinned: true
+  },
+  {
     caption: 'CTAIMA',
     image: 'img/logo-CTAIMA.svg',
     infoLink: 'https://www.ctaima.com/',

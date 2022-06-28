@@ -472,6 +472,8 @@ When a single-spa application fails to load, mount, or unmount, it moves to [SKI
 
 An error UI is defined as either an HTML string or as a [parcel config object](/docs/parcels-overview/#parcel-configuration). HTML strings are best for static, non-interactive error states, whereas parcels are best when you want to use a framework (Vue, React, Angular, etc) to dynamically render the error state. The error UI will be shown whenever the application's status is SKIP_BECAUSE_BROKEN or LOAD_ERROR.
 
+Note that Error UI parcels are given a prop called `error` that is the Error that caused the application to fail in loading/mounting.
+
 Defining error uis via javascript objects is straightforward, as the string or parcel can be defined in an application object via the `error` property:
 
 ```js
