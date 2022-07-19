@@ -343,7 +343,7 @@ http
 
 ## 5. Hydrate
 
-Hydration (or rehydration) refers to browser Javascript initializing and attaching event listeners to the HTML sent by the server. There are several variants, including progressive rehydration and partial rehydration.
+Hydration (or rehydration) refers to browser Javascript initializing and attaching event listeners to the HTML, sent by the server. There are several variants, including progressive rehydration and partial rehydration.
 
 :::info
 See also ["Rendering on the Web"](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) by Google.
