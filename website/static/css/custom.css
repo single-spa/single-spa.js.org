@@ -9,6 +9,7 @@
   --ifm-link-hover-decoration: #f0c29e;
   --ifm-code-font-size: 90%;
   --single-spa-link-color: #ee689f;
+  --footer-banner-background-color: #fed2afb0;
 }
 
 .navbar__items {
@@ -111,7 +112,7 @@ blockquote p:nth-child(2n) {
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  background-color: var(--ifm-color-primary-lightest);
+  background-color: var(--footer-banner-background-color);
   color: var(--ifm-color-primary-darkest);
 }
 
@@ -120,7 +121,7 @@ blockquote p:nth-child(2n) {
   align-items: center;
 }
 
-.footer__banner--actions div[role=button] {
+.footer__banner--actions div[role='button'] {
   cursor: pointer;
   font-weight: 400;
 }
@@ -259,8 +260,8 @@ html[data-theme='dark'] .args-list > dt {
 
 /* Adding link styles only for markdown link */
 .markdown a:not(:hover) {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .markdown a {
-    color: var(--single-spa-link-color);
+  color: var(--single-spa-link-color);
 }
