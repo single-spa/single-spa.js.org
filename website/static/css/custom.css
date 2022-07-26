@@ -9,6 +9,7 @@
   --ifm-link-hover-decoration: #f0c29e;
   --ifm-code-font-size: 90%;
   --single-spa-link-color: #ee689f;
+  --single-spa-link-color-hover: #c9467d;
   --footer-banner-color: #020612;
   --footer-banner-background-color: #fed2afb0;
 }
@@ -127,6 +128,10 @@ blockquote p:nth-child(2n) {
   font-weight: 400;
 }
 
+.footer__banner--actions div[role='button']:hover {
+  text-decoration: underline;
+}
+
 .footer__banner .footer__banner--actions a {
   background-color: var(--single-spa-link-color) !important;
   color: white !important;
@@ -135,6 +140,11 @@ blockquote p:nth-child(2n) {
   margin-left: 16px;
   padding: 4px 8px;
   border-radius: 3px;
+  transition: 0.2s;
+}
+
+.footer__banner .footer__banner--actions a:hover {
+  background-color: var(--single-spa-link-color-hover) !important;
 }
 
 @media screen and (max-width: 460px) {
