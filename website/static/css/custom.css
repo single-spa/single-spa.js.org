@@ -9,6 +9,7 @@
   --ifm-link-hover-decoration: #f0c29e;
   --ifm-code-font-size: 90%;
   --single-spa-link-color: #ee689f;
+  --footer-banner-color: #020612;
   --footer-banner-background-color: #fed2afb0;
 }
 
@@ -113,7 +114,7 @@ blockquote p:nth-child(2n) {
   justify-content: space-between;
   padding: 0 32px;
   background-color: var(--footer-banner-background-color);
-  color: var(--ifm-color-primary-darkest);
+  color: var(--footer-banner-color);
 }
 
 .footer__banner--actions {
