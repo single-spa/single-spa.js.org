@@ -149,6 +149,12 @@ const users = [
     infoLink: 'https://www.bluedotcorp.com/',
     pinned: true
   },
+  {
+    caption: 'Swyft Logistics',
+    image: 'https://swyftlogistics.com/web/wp-content/uploads/2021/10/swyft.png',
+    infoLink: 'https://www.swyftlogistics.com/',
+    pinned: true
+  },
 ];
 
 export default users;
