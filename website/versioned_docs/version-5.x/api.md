@@ -399,8 +399,8 @@ Will call every app's activity function with `url` and give you list of which ap
 <h3>arguments</h3>
 
 <dl className="args-list">
-	<dt>url: URL</dt>
-	<dd>A <codehtml>URL</codehtml> object that will be used instead of window.location when calling every application's activity function to test if they return true.</dd>
+	<dt>location: Location</dt>
+	<dd>A <codehtml>Location</codehtml> object that will be used instead of window.location when calling every application's activity function to test if they return true.</dd>
 </dl>
 
 <h3>returns</h3>
