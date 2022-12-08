@@ -9,6 +9,7 @@ sidebar_label: React
 single-spa-react is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [React](https://reactjs.org/). Check out the [single-spa-react github](https://github.com/single-spa/single-spa-react).
 
 ## Installation
+
 ```sh
 npm install --save single-spa-react
 
@@ -19,31 +20,48 @@ yarn add single-spa-react
 Alternatively, you can use single-spa-react by adding `<script src="https://unpkg.com/single-spa-react"></script>` and accessing the singleSpaReact global variable.
 
 ## Quickstart
-Your bundler's "entry file" should look like this, which allows your application to be downloaded as an in-browser ES module.
+
+Use single-spa-react to create and export single-spa lifecycle functions from your application's entry file.
+
+```js
+import React from 'react';
+import ReactDOMClient from 'react-dom/client';
+import rootComponent from './path-to-root-component.js';
+// SingleSpaContext is a react@16.3 (if available) context that provides singleSpa props
+import singleSpaReact, { SingleSpaContext } from 'single-spa-react';
+
+export const { bootstrap, mount, unmount } = singleSpaReact({
+  React,
+  ReactDOMClient,
+  rootComponent,
+  errorBoundary(err, info, props) {
+    // https://reactjs.org/docs/error-boundaries.html
+    return <div>This renders when a catastrophic error occurs</div>;
+  },
+});
+```
+
+<details>
+<summary>Quickstart for React &lt;=17</summary>
 
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import rootComponent from './path-to-root-component.js';
-// Note that SingleSpaContext is a react@16.3 (if available) context that provides the singleSpa props
-import singleSpaReact, {SingleSpaContext} from 'single-spa-react';
+import singleSpaReact, { SingleSpaContext } from 'single-spa-react';
 
-const reactLifecycles = singleSpaReact({
+export const { bootstrap, mount, unmount } = singleSpaReact({
   React,
   ReactDOM,
   rootComponent,
   errorBoundary(err, info, props) {
     // https://reactjs.org/docs/error-boundaries.html
-    return (
-      <div>This renders when a catastrophic error occurs</div>
-    );
+    return <div>This renders when a catastrophic error occurs</div>;
   },
 });
-
-export const bootstrap = reactLifecycles.bootstrap;
-export const mount = reactLifecycles.mount;
-export const unmount = reactLifecycles.unmount;
 ```
+
+</details>
 
 ## Options
 
@@ -53,7 +71,7 @@ All options are passed to single-spa-react via the `opts` parameter when calling
 - `ReactDOM`: (required) The main ReactDOMbject, which is available via `require('react-dom')` `import ReactDOM from 'react-dom'`.
 - `rootComponent`: (required) The top level React component which will be rendered. Can be omitted only if `loadRootComponent` is provided.
 - `loadRootComponent`: (optional) A loading function that takes [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) and returns a promise that resolves with the parcel. This takes the place of the `rootComponent` opt, when provided. It is intended to help people
-   who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.
+  who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.
 - `errorBoundary`: (optional) A function that accepts `err`, `info`, and `props` and must return the UI for a [React Error Boundary](https://reactjs.org/docs/error-boundaries.html). This is provided as a convenient way of implementing an Error boundary without having to write your own class component for it. The `errorBoundary` function may be provided in the options to singleSpaReact(), or as a custom prop provided by the root config.
 - `errorBoundaryClass`: (optional) A React Component class that will be used as the React error boundary. This is an alternative to providing the `errorBoundary` function. The `errorBoundaryClass` may be provided in the options to singleSpaReact(), or as a custom prop provided by the root config.
 - `suppressComponentDidCatchWarning`: (optional) A boolean that indicates if single-spa-react should warn when the rootComponent does not implement componentDidCatch. Defaults to false. It is preferred to implement `errorBoundary` instead of suppressing this warning.
@@ -76,6 +94,7 @@ implemented. See https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.
 ## SingleSpaContext
 
 ## Parcels
+
 single-spa-react can also be used to create a single-spa parcel (instead of a single-spa application). To do so, simply call singleSpaReact() the same as for an application, except without a
 domElementGetter (since those are provided by the code that will mount the parcel).
 
@@ -83,19 +102,21 @@ Additionally, single-spa-react provides a `<Parcel>` component to make using fra
 You can use the Parcel component either by npm installing the library and importing `single-spa-react/parcel` or by adding `<script src="https://unpkg.com/single-spa-react/parcel"></script>` and then accessing the Parcel component with `window.Parcel.default`.
 
 #### Parcel props
+
 - `config` (required): Either a single-spa parcel config object, or a "loading function" that returns a Promise that resolves with the parcel config.
 - `wrapWith` (optional): A string [tagName](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName).`<Parcel>` will create a dom node of that type for the parcel to be mounted into. Defaults to `div`
 - `wrapStyle`(optional): Styles that will apply to `wrapWith`.
-- `wrapClassName` (optional): classNames that will apply to `wrapWith`. 
+- `wrapClassName` (optional): classNames that will apply to `wrapWith`.
 - `appendTo` (optional): A dom element to append the parcel to. By default, this is not needed because the parcel will be mounted in the DOM that the `<Parcel>` component was rendered into. Useful for appending parcels to document.body or other separate parts of the dom.
 - `mountParcel` (sometimes required, sometimes not): The `mountParcel` function provided by single-spa. In general, it is preferred to use an application's mountParcel function instead of the
-   single-spa's root mountParcel function, so that single-spa can keep track of the parent-child relationship and automatically unmount the application's parcels when the application unmounts.
-   Note that if the `<Parcel>` component is being rendered by a single-spa application that uses single-spa-react, it is **unnecessary** to pass in the prop, since `<Parcel>` can get the prop
-   from [SingleSpaContext](#singlespacontext)
+  single-spa's root mountParcel function, so that single-spa can keep track of the parent-child relationship and automatically unmount the application's parcels when the application unmounts.
+  Note that if the `<Parcel>` component is being rendered by a single-spa application that uses single-spa-react, it is **unnecessary** to pass in the prop, since `<Parcel>` can get the prop
+  from [SingleSpaContext](#singlespacontext)
 - `handleError` (optional): A function that will be called with errors thrown by the parcel. If not provided, errors will be thrown on the window, by default.
 - `parcelDidMount` (optional): A function that will be called when the parcel finishes loading and mounting.
 
 #### Examples
+
 ```jsx
 // Use this import path in environments that support package.json exports
 // See https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_package_entry_points
@@ -168,4 +189,5 @@ import * as parcelConfig from './my-parcel.js'
 ```
 
 ## Create React App
-See [FAQ for CRA](https://single-spa.js.org/docs/faq.html#create-react-app)
+
+See [FAQ for CRA](/docs/faq#create-react-app).
