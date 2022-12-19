@@ -150,6 +150,18 @@ const users = [
     pinned: true
   },
   {
+    caption: 'CTAIMA',
+    image: 'img/logo-CTAIMA.svg',
+    infoLink: 'https://www.ctaima.com/',
+    pinned: true
+  },
+  {
+    caption: 'Flash Beneficios',
+    image: 'img/flashapp.svg',
+    infoLink: 'https://flashapp.com.br/',
+    pinned: true
+  },
+  {
     caption: 'Swyft Logistics',
     image: 'https://swyftlogistics.com/web/wp-content/uploads/2021/10/swyft.png',
     infoLink: 'https://www.swyftlogistics.com/',
