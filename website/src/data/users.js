@@ -150,6 +150,12 @@ const users = [
     pinned: true
   },
   {
+    caption: 'CTAIMA',
+    image: 'img/logo-CTAIMA.svg',
+    infoLink: 'https://www.ctaima.com/',
+    pinned: true
+  },
+  {
     caption: 'Flash Beneficios',
     image: 'img/flashapp.svg',
     infoLink: 'https://flashapp.com.br/',
