@@ -155,6 +155,12 @@ const users = [
     infoLink: 'https://www.ctaima.com/',
     pinned: true
   },
+  {
+    caption: 'Flash Beneficios',
+    image: 'img/flashapp.svg',
+    infoLink: 'https://flashapp.com.br/',
+    pinned: true
+  },
 ];
 
 export default users;
