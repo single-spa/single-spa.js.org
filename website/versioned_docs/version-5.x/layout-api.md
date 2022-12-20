@@ -193,6 +193,7 @@ http.createServer((req, res) => {
     res,
     serverLayout,
     urlPath: req.path,
+    nonce: "yourNonceHere",
     async renderApplication({ appName, propsPromise }) {
       return {
         assets: `<link rel="stylesheet" href="/my-styles.css">`,
@@ -232,6 +233,7 @@ http.createServer((req, res) => {
 - `retrieveApplicationHeaders` (optional): A function that is given information about a single-spa application and should return the HTTP response headers for that application. This function is required if a single-spa application matches the current route. The argument passed to the retrieveApplicationHeaders function is an object with an `appName` string and a `propsPromise` promise. The `propsPromise` resolves with the props for the application. The function can a headers object or a Promise that resolves with a headers object.
 - `renderFragment` (optional): A function that is given a fragment name and returns the HTML content for that fragment. This corresponds to `<fragment>` elements in the layout definition, and is required if the the layout definition contains a `<fragment>` element. The `renderFragment` function can return a string, [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams), or a Promise. Returned promises must resolve with a string or Readable stream.
 - `retrieveProp` (optional): A function that is given a propName and returns the prop's value. This function is required if any rendered applications have props. `retrieveProp` can return a value, or a promise that resolves with a value.
+- `nonce` (optional): A string [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) that is added to the `<script>` sent with the `singleSpaLayoutData` global variable.
 
 **Return Value**
 
