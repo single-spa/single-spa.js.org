@@ -141,6 +141,13 @@ Angular 13 is supported by single-spa-angular@6.
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 13. Follow the [Angular CLI instructions](#angular-cli).
 
+### Angular 14
+
+Angular 14 is supported by single-spa-angular@7.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 14. Follow the [Angular CLI instructions](#angular-cli).
+
 ## Angular CLI
 
 You may use Angular CLI and single-spa together with any version of Angular. However, the [Angular CLI schematics](#schematics)
@@ -160,12 +167,16 @@ cd my-app
 In the root of your Angular CLI application run the following:
 
 ```sh
+# If you use any Angular version lower than 14.
 ng add single-spa-angular
+# If you use Angular 14 you have to specify the project name.
+# This is because the `defaultProject` option has been deprecated by Angular CLI.
+ng add single-spa-angular --project my-cool-app
 ```
 
 ### Schematics
 
-[Angular schematics](https://angular.io/guide/schematics) are processed when you run `ng add single-spa-angular`.
+[Angular schematics](https://angular.io/guide/schematics) are processed when you run `ng add single-spa-angular` or `ng add single-spa-angular --project my-cool-app`.
 
 The single-spa-angular schematics perform the following tasks:
 
