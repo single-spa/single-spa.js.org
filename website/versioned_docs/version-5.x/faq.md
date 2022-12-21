@@ -105,24 +105,31 @@ Some options on _how_ to update your import map include:
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=W8oaySHuj3Y&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=10) / [Bilibili](https://www.bilibili.com/video/BV16Z4y1j72X/)
 
-If you are starting from scratch, it is preferred to use [create-single-spa](/docs/create-single-spa/) instead of create-react-app.
+If you are starting from scratch, prefer using [create-single-spa](/docs/create-single-spa/) instead of create-react-app. A project using CRA must be altered before it can be used as a single-spa application. CRA provides many features out of the box, and outputs "monolith" apps by default. CRA does not support extending its configuration so we cannot provide official support for using it with single-spa. In order to continue using CRA, your options are to:
 
-Create React App (CRA) projects must be altered before use with single-spa. The reason is that CRA presumes that each project has its own HTML file, whereas in single-spa all microfrontends must share an HTML file.
+1. [Eject from CRA](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject)
+1. Use a third-party tool to extend CRA, such as:
 
-Here are your options:
+   - craco + [craco-plugin-single-spa-application](https://github.com/hasanayan/craco-plugin-single-spa-application)
 
-1. Remove `react-scripts` and then run [`create-single-spa`](/docs/create-single-spa/) on your project. This will merge create-single-spa's package.json with yours, and provide you with a default webpack config. Run `yarn start` and fix webpack configuration errors until it's working.
-1. Use [craco-plugin-single-spa-application](https://github.com/hasanayan/craco-plugin-single-spa-application) to modify the webpack config without ejecting. See the project's README for basic configuration.
-1. Use [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) to modify the webpack config. See [this Gist](https://gist.github.com/joeldenning/79f2592086ad132fae8ee5aae054c0b6) that shows a basic config you can start with. The example config may not work in every case or solve every problem.
-1. [Eject](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject) your CRA project's webpack config so you can modify it.
+   - [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) + [this Gist](https://gist.github.com/joeldenning/79f2592086ad132fae8ee5aae054c0b6) as a starting point for your own custom config
 
-If you don't use create-single-spa's default webpack config, here are the changes you need to make:
+   - [react-app-rewired](https://github.com/timarney/react-app-rewired/blob/master/README.md) + [react-app-rewired-single-spa](https://github.com/fupengl/react-app-rewired-single-spa) plugin
+
+1. Remove `react-scripts` and then run [`create-single-spa`](/docs/create-single-spa/) on your project to merge create-single-spa's package.json with yours. Run `yarn start` and fix webpack configuration errors until it's working.
+1. Generate a project with create-single-spa and migrate the React code over.
+
+:::caution
+
+The single-spa webpack configs only provide basic functionality and not all the same features that CRA does. You may be required to add & configure more options, plugins, or loaders for non-JavaScript files. This may require advanced knowledge across bundlers, toolchains, plugins, etc.
+
+:::
+
+For additional reference here is a list of some changes you will need to make to your webpack config:
 
 1. Remove Webpack optimizations block, because they add multiple webpack chunks that don't load each other
 1. Remove html-webpack plugin
 1. Change [`output.libraryTarget`](https://webpack.js.org/configuration/output/#outputlibrarytarget) to `System`, `UMD`, or `AMD`.
-
-CRA does not allow you to change those items without ejecting or using another tool.
 
 ## Code splits
 
