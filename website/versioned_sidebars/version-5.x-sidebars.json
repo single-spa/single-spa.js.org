@@ -46,6 +46,10 @@
         {
           "type": "doc",
           "id": "version-5.x/create-single-spa"
+        },
+        {
+          "type": "doc",
+          "id": "version-5.x/shared-webpack-configs"
         }
       ]
     },
