@@ -7,7 +7,7 @@ This repo contains the source code and documentation powering [single-spa.js.org
 ### Prerequisites
 
 1. Git
-1. Node: install version 8.4 or greater
+1. Node: install version >=16.14
 1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
 1. A fork of the repo (for any contributions)
 1. A clone of the [single-spa.js.org repo](https://github.com/single-spa/single-spa.js.org) on your local machine
