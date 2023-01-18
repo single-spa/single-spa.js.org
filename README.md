@@ -36,9 +36,9 @@ Want to help improve the `single-spa.js.org` website? Checkout the steps below t
 ### Make the change
 
 1. Save the files and check in the browser
-  1. Changes to files in `website/pages/en` will hot-reload
-  1. Changes to markdown files in `docs` will hot-reload
-  1. Changes to `siteConfig.js` and `sideBards.json` will not hot-reload
+1. Changes to files in `website/pages/en` will hot-reload
+1. Changes to markdown files in `docs` will hot-reload
+1. Changes to `siteConfig.js` and `sideBards.json` will not hot-reload
 
 ### Test the change
 
@@ -51,4 +51,3 @@ Want to help improve the `single-spa.js.org` website? Checkout the steps below t
 1. Go to the [single-spa.js.org repo](https://github.com/single-spa/single-spa.js.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes.
-
