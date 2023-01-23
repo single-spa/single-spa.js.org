@@ -6,7 +6,7 @@ on:
       - master
   pull_request:
     branches:
-      - "*"
+      - '*'
 
 jobs:
   build:
@@ -17,13 +17,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
-          cache-dependency-path: website/yarn.lock
+          cache-dependency-path: website/package-lock.json
       - name: Build website
         working-directory: website
         run: |
-          yarn install --frozen-lockfile
-          yarn build
+          npm ci
+          npm run build
 
   deploy:
     name: Deploy to GitHub Pages
@@ -34,13 +33,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
-          cache-dependency-path: website/yarn.lock
+          cache-dependency-path: website/package-lock.json
       - name: Build website
         working-directory: website
         run: |
-          yarn install --frozen-lockfile
-          yarn build
+          npm ci
+          npm run build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
