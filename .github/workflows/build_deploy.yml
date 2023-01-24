@@ -6,7 +6,7 @@ on:
       - master
   pull_request:
     branches:
-      - "*"
+      - '*'
 
 jobs:
   build:
@@ -18,10 +18,9 @@ jobs:
         with:
           node-version: 18.x
       - name: Build website
-        working-directory: .
         run: |
-          yarn install --frozen-lockfile
-          yarn build
+          npm ci
+          npm build
 
   deploy:
     name: Deploy to GitHub Pages
@@ -33,10 +32,9 @@ jobs:
         with:
           node-version: 18.x
       - name: Build website
-        working-directory: .
         run: |
-          yarn install --frozen-lockfile
-          yarn build
+          npm ci
+          npm build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
