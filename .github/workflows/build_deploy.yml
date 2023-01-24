@@ -9,8 +9,8 @@ on:
       - '*'
 
 jobs:
-  build:
-    name: Build Docusaurus
+  build_and_deploy:
+    name: Build & deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,24 +21,8 @@ jobs:
         run: |
           npm ci
           npm build
-
-  deploy:
-    name: Deploy to GitHub Pages
-    if: github.ref == 'refs/heads/master' && github.repository_owner == 'single-spa'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 18.x
-      - name: Build website
-        run: |
-          npm ci
-          npm build
-
-      # Popular action to deploy to GitHub Pages:
-      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/master' && github.repository_owner == 'single-spa'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
