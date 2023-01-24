@@ -25,9 +25,9 @@ module.exports = {
   ],
   themeConfig: {
     algolia: {
-      apiKey: '113e711177d63ab1ff28ef858cbcffa5',
-      indexName: 'single_spa',
-      algoliaOptions: {},
+      appId: 'FWAC4N89WA',
+      apiKey: 'e9a2995a76ba1949a12513c566b0d87a',
+      indexName: 'single-spa-js',
     },
     footer: {
       logo: {
@@ -38,17 +38,17 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: "Courses",
+          title: 'Courses',
           items: [
             {
-              label: "Single-Spa Workshop",
-              to: "https://single-spa-workshop.com"
+              label: 'Single-Spa Workshop',
+              to: 'https://single-spa-workshop.com',
             },
             {
-              label: "Microfrontend Fundamentals",
-              to: "https://single-spa-workshop.com"
+              label: 'Microfrontend Fundamentals',
+              to: 'https://single-spa-workshop.com',
             },
-          ]
+          ],
         },
         {
           title: 'Docs',
@@ -140,14 +140,11 @@ module.exports = {
         { to: 'languages', label: '简Жहि Languages' },
       ],
     },
-    googleAnalytics: {
-      trackingID: 'UA-138683004-1',
-    },
     prismTheme: require('prism-react-renderer/themes/vsDark'),
   },
   plugins: [
     [
-      path.resolve(__dirname, './src/plugins/docusaurus-plugin-redirects'),
+      path.resolve('./src/plugins/docusaurus-plugin-redirects'),
       {
         excludedPaths: ['/'],
       },
@@ -165,6 +162,9 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./static/css/custom.css'),
+        },
+        googleAnalytics: {
+          trackingID: 'UA-138683004-1',
         },
       },
     ],

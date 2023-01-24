@@ -10,7 +10,6 @@
     "format:check": "prettier --config .prettierrc --check '**/*.{ts,js,tsx,jsx,scss,css,html,md}'"
   },
   "devDependencies": {
-    "copyfiles": "^2.2.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
@@ -18,12 +17,12 @@
     "prettier": "^1.19.1"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.14",
-    "@docusaurus/preset-classic": "^2.0.0-beta.14",
+    "@docusaurus/core": "^2.2.0",
+    "@docusaurus/preset-classic": "^2.2.0",
     "classnames": "^2.2.6",
     "markdown-to-jsx": "^6.11.4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "browserslist": {
     "production": [

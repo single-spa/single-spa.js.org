@@ -11,7 +11,7 @@ module.exports = function(context, opts) {
   return {
     name: 'custom-docusaurus-plugin-redirects',
 
-    async postBuild({ siteConfig = {}, routesPaths = [], outDir }) {
+    async postBuild({ routesPaths = [], outDir }) {
       routesPaths.map(routesPath => {
         if (!path.isAbsolute(routesPath)) {
           return;
@@ -21,9 +21,7 @@ module.exports = function(context, opts) {
           return;
         }
 
-        const newLink = `${routesPath}${
-          routesPath.endsWith('/') ? '' : '/'
-        }`;
+        const newLink = `${routesPath}${routesPath.endsWith('/') ? '' : '/'}`;
         const fileName = path.basename(routesPath);
         const filePath = path.dirname(routesPath);
         const htmlContent = `
