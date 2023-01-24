@@ -66,7 +66,7 @@ The parcel object contains the following functions and methods:
 
 ### update
 
-`parcel.update(props)` allows you to change the props passed into a parcel. Note that not all parcels support being updated. The `update` function returns a promise that resolves when the parcel is finished updating. See [other documentation](parcels-overview.html#update-optional) and [example](https://single-spa.js.org/docs/parcels-overview.html#quick-example) for more information.
+`parcel.update(props)` allows you to change the props passed into a parcel. Note that not all parcels support being updated. The `update` function returns a promise that resolves when the parcel is finished updating. See [other documentation](parcels-overview.md#update-optional) and [example](https://single-spa.js.org/docs/parcels-overview.html#quick-example) for more information.
 
 ```js
 const parcel = singleSpa.mountRootParcel(parcelConfig, parcelProps);
