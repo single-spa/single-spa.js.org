@@ -20,7 +20,7 @@ jobs:
       - name: Build website
         run: |
           npm ci
-          npm build
+          npm run build
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/master' && github.repository_owner == 'single-spa'
         uses: peaceiris/actions-gh-pages@v3
