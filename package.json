@@ -9,6 +9,9 @@
     "format": "prettier --config .prettierrc --write '**/*.{ts,js,tsx,jsx,scss,css,html,md}'",
     "format:check": "prettier --config .prettierrc --check '**/*.{ts,js,tsx,jsx,scss,css,html,md}'"
   },
+  "engines": {
+    "node": ">=16.14"
+  },
   "devDependencies": {
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
