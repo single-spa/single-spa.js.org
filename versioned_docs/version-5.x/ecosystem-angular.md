@@ -148,6 +148,13 @@ Angular 14 is supported by single-spa-angular@7.
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 14. Follow the [Angular CLI instructions](#angular-cli).
 
+### Angular 15
+
+Angular 15 is supported by single-spa-angular@8.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 15. Follow the [Angular CLI instructions](#angular-cli).
+
 ## Angular CLI
 
 You may use Angular CLI and single-spa together with any version of Angular. However, the [Angular CLI schematics](#schematics)
