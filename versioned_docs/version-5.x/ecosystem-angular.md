@@ -200,8 +200,12 @@ The manual installation instructions should be used if you are not using Angular
 
 ### Installation
 
-```bash
-npm install --save single-spa-angular
+```sh
+npm install single-spa-angular
+# Or if you're using yarn
+yarn add single-spa-angular
+# Or if you're using pnpm
+pnpm install single-spa-angular
 ```
 
 ### Manually apply schematics
@@ -413,10 +417,12 @@ Migrating from 3.x to 4.x requires only few API updates.
 
 ​
 
-```shell
-npm i --save single-spa-angular@4.0.0
+```sh
+npm install single-spa-angular@4.0.0
 # Or if you're using yarn
 yarn add single-spa-angular@4.0.0
+# Or if you're using pnpm
+pnpm install single-spa-angular@4.0.0
 ```
 
 ​
@@ -746,38 +752,6 @@ be loaded by single-spa-angular's webpack config, without you having to configur
 
 Your component styles will also be loaded like normal without you having to configure anything.
 
-**rebaseRootRelativeCssUrls**
-
-The [rebaseRootRelativeCssUrls](https://angular.io/cli/build) option allows you to keep your css referencing asset urls, which will be rewritten to respect the webpack public path:
-
-```css
-.body-row {
-  background: url('/assets/images/person.jpg') no-repeat right bottom;
-}
-```
-
-To do this, you may change your angular.json or run `ng build --rebaseRootRelativeCssUrls`. In the angular.json file, you should modify
-architect > build > options and update the property `rebaseRootRelativeCssUrls` to be `true`.
-
-Now inside the assets attribute (which is an array) you should add a slash **"/"** to the value of the **"output"** attribute which outputs its external styles (this is optional). Example:
-
-```json
-{
-  "options": {
-    "rebaseRootRelativeCssUrls": true,
-    "assets": [
-      "src/favicon.ico",
-      "src/assets",
-      {
-        "glob": "**/*",
-        "input": "node_modules/@material/dist/collection/assets",
-        "output": "/assets"
-      }
-    ]
-  }
-}
-```
-
 ### Polyfills
 
 [Polyfills in your angular.json](https://angular.io/guide/browser-support) are JavaScript code that make your project work in older browsers,
@@ -801,7 +775,12 @@ To correct the error `It looks like your application or one of its dependencies 
 Install `@angular/localize` in your root-config module
 
 ```sh
-npm i @angular/localize
+npm install @angular/localize
+# Or if you're using yarn
+yarn add @angular/localize
+# Or if you're using pnpm
+pnpm install @angular/localize
+
 ```
 
 Add following import to your root-config.js
@@ -983,10 +962,12 @@ This feature is available starting from `single-spa-angular@4.4.0`. You also may
 
 Let's start with installing the `@angular/elements`:
 
-```shell
-npm i --save @angular/elements
+```sh
+npm install @angular/elements
 # Or if you're using yarn
 yarn add @angular/elements
+# Or if you're using pnpm
+pnpm install @angular/elements
 ```
 
 The next step is to edit `main.single-spa.ts`:
