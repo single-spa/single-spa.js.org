@@ -28,6 +28,10 @@ module.exports = {
       appId: 'FWAC4N89WA',
       apiKey: 'e9a2995a76ba1949a12513c566b0d87a',
       indexName: 'single-spa-js',
+      contextualSearch: true,
+      searchParameters: {},
+      searchPagePath: 'search',
+      startUrls: ['https://single-spa.js.org/'],
     },
     footer: {
       logo: {
