@@ -234,7 +234,7 @@ While you are verifying that everything is working, keep in mind that each appli
 
 Conclusion
 
-As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on [Github](https://github.com/single-spa/single-spa) and here in the [docs](docs/building-applications.html).
+As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on [Github](https://github.com/single-spa/single-spa) and here in the [docs](/docs/building-applications).
 
 Single-spa is still a relatively new thing, and we’d love to hear your feedback and questions. We welcome contributions from everyone.
 

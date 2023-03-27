@@ -12,7 +12,7 @@ The single-spa-angular project is overseen by the single-spa core team, but larg
 
 [single-spa-angular](https://github.com/single-spa/single-spa-angular/) is a library for creating Angular microfrontends.
 
-Each microfrontend ([single-spa application](/docs/building-applications.html)) is an Angular CLI project that can
+Each microfrontend ([single-spa application](/docs/building-applications)) is an Angular CLI project that can
 use its own version of Angular and be deployed separately from any other. They all come together into a single
 web page where one or more single-spa applications is active at any time.
 
@@ -39,7 +39,7 @@ For instructions on how to test this locally before creating a pull request, see
 ### Angular 1 (AngularJS)
 
 AngularJS is supported by [single-spa-angularjs](https://github.com/single-spa/single-spa-angularjs), instead of single-spa-angular.
-See [AngularJS docs](/docs/ecosystem-angularjs.html).
+See [AngularJS docs](/docs/ecosystem-angularjs).
 
 ### Angular 2
 
@@ -385,7 +385,7 @@ Run the following:
 npm run serve:single-spa
 ```
 
-This **will not** open up an HTML file, since single-spa applications all [share one html file](/docs/configuration.html). Instead, go to
+This **will not** open up an HTML file, since single-spa applications all [share one html file](/docs/configuration). Instead, go to
 http://single-spa-playground.org and follow the instructions there to verify everything is working and for instructions on creating the shared HTML file.
 
 ## Building
@@ -401,7 +401,7 @@ In order for the [webpack public path](https://webpack.js.org/guides/public-path
 "single-spa helpers" refers to the in-browser portion of single-spa-angular. The helpers are used by all versions of Angular and
 regardless of whether you are using Angular CLI or not. This is the core of the single-spa-angular library that makes it possible
 for Angular applications to bootstrap, mount, and unmount. See
-[single-spa lifecycles](/docs/building-applications.html#registered-application-lifecycle) for more information.
+[single-spa lifecycles](/docs/building-applications#registered-application-lifecycle) for more information.
 
 ### Migrating from single-spa-angular@3.x to single-spa-angular@4.x
 
@@ -516,7 +516,7 @@ Options are passed to single-spa-angular via the `opts` parameter when calling `
 The following options are available:
 
 - `bootstrapFunction`: (required) A function that is given custom props as an argument and returns a promise that resolves with a resolved Angular module that is bootstrapped. Usually, your implementation will look like this: `bootstrapFunction: (customProps) => platformBrowserDynamic().bootstrapModule()`.
-  See [custom props documentation](https://single-spa.js.org/docs/building-applications.html#custom-props) for more info on the argument passed to the function.
+  See [custom props documentation](https://single-spa.js.org/docs/building-applications#custom-props) for more info on the argument passed to the function.
 - `template`: (required) An HTML string that will be put into the DOM Element returned by `domElementGetter`. This template can be anything,
   but it is recommended that you keeping it simple by making it only one Angular component. For example, `<app-root />` is recommended,
   but `<div><app-root /><span>Hello</span><another-component /></div>` is allowed. Note that `innerHTML` is used to put the template
@@ -569,7 +569,7 @@ See [issue thread](https://github.com/single-spa/single-spa-angular/issues/2#iss
 
 ### Custom Props
 
-[Custom props](https://single-spa.js.org/docs/building-applications.html#custom-props) are a way of passing auth or other data to your single-spa
+[Custom props](https://single-spa.js.org/docs/building-applications#custom-props) are a way of passing auth or other data to your single-spa
 applications. The custom props are available inside of the [bootstrapFunction](#options) passed to singleSpaAngular(). Additionally, if you use the
 angular cli schematic, you may subscribe to the singleSpaPropsSubject in your component, as shown below:
 
@@ -690,7 +690,7 @@ is the preferred way to do it.
 #### Option 2
 
 If you want the scripts to only be loaded when needed, you can add a custom
-[bootstrap lifecycle](/docs/building-applications.html#bootstrap) to your code.
+[bootstrap lifecycle](/docs/building-applications#bootstrap) to your code.
 
 Note that lazy loading these scripts can actually be worse for performance _if you always need them_, since
 they will start downloading later than if you put them right into the root HTML file.

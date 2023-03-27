@@ -146,14 +146,7 @@ module.exports = {
     },
     prismTheme: require('prism-react-renderer/themes/vsDark'),
   },
-  plugins: [
-    [
-      path.resolve('./src/plugins/docusaurus-plugin-redirects'),
-      {
-        excludedPaths: ['/'],
-      },
-    ],
-  ],
+  plugins: [],
   presets: [
     [
       '@docusaurus/preset-classic',

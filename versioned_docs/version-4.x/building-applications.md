@@ -53,7 +53,7 @@ Each lifecycle function is guranteed to be called with the following props:
 - `singleSpa`: A reference to the singleSpa instance, itself. This is intended to allow applications and helper libraries to call singleSpa
   APIs without having to import it. This is useful in situations where there are multiple webpack configs that are not set up to ensure
   that only one instance of singleSpa is loaded.
-- `mountParcel`: The [mountParcel function](/docs/parcels-api.html#mountparcel).
+- `mountParcel`: The [mountParcel function](/docs/parcels-api#mountparcel).
 
 #### Custom props
 
