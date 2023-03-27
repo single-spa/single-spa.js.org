@@ -37,7 +37,7 @@ registerServiceWorker();
 
 ## Step Two: Register the Application
 
-Now that we have prepared _index.js_ to function as our **single-spa config**, we can begin to register the application. It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application.
+Now that we have prepared _index.js_ to function as our **single-spa config**, we can begin to register the application. It is required to [register applications](https://single-spa.js.org/docs/configuration#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application.
 
 In order to register an application with single-spa we call the `registerApplication()` api and include the application [name](configuration#application-name), a [loadingFunction](configuration#loading-function-or-application) and an [activityFunction](configuration#activity-function).
 

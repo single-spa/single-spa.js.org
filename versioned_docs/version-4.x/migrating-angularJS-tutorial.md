@@ -30,9 +30,9 @@ Run `grunt` in the root directory to fire up a server at `http://localhost:8080`
 
 ## Step One: Create a single-spa config
 
-The single spa config consists of all code that is not part of a [registered application](https://single-spa.js.org/docs/configuration.html#registeringapplications). Ideally, this only includes an HTML file and a JavaScript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications. The single spa config should not be doing client-side HTML rendering nor should it be responding to routing events such as `hashchange` or `popstate`. Instead, all of that functionality should be taken care of either by single-spa itself or by a single-spa application.
+The single spa config consists of all code that is not part of a [registered application](https://single-spa.js.org/docs/configuration#registeringapplications). Ideally, this only includes an HTML file and a JavaScript file that registers single-spa applications. It is best practice to keep your single spa config as small as possible and to simply defer to single-spa to manage all of the applications. The single spa config should not be doing client-side HTML rendering nor should it be responding to routing events such as `hashchange` or `popstate`. Instead, all of that functionality should be taken care of either by single-spa itself or by a single-spa application.
 
-It is required to [register applications](https://single-spa.js.org/docs/configuration.html#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application. We will be creating a `single-spa.config.js` file to house all of our single-spa logic.
+It is required to [register applications](https://single-spa.js.org/docs/configuration#registering-applications) with single-spa. This enables single-spa to know how and when to bootstrap, mount and unmount an application. We will be creating a `single-spa.config.js` file to house all of our single-spa logic.
 
 Inside the _public/_ folder, create a _single-spa-config.js_ file.
 

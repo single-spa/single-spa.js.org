@@ -496,7 +496,7 @@ Unmounting will need to be triggered manually.
 
 <dl className="args-list">
 	<dt>Parcel object</dt>
-	<dd>See <a href="/docs/parcels-api.html">Parcels API</a> for more detail.</dd>
+	<dd>See <a href="/docs/parcels-api">Parcels API</a> for more detail.</dd>
 </dl>
 
 ## pathToActiveWhen

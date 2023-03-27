@@ -84,7 +84,7 @@ to each of the single-spa applications. Adding `vue` and other libraries to your
 checkout [coexisting-vue-microfrontends' index.html file](https://github.com/joeldenning/coexisting-vue-microfrontends/blob/master/root-html-file/index.html).
 
 Sharing a single instance of Vue and other common libraries is highly recommended. See the
-[recommended setup for single-spa](https://single-spa.js.org/docs/faq.html#is-there-a-recommended-setup) for more details on why.
+[recommended setup for single-spa](https://single-spa.js.org/docs/faq#is-there-a-recommended-setup) for more details on why.
 
 ### Shared deps with Vue CLI
 ```js
@@ -117,6 +117,6 @@ To create a single-spa parcel, simply omit the `el` option from your appOptions,
 option should be provided exactly the same as in the example above.
 
 ## Custom Props
-[single-spa custom props](/docs/building-applications.html#custom-props) are added to your App component as
+[single-spa custom props](/docs/building-applications#custom-props) are added to your App component as
 `appOptions.data`, and are accessible via `vm.$data`. See [this Vue documentation](https://vuejs.org/v2/api/#data)
 for more information on `appOptions.data`.

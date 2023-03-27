@@ -37,7 +37,7 @@ export const unmount = ngLifecycles.unmount;
 
 ## Without a bundler
 If you're not using a bundler, you'll need to make your angularjs application a SystemJS module or a global variable. The SystemJS
-module is preferred, and you can read about it more in the [recommended single-spa setup](/docs/faq.html#is-there-a-recommended-setup).
+module is preferred, and you can read about it more in the [recommended single-spa setup](/docs/faq#is-there-a-recommended-setup).
 
 ### As a SystemJS module
 Add the following to your AngularJS application. If you're using gulp/grunt to concatenate files together, just create a new file called
@@ -60,7 +60,7 @@ System.register([], function(_export) {
 ```
 
 Once you do this, you can `System.import()` the bundle file and SystemJS + single-spa will know what to do with your module. Your
-[loading function](/docs/configuration.html#loading-function-or-application) should be `System.import('name-of-app')`. Make sure to
+[loading function](/docs/configuration#loading-function-or-application) should be `System.import('name-of-app')`. Make sure to
 add `name-of-app` to your [import map](https://single-spa-playground.org/playground/import-map).
 
 ### As a global variable
@@ -74,7 +74,7 @@ window.myAngularApp = singleSpaAngularJS({
 })
 ```
 
-Your [loading function](/docs/configuration.html#loading-function-or-application) should just be the global variable itself. For example:
+Your [loading function](/docs/configuration#loading-function-or-application) should just be the global variable itself. For example:
 ```js
 singleSpa.registerApplication('my-angular-app', myAngularApp, () => true);
 ```

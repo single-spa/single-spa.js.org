@@ -131,4 +131,4 @@ import * as parcelConfig from './my-parcel.js'
 ```
 
 ## Create React App
-See [FAQ for CRA](https://single-spa.js.org/docs/faq.html#create-react-app)
+See [FAQ for CRA](https://single-spa.js.org/docs/faq#create-react-app)
