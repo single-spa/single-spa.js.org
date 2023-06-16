@@ -46,6 +46,6 @@ sidebar_label: Resources
   - [single-spa-apollo-cleint-auth-with-apollo-federation-backend](https://github.com/hashaneranda/hotel-app) is a single spa frontend example for hotel app with authentication, styled-components, apollo-client for graphql along with apollo federation microservice backend
 - [single-spa-react-angular](https://github.com/nitinreddy3/react-ng-spa-app) a multi-framework example with React and Angular. This app uses routes to render the React and Angular apps.
 - [vite-ts-single-spa-root-config](https://github.com/long-woo/vite-ts-single-spa-root-config): Create a root config example of single-spa using vite and typescript.
-- [micro-frontend-single-spa](https://github.com/RezaRahmati/micro-frontend-single-spa): is a single-sap frontend example including React 18, Angular 14 and a simple backend using nestjs. Sample has features like authetication, routing in react and angular. Also has two versions of root-config, using ejs and pure html+js.
+- [micro-frontend-single-spa](https://github.com/RezaRahmati/micro-frontend-single-spa): is a single-spa frontend example including React 18, Angular 14 and a simple backend using nestjs. Sample has features like authetication, routing in react and angular. Also has two versions of root-config, using ejs and pure html+js.
 
 Have your own example or starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/website/versioned_docs/version-5.x/examples.md) to add yours to this list.
