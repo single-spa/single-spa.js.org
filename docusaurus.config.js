@@ -20,7 +20,6 @@ module.exports = {
   },
   scripts: [
     'https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js',
-    'https://cdn.jsdelivr.net/npm/racial-equity-banner@1.0.4/racial-equity-banner-bottom.js',
     '/js/index.js',
   ],
   themeConfig: {

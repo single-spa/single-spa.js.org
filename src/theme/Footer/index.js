@@ -11,48 +11,16 @@ function Footer() {
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
   const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem("hide-workshop-banner") !== "true" : false)
-  const [showAlliesBanner, setShowAlliesBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem('hide-allies-banner') !== "true" : false)
 
   if (!footer) {
     return null;
   }
 
   useEffect(() => {
-    const alliesContainer = document.querySelector('.allies__container')
-
-    if (alliesContainer) {
-      if (showAlliesBanner) {
-        alliesContainer.style.display = 'block'
-      } else {
-        alliesContainer.style.display = 'none'
-      }
-
-      alliesContainer.addEventListener('click', dismiss)
-      return () => {
-        alliesContainer.removeEventListener('click', dismiss)
-      }
-    }
-
-    function dismiss() {
-      setShowAlliesBanner(false)
-    }
-  }, [showAlliesBanner])
-
-  useEffect(() => {
-    if (showAlliesBanner) {
-      localStorage.removeItem('hide-allies-banner')
-    } else {
-      localStorage.setItem('hide-allies-banner', true)
-    }
-  }, [showAlliesBanner])
-
-  useEffect(() => {
     if (showWorkshopBanner) {
       localStorage.removeItem('hide-workshop-banner')
-      document.documentElement.style.setProperty('--alliesBannerBottom', '50px')
     } else {
       localStorage.setItem('hide-workshop-banner', true)
-      document.documentElement.style.setProperty('--alliesBannerBottom', '0px')
     }
   }, [showWorkshopBanner])
 
