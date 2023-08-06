@@ -17,12 +17,7 @@ const coreMembers = [
     name: 'Joel Denning',
     login: 'joeldenning',
     avatarUrl: 'https://avatars1.githubusercontent.com/u/5524384',
-    sponsorUrl: 'https://github.com/sponsors/joeldenning'
-  },
-  {
-    name: 'Justin McMurdie',
-    login: 'TheMcMurder',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/3059715',
+    sponsorUrl: 'https://github.com/'
   },
   {
     name: 'Anthony Frehner',
