@@ -29,7 +29,7 @@ export const HomeSplash = () => {
 
           <Link
             className="button"
-            to="https://join.slack.com/t/single-spa/shared_invite/zt-15a59134l-ytK9bWMD1z3vGTC9LwPREg">
+            to="https://join.slack.com/t/single-spa/shared_invite/zt-21skfl7l3-leF7JkoKwKaRIPX~N6jXJQ">
             Join Slack Chat
           </Link>
         </div>
