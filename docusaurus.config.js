@@ -153,7 +153,7 @@ module.exports = {
         docs: {
           path: 'docs',
           sidebarPath: require.resolve('./sidebars.json'),
-          editUrl: `${repoUrl}/blob/master/website/`,
+          editUrl: `${repoUrl}/blob/master/`,
           // sidebarCollapsible: false,
         },
         theme: {
