@@ -10,7 +10,7 @@ Artur Androsovych is a Google Developer Expert in Angular and an open-source con
 
 **[Roberto Mosca](https://github.com/robmosca)**
 
-Hey there! I’m a Principal Software Engineer at TravelPerk (www.travelperk.com), where I’m the go-to person for all things related to our frontend platform. With a full-stack background, I’ve got my hands on a variety of tech—from Python to NodeJS, React, Webpack... Before diving into the world of business travel, I was immersed in biomedical research as a bioinformatician. When I’m not in front of a screen, you’ll find me swimming, cooking up some Italian delicacies, or tinkering with my Rubik’s cube-solving robots. And when the stress levels rise? Knitting is my zen.
+Roberto is a Principal Software Engineer at TravelPerk (www.travelperk.com), where he is the go-to person for all things related to their frontend platform. With a full-stack background, he's got his hands on a variety of tech — from Python to NodeJS, React, Webpack... Before diving into the world of business travel, he was immersed in biomedical research as a bioinformatician. When he is not in front of a screen, you’ll find him swimming, cooking up some Italian delicacies, or tinkering with his Rubik’s cube-solving robots.
 
 **[Milan Kovacic](https://github.com/MilanKovacic)**
 
