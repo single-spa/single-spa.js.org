@@ -42,7 +42,7 @@ export const { bootstrap, mount, unmount } = singleSpaReact({
 ```
 
 <details>
-<summary>Quickstart for React &lt;=17</summary>
+<summary>Quickstart for React &lt;18</summary>
 
 ```js
 import React from 'react';
@@ -54,6 +54,7 @@ export const { bootstrap, mount, unmount } = singleSpaReact({
   React,
   ReactDOM,
   rootComponent,
+  renderType: 'render', // Starting with single-spa-react v5.0.0, the default is for React v18.
   errorBoundary(err, info, props) {
     // https://reactjs.org/docs/error-boundaries.html
     return <div>This renders when a catastrophic error occurs</div>;
@@ -83,12 +84,12 @@ All options are passed to single-spa-react via the `opts` parameter when calling
   of those methods, then a container div will be created and appended to document.body, by default.
 - `parcelCanUpdate`: (optional) A boolean that controls whether an update lifecycle will be created for the returned parcel. Note that option does not impact single-spa applications, but only parcels.
   It is true by default.
-- `renderType`: (optional) ENUM of one of the following: `'render'`, `'hydrate'`, `'createRoot'`, `'unstable_createRoot'`, `'createBlockingRoot'`, and `'unstable_createBlockingRoot'`. Defaults to `'render'`. Allows you to choose which ReactDOM render method you want to use for your application. As of single-spa-react@4.6.0, `renderType` can be a function that returns a string, for dynamically calculated renderType.
+- `renderType`: (optional) ENUM of one of the following: `'render'`, `'hydrate'`, `'createRoot'`, `'unstable_createRoot'`, `'createBlockingRoot'`, and `'unstable_createBlockingRoot'`. Defaults to `'render'` before v5.0.0; starting with v5.0.0, the default is React v18's setting, `createRoot`. Allows you to choose which ReactDOM render method you want to use for your application. As of single-spa-react@4.6.0, `renderType` can be a function that returns a string, for dynamically calculated renderType.
 
 ## Notes
 
-For react@>=16, it is best practice to have each single-spa application's root application implement componentDidCatch in order to avoid
-the entire application unmounting unexpectedly when an error occurs. single-spa-react will warn to the console if componentDidCatch is not
+For react@>=16, it is best practice to have each single-spa application's root application implement `componentDidCatch` in order to avoid
+the entire application unmounting unexpectedly when an error occurs. single-spa-react will warn to the console if `componentDidCatch` is not
 implemented. See https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html for more details.
 
 ## SingleSpaContext
