@@ -137,6 +137,7 @@ module.exports = {
         { to: 'docs/', label: 'Docs' },
         { to: 'https://single-spa-workshop.com', label: 'Courses' },
         { to: 'help/', label: 'Help' },
+        { to: 'roadmap/', label: 'Roadmap' },
         { to: 'blog/', label: 'Blog' },
         { href: 'https://opencollective.com/single-spa', label: 'Donate' },
         { href: 'https://github.com/single-spa/single-spa', label: 'GitHub' },
