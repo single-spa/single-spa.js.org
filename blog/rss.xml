@@ -4,10 +4,18 @@
         <title>single-spa Blog</title>
         <link>https://single-spa.js.org/blog</link>
         <description>single-spa Blog</description>
-        <lastBuildDate>Wed, 11 Oct 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Nov 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[November 2023 Core Team Meeting]]></title>
+            <link>https://single-spa.js.org/blog/2023/11/07/core-team-meeting-notes</link>
+            <guid>https://single-spa.js.org/blog/2023/11/07/core-team-meeting-notes</guid>
+            <pubDate>Tue, 07 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Attendees: Joel Denning, Milan Kovacic, Jake Hayes]]></description>
+            <content:encoded><![CDATA[<p>Attendees: Joel Denning, Milan Kovacic, Jake Hayes</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="november-2023-roadmap">November 2023 Roadmap<a href="#november-2023-roadmap" class="hash-link" aria-label="Direct link to November 2023 Roadmap" title="Direct link to November 2023 Roadmap">​</a></h2><ol><li>Release <code>single-spa@6</code> as latest</li><li>Consolidate and update the example projects</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="meeting-notes">Meeting Notes<a href="#meeting-notes" class="hash-link" aria-label="Direct link to Meeting Notes" title="Direct link to Meeting Notes">​</a></h2><ul><li>Open pull requests, pressing Github issues<ul><li>We reviewed <a href="https://github.com/single-spa/single-spa-react/pull/197" target="_blank" rel="noopener noreferrer">https://github.com/single-spa/single-spa-react/pull/197</a></li></ul></li><li>Core team vacancy<ul><li>Add Jake Hayes to the #core-team channel, but not officially a core team member</li><li>Joel will reach out to Ian about joining the core team.</li></ul></li><li>Single-spa roadmap</li><li>Maintenance update/plan</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="roadmap-brainstorm">Roadmap Brainstorm<a href="#roadmap-brainstorm" class="hash-link" aria-label="Direct link to Roadmap Brainstorm" title="Direct link to Roadmap Brainstorm">​</a></h2><ul><li>Adding unit tests to existing projects</li><li>SystemJS -&gt; ESM migration</li><li>create-single-spa update (<a href="https://github.com/cruft/cruft" target="_blank" rel="noopener noreferrer">https://github.com/cruft/cruft</a>)</li><li>Release single-spa 6 as latest</li><li>Improve shared dependencies management</li><li>Autopublishes to npm</li><li>Server rendering enhancements?</li><li>Support for NextJS, NuxtJS, Remix, create-react-app, and other build tools</li><li>Consolidate example projects</li><li>Feature voting</li><li>Automated integration tests for popular frameworks</li><li>Update create-single-spa dependencies</li></ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Introducing Single-Spa's New Core Team Members]]></title>
             <link>https://single-spa.js.org/blog/2023/10/11/introducing-single-spa-new-core-team-members</link>
