@@ -1,0 +1,281 @@
+{
+  "version-6.x/docs": [
+    {
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/getting-started-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/examples"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Tutorials",
+      "items": [
+        {
+          "type": "link",
+          "label": "Official Courses",
+          "href": "https://single-spa-workshop.com"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/single-spa-playground"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/videos"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "CLI",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/create-single-spa"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/shared-webpack-configs"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Microfrontend",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/microfrontends-concept"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/module-types"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Root Config",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/configuration"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Application",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/building-applications"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/separating-applications"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/migrating-existing-spas"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Concept: Parcel",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/parcels-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Testing",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/testing/units"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/testing/e2e"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Layout Engine",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/layout-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/layout-definition"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/layout-api"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "The Recommended Setup",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/recommended-setup"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/api"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/parcels-api"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Ecosystem",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-css"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-react"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-vue"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-angular"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-angularjs"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-cycle"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-ember"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-inferno"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-preact"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-svelte"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-riot"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-backbone"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-html-web-components"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-leaked-globals"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-dojo"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-alpinejs"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-vite"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/ecosystem-snowpack"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Server Side Rendering (New)",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/ssr-overview"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Dev Tools",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/devtools"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Contributing",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-6.x/contributing-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-6.x/code-of-conduct"
+        }
+      ]
+    }
+  ]
+}
