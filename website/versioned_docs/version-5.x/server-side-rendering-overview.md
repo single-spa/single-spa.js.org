@@ -210,7 +210,7 @@ http
   .createServer((req, res) => {
     const fetchPromises = {};
 
-    sendLayoutHTTPResponse(serverLayout, {
+    sendLayoutHTTPResponse({
       res,
       serverLayout,
       urlPath: req.path,
