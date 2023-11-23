@@ -138,7 +138,7 @@ Must be called by your single spa config. Before `start` is called, applications
 
 The `start(opts)` api optionally accepts a single `opts` object, with the following properties. If the opts object is omitted, all defaults will be applied.
 
-- `urlRerouteOnly`: A boolean that defaults to false. If set to true, calls to `history.pushState()` and `history.replaceState()` will not trigger a single-spa reroute unless the client side route was changed. Setting this to true can be better for performance in some situations. For more information, read [original issue](https://github.com/single-spa/single-spa/issues/484).
+- `urlRerouteOnly`: A boolean that defaults to true. If set to true, calls to `history.pushState()` and `history.replaceState()` will not trigger a single-spa reroute unless the client side route was changed. Setting this to true can be better for performance in some situations. For more information, read [original issue](https://github.com/single-spa/single-spa/issues/484).
 
 <h3>returns</h3>
 
@@ -736,6 +736,8 @@ window.addEventListener(
   },
 );
 ```
+
+The `cancelNavigation(val = true)` function optionally accepts a single argument. If the argument (`val`) is falsy, navigation will not be canceled. If the argument is a promise, single-spa will wait for the promise to resolve or reject before canceling navigation. If the promise resolves with a falsy value, navigation will not be canceled.
 
 When a navigation is canceled, no applications will be mounted, unmounted, loaded, or unloaded. All single-spa routing events will fire for the canceled navigation, but they will each have the `navigationIsCanceled` property set to `true` on the `event.detail` (Details below in Custom Events section).
 
