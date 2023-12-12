@@ -2,11 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://single-spa.js.org/blog</id>
     <title>single-spa Blog</title>
-    <updated>2023-11-27T00:00:00.000Z</updated>
+    <updated>2023-12-12T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://single-spa.js.org/blog"/>
     <subtitle>single-spa Blog</subtitle>
     <icon>https://single-spa.js.org/img/single-spa-mark-magenta.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[December 2023 Core Team Meeting]]></title>
+        <id>https://single-spa.js.org/blog/2023/12/12/core-team-meeting-notes</id>
+        <link href="https://single-spa.js.org/blog/2023/12/12/core-team-meeting-notes"/>
+        <updated>2023-12-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Attendees: Artur Androsovych, Ian Bacher, Jake Hayes, Milan Kovacic]]></summary>
+        <content type="html"><![CDATA[<p>Attendees: Artur Androsovych, Ian Bacher, Jake Hayes, Milan Kovacic</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="achievements-and-progress-from-november">Achievements and Progress from November<a href="#achievements-and-progress-from-november" class="hash-link" aria-label="Direct link to Achievements and Progress from November" title="Direct link to Achievements and Progress from November">​</a></h2><ul><li>Successfully released single-spa version 6, marking a significant milestone in the project's development</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="december-2023-roadmap">December 2023 Roadmap<a href="#december-2023-roadmap" class="hash-link" aria-label="Direct link to December 2023 Roadmap" title="Direct link to December 2023 Roadmap">​</a></h2><ol><li>Update dependencies, and set up automation, starting with create-single-spa</li><li>Continue work on the consolidation and updates of the example projects</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="meeting-notes">Meeting Notes<a href="#meeting-notes" class="hash-link" aria-label="Direct link to Meeting Notes" title="Direct link to Meeting Notes">​</a></h2><ul><li>Welcomed Ian Bacher as a new addition to the core team.</li><li>Reviewed single-spa roadmap</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="initiatives-and-goals">Initiatives and Goals<a href="#initiatives-and-goals" class="hash-link" aria-label="Direct link to Initiatives and Goals" title="Direct link to Initiatives and Goals">​</a></h2><ul><li>Adding unit tests to existing projects</li><li>SystemJS -&gt; ESM migration</li><li>create-single-spa update (<a href="https://github.com/cruft/cruft" target="_blank" rel="noopener noreferrer">https://github.com/cruft/cruft</a>)</li><li>Release single-spa 6 as latest ✅</li><li>Improve shared dependencies management</li><li>Autopublishes to npm</li><li>Server rendering enhancements?</li><li>Support for NextJS, NuxtJS, Remix, create-react-app, and other build tools</li><li>Consolidate example projects 🚧</li><li>Feature voting</li><li>Automated integration tests for popular frameworks</li><li>Update create-single-spa dependencies 🚧</li></ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[single-spa 6]]></title>
         <id>https://single-spa.js.org/blog/2023/11/27/single-spa-6</id>
