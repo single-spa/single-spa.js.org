@@ -23,8 +23,8 @@ export const HomeSplash = () => {
 
           <Link
             className="button"
-            to="https://single-spa-workshop.com">
-            Official Courses
+            to="https://baseplate.cloud">
+            Baseplate Hosting
           </Link>
 
           <Link

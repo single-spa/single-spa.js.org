@@ -41,6 +41,17 @@
     },
     {
       "type": "category",
+      "label": "Hosting",
+      "items": [
+        {
+          "type": "link",
+          "label": "Baseplate Cloud hosting",
+          "href": "https://baseplate.cloud"
+        }
+      ]
+    },
+    {
+      "type": "category",
       "label": "CLI",
       "items": [
         {

@@ -10,19 +10,19 @@ function Footer() {
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
-  const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem("hide-workshop-banner") !== "true" : false)
+  const [showBaseplateBanner, setShowBaseplateBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem("hide-baseplate-banner") !== "true" : false)
 
   if (!footer) {
     return null;
   }
 
   useEffect(() => {
-    if (showWorkshopBanner) {
-      localStorage.removeItem('hide-workshop-banner')
+    if (showBaseplateBanner) {
+      localStorage.removeItem('hide-baseplate-banner')
     } else {
-      localStorage.setItem('hide-workshop-banner', true)
+      localStorage.setItem('hide-baseplate-banner', true)
     }
-  }, [showWorkshopBanner])
+  }, [showBaseplateBanner])
 
   const { copyright, links = [], logo } = footer;
 
@@ -108,17 +108,17 @@ function Footer() {
             Originally developed at <a href='https://getcanopy.com'>Canopy</a>
           </div>
           {copyright && copyright}
-          {showWorkshopBanner &&
+          {showBaseplateBanner &&
             <div className="footer__banner">
               <div>
-                Learn microfrontends from the single-spa core team at single-spa-workshop.com!
+                Try Baseplate Cloud's official single-spa hosting!
               </div>
               <div className="footer__banner--actions">
-                <div role="button" tabIndex={0} onClick={() => setShowWorkspaceBanner(false)}>
+                <div role="button" tabIndex={0} onClick={() => setShowBaseplateBanner(false)}>
                   Dismiss
                 </div>
-                <a href="https://single-spa-workshop.com" target="_blank" rel="noopener">
-                  View Courses
+                <a href="https://baseplate.cloud" target="_blank" rel="noopener">
+                  Baseplate Hosting
                 </a>
               </div>
             </div>

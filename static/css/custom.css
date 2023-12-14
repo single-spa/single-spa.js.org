@@ -126,7 +126,7 @@ blockquote p:nth-child(2n) {
 }
 
 .footer__banner .footer__banner--actions a {
-  background-color: var(--single-spa-link-color) !important;
+  background-color: #2a467b !important;
   color: white !important;
   font-weight: bold;
   font-size: 18px;

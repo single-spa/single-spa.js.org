@@ -141,6 +141,7 @@ module.exports = {
         { href: 'https://opencollective.com/single-spa', label: 'Donate' },
         { href: 'https://github.com/single-spa/single-spa', label: 'GitHub' },
         { to: 'languages', label: '简Жहि Languages' },
+        { to: "https://baseplate.cloud", label: "Deploy", position: "right" }
       ],
     },
     prismTheme: require('prism-react-renderer/themes/vsDark'),
