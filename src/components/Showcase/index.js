@@ -37,7 +37,7 @@ export const Showcase = ({ showAll }) => {
         <>
           <p>Are you using this project?</p>
           <a
-            href={`${siteConfig.customFields.repoUrl}/edit/master/website/src/data/users.js`}
+            href={`${siteConfig.customFields.repoUrl}/edit/master/src/data/users.js`}
             className="button">
             Add your company
           </a>
