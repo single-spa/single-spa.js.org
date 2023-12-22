@@ -167,6 +167,12 @@ const users = [
     infoLink: 'https://www.swyftlogistics.com/',
     pinned: true
   },
+  {
+    caption: '良医汇',
+    image: 'https://bosdev.liangyihui.net/temp/1617699379.png',
+    infoLink: 'https://liangyihui.net/',
+    pinned: true
+  },
 ];
 
 export default users;
