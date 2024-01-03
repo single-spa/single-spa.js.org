@@ -37,7 +37,7 @@ export const Sponsors = ({ showAll }) => {
         <>
           <p>Are you sponsoring this project?</p>
           <a
-            href={`${siteConfig.customFields.repoUrl}/edit/master/website/src/data/sponsors.js`}
+            href={`${siteConfig.customFields.repoUrl}/edit/master/src/data/sponsors.js`}
             className="button">
             Add your company
           </a>
