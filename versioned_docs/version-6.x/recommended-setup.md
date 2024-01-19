@@ -239,7 +239,7 @@ You may use either one, or both. We currently recommend only using import maps, 
 
 | Approach          | Share dependencies | Bundler requirements |  Managing dependencies |
 | ----------------- | ------------------ | -------------------- | ---------------------- |
-| Import Maps       | Fully supported    | Any bundler          | [shared dependecies repo](https://github.com/polyglot-microfrontends/shared-dependencies/blob/master/importmap.json) |
+| Import Maps       | Fully supported    | Any bundler          | [shared dependencies repo](https://github.com/polyglot-microfrontends/shared-dependencies/blob/master/importmap.json) |
 | Module Federation | Fully supported    | Only webpack@>=5     | [multiple webpack configs](https://github.com/ScriptedAlchemy/mfe-webpack-demo/blob/f48ff0bd0b7d62b722ea000e5ded73f0d076a0b7/packages/01-host/webpack.config.js#L47) |
 
 ### Sharing with Import Maps
