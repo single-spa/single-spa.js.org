@@ -66,6 +66,12 @@ const users = [
     pinned: false,
   },
   {
+    caption: 'Ubits',
+    image: 'img/ubits-logo.png',
+    infoLink: 'https://www.ubits.com/',
+    pinned: true,
+  },
+  {
     caption: 'CatalystOne',
     image: 'img/catalystone-logo.svg',
     infoLink: 'https://www.catalystone.com/',
