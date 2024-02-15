@@ -17,17 +17,22 @@ const coreMembers = [
     name: 'Joel Denning',
     login: 'joeldenning',
     avatarUrl: 'https://avatars1.githubusercontent.com/u/5524384',
-    sponsorUrl: 'https://github.com/'
+    sponsorUrl: 'https://github.com/sponsors/joeldenning',
   },
   {
-    name: 'Anthony Frehner',
-    login: 'frehner',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/3054066',
+    name: 'Milan Kovacic',
+    login: 'MilanKovacic',
+    avatarUrl: 'https://avatars.githubusercontent.com/u/9189985?v=4',
   },
   {
-    name: 'Carlos Filoteo',
-    login: 'filoxo',
-    avatarUrl: 'https://avatars1.githubusercontent.com/u/4202993?v=4',
+    name: 'Ian Bacher',
+    login: 'ibacher',
+    avatarUrl: 'https://avatars.githubusercontent.com/u/52504170?v=4',
+  },
+  {
+    name: 'Artur Androsovych',
+    login: 'arturovt',
+    avatarUrl: 'https://avatars.githubusercontent.com/u/7337691?v=4',
   },
 ];
 
