@@ -4,10 +4,18 @@
         <title>single-spa Blog</title>
         <link>https://single-spa.js.org/blog</link>
         <description>single-spa Blog</description>
-        <lastBuildDate>Wed, 03 Jan 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 14 Feb 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[February 2024 Core Team Meeting]]></title>
+            <link>https://single-spa.js.org/blog/2024/02/14/core-team-meeting-notes</link>
+            <guid>https://single-spa.js.org/blog/2024/02/14/core-team-meeting-notes</guid>
+            <pubDate>Wed, 14 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Attendees: Joel Denning, Milan Kovacic, Ian Bacher, Jake Hayes]]></description>
+            <content:encoded><![CDATA[<p>Attendees: Joel Denning, Milan Kovacic, Ian Bacher, Jake Hayes</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="meeting-agenda">Meeting Agenda<a href="#meeting-agenda" class="hash-link" aria-label="Direct link to Meeting Agenda" title="Direct link to Meeting Agenda">​</a></h2><ul><li>TypeScript migration<ul><li>single-spa</li><li>single-spa-react</li></ul></li><li>Maintenance update</li><li>Baseplate</li><li>Roadmap items</li><li>Blog posts</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="typescript-migration">TypeScript Migration<a href="#typescript-migration" class="hash-link" aria-label="Direct link to TypeScript Migration" title="Direct link to TypeScript Migration">​</a></h3><ol><li>Single-spa-layout broken types</li><li>New PR for migration <a href="https://github.com/single-spa/single-spa/pull/1196" target="_blank" rel="noopener noreferrer">Single-spa</a></li></ol><h3 class="anchor anchorWithStickyNavbar_LWe7" id="review-other-prs">Review other PR's<a href="#review-other-prs" class="hash-link" aria-label="Direct link to Review other PR's" title="Direct link to Review other PR's">​</a></h3><ol><li>Examination of an open <a href="https://github.com/single-spa/single-spa/pull/1189" target="_blank" rel="noopener noreferrer">PR</a> to fix <a href="https://github.com/single-spa/single-spa/issues/1184" target="_blank" rel="noopener noreferrer">Issue #1184</a><ol><li>Discussed introducing a new <a href="https://github.com/single-spa/single-spa/issues/1197" target="_blank" rel="noopener noreferrer">potential lifecycle hook</a></li></ol></li></ol><h3 class="anchor anchorWithStickyNavbar_LWe7" id="baseplate-pricing-feedback">Baseplate Pricing Feedback<a href="#baseplate-pricing-feedback" class="hash-link" aria-label="Direct link to Baseplate Pricing Feedback" title="Direct link to Baseplate Pricing Feedback">​</a></h3><ul><li>Maybe indicate that GB storage is optional. It's possible to bring your own</li><li>"The prices are not ridiculous" - Ian</li><li>"The prices seem reasonable, and the descriptions make sense" - Jake</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="roadmap-items">Roadmap Items<a href="#roadmap-items" class="hash-link" aria-label="Direct link to Roadmap Items" title="Direct link to Roadmap Items">​</a></h3><ul><li>Removing default exports</li><li>single-spa-playground was broken due to DNS records, Joel was able to fix that last week</li><li>Look into CORS for single-spa-playground - @Ian will look into</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="blog-posts">Blog posts<a href="#blog-posts" class="hash-link" aria-label="Direct link to Blog posts" title="Direct link to Blog posts">​</a></h3><ul><li>Potentially adding Baseplate specific blog posts to single-spa</li></ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[January 2024 Core Team Meeting]]></title>
             <link>https://single-spa.js.org/blog/2024/01/03/core-team-meeting-notes</link>
