@@ -29,6 +29,11 @@ const coreMembers = [
     login: 'ibacher',
     avatarUrl: 'https://avatars.githubusercontent.com/u/52504170?v=4',
   },
+  {
+    name: 'Artur Androsovych',
+    login: 'arturovt',
+    avatarUrl: 'https://avatars.githubusercontent.com/u/7337691?v=4',
+  },
 ];
 
 export { projects, coreMembers };
