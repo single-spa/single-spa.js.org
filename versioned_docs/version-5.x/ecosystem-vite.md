@@ -42,7 +42,13 @@ export default {
 
 ## Local development
 
-Vite works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:3000/src/main.js as the URL for your import map override.  It is important to note, however, that assets such as images and fonts won't load.  The import map is only used to load JavaScript, not media files.  The import map does not affect asset URL's.  Asset URL's are affected by Vite's `base` configuration property, and Vite doesn't respect full URL's in said property while in serve mode (`npm run dev`).  While in serve mode, a base with a full URL is stripped down to its path.  Therefore, the asset URL's don't really get the correct host URL.  The author of [vite-plugin-single-spa](https://www.npmjs.com/package/vite-plugin-single-spa) has opened [a discussion in Vite's GitHub](https://github.com/vitejs/vite/discussions/13927) that you can opt to support by upvoting it.
+Vite works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:3000/src/main.js as the URL for your import map override.
+
+:::tip Serving Micro-Frontend Assets
+
+In order to get assets (images, fonts, etc.) properly served by Vite when using it for micro-frontends, make sure to configure Vite's `server.origin` property with the base URL of your development server.  This is only needed while in development mode (`npm run serve`).
+
+:::
 
 ## Native Modules vs SystemJS
 
@@ -55,7 +61,7 @@ single-spa works well with native modules, systemjs, or even both. With Vite + s
 
 This is a new entry that is currently in the early stages of development, but shows significant progress ([view in GitHub](https://github.com/WJSoftware/vite-plugin-single-spa)).  It claims to be able to convert out-of-the-box Vite projects (regardless of the framework) into single-spa micro-frontend projects and even root config projects.  While the single-spa team discourages the use of UI frameworks in root configs, it is indeed an alternative that may interest people.
 
-To convert a Vite project to a root config project, all that is needed is install `vite-plugin-single-spa`, and then use it in `vite.config.ts`.  This is a Vite + Vue example:
+To convert a Vite project to a root config project, all that is needed is install `vite-plugin-single-spa`, and then use it in `vite.config.ts`.  This is a **Vite + Vue** example:
 
 ```typescript
 import vitePluginSingleSpa from 'vite-plugin-single-spa';
@@ -64,7 +70,6 @@ import vitePluginSingleSpa from 'vite-plugin-single-spa';
 export default defineConfig({
   plugins: [vue(), vitePluginSingleSpa({
     type: 'root'
-    }
   })]
 });
 ```
@@ -82,7 +87,7 @@ export default defineConfig({
   plugins: [react(), vitePluginSingleSpa({
     serverPort: 4101,
     spaEntryPoint: 'src/spa.tsx'
-  })],
+  })]
 });
 ```
 
@@ -114,9 +119,11 @@ export const unmount = [cssLifecycle.unmount, lc.unmount];
 
 + Supports stock Vite projects, regardless of framework.
 + Micro-frontend projects behave dually while in serve mode:  The micro-frontend can be previewed as a standalone web application with its server URL, or it can be served as a single-spa micro-frontend.
-+ As seen in the example above, it provides an extra module that automatically mounts and unmounts the CSS referenced by the lifecycle-exporting module (`src/spa.tsx` in the example). **COMING SOON**
++ As seen in the example above, it provides an extra module that automatically mounts and unmounts the CSS bundled by Vite (>= v0.1.0).
++ Supports Vite's CSS splitting (>= v0.2.0).
 + Automatically picks up import maps from `src/importMap.dev.json` and `src/importMap.json`.
 + Automatically adds the `import-map-overrides` NPM package, user interface included.
++ Automatically configures Vite's `server.origin` option (>= v0.2.0).
 
 ---
 
