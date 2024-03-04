@@ -1,12 +1,13 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode8(props) {
   return (
     <>
       <h1>#8: Loading function resolved with invalid parcel config</h1>
       <p>
-        When mounting a parcel, the config loading function must return a promise that resolves with the parcel config
+        When mounting a parcel, the config loading function must return a
+        promise that resolves with the parcel config
       </p>
       <h2>To fix:</h2>
       <div>
@@ -29,10 +30,18 @@ export default function ErrorCode8(props) {
       </div>
       <h2>Explanation:</h2>
       <p>
-        You can call <a href="/docs/parcels-api#mountparcel">mountParcel</a> and <a href="/docs/parcels-api#mountrootparcel">mountRootParcel</a> with a
-        <a href="https://single-spa.js.org/docs/parcels-api#mountparcel">asynchronous loading function</a> as the first argument. When doing so,
-        the loading function must return a promise that resolves with a valid <a href="https://single-spa.js.org/docs/parcels-overview#parcel-configuration">parcel config object</a>.
+        You can call <a href="/docs/parcels-api#mountparcel">mountParcel</a> and{" "}
+        <a href="/docs/parcels-api#mountrootparcel">mountRootParcel</a> with a
+        <a href="https://single-spa.js.org/docs/parcels-api#mountparcel">
+          asynchronous loading function
+        </a>{" "}
+        as the first argument. When doing so, the loading function must return a
+        promise that resolves with a valid{" "}
+        <a href="https://single-spa.js.org/docs/parcels-overview#parcel-configuration">
+          parcel config object
+        </a>
+        .
       </p>
     </>
-  )
+  );
 }

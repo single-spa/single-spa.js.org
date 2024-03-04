@@ -1,12 +1,13 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode26(props) {
   return (
     <>
       <h1>#26: unloadApplication requires a string 'appName'</h1>
       <p>
-        You cannot unload an application without providing a string 'appName' argument.
+        You cannot unload an application without providing a string 'appName'
+        argument.
       </p>
       <h2>To fix:</h2>
       <div>
@@ -21,8 +22,12 @@ export default function ErrorCode26(props) {
       </div>
       <h2>Explanation:</h2>
       <p>
-        See <a href="/docs/api#unloadApplication">unloadApplication documentation</a>.
+        See{" "}
+        <a href="/docs/api#unloadApplication">
+          unloadApplication documentation
+        </a>
+        .
       </p>
     </>
-  )
+  );
 }

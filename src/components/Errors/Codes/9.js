@@ -1,5 +1,5 @@
-import React from 'react'
-import InvalidLifecycle from '../InvalidLifecycle'
+import React from "react";
+import InvalidLifecycle from "../InvalidLifecycle";
 
 export default function ErrorCode9(props) {
   return (
@@ -9,5 +9,5 @@ export default function ErrorCode9(props) {
       appOrParcelName={props.getErrorCodeArg(0, "unknown name")}
       lifecycleName="bootstrap"
     />
-  )
+  );
 }

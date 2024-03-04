@@ -19,8 +19,8 @@ When mounting a parcel the second argument is props, a JavaScript object of prop
 const parcelProps = {
   customerId: 7,
   numberOfTasks: 42,
-  domElement: document.createElement('div')
-}
+  domElement: document.createElement("div"),
+};
 ```
 
 ### mountParcel
@@ -36,7 +36,10 @@ The first argument may be either an object or a function that returns a promise 
 const parcel1 = applicationProps.mountParcel(parcelConfig, parcelProps);
 
 // Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
-const parcel2 = applicationProps.mountParcel(() => import('./some-parcel'), parcelProps);
+const parcel2 = applicationProps.mountParcel(
+  () => import("./some-parcel"),
+  parcelProps,
+);
 ```
 
 ### mountRootParcel

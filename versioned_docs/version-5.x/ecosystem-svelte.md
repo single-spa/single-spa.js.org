@@ -11,13 +11,13 @@ single-spa-svelte is a helper library that helps implement [single-spa registere
 First, in the [single-spa application](https://github.com/single-spa/single-spa/blob/master/docs/applications.md#registered-applications), run `npm install --save single-spa-svelte`. Then, create an entry file with the following.
 
 ```js
-import singleSpaSvelte from 'single-spa-svelte';
-import myRootSvelteComponent from 'my-root-svelte-component.js';
+import singleSpaSvelte from "single-spa-svelte";
+import myRootSvelteComponent from "my-root-svelte-component.js";
 
 const svelteLifecycles = singleSpaSvelte({
   component: myRootSvelteComponent,
-  domElementGetter: () => document.getElementById('svelte-app'),
-  props: { someData: 'data' }
+  domElementGetter: () => document.getElementById("svelte-app"),
+  props: { someData: "data" },
 });
 
 export const bootstrap = svelteLifecycles.bootstrap;

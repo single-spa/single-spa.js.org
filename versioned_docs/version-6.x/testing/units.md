@@ -11,6 +11,7 @@ As microfrontends gain widespread adoption, testing tools will catch up and the 
 :::
 
 Unit testing a single-spa [application](/docs/module-types#applications), [parcel](/docs/module-types#parcels), or [utility](/docs/module-types/#utilities) is very similar to unit testing in the framework you are using, with two notable exceptions:
+
 - Importing microfrontends
 - `System.import`
 
@@ -41,32 +42,38 @@ If each project mocks every other microfrontend it is possible that the mocks wi
 ## Testing examples
 
 ### Jest
+
 In the above examples I showed how `People` imports a component from `styleguide`. In order to unit test the component in people with Jest you will need to [configure](https://jestjs.io/docs/configuration) jest and mock the `styleguide` MFE. In jest configuration is done via multiple areas.
+
 1. [Create a jest config file](#jest-config)
 1. [Setup a mocks directory at the root](#mocks-directory)
 1. [Add a setupFile](#setup-file)
 
 #### Jest config
+
 Jest is configured with a configuration file. Below is an example configuration using some of the options. See [more options on Jest's official documentation site](https://jestjs.io/docs/configuration).
-````js
+
+```js
 module.exports = {
-  collectCoverageFrom: ['src/**/*.js'],
-  modulePathIgnorePatterns: ['/cache', '/dist'],
+  collectCoverageFrom: ["src/**/*.js"],
+  modulePathIgnorePatterns: ["/cache", "/dist"],
   transform: {
-    '^.+\\.(j|t)sx?$': 'babel-jest',
+    "^.+\\.(j|t)sx?$": "babel-jest",
   },
-  setupFilesAfterEnv: ['./jest.setup.js'],
+  setupFilesAfterEnv: ["./jest.setup.js"],
   moduleNameMapper: {
     // Note this is only needed if you don't match the module name directly
-    // an alternative would be to place the mock in 
+    // an alternative would be to place the mock in
     // <rootDir>/__mocks__/@react-mf/styleguide.js and it would be autodetected
-    '@react-mf/styleguide': '<rootDir>/__mocks__/styleguide.js',
+    "@react-mf/styleguide": "<rootDir>/__mocks__/styleguide.js",
   },
-}
-````
+};
+```
 
 #### mocks directory
+
 Jest will detect folders named `__mocks__` and if the naming convention is exact or the modules have been mapped using `moduleNameMapper` then Jest will use those mocks in place of an import. This structure is essential for other microfrontends where you don't have the code locally. [See more information on jest's official documentation](https://jestjs.io/docs/manual-mocks)
+
 ```
 .
 ├── __mocks__
@@ -81,29 +88,30 @@ Jest will detect folders named `__mocks__` and if the naming convention is exact
 ```
 
 #### setup file
+
 Jest uses a setup file to create globals mocks that can be utilized by every test or otherwise configure the test environment. If you were mocking `localStorage` or `SystemJS` this is a good place to configure those mocks. [See more use-cases for a set-up file on Jest's offical documentation](https://jestjs.io/docs/configuration#setupfilesafterenv-array)
+
 ```js
 // jest.setup.js
 // import Mocks for SystemJS mock below
-import peopleApplication from '@react-mf/people'
+import peopleApplication from "@react-mf/people";
 // Mock SystemJS
 global.System = {
-  import: jest.fn(mockImport)
-}
+  import: jest.fn(mockImport),
+};
 
-function mockImport (importName) {
+function mockImport(importName) {
   // What you do in mock import will depend a lot on how you use SystemJS in the project and components you wish to test
 
   /* If I had already created a mock for `@react-mf/people` and I wanted to test this component:
-  *  https://github.com/react-microfrontends/planets/blob/main/src/planets-page/selected-planet/selected-planet.component.js#L5
-  * I would want `System.import('@react-mf/people')` to resovle to my mock one way to accomplish this would be the following
-  */
-  if (importName === '@react-mf/people') {
-    return Promise.resolve(peopleApplication)
+   *  https://github.com/react-microfrontends/planets/blob/main/src/planets-page/selected-planet/selected-planet.component.js#L5
+   * I would want `System.import('@react-mf/people')` to resovle to my mock one way to accomplish this would be the following
+   */
+  if (importName === "@react-mf/people") {
+    return Promise.resolve(peopleApplication);
   } else {
-    console.warn('No mock module found')
-    return Promise.resolve({})
+    console.warn("No mock module found");
+    return Promise.resolve({});
   }
 }
-
 ```

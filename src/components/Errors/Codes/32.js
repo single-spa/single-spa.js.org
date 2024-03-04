@@ -1,12 +1,13 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode32(props) {
   return (
     <>
       <h1>#32: Cannot update a parcel that is not mounted</h1>
       <p>
-        You may not update parcel {props.getErrorCodeArg(0)} because it is not currently in MOUNTED status.
+        You may not update parcel {props.getErrorCodeArg(0)} because it is not
+        currently in MOUNTED status.
       </p>
       <h2>To fix:</h2>
       <div>
@@ -27,5 +28,5 @@ export default function ErrorCode32(props) {
         See <a href="/docs/parcels-api#getstatus">documentation</a>.
       </p>
     </>
-  )
+  );
 }

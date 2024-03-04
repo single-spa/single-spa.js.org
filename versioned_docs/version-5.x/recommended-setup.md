@@ -7,6 +7,7 @@ sidebar_label: Overview
 The single-spa npm package is not opinionated about your build tools, CI process, or local development workflow. However, to implement single-spa you will have to figure all of those things out (and more). To help you decide how to approach these problems, the single-spa core team has put together a "recommended setup" that gives an opinionated approach to solving the practical problems of microfrontends.
 
 ## Overview
+
 We recommend a setup that uses in-browser ES modules + import maps (or SystemJS to polyfill these if you need better browser support). This setup has several advantages:
 
 1. Common libraries are easy to manage, and are only downloaded once. If you're using SystemJS, you can also preload them for a speed boost as well.
@@ -17,8 +18,8 @@ We recommend a setup that uses in-browser ES modules + import maps (or SystemJS 
 
 ## Alternatives
 
-* [qiankun](https://github.com/umijs/qiankun) is a popular alternative to this recommended setup.
-* [Isomorphic Layout Composer](https://github.com/namecheap/ilc) - complete solution for Micro Frontends composition into SPA with SSR support
+- [qiankun](https://github.com/umijs/qiankun) is a popular alternative to this recommended setup.
+- [Isomorphic Layout Composer](https://github.com/namecheap/ilc) - complete solution for Micro Frontends composition into SPA with SSR support
 
 ## In-browser versus build-time modules
 
@@ -46,10 +47,10 @@ An import specifier is the string indicating which module to load. Examples:
 
 ```js
 // ./thing.js is the import specifier
-import thing from './thing.js';
+import thing from "./thing.js";
 
 // react is the import specifier
-import React from 'react';
+import React from "react";
 ```
 
 Specifiers that are not a URL are called "bare specifiers," such as `import 'react'`. Being able to alias bare specifiers to a URL
@@ -116,6 +117,7 @@ A tool called [import-map-overrides](https://github.com/joeldenning/import-map-o
 Alternatively, you can use [standalone-single-spa-webpack-plugin](https://github.com/single-spa/standalone-single-spa-webpack-plugin), which allows you to develop each application in standalone mode. Another alternative is to always run the single-spa root config locally, in addition to whichever microfrontends you're developing.
 
 The single-spa core team recommends development on deployed environments via import-map-overrides, as we find that to be the best developer experience, since it allows you to only start one project at a time while also ensuring there's no difference between the local environment and fully-integrated deployed environment. However, there are cases when running the root config locally or using standalone-single-spa-webpack-plugin can be useful.
+
 ## Build tools (Webpack / Rollup)
 
 Tutorial video: [Youtube](https://www.youtube.com/watch?v=I6COIg-2lyM&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=9) / [Bilibili](https://www.bilibili.com/video/av84104639/)
@@ -149,39 +151,42 @@ A "utility module" is an in-browser JavaScript module that is not a single-spa a
 Common examples of utility modules include styleguides, authentication helpers, and API helpers. These modules do not need to be registered with single-spa, but are important for maintaining consistency between several single-spa applications and parcels.
 
 Example code in a utility module:
+
 ```js
 // In a repo called "api", you may export functions from the repo's entry file.
 // These functions will be available to single-spa application, parcels, and other in-browser modules
 // via an import statement.
 
 export function authenticatedFetch(url, init) {
-  return fetch(url, init).then(r => {
+  return fetch(url, init).then((r) => {
     // Maybe do some auth stuff here
-    return r.json()
-  })
+    return r.json();
+  });
 }
 ```
 
 Example code in a single-spa application that is using the utility module:
+
 ```js
 // Inside of a single-spa application, you can import the functions from the 'api' repo
-import React from 'react'
-import { authenticatedFetch } from '@org-name/api';
+import React from "react";
+import { authenticatedFetch } from "@org-name/api";
 
 export function Foo(props) {
   React.useEffect(() => {
-    const abortController = new AbortController()
-    authenticatedFetch(`/api/clients/${props.clientId}`, {signal: abortController.signal})
-    .then(client => {
-      console.log(client)
-    })
+    const abortController = new AbortController();
+    authenticatedFetch(`/api/clients/${props.clientId}`, {
+      signal: abortController.signal,
+    }).then((client) => {
+      console.log(client);
+    });
 
     return () => {
-      abortController.abort()
-    }
-  }, [props.clientId])
+      abortController.abort();
+    };
+  }, [props.clientId]);
 
-  return null
+  return null;
 }
 ```
 
@@ -201,25 +206,25 @@ To make cross microfrontend imports possible, configure your bundler so that the
 // Often this is within the main.js or main.single-spa.js file.
 
 export function userHasAccess(permission) {
-  return loggedInUser.permissions.some(p => p === permission);
+  return loggedInUser.permissions.some((p) => p === permission);
 }
 ```
 
 ```js
-import { userHasAccess } from '@org-name/auth'
+import { userHasAccess } from "@org-name/auth";
 
 // Inside of a single-spa application, import and use a util function from a different microfrontend
-const showLinkToInvoiceFeature = userHasAccess('invoicing');
+const showLinkToInvoiceFeature = userHasAccess("invoicing");
 ```
 
 ```js
 // In your webpack config, mark @org-name auth as a webpack external
 module.exports = {
-  externals: ['@org-name/auth'],
+  externals: ["@org-name/auth"],
 
   // Alternatively, mark *all* org-name packages as externals
   // externals: [/^@org-name\/.+/]
-}
+};
 ```
 
 ## Shared dependencies
@@ -237,9 +242,9 @@ You may use either one, or both. We currently recommend only using import maps, 
 
 ### Comparison of approaches
 
-| Approach          | Share dependencies | Bundler requirements |  Managing dependencies |
-| ----------------- | ------------------ | -------------------- | ---------------------- |
-| Import Maps       | Fully supported    | Any bundler          | [shared dependecies repo](https://github.com/polyglot-microfrontends/shared-dependencies/blob/master/importmap.json) |
+| Approach          | Share dependencies | Bundler requirements | Managing dependencies                                                                                                                                                |
+| ----------------- | ------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Import Maps       | Fully supported    | Any bundler          | [shared dependecies repo](https://github.com/polyglot-microfrontends/shared-dependencies/blob/master/importmap.json)                                                 |
 | Module Federation | Fully supported    | Only webpack@>=5     | [multiple webpack configs](https://github.com/ScriptedAlchemy/mfe-webpack-demo/blob/f48ff0bd0b7d62b722ea000e5ded73f0d076a0b7/packages/01-host/webpack.config.js#L47) |
 
 ### Sharing with Import Maps
@@ -303,7 +308,7 @@ Single-spa has [different categories](/docs/microfrontends-concept#types-of-micr
 
 ## Inter-app communication
 
-*A good architecture is one in which microfrontends are decoupled and do not need to frequently communicate. Following the guidelines above about applications versus parcels helps you keep your microfrontends decoupled. Route-based single-spa applications inherently require less inter-app communication.*
+_A good architecture is one in which microfrontends are decoupled and do not need to frequently communicate. Following the guidelines above about applications versus parcels helps you keep your microfrontends decoupled. Route-based single-spa applications inherently require less inter-app communication._
 
 There are three things that microfrontends might need to share / communicate:
 
@@ -324,13 +329,13 @@ API data often does not need to be shared between microfrontends, since each sin
 ```js
 // Inside of your api utility module, you can lazily fetch data either when another microfrontend calls your exported
 // functions, or eagerly fetch it when the route changes.
-let loggedInUserPromise = fetch('...').then(r => {
+let loggedInUserPromise = fetch("...").then((r) => {
   if (r.ok) {
-    return r.json()
+    return r.json();
   } else {
-    throw Error(`Error getting user, server responded with HTTP ${r.status}`)
+    throw Error(`Error getting user, server responded with HTTP ${r.status}`);
   }
-})
+});
 
 export function getLoggedInUser() {
   return loggedInUserPromise;
@@ -338,17 +343,17 @@ export function getLoggedInUser() {
 ```
 
 ```js
-import { getLoggedInUser } from '@org-name/api';
+import { getLoggedInUser } from "@org-name/api";
 
 // Inside of app1, you can import something from an "api" utility module
-getLoggedInUser().then(user => {
-  console.log('user', user);
+getLoggedInUser().then((user) => {
+  console.log("user", user);
 });
 ```
 
 ### UI State
 
-*If two microfrontends are frequently passing state between each other, consider merging them. The disadvantages of microfrontends are enhanced when your microfrontends are not isolated modules.*
+_If two microfrontends are frequently passing state between each other, consider merging them. The disadvantages of microfrontends are enhanced when your microfrontends are not isolated modules._
 
 UI State, such as "is the modal open," "what's the current value of that input," etc. largely does not need to be shared between microfrontends. If you find yourself needing constant sharing of UI state, your microfrontends are likely more coupled than they should be. Consider merging them into a single microfrontend.
 

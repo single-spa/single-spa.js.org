@@ -7,24 +7,25 @@ sidebar_label: Cycle
 single-spa-cycle is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [Cycle.js](https://cycle.js.org/). Check out the [single-spa-cycle github](https://github.com/pcmnac/single-spa-cycle).
 
 ## Installation
+
 ```sh
 npm install --save @pcmnac/single-spa-cycle
 ```
 
 ## Quickstart
+
 In your project's entry file, add the following:
 
 ```js
-
-import {run} from '@cycle/run'
-import {makeDOMDriver} from '@cycle/dom'
-import singleSpaCycle from '@pcmnac/single-spa-cycle';
-import rootComponent from './root.component.js';
+import { run } from "@cycle/run";
+import { makeDOMDriver } from "@cycle/dom";
+import singleSpaCycle from "@pcmnac/single-spa-cycle";
+import rootComponent from "./root.component.js";
 
 const cycleLifecycles = singleSpaCycle({
   run,
   rootComponent,
-  drivers: { DOM: makeDOMDriver(document.getElementById('main-content'))}, // or { DOM: makeDOMDriver('#main-content')}
+  drivers: { DOM: makeDOMDriver(document.getElementById("main-content")) }, // or { DOM: makeDOMDriver('#main-content')}
 });
 
 export const bootstrap = cycleLifecycles.bootstrap;
