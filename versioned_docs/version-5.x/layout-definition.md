@@ -50,7 +50,7 @@ const routes = constructRoutes(`
 
 ```js
 // With a properly configured bundler, you can import the html as a string from another file
-import layout from './microfrontends-layout.html';
+import layout from "./microfrontends-layout.html";
 
 const routes = constructRoutes(layout);
 ```
@@ -61,11 +61,13 @@ You may define your layout as JSON, including routes, applications, and arbitrar
 
 ```js
 const routes = constructRoutes({
-  "routes": [
-    { "type": "route", "path": "settings", "routes": [
-      { "type": "application", "name": "settings" }
-    ]}
-  ]
+  routes: [
+    {
+      type: "route",
+      path: "settings",
+      routes: [{ type: "application", name: "settings" }],
+    },
+  ],
 });
 ```
 
@@ -98,7 +100,11 @@ Note that `<template>` elements are not fully supported in IE11. However, you do
 The `single-spa-router` element is required as the top level container of your layout. All attributes are optional.
 
 ```html
-<single-spa-router mode="hash|history" base="/" disableWarnings></single-spa-router>
+<single-spa-router
+  mode="hash|history"
+  base="/"
+  disableWarnings
+></single-spa-router>
 ```
 
 ```json
@@ -136,9 +142,7 @@ The `route` element is used to control which applications and dom elements are s
 {
   "type": "route",
   "path": "clients",
-  "routes": [
-    { "type": "application", "name": "clients" }
-  ],
+  "routes": [{ "type": "application", "name": "clients" }],
   "default": false
 }
 ```
@@ -339,7 +343,6 @@ Comment Nodes are defined as objects whose `type` is `#comment`:
 
 Note that comments may not have `routes` (children).
 
-
 ## Props
 
 [Single-spa custom props](/docs/building-applications/#lifecycle-props) may be defined on both `route` and `application` elements. Any route props will be merged together with the application props to create the final props that are passed to [the single-spa lifecycle functions](/docs/building-applications/#registered-application-lifecycle).
@@ -349,14 +352,14 @@ Note that comments may not have `routes` (children).
 In a JSON layout definition, you can define props with the `props` property on your applications and routes:
 
 ```js
-import { constructRoutes } from 'single-spa-layout';
+import { constructRoutes } from "single-spa-layout";
 
 constructRoutes({
   routes: [
     { type: "application", name: "nav", props: { title: "Title" } },
     { type: "route", path: "settings", props: { otherProp: "Some value" } },
-  ]
-})
+  ],
+});
 ```
 
 ### HTML
@@ -368,16 +371,19 @@ Defining props on JSON objects is straightforward, as they are an object that ca
 ```
 
 ```js
-import { constructRoutes } from 'single-spa-layout';
+import { constructRoutes } from "single-spa-layout";
 
 const data = {
   props: {
     authToken: "fds789dsfyuiosodusfd",
-    loggedInUser: fetch('/api/logged-in-user').then(r => r.json())
-  }
-}
+    loggedInUser: fetch("/api/logged-in-user").then((r) => r.json()),
+  },
+};
 
-const routes = constructRoutes(document.querySelector('#single-spa-template'), data)
+const routes = constructRoutes(
+  document.querySelector("#single-spa-template"),
+  data,
+);
 ```
 
 The full API documentation for the `constructRoutes` API explains the `data` object in detail.

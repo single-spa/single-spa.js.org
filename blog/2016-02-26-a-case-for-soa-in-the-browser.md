@@ -47,10 +47,10 @@ You can load a sofe service either with static or asynchronous imports.
 
 ```js
 // Static imports
-import auth from 'auth-service!sofe';
+import auth from "auth-service!sofe";
 const user = auth.getLoggedInUser();
 // Asynchronous imports
-System.import('auth-service!sofe').then(auth => auth.getLoggedInUser());
+System.import("auth-service!sofe").then((auth) => auth.getLoggedInUser());
 ```
 
 The real power behind sofe is that services are resolved at run-time, making them unversioned. If <strong>auth-service</strong> is redeployed, it is immediately made available to all upstream dependencies. The above scenario becomes much easier to resolve because there is only one version of each shared library as services. This is powerful because it allows you to deploy once, update everywhere. Also because the code is loaded at run-time, we can also enable developer tools to override what service is loaded into your application. Or in other words, you can test code on production without actually deploying to production.

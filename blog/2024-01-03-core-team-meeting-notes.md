@@ -34,4 +34,3 @@ Attendees: Joel Denning Jake Hayes, Milan Kovacic
 - Feature voting
 - Automated integration tests for popular frameworks
 - Update create-single-spa dependencies 🚧
-

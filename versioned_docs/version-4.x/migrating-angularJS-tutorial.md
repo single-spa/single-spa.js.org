@@ -79,7 +79,7 @@ Start by stubbing out the registration function by adding the following in `publ
 
 ```js title="public/single-spa.config.js"
 window.singleSpa.registerApplication(
-  'drum-machine',
+  "drum-machine",
   loadingFunction,
   function activityFunction() {
     return true;
@@ -159,7 +159,7 @@ Currently, our _index.html_ contains two hurdles we will need to overcome to all
 In _index.html_ remove `ng-app="AngularDrumMachine`.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <!-- Remove ng-app -->
 <html lang="en-us">
   <!-- ... -->
@@ -274,13 +274,13 @@ Then, inside of `display-machine.directive.js` we will register our new directiv
 Add the following code to _public/app/directives/display-machine.directive.js_`\*:
 
 ```js
-'use strict';
+"use strict";
 
-angular.module('AngularDrumMachine').directive('displayMachine', [
-  function() {
+angular.module("AngularDrumMachine").directive("displayMachine", [
+  function () {
     return {
-      restrict: 'E',
-      templateUrl: 'assets/templates/display-machine.template.html',
+      restrict: "E",
+      templateUrl: "assets/templates/display-machine.template.html",
     };
   },
 ]);

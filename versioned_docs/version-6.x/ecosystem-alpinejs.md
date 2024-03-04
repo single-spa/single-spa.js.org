@@ -54,7 +54,7 @@ how to do that.
 #### _1 - Template Only_
 
 ```js
-import singleSpaAlpinejs from 'single-spa-alpinejs';
+import singleSpaAlpinejs from "single-spa-alpinejs";
 
 const alpinejslifecycles = singleSpaAlpinejs({
   template: `
@@ -98,7 +98,7 @@ const alpinejsApp = window.singleSpaAlpinejs({
 });
 
 singleSpa.registerApplication({
-  name: 'name',
+  name: "name",
   app: alpinejsApp,
   activeWhen: () => true,
 });
@@ -107,7 +107,7 @@ singleSpa.registerApplication({
 #### _2 - Template with externally defined `x-data`_
 
 ```js
-import singleSpaAlpinejs from 'single-spa-alpinejs';
+import singleSpaAlpinejs from "single-spa-alpinejs";
 
 const alpinejslifecycles = singleSpaAlpinejs({
   template: `
@@ -131,7 +131,7 @@ export const unmount = alpinejslifecycles.unmount;
 #### _3 - Template with externally defined `x-data` with `x-init`_
 
 ```js
-import singleSpaAlpinejs from 'single-spa-alpinejs';
+import singleSpaAlpinejs from "single-spa-alpinejs";
 
 const appTemplate = `
     <div class="w-full h-full text-gray-800">
@@ -172,7 +172,7 @@ const appDataFn = ({ title, name }) => ({
 });
 
 const appXInitFn = (id) => {
-  return fetch('https://jsonplaceholder.typicode.com/users')
+  return fetch("https://jsonplaceholder.typicode.com/users")
     .then((response) => response.json())
     .then((data) => (document.querySelector(`#${id}`).__x.$data.users = data));
 };
@@ -230,10 +230,11 @@ singleSpa.registerApplication({
 
 ```
 
-- The helper does the following 
-  - Adds the template to the dom wrapped in `parent dom element` with and id that has a prefix of `alpine`. In this case it will be `id='alpine-myapp'` 
-  - Attaches a resolved `xData` as a string `x-data="{ "name": "myapp" ,"open": false }"` to the `parent dom element`. 
-  - It will make the user defined `appXInitFn` available globally as an attribute of `window.singleSpaAlpineXInit` and will be accessible via variable `window.singleSpaAlpineXInit.myapp` 
+- The helper does the following
+
+  - Adds the template to the dom wrapped in `parent dom element` with and id that has a prefix of `alpine`. In this case it will be `id='alpine-myapp'`
+  - Attaches a resolved `xData` as a string `x-data="{ "name": "myapp" ,"open": false }"` to the `parent dom element`.
+  - It will make the user defined `appXInitFn` available globally as an attribute of `window.singleSpaAlpineXInit` and will be accessible via variable `window.singleSpaAlpineXInit.myapp`
   - Attaches a resolved `xInit` as a string that calls the globally defined variable `x-init="singleSpaAlpineXInit.myapp('alpine-myapp')"` to the `parent dom element`.
   - **Note** that this also passes `id` of the `parent dom element` which can then be used to access the alpine data elements to update the state as required.
 
@@ -242,11 +243,11 @@ singleSpa.registerApplication({
   - You may have special characters in the application name for example `@my/app`. See the example below
 
   ```js
-   	singleSpa.registerApplication({
-    	name: '@my/app',
-     	app: alpinejsApp,
-     	activeWhen: () => true,
-   		});
+  singleSpa.registerApplication({
+    name: "@my/app",
+    app: alpinejsApp,
+    activeWhen: () => true,
+  });
   ```
 
   - The single spa helper converts these to valid `global` function names by `replacing` `all the special characters` with underscores (`_`). This does not require any special handling from the user as the helper takes care of this internally

@@ -30,7 +30,7 @@ To avoid having to eject, we are going to hijack the current entry point, _src/i
 Start by removing everything except `registerServiceWorker`.
 
 ```js title="src/index.js"
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from "./registerServiceWorker";
 
 registerServiceWorker();
 ```
@@ -46,8 +46,8 @@ Finally, the [start()](api.md#start) api **must** be called by your `single spa 
 In _src/index.js_, start by importing the `registerApplication` and `start` functions:
 
 ```js {2} title="src/index.js"
-import registerServiceWorker from './registerServiceWorker';
-import { registerApplication, start } from 'single-spa';
+import registerServiceWorker from "./registerServiceWorker";
+import { registerApplication, start } from "single-spa";
 
 registerServiceWorker();
 ```
@@ -55,11 +55,11 @@ registerServiceWorker();
 With our functions imported, we can now register an application with single-spa and call `start()`:
 
 ```js {4-8,10} title="src/index.js"
-import registerServiceWorker from './registerServiceWorker';
-import { registerApplication, start } from 'single-spa';
+import registerServiceWorker from "./registerServiceWorker";
+import { registerApplication, start } from "single-spa";
 
 registerApplication(
-  'root', // Name of this single-spa application
+  "root", // Name of this single-spa application
   loadingFunction, // Our loading function
   activityFunction, // Our activity function
 );
@@ -90,10 +90,10 @@ Finally, we will use the `domElementGetter()` function to return a DOMElement wh
 Set up the registered application lifecycle functions by adding the following to _src/root.app.js_:
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import App from './containers/App.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import singleSpaReact from "single-spa-react";
+import App from "./containers/App.js";
 
 const reactLifecycles = singleSpaReact({
   React,
@@ -110,7 +110,7 @@ export const unmount = [reactLifecycles.unmount];
 
 function domElementGetter() {
   // This is where single-spa will mount our application
-  return document.getElementById('root');
+  return document.getElementById("root");
 }
 ```
 
@@ -123,12 +123,12 @@ It is important to note that **you do not have to use a loading function** and i
 :::
 
 ```js {8} title="src/index.js"
-import registerServiceWorker from './registerServiceWorker';
-import { registerApplication, start } from 'single-spa';
+import registerServiceWorker from "./registerServiceWorker";
+import { registerApplication, start } from "single-spa";
 
 registerApplication(
-  'root',
-  () => import('./root.app.js'),
+  "root",
+  () => import("./root.app.js"),
   () => true,
 );
 

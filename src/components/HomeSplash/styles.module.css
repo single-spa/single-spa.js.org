@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-html[data-theme='dark'] .heroBanner {
+html[data-theme="dark"] .heroBanner {
   background-color: var(--ifm-color-primary-darkest);
 }
 
@@ -23,7 +23,7 @@ html[data-theme='dark'] .heroBanner {
   color: var(--ifm-color-primary);
 }
 
-html[data-theme='dark'] .heroProjectTitle {
+html[data-theme="dark"] .heroProjectTitle {
   color: var(--ifm-color-primary-lightest);
 }
 

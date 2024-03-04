@@ -61,10 +61,10 @@ In addition to the built-in props that are provided by single-spa, you may optio
 
 ```js title="root.application.js"
 singleSpa.registerApplication(
-  'app1',
+  "app1",
   () => {},
   () => {},
-  { authToken: 'd83jD63UdZ6RS6f70D0' },
+  { authToken: "d83jD63UdZ6RS6f70D0" },
 );
 ```
 
@@ -107,7 +107,7 @@ This lifecycle function will be called once, right before the registered applica
 export function bootstrap(props) {
   return Promise.resolve().then(() => {
     // One-time initialization code goes here
-    console.log('bootstrapped!');
+    console.log("bootstrapped!");
   });
 }
 ```
@@ -120,7 +120,7 @@ This lifecycle function will be called whenever the registered application is no
 export function mount(props) {
   return Promise.resolve().then(() => {
     // Do framework UI rendering here
-    console.log('mounted!');
+    console.log("mounted!");
   });
 }
 ```
@@ -133,7 +133,7 @@ This lifecycle function will be called whenever the registered application is mo
 export function unmount(props) {
   return Promise.resolve().then(() => {
     // Do framework UI unrendering here
-    console.log('unmounted!');
+    console.log("unmounted!");
   });
 }
 ```
@@ -150,7 +150,7 @@ The motivation for `unload` was to implement the hot-loading of entire registere
 export function unload(props) {
   return Promise.resolve().then(() => {
     // Hot-reloading implementation goes here
-    console.log('unloaded!');
+    console.log("unloaded!");
   });
 }
 ```

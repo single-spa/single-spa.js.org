@@ -1,5 +1,5 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode29(props) {
   return (
@@ -24,8 +24,12 @@ export default function ErrorCode29(props) {
       </div>
       <h2>Explanation:</h2>
       <p>
-        See <a href="/docs/api#removeerrorhandler">removeErrorHandler documentation</a>.
+        See{" "}
+        <a href="/docs/api#removeerrorhandler">
+          removeErrorHandler documentation
+        </a>
+        .
       </p>
     </>
-  )
+  );
 }

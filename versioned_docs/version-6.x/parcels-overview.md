@@ -42,16 +42,16 @@ const parcelConfig = {
 };
 
 // How to mount the parcel
-const domElement = document.getElementById('place-in-dom-to-mount-parcel');
-const parcelProps = { domElement, customProp1: 'foo' };
+const domElement = document.getElementById("place-in-dom-to-mount-parcel");
+const parcelProps = { domElement, customProp1: "foo" };
 const parcel = singleSpa.mountRootParcel(parcelConfig, parcelProps);
 
 // The parcel is being mounted. We can wait for it to finish with the mountPromise.
 parcel.mountPromise
   .then(() => {
-    console.log('finished mounting parcel!');
+    console.log("finished mounting parcel!");
     // If we want to re-render the parcel, we can call the update lifecycle method, which returns a promise
-    parcelProps.customProp1 = 'bar';
+    parcelProps.customProp1 = "bar";
     return parcel.update(parcelProps);
   })
   .then(() => {
@@ -68,10 +68,10 @@ When implementing a parcel, it's strongly recommended that you use the [lifecycl
 An example of a parcel written in React would look like this:
 
 ```js title="myParcel.js"
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import MyParcelComponent from './my-parcel-component.component.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import singleSpaReact from "single-spa-react";
+import MyParcelComponent from "./my-parcel-component.component.js";
 export const MyParcel = singleSpaReact({
   React,
   ReactDOM,
@@ -115,7 +115,7 @@ mounted for the first time.
 function bootstrap(props) {
   return Promise.resolve().then(() => {
     // This is where you do one-time initialization
-    console.log('bootstrapped!');
+    console.log("bootstrapped!");
   });
 }
 ```
@@ -129,7 +129,7 @@ called, this function should create DOM elements, DOM event listeners, etc. to r
 function mount(props) {
   return Promise.resolve().then(() => {
     // This is where you tell a framework (e.g., React) to render some ui to the dom
-    console.log('mounted!');
+    console.log("mounted!");
   });
 }
 ```
@@ -148,7 +148,7 @@ observable subscriptions, etc. that were created at any point when the parcel wa
 function unmount(props) {
   return Promise.resolve().then(() => {
     // This is where you tell a framework (e.g., React) to unrender some ui from the dom
-    console.log('unmounted!');
+    console.log("unmounted!");
   });
 }
 ```

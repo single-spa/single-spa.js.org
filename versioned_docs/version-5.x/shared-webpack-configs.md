@@ -24,15 +24,15 @@ yarn add --dev webpack-config-single-spa webpack-merge
 ### Usage
 
 ```js
-const singleSpaDefaults = require('webpack-config-single-spa');
-const { merge } = require('webpack-merge'); // webpack-merge@5.0.3+
+const singleSpaDefaults = require("webpack-config-single-spa");
+const { merge } = require("webpack-merge"); // webpack-merge@5.0.3+
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
-    orgName: 'name-of-company',
+    orgName: "name-of-company",
     // The name of the current project. This usually matches the git repo's name
-    projectName: 'name-of-project',
+    projectName: "name-of-project",
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
@@ -127,15 +127,15 @@ yarn add --dev webpack-config-single-spa-ts webpack-merge
 ### Usage
 
 ```js
-const webpackMerge = require('webpack-merge');
-const singleSpaDefaults = require('webpack-config-single-spa-ts');
+const webpackMerge = require("webpack-merge");
+const singleSpaDefaults = require("webpack-config-single-spa-ts");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
-    orgName: 'name-of-company',
+    orgName: "name-of-company",
     // The name of the current project. This usually matches the git repo's name
-    projectName: 'name-of-project',
+    projectName: "name-of-project",
     // See https://webpack.js.org/guides/environment-variables/#root for explanation of webpackConfigEnv
     webpackConfigEnv,
     // The CLI commands in the package.json script that triggered this build
@@ -149,7 +149,7 @@ module.exports = (webpackConfigEnv, argv) => {
 ```
 
 ```js
-const singleSpaTs = require('webpack-config-single-spa-ts');
+const singleSpaTs = require("webpack-config-single-spa-ts");
 
 // Alternatively, you may modify a webpack config directly
 const myOtherWebpackConfig = {
@@ -176,16 +176,16 @@ yarn add --dev webpack-config-single-spa-react-ts webpack-merge
 ### Usage
 
 ```js
-const webpackMerge = require('webpack-merge');
-const singleSpaDefaults = require('webpack-config-single-spa-react-ts');
+const webpackMerge = require("webpack-merge");
+const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
     // The name of the organization this application is written for
-    orgName: 'name-of-company',
+    orgName: "name-of-company",
 
     // The name of the current project. This usually matches the git repo's name
-    projectName: 'name-of-project',
+    projectName: "name-of-project",
 
     // optional
     // This changes whether package names that start with @your-org-name are
@@ -233,23 +233,23 @@ Available in webpack-config-single-spa@5.3.0+
 :::
 
 ```js
-const singleSpaDefaults = require('webpack-config-single-spa');
-const { mergeWithRules } = require('webpack-merge');
+const singleSpaDefaults = require("webpack-config-single-spa");
+const { mergeWithRules } = require("webpack-merge");
 
 const merge = mergeWithRules({
   module: {
     rules: {
       // replace the entire `rule` if the `test` property matches
-      test: 'match',
-      use: 'replace',
+      test: "match",
+      use: "replace",
     },
   },
 });
 
 module.exports = (env, argv) => {
   const defaultConfig = singleSpaDefaults({
-    orgName: 'abcde',
-    projectName: 'fghij',
+    orgName: "abcde",
+    projectName: "fghij",
     webpackConfigEnv: env,
     argv,
   });
@@ -259,7 +259,7 @@ module.exports = (env, argv) => {
       rules: [
         {
           test: /\.svg$/i,
-          use: [{ loader: '@svgr/webpack' }],
+          use: [{ loader: "@svgr/webpack" }],
         },
       ],
     },
@@ -279,25 +279,25 @@ When referencing a loader that is installed as a dependency of webpack-config-si
 #### Example: replace HtmlWebpackPlugin instance
 
 ```js
-const { mergeWithCustomize, unique } = require('webpack-merge');
-const singleSpaDefaults = require('webpack-config-single-spa');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { mergeWithCustomize, unique } = require("webpack-merge");
+const singleSpaDefaults = require("webpack-config-single-spa");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const merge = mergeWithCustomize({
   customizeArray: unique(
-    'plugins',
-    ['HtmlWebpackPlugin'],
-    plugin => plugin.constructor && plugin.constructor.name,
+    "plugins",
+    ["HtmlWebpackPlugin"],
+    (plugin) => plugin.constructor && plugin.constructor.name,
   ),
 });
 
 module.exports = (env, argv) => {
-  const orgName = 'example';
-  const myEnv = process.env.NODE_ENV || 'development';
+  const orgName = "example";
+  const myEnv = process.env.NODE_ENV || "development";
 
   const defaultConfig = singleSpaDefaults({
     orgName,
-    projectName: 'custom-root-config',
+    projectName: "custom-root-config",
     webpackConfigEnv: env,
     argv,
   });
@@ -306,7 +306,7 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,
-        template: 'src/custom.ejs',
+        template: "src/custom.ejs",
         templateParameters: {
           isLocal: env?.isLocal,
           // additional templateParameters can now be supplied
