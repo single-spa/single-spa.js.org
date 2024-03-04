@@ -15,20 +15,20 @@
   height: 100%;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --ifm-link-color: var(--ifm-color-primary-lightest);
   --ifm-link-hover-color: var(--ifm-color-primary-lighter);
   --ifm-menu-color-active: var(--ifm-color-primary-lightest);
   --ifm-contents-link-color: var(--ifm-color-primary-lightest);
 }
 
-html[data-theme='dark'] .navbar__link:hover,
-html[data-theme='dark'] .navbar__link--active {
+html[data-theme="dark"] .navbar__link:hover,
+html[data-theme="dark"] .navbar__link--active {
   color: var(--ifm-color-primary-lightest) !important;
 }
 
-html[data-theme='dark'] .contents .contents__link:hover,
-html[data-theme='dark'] .contents .contents__link.contents__link--active {
+html[data-theme="dark"] .contents .contents__link:hover,
+html[data-theme="dark"] .contents .contents__link.contents__link--active {
   color: var(--ifm-link-hover-color) !important;
 }
 
@@ -120,7 +120,7 @@ blockquote p:nth-child(2n) {
   align-items: center;
 }
 
-.footer__banner--actions div[role=button] {
+.footer__banner--actions div[role="button"] {
   cursor: pointer;
   font-weight: 400;
 }
@@ -210,7 +210,7 @@ input#search_input_react::placeholder {
   font-family: monospace;
   color: var(--ifm-color-primary);
 }
-html[data-theme='dark'] .args-list > dt {
+html[data-theme="dark"] .args-list > dt {
   color: var(--ifm-color-primary-lightest);
 }
 .args-list > dd {
@@ -231,7 +231,7 @@ html[data-theme='dark'] .args-list > dt {
 }
 
 .dl-inline dt::after {
-  content: ': ';
+  content: ": ";
 }
 
 .dl-inline dd {
@@ -248,7 +248,7 @@ html[data-theme='dark'] .args-list > dt {
 }
 
 @media (min-width: 997px) {
-  main .row > [class='col'] {
+  main .row > [class="col"] {
     max-width: 75%;
   }
 }
@@ -259,8 +259,8 @@ html[data-theme='dark'] .args-list > dt {
 
 /* Adding link styles only for markdown link */
 .markdown a:not(:hover) {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .markdown a {
-    color: var(--single-spa-link-color);
+  color: var(--single-spa-link-color);
 }
