@@ -143,7 +143,6 @@ module.exports = {
         { to: "https://baseplate.cloud", label: "Deploy", position: "right" },
       ],
     },
-    prismTheme: require("prism-react-renderer/themes/vsDark"),
   },
   plugins: [],
   presets: [
