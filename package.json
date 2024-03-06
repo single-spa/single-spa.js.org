@@ -11,7 +11,7 @@
     "format:check": "prettier --check '**/*.{ts,js,tsx,jsx,scss,css,html,md}'"
   },
   "engines": {
-    "node": ">=16.14"
+    "node": ">=20"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
@@ -20,12 +20,14 @@
     "prettier": "^3.2.5"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
-    "classnames": "^2.2.6",
-    "markdown-to-jsx": "^6.11.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@docusaurus/core": "^3.1.1",
+    "@docusaurus/preset-classic": "^3.1.1",
+    "@mdx-js/react": "^3.0.1",
+    "classnames": "^2.5.1",
+    "markdown-to-jsx": "^7.4.1",
+    "prism-react-renderer": "^2.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "browserslist": {
     "production": [

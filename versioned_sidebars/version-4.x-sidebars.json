@@ -1,12 +1,12 @@
 {
-  "version-4.x/docs": [
+  "docs": [
     {
       "type": "category",
       "label": "Overview",
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/getting-started-overview"
+          "id": "getting-started-overview"
         }
       ]
     },
@@ -16,15 +16,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/starting-from-scratch"
+          "id": "starting-from-scratch"
         },
         {
           "type": "doc",
-          "id": "version-4.x/migrating-react-tutorial"
+          "id": "migrating-react-tutorial"
         },
         {
           "type": "doc",
-          "id": "version-4.x/migrating-angularJS-tutorial"
+          "id": "migrating-angularJS-tutorial"
         }
       ]
     },
@@ -34,7 +34,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/examples"
+          "id": "examples"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/configuration"
+          "id": "configuration"
         }
       ]
     },
@@ -54,15 +54,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/building-applications"
+          "id": "building-applications"
         },
         {
           "type": "doc",
-          "id": "version-4.x/separating-applications"
+          "id": "separating-applications"
         },
         {
           "type": "doc",
-          "id": "version-4.x/migrating-existing-spas"
+          "id": "migrating-existing-spas"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/parcels-overview"
+          "id": "parcels-overview"
         }
       ]
     },
@@ -82,11 +82,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/api"
+          "id": "api"
         },
         {
           "type": "doc",
-          "id": "version-4.x/parcels-api"
+          "id": "parcels-api"
         }
       ]
     },
@@ -96,59 +96,59 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem"
+          "id": "ecosystem"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-react"
+          "id": "ecosystem-react"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-vue"
+          "id": "ecosystem-vue"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-angular"
+          "id": "ecosystem-angular"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-angularjs"
+          "id": "ecosystem-angularjs"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-cycle"
+          "id": "ecosystem-cycle"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-ember"
+          "id": "ecosystem-ember"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-inferno"
+          "id": "ecosystem-inferno"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-preact"
+          "id": "ecosystem-preact"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-svelte"
+          "id": "ecosystem-svelte"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-riot"
+          "id": "ecosystem-riot"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-backbone"
+          "id": "ecosystem-backbone"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-html-web-components"
+          "id": "ecosystem-html-web-components"
         },
         {
           "type": "doc",
-          "id": "version-4.x/ecosystem-leaked-globals"
+          "id": "ecosystem-leaked-globals"
         }
       ]
     },
@@ -158,11 +158,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-4.x/contributing-overview"
+          "id": "contributing-overview"
         },
         {
           "type": "doc",
-          "id": "version-4.x/code-of-conduct"
+          "id": "code-of-conduct"
         }
       ]
     }
