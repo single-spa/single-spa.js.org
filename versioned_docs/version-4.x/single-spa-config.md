@@ -12,6 +12,7 @@ The single-spa root config consists of the following:
 Your root config exists only to start up the single-spa applications.
 
 ## index.html file
+
 See [this example root config](http://single-spa-playground.org/playground/html-file) for what a root HTML file looks like.
 Notice how it does not have any divs or buttons, but just calls `registerApplication()`.
 
@@ -30,7 +31,7 @@ In order to register an application, call the `registerApplication(name, howToLo
 
 ```js
 // single-spa-config.js
-import { registerApplication, start } from 'single-spa';
+import { registerApplication, start } from "single-spa";
 
 registerApplication("applicationName", loadingFunction, activityFunction);
 start();
@@ -45,12 +46,15 @@ function activityFunction(location) {
 ```
 
 ### Application name
+
 The first argument to `registerApplication` must be a string name.
 
 ### Loading Function or Application
+
 The second argument to `registerApplication` must be either a function that returns a promise [loading function](configuration#loading-function) or the resolved Application.
 
 #### Application as second argument
+
 Optionally for the second argument you can use the resolved Application, consisting of an object with the lifecycle methods.
 This allows you import the Application from another file or define applications inline in your single-spa-config
 
@@ -59,18 +63,19 @@ const application = {
   bootstrap: () => Promise.resolve(), //bootstrap function
   mount: () => Promise.resolve(), //mount function
   unmount: () => Promise.resolve(), //unmount function
-}
-registerApplication('applicationName', application, activityFunction)
-
+};
+registerApplication("applicationName", application, activityFunction);
 ```
 
 #### Loading function
+
 The second argument to `registerApplication` must be a function that returns a promise (or an ["async function"](https://ponyfoo.com/articles/understanding-javascript-async-await)).
 The function will be called with no arguments when it's time to load the application for the first time. The returned
 promise must be resolved with the application. The most common implementation of a loading function is an import call:
 `() => import('/path/to/application.js')`
 
 ### Activity function
+
 The third argument to `registerApplication` must be a pure function, the function is provided `window.location` as the first argument, and returns a truthy
 value whenever the application should be active. Most commonly, the activity function determines if an application
 is active by looking at `window.location`/the first param.
@@ -78,12 +83,14 @@ is active by looking at `window.location`/the first param.
 Another way of looking at this is that single-spa is a top-level router that has a lot of applications that have their own sub-router.
 
 single-spa will call each application's activity function under the following scenarios:
+
 - `hashchange` or `popstate` event
 - `pushState` or `replaceState` is called
 - [`triggerAppChange`](api.md#triggerappchange) api is called on single-spa
 - Whenever the `checkActivityFunctions` method is called
 
 ## Calling singleSpa.start()
+
 The [`start()` api](api.md#start) **must** be called by your single spa config in order for
 applications to actually be mounted. Before `start` is called, applications will be loaded, but not bootstrapped/mounted/unmounted.
 The reason for `start` is to give you control over performance. For example, you may want to register applications
@@ -94,7 +101,7 @@ the AJAX request is completed.
 
 ```js
 //single-spa-config.js
-import { start } from 'single-spa';
+import { start } from "single-spa";
 
 /* Calling start before registering apps means that single-spa can immediately mount apps, without
  * waiting for any initial setup of the single page app.
@@ -105,6 +112,7 @@ start();
 ```
 
 ## Two registered applications simultaneously??
+
 Yep, it's possible. And it's actually not that scary if you do it right. And once you do,
 it's really really powerful. One approach to do this is to create a `<div id="app-name"></div>` for each app,
 so that they never try to modify the same DOM at the same time.

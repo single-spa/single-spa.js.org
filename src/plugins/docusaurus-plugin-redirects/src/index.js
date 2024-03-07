@@ -1,18 +1,18 @@
-const path = require('path');
-const fs = require('fs');
+const path = require("path");
+const fs = require("fs");
 
 const DEFAULT_OPTIONS = {
   excludedPaths: [],
 };
 
-module.exports = function(context, opts) {
+module.exports = function (context, opts) {
   const options = { ...DEFAULT_OPTIONS, ...opts };
 
   return {
-    name: 'custom-docusaurus-plugin-redirects',
+    name: "custom-docusaurus-plugin-redirects",
 
     async postBuild({ routesPaths = [], outDir }) {
-      routesPaths.map(routesPath => {
+      routesPaths.map((routesPath) => {
         if (!path.isAbsolute(routesPath)) {
           return;
         }
@@ -21,7 +21,7 @@ module.exports = function(context, opts) {
           return;
         }
 
-        const newLink = `${routesPath}${routesPath.endsWith('/') ? '' : '/'}`;
+        const newLink = `${routesPath}${routesPath.endsWith("/") ? "" : "/"}`;
         const fileName = path.basename(routesPath);
         const filePath = path.dirname(routesPath);
         const htmlContent = `
@@ -44,7 +44,7 @@ module.exports = function(context, opts) {
           outDir.concat(filePath),
           `${fileName}.html`,
         );
-        fs.writeFile(oldPagePath, htmlContent, err => {
+        fs.writeFile(oldPagePath, htmlContent, (err) => {
           if (err) {
             throw new Error(`File creating error: ${err}`);
           }

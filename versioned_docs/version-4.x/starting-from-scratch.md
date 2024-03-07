@@ -96,52 +96,52 @@ Learn more about these Webpack plugins and loaders at their respective documenta
 In the root of your project create a new file name _webpack.config.js_ and paste in the following code:
 
 ```js title="webpack.config.js"
-const path = require('path');
-const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
     // Set the single-spa config as the project entry point
-    'single-spa.config': './single-spa.config.js',
+    "single-spa.config": "./single-spa.config.js",
   },
   output: {
-    publicPath: '/dist/',
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    publicPath: "/dist/",
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         // Webpack style loader added so we can use materialize
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.js$/,
-        exclude: [path.resolve(__dirname, 'node_modules')],
-        loader: 'babel-loader',
+        exclude: [path.resolve(__dirname, "node_modules")],
+        loader: "babel-loader",
       },
       {
         // This plugin will allow us to use AngularJS HTML templates
         test: /\.html$/,
         exclude: /node_modules/,
-        loader: 'html-loader',
+        loader: "html-loader",
       },
     ],
   },
   node: {
-    fs: 'empty',
+    fs: "empty",
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'node_modules')],
+    modules: [path.resolve(__dirname, "node_modules")],
   },
   plugins: [
     // A webpack plugin to remove/clean the output folder before building
     new CleanWebpackPlugin(),
   ],
-  devtool: 'source-map',
+  devtool: "source-map",
   externals: [],
   devServer: {
     historyApiFallback: true,
@@ -224,18 +224,18 @@ Additionally, to enable single-spa, we will need to include a script tag that re
 Create a new file called _single-spa.config.js_ in the root directory. Let's start by registering the `home` application.
 
 ```js title="single-spa.config.js"
-import { registerApplication, start } from 'single-spa';
+import { registerApplication, start } from "single-spa";
 
 registerApplication(
   // Name of our single-spa application
-  'home',
+  "home",
   // loadingFunction
   () => {},
   // activityFunction
-  location =>
-    location.pathname === '' ||
-    location.pathname === '/' ||
-    location.pathname.startsWith('/home'),
+  (location) =>
+    location.pathname === "" ||
+    location.pathname === "/" ||
+    location.pathname.startsWith("/home"),
 );
 
 start();
@@ -297,13 +297,13 @@ Since we have registered our application, single-spa will be listening for the *
 `singleSpaReact` requires 4 parameters: the instance of React, the instance of ReactDOM, the rootComponent to be rendered (in this case, the `Home` component), and a `domElementGetter` function that return a DOMElement where the Home application will be bootstrapped, mounted, and unmounted by single-spa.
 
 ```js title="home.app.js"
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import Home from './root.component.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import singleSpaReact from "single-spa-react";
+import Home from "./root.component.js";
 
 function domElementGetter() {
-  return document.getElementById('home');
+  return document.getElementById("home");
 }
 
 const reactLifecycles = singleSpaReact({
@@ -325,15 +325,15 @@ export const unmount = [reactLifecycles.unmount];
 Now that we have the **home** application registered, let us build the React app. We've reproduced the code from [react-router's Animated Transitions](https://reacttraining.com/react-router/web/example/animated-transitions) below with two modifications, which are highlighted below. The first change is to add `/home` as the basename prop for `Router`, since in [Step 3](starting-from-scratch.md#step-three-registering-an-app) we had configured this application to handle routing at the `/home` path. The second change is to the top-most div's styles so that **home** appears beneath the **navBar** that we'll create later.
 
 ```js {24,27} title="root.component.js"
-import React from 'react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import React from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   Redirect,
-} from 'react-router-dom';
+} from "react-router-dom";
 
 /* you'll need this CSS somewhere
 .fade-enter {
@@ -351,7 +351,7 @@ const AnimationExample = () => (
   <Router basename="/home">
     <Route
       render={({ location }) => (
-        <div style={{ position: 'relative', height: '100%' }}>
+        <div style={{ position: "relative", height: "100%" }}>
           <Route
             exact
             path="/"
@@ -390,9 +390,9 @@ const AnimationExample = () => (
   </Router>
 );
 
-const NavLink = props => (
+const NavLink = (props) => (
   <li style={styles.navItem}>
-    <Link {...props} style={{ color: 'inherit' }} />
+    <Link {...props} style={{ color: "inherit" }} />
   </li>
 );
 
@@ -402,7 +402,8 @@ const HSL = ({ match: { params } }) => (
       ...styles.fill,
       ...styles.hsl,
       background: `hsl(${params.h}, ${params.s}%, ${params.l}%)`,
-    }}>
+    }}
+  >
     hsl({params.h}, {params.s}%, {params.l}%)
   </div>
 );
@@ -413,7 +414,8 @@ const RGB = ({ match: { params } }) => (
       ...styles.fill,
       ...styles.rgb,
       background: `rgb(${params.r}, ${params.g}, ${params.b})`,
-    }}>
+    }}
+  >
     rgb({params.r}, {params.g}, {params.b})
   </div>
 );
@@ -421,7 +423,7 @@ const RGB = ({ match: { params } }) => (
 const styles = {};
 
 styles.fill = {
-  position: 'absolute',
+  position: "absolute",
   left: 0,
   right: 0,
   top: 0,
@@ -430,39 +432,39 @@ styles.fill = {
 
 styles.content = {
   ...styles.fill,
-  top: '40px',
-  textAlign: 'center',
+  top: "40px",
+  textAlign: "center",
 };
 
 styles.nav = {
   padding: 0,
   margin: 0,
-  position: 'absolute',
+  position: "absolute",
   top: 0,
-  height: '40px',
-  width: '100%',
-  display: 'flex',
+  height: "40px",
+  width: "100%",
+  display: "flex",
 };
 
 styles.navItem = {
-  textAlign: 'center',
+  textAlign: "center",
   flex: 1,
-  listStyleType: 'none',
-  padding: '10px',
+  listStyleType: "none",
+  padding: "10px",
 };
 
 styles.hsl = {
   ...styles.fill,
-  color: 'white',
-  paddingTop: '20px',
-  fontSize: '30px',
+  color: "white",
+  paddingTop: "20px",
+  fontSize: "30px",
 };
 
 styles.rgb = {
   ...styles.fill,
-  color: 'white',
-  paddingTop: '20px',
-  fontSize: '30px',
+  color: "white",
+  paddingTop: "20px",
+  fontSize: "30px",
 };
 
 export default AnimationExample;
@@ -477,18 +479,18 @@ One way of doing this is by simply passing in an _application config object_ (th
 However, to encourage best practices, we will leverage [code splitting using Webpack](https://webpack.js.org/guides/code-splitting/) to easily lazy-load registered applications on-demand. Think about your project's needs when deciding which route to take.
 
 ```js {7} title="single-spa.config.js"
-import { registerApplication, start } from 'single-spa';
+import { registerApplication, start } from "single-spa";
 
 registerApplication(
   // Name of our single-spa application
-  'home',
+  "home",
   // Our loading function
-  () => import('./src/home/home.app.js'),
+  () => import("./src/home/home.app.js"),
   // Our activity function
   () =>
-    location.pathname === '' ||
-    location.pathname === '/' ||
-    location.pathname.startsWith('/home'),
+    location.pathname === "" ||
+    location.pathname === "/" ||
+    location.pathname.startsWith("/home"),
 );
 
 start();
@@ -545,13 +547,13 @@ touch src/navBar/navBar.app.js src/navBar/root.component.js
 In _navbar.app.js_ add the following application lifecycles. This is slightly different from how we accomplished this in [Step 4.b](starting-from-scratch.md#b-application-lifecycles). For this application we are going to demonstrate how you can export an object which contains the required lifecycle methods using `single-spa-react`.
 
 ```js title="navbar.app.js"
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import NavBar from './root.component.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import singleSpaReact from "single-spa-react";
+import NavBar from "./root.component.js";
 
 function domElementGetter() {
-  return document.getElementById('navBar');
+  return document.getElementById("navBar");
 }
 
 export const navBar = singleSpaReact({
@@ -567,7 +569,7 @@ export const navBar = singleSpaReact({
 Recall that Materialize is included so we can use the class names it provides inside of the **navBar** component. Include the following in _root.component.js_:
 
 ```js title="root.component.js"
-import React from 'react';
+import React from "react";
 
 const NavBar = () => (
   <nav>
@@ -599,8 +601,8 @@ An alternative method would be to call `pushState()`, which `navigateToUrl` does
 To use the function, we simply need to import it and call it with a click event, passing in each application's url (as designated by the activityFunction set in _single-spa.config.js_) as a string to the anchor tag's `href`.
 
 ```js {2,7,9,10} title="root.component.js"
-import React from 'react';
-import { navigateToUrl } from 'single-spa';
+import React from "react";
+import { navigateToUrl } from "single-spa";
 
 const NavBar = () => (
   <nav>
@@ -661,8 +663,8 @@ Just as we did for the **home** and **navBar** applications, we start by registe
 
 ```js title="single-spa.config.js"
 registerApplication(
-  'angularJS',
-  () => import('./src/angularJS/angularJS.app.js'),
+  "angularJS",
+  () => import("./src/angularJS/angularJS.app.js"),
   () => {},
 );
 ```
@@ -694,17 +696,17 @@ single-spa-angularjs another helper library that implements the necessary lifecy
 Just as we did for our **home** and **navBar** applications, set up the lifecycle hooks for the **angularJS** in the _angularJS.app.js_ file.
 
 ```js title="angularJS.app.js"
-import singleSpaAngularJS from 'single-spa-angularjs';
-import angular from 'angular';
-import './app.module.js';
-import './routes.js';
+import singleSpaAngularJS from "single-spa-angularjs";
+import angular from "angular";
+import "./app.module.js";
+import "./routes.js";
 
-const domElementGetter = () => document.getElementById('angularJS');
+const domElementGetter = () => document.getElementById("angularJS");
 
 const angularLifecycles = singleSpaAngularJS({
   angular,
   domElementGetter,
-  mainAngularModule: 'angularJS-app',
+  mainAngularModule: "angularJS-app",
   uiRouter: true,
   preserveGlobal: false,
 });
@@ -723,17 +725,17 @@ Now that we have registered our application and set up the lifecycle methods poi
 To start, we will build _app.module.js_ followed by _root.component.js_ which will set the root of the **angularJS** application using _root.template.html_ as the template.
 
 ```js title="app.module.js"
-import angular from 'angular';
-import 'angular-ui-router';
+import angular from "angular";
+import "angular-ui-router";
 
-angular.module('angularJS-app', ['ui.router']);
+angular.module("angularJS-app", ["ui.router"]);
 ```
 
 ```js title="root.component.js"
-import angular from 'angular';
-import template from './root.template.html';
+import angular from "angular";
+import template from "./root.template.html";
 
-angular.module('angularJS-app').component('root', {
+angular.module("angularJS-app").component("root", {
   template,
 });
 ```
@@ -742,9 +744,7 @@ angular.module('angularJS-app').component('root', {
 <div ng-style="vm.styles">
   <div class="container">
     <div class="row">
-      <h4 class="light">
-        Angular 1 example
-      </h4>
+      <h4 class="light">Angular 1 example</h4>
       <p class="caption">
         This is a sample application written with Angular 1.5 and
         angular-ui-router.
@@ -777,21 +777,21 @@ angular.module('angularJS-app').component('root', {
 Next we will add a basic Gif Component and import it in the root component.
 
 ```js title="gifs.component.js"
-import angular from 'angular';
-import template from './gifs.template.html';
+import angular from "angular";
+import template from "./gifs.template.html";
 
-angular.module('angularJS-app').component('gifs', {
+angular.module("angularJS-app").component("gifs", {
   template,
-  controllerAs: 'vm',
+  controllerAs: "vm",
   controller($http) {
     const vm = this;
 
     $http
-      .get('https://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC')
-      .then(response => {
+      .get("https://api.giphy.com/v1/gifs/search?q=cat&api_key=dc6zaTOxFJmzC")
+      .then((response) => {
         vm.gifs = response.data.data;
       })
-      .catch(err => {
+      .catch((err) => {
         setTimeout(() => {
           throw err;
         }, 0);
@@ -802,9 +802,7 @@ angular.module('angularJS-app').component('gifs', {
 
 ```html title="gifs.template.html"
 <div style="padding-top: 20px">
-  <h4 class="light">
-    Cat Gifs gifs
-  </h4>
+  <h4 class="light">Cat Gifs gifs</h4>
   <p></p>
   <div ng-repeat="gif in vm.gifs" style="margin: 5px;">
     <img ng-src="{{gif.images.downsized_medium.url}}" class="col l3" />
@@ -817,25 +815,25 @@ angular.module('angularJS-app').component('gifs', {
 Now that we have each of our components built out, all we have left to do is connect them. We will do this by importing both into _routes.js_.
 
 ```js title="routes.js"
-import angular from 'angular';
-import './root.component.js';
-import './gifs.component.js';
+import angular from "angular";
+import "./root.component.js";
+import "./gifs.component.js";
 
-angular.module('angularJS-app').config(($stateProvider, $locationProvider) => {
+angular.module("angularJS-app").config(($stateProvider, $locationProvider) => {
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false,
   });
 
   $stateProvider
-    .state('root', {
-      url: '/angularJS',
-      template: '<root />',
+    .state("root", {
+      url: "/angularJS",
+      template: "<root />",
     })
 
-    .state('root.gifs', {
-      url: '/gifs',
-      template: '<gifs />',
+    .state("root.gifs", {
+      url: "/gifs",
+      template: "<gifs />",
     });
 });
 ```

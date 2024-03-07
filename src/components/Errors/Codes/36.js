@@ -1,20 +1,21 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode36(props) {
   return (
     <>
       <h1>#36: Invalid application - no mount function</h1>
       <p>
-        The loading function for {props.getErrorCodeArg(0, "application")} {props.getErrorCodeArg(1)} returned a promise that resolved with
-        an invalid application object. The loading function should resolve with an application object that has the
-        single-spa lifecycle functions on it. This application did not have a valid mount function.
+        The loading function for {props.getErrorCodeArg(0, "application")}{" "}
+        {props.getErrorCodeArg(1)} returned a promise that resolved with an
+        invalid application object. The loading function should resolve with an
+        application object that has the single-spa lifecycle functions on it.
+        This application did not have a valid mount function.
       </p>
+      <p>The application object was {props.getErrorCodeArg(2)}</p>
       <p>
-        The application object was {props.getErrorCodeArg(2)}
-      </p>
-      <p>
-        This most commonly occurs due to failed webpack or systemjs configuration.
+        This most commonly occurs due to failed webpack or systemjs
+        configuration.
       </p>
       <h2>To fix:</h2>
       <div>
@@ -47,5 +48,5 @@ export default function ErrorCode36(props) {
         See <a href="/docs/api/#registerapplication">documentation</a>.
       </p>
     </>
-  )
+  );
 }

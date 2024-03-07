@@ -1,7 +1,7 @@
-import React from 'react';
-import Markdown from 'markdown-to-jsx';
-import Layout from '@theme/Layout';
-import supportLinks from '@site/src/data/help';
+import React from "react";
+import Markdown from "markdown-to-jsx";
+import Layout from "@theme/Layout";
+import supportLinks from "@site/src/data/help";
 
 function Help() {
   return (
@@ -17,7 +17,8 @@ function Help() {
           {supportLinks.map(({ title, content }, idx) => (
             <div
               key={idx}
-              className="col col--6 margin-vert--md padding-horiz--xl">
+              className="col col--6 margin-vert--md padding-horiz--xl"
+            >
               <h2>{title}</h2>
               <p>
                 <Markdown>{content}</Markdown>

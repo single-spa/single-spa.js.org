@@ -11,15 +11,15 @@ single-spa-inferno is a helper library that helps implement [single-spa register
 First, in the application, run `npm install --save single-spa-inferno`. Then, add the following to your application's entry file.
 
 ```js
-import Inferno from 'inferno';
-import rootComponent from './path-to-root-component.js';
-import singleSpaInferno from 'single-spa-inferno';
+import Inferno from "inferno";
+import rootComponent from "./path-to-root-component.js";
+import singleSpaInferno from "single-spa-inferno";
 
 const infernoLifecycles = singleSpaInferno({
   Inferno,
   createElement,
   rootComponent,
-  domElementGetter: () => document.getElementById('main-content'),
+  domElementGetter: () => document.getElementById("main-content"),
 });
 
 export const bootstrap = infernoLifecyles.bootstrap;

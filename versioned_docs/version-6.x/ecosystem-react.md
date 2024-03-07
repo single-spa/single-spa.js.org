@@ -24,11 +24,11 @@ Alternatively, you can use single-spa-react by adding `<script src="https://unpk
 Use single-spa-react to create and export single-spa lifecycle functions from your application's entry file.
 
 ```js
-import React from 'react';
-import ReactDOMClient from 'react-dom/client';
-import rootComponent from './path-to-root-component.js';
+import React from "react";
+import ReactDOMClient from "react-dom/client";
+import rootComponent from "./path-to-root-component.js";
 // SingleSpaContext is a react@16.3 (if available) context that provides singleSpa props
-import singleSpaReact, { SingleSpaContext } from 'single-spa-react';
+import singleSpaReact, { SingleSpaContext } from "single-spa-react";
 
 export const { bootstrap, mount, unmount } = singleSpaReact({
   React,
@@ -45,10 +45,10 @@ export const { bootstrap, mount, unmount } = singleSpaReact({
 <summary>Quickstart for React &lt;=17</summary>
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import rootComponent from './path-to-root-component.js';
-import singleSpaReact, { SingleSpaContext } from 'single-spa-react';
+import React from "react";
+import ReactDOM from "react-dom";
+import rootComponent from "./path-to-root-component.js";
+import singleSpaReact, { SingleSpaContext } from "single-spa-react";
 
 export const { bootstrap, mount, unmount } = singleSpaReact({
   React,

@@ -1,12 +1,13 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode33(props) {
   return (
     <>
       <h1>#33: Loading function did not return a promise</h1>
       <p>
-        The loading function for {props.getErrorCodeArg(0)} did not return a promise. This is required as part of the registerApplication API.
+        The loading function for {props.getErrorCodeArg(0)} did not return a
+        promise. This is required as part of the registerApplication API.
       </p>
       <h2>To fix:</h2>
       <div>
@@ -28,5 +29,5 @@ export default function ErrorCode33(props) {
         See <a href="/docs/api/#registerapplication">documentation</a>.
       </p>
     </>
-  )
+  );
 }

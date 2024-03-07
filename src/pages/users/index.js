@@ -1,6 +1,6 @@
-import React from 'react';
-import Layout from '@theme/Layout';
-import { Showcase } from '@site/src/components/Showcase';
+import React from "react";
+import Layout from "@theme/Layout";
+import { Showcase } from "@site/src/components/Showcase";
 
 function Users() {
   return (

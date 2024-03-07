@@ -134,10 +134,10 @@ In NodeJS, single-spa-layout exports the following functions as named exports. N
 
 ```js
 // Works in newer versions of NodeJS
-import 'single-spa-layout';
+import "single-spa-layout";
 
 // Works in older versions of NodeJS
-import 'single-spa-layout/dist/esm/single-spa-layout-server.min.js';
+import "single-spa-layout/dist/esm/single-spa-layout-server.min.js";
 ```
 
 ### constructServerLayout
@@ -145,13 +145,13 @@ import 'single-spa-layout/dist/esm/single-spa-layout-server.min.js';
 The `constructServerLayout` api parses an HTML file and prepares it for rendering. This should be done once when the NodeJS server boots up, so the same serverLayout can be reused for all incoming HTTP requests.
 
 ```js
-import { constructServerLayout } from 'single-spa-layout/server';
+import { constructServerLayout } from "single-spa-layout/server";
 
 const serverLayout = constructServerLayout({
   // filepath is resolved relative to the cwd (current working directory)
   // of the NodeJS process.
-  filePath: "server/views/index.html"
-})
+  filePath: "server/views/index.html",
+});
 
 // Alternatively, provide the html as a string
 const serverLayout = constructServerLayout({
@@ -163,8 +163,8 @@ const serverLayout = constructServerLayout({
         </single-spa-router>
       </head>
     </html>
-  `
-})
+  `,
+});
 ```
 
 **Arguments**
