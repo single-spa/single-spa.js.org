@@ -7,13 +7,17 @@ authorImageURL: https://avatars.githubusercontent.com/u/5524384
 
 # Top 5 Microfrontend Hosting Solutions
 
-Growing rapidly in recent years, microfrontends have become a critical solution for large software organizations. Hosting microfrontends has become a complicated, but crucial, aspect of scaling software organizations. Whether companies are using single-spa, module federation, or any other microfrontends tools, the management of CI/CD pipelines, deployments, CDNs, and service discovery is something all companies will have to solve.
+Growing rapidly in recent years, microfrontends have become a critical solution for large software organizations. The hosting of microfrontends has become a complicated, but crucial, aspect of scaling software organizations. Whether companies are using single-spa, module federation, or any other microfrontends tools, the management of CI/CD pipelines, deployments, CDNs, and service discovery is something all companies will have to solve.
+
+So what’s the most effective solution? Because microfrontend hosting is a relatively new space, most companies have a hard time knowing where to start. Fortunately, there are very good options out there, and unless you have a good reason to, you don’t have to build it out yourself. Here you’ll find a list of the best hosting solutions and the important factors you’ll need to consider to make the decision.
 
 ## Server-side versus client-side rendering
 
 This article focuses on hosting solutions for client-side rendered microfrontends, since the majority of microfrontend implementations rely solely on [client-side rendering](https://ferie.medium.com/what-is-the-client-side-rendering-and-how-it-works-c90210e2cd14).
 
 [Server-side rendering](https://www.heavy.ai/technical-glossary/server-side-rendering) of microfrontends often involves one or more docker containers that run [NodeJS](https://en.wikipedia.org/wiki/Node.js) to render [React](https://en.wikipedia.org/wiki/React_(software)), [Angular](https://en.wikipedia.org/wiki/Angular_(web_framework)), or [Vue](https://en.wikipedia.org/wiki/Vue.js) applications. [Single-spa server rendering](/docs/ssr-overview) also supports a single NodeJS runtime (rather than network requests between docker containers), for optimal performance.
+
+If your organization uses server-side rendering, the following rankings will still apply but may require some additional consideration that isn’t covered here. 
 
 ## Low-level vs high-level hosting solutions
 
@@ -59,9 +63,11 @@ Companies who wish for sensible defaults and a straightforward implementation pa
 
 ## 1. Baseplate Cloud
 
-From the creator of single-spa, [Baseplate Cloud](https://baseplate.cloud/) is the premiere microfrontends hosting solution for single-spa and native browser module microfrontends. Baseplate Cloud's features are inspired by years of microfrontends and single-spa consultancies, to simplify and automate as much of the complexity as possible.
+[Baseplate Cloud](https://baseplate.cloud/) tops the list for its ease of use and specific focus on single-spa hosting. Because it was made by the creator of single-spa, Baseplate's features have been informed by years of microfrontend and single-spa consultancies, making it the easiest microfrontend hosting choice for single-spa. Everything about the product simplifies and automates as much of the complexity as possible, and it’s hard to find advantages in other solutions that beat this fact. Baseplate will probably be the best choice for any company that is prioritizing a streamlined cloud hosting experience.
 
-As a microfrontend-specific solution, Baseplate's feature-set is tailor-made for companies looking for a streamlined cloud hosting experience. Baseplate supports the following features:
+Its feature-set is comparable to the job function of multiple software developers, so it can be used to free up a lot of development resources without increasing the size of the development team. This easily makes up for its somewhat higher upfront cost.
+
+Baseplate supports the following features:
 
 - Web apps hosting
 - Custom domains for web apps and static assets
@@ -73,7 +79,7 @@ As a microfrontend-specific solution, Baseplate's feature-set is tailor-made for
 - CORS, CSP, and Cache-Control configuration
 - Edge-side performance optimizations
 
-[Baseplate CDN](https://baseplate.cloud/docs/cdn/assets) is a source-available [Cloudflare worker](https://developers.cloudflare.com/workers/) designed for maximum performance and best practices. It is globally available at all [Cloudflare edge locations](https://www.cloudflare.com/network/).
+Also of note, [Baseplate CDN](https://baseplate.cloud/docs/cdn/assets) is a source-available [Cloudflare worker](https://developers.cloudflare.com/workers/) designed for maximum performance and best practices. It is globally available at all [Cloudflare edge locations](https://www.cloudflare.com/network/).
 
 ## 2. Zephyr Cloud
 
