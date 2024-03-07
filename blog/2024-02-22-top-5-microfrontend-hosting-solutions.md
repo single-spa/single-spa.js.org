@@ -15,6 +15,12 @@ This article focuses on hosting solutions for client-side rendered microfrontend
 
 [Server-side rendering](https://www.heavy.ai/technical-glossary/server-side-rendering) of microfrontends often involves one or more docker containers that run [NodeJS](https://en.wikipedia.org/wiki/Node.js) to render [React](https://en.wikipedia.org/wiki/React_(software)), [Angular](https://en.wikipedia.org/wiki/Angular_(web_framework)), or [Vue](https://en.wikipedia.org/wiki/Vue.js) applications. [Single-spa server rendering](/docs/ssr-overview) also supports a single NodeJS runtime (rather than network requests between docker containers), for optimal performance.
 
+## Low-level vs high-level hosting solutions
+
+Hosting microfrontends can be accomplished with lower-level cloud services (AWS, GCP, Azure, etc) or via microfrontend-specific cloud hosting solutions such as Baseplate Cloud and Zephyr Cloud. Lower-level services are cheaper, but require a lot more initial setup and ongoing maintenance. Higher-level microfrontend hosting solutions provide targeted features to streamline the hosting and development process.
+
+Companies who wish for sensible defaults and a straightforward implementation path may choose higher-level hosting solutions, to cut down on devops and system admin costs. The additional built-in features of higher-level hosting solutions often reduces implementation time for companies migrating to or starting with microfrontends.
+
 ## Solution comparison
 
 |                    | [Baseplate Cloud](https://baseplate.cloud) | [Zephyr Cloud](https://zephyr-cloud.io/) | [S3 + Cloudfront](https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-s3-amazon-cloudfront-a-match-made-in-the-cloud/) | [GCP Storage + Cloud CDN](https://cloud.google.com/cdn/docs/overview) | [Azure Storage + CDN](https://learn.microsoft.com/en-us/azure/cdn/cdn-create-a-storage-account-with-cdn) |
@@ -71,13 +77,21 @@ As a microfrontend-specific solution, Baseplate's feature-set is tailor-made for
 
 ## 2. Zephyr Cloud
 
-From the creator of module federation, [Zephyr Cloud](https://zephyr-cloud.io/) is the premier hosting solution for module-federation-based microfrontends.
+From the creators of module federation, [Zephyr Cloud](https://zephyr-cloud.io/) is the premier hosting solution for module-federation-based microfrontends. It is currently in closed alpha with little publicly documented about its features.
 
 ## 3. AWS S3 + Cloudfront
 
-Amazon Web Services (AWS) offers the low-level cloud services necessary for companies to set up a microfrontends hosting solution.
+Amazon Web Services (AWS) offers the low-level cloud services necessary for companies to set up a microfrontends hosting solution. The most common microfrontends hosting solution within AWS often involves a [Cloudflare distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview.html) that acts as a public [CDN](https://en.wikipedia.org/wiki/Content_delivery_network), with a private [S3 bucket](https://aws.amazon.com/s3/) as the origin containing all static web files (Javascript, CSS, HTML) needed.
+
+The advantage of using lower level cloud hosting services is a cheaper cost, at the tradeoff of increased setup and maintenance complexity when compared to microfrontend-specific cloud hosting solutions.
+
+Implementation details vary from company to company, but it is common for each microfrontend's files to be stored within a (virtual) folder within the s3 bucket. The manifest or import map listing all microfrontends is usually made available within a JSON file. Web apps using the microfrontends may have their own S3 bucket or be within the same S3 bucket.
+
 
 ## 4. GCP Storage + Cloud CDN
 
+Google Cloud Platform provides equivalent low-level cloud services to AWS. The same technical details that apply to AWS S3 + Cloudfront also apply to [GCP Cloud Storage](https://cloud.google.com/storage?hl=en) and [GCP Cloud CDN](https://cloud.google.com/cdn/docs/overview).
+
 ## 5. Azure Storage + CDN
 
+Azure Storage provides equivalent low-level cloud services to AWS. The same technical details that apply to AWS S3 + Cloudfront also apply to [Azure Storage](https://azure.microsoft.com/en-us/products/category/storage) and [GCP Cloud CDN](https://azure.microsoft.com/en-us/products/cdn).
