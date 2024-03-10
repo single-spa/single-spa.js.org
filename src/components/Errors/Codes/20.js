@@ -1,12 +1,16 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode20(props) {
   return (
     <>
-      <h1>#20: The first argument to registerApplication must be a non-empty string 'appName'</h1>
+      <h1>
+        #20: The first argument to registerApplication must be a non-empty
+        string 'appName'
+      </h1>
       <p>
-        When calling registerApplication, the first argument must be the string name of the application.
+        When calling registerApplication, the first argument must be the string
+        name of the application.
       </p>
       <h2>To fix:</h2>
       <div>
@@ -24,8 +28,12 @@ export default function ErrorCode20(props) {
       </div>
       <h2>Explanation:</h2>
       <p>
-        See <a href="/docs/api#registerApplication">registerApplication documentation</a>.
+        See{" "}
+        <a href="/docs/api#registerApplication">
+          registerApplication documentation
+        </a>
+        .
       </p>
     </>
-  )
+  );
 }

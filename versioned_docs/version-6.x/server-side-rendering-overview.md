@@ -45,7 +45,7 @@ We generally recommend single-spa-layout, although choosing one of the other opt
 With single-spa-layout, you define a single template that handles all routes. [Full documentation](/docs/layout-definition).
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -81,7 +81,7 @@ With single-spa-layout, you define a single template that handles all routes. [F
     </template>
     <fragment name="importmap"></fragment>
     <script>
-      System.import('@org-name/root-config');
+      System.import("@org-name/root-config");
     </script>
     <import-map-overrides-full
       show-when-local-storage="devtools"
@@ -104,7 +104,7 @@ The method of fetching the headers and HTML content can vary, since single-spa-l
 Module loading refers to loading javascript code using `import` and `import()`. Using module loading, the implementation of fetching the headers and content for each microfrontend is done purely within a single web server and operating system process:
 
 ```js
-import('@org-name/navbar/server.js').then(navbar => {
+import("@org-name/navbar/server.js").then((navbar) => {
   const headers = navbar.getResponseHeaders(props);
   const htmlStream = navbar.serverRender(props);
 });
@@ -116,11 +116,11 @@ In the context of single-spa-layout, this is done inside of the `renderApplicati
 import {
   constructServerLayout,
   sendLayoutHTTPResponse,
-} from 'single-spa-layout/server';
-import http from 'http';
+} from "single-spa-layout/server";
+import http from "http";
 
 const serverLayout = constructServerLayout({
-  filePath: 'server/views/index.html',
+  filePath: "server/views/index.html",
 });
 
 http
@@ -142,12 +142,12 @@ http
         return app.getResponseHeaders(props);
       },
       async retrieveProp(propName) {
-        return 'prop value';
+        return "prop value";
       },
       assembleFinalHeaders(appHeaders) {
         return Object.assign(
           {},
-          ...Object.values(allHeaders).map(a => a.appHeaders),
+          ...Object.values(allHeaders).map((a) => a.appHeaders),
         );
       },
       renderFragment(name) {
@@ -198,12 +198,12 @@ In the context of single-spa-layout, this is done with the `renderApplication` f
 import {
   constructServerLayout,
   sendLayoutHTTPResponse,
-} from 'single-spa-layout/server';
-import http from 'http';
-import fetch from 'node-fetch';
+} from "single-spa-layout/server";
+import http from "http";
+import fetch from "node-fetch";
 
 const serverLayout = constructServerLayout({
-  filePath: 'server/views/index.html',
+  filePath: "server/views/index.html",
 });
 
 http
@@ -233,7 +233,7 @@ http
         return response.headers;
       },
       async retrieveProp(propName) {
-        return 'prop value';
+        return "prop value";
       },
       assembleFinalHeaders(allHeaders) {
         return Object.assign({}, ...Object.values(allHeaders));
@@ -250,7 +250,7 @@ http
 async function fetchMicrofrontend(props) {
   fetch(`http://${props.name}`, {
     headers: props,
-  }).then(r => {
+  }).then((r) => {
     if (r.ok) {
       return r;
     } else {
@@ -272,11 +272,11 @@ Tailor and TailorX have built-in methods of merging headers. Single-spa-layout a
 import {
   constructServerLayout,
   sendLayoutHTTPResponse,
-} from 'single-spa-layout/server';
-import http from 'http';
+} from "single-spa-layout/server";
+import http from "http";
 
 const serverLayout = constructServerLayout({
-  filePath: 'server/views/index.html',
+  filePath: "server/views/index.html",
 });
 
 http
@@ -298,13 +298,13 @@ http
         return app.getResponseHeaders(props);
       },
       async retrieveProp(propName) {
-        return 'prop value';
+        return "prop value";
       },
       assembleFinalHeaders(allHeaders) {
         // appHeaders contains all the application names, props, and headers for
         return Object.assign(
           {},
-          ...Object.values(allHeaders).map(a => a.appHeaders),
+          ...Object.values(allHeaders).map((a) => a.appHeaders),
         );
       },
       renderFragment(name) {
@@ -324,11 +324,11 @@ The HTTP Response body sent from the web server to the browser must be streamed,
 All microfrontend layout middlewares mentioned in this document stream the HTML response body to the browser. In the context of single-spa-layout, this is done by calling `sendLayoutHTTPResponse`
 
 ```js
-import { sendLayoutHTTPResponse } from 'single-spa-layout/server';
-import http from 'http';
+import { sendLayoutHTTPResponse } from "single-spa-layout/server";
+import http from "http";
 
 const serverLayout = constructServerLayout({
-  filePath: 'server/views/index.html',
+  filePath: "server/views/index.html",
 });
 
 http

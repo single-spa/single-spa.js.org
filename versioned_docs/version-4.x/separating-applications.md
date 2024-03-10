@@ -20,6 +20,7 @@ Advantages:
 - [monolithic version control has some advantages](https://danluu.com/monorepo/)
 
 Disadvantages:
+
 - One master Webpack config and package.json means less flexibility and freedom for each individual project
 - Slow build times once your project gets large
 - Builds and deployments are all tied together, which can necessitate fixed release schedules instead of ad hoc releases.

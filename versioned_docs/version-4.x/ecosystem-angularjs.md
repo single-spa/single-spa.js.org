@@ -7,6 +7,7 @@ sidebar_label: AngularJS
 single-spa-angularjs is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for for use with [AngularJS](https://angularjs.org/). Check out the [single-spa-angularjs github](https://github.com/single-spa/single-spa-angularjs).
 
 ## Installation
+
 ```sh
 npm install --save single-spa-angularjs
 ```
@@ -19,15 +20,15 @@ via the `singleSpaAngularjs` global variable if that is easier for you.
 If you're using a bundler such as webpack, add the following to your entry file:
 
 ```js
-import singleSpaAngularJS from 'single-spa-angularjs';
-import angular from 'angular';
+import singleSpaAngularJS from "single-spa-angularjs";
+import angular from "angular";
 
 const ngLifecycles = singleSpaAngularJS({
   angular: angular,
-  mainAngularModule: 'app',
+  mainAngularModule: "app",
   uiRouter: true,
   preserveGlobal: false,
-  template: '<my-component />',
+  template: "<my-component />",
 });
 
 export const bootstrap = ngLifecycles.bootstrap;
@@ -36,27 +37,31 @@ export const unmount = ngLifecycles.unmount;
 ```
 
 ## Without a bundler
+
 If you're not using a bundler, you'll need to make your angularjs application a SystemJS module or a global variable. The SystemJS
 module is preferred, and you can read about it more in the [recommended single-spa setup](/docs/faq#is-there-a-recommended-setup).
 
 ### As a SystemJS module
+
 Add the following to your AngularJS application. If you're using gulp/grunt to concatenate files together, just create a new file called
 `single-spa-application.js` and make sure it's included in your final build file.
 
 ```js
-System.register([], function(_export) {
+System.register([], function (_export) {
   return {
-    execute: function() {
-      _export(singleSpaAngularJS({
-        angular: angular,
-        mainAngularModule: 'app',
-        uiRouter: true,
-        preserveGlobal: false,
-        template: '<my-component />',
-      }))
-    }
-  }
-})
+    execute: function () {
+      _export(
+        singleSpaAngularJS({
+          angular: angular,
+          mainAngularModule: "app",
+          uiRouter: true,
+          preserveGlobal: false,
+          template: "<my-component />",
+        }),
+      );
+    },
+  };
+});
 ```
 
 Once you do this, you can `System.import()` the bundle file and SystemJS + single-spa will know what to do with your module. Your
@@ -64,19 +69,21 @@ Once you do this, you can `System.import()` the bundle file and SystemJS + singl
 add `name-of-app` to your [import map](https://single-spa-playground.org/playground/import-map).
 
 ### As a global variable
+
 ```js
 window.myAngularApp = singleSpaAngularJS({
   angular: angular,
-  mainAngularModule: 'app',
+  mainAngularModule: "app",
   uiRouter: true,
   preserveGlobal: false,
-  template: '<my-component />',
-})
+  template: "<my-component />",
+});
 ```
 
 Your [loading function](/docs/configuration#loading-function-or-application) should just be the global variable itself. For example:
+
 ```js
-singleSpa.registerApplication('my-angular-app', myAngularApp, () => true);
+singleSpa.registerApplication("my-angular-app", myAngularApp, () => true);
 ```
 
 ## Options
@@ -94,4 +101,5 @@ All options are passed to single-spa-angularjs via the `opts` parameter when cal
 - `template`: (optional) An HTML string that will be inserted into the DOM when the app is mounted. The template goes inside of the element returned by domElementGetter. If not provided, no template will be inserted. When using angular-ui-router, you often do not need to use this since ui-router will be putting a template onto the dom for you.
 
 ## ES5 Example
+
 Check out [this example repo](https://github.com/joeldenning/single-spa-es5-angularjs)

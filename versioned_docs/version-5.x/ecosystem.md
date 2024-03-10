@@ -7,6 +7,7 @@ sidebar_label: Overview
 The single-spa ecosystem is quickly growing to support as many frameworks and build tools as possible.
 
 ## Help for frameworks
+
 There is a growing number of projects that help you bootstrap, mount,
 and unmount your applications that are written with popular frameworks. Feel free
 to contribute to this list with your own project:

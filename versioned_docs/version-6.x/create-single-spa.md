@@ -133,21 +133,21 @@ yarn add single-spa-web-server-utils
 The `getImportMaps` function accepts an object parameter and returns a promise that resolves with an object with two import maps: `browserImportMap` and `nodeImportMap`. Note that import maps are polled at the specified interval forever until either `reset()` or `clearAllIntervals()` is called. Import Maps are stored in memory in a javascript variable that exists outside of the `getImportMaps` function, so subsequent calls to `getImportMaps` will all use the same cache.
 
 ```js
-const { getImportMaps } = require('single-spa-web-server-utils');
-const http = require('http');
-const ejs = require('ejs');
-const fs = require('fs');
-const path = require('path');
+const { getImportMaps } = require("single-spa-web-server-utils");
+const http = require("http");
+const ejs = require("ejs");
+const fs = require("fs");
+const path = require("path");
 
 const htmlTemplate = ejs.compile(
-  fs.readFileSync(path.resolve(process.cwd(), 'views/index.html'), 'utf-8'),
+  fs.readFileSync(path.resolve(process.cwd(), "views/index.html"), "utf-8"),
 );
 
 http.createServer((req, res) => {
   getImportMaps({
     // required
     // The URL at which the server
-    url: 'https://my-cdn.com/live.importmap',
+    url: "https://my-cdn.com/live.importmap",
 
     // optional - defaults to 30000
     // The ms to wait when polling the import map
@@ -180,13 +180,13 @@ http.createServer((req, res) => {
     const htmlWithInlinedImportMap = htmlTemplate({
       importMap: browserImportMap,
     });
-    res.setResponseHeader('Content-Type', 'text/html');
+    res.setResponseHeader("Content-Type", "text/html");
     res.status(200).send(htmlWithInlinedImportMap);
 
     // Example of how to apply a NodeJS import map
     // More info at https://github.com/node-loader/node-loader-import-maps
     global.nodeLoader.setImportMapPromise(Promise.resolve(nodeImportMap));
-    import('module-in-import-map');
+    import("module-in-import-map");
   });
 });
 ```
@@ -196,7 +196,7 @@ http.createServer((req, res) => {
 This clears all import map polling intervals that were created via `setInterval()` inside of `getImportMaps()`. This is useful for tests and for cleaning up memory.
 
 ```js
-import { clearAllIntervals } from 'single-spa-web-server-utils';
+import { clearAllIntervals } from "single-spa-web-server-utils";
 
 clearAllIntervals();
 ```
@@ -206,7 +206,7 @@ clearAllIntervals();
 This clears all intervals (see [clearAllIntervals](#clearallintervals)), and also clears the in-memory cache of all import maps. In other words, after `reset()` is called, `getImportMaps()` will always result in a new network request to fetch the import map.
 
 ```js
-import { reset } from 'single-spa-web-server-utils';
+import { reset } from "single-spa-web-server-utils";
 
 reset();
 ```

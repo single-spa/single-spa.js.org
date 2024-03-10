@@ -8,18 +8,18 @@ single-spa exports named functions and variables rather than a single default ex
 This means importing must happen in one of two ways:
 
 ```js
-import { registerApplication, start } from 'single-spa';
+import { registerApplication, start } from "single-spa";
 // or
-import * as singleSpa from 'single-spa';
+import * as singleSpa from "single-spa";
 ```
 
 ## registerApplication
 
 ```js
 singleSpa.registerApplication(
-  'appName',
-  () => System.import('appName'),
-  location => location.pathname.startsWith('appName'),
+  "appName",
+  () => System.import("appName"),
+  (location) => location.pathname.startsWith("appName"),
 );
 ```
 
@@ -88,9 +88,9 @@ none
 
 ```js
 // Three ways of using navigateToUrl
-singleSpa.navigateToUrl('/new-url');
-singleSpa.navigateToUrl(document.querySelector('a'));
-document.querySelector('a').addEventListener(singleSpa.navigateToUrl);
+singleSpa.navigateToUrl("/new-url");
+singleSpa.navigateToUrl(document.querySelector("a"));
+document.querySelector("a").addEventListener(singleSpa.navigateToUrl);
 ```
 
 ```html
@@ -157,7 +157,7 @@ none
 ## getAppStatus
 
 ```js
-const status = singleSpa.getAppStatus('app1');
+const status = singleSpa.getAppStatus("app1");
 console.log(status); // one of many statuses (see list below). e.g. MOUNTED
 ```
 
@@ -231,7 +231,7 @@ Note that if you're using SystemJS to load your bundles, you need to add the fol
 when your loading function calls `System.import()` on an application in `LOAD_ERROR` status.
 
 ```js
-singleSpa.addErrorHandler(err => {
+singleSpa.addErrorHandler((err) => {
   if (singleSpa.getAppStatus(err.appOrParcelName) === singleSpa.LOAD_ERROR) {
     System.delete(System.resolve(err.appOrParcelName));
   }
@@ -242,10 +242,10 @@ singleSpa.addErrorHandler(err => {
 
 ```js
 // Unload the application right now, without waiting for it to naturally unmount.
-singleSpa.unloadApplication('app1');
+singleSpa.unloadApplication("app1");
 
 // Unload the application only after it naturally unmounts due to a route change.
-singleSpa.unloadApplication('app1', { waitForUnmount: true });
+singleSpa.unloadApplication("app1", { waitForUnmount: true });
 ```
 
 The purpose of unloading a registered application is to set it back to to a NOT_LOADED status, which means that it will be re-bootstrapped the next time it needs to mount. The main use-case for this was to allow for the hot-reloading of entire registered applications, but `unloadApplication` can be useful whenever you want to re-bootstrap your application.
@@ -281,7 +281,7 @@ const appsThatShouldBeActive = singleSpa.checkActivityFunctions();
 console.log(appsThatShouldBeActive); // ['app1']
 
 const appsForACertainRoute = singleSpa.checkActivityFunctions({
-  pathname: '/app2',
+  pathname: "/app2",
 });
 console.log(appsForACertainRoute); // ['app2']
 ```
@@ -305,7 +305,7 @@ Will call every app's activity function with the `mockWindowLocation` and give y
 ## addErrorHandler
 
 ```js
-singleSpa.addErrorHandler(err => {
+singleSpa.addErrorHandler((err) => {
   console.log(err);
   console.log(err.appOrParcelName);
   console.log(singleSpa.getAppStatus(err.appOrParcelName));
@@ -355,17 +355,17 @@ Removes the given error handler function.
 ```js
 // Synchronous mounting
 const parcel = singleSpa.mountRootParcel(parcelConfig, {
-  prop1: 'value1',
-  domElement: document.getElementById('a-div'),
+  prop1: "value1",
+  domElement: document.getElementById("a-div"),
 });
 parcel.mountPromise.then(() => {
-  console.log('finished mounting the parcel!');
+  console.log("finished mounting the parcel!");
 });
 
 // Asynchronous mounting. Feel free to use webpack code splits or SystemJS dynamic loading
-const parcel2 = singleSpa.mountRootParcel(() => import('./some-parcel.js'), {
-  prop1: 'value1',
-  domElement: document.getElementById('a-div'),
+const parcel2 = singleSpa.mountRootParcel(() => import("./some-parcel.js"), {
+  prop1: "value1",
+  domElement: document.getElementById("a-div"),
 });
 ```
 
@@ -540,17 +540,17 @@ All of the following are [custom events](https://developer.mozilla.org/en-US/doc
 <!-- TODO: are these events augmented like the addErrorHandler Error is? -->
 
 ```js
-window.addEventListener('single-spa:before-routing-event', evt => {
+window.addEventListener("single-spa:before-routing-event", (evt) => {
   const originalEvent = evt.detail;
-  console.log('single-spa event', originalEvent);
+  console.log("single-spa event", originalEvent);
 });
 ```
 
 ## before routing event
 
 ```js
-window.addEventListener('single-spa:before-routing-event', () => {
-  console.log('single-spa is about to mount/unmount applications!');
+window.addEventListener("single-spa:before-routing-event", () => {
+  console.log("single-spa is about to mount/unmount applications!");
 });
 ```
 
@@ -559,8 +559,8 @@ A `single-spa:before-routing-event` event is fired before every routing event oc
 ## routing event
 
 ```js
-window.addEventListener('single-spa:routing-event', () => {
-  console.log('single-spa finished mounting/unmounting applications!');
+window.addEventListener("single-spa:routing-event", () => {
+  console.log("single-spa finished mounting/unmounting applications!");
 });
 ```
 
@@ -569,9 +569,9 @@ A `single-spa:routing-event` event is fired every time that a routing event has 
 ## app-change event
 
 ```js
-window.addEventListener('single-spa:app-change', () => {
+window.addEventListener("single-spa:app-change", () => {
   console.log(
-    'A routing event occurred where at least one application was mounted/unmounted',
+    "A routing event occurred where at least one application was mounted/unmounted",
   );
 });
 ```
@@ -581,9 +581,9 @@ A `single-spa:app-change` event is fired every time that one or more apps were l
 ## no-app-change event
 
 ```js
-window.addEventListener('single-spa:before-routing-event', () => {
+window.addEventListener("single-spa:before-routing-event", () => {
   console.log(
-    'A routing event occurred where zero applications were mounted/unmounted',
+    "A routing event occurred where zero applications were mounted/unmounted",
   );
 });
 ```
@@ -593,9 +593,9 @@ When no applications were loaded, bootstrapped, mounted, unmounted, or unloaded,
 ## before-first-mount
 
 ```js
-window.addEventListener('single-spa:before-first-mount', () => {
+window.addEventListener("single-spa:before-first-mount", () => {
   console.log(
-    'single-spa is about to mount the very first application for the first time',
+    "single-spa is about to mount the very first application for the first time",
   );
 });
 ```
@@ -609,8 +609,8 @@ remove a loader bar that the user is seeing right before the first app will be m
 ## first-mount
 
 ```js
-window.addEventListener('single-spa:first-mount', () => {
-  console.log('single-spa just mounted the very first application');
+window.addEventListener("single-spa:first-mount", () => {
+  console.log("single-spa just mounted the very first application");
 });
 ```
 

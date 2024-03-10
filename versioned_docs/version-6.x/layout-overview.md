@@ -80,14 +80,14 @@ In your root html file, add a `<template>` element to the head. It should have a
 Then inside of your root-config's JavaScript code, add the following:
 
 ```js
-import { registerApplication, start } from 'single-spa';
+import { registerApplication, start } from "single-spa";
 import {
   constructApplications,
   constructRoutes,
   constructLayoutEngine,
-} from 'single-spa-layout';
+} from "single-spa-layout";
 
-const routes = constructRoutes(document.querySelector('#single-spa-layout'));
+const routes = constructRoutes(document.querySelector("#single-spa-layout"));
 const applications = constructApplications({
   routes,
   loadApp({ name }) {

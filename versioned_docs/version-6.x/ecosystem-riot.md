@@ -13,6 +13,7 @@ single-spa-riot is a helper library that helps implement [single-spa registered 
 [![minified](https://badgen.net/bundlephobia/minzip/single-spa-riot)](https://bundlephobia.com/result?p=single-spa-riot)
 
 ## Installation
+
 ```sh
 npm install --save single-spa-riot
 ```
@@ -20,13 +21,13 @@ npm install --save single-spa-riot
 ## Usage
 
 ```js
-import * as Riot from 'riot';
-import singleSpaRiot from 'single-spa-riot';
-import App from './App.riot'
+import * as Riot from "riot";
+import singleSpaRiot from "single-spa-riot";
+import App from "./App.riot";
 
 const riotLifecycles = singleSpaRiot({
   rootComponent: Riot.component(App),
-  domElementGetter: () => document.getElementById('#app')
+  domElementGetter: () => document.getElementById("#app"),
 });
 
 export const bootstrap = riotLifecycles.bootstrap;

@@ -13,7 +13,7 @@
   color: var(--ifm-color-primary);
 }
 
-html[data-theme='dark'] .showcaseHeadingColored {
+html[data-theme="dark"] .showcaseHeadingColored {
   color: var(--ifm-color-primary-lightest);
 }
 

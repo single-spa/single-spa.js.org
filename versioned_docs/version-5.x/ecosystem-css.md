@@ -52,7 +52,7 @@ Browsers support [CSS custom properties](https://developer.mozilla.org/en-US/doc
 ```css
 /* In your styleguide / design system */
 :root {
-  --blue: #0000FF;
+  --blue: #0000ff;
 }
 ```
 
@@ -172,15 +172,15 @@ all of your CSS. Below is an example PostCSS configuration file:
 
 ```js
 // postcss.config.js
-const prefixer = require('postcss-prefix-selector');
+const prefixer = require("postcss-prefix-selector");
 
 module.exports = {
   plugins: [
     prefixer({
-      prefix: "#single-spa-application\\:\\@org-name\\/project-name"
-    })
-  ]
-}
+      prefix: "#single-spa-application\\:\\@org-name\\/project-name",
+    }),
+  ],
+};
 ```
 
 ### Shadow DOM
@@ -214,7 +214,7 @@ To accomplish this, single-spa applications and parcels should remove `<link>` a
 // This code is an example of the mechanics of mounting + unmounting + remounting CSS.
 // In practice, this is often done via tools like css-loader, style-loader, or
 // single-spa-css (rather than manually).
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.textContent = `.settings {color: blue;}`;
 
 export const mount = [
@@ -222,14 +222,14 @@ export const mount = [
     document.head.appendChild(styleElement);
   },
   reactLifecycles.mount,
-]
+];
 
 export const unmount = [
   reactLifecycles.unmount,
   async () => {
     styleElement.remove();
-  }
-]
+  },
+];
 ```
 
 To help you accomplish this, this [single-spa-css](/docs/ecosystem-css#single-spa-css) library implements mount and unmount functions for you.
