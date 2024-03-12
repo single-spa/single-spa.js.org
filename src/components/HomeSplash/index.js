@@ -28,7 +28,7 @@ export const HomeSplash = () => {
 
           <Link
             className="button"
-            to="https://join.slack.com/t/single-spa/shared_invite/zt-21skfl7l3-leF7JkoKwKaRIPX~N6jXJQ"
+            to="https://join.slack.com/t/single-spa/shared_invite/zt-2efw13fg4-oJgemeyCUJv4~JrQlYttnA"
           >
             Join Slack Chat
           </Link>
