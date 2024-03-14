@@ -104,6 +104,7 @@ module.exports = (webpackConfigEnv, argv) => {
     standaloneOptions: {},
   });
 
+  return merge(defaultConfig, {
      // modify the webpack config however you'd like to by adding to this object
   });
 };
