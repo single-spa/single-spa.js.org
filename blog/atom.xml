@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://single-spa.js.org/blog</id>
     <title>single-spa Blog</title>
-    <updated>2024-02-14T00:00:00.000Z</updated>
+    <updated>2024-03-12T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://single-spa.js.org/blog"/>
     <subtitle>single-spa Blog</subtitle>
     <icon>https://single-spa.js.org/img/single-spa-mark-magenta.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[March 2024 Core Team Meeting]]></title>
+        <id>https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes</id>
+        <link href="https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes"/>
+        <updated>2024-03-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Attendees: Joel Denning, Milan Kovacic]]></summary>
+        <content type="html"><![CDATA[<p>Attendees: Joel Denning, Milan Kovacic</p>
+<p>Date: 2024-03-13</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="meeting-agenda">Meeting Agenda<a href="https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes#meeting-agenda" class="hash-link" aria-label="Direct link to Meeting Agenda" title="Direct link to Meeting Agenda">​</a></h2>
+<ul>
+<li>Typescript migration: single-spa@7 - typescript, IE11, navigation cancelation</li>
+<li>Migration from SystemJS to native modules - use es-module-shims??</li>
+<li>Discuss creation of single-spa CLI</li>
+<li>Getting started documentation being updated by Milan</li>
+<li>Discuss future of shared dependency management</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="typescript-migration">TypeScript Migration<a href="https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes#typescript-migration" class="hash-link" aria-label="Direct link to TypeScript Migration" title="Direct link to TypeScript Migration">​</a></h3>
+<p>Fifth typescript PR has been merged (<a href="https://github.com/single-spa/single-spa/pull/1202" target="_blank" rel="noopener noreferrer">https://github.com/single-spa/single-spa/pull/1202</a>). Sixth one on the way</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="migration-to-native-modules">Migration to native modules<a href="https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes#migration-to-native-modules" class="hash-link" aria-label="Direct link to Migration to native modules" title="Direct link to Migration to native modules">​</a></h3>
+<p>Discuss the limitations of native modules and import maps (external import maps, external import maps, etc). Discuss whether to use <a href="https://github.com/single-spa/import-map-injector" target="_blank" rel="noopener noreferrer">import-map-injector</a> or <a href="https://github.com/guybedford/es-module-shims" target="_blank" rel="noopener noreferrer">es-module-shims</a> or neither. Joel expressed concern about runtime parsing of modules, but Milan pointed out that Ruby on Rails as adopted es-module-shims. We looked at the performance benchmarks for es-module-shims, which show it's only a 5ms difference compared to native modules.</p>
+<p>We also discussed possible collaboration with Zack Jackson on module federation's new runtime (called MFP) and whether that could help. Also discuss whether a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">service worker</a> would be necessary or helpful to hook into the browser's loading of modules.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="single-spa-cli">single-spa CLI<a href="https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes#single-spa-cli" class="hash-link" aria-label="Direct link to single-spa CLI" title="Direct link to single-spa CLI">​</a></h3>
+<p>See <a href="https://github.com/single-spa/single-spa/issues/1205" target="_blank" rel="noopener noreferrer">single-spa issue 1205</a> for Milan's proposal. Joel has hesitations about abstracting away bundler config and configuration files, but we decided to proceed with Milan's proposal, since developer experience is one of the main barriers to entry for developers and corporations who are used to managed configuration in other projects (NextJS, Vite, etc etc). The main concern is how to do it in a way where single-spa users don't have to go digging in node_modules regularly to be able to do what they need to do to their projects.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="shared-dependencies-management">Shared dependencies management<a href="https://single-spa.js.org/blog/2024/03/12/core-team-meeting-notes#shared-dependencies-management" class="hash-link" aria-label="Direct link to Shared dependencies management" title="Direct link to Shared dependencies management">​</a></h3>
+<p>Baseplate Cloud plans to use <a href="https://jspm.org/cdn/jspm-io" target="_blank" rel="noopener noreferrer">JSPM CDN</a> for native ES module shared dependencies. Managing the dependencies in the import map over time is important to do in a sensible way that avoids accidentally breaking production, while still allowing for incremental migration of dependencies on microfrontend at a time.</p>
+<p>We didn't decide on anything concrete - just brainstormed solutions. Ideally the open source ecosystem can self-host shared dependencies as well.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[February 2024 Core Team Meeting]]></title>
         <id>https://single-spa.js.org/blog/2024/02/14/core-team-meeting-notes</id>
