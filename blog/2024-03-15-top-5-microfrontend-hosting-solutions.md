@@ -7,7 +7,7 @@ authorImageURL: https://avatars.githubusercontent.com/u/5524384
 
 # Top 5 Microfrontend Hosting Solutions
 
-Growing rapidly in recent years, microfrontends have become a critical solution for large software organizations. The hosting of microfrontends has become a complicated, but crucial, aspect of scaling software organizations. Whether companies are using single-spa, module federation, or any other microfrontends tools, the management of CI/CD pipelines, deployments, CDNs, and service discovery is something all companies will have to solve.
+With rapid growth in recent years, microfrontends have become a popular solution with many companies, from large software organizations to small independent dev teams. Microfrontend hosting can get complicated quickly but it is a crucial aspect of scaling software organizations' development cycle. Whether companies are using single-spa, module federation, or any other microfrontends tools, the management of CI/CD pipelines, deployments, CDNs, and service discovery is something all companies will have to solve.
 
 So what’s the most effective solution? Because microfrontend hosting is a relatively new space, most companies have a hard time knowing where to start. Fortunately, there are very good options out there, and unless you have a good reason to, you don’t have to build it out yourself. Here you’ll find a list of the best hosting solutions and the important factors you’ll need to consider to make the decision.
 
@@ -15,15 +15,15 @@ So what’s the most effective solution? Because microfrontend hosting is a rela
 
 This article focuses on hosting solutions for client-side rendered microfrontends, since the majority of microfrontend implementations rely solely on [client-side rendering](https://ferie.medium.com/what-is-the-client-side-rendering-and-how-it-works-c90210e2cd14).
 
-[Server-side rendering](https://www.heavy.ai/technical-glossary/server-side-rendering) of microfrontends often involves one or more docker containers that run [NodeJS](https://en.wikipedia.org/wiki/Node.js) to render [React](https://en.wikipedia.org/wiki/React_(software)), [Angular](https://en.wikipedia.org/wiki/Angular_(web_framework)), or [Vue](https://en.wikipedia.org/wiki/Vue.js) applications. [Single-spa server rendering](/docs/ssr-overview) also supports a single NodeJS runtime (rather than network requests between docker containers), for optimal performance.
+[Server-side rendering](https://www.heavy.ai/technical-glossary/server-side-rendering) of microfrontends often involves one or more docker containers that run [NodeJS](https://en.wikipedia.org/wiki/Node.js) to render [React](https://en.wikipedia.org/wiki/React_(software)), [Angular](https://en.wikipedia.org/wiki/Angular_(web_framework)), or [Vue](https://en.wikipedia.org/wiki/Vue.js) applications. For optimal performance, [single-spa server rendering](/docs/ssr-overview) also supports a single NodeJS runtime (rather than network requests between docker containers).
 
 If your organization uses server-side rendering, the following rankings will still apply but may require some additional consideration that isn’t covered here. 
 
 ## Low-level vs high-level hosting solutions
 
-Hosting microfrontends can be accomplished with lower-level cloud services (AWS, GCP, Azure, etc) or via microfrontend-specific cloud hosting solutions such as Baseplate Cloud and Zephyr Cloud. Lower-level services are cheaper, but require a lot more initial setup and ongoing maintenance. Higher-level microfrontend hosting solutions provide targeted features to streamline the hosting and development process.
+Hosting microfrontends can be accomplished with lower-level cloud services (AWS, GCP, Azure, etc) or via microfrontend-specific cloud hosting solutions such as Baseplate Cloud and Zephyr Cloud. Lower-level services may be more affordable but require much more initial setup and ongoing maintenance. Higher-level microfrontend hosting solutions provide targeted features to streamline the hosting and development process.
 
-Companies who wish for sensible defaults and a straightforward implementation path may choose higher-level hosting solutions, to cut down on devops and system admin costs. The additional built-in features of higher-level hosting solutions often reduces implementation time for companies migrating to or starting with microfrontends.
+Companies who wish for sensible defaults and a straightforward implementation path may choose higher-level hosting solutions to save on DevOps and system admin costs. The additional built-in features of higher-level hosting solutions often reduce implementation time for companies migrating to or starting with microfrontends.
 
 ## Solution comparison
 
@@ -65,7 +65,7 @@ Companies who wish for sensible defaults and a straightforward implementation pa
 
 [Baseplate Cloud](https://baseplate.cloud/) tops the list for its ease of use and specific focus on single-spa hosting. Because it was made by the creator of single-spa, Baseplate's features have been informed by years of microfrontend and single-spa consultancies, making it the easiest microfrontend hosting choice for single-spa. Everything about the product simplifies and automates as much of the complexity as possible, and it’s hard to find advantages in other solutions that beat this fact. Baseplate will probably be the best choice for any company that is prioritizing a streamlined cloud hosting experience.
 
-Its feature-set is comparable to the job function of multiple software developers, so it can be used to free up a lot of development resources without increasing the size of the development team. This easily makes up for its somewhat higher upfront cost.
+Baseplate's feature set automates the job functions of multiple software developers and frees up a lot of development resources without increasing the size of the development team. This easily offsets the cost of Baseplate's services.
 
 Baseplate supports the following features:
 
@@ -83,16 +83,15 @@ Also of note, [Baseplate CDN](https://baseplate.cloud/docs/cdn/assets) is a sour
 
 ## 2. Zephyr Cloud
 
-From the creators of module federation, [Zephyr Cloud](https://zephyr-cloud.io/) is the premier hosting solution for module-federation-based microfrontends. It is currently in closed alpha with little publicly documented about its features.
+From the creators of Module Federation, [Zephyr Cloud](https://zephyr-cloud.io/) is the premier hosting solution for module-federation-based microfrontends. It is currently in closed alpha with little publicly documented about its features.
 
 ## 3. AWS S3 + Cloudfront
 
 Amazon Web Services (AWS) offers the low-level cloud services necessary for companies to set up a microfrontends hosting solution. The most common microfrontends hosting solution within AWS often involves a [Cloudflare distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview.html) that acts as a public [CDN](https://en.wikipedia.org/wiki/Content_delivery_network), with a private [S3 bucket](https://aws.amazon.com/s3/) as the origin containing all static web files (Javascript, CSS, HTML) needed.
 
-The advantage of using lower level cloud hosting services is a cheaper cost, at the tradeoff of increased setup and maintenance complexity when compared to microfrontend-specific cloud hosting solutions.
+The advantage of using lower-level cloud hosting services is their initial lower costs—however, that comes at the expense of increased setup and maintenance complexity compared to microfrontend-specific cloud hosting solutions.
 
-Implementation details vary from company to company, but it is common for each microfrontend's files to be stored within a (virtual) folder within the s3 bucket. The manifest or import map listing all microfrontends is usually made available within a JSON file. Web apps using the microfrontends may have their own S3 bucket or be within the same S3 bucket.
-
+Implementation details will vary from company to company. It's common for each microfrontend's files to be stored within a (virtual) folder within the s3 bucket and the manifest or import map listing all microfrontends made available in a JSON file. Web apps using the microfrontends may have their own S3 bucket or be within the same S3 bucket.
 
 ## 4. GCP Storage + Cloud CDN
 
