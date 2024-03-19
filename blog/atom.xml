@@ -63,10 +63,6 @@
 <p>Google Cloud Platform provides equivalent low-level cloud services to AWS. The same technical details that apply to AWS S3 + Cloudfront also apply to <a href="https://cloud.google.com/storage?hl=en" target="_blank" rel="noopener noreferrer">GCP Cloud Storage</a> and <a href="https://cloud.google.com/cdn/docs/overview" target="_blank" rel="noopener noreferrer">GCP Cloud CDN</a>.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="5-azure-storage--cdn">5. Azure Storage + CDN<a href="https://single-spa.js.org/blog/2024/03/18/top-5-microfrontend-hosting-solutions#5-azure-storage--cdn" class="hash-link" aria-label="Direct link to 5. Azure Storage + CDN" title="Direct link to 5. Azure Storage + CDN">​</a></h2>
 <p>Azure Storage provides equivalent low-level cloud services to AWS. The same technical details that apply to AWS S3 + Cloudfront also apply to <a href="https://azure.microsoft.com/en-us/products/category/storage" target="_blank" rel="noopener noreferrer">Azure Storage</a> and <a href="https://azure.microsoft.com/en-us/products/cdn" target="_blank" rel="noopener noreferrer">GCP Cloud CDN</a>.</p>]]></content>
-        <author>
-            <name>Joel Denning</name>
-            <uri>https://x.com/joelbdenning</uri>
-        </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[March 2024 Core Team Meeting]]></title>
