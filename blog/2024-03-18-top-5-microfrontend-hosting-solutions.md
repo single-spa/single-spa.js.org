@@ -1,8 +1,5 @@
 ---
 title: Top 5 Microfrontend Hosting Solutions
-author: Joel Denning
-authorURL: https://x.com/joelbdenning
-authorImageURL: https://avatars.githubusercontent.com/u/5524384
 ---
 
 # Top 5 Microfrontend Hosting Solutions
