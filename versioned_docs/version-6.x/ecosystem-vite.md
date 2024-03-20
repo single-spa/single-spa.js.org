@@ -85,7 +85,7 @@ export default defineConfig({
     react(),
     vitePluginSingleSpa({
       serverPort: 4101,
-      spaEntryPoint: "src/spa.tsx",
+      spaEntryPoints: "src/spa.tsx",
     }),
   ],
 });
