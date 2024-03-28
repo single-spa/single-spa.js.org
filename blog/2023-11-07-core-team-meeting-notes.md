@@ -18,6 +18,7 @@ Attendees: Joel Denning, Milan Kovacic, Jake Hayes
 - Maintenance update/plan
 
 ## Roadmap Brainstorm
+
 - Adding unit tests to existing projects
 - SystemJS -> ESM migration
 - create-single-spa update (https://github.com/cruft/cruft)

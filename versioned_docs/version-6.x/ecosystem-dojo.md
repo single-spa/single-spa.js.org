@@ -9,6 +9,7 @@ sidebar_label: Dojo
 single-spa-dojo is a helper library that helps implement [single-spa registered application](configuration#registering-applications) [lifecycle functions](building-applications.md#registered-application-lifecycle) (bootstrap, mount and unmount) for use with [Dojo](https://dojo.io/). Check out the [single-spa-dojo github](https://github.com/single-spa/single-spa-dojo).
 
 ## Installation
+
 ```sh
 npm install --save single-spa-dojo
 
@@ -17,13 +18,14 @@ yarn add single-spa-dojo
 ```
 
 ## Quickstart
+
 Your bundler's "entry file" should look like this, which allows your application to be downloaded as an in-browser ES module.
 
 ```js
-import { renderer } from '@dojo/framework/core/vdom';
-import { v, w } from '@dojo/framework/widget-core/d';
-import singleSpaDojo from 'single-spa-dojo';
-import App from './app';
+import { renderer } from "@dojo/framework/core/vdom";
+import { v, w } from "@dojo/framework/widget-core/d";
+import singleSpaDojo from "single-spa-dojo";
+import App from "./app";
 
 const dojoLifecycles = singleSpaDojo({
   // required
@@ -44,11 +46,11 @@ const dojoLifecycles = singleSpaDojo({
     registry: myRegistry,
 
     // optional - one will be provided by single-spa automatically
-    domNode: document.getElementById('myContainer'),
+    domNode: document.getElementById("myContainer"),
 
     // optional
-    sync: true
-  }
+    sync: true,
+  },
 });
 
 export const bootstrap = dojoLifecycles.bootstrap;

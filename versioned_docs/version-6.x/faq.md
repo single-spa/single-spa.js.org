@@ -140,9 +140,9 @@ Single spa supports code splits. There are so many ways to code split we won't b
    - For SystemJS >= 6, use [systemjs-webpack-interop](https://github.com/joeldenning/systemjs-webpack-interop):
 
    ```js
-   import { setPublicPath } from 'systemjs-webpack-interop';
+   import { setPublicPath } from "systemjs-webpack-interop";
 
-   setPublicPath('name-of-module-in-import-map');
+   setPublicPath("name-of-module-in-import-map");
    ```
 
    - For SystemJS 2-5: Find a code example [here](https://gitlab.com/TheMcMurder/single-spa-portal-example/blob/master/people/src/set-public-path.js#L3)

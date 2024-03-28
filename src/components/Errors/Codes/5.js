@@ -1,13 +1,14 @@
-import React from 'react'
-import CodeSnippet from '../CodeSnippet'
+import React from "react";
+import CodeSnippet from "../CodeSnippet";
 
 export default function ErrorCode5(props) {
   return (
     <>
       <h1>#5: Cannot mount parcel - customProps.domElement not provided</h1>
       <p>
-        Parcel {props.getErrorCodeArg(0, 'unknown name')} was not provided customProps.domElement. The domElement must be a DOMElement container in which the parcel
-        will be mounted.
+        Parcel {props.getErrorCodeArg(0, "unknown name")} was not provided
+        customProps.domElement. The domElement must be a DOMElement container in
+        which the parcel will be mounted.
       </p>
       <h2>To fix:</h2>
       <div>
@@ -24,9 +25,11 @@ export default function ErrorCode5(props) {
       </div>
       <h2>Explanation:</h2>
       <p>
-        The <a href="/docs/parcels-api#mountparcel">mountParcel</a> and <a href="/docs/parcels-api#mountrootparcel">mountRootParcel</a> apis require that you pass in customProps
-        that have a property called <code>domElement</code> that is a DOMElement.
+        The <a href="/docs/parcels-api#mountparcel">mountParcel</a> and{" "}
+        <a href="/docs/parcels-api#mountrootparcel">mountRootParcel</a> apis
+        require that you pass in customProps that have a property called{" "}
+        <code>domElement</code> that is a DOMElement.
       </p>
     </>
-  )
+  );
 }

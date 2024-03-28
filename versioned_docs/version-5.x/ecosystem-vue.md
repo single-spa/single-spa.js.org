@@ -49,9 +49,9 @@ Install `systemjs-webpack-interop` if you have not already done so.
 Create a file at the same level as your `main.js/ts` called `set-public-path.js`
 
 ```js
-import { setPublicPath } from 'systemjs-webpack-interop';
+import { setPublicPath } from "systemjs-webpack-interop";
 
-setPublicPath('appName');
+setPublicPath("appName");
 ```
 
 Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically and the `set-public-path.js` file
@@ -73,11 +73,11 @@ export const mount = props => vueLifecycles.mount(props).then(instance => {
 For Vue 2, change your application's entry file to be the following:
 
 ```js
-import './set-public-path';
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import singleSpaVue from 'single-spa-vue';
+import "./set-public-path";
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import singleSpaVue from "single-spa-vue";
 
 const vueLifecycles = singleSpaVue({
   Vue,
@@ -104,16 +104,16 @@ export const unmount = vueLifecycles.unmount;
 
 ### Vue 3
 
-> :warning: **Vue 3's router only works properly with single-spa's [urlRerouteOnly](api.md#start) set to `true`! In single-spa@<=5, the default value for `urlRerouteOnly` is false. So make sure to update your root config to set it to true. Also, upgrade to vue-cli-plugin-single-spa@>=3 in order to ensure standalone mode sets urlRerouteOnly to true. [Github discussion](https://github.com/single-spa/single-spa-vue/issues/85)**
+> :warning: **Vue 3's router only works properly with single-spa's `urlRerouteOnly` set to `true`! In `single-spa@<=5`, the default value for `urlRerouteOnly` is false. So, make sure to update your root config to set it to true. Also, upgrade to `vue-cli-plugin-single-spa@>=3` in order to ensure standalone mode sets `urlRerouteOnly` to true.** [Github discussion](https://github.com/single-spa/single-spa-vue/issues/85)
 
 For Vue 3, change your application's entry file to be the following:
 
 ```js
-import './set-public-path';
-import { h, createApp } from 'vue';
-import singleSpaVue from '../lib/single-spa-vue.js';
-import router from './router';
-import App from './App.vue';
+import "./set-public-path";
+import { h, createApp } from "vue";
+import singleSpaVue from "../lib/single-spa-vue.js";
+import router from "./router";
+import App from "./App.vue";
 
 const vueLifecycles = singleSpaVue({
   createApp,
@@ -130,7 +130,7 @@ const vueLifecycles = singleSpaVue({
   },
   handleInstance: (app) => {
     app.use(router);
-  }
+  },
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
@@ -194,8 +194,8 @@ Sharing a single instance of Vue and other common libraries is highly recommende
 ```js
 // vue.config.js
 module.exports = {
-  chainWebpack: config => {
-    config.externals(['vue', 'vue-router']);
+  chainWebpack: (config) => {
+    config.externals(["vue", "vue-router"]);
   },
 };
 ```
@@ -205,7 +205,7 @@ module.exports = {
 ```js
 // webpack.config.js
 module.exports = {
-  externals: ['vue', 'vue-router'],
+  externals: ["vue", "vue-router"],
 };
 ```
 
@@ -216,7 +216,7 @@ All options are passed to single-spa-vue via the `opts` parameter when calling `
 - `Vue`: (required) The main Vue object, which is generally either exposed onto the window or is available via `require('vue')` `import Vue from 'vue'`.
 - `appOptions`: (required) An object or async function which will be used to instantiate your Vue.js application. `appOptions` will pass directly through to `new Vue(appOptions)`. Note that if you do not provide an `el` to appOptions, that a div will be created and appended to the DOM as a default container for your Vue application. When `appOptions` is an async function, it receives the single-spa props as an argument (as of <span>single-spa-vue@</span>2.4.0).
 - `loadRootComponent`: (optional and replaces `appOptions.render`) A promise that resolves with your root component. This is useful for lazy loading.
-- `handleInstance`: (optional) A method can be used to handle Vue instance. Vue 3 brings [new instance API](https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp), and you can access *the app instance* from this, like `handleInstance: (app, props) => app.use(router)`. For Vue 2 users, a [Vue instance](https://vuejs.org/v2/guide/instance.html) can be accessed. The `handleInstance(app, props)` function receives the instance as its first argument, and single-spa props as its second argument. If handleInstance returns a promise, single-spa-vue will wait to resolve the app / parcel's `mount` lifecycle until the handleInstance promise resolves.
+- `handleInstance`: (optional) A method can be used to handle Vue instance. Vue 3 brings [new instance API](https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp), and you can access _the app instance_ from this, like `handleInstance: (app, props) => app.use(router)`. For Vue 2 users, a [Vue instance](https://vuejs.org/v2/guide/instance.html) can be accessed. The `handleInstance(app, props)` function receives the instance as its first argument, and single-spa props as its second argument. If handleInstance returns a promise, single-spa-vue will wait to resolve the app / parcel's `mount` lifecycle until the handleInstance promise resolves.
 - `replaceMode`: (optional, defaults to `false`) A boolean that determines whether your root Vue component will entirely replace the container element it's mounted to. The Vue library always replaces, so to implement `replaceMode: false` a temporary `<div class="single-spa-container">` element is created inside of the container, so that Vue replaces that element rather than the container. Introduced in <span>single-spa-vue@</span>2.3.0.
 
 To configure which dom element the single-spa application is mounted to, use [appOptions.el](https://vuejs.org/v2/api/#el):
@@ -225,8 +225,8 @@ To configure which dom element the single-spa application is mounted to, use [ap
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
-    render: h => h(App),
-    el: '#a-special-container',
+    render: (h) => h(App),
+    el: "#a-special-container",
   },
 });
 ```
@@ -239,8 +239,8 @@ const vueLifecycles = singleSpaVue({
   async appOptions() {
     return {
       router: await routerFactory(),
-      render: h => h(App)
-    }
+      render: (h) => h(App),
+    };
   },
 });
 ```
@@ -384,10 +384,10 @@ With this directory structure (which is the Vue CLI default), the public path sh
 // vue.config.js
 module.exports = {
   chainWebpack(config) {
-    config.plugin('SystemJSPublicPathWebpackPlugin').tap((args) => {
+    config.plugin("SystemJSPublicPathWebpackPlugin").tap((args) => {
       args[0].rootDirectoryLevel = 1;
       return args;
     });
-  }
-}
+  },
+};
 ```

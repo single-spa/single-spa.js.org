@@ -36,7 +36,7 @@ So for now, just have a `<script>` to a single JavaScript file (root-application
 Since Webpack is probably the more common use case, my code examples from here on will assume that you’re using Webpack 2. The equivalent Webpack 1 or JSPM code has all the same concepts and only some minor code differences.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -61,22 +61,22 @@ Another way to look at it is that single-spa is a master router on top of your o
 To do this, first `npm install single-spa` and then call the [registerApplication](https://github.com/single-spa/single-spa/blob/master/docs/root-application.md#declaring-child-applications) function:
 
 ```js
-import {registerApplication, start} from 'single-spa';
+import { registerApplication, start } from "single-spa";
 
 // Register your first application with single-spa. More apps will be registered as you create them
-registerApplication('cool-app', loadCoolApp, isCoolAppActive);
+registerApplication("cool-app", loadCoolApp, isCoolAppActive);
 
 // Tell single-spa that you're ready for it to mount your application to the DOM
 start();
 
 // This is a "loading function"
 function loadCoolApp() {
-  return import('./cool-app/cool.app.js');
+  return import("./cool-app/cool.app.js");
 }
 
 // This is an "activity function"
 function isCoolAppActive() {
-  return window.location.hash.startsWith('#/cool');
+  return window.location.hash.startsWith("#/cool");
 }
 ```
 
@@ -116,9 +116,9 @@ Here is a simple example:
 let user;
 
 export function bootstrap() {
-  return fetch('/api/users/0')
-    .then(response => response.json())
-    .then(json => (user = json));
+  return fetch("/api/users/0")
+    .then((response) => response.json())
+    .then((json) => (user = json));
 }
 
 export function mount() {
@@ -128,7 +128,7 @@ export function mount() {
    * can implement a "mount" and "unmount" to become a single-spa application.
    */
   return Promise.resolve().then(() => {
-    document.getElementById('user-app').innerHTML = `
+    document.getElementById("user-app").innerHTML = `
         <div>
           Hello ${user.name}!
         <div>
@@ -141,7 +141,7 @@ export function unmount() {
    * or vue.$destroy()
    */
   return Promise.resolve().then(() => {
-    document.getElementById('user-app').innerHTML = '';
+    document.getElementById("user-app").innerHTML = "";
   });
 }
 ```
@@ -159,17 +159,17 @@ Each child application can be written in any framework, so long as it implements
 So going back to our previous example, we could choose to write our “cool.app.js” as an Angular 1 app, and choose something else for future apps:
 
 ```js
-import singleSpaAngularJS from 'single-spa-angularjs';
-import angular from 'angular';
-import './app.module.js';
-import './routes.js';
+import singleSpaAngularJS from "single-spa-angularjs";
+import angular from "angular";
+import "./app.module.js";
+import "./routes.js";
 
-const domElementGetter = () => document.getElementById('cool-app');
+const domElementGetter = () => document.getElementById("cool-app");
 
 const angularLifecycles = singleSpaAngularJS({
   angular,
   domElementGetter,
-  mainAngularModule: 'single-spa-app',
+  mainAngularModule: "single-spa-app",
   uiRouter: true,
   preserveGlobal: true,
 });
@@ -185,12 +185,12 @@ export const mount = [angularLifecycles.mount];
 export const unmount = [angularLifecycles.unmount];
 
 function aboutToBootstrap() {
-  console.log('about to bootstrapping');
+  console.log("about to bootstrapping");
   return Promise.resolve();
 }
 
 function doneBootstrap() {
-  console.log('finished bootstrapping');
+  console.log("finished bootstrapping");
   return Promise.resolve();
 }
 ```

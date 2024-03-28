@@ -1,36 +1,41 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import classnames from 'classnames';
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import classnames from "classnames";
 
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 function Footer() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
-  const [showWorkshopBanner, setShowWorkspaceBanner] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem("hide-workshop-banner") !== "true" : false)
+  const [showBaseplateBanner, setShowBaseplateBanner] = useState(() =>
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("hide-baseplate-banner") !== "true"
+      : false,
+  );
 
   if (!footer) {
     return null;
   }
 
   useEffect(() => {
-    if (showWorkshopBanner) {
-      localStorage.removeItem('hide-workshop-banner')
+    if (showBaseplateBanner) {
+      localStorage.removeItem("hide-baseplate-banner");
     } else {
-      localStorage.setItem('hide-workshop-banner', true)
+      localStorage.setItem("hide-baseplate-banner", true);
     }
-  }, [showWorkshopBanner])
+  }, [showBaseplateBanner]);
 
   const { copyright, links = [], logo } = footer;
 
   return (
     <footer
-      className={classnames('footer', {
-        'footer--dark': footer.style === 'dark',
-      })}>
+      className={classnames("footer", {
+        "footer--dark": footer.style === "dark",
+      })}
+    >
       <div className="container">
         {links && links.length > 0 && (
           <div className="row footer__links">
@@ -52,13 +57,14 @@ function Footer() {
                               {...item}
                               {...(item.href
                                 ? {
-                                    target: '_blank',
-                                    rel: 'noopener noreferrer',
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
                                     href: item.href,
                                   }
                                 : {
                                     to: useBaseUrl(item.to),
-                                  })}>
+                                  })}
+                            >
                               {item.label}
                             </Link>
                           )}
@@ -73,7 +79,8 @@ function Footer() {
                           <>
                             <li
                               key="gh-star"
-                              className="footer__item footer__item--gh">
+                              className="footer__item footer__item--gh"
+                            >
                               <iframe
                                 title="github"
                                 src={`https://ghbtns.com/github-btn.html?user=${siteConfig.organizationName}&repo=${siteConfig.projectName}&type=star&count=true&size=small`}
@@ -82,8 +89,9 @@ function Footer() {
                             <li key="license" className="footer__item">
                               <a
                                 href={useBaseUrl(
-                                  'img/icons/148705-essential-collection/license/license.html',
-                                )}>
+                                  "img/icons/148705-essential-collection/license/license.html",
+                                )}
+                              >
                                 License for icons
                               </a>
                             </li>
@@ -101,28 +109,35 @@ function Footer() {
           {logo && logo.src && (
             <img
               className="footer__logo margin-bottom--sm"
-              alt={logo.alt} src={useBaseUrl(logo.src)}
+              alt={logo.alt}
+              src={useBaseUrl(logo.src)}
             />
           )}
           <div>
-            Originally developed at <a href='https://getcanopy.com'>Canopy</a>
+            Originally developed at <a href="https://getcanopy.com">Canopy</a>
           </div>
           {copyright && copyright}
-          {showWorkshopBanner &&
+          {showBaseplateBanner && (
             <div className="footer__banner">
-              <div>
-                Learn microfrontends from the single-spa core team at single-spa-workshop.com!
-              </div>
+              <div>Try Baseplate Cloud's official single-spa hosting!</div>
               <div className="footer__banner--actions">
-                <div role="button" tabIndex={0} onClick={() => setShowWorkspaceBanner(false)}>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setShowBaseplateBanner(false)}
+                >
                   Dismiss
                 </div>
-                <a href="https://single-spa-workshop.com" target="_blank" rel="noopener">
-                  View Courses
+                <a
+                  href="https://baseplate.cloud"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Baseplate Hosting
                 </a>
               </div>
             </div>
-          }
+          )}
         </div>
       </div>
     </footer>

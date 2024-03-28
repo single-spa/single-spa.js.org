@@ -29,11 +29,12 @@ single-spa apps consist of the following:
 
 1. [Applications](building-applications.md), each of which is an entire SPA itself (sort of). Each application can respond to url routing events and must know how to bootstrap, mount, and unmount itself from the DOM. The main difference between a traditional SPA and single-spa applications is that they must be able to coexist with other applications, and they do not each have their own HTML page.
 
-    For example, your React or Angular SPAs are applications. When active, they listen to url routing events and put content on the DOM. When inactive, they do not listen to url routing events and are totally removed from the DOM.
+   For example, your React or Angular SPAs are applications. When active, they listen to url routing events and put content on the DOM. When inactive, they do not listen to url routing events and are totally removed from the DOM.
+
 2. A [single-spa-config](configuration), which is the HTML page _and_ the JavaScript that registers applications with single-spa. Each application is registered with three things:
-    - A name
-    - A function to load the application's code
-    - A function that determines when the application is active/inactive
+   - A name
+   - A function to load the application's code
+   - A function that determines when the application is active/inactive
 
 ## How hard will it be to use single-spa?
 
@@ -43,8 +44,8 @@ Our objective is to make using single-spa as easy as possible. But we should als
 
 If you're not starting your application from scratch, you'll have to [migrate your SPA](migrating-existing-spas.md) to become a single-spa application.
 
-* [React - Migrating to single-spa](migrating-react-tutorial.md)
-* [AngularJS - Migrating to single-spa](migrating-angularJS-tutorial.md)
+- [React - Migrating to single-spa](migrating-react-tutorial.md)
+- [AngularJS - Migrating to single-spa](migrating-angularJS-tutorial.md)
 
 single-spa works in Chrome, Firefox, Safari, IE11, and Edge.
 
@@ -56,14 +57,14 @@ Yep.
 
 The documentation is divided into several sections:
 
-* [Getting Started](getting-started-overview.md)
-* [single-spa Applications](building-applications.md)
-* [single-spa Parcels](parcels-overview.md)
-* [Examples](examples.md)
-* [Ecosystem](ecosystem.md)
-* [Contributing Guide](contributing-overview.md)
-* [Blog](https://single-spa.js.org/blog/)
-* [Where to Get Support](https://single-spa.js.org/help/)
+- [Getting Started](getting-started-overview.md)
+- [single-spa Applications](building-applications.md)
+- [single-spa Parcels](parcels-overview.md)
+- [Examples](examples.md)
+- [Ecosystem](ecosystem.md)
+- [Contributing Guide](contributing-overview.md)
+- [Blog](https://single-spa.js.org/blog/)
+- [Where to Get Support](https://single-spa.js.org/help/)
 
 You can help improve the single-spa website by sending pull requests to the [`single-spa.js.org` repository](https://github.com/single-spa/single-spa.js.org).
 
@@ -77,29 +78,29 @@ To create a single-spa application, you will need to do three things:
 
 ```html
 <html>
-<body>
-	<script src="single-spa-config.js"></script>
-</body>
+  <body>
+    <script src="single-spa-config.js"></script>
+  </body>
 </html>
 ```
 
 2. Create a single-spa-config. Check out the [docs](configuration) for more detail.
 
 ```js
-import * as singleSpa from 'single-spa';
+import * as singleSpa from "single-spa";
 
-const appName = 'app1';
+const appName = "app1";
 
 /* The loading function is a function that returns a promise that resolves with the JavaScript application module.
  * The purpose of it is to facilitate lazy loading -- single-spa will not download the code for a application until it needs to.
  * In this example, import() is supported in webpack and returns a Promise, but single-spa works with any loading function that returns a Promise.
  */
-const loadingFunction = () => import('./app1/app1.js');
+const loadingFunction = () => import("./app1/app1.js");
 
 /* single-spa does some top-level routing to determine which application is active for any url. You can implement this routing any way you'd like.
  * One useful convention might be to prefix the url with the name of the app that is active, to keep your top-level routing simple.
  */
-const activityFunction = location => location.pathname.startsWith('/app1');
+const activityFunction = (location) => location.pathname.startsWith("/app1");
 
 singleSpa.registerApplication(appName, loadingFunction, activityFunction);
 singleSpa.start();
@@ -113,31 +114,25 @@ singleSpa.start();
 let domEl;
 
 export function bootstrap(props) {
-	return Promise
-		.resolve()
-		.then(() => {
-			domEl = document.createElement('div');
-			domEl.id = 'app1';
-			document.body.appendChild(domEl);
-		});
+  return Promise.resolve().then(() => {
+    domEl = document.createElement("div");
+    domEl.id = "app1";
+    document.body.appendChild(domEl);
+  });
 }
 
 export function mount(props) {
-	return Promise
-		.resolve()
-		.then(() => {
-			// This is where you would normally use a framework to mount some ui to the dom. See https://single-spa.js.org/docs/ecosystem.html.
-			domEl.textContent = 'App 1 is mounted!'
-		});
+  return Promise.resolve().then(() => {
+    // This is where you would normally use a framework to mount some ui to the dom. See https://single-spa.js.org/docs/ecosystem.html.
+    domEl.textContent = "App 1 is mounted!";
+  });
 }
 
 export function unmount(props) {
-	return Promise
-		.resolve()
-		.then(() => {
-			// This is normally where you would tell the framework to unmount the ui from the dom. See https://single-spa.js.org/docs/ecosystem.html
-			domEl.textContent = '';
-		})
+  return Promise.resolve().then(() => {
+    // This is normally where you would tell the framework to unmount the ui from the dom. See https://single-spa.js.org/docs/ecosystem.html
+    domEl.textContent = "";
+  });
 }
 ```
 

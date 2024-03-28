@@ -20,6 +20,7 @@ Advantages:
 - [monolithic version control has some advantages](https://danluu.com/monorepo/)
 
 Disadvantages:
+
 - One master Webpack config and package.json means less flexibility and freedom for each individual project
 - Slow build times once your project gets large
 - Builds and deployments are all tied together, which can necessitate fixed release schedules instead of ad hoc releases.
@@ -42,9 +43,8 @@ Disadvantages:
 
 #### Option 3: Monorepos
 
-Create a [monorepo](https://medium.com/netscape/the-case-for-monorepos-907c1361708a) with multiple SPAs in a single (mono) repo. 
+Create a [monorepo](https://medium.com/netscape/the-case-for-monorepos-907c1361708a) with multiple SPAs in a single (mono) repo.
 This allows for separate builds and deployment without having separate code repositories.
-
 
 #### Option 4: Dynamic Module Loading
 
@@ -60,7 +60,7 @@ Changing which JavaScript file is loaded for each child application can be done 
 #### Comparison
 
 |                | Separate code repositories possible | Independent CI builds                                                                                       | Separate deployments                                                                                        | Examples                                                                                                                                   |
-|----------------|-------------------------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | NPM Packages   | :white_check_mark:                  | :white_check_mark:                                                                                          | :x:                                                                                                         | [1](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages)                                                               |
 | Monorepo       | :x:                                 | :white_check_mark: [1](https://medium.com/labs42/monorepo-with-circleci-conditional-workflows-69e65d3f1bd0) | :white_check_mark: [1](https://medium.com/labs42/monorepo-with-circleci-conditional-workflows-69e65d3f1bd0) | [1](https://github.com/petermikitsh/learn-single-spa)                                                                                      |
 | Module loading | :white_check_mark:                  | :white_check_mark:                                                                                          | :white_check_mark:                                                                                          | [1](https://github.com/react-microfrontends/) [2](https://github.com/vue-microfrontends/) [3](https://github.com/polyglot-microfrontends/) |

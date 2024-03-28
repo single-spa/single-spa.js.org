@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import classnames from 'classnames';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import { projects, coreMembers } from '@site/src/data/contributors';
-import styles from './styles.module.css';
+import React, { useEffect } from "react";
+import classnames from "classnames";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import { projects, coreMembers } from "@site/src/data/contributors";
+import styles from "./styles.module.css";
 
-const TITLE = 'Core Team Members';
+const TITLE = "Core Team Members";
 
-const getContributors = token => `
+const getContributors = (token) => `
   ${JSON.stringify(projects)}.forEach(({user, repo}) => {
     fetch(\`https://api.github.com/repos/\${user}/\${repo}/contributors\`)
       .then(res => res.json())
@@ -34,8 +34,8 @@ function Contributors() {
   const { siteConfig = {} } = useDocusaurusContext();
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.setAttribute('type', 'text/javascript');
+    const script = document.createElement("script");
+    script.setAttribute("type", "text/javascript");
     script.innerHTML = getContributors(
       siteConfig.customFields.githubTokenAccess,
     );
@@ -53,33 +53,45 @@ function Contributors() {
             styles.contributorWrapper,
             styles.contributorWrapperFirst,
           )}
-          style={{ paddingBottom: '40px' }}>
+          style={{ paddingBottom: "40px" }}
+        >
           <div className={styles.contributorsList}>
-            {coreMembers.map(({ name, login, avatarUrl, sponsorUrl }, index) => (
-              <div key={index} style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                <a
-                  href={`https://github.com/${login}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.contributorItem}>
-                  <span
-                    className={styles.contributorImg}
-                    style={{ backgroundImage: `url(${avatarUrl})` }}></span>
-                  <h3 className={styles.contributorLogin}>{name}</h3>
-                </a>
-                {sponsorUrl &&
+            {coreMembers.map(
+              ({ name, login, avatarUrl, sponsorUrl }, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
                   <a
-                    href={sponsorUrl}
+                    href={`https://github.com/${login}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.contributorItem}>
-                      Sponsor
+                    className={styles.contributorItem}
+                  >
+                    <span
+                      className={styles.contributorImg}
+                      style={{ backgroundImage: `url(${avatarUrl})` }}
+                    ></span>
+                    <h3 className={styles.contributorLogin}>{name}</h3>
                   </a>
-                }
-                <a>
-                </a>
-              </div>
-            ))}
+                  {sponsorUrl && (
+                    <a
+                      href={sponsorUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contributorItem}
+                    >
+                      Sponsor
+                    </a>
+                  )}
+                  <a></a>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
@@ -90,18 +102,21 @@ function Contributors() {
             key={repo}
             className={classnames(
               styles.contributorWrapper,
-              index === 0 ? styles.contributorWrapperFirst : '',
-            )}>
+              index === 0 ? styles.contributorWrapperFirst : "",
+            )}
+          >
             <a
               href={`https://github.com/${user}/${repo}`}
               className={styles.repoLink}
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               {repo}
             </a>
             <div
               id={`${repo}-contributors`}
-              className={styles.contributorsList}></div>
+              className={styles.contributorsList}
+            ></div>
           </div>
         ))}
       </div>

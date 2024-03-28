@@ -1,12 +1,12 @@
 {
-  "version-5.x/docs": [
+  "docs": [
     {
       "type": "category",
       "label": "Overview",
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/getting-started-overview"
+          "id": "getting-started-overview"
         }
       ]
     },
@@ -16,7 +16,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/examples"
+          "id": "examples"
         }
       ]
     },
@@ -31,11 +31,11 @@
         },
         {
           "type": "doc",
-          "id": "version-5.x/single-spa-playground"
+          "id": "single-spa-playground"
         },
         {
           "type": "doc",
-          "id": "version-5.x/videos"
+          "id": "videos"
         }
       ]
     },
@@ -45,11 +45,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/create-single-spa"
+          "id": "create-single-spa"
         },
         {
           "type": "doc",
-          "id": "version-5.x/shared-webpack-configs"
+          "id": "shared-webpack-configs"
         }
       ]
     },
@@ -59,11 +59,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/microfrontends-concept"
+          "id": "microfrontends-concept"
         },
         {
           "type": "doc",
-          "id": "version-5.x/module-types"
+          "id": "module-types"
         }
       ]
     },
@@ -73,7 +73,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/configuration"
+          "id": "configuration"
         }
       ]
     },
@@ -83,15 +83,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/building-applications"
+          "id": "building-applications"
         },
         {
           "type": "doc",
-          "id": "version-5.x/separating-applications"
+          "id": "separating-applications"
         },
         {
           "type": "doc",
-          "id": "version-5.x/migrating-existing-spas"
+          "id": "migrating-existing-spas"
         }
       ]
     },
@@ -101,7 +101,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/parcels-overview"
+          "id": "parcels-overview"
         }
       ]
     },
@@ -111,11 +111,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/testing/units"
+          "id": "testing/units"
         },
         {
           "type": "doc",
-          "id": "version-5.x/testing/e2e"
+          "id": "testing/e2e"
         }
       ]
     },
@@ -125,15 +125,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/layout-overview"
+          "id": "layout-overview"
         },
         {
           "type": "doc",
-          "id": "version-5.x/layout-definition"
+          "id": "layout-definition"
         },
         {
           "type": "doc",
-          "id": "version-5.x/layout-api"
+          "id": "layout-api"
         }
       ]
     },
@@ -143,7 +143,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/recommended-setup"
+          "id": "recommended-setup"
         }
       ]
     },
@@ -153,11 +153,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/api"
+          "id": "api"
         },
         {
           "type": "doc",
-          "id": "version-5.x/parcels-api"
+          "id": "parcels-api"
         }
       ]
     },
@@ -167,79 +167,79 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem"
+          "id": "ecosystem"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-css"
+          "id": "ecosystem-css"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-react"
+          "id": "ecosystem-react"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-vue"
+          "id": "ecosystem-vue"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-angular"
+          "id": "ecosystem-angular"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-angularjs"
+          "id": "ecosystem-angularjs"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-cycle"
+          "id": "ecosystem-cycle"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-ember"
+          "id": "ecosystem-ember"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-inferno"
+          "id": "ecosystem-inferno"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-preact"
+          "id": "ecosystem-preact"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-svelte"
+          "id": "ecosystem-svelte"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-riot"
+          "id": "ecosystem-riot"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-backbone"
+          "id": "ecosystem-backbone"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-html-web-components"
+          "id": "ecosystem-html-web-components"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-leaked-globals"
+          "id": "ecosystem-leaked-globals"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-dojo"
+          "id": "ecosystem-dojo"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-alpinejs"
+          "id": "ecosystem-alpinejs"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-vite"
+          "id": "ecosystem-vite"
         },
         {
           "type": "doc",
-          "id": "version-5.x/ecosystem-snowpack"
+          "id": "ecosystem-snowpack"
         }
       ]
     },
@@ -249,7 +249,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/ssr-overview"
+          "id": "ssr-overview"
         }
       ]
     },
@@ -259,7 +259,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/devtools"
+          "id": "devtools"
         }
       ]
     },
@@ -269,11 +269,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-5.x/contributing-overview"
+          "id": "contributing-overview"
         },
         {
           "type": "doc",
-          "id": "version-5.x/code-of-conduct"
+          "id": "code-of-conduct"
         }
       ]
     }
