@@ -36,117 +36,10 @@ For instructions on how to test this locally before creating a pull request, see
 
 ## Angular versions
 
-### Angular 1 (AngularJS)
+### AngularJS
 
 AngularJS is supported by [single-spa-angularjs](https://github.com/single-spa/single-spa-angularjs), instead of single-spa-angular.
 See [AngularJS docs](/docs/ecosystem-angularjs).
-
-### Angular 2
-
-Angular 2 is supported by single-spa-angular@3.
-
-The [single-spa-angular schematics](#schematics) are not supported by Angular 2, so you'll have to
-follow the [steps for manual installation](#manual-installation). The
-[single-spa helpers](#the-single-spa-helpers) work with Angular 2.
-
-### Angular 3
-
-Angular 3 [never existed](https://www.infoworld.com/article/3150716/forget-angular-3-google-skips-straight-to-angular-4.html).
-
-### Angular 4
-
-Angular 4 is supported by single-spa-angular@3.
-
-The [single-spa-angular schematics](#schematics) are not supported by Angular 4, so you'll have to
-follow the [steps for manual installation](#manual-installation). The
-[single-spa helpers](#the-single-spa-helpers) work with Angular 4.
-
-### Angular 5
-
-Angular 5 is supported by single-spa-angular@3.
-
-The [single-spa-angular schematics](#schematics) are not supported by Angular 5, so you'll have to
-follow the [steps for manual installation](#manual-installation). The
-[single-spa helpers](#the-single-spa-helpers) work with Angular 5.
-
-### Angular 6
-
-Angular 6 is supported by single-spa-angular@3.
-
-The [single-spa-angular schematics](#schematics) are not supported by Angular 6, so you'll have to
-follow the [steps for manual installation](#manual-installation). The
-[single-spa helpers](#the-single-spa-helpers) work with Angular 6.
-
-### Angular 7
-
-Angular 7 is supported by single-spa-angular@3.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 7. Follow the [Angular CLI instructions](#angular-cli).
-
-Note that the schematics for Angular 7 use an [Angular Builder](#use-angular-builder) that is no longer
-used in the Angular 8 schematics.
-
-### Angular 8
-
-Angular 8 is supported by single-spa-angular@3.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 8. Follow the [Angular CLI instructions](#angular-cli).
-
-Note that the schematics for Angular 8 [do not use the custom Angular builder](#angular-builder), but instead use
-[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
-
-### Angular 9
-
-Angular 9 is supported by single-spa-angular@4.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 9. Follow the [Angular CLI instructions](#angular-cli).
-
-Note that the schematics for Angular 9 [do not use the custom Angular builder](#angular-builder), but instead use
-[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
-
-### Angular 10
-
-Angular 10 is supported by single-spa-angular@4.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 10. Follow the [Angular CLI instructions](#angular-cli).
-
-Note that the schematics for Angular 10 [do not use the custom Angular builder](#angular-builder), but instead use
-[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
-
-### Angular 11
-
-Angular 11 is supported by single-spa-angular@4.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 11. Follow the [Angular CLI instructions](#angular-cli).
-
-Note that the schematics for Angular 11 [do not use the custom Angular builder](#angular-builder), but instead use
-[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
-
-### Angular 12
-
-Angular 12 is supported by single-spa-angular@5.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 12. Follow the [Angular CLI instructions](#angular-cli).
-
-### Angular 13
-
-Angular 13 is supported by single-spa-angular@6.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 13. Follow the [Angular CLI instructions](#angular-cli).
-
-### Angular 14
-
-Angular 14 is supported by single-spa-angular@7.
-
-Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
-work with Angular 14. Follow the [Angular CLI instructions](#angular-cli).
 
 ### Angular 15
 
@@ -154,6 +47,16 @@ Angular 15 is supported by single-spa-angular@8.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 15. Follow the [Angular CLI instructions](#angular-cli).
+
+Angular 16 is supported by single-spa-angular@9.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 16. Follow the [Angular CLI instructions](#angular-cli).
+
+Angular 17 is supported by single-spa-angular@9.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 17. Follow the [Angular CLI instructions](#angular-cli).
 
 ## Angular CLI
 
@@ -171,13 +74,13 @@ ng new my-app --routing --prefix my-app
 cd my-app
 ```
 
+#### :warning: Please read this before proceeding :warning:
+
+Starting from Angular 17, when running `ng new`, a project with the ESBuild builder is created by default (`"builder": "@angular-devkit/build-angular:application"`). However, ESBuild does not support all of the required features for single-spa, such as SystemJS output. Therefore, we cannot simply provide the ESBuild plugin in the same way we do for Webpack with config transformer. Before running schematics or performing any updates, it is necessary to change the `builder` property inside the `angular.json` to `@angular-devkit/build-angular:browser`, and the `browser` property (typically pointing to `src/main.ts`) should be changed to `main`.
+
 In the root of your Angular CLI application run the following:
 
 ```sh
-# If you use any Angular version lower than 14.
-ng add single-spa-angular
-# If you use Angular 14 you have to specify the project name.
-# This is because the `defaultProject` option has been deprecated by Angular CLI.
 ng add single-spa-angular --project my-cool-app
 ```
 
@@ -194,125 +97,10 @@ The single-spa-angular schematics perform the following tasks:
 - Generate an EmptyRouteComponent in `src/app/empty-route/`, to be used in app-routing.module.ts.
 - Add an npm script `npm run build:single-spa`.
 - Add an npm script `npm run serve:single-spa`.
-- For Angular 7 only, create a new entry in the project's architect called `single-spa`, which is
-  a preconfigured [Angular Builder](#angular-builder).
 
 ### Finish installation
 
 Now you must [configure routes](#configure-routes). Then you can [serve](#serving) and [build](#building).
-
-## Manual Installation
-
-The manual installation instructions should be used if you are not using Angular CLI or if you are using Angular 6 or older.
-
-### Installation
-
-```sh
-npm install single-spa-angular
-# Or if you're using yarn
-yarn add single-spa-angular
-# Or if you're using pnpm
-pnpm install single-spa-angular
-```
-
-### Manually apply schematics
-
-Since the single-spa-angular schematics didn't run, you'll need to make the following changes:
-
-1. Create all of the files that would have been created by the schematic.
-   [See schematics files](https://github.com/single-spa/single-spa-angular/tree/master/schematics/ng-add/_files).
-   Be sure to get the files in the subdirectories, too.
-2. Add `build:single-spa` and `serve:single-spa` to the [scripts](https://docs.npmjs.com/misc/scripts) in your package.json.
-   [See `addNPMScripts` function](https://github.com/single-spa/single-spa-angular/blob/master/schematics/ng-add/index.ts#L161).
-3. Use the angular builder, as described in the next section.
-
-### Use Angular Builder
-
-**Note that this only applies to Angular versions pre Angular 8**. Up until Angular 8, we maintained an angular builder
-that allowed us to control the webpack config, but since Angular 8 we use
-[@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack) instead. See [documentation](#use-custom-webpack) for
-using the custom webpack builder with single-spa-angular and Angular 8+.
-
-**If you installed this library with Angular 7 using the Angular Schematic, this is already configured and
-you don't need to change it. Otherwise, you might need to do this manually.**
-
-**If you don't use Angular CLI, skip this section.**
-
-To build your Angular CLI application as a single-spa app do the following.
-
-- Open `angular.json`
-- Locate the project you wish to update.
-- Navigate to the `architect > build` property.
-- Set the `builder` property to `single-spa-angular:build`.
-- Run `ng build` and verify your dist contains one asset, `main.js`.
-
-Example Configuration:
-
-```json
-{
-  "architect": {
-    "build": {
-      "builder": "single-spa-angular:build",
-      "options": {
-        "libraryName": "hello"
-      }
-    },
-    "serve": {
-      "builder": "single-spa-angular:dev-server",
-      "options": {}
-    }
-  }
-}
-```
-
-##### ng build options
-
-Configuration options are provided to the `architect.build.options` section of your angular.json.
-
-| Name                       | Description                                                                                                                                            | Default Value            |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| libraryName                | (optional) Specify the name of the module                                                                                                              | Angular CLI project name |
-| libraryTarget              | (optional) The type of library to build [see available options](https://github.com/webpack/webpack/blob/master/declarations/WebpackOptions.d.ts#L1111) | "UMD"                    |
-| singleSpaWebpackConfigPath | (optional) Path to partial webpack config to be merged with angular's config. Example: `extra-webpack.config.js`                                       | undefined                |
-
-##### ng serve options
-
-Configuration options are provided to the `architect.serve.options` section of your angular.json.
-
-| Name                       | Description                                                                                                      | Default Value |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------- |
-| singleSpaWebpackConfigPath | (optional) Path to partial webpack config to be merged with angular's config. Example: `extra-webpack.config.js` | undefined     |
-
-### Use Custom Webpack
-
-Starting with Angular 8, single-spa-angular's schematics install and use [`@angular-builders/custom-webpack`](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack) to modify the webpack config. The schematics also create an `extra-webpack.config.js` file in your project where you can modify the configuration further.
-
-The extra-webpack.config.js file should include the following:
-
-```js
-const singleSpaAngularWebpack =
-  require("single-spa-angular/lib/webpack").default;
-
-module.exports = (config, options) => {
-  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
-
-  // Feel free to modify this webpack config however you'd like to
-  return singleSpaWebpackConfig;
-};
-```
-
-Older versions of single-spa-angular@3 and single-spa-angular@4 created extra-webpack.config.js files that did not pass `options` into `singleSpaAngularWebpack`. When you upgrade to newer versions, you'll need to pass in the options as shown above.
-
-In addition to modifying the webpack config directly, you may alter some of single-spa-angular's behavior by changing the angular.json. Configuration options are provided to the `architect.build.options.customWebpackConfig` section of your angular.json.
-
-| Name                       | Description                                                                                                                                            | Default Value            |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| path                       | (required) Path to the the above `extra-webpack.config.js` file.                                                                                       | N/A                      |
-| libraryName                | (optional) Specify the name of the module                                                                                                              | Angular CLI project name |
-| libraryTarget              | (optional) The type of library to build [see available options](https://github.com/webpack/webpack/blob/master/declarations/WebpackOptions.d.ts#L1111) | "UMD"                    |
-| excludeAngularDependencies | (optional) Excludes Angular dependencies from the bundle by adding them to Webpack `externals`                                                         | false                    |
-
-If you're using SystemJS, you may want to consider changing the [webpack output.libraryTarget](https://webpack.js.org/configuration/output/#outputlibrarytarget) to be `"system"`, for better interop with SystemJS.
 
 ## Routing
 
