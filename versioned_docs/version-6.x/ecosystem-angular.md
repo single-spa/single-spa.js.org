@@ -36,7 +36,7 @@ For instructions on how to test this locally before creating a pull request, see
 
 ## Angular versions
 
-### Angular 1 (AngularJS)
+### AngularJS
 
 AngularJS is supported by [single-spa-angularjs](https://github.com/single-spa/single-spa-angularjs), instead of single-spa-angular.
 See [AngularJS docs](/docs/ecosystem-angularjs).
@@ -155,6 +155,21 @@ Angular 15 is supported by single-spa-angular@8.
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 15. Follow the [Angular CLI instructions](#angular-cli).
 
+Angular 16 is supported by single-spa-angular@9.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 16. Follow the [Angular CLI instructions](#angular-cli).
+
+Angular 17 is supported by single-spa-angular@9.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 17. Follow the [Angular CLI instructions](#angular-cli).
+
+Angular 18 is supported by single-spa-angular@9.
+
+Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
+work with Angular 18. Follow the [Angular CLI instructions](#angular-cli).
+
 ## Angular CLI
 
 You may use Angular CLI and single-spa together with any version of Angular. However, the [Angular CLI schematics](#schematics)
@@ -170,6 +185,10 @@ is important so that when you have multiple angular applications their component
 ng new my-app --routing --prefix my-app
 cd my-app
 ```
+
+#### :warning: Please read this before proceeding :warning:
+
+Starting from Angular 17, when running `ng new`, a project with the ESBuild builder is created by default (`"builder": "@angular-devkit/build-angular:application"`). However, ESBuild does not support all of the required features for single-spa, such as SystemJS output. Therefore, we cannot simply provide the ESBuild plugin in the same way we do for Webpack with config transformer. Before running schematics or performing any updates, it is necessary to change the `builder` property inside the `angular.json` to `@angular-devkit/build-angular:browser`, and the `browser` property (typically pointing to `src/main.ts`) should be changed to `main`.
 
 In the root of your Angular CLI application run the following:
 
