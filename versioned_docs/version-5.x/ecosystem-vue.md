@@ -83,7 +83,15 @@ const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     render(h) {
-      return h(App);
+      return h(App, {
+        props: {
+          // single-spa props are available on the "this" object. Forward them to your component as needed.
+          // https://single-spa.js.org/docs/building-applications#lifecycle-props
+          name: this.name,
+          mountParcel: this.mountParcel,
+          singleSpa: this.singleSpa,
+        }
+      });
     },
     router,
   },
@@ -132,34 +140,40 @@ export const unmount = vueLifecycles.unmount;
 
 ## Custom props
 
-[Single-spa custom props](/docs/building-applications/#custom-props) can be passed to your root component like so:
+[Single-spa custom props](/docs/building-applications/#custom-props) can be passed to your root component. In your application's entry file, add the props to your root component: 
+
+### Vue 2
 
 ```js
-// main.js
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
     render(h) {
       return h(App, {
-        mountParcel: this.mountParcel,
+        props: {
+          otherProp: this.otherProp,
+        },
+      });
+    },
+  },
+});
+```
+
+### Vue 3
+
+```js
+const vueLifecycles = singleSpaVue({
+  Vue,
+  appOptions: {
+    render(h) {
+      return h(App, {
+        // Notice that this is not within a props object!
         otherProp: this.otherProp,
       });
     },
     router,
   },
 });
-```
-
-```vue
-// App.vue
-<template>
-  <button>{{ otherProp }}</button>
-</template>
-<script>
-export default {
-  props: ["mountParcel", "otherProp"],
-};
-</script>
 ```
 
 ## Shared dependencies
@@ -227,29 +241,6 @@ const vueLifecycles = singleSpaVue({
       router: await routerFactory(),
       render: (h) => h(App),
     };
-  },
-});
-```
-
-## Custom Props
-
-[single-spa custom props](/docs/building-applications#custom-props) are available in the `render()` function in your main file. They can be passed as custom props to your App component.
-
-```js
-const vueLifecycles = singleSpaVue({
-  Vue,
-  appOptions: {
-    render(h) {
-      return h(App, {
-        props: {
-          // single-spa props are available on the "this" object. Forward them to your component as needed.
-          // https://single-spa.js.org/docs/building-applications#lifecycle-props
-          name: this.name,
-          mountParcel: this.mountParcel,
-          singleSpa: this.singleSpa,
-        },
-      });
-    },
   },
 });
 ```

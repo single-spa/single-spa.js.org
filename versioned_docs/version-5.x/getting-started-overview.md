@@ -165,4 +165,4 @@ Read our [contributing guide](/docs/contributing-overview/) to learn about our d
 
 See [user showcase](/users).
 
-Is your company or project using single-spa? Let us know by submitting a PR to [this section](https://github.com/single-spa/single-spa.js.org/blob/master/website/src/data/users.js)!
+Is your company or project using single-spa? Let us know by submitting a PR to [this section](https://github.com/single-spa/single-spa.js.org/blob/master/src/data/users.js)!
