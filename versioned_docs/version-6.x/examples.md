@@ -26,6 +26,7 @@ sidebar_label: Resources
 
 ## Community examples
 
+- [single-spa-angular-esm](https://github.com/kfrederix/single-spa-angular-esm) is an example Nx monorepo, demonstrating how single-spa can be used for microfrontends with the new Angular builder based on Vite/esbuild.
 - [single-spa-parcel-example](https://github.com/Guillembonet/single-spa-parcel-example) is an example of one Vue and one React microfrontend, containing a React and a Vue parcel respectively and two Node.js microservices running in 6 different Docker VMs seamlessly working together in a single web app located in a 7th VM.
 - [single-spa-login-example-with-npm-packages](https://github.com/jualoppaz/single-spa-login-example-with-npm-packages) is a single-spa application example which imports registered applications from NPM packages and manages authentication features as login.
 - [demo-single-spa-with-spax](https://github.com/crossjs/spax/tree/master/packages/demo-single-spa) is a tiny [spax](https://spax.js.org) example with react-scripts and craco.
