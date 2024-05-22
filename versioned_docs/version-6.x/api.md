@@ -704,6 +704,54 @@ Sets the global configuration for unload timeouts.
 
 `undefined`
 
+---
+
+## configureLogger
+
+```js
+// Silence all logging.
+singleSpa.configureLogger(null);
+
+// Restore console logging (single-spa's default behavior).
+singleSpa.configureLogger(console);
+
+// Custom logger implementation.
+const myLogger = new MyLogger(); // MyLogger must implement ILogger.
+singleSpa.configureLogger(myLogger);
+```
+
+Controls the destination of logged messages.  Use it whenever you want or need to take control 
+over what is being logged and where.  Logging can be silenced, can be restored, or a custom 
+implementation can be provided for the fancier use cases.
+
+<h3>ILogger</h3>
+
+```typescript
+  export interface ILogger {
+    debug(...data: any[]): void;
+    info(...data: any[]): void;
+    warn(...data: any[]): void;
+    error(...data: any[]): void;
+  }
+```
+
+Custom loggers must conform to the `ILogger` interface shown above.  The implementation can do 
+anything it wants with the provided data, but **must never throw** as single-spa does not account 
+for potential errors from custom implementations.
+
+<h3>arguments</h3>
+
+<dl className="args-list">
+	<dt>logger: ILogger | null</dt>
+  <dd>The desired logger object, or <code>null</code> to silence logging.</dd>
+</dl>
+
+<h3>returns</h3>
+
+`undefined`
+
+---
+
 ## Events
 
 single-spa fires Events to the `window` as a way for your code to hook into URL transitions.
