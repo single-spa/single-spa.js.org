@@ -96,10 +96,10 @@ export default defineConfig({
 
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
-// @ts-ignore
+// @ts-expect-error
 import singleSpaReact from 'single-spa-react';
 import App from './App';
-import { cssLifecycle } from 'vite-plugin-single-spa/ex';
+import { cssLifecycleFactory } from 'vite-plugin-single-spa/ex';
 
 const lc = singleSpaReact({
     React,
@@ -109,10 +109,12 @@ const lc = singleSpaReact({
         return <div>Error: {err}</div>
     }
 });
-
-export const bootstrap = [cssLifecycle.bootstrap, lc.bootstrap];
-export const mount = [cssLifecycle.mount, lc.mount];
-export const unmount = [cssLifecycle.unmount, lc.unmount];
+// IMPORTANT:  Because the file is named spa.tsx, the string 'spa'
+// must be passed to the call to cssLifecycleFactory.
+const cssLc = cssLifecycleFactory('spa', /* optional factory options */);
+export const bootstrap = [cssLc.bootstrap, lc.bootstrap];
+export const mount = [cssLc.mount, lc.mount];
+export const unmount = [cssLc.unmount, lc.unmount];
 ```
 
 ### Main Features
