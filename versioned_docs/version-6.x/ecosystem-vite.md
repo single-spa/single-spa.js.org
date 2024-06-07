@@ -44,7 +44,7 @@ export default {
 
 ## Local development
 
-Vite works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:3000/src/main.js as the URL for your import map override. It is important to note, however, that assets such as images and fonts won't load. The import map is only used to load JavaScript, not media files. The import map does not affect asset URL's. Asset URL's are affected by Vite's `base` configuration property, and Vite doesn't respect full URL's in said property while in serve mode (`npm run dev`). While in serve mode, a base with a full URL is stripped down to its path. Therefore, the asset URL's don't really get the correct host URL. The author of [vite-plugin-single-spa](https://www.npmjs.com/package/vite-plugin-single-spa) has opened [a discussion in Vite's GitHub](https://github.com/vitejs/vite/discussions/13927) that you can opt to support by upvoting it.
+Vite works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:3000/src/main.js as the URL for your import map override. It is important to note, however, that assets such as images and fonts require either the `base` or the `server.origin` configuration property to be properly set. The import map is only used to load JavaScript, not media files. The import map does not affect asset URL's. Refer to Vite's documentation for further information on these properties.
 
 ## Native Modules vs SystemJS
 
@@ -53,25 +53,124 @@ single-spa works well with native modules, systemjs, or even both. With Vite + s
 - The browser and SystemJS maintain separate module registries. This means that you can't share imports between SystemJS and native modules. So if you are doing an import map override for a Vite application on a page that also uses SystemJS, you may end up with multiple instances of Vue (and other shared libraries), which is different than how things will work in production. This is generally okay, except for situations where the Vue instance is modified via `Vue.use()`.
 - [This PR to SystemJS](https://github.com/systemjs/systemjs/pull/2187) shows how you can populate native modules into the SystemJS registry, allowing for one-way sharing of modules between the two registries. The PR was closed due to some edge cases, but it generally works. Even though the PR is closed, you can paste the ESM extra into your root config and it will work. If you have interest in driving forward better SystemJS + ESM compatibility, comment on Github or Slack with your interest.
 
-## vite-plugin-single-spa
+## vite-plugin-single-spa (v0.7.0)
 
-This is a new entry that is currently in the early stages of development, but shows significant progress ([view in GitHub](https://github.com/WJSoftware/vite-plugin-single-spa)). It claims to be able to convert out-of-the-box Vite projects (regardless of the framework) into single-spa micro-frontend projects and even root config projects. While the single-spa team discourages the use of UI frameworks in root configs, it is indeed an alternative that may interest people.
+This is a relatively new plug-in (1 year old as of May, 2024) capable of producing a bundle that conforms to single-spa's specifications for micro-frontend projects that are bundled with Vite.
 
-To convert a Vite project to a root config project, all that is needed is install `vite-plugin-single-spa`, and then use it in `vite.config.ts`. This is a Vite + Vue example:
+In a nutshell, any *Vite + [framework of choice]* project created with `npm create vite` can take advantage of this plug-in.  Configuration is usually minimal, and the resulting project will be capable of working as a single-spa micro-frontend and as a standalone project simultaneously (while in *serve* mode).
+
+The plug-in can also be used in root config projects that are bundled wth Vite.
+
+### Main Features
+
+For micro-frontends:
+
+- Supports stock Vite projects, regardless of framework.
+- Micro-frontend projects behave dually while in *serve* mode: The micro-frontend can be previewed as a standalone web application with its server URL, or it can be served as a single-spa micro-frontend.
+- Provides mounting and unmounting of CSS.  The algorithm:
+    + Supports Vite's code splitting
+    + Supports parcels
+    + Supports mounting the same micro-frontend or parcel multiple times (**read the documentation**)
+    + Provides FOUC (flash of unstyled content) prevention
+
+For root config projects:
+
+- Automatically picks up import maps from `src/importMap.dev.json` and `src/importMap.json`.
+- Automatically adds the `import-map-overrides` NPM package, user interface included.
+- Can merge multiple import map JSON files.
+
+:::info
+
+This plug-in (or better stated, *Vite*), will produce bundles in ES module format by default.  The recommendation when using this plug-in is to **keep it this way**.  However, feel free to add rollup configuration options to request the output in the SystemJS module format if you wish.  Just keep in mind that all of the plug-in's documentation assumes native ES modules.
+
+Also, please remember that Vite, while in serve mode (`npm run dev`) only serves native ES modules.  If you wish to attempt development + HMR (which doesn't work for React, but other frameworks might get lucky), your entire `single-spa` setup needs to be run in ES modules.  This means import maps, root config and all MFE's.
+
+:::
+
+### Root Config Projects
+
+In order to create a vite-based root config project, start by creating a Vite + Svelte project.  Projects based on other frameworks work too, it is just that Svelte projects are very easily cleaned up.
+
+:::tip
+
+While not recommended by single-spa, `vite-plugin-single-spa` can make root config projects out of framework-powered Vite projects.  In other words, cleaning a framework off of the Vite project as described in this section is **optional**.
+
+:::
+
+After creating the project, open `package.json` and remove the lines shown below (this may change over time as the `create-vite` package is updated, so always double check for new things to clean):
+
+```json
+{
+  "name": "my-vite-based-root-config",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    // ---------- DELETE 1 LINE ----------
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    // ---------- DELETE 4 LINES ----------
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "@tsconfig/svelte": "^5.0.2",
+    "svelte": "^4.2.12",
+    "svelte-check": "^3.6.7",
+
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  }
+```
+
+> The sample above comes from a Vite + Svelte + TypeScript project.  It may vary for a JavaScript project.
+
+Now delete all Svelte code.  In the project sample generated for this write-up, it is:
+
++ `src/App.svelte`
++ `src/lib/Counter.svelte`
++ `src/main.ts` (or clean it up)
+
+If you deleted `src/main.ts`, then remove the line `<script type="module" src="/src/main.ts"></script>` from `/index.html`.
+
+For the TypeScript template, open `/tsconfig.json` and remove the line `"extends": "@tsconfig/svelte/tsconfig.json",`.
+
+Finally, open `vite.config.ts`.  Remove the lines marked below:
 
 ```typescript
-import vitePluginSingleSpa from 'vite-plugin-single-spa';
+import { defineConfig } from 'vite'
+// ---------- DELETE 1 LINE ----------
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vitePluginSingleSpa({
-    type: 'root'
-    }
-  })]
-});
+  // ---------- DELETE 1 LINE ----------
+  plugins: [svelte()],
+})
 ```
 
-To convert a Vite project to a micro-frontend project, a similarly minimalistic configuration is needed, plus a file that exports the single-spa lifecycle functions.
+At this point, you should be able to install packages and build successfully.  If true, add `vite-plugin-single-spa` and configure it:
+
+```typescript
+import { defineConfig } from 'vite'
+import vitePluginSingleSpa from 'vite-plugin-single-spa'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vitePluginSingleSpa({
+    type: 'root',
+    imo: '3.1.1'
+  })]
+})
+```
+
+Follow the plug-in instructions on how to add import maps and any other details that your particular case may need.
+
+### Micro-Frontend Projects
+
+To convert a Vite project to a micro-frontend project, very little configuration is needed, plus a file that exports the single-spa lifecycle functions.
 
 ```typescript
 // vite.config.ts for a Vite + React project
@@ -85,7 +184,7 @@ export default defineConfig({
     react(),
     vitePluginSingleSpa({
       serverPort: 4101,
-      spaEntryPoint: "src/spa.tsx",
+      spaEntryPoints: "src/spa.tsx",
     }),
   ],
 });
@@ -96,10 +195,10 @@ export default defineConfig({
 
 import React from 'react';
 import ReactDOMClient from 'react-dom/client';
-// @ts-ignore
+// @ts-expect-error
 import singleSpaReact from 'single-spa-react';
 import App from './App';
-import { cssLifecycle } from 'vite-plugin-single-spa/ex';
+import { cssLifecycleFactory } from 'vite-plugin-single-spa/ex';
 
 const lc = singleSpaReact({
     React,
@@ -110,21 +209,11 @@ const lc = singleSpaReact({
     }
 });
 
-export const bootstrap = [cssLifecycle.bootstrap, lc.bootstrap];
-export const mount = [cssLifecycle.mount, lc.mount];
-export const unmount = [cssLifecycle.unmount, lc.unmount];
+// IMPORTANT:  The argument passed here depends on the file name.
+const cssLc = cssLifecycleFactory('spa');
+
+export const bootstrap = [cssLc.bootstrap, lc.bootstrap];
+export const mount = [cssLc.mount, lc.mount];
+export const unmount = [cssLc.unmount, lc.unmount];
 ```
-
-### Main Features
-
-- Supports stock Vite projects, regardless of framework.
-- Micro-frontend projects behave dually while in serve mode: The micro-frontend can be previewed as a standalone web application with its server URL, or it can be served as a single-spa micro-frontend.
-- As seen in the example above, it provides an extra module that automatically mounts and unmounts the CSS referenced by the lifecycle-exporting module (`src/spa.tsx` in the example). **COMING SOON**
-- Automatically picks up import maps from `src/importMap.dev.json` and `src/importMap.json`.
-- Automatically adds the `import-map-overrides` NPM package, user interface included.
-
----
-
-**IMPORTANT**: The author of this plug-in does not believe in creating dedicated root config projects. Furthermore, this package will, by default, create import maps for native modules. We at single-spa recommend SystemJS modules. Yes, single-spa is perfectly capable of working with native modules as well.
-
-The opinions of the author of this plug-in in no way represent those of single-spa, and it is an independent work. We present it here as one more option in the Vite ecosystem.
+Using `cssLifecycleFactory` is **not** required.  You may use your own or a third-party CSS mounting algorithm if you want.
