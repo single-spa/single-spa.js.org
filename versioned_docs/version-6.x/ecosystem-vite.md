@@ -44,7 +44,7 @@ export default {
 
 ## Local development
 
-Vite works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:3000/src/main.js as the URL for your import map override. It is important to note, however, that assets such as images and fonts won't load. The import map is only used to load JavaScript, not media files. The import map does not affect asset URL's. Asset URL's are affected by Vite's `base` configuration property, and Vite doesn't respect full URL's in said property while in serve mode (`npm run dev`). While in serve mode, a base with a full URL is stripped down to its path. Therefore, the asset URL's don't really get the correct host URL. The author of [vite-plugin-single-spa](https://www.npmjs.com/package/vite-plugin-single-spa) has opened [a discussion in Vite's GitHub](https://github.com/vitejs/vite/discussions/13927) that you can opt to support by upvoting it.
+Vite works well with [development via import map overrides](https://single-spa.js.org/docs/recommended-setup#local-development). You should use http://localhost:3000/src/main.js as the URL for your import map override. It is important to note, however, that assets such as images and fonts require either the `base` or the `server.origin` configuration property to be properly set. The import map is only used to load JavaScript, not media files. The import map does not affect asset URL's. Refer to Vite's documentation for further information on these properties.
 
 ## Native Modules vs SystemJS
 
@@ -83,11 +83,19 @@ For root config projects:
 
 This plug-in (or better stated, *Vite*), will produce bundles in ES module format by default.  The recommendation when using this plug-in is to **keep it this way**.  However, feel free to add rollup configuration options to request the output in the SystemJS module format if you wish.  Just keep in mind that all of the plug-in's documentation assumes native ES modules.
 
+Also, please remember that Vite, while in serve mode (`npm run dev`) only serves native ES modules.  If you wish to attempt development + HMR (which doesn't work for React, but other frameworks might get lucky), your entire `single-spa` setup needs to be run in ES modules.  This means import maps, root config and all MFE's.
+
 :::
 
 ### Root Config Projects
 
 In order to create a vite-based root config project, start by creating a Vite + Svelte project.  Projects based on other frameworks work too, it is just that Svelte projects are very easily cleaned up.
+
+:::tip
+
+While not recommended by single-spa, `vite-plugin-single-spa` can make root config projects out of framework-powered Vite projects.  In other words, cleaning a framework off of the Vite project as described in this section is **optional**.
+
+:::
 
 After creating the project, open `package.json` and remove the lines shown below (this may change over time as the `create-vite` package is updated, so always double check for new things to clean):
 
@@ -159,12 +167,6 @@ export default defineConfig({
 ```
 
 Follow the plug-in instructions on how to add import maps and any other details that your particular case may need.
-
-:::tip
-
-While not recommended by single-spa, `vite-plugin-single-spa` can make root config projects out of framework-powered Vite projects.  In other words, cleaning a framework off of the Vite project is **optional**.
-
-:::
 
 ### Micro-Frontend Projects
 
