@@ -1,7 +1,7 @@
 ---
 id: contributing-overview
 title: Contributing to Single-spa
-sidebar_label: Overview
+sidebar_label: Contributing Guide
 ---
 
 [List of current contributors](/contributors)
