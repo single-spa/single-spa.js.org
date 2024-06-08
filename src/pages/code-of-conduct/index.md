@@ -53,6 +53,6 @@ Direct messages with others within single-spa spaces should remain appropriate. 
 
 ## Reporting and Arbitration
 
-To report harassment, contact a single-spa core team member, community manager, or single-spa's creator. This can be done in Slack, over email (singlespa.info@gmail.com or joeldenning@gmail.com), or send a DM to an single-spa social media account.
+To report harassment, contact a single-spa core team member, community manager, or single-spa's creator. This can be done in Slack, over email (singlespa.info@gmail.com or joeldenning@gmail.com), or send a DM to a single-spa social media account.
 
 Single-spa's creator and community managers will review the report. Witnesses or experts who can help understand the situation may be brought in to evaluate the situation. Community members found to have harassed or discriminated against another member may be warned, limited, or banned. To the extent possible, the single-spa community aims to be a safe place.
