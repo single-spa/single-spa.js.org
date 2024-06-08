@@ -41,7 +41,7 @@ Behaviors that exhibit any of the following will not be tolerated:
 - Western/American/European supremacy
 - homophobia, biphobia, lesbophobia, transphobia, queerphobia, acephobia, arophobia, and any other anti-LGBTQIA+ bigotry
 - pedophilia
-- Nonconsensual sexualization
+- nonconsensual sexualization or romantic advances
 
 We encourage any single-spa community member who experiences discrimination or harassment to report it, even if the basis of the discrimination or harassment isn't listed above.
 
