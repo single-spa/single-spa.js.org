@@ -49,7 +49,7 @@ We encourage any single-spa community member who experiences discrimination or h
 
 Direct messages and direct emails to single-spa's creator, core team, and maintainers are discouraged. Please use publicly visible channels instead, such as the #general channel in Slack or public Github issues. Public visibility makes it easier for the interaction to be safe and avoid problematic dynamics.
 
-Direct messages with others within single-spa spaces should remain appropriate. Communication in single-spa related online spaces should be
+Direct messages with others within single-spa spaces should remain appropriate. Communication in single-spa related online spaces should aim to be safe for software developers of any age.
 
 ## Reporting and Arbitration
 
