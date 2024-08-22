@@ -67,4 +67,4 @@ We’d love to get your feedback on parcels. What do you think of this new way o
 
 Check out the [official docs](https://github.com/single-spa/single-spa/blob/master/docs/parcels.md) for more examples, explanations, and [api documentation](https://github.com/single-spa/single-spa/blob/master/docs/parcels-api.md).
 
-And let us know your thoughts in the [single-spa Slack channel](https://join.slack.com/t/single-spa/shared_invite/zt-2efw13fg4-oJgemeyCUJv4~JrQlYttnA), a [Github issue](https://github.com/single-spa/single-spa/issues), or [on Twitter](https://twitter.com/Single_spa)!
+And let us know your thoughts in the [single-spa Slack channel](https://join.slack.com/t/single-spa/shared_invite/zt-2php1iewg-guIu7m9tRV0CjxluXqbCAg), a [Github issue](https://github.com/single-spa/single-spa/issues), or [on Twitter](https://twitter.com/Single_spa)!
