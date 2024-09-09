@@ -6,7 +6,7 @@ const supportLinks = [
   },
   {
     content:
-      "You can join the conversation on [Slack](https://join.slack.com/t/single-spa/shared_invite/zt-2efw13fg4-oJgemeyCUJv4~JrQlYttnA) on one of our channels: #general for user help and #maintainers for contributing help.",
+      "You can join the conversation on [Slack](https://join.slack.com/t/single-spa/shared_invite/zt-2php1iewg-guIu7m9tRV0CjxluXqbCAg) on one of our channels: #general for user help and #maintainers for contributing help.",
     title: "Slack",
   },
   {

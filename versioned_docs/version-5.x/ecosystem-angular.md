@@ -20,7 +20,7 @@ The documentation here is extensive, so use the sidenav on the right. 👉👉�
 
 ### Community
 
-Join the `#angular` channel in [single-spa's Slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-2efw13fg4-oJgemeyCUJv4~JrQlYttnA).
+Join the `#angular` channel in [single-spa's Slack workspace](https://join.slack.com/t/single-spa/shared_invite/zt-2php1iewg-guIu7m9tRV0CjxluXqbCAg).
 
 ### Demo
 
