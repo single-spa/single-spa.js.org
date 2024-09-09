@@ -78,6 +78,10 @@ module.exports = {
               to: "governance/",
             },
             {
+              label: "Code of Conduct",
+              to: "code-of-conduct/"
+            },
+            {
               label: "Sponsors",
               to: "sponsors/",
             },
