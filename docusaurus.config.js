@@ -74,6 +74,10 @@ module.exports = {
           title: "Community",
           items: [
             {
+              label: "Governance",
+              to: "governance/",
+            },
+            {
               label: "Code of Conduct",
               to: "code-of-conduct/"
             },
