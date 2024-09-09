@@ -4,10 +4,40 @@
         <title>single-spa Blog</title>
         <link>https://single-spa.js.org/blog</link>
         <description>single-spa Blog</description>
-        <lastBuildDate>Wed, 10 Apr 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Jun 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[June 2024 Core Team Meeting]]></title>
+            <link>https://single-spa.js.org/blog/2024/06/08/core-team-meeting-notes</link>
+            <guid>https://single-spa.js.org/blog/2024/06/08/core-team-meeting-notes</guid>
+            <pubDate>Sat, 08 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Held via Slack]]></description>
+            <content:encoded><![CDATA[<p><em>Held via Slack</em></p>
+<p>Attendees: Joel Denning, Ian Bacher, Milan Kovacic, Jake Hayes</p>
+<p>Date: 2024-06-06 through 2024-06-08</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="meeting-agenda">Meeting Agenda<a href="https://single-spa.js.org/blog/2024/06/08/core-team-meeting-notes#meeting-agenda" class="hash-link" aria-label="Direct link to Meeting Agenda" title="Direct link to Meeting Agenda">​</a></h2>
+<ul>
+<li>Discussed the missed May meeting, and changing to Slack for future core team meetings</li>
+<li>Fix DNS issue with single-spa-playground</li>
+<li>Discuss <a href="https://github.com/single-spa/single-spa/pull/1222" target="_blank" rel="noopener noreferrer">https://github.com/single-spa/single-spa/pull/1222</a></li>
+<li>Discuss <a href="https://github.com/single-spa/single-spa-react/pull/206" target="_blank" rel="noopener noreferrer">https://github.com/single-spa/single-spa-react/pull/206</a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="changes-to-governance-and-code-of-conduct">Changes to governance and code of conduct<a href="https://single-spa.js.org/blog/2024/06/08/core-team-meeting-notes#changes-to-governance-and-code-of-conduct" class="hash-link" aria-label="Direct link to Changes to governance and code of conduct" title="Direct link to Changes to governance and code of conduct">​</a></h2>
+<p>A <a href="https://single-spa.js.org/governance/" target="_blank" rel="noopener noreferrer">single-spa governance document</a> is published, intended to clarify the role of Joel Denning as creator, the core team, maintainers, and community managers.</p>
+<p>A new <a href="https://single-spa.js.org/code-of-conduct/" target="_blank" rel="noopener noreferrer">single-spa code of conduct</a> has been published. The original code of conduct was adopted from a template created by the TODO Group. That template <a href="https://todogroup.org/blog/followup-open-code-of-conduct/" target="_blank" rel="noopener noreferrer">is no longer being updated and has been abandoned</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="core-team-changes">Core team changes<a href="https://single-spa.js.org/blog/2024/06/08/core-team-meeting-notes#core-team-changes" class="hash-link" aria-label="Direct link to Core team changes" title="Direct link to Core team changes">​</a></h2>
+<p>Carlos Filoteo is no longer on the single-spa core team, after discussing it with him after over a year of inactivity. Anthony Frehner will stay on as an inactive member, for now.</p>
+<p>This means that the core team consists of the following members:</p>
+<ul>
+<li>Joel Denning (creator)</li>
+<li>Ian Bacher</li>
+<li>Milan Kovacic</li>
+<li>Artur Androsovich</li>
+<li>Anthony Frehner (inactive)</li>
+</ul>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[April 2024 Core Team Meeting]]></title>
             <link>https://single-spa.js.org/blog/2024/04/10/core-team-meeting-notes</link>
