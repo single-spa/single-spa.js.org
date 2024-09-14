@@ -155,15 +155,21 @@ Angular 15 is supported by single-spa-angular@8.
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 15. Follow the [Angular CLI instructions](#angular-cli).
 
+### Angular 16
+
 Angular 16 is supported by single-spa-angular@9.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 16. Follow the [Angular CLI instructions](#angular-cli).
 
+### Angular 17
+
 Angular 17 is supported by single-spa-angular@9.
 
 Both the [single-spa-angular schematics](#schematics) and the [single-spa helpers](#the-single-spa-helpers)
 work with Angular 17. Follow the [Angular CLI instructions](#angular-cli).
+
+### Angular 18
 
 Angular 18 is supported by single-spa-angular@9.
 
@@ -561,16 +567,28 @@ The following options are available:
 
 ### ZoneJS
 
-[ZoneJS](https://github.com/angular/zone.js/) is the library that Angular uses for change detection. You absolutely must have exactly
-one instance of the ZoneJS library on the page. ZoneJS will throw errors if you have more than one instance of ZoneJS on the page.
+[zone.js](https://github.com/angular/zone.js/) is the library that Angular uses for change detection. You absolutely must have exactly
+one instance of the zone.js library on the page. zone.js will throw errors if you have more than one instance of zone.js on the page.
 
-The preferred way to ensure only one instance of ZoneJS is loaded on your page is with a script tag in your root-config's HTML file. You should load ZoneJS upfront a single time, before loading SystemJS or any of your microfrontends.
+The preferred way to ensure only one instance of zone.js is loaded on your page is with a script tag in your root-config's HTML file. You should load zone.js upfront a single time, before any of your microfrontends.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/zone.js@0.10.3/dist/zone.min.js"></script>
 ```
 
-Note that having only one instance of ZoneJS is different than having only one zone within that instance. single-spa-angular
+The latest versions of `zone.js` may not be published to a CDN. As such, you might need to import `zone.js` in your root-config JS file:
+
+```js
+async function start() {
+  await import("zone.js");
+  const { registerApplication } = await System.import("single-spa");
+  registerApplication(...);
+}
+
+start();
+```
+
+Note that having only one instance of zone.js is different than having only one zone within that instance. single-spa-angular
 automatically will ensure that each of your Angular applications has its own isolated, separate zone.
 
 ### Multiple applications
@@ -832,26 +850,15 @@ The below guide uses SystemJS for sharing dependencies.
 
 > :warning: Angular 13 has few breaking changes. It dropped View Engine support, and this means there's a single template compiler right now (Ivy). They also introduced changes to the Angular Package Format. UMD bundles are no longer generated when building libraries. The `ng-packagr` now emits only ES2015 and ES2020 bundles. See this article for more info: https://blog.angular.io/angular-v13-is-now-available-cce66f7bc296.
 
-You can use the following esm-bundle packages, which provide Ivy-compatible versions that can be shared via SystemJS:
+You can use the following esm-bundle packages, which provide Ivy-compatible versions and can be shared via SystemJS. These packages are available in the repository provided below:
 
-- https://github.com/esm-bundle/angular__core
-- https://github.com/esm-bundle/angular__common
-- https://github.com/esm-bundle/angular__compiler
-- https://github.com/esm-bundle/angular__platform-browser
-- https://github.com/esm-bundle/angular__platform-browser-dynamic
-- https://github.com/esm-bundle/angular__animations
-- https://github.com/esm-bundle/angular__router
-- https://github.com/esm-bundle/angular__forms
-- https://github.com/esm-bundle/angular__elements
-- https://github.com/esm-bundle/angular__upgrade
-- https://github.com/esm-bundle/angular__service-worker
-- https://github.com/esm-bundle/angular__localize
+- https://github.com/esm-bundle/angular
 
 The single-spa-angular is also available in SystemJS format:
 
 - https://github.com/esm-bundle/single-spa-angular
 
-Let's imagine that we have 2 Angular applications and the root-config application. Angular applications want to share dependencies. First of all, we need to exclude Angular dependencies from their bundles, this can be done via Webpack `externals` property, but `single-spa-angular@6.2.0+` has an option that will exclude `rxjs`, `@angular/*` and `single-spa-angular/*` packages:
+Let's imagine that we have 2 Angular applications and a root-config application. The Angular applications want to share dependencies. First, we need to exclude Angular dependencies from their bundles. This can be done using Webpack's `externals` property, but `single-spa-angular@6.2.0+` offers an option to exclude `rxjs`, `@angular/*`, and `single-spa-angular/*` packages:
 
 ```json
 "build": {
@@ -878,11 +885,11 @@ if (environment.production) {
 }
 ```
 
-This is because Angular's `enableProdMode` throws an error when it's called multiple times, but it will be called multiple times when dependencies are shared. `single-spa-angular` calls the original `enableProdMode` but swallows the error.
+This is because Angular's `enableProdMode` throws an error if it is called multiple times. However, when dependencies are shared, it will indeed be called multiple times. `single-spa-angular` calls the original `enableProdMode` but suppresses the error.
 
-We also have to consider the platform injector that will be re-used between applications. Angular creates a platform injector when it bootstraps an application; it creates it only once and then re-uses it. Each Angular application has its own platform injector when dependencies are NOT shared and will have a single one when dependencies are shared. This means that `providedIn: 'platform'` services will be a part of the single injector and will be shared between applications.
+We also need to consider the platform injector, which will be reused between applications. Angular creates a platform injector when it bootstraps an application; it is created only once and then reused. Each Angular application has its own platform injector when dependencies are not shared, but will use a single platform injector when dependencies are shared. This means that `providedIn: 'platform'` services will be part of the single injector and thus shared between applications.
 
-`single-spa-angular` exports the `getSingleSpaExtraProviders` function that adds `SingleSpaPlatformLocation` to the platform injector. This function should be called in each application (even if that application doesn't use routing). We also have to share the `single-spa-angular` package because applications should reference the same `SingleSpaPlatformLocation` class. Assume that `app1` is created earlier than `app2`, `app1` doesn't call `getSingleSpaExtraProviders()` when bootstrapping the root module, but `app2` does. The platform injector is created eagerly when the `platformBrowser()` is called for the first time. The `app2` will then try to retrieve the `SingleSpaPlatformLocation`, but there's no such injectee within the platform injector since `app1` didn't declare this dependency.
+`single-spa-angular` exports the `getSingleSpaExtraProviders` function, which adds `SingleSpaPlatformLocation` to the platform injector. This function should be called in each application, even if that application doesn't use routing. We also need to share the `single-spa-angular` package because applications should reference the same `SingleSpaPlatformLocation` class. Suppose `app1` is created before `app2`, and `app1` doesn't call `getSingleSpaExtraProviders()` when bootstrapping the root module, but `app2` does. The platform injector is created eagerly when `platformBrowser()` is called for the first time. Consequently, `app2` will try to retrieve the `SingleSpaPlatformLocation`, but it will not be available in the platform injector since `app1` didn't declare this dependency.
 
 The root-config should have a SystemJS import map with all of the required packages:
 
@@ -895,23 +902,32 @@ The root-config should have a SystemJS import map with all of the required packa
     "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/5.9.3/system/single-spa.dev.js",
     "rxjs": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs.min.js",
     "rxjs/operators": "https://cdn.jsdelivr.net/npm/@esm-bundle/rxjs/system/es2015/rxjs-operators.min.js",
-    "@angular/compiler": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__compiler/system/es2020/ivy/angular-compiler.js",
-    "@angular/core": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__core/system/es2020/ivy/angular-core.js",
-    "@angular/common": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__common/system/es2020/ivy/angular-common.js",
-    "@angular/common/http": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__common/system/es2020/ivy/angular-http.js",
-    "@angular/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__animations/system/es2020/ivy/angular-animations.js",
-    "@angular/animations/browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__animations/system/es2020/ivy/angular-browser.js",
-    "@angular/platform-browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser/system/es2020/ivy/angular-platform-browser.js",
-    "@angular/platform-browser/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser/system/es2020/ivy/angular-animations.js",
-    "@angular/platform-browser-dynamic": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__platform-browser-dynamic/system/es2020/ivy/angular-platform-browser-dynamic.js",
-    "@angular/router": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular__router/system/es2020/ivy/angular-router.js",
-    "single-spa-angular/internals": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@6.2.0/system/es2020/ivy/angular-single-spa-angular-internals.js",
-    "single-spa-angular": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@6.2.0/system/es2020/ivy/angular-single-spa-angular.js"
+    "@angular/compiler": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-compiler.js",
+
+    "@angular/core/primitives/signals": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-core-primitives-signals.js",
+    "@angular/core/primitives/event-dispatch": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-core-primitives-event-dispatch.js",
+    "@angular/core": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-core.js",
+
+    "@angular/common": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-common.js",
+    "@angular/common/http": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-common-http.js",
+
+    "@angular/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-animations.js",
+    "@angular/animations/browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-animations-browser.js",
+
+    "@angular/platform-browser": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-platform-browser.js",
+    "@angular/platform-browser/animations": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-platform-browser-animations.js",
+
+    "@angular/platform-browser-dynamic": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-platform-browser-dynamic.js",
+
+    "@angular/router": "https://cdn.jsdelivr.net/npm/@esm-bundle/angular/system/es2022/angular-router.js",
+
+    "single-spa-angular/internals": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@9.1.2/system/es2022/single-spa-angular-internals.js",
+    "single-spa-angular": "https://cdn.jsdelivr.net/npm/@esm-bundle/single-spa-angular@9.1.2/system/es2022/single-spa-angular.js"
   }
 }
 ```
 
-Production bundles also don't use `@angular/compiler` and `@angular/platform-browser-dynamic` packages. You would want to use minified packages when the root-config is built in production mode. One approach could be to use `if-else` conditions within the root-config `.ejs` template:
+Production bundles also don't use the `@angular/compiler` and `@angular/platform-browser-dynamic` packages. You should use minified packages when the root configuration is built in production mode. One approach is to use `if-else` conditions within the root configuration `.ejs` template:
 
 ```html
 <% if (htmlWebpackPlugin.options.isDevelopment) { %>
@@ -952,9 +968,9 @@ module.exports = (env, { mode }) => {
 };
 ```
 
-The `mode` will equal production when you run `webpack --mode production`.
+The `mode` will be set to production when you run `webpack --mode production`.
 
-The root-config then can load `single-spa`, register applications and start the `single-spa` in order for applications to be mounted:
+The root configuration can then load `single-spa`, register applications, and start `single-spa` so that the applications can be mounted:
 
 ```js
 System.import("single-spa").then(({ registerApplication, start }) => {
