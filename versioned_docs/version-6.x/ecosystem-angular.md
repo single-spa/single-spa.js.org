@@ -790,6 +790,81 @@ be loaded by single-spa-angular's webpack config, without you having to configur
 
 Your component styles will also be loaded like normal without you having to configure anything.
 
+#### Unmountable styles
+
+> :warning: This is an advanced part that requires knowledge of the Angular CLI Webpack configuration.
+
+You can have unmountable `<style>` elements that are removed from the DOM's `<head>` whenever the app is destroyed. However, this can only be done by modifying the Webpack configuration and adding custom rules. We can't provide this out of the box because it would tie our configuration to Angular's Webpack configuration. If their config changes, ours would fail; thus, we shift the responsibility to the consumer.
+
+Consider that we want to mount and unmount the `main.scss` file, which is located near the `main.single-spa.ts` file inside the `src` folder. The `style-loader` supports mounting and unmounting styles manually; see [the docs](https://webpack.js.org/loaders/style-loader/#lazysingletonstyletag). We need to find the rule that targets `.scss` files using `config.module.rules.find`. This will give us the following object:
+
+```js
+{
+  test: /\.(?:scss)$/i,
+  rules: [
+    {
+      oneOf: []
+    },
+    {
+      use: [],
+    }
+  ]
+}
+```
+
+We have to update the first object in the `rules` list; thus, we need to take `rules[0]`. In the code below, we unshift the rule that uses Angular loaders for the `scss` files first (the `sass-loader` with options), and then we place the `style-loader` with the `lazySingletonStyleTag` injection type:
+
+```js
+const singleSpaConfig = require("../../lib/lib/webpack");
+
+module.exports = (config) => {
+  config = singleSpaConfig.default(config);
+
+  // https://github.com/angular/angular-cli/blob/b65ef44cbe36416271521eba0ba5fc0b4442af55/packages/angular_devkit/build_angular/src/tools/webpack/configs/styles.ts#L235-L255
+  const scssRule = config.module.rules.find((rule) =>
+    rule.test.toString().includes("scss"),
+  ).rules[0];
+
+  scssRule.oneOf.unshift({
+    resourceQuery: /\?unmountable/,
+    use: [
+      {
+        loader: "style-loader",
+        options: {
+          injectType: "lazySingletonStyleTag",
+        },
+      },
+      // Take the other loaders that Angular uses internally.
+      // Since we replaced the `mini-css-extract-plugin` loader with the
+      // `style-loader` (which is at index 0), we slice the list by 1 index.
+      ...scssRule.oneOf[0].use.slice(1),
+    ],
+  });
+
+  return config;
+};
+```
+
+Note the `resourceQuery`. This will only target files that have the `?unmountable` query at the end. Next, let's update the `main.single-spa.ts` file:
+
+```ts
+// @ts-ignore
+import unmountableStyles from './main.scss?unmountable';
+
+const lifecycles = singleSpaAngular({
+  bootstrapFunction: async () => {
+    unmountableStyles.use();
+    const appRef = await bootstrapApplication(AppComponent, appConfig);
+    appRef.onDestroy(() => unmountableStyles.unuse());
+    return appRef;
+  },
+  template: '<standalone-root />',
+  Router,
+  NavigationStart,
+  NgZone,
+});
+```
+
 ### Polyfills
 
 [Polyfills in your angular.json](https://angular.io/guide/browser-support) are JavaScript code that make your project work in older browsers,
