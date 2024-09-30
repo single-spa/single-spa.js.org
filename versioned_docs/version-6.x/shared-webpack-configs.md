@@ -10,7 +10,7 @@ These packages are housed within the [create-single-spa repository](https://gith
 
 [Github project](https://github.com/single-spa/create-single-spa/tree/master/packages/webpack-config-single-spa)
 
-A shareable, customizable webpack config that is used for single-spa modules.
+A shareable, customizable webpack config that is used for single-spa modules. As of webpack-config-single-spa@6, native ES modules are outputted, by default.
 
 ### Installation
 
@@ -41,6 +41,12 @@ module.exports = (webpackConfigEnv, argv) => {
     // This changes whether package names that start with @your-org-name are
     // treated as webpack externals or not. Defaults to true
     orgPackagesAsExternal: true,
+
+    // optional, defaults to false
+    // This changes the webpack output.libraryTarget so that the output bundle is in System.register() format
+    // Older versions of webpack-config-single-spa outputted System.register() format by default, so this
+    // option exists for backwards compatibility for organizations who haven't yet upgraded to SystemJS
+    outputSystemJS: false,
 
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
