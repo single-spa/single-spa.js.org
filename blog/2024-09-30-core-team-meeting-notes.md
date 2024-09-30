@@ -1,4 +1,4 @@
-# Sepetember 2024 Core Team Meeting
+# September 2024 Core Team Meeting
 
 *Held via Slack*
 
