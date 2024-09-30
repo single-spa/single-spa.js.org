@@ -2,11 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://single-spa.js.org/blog</id>
     <title>single-spa Blog</title>
-    <updated>2024-06-08T00:00:00.000Z</updated>
+    <updated>2024-09-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://single-spa.js.org/blog"/>
     <subtitle>single-spa Blog</subtitle>
     <icon>https://single-spa.js.org/img/single-spa-mark-magenta.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[September 2024 Core Team Meeting]]></title>
+        <id>https://single-spa.js.org/blog/2024/09/30/core-team-meeting-notes</id>
+        <link href="https://single-spa.js.org/blog/2024/09/30/core-team-meeting-notes"/>
+        <updated>2024-09-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Held via Slack]]></summary>
+        <content type="html"><![CDATA[<p><em>Held via Slack</em></p>
+<p>Attendees: Joel Denning, Ian Bacher, Milan Kovacic</p>
+<p>Date: 2024-09-14 through 2024-09-20</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="meeting-agenda">Meeting Agenda<a href="https://single-spa.js.org/blog/2024/09/30/core-team-meeting-notes#meeting-agenda" class="hash-link" aria-label="Direct link to Meeting Agenda" title="Direct link to Meeting Agenda">​</a></h2>
+<ul>
+<li>Discuss the new #paid-support channel in Slack</li>
+<li>Discuss release plan for single-spa@7. single-spa@7.0.0-beta.0 was released!</li>
+<li>Discuss recommendations from Milan:<!-- -->
+<ul>
+<li>Market positioning by touting support for multiple frameworks</li>
+<li>single-spa helper libraries need more maintainers</li>
+<li>suggestion to move from Slack to Discord, to avoid disappearing messages</li>
+<li>proposal to move to native modules</li>
+<li>improve documentation for common use cases, such as migrations, maintenance of import maps, caching, common deployment stacks, etc</li>
+</ul>
+</li>
+<li>Discuss recommendations from Joel:<!-- -->
+<ul>
+<li>Possibly support module federation in create-single-spa (back-and-forth discussion about whether to support both module federation and native modules, or only native modules)</li>
+<li>Modify create-single-spa to have an ESM/SystemJS toggle and change it to ESM by default</li>
+<li>Develop <a href="https://github.com/single-spa/import-map-externals-webpack-plugin" target="_blank" rel="noopener noreferrer">import-map-externals-webpack-plugin</a> that automatically externalizes all dependencies in an import map that’s either on disk or over network.</li>
+<li>Develop a new project or extend and existing one (like jspm) that assembles the files needed for self-hosting esm shared dependencies, and create all the CI/CD tooling necessary to upload the files to a corporate CDN.</li>
+</ul>
+</li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[June 2024 Core Team Meeting]]></title>
         <id>https://single-spa.js.org/blog/2024/06/08/core-team-meeting-notes</id>
