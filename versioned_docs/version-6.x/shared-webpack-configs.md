@@ -48,6 +48,11 @@ module.exports = (webpackConfigEnv, argv) => {
     // option exists for backwards compatibility for organizations who haven't yet upgraded to SystemJS
     outputSystemJS: false,
 
+    // optional
+    // See https://github.com/single-spa/import-map-externals-webpack-plugin for details
+    // This allows for auto-externalizing of shared dependencies
+    importMapUrl: 'https://react.microfrontends.app/importmap.json',
+
     // optional, defaults to 1
     // This is the rootDirectoryLevel that is passed to https://github.com/joeldenning/systemjs-webpack-interop
     rootDirectoryLevel: 1,
