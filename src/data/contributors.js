@@ -20,11 +20,6 @@ const coreMembers = [
     sponsorUrl: "https://github.com/sponsors/joeldenning",
   },
   {
-    name: "Milan Kovacic",
-    login: "MilanKovacic",
-    avatarUrl: "https://avatars.githubusercontent.com/u/9189985?v=4",
-  },
-  {
     name: "Ian Bacher",
     login: "ibacher",
     avatarUrl: "https://avatars.githubusercontent.com/u/52504170?v=4",
