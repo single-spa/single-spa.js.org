@@ -7,7 +7,7 @@ export default function ErrorCode13(props) {
       <h1>#13: Parcel is not mountable.</h1>
       <p>
         Parcel {props.getErrorCodeArg(0, "unknown name")} is currently in{" "}
-        {props.getErrorCodeArg(1)} status. You may only call parcel.unmount()
+        {props.getErrorCodeArg(1)} status. You may only call parcel.mount()
         when the parcel is in NOT_MOUNTED status.
       </p>
       <h2>To fix:</h2>
@@ -18,7 +18,7 @@ export default function ErrorCode13(props) {
             const parcel = mountParcel(() => import('./some-parcel.js'), customProps);
 
             parcel.unmount().then(() => {
-              Now the parcel is guaranteed to be in NOT_MOUNTED status, and you can call parcel.mount()
+              // Now the parcel is guaranteed to be in NOT_MOUNTED status, and you can call parcel.mount()
               parcel.mount()
             })
           `}
