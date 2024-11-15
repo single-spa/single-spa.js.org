@@ -10,9 +10,9 @@ function Footer() {
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { footer } = themeConfig;
-  const [showBaseplateBanner, setShowBaseplateBanner] = useState(() =>
+  const [showWorkshopBanner, setShowWorkshopBanner] = useState(() =>
     typeof localStorage !== "undefined"
-      ? localStorage.getItem("hide-baseplate-banner") !== "true"
+      ? localStorage.getItem("hide-workshop-banner") !== "true"
       : false,
   );
 
@@ -21,12 +21,12 @@ function Footer() {
   }
 
   useEffect(() => {
-    if (showBaseplateBanner) {
-      localStorage.removeItem("hide-baseplate-banner");
+    if (showWorkshopBanner) {
+      localStorage.removeItem("hide-workshop-banner");
     } else {
-      localStorage.setItem("hide-baseplate-banner", true);
+      localStorage.setItem("hide-workshop-banner", true);
     }
-  }, [showBaseplateBanner]);
+  }, [showWorkshopBanner]);
 
   const { copyright, links = [], logo } = footer;
 
@@ -117,23 +117,23 @@ function Footer() {
             Originally developed at <a href="https://getcanopy.com">Canopy</a>
           </div>
           {copyright && copyright}
-          {showBaseplateBanner && (
+          {showWorkshopBanner && (
             <div className="footer__banner">
-              <div>Try Baseplate Cloud's official single-spa hosting!</div>
+              <div>Official single-spa educational courses!</div>
               <div className="footer__banner--actions">
                 <div
                   role="button"
                   tabIndex={0}
-                  onClick={() => setShowBaseplateBanner(false)}
+                  onClick={() => setShowWorkshopBanner(false)}
                 >
                   Dismiss
                 </div>
                 <a
-                  href="https://baseplate.cloud"
+                  href="https://single-spa-workshop.com"
                   target="_blank"
                   rel="noopener"
                 >
-                  Baseplate Hosting
+                  single-spa workshop
                 </a>
               </div>
             </div>
