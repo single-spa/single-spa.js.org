@@ -182,6 +182,12 @@ const users = [
     infoLink: "https://liangyihui.net/",
     pinned: true,
   },
+  {
+    caption: "epilot.cloud",
+    image: "img/epilot-logo.svg",
+    infoLink: "https://epilot.cloud/",
+    pinned: true,
+  }
 ];
 
 export default users;
