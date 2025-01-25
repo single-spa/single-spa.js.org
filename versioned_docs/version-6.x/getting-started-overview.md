@@ -117,7 +117,7 @@ For example, if using React the generated Webpack config already expects `React`
 
 ```json
 "react": "https://cdn.jsdelivr.net/npm/react@19.0.0/+esm",
-"react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.0.0/index.min.js"
+"react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.0.0/+esm"
 ```
 
 As your architecture matures, you may add more shared dependencies in the future so don't stress about leveraging these perfectly at first.
