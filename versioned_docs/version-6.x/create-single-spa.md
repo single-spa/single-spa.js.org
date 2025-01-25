@@ -73,6 +73,15 @@ create-single-spa --moduleType app-parcel
 create-single-spa --moduleType util-module
 ```
 
+### --moduleFormat
+
+You can specify which javascript module format the microfrontend's output bundle is compiled to via the `--moduleFormat` CLI argument:
+
+```sh
+create-single-spa --moduleFormat esm
+create-single-spa --moduleFormat systemjs
+```
+
 ### --framework
 
 You can specify which framework you're using with the `--framework` CLI argument. Note that if you specify a framework that you may omit the `--moduleType`, as it is inferred to be `app-parcel`.
