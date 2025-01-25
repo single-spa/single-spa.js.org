@@ -116,8 +116,8 @@ Once you've gotten some of the basics down, refer to these other [single-spa exa
 For example, if using React the generated Webpack config already expects `React` and `ReactDOM` to be shared dependencies, so you must add these to the import map. Vue, Angular, and Svelte don't require shared dependencies at this time.
 
 ```json
-"react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
-"react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js"
+"react": "https://cdn.jsdelivr.net/npm/react@19.0.0/+esm",
+"react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.0.0/index.min.js"
 ```
 
 As your architecture matures, you may add more shared dependencies in the future so don't stress about leveraging these perfectly at first.
