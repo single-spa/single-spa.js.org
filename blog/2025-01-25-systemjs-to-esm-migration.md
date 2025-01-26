@@ -71,7 +71,7 @@ Then, modify the entry file for the root config (often named `org-name-root-conf
 
 Shared dependencies are managed in various ways, but all import map dependencies need to be altered from their SystemJS to ESM versions. Shared dependencies are often managed in root configs, a separate repository, manually on a CDN, and/or via `import-map-deployer`.
 
-If using jsdelivr to host your shared dependencies, use the urls with `+esm` to get the esm version. [Example](https://www.jsdelivr.com/package/npm/@single-spa/import-map-injector?tab=files). JSPM CDN or esm.sh are ok to use, too.
+If using jsdelivr to host your shared dependencies, use the urls with `+esm` to get the esm version. [Example](https://www.jsdelivr.com/package/npm/@single-spa/import-map-injector?tab=files). JSPM, esm.sh, unpkg.com, and other third party hosting services are ok to use, too.
 
 ## Self hosting
 
