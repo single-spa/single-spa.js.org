@@ -10,7 +10,9 @@ single-spa-vue is a helper library that helps implement [single-spa registered a
 
 For a full example, see [vue-microfrontends](https://github.com/vue-microfrontends).
 
-## Live demo
+## Live demos
+
+https://vue.microfrontends.app
 
 https://coexisting-vue-microfrontends.surge.sh
 
@@ -29,7 +31,22 @@ The CLI Plugin does the following for you:
 1. Modify your webpack config so that your project works as a single-spa application or parcel.
 2. Install [single-spa-vue](https://github.com/single-spa/single-spa-vue).
 3. Modify your `main.js` or `main.ts` file so that your project works as a single-spa application or parcel.
-4. Add a `set-public-path.js` that will use `systemjs-webpack-interop` in order to set the public path of your application.
+
+#### vue-cli-plugin-single-spa configuration
+
+As of vue-cli-plugin-single-spa@4, the default webpack libraryTarget is `"module"` rather than `"umd"`. The `"umd"` libraryTarget is used in SystemJS implementations. To maintain backwards compatibility and to allow for incremental upgrades, an `outputSystemJS` configuration exists for vue-cli-plugin-single-spa, to change the libraryTarget and various related webpack settings to still output UMD and have the proper plugins for SystemJS.
+
+```js
+// vue.config.js
+module.exports = {
+  pluginOptions: {
+    "single-spa": {
+      // defaults to false
+      outputSystemJS: true
+    }
+  }
+}
+```
 
 ### Without Vue CLI
 
@@ -42,38 +59,11 @@ accessing the `singleSpaVue` global variable.
 
 ## Usage
 
-Install `systemjs-webpack-interop` if you have not already done so.
-
-`npm install systemjs-webpack-interop -S`
-
-Create a file at the same level as your `main.js/ts` called `set-public-path.js`
-
-```js
-import { setPublicPath } from "systemjs-webpack-interop";
-
-setPublicPath("appName");
-```
-
-Note that if you are using the Vue CLI Plugin, your `main.ts` or `main.js` file will be updated with this code automatically and the `set-public-path.js` file
-will automatically be created with the app name being your package.json's name property.
-
-If you want to deal with your Vue instance, you can modify the mount method by following this. mount method will return Promise with Vue instance after [v1.6.0](https://github.com/single-spa/single-spa-vue/releases/tag/v1.6.0).
-
-```js
-const vueLifecycles = singleSpaVue({...})
-
-export const mount = props => vueLifecycles.mount(props).then(instance => {
-  // do what you want with the Vue instance
-  ...
-})
-```
-
 ### Vue 2
 
 For Vue 2, change your application's entry file to be the following:
 
 ```js
-import "./set-public-path";
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -109,7 +99,6 @@ export const unmount = vueLifecycles.unmount;
 For Vue 3, change your application's entry file to be the following:
 
 ```js
-import "./set-public-path";
 import { h, createApp } from "vue";
 import singleSpaVue from "../lib/single-spa-vue.js";
 import router from "./router";
@@ -194,9 +183,9 @@ Sharing a single instance of Vue and other common libraries is highly recommende
 ```js
 // vue.config.js
 module.exports = {
-  chainWebpack: (config) => {
-    config.externals(["vue", "vue-router"]);
-  },
+  configureWebpack: {
+    externals: ["vue", "vue-router"]
+  }
 };
 ```
 
@@ -370,7 +359,7 @@ export default {
 </script>
 ```
 
-## Webpack Public Path
+## SystemJS Webpack Public Path
 
 [vue-cli-plugin-single-spa](https://github.com/single-spa/vue-cli-plugin-single-spa) sets the [webpack public path](https://webpack.js.org/guides/public-path/#root) via [SystemJSPublicPathWebpackPlugin](https://github.com/joeldenning/systemjs-webpack-interop). By default, the public path is set to match the following output directory structure:
 
