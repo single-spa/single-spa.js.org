@@ -267,6 +267,7 @@ To render a parcel config object in Vue, you can use single-spa-vue's `Parcel` c
   <Parcel
     v-on:parcelMounted="parcelMounted()"
     v-on:parcelUpdated="parcelUpdated()"
+    v-on:parcelError="err => parcelError(err)"
     :config="parcelConfig"
     :mountParcel="mountParcel"
     :wrapWith="wrapWith"
@@ -328,14 +329,14 @@ export default {
         The wrapWith string determines what kind of dom element will be provided to the parcel.
         Defaults to 'div'
       */
-      wrapWith: 'div'
+      wrapWith: 'div',
 
       /*
         wrapClass (string, optional)
 
         The wrapClass string is applied to as the CSS class for the dom element that is provided to the parcel
       */
-      wrapClass: "bg-red"
+      wrapClass: "bg-red",
 
       /*
         wrapStyle (object, optional)
@@ -360,6 +361,9 @@ export default {
     },
     parcelUpdated() {
       console.log("parcel updated");
+    },
+    parcelError(err) {
+      console.error(err);
     }
   }
 }
