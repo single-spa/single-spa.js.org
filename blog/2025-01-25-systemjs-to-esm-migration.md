@@ -64,6 +64,20 @@ yarn add --dev vue-cli-plugin-single-spa@latest
 
 The microfrontend will now output native browser modules rather than UMD/SystemJS-compatible bundles. For backwards compatibility with systemjs, see the `outputSystemJS` option in the [vue ecosystem docs](/docs/ecosystem-vue/#vue-cli-plugin-single-spa-configuration).
 
+#### Example migration PRs
+
+The vue-microfrontends example has been upgraded to Vue 3 and to use fully-native modules in the browser both in development and production.
+
+https://vue.microfrontends.app
+
+Links to PRs showing how to upgrade:
+- root config: https://github.com/vue-microfrontends/root-config/pull/41
+- shared-dependencies: https://github.com/vue-microfrontends/shared-dependencies/pull/3
+- navbar: https://github.com/vue-microfrontends/navbar/pull/38
+- dogs-dashboard: https://github.com/vue-microfrontends/dogs-dashboard/pull/35
+- rate-dogs: https://github.com/vue-microfrontends/rate-dogs/pull/36
+- style-guide: https://github.com/vue-microfrontends/styleguide/pull/38
+
 ### With Vite
 
 Better single-spa + vite support may be implemented and documented in the future, but as of now the Vite documentation was not authored by the single-spa core team.
