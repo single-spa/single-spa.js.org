@@ -9,10 +9,11 @@ As of the following versions of single-spa npm packages, single-spa now defaults
 - [webpack-config-single-spa-ts@5](https://github.com/single-spa/create-single-spa/blob/main/packages/webpack-config-single-spa-ts/CHANGELOG.md)
 - [webpack-config-single-spa-react@5](https://github.com/single-spa/create-single-spa/blob/main/packages/webpack-config-single-spa-react/CHANGELOG.md)
 - [webpack-config-single-spa-react-ts@5](https://github.com/single-spa/create-single-spa/blob/main/packages/webpack-config-single-spa-react-ts/CHANGELOG.md)
+- [vue-cli-plugin-single-spa@4](https://github.com/single-spa/vue-cli-plugin-single-spa/releases/tag/v4.0.0)
 
 # Migrating individual microfrontends
 
-## React, with shared webpack configs
+## React
 
 To upgrade an individual microfrontend to output native browser modules rather than SystemJS modules, first identify which [single-spa shared webpack config](https://single-spa.js.org/docs/shared-webpack-configs) is being used, by opening the `webpack.config.js` file. You will see code like the following:
 
@@ -51,7 +52,21 @@ See [single-spa-angular tracking issue](https://github.com/single-spa/single-spa
 
 ## Vue
 
-See [vue-cli-plugin-single-spa tracking issue](https://github.com/single-spa/vue-cli-plugin-single-spa/issues/52)
+### With Vue CLI
+
+vue-cli-plugin-single-spa@4 defaults to outputting esm bundles rather than SystemJS bundles. Upgrade the dependency in your package.json with one of the following commands:
+
+```sh
+npm install -D vue-cli-plugin-single-spa@latest
+pnpm install -D vue-cli-plugin-single-spa@latest
+yarn add --dev vue-cli-plugin-single-spa@latest
+```
+
+The microfrontend will now output native browser modules rather than UMD/SystemJS-compatible bundles. For backwards compatibility with systemjs, see the `outputSystemJS` option in the [vue ecosystem docs](/docs/ecosystem-vue/#vue-cli-plugin-single-spa-configuration).
+
+### With Vite
+
+Better single-spa + vite support may be implemented and documented in the future, but as of now the Vite documentation was not authored by the single-spa core team.
 
 # Migrating the root config
 
