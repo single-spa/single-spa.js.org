@@ -361,7 +361,7 @@ export default {
 
 ## SystemJS Webpack Public Path
 
-[vue-cli-plugin-single-spa](https://github.com/single-spa/vue-cli-plugin-single-spa) sets the [webpack public path](https://webpack.js.org/guides/public-path/#root) via [SystemJSPublicPathWebpackPlugin](https://github.com/joeldenning/systemjs-webpack-interop). By default, the public path is set to match the following output directory structure:
+When the `outputSystemJS` option is set to `true`, [vue-cli-plugin-single-spa](https://github.com/single-spa/vue-cli-plugin-single-spa) sets the [webpack public path](https://webpack.js.org/guides/public-path/#root) via [SystemJSPublicPathWebpackPlugin](https://github.com/joeldenning/systemjs-webpack-interop). By default, the public path is set to match the following output directory structure:
 
 ```sh
 dist/
