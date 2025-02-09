@@ -188,6 +188,12 @@ const users = [
     infoLink: "https://epilot.cloud/",
     pinned: true,
   }
+  {
+    caption: "HexaCore",
+    image: "img/hexacoreteam_logo.jpg",
+    infoLink: "https://hexacoreperu.online/",
+    pinned: true,
+  }
 ];
 
 export default users;
