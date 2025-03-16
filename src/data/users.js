@@ -189,6 +189,12 @@ const users = [
     pinned: true,
   },
   {
+    caption: "Tricentis",
+    image: "img/tricentis-logo.svg",
+    infoLink: "https://www.tricentis.com/",
+    pinned: false,
+  },
+  {
     caption: "HexaCore",
     image: "img/hexacoreteam_logo.jpg",
     infoLink: "https://hexacoreperu.online/",
