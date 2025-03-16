@@ -192,7 +192,7 @@ const users = [
     caption: "Tricentis",
     image: "img/tricentis-logo.svg",
     infoLink: "https://www.tricentis.com/",
-    pinned: true,
+    pinned: false,
   },
   {
     caption: "HexaCore",
