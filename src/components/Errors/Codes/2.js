@@ -39,7 +39,7 @@ export default function ErrorCode2() {
         The single-spa start() API exists to give you fine-grained control over
         performance. In the majority of use cases, you should call
         singleSpa.start() immediately after{" "}
-        <a href="http://localhost:3000/docs/api#registerapplication">
+        <a href="/docs/api#registerapplication">
           registering your applications
         </a>
         . It was designed for situations where you want to start downloading a
