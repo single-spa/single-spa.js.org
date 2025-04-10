@@ -40,7 +40,7 @@ function Error(props) {
           errorCode={params.get("code")}
         />
         <a
-          href={`https://github.com/single-spa/single-spa.js.org/edit/master/website/src/components/Errors/Codes/${params.get(
+          href={`https://github.com/single-spa/single-spa.js.org/edit/master/src/components/Errors/Codes/${params.get(
             "code",
           )}.js`}
         >
