@@ -15,3 +15,7 @@ A variety of video tutorials exist from both the single-spa core team and other 
 Feel free to add your tutorial videos to this list!
 
 - [Module Federation and single-spa](https://www.youtube.com/watch?v=wxnwPLLIJCY)
+
+- [React Application with single-spa](https://youtu.be/pp7feFgUn9U?feature=shared)
+
+- [Vue Application with single-spa](https://youtu.be/3j1j9oN1T58?feature=shared)
