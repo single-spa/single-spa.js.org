@@ -15,7 +15,7 @@
 <link rel="search" type="application/opensearchdescription+xml" title="single-spa" href="/opensearch.xml">
 <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
 <script src="/js/index.js"></script><link rel="stylesheet" href="/assets/css/styles.e320bee3.css">
-<script src="/assets/js/runtime~main.e3854620.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.49ab7a29.js" defer="defer"></script>
 <script src="/assets/js/main.0ac5686d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -32,7 +32,8 @@
 <p>All options are passed to single-spa-react via the <code>opts</code> parameter when calling <code>singleSpaReact(opts)</code>. The following options are available:</p>
 <ul>
 <li><code>React</code>: (required) The main React object, which is generally either exposed onto the window or is available via <code>require(&#x27;react&#x27;)</code> <code>import React from &#x27;react&#x27;</code>.</li>
-<li><code>ReactDOM</code>: (required) The main ReactDOMbject, which is available via <code>require(&#x27;react-dom&#x27;)</code> <code>import ReactDOM from &#x27;react-dom&#x27;</code>.</li>
+<li><code>ReactDOMClient</code>: (required, React 18+) The main ReactDOMbject, which is available via <code>require(&#x27;react-dom&#x27;)</code> <code>import ReactDOM from &#x27;react-dom&#x27;</code>.</li>
+<li><code>ReactDOM</code>: (legacy) The main ReactDOMbject if framework version is 17 and below.</li>
 <li><code>rootComponent</code>: (required) The top level React component which will be rendered. Can be omitted only if <code>loadRootComponent</code> is provided.</li>
 <li><code>loadRootComponent</code>: (optional) A loading function that takes <a href="https://single-spa.js.org/docs/building-applications/#custom-props" target="_blank" rel="noopener noreferrer">custom single-spa props</a> and returns a promise that resolves with the component. This takes the place of the <code>rootComponent</code> opt, when provided. It is intended to help people
 who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.</li>
