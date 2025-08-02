@@ -68,7 +68,8 @@ export const { bootstrap, mount, unmount } = singleSpaReact({
 All options are passed to single-spa-react via the `opts` parameter when calling `singleSpaReact(opts)`. The following options are available:
 
 - `React`: (required) The main React object, which is generally either exposed onto the window or is available via `require('react')` `import React from 'react'`.
-- `ReactDOM`: (required) The main ReactDOMbject, which is available via `require('react-dom')` `import ReactDOM from 'react-dom'`.
+- `ReactDOMClient`: (required, React 18+) The main ReactDOMbject, which is available via `require('react-dom')` `import ReactDOM from 'react-dom'`.
+- `ReactDOM`: (legacy) The main ReactDOMbject if framework version is 17 and below.
 - `rootComponent`: (required) The top level React component which will be rendered. Can be omitted only if `loadRootComponent` is provided.
 - `loadRootComponent`: (optional) A loading function that takes [custom single-spa props](https://single-spa.js.org/docs/building-applications/#custom-props) and returns a promise that resolves with the component. This takes the place of the `rootComponent` opt, when provided. It is intended to help people
   who want to lazy load the source code for their root component. The source code will be lazy loaded during the bootstrap lifecycle.
