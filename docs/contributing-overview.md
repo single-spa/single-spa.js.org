@@ -8,6 +8,8 @@ Thanks for checking out single-spa! We're excited to hear and learn from you.
 
 We've put together the following guidelines to help you figure out where you can best be helpful.
 
+Change some stuff Her just for testing purposes 
+
 ## Table of Contents
 
 0. [Types of contributions we're looking for](#types-of-contributions-were-looking-for)
