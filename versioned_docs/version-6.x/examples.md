@@ -50,5 +50,6 @@ sidebar_label: Resources
 - [single-spa-angularjs-starter](https://github.com/mbarbosasan/single-spa-angularjs-starter): A simple starter for AngularJS with Webpack, rendering a parcel of Angular 15 with standalone components.
 - [micro-spa-lite](https://github.com/zhanghongen/micro-spa-lite): Ultra‑lightweight micro‑frontend boilerplate (~50 LOC) with single‑spa, Module Federation & Chrome extension support
 - [single-spa-react-and-vue](https://github.com/vbothe91/Microfrontends-with-single-SPA): single-spa microfrontends implementation (Root config, React and Vue).
+- [demo-microfrontends-with-single-spa](https://github.com/cesarchamal/demo-microfrontends): Comprehensive 12-framework microfrontend architecture with Angular, React, Vue, Svelte, TypeScript, jQuery, Web Components, and more. Features multiple deployment modes (local, NPM, GitHub Pages, AWS S3), RxJS state management, authentication, and live demo at http://single-spa-demo-774145483743.s3-website.eu-central-1.amazonaws.com/
 
 Have your own example or starter repo? [Submit a PR](https://github.com/single-spa/single-spa.js.org/edit/master/website/versioned_docs/version-5.x/examples.md) to add yours to this list.
