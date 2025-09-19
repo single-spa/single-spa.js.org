@@ -140,7 +140,7 @@ const users = [
   {
     caption: "Infomedia",
     image:
-      "https://www.infomedia.co.id/wp-content/uploads/2020/09/infomedia_logo.png",
+      "https://www.infomedia.co.id/_next/image?url=%2Flogo.png&w=3840&q=75",
     infoLink: "https://www.infomedia.co.id",
     pinned: true,
   },
@@ -167,13 +167,6 @@ const users = [
     caption: "Flash Beneficios",
     image: "img/flashapp.svg",
     infoLink: "https://flashapp.com.br/",
-    pinned: true,
-  },
-  {
-    caption: "Swyft Logistics",
-    image:
-      "https://swyftlogistics.com/web/wp-content/uploads/2021/10/swyft.png",
-    infoLink: "https://www.swyftlogistics.com/",
     pinned: true,
   },
   {
