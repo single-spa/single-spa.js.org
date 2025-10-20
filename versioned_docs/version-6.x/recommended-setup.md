@@ -112,7 +112,7 @@ To accomplish local development of only one microfrontend at a time, we can cust
 }
 ```
 
-A tool called [import-map-overrides](https://github.com/joeldenning/import-map-overrides) exists to customize your import map through an in-browser UI. This tool will automatically let you toggle one or more microfrontends between your localhost and the deployed version.
+A tool called [import-map-overrides](https://github.com/single-spa/import-map-overrides) exists to customize your import map through an in-browser UI. This tool will automatically let you toggle one or more microfrontends between your localhost and the deployed version.
 
 Alternatively, you can use [standalone-single-spa-webpack-plugin](https://github.com/single-spa/standalone-single-spa-webpack-plugin), which allows you to develop each application in standalone mode. Another alternative is to always run the single-spa root config locally, in addition to whichever microfrontends you're developing.
 
