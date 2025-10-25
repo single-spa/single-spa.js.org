@@ -36,7 +36,7 @@ const resolvedRoutes = constructRoutes(htmlTemplate, layoutData)
 **Arguments**
 
 - `routesConfig` (required): Routes config is a [JSON Layout Definition](/docs/layout-definition/#json-layouts), an [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement), or a [parse5 HTML element](https://github.com/inikulin/parse5). If it is an HTMLElement, it must be a `<single-spa-router>` element or a `<template>` that contains a single-spa-router element.
-- `layoutData` (optional): Layout data is an optionally provided object that defines [props](/docs/layout-definition/#props) and [loaders](/docs/layout-definition/#props) for [HTML Layouts](/docs/layout-definition/#html-layouts). You can omit it if using a [JSON Layout](/docs/layout-definition/#json-layout) or if you do not need to define props or loaders in your HTML Layout. The layoutData object should have top level properties `props` and `loaders` that are each objects. Each of those objects' keys is the name of a prop or loader and its corresponding value.
+- `layoutData` (optional): Layout data is an optionally provided object that defines [props](/docs/layout-definition/#props), [loaders](/docs/layout-definition/#loading-uis) and [errors](/docs/layout-definition/#error-uis) for [HTML Layouts](/docs/layout-definition/#html-layouts). You can omit it if using a [JSON Layout](/docs/layout-definition/#json-layout) or if you do not need to define props or loaders in your HTML Layout. The layoutData object should have top level properties `props` and `loaders` that are each objects. Each of those objects' keys is the name of a prop or loader and its corresponding value.
 
 **Return value**
 
