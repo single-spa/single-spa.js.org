@@ -295,6 +295,8 @@ The advantage of b) is that it doesn't require running the import-map-deployer i
 
 Another option of deploying and making sure the latests javascript files are beeing used is making use of redirect (HTTP status code 302). The single-spa import map uses the unhashed url of the javascript file. eg: dist/app.js. Then when the requests for this file comes to the server it is redirected to the actual deployed file eg. dist/app.123abc.js and this is then served to the client. This way the import map never has to be updated and the microfrontend can be separately deployed.
 
+Continuous integration leads to the creation of a large number of packages. [import-map-storage-helper](https://github.com/dolmen-tech/import-map-storage-helper) can be a solution to clean up outdated and unused packages in the case of a CDN + [import-map-deployer](https://github.com/single-spa/import-map-deployer) usage.
+
 ## Applications versus parcels versus utility modules
 
 Single-spa has [different categories](/docs/microfrontends-concept#types-of-microfrontends) of microfrontends. It is up to you where and how you use each of them. However, the single-spa core team recommends the following:
